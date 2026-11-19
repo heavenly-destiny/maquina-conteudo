@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { PanelLeft, Search, Settings2, Volume2, VolumeX } from "lucide-react";
+import { PanelLeft, Search, Settings2, Smile, Volume2, VolumeX } from "lucide-react";
 import { ABAS, type Aba, type Tela } from "./Dock";
 import { som } from "./sons";
 import { Marca, cx, mola } from "./ui";
@@ -8,7 +8,7 @@ import { Luz, Numero } from "./fx";
 /* barra lateral do computador (padrão Wensity/Higgsfield): marca, seções, item ativo com pílula que desliza, rodapé com a conta.
    Recolhe para trilho de ícones. No celular quem navega é o Dock. */
 export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alternarSom, abrirConfig }: {
-  aba: Tela; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>>;
+  aba: Tela; onAba: (a: Tela) => void; badges: Partial<Record<Aba, number>>;
   aberta: boolean; setAberta: (v: boolean) => void; ligado: boolean; alternarSom: () => void; abrirConfig: () => void;
 }) {
   // cinco itens não precisam de grupo com título (o grupo "Criar" tinha um item "Criar" dentro): um separador fino basta
@@ -67,6 +67,16 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
             })}
           </div>
         ))}
+        <span aria-hidden className="mx-3 my-1 h-px bg-white/[0.06]" />
+        {/* estúdio: ferramentas que alimentam os vídeos (fora do Dock do celular, que fica com 5) */}
+        <button onClick={() => { if (aba !== "mascotes") { som.aba(); onAba("mascotes"); } }} aria-current={aba === "mascotes" ? "page" : undefined} title={aberta ? undefined : "Mascotes"}
+          className={cx("relative flex min-h-11 cursor-pointer items-center gap-3 rounded-[14px] text-[14.5px] font-medium transition-colors", aberta ? "px-3" : "justify-center", aba === "mascotes" ? "text-ink" : "text-mute hover:bg-white/[0.04] hover:text-ink")}>
+          {aba === "mascotes" && <motion.span layoutId="side-ativa" transition={mola} className="absolute inset-0 rounded-[14px] bg-white/[0.08] shadow-[inset_0_1px_0_rgb(255_255_255/0.1)]" />}
+          {aba === "mascotes" && <motion.span aria-hidden layoutId="side-ponto" transition={{ type: "spring", stiffness: 280, damping: 18, mass: 0.3 }}
+            className="absolute -left-[3px] top-[calc(50%-3px)] size-1.5 rounded-full bg-red shadow-[0_0_10px_2px_rgb(225_29_42/0.7)]" />}
+          <Smile className={cx("relative size-[19px] shrink-0", aba === "mascotes" && "text-red")} strokeWidth={aba === "mascotes" ? 2.2 : 1.8} />
+          {aberta && <span className="relative flex-1 text-left">Mascotes</span>}
+        </button>
       </nav>
       <div className={cx("flex gap-1 border-t border-white/[0.06] pt-3", aberta ? "items-center" : "flex-col items-center")}>
         <button onClick={abrirConfig} aria-current={aba === "ajustes" ? "page" : undefined} className={cx("flex min-h-11 flex-1 cursor-pointer items-center gap-3 rounded-[14px] text-[14px] font-medium hover:bg-white/[0.04] hover:text-ink", aba === "ajustes" ? "bg-white/[0.07] text-ink" : "text-mute", aberta ? "px-3" : "w-11 flex-none justify-center")} aria-label="Ajustes">

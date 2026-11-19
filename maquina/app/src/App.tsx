@@ -5,6 +5,7 @@ import { Onboarding, lerConfig, type Config } from "./Onboarding";
 import { Intro } from "./Intro";
 import { Dock, ABAS, type Aba, type Tela } from "./Dock";
 import { Ajustes } from "./telas/Ajustes";
+import { Mascotes } from "./telas/Mascotes";
 import { Fundo } from "./Fundo";
 import { Sidebar } from "./Sidebar";
 import { useEstado } from "./api";
@@ -20,7 +21,7 @@ import { Paleta } from "./Paleta";
 
 const lerAba = (): Tela => {
   const h = location.hash.slice(1) as Tela;
-  return h === "ajustes" || ABAS.some((a) => a.id === h) ? h : "inicio";
+  return h === "ajustes" || h === "mascotes" || ABAS.some((a) => a.id === h) ? h : "inicio";
 };
 
 // abertura uma vez por dia (lição do INFLU LAB: repetir toda hora cansa); ?intro=1 força
@@ -154,6 +155,7 @@ export default function App() {
                   {aba === "criar" && <Criar e={e} ir={ir} />}
                   {aba === "inspirar" && <Inspirar e={e} criarCom={criarCom} />}
                   {aba === "postar" && <Postar e={e} />}
+                  {aba === "mascotes" && <Mascotes e={e} />}
                   {aba === "ajustes" && <Ajustes ligado={ligado} alternarSom={() => setLigado(som.alternar())} lateral={lateral} setLateral={setLateral} refazer={refazerConfig} fechar={() => ir("inicio")} />}
                 </motion.div>
               </AnimatePresence>

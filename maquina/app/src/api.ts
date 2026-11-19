@@ -25,9 +25,14 @@ export type Transcricao = {
   id: string; url?: string; arquivo?: string; status: string; fase?: string; erro?: string; criado: number; desde?: number; titulo?: string;
   duracao?: number; previa?: string; texto?: string | null; srt?: string | null; tempo?: string | null;
 };
+export type Mascote = {
+  id: string; modelo: string; nome?: string; caracteristicas: string; status: string; fase?: string; erro?: string; desde?: number;
+  imagem?: string | null; folhas: string[]; reacoes: { nome: string; url: string }[];
+};
 export type Estado = {
   brutos: Bruto[]; jobs: Job[]; geracoes: Geracao[]; inspiracoes: Inspiracao[]; transcricoes?: Transcricao[];
   hoje: { feitos: number; meta: number; postados: number }; envio: { rodando: boolean; msg: string }; agora: number;
+  mascotes?: Mascote[];
   agenda?: { id: string; ref: string; quando: string; redes: string[]; legenda?: string; status: "agendado" | "avisado" }[];
 };
 export type ItemBib = {

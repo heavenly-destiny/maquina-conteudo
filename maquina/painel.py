@@ -16,6 +16,7 @@ CACHE = AQUI / ".duracoes.json"
 PORTA = int(os.environ.get("PORTA", 4747))
 GER = RAIZ / "geracoes"
 INS = RAIZ / "inspiracoes"
+MASC = RAIZ / "mascotes"
 TRA = RAIZ / "transcricoes"
 MODOS_DEC = ("rapida", "completa", "fiel")
 POSTADOS = RAIZ / "postados.json"
@@ -277,6 +278,16 @@ def geracoes():
         g["video"], g["capa"] = url_arq(d / "final.mp4"), url_arq(d / "capa.jpg")
         g["roteiro_txt"] = (d / "roteiro.md").read_text()[:20000] if (d / "roteiro.md").exists() else None
         g["roteiro_json"] = lerj(d / "roteiro.json", None)
+        out.append(g)
+    return out
+
+
+def mascotes():
+    out = []
+    for d, g in pastas(MASC):
+        g["imagem"] = url_arq(d / "mascote.png") or url_arq(d / "base.png")
+        g["folhas"] = [u for u in (url_arq(d / f"folha{k}.png") for k in (1, 2)) if u]
+        g["reacoes"] = [{"nome": r.stem, "url": url_arq(r)} for r in sorted((d / "reacoes").glob("*.png"))] if (d / "reacoes").exists() else []
         out.append(g)
     return out
 
@@ -687,7 +698,7 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/config":
             self._json(config_estado())
         elif u.path == "/api/estado":
-            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "agenda": lerj(AGENDA, []), "envio": ENVIO, "agora": time.time()})
+            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "agenda": lerj(AGENDA, []), "mascotes": mascotes(), "envio": ENVIO, "agora": time.time()})
         elif u.path == "/api/biblioteca":  # sem a imagem base64: ela vem sob demanda em /api/bib-img
             fora = set(lerj(HUB.parent / "ocultos.json", []))  # excluídos pelo painel (o hub.json é a base e não é apagado)
             self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca()) if x["id"] not in fora])
@@ -923,6 +934,28 @@ class H(BaseHTTPRequestHandler):
                         "legenda": str(d.get("legenda", ""))[:2200], "status": "agendado"}
                 escrever(AGENDA, sorted([*ag, item], key=lambda x: x["quando"]))
             return self._json({"ok": True, "id": item["id"]})
+        elif u == "/api/mascote":  # cria o mascote e a folha de reações
+            if d.get("modelo") not in ("traco", "3d", "bicho", "objeto", "quadrinho", "massinha") or not str(d.get("caracteristicas", "")).strip():
+                return self._json({"erro": "Escolha o modelo e descreva o mascote"}, 400)
+            id_, p = novo_id(MASC, d["modelo"])
+            escrever(p / "pedido.json", {"modelo": d["modelo"], "nome": str(d.get("nome") or "")[:60],
+                                         "caracteristicas": str(d["caracteristicas"])[:1200], "criado": time.time()})
+            escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
+            disparar_script("mascote.py", id_)
+            return self._json({"ok": True, "id": id_})
+        elif u == "/api/refazer-mascote":  # tenta de novo de onde parou (depois de ligar o faturamento, por ex.)
+            m = MASC / Path(str(d.get("id", ""))).name
+            if not (m / "pedido.json").exists():
+                return self._json({"erro": "mascote não existe"}, 404)
+            escrever(m / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
+            disparar_script("mascote.py", m.name)
+        elif u == "/api/excluir-mascote":
+            m = MASC / Path(str(d.get("id", ""))).name
+            if not (m / "pedido.json").exists():
+                return self._json({"erro": "mascote não existe"}, 404)
+            if lerj(m / "estado.json", {}).get("status") in ("na-fila", "gerando"):
+                return self._json({"erro": "esse mascote ainda está sendo criado"}, 409)
+            lixeira(m)
         elif u == "/api/desagendar":
             with TRAVA:
                 escrever(AGENDA, [x for x in lerj(AGENDA, []) if x.get("id") not in set(d.get("ids") or [d.get("id")])])
@@ -1027,4 +1060,5 @@ if __name__ == "__main__":
     threading.Thread(target=lembrar_agenda, daemon=True).start()
     JOBS.mkdir(exist_ok=True)
     print(f"painel em http://127.0.0.1:{PORTA}")
+    ThreadingHTTPServer.request_queue_size = 128  # o padrão (5) recusa a 6ª imagem que o navegador pede junto
     ThreadingHTTPServer(("127.0.0.1", PORTA), H).serve_forever()

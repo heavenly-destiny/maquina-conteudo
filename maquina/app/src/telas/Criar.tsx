@@ -4,7 +4,7 @@ import { Check, ChevronRight, Pencil, Copy, Download, FileText, Megaphone, Plus,
 import { lerRoteiro } from "../roteiro";
 import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, GRADE, LixeiraCanto, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
-import type { Aba } from "../Dock";
+import type { Tela } from "../Dock";
 import { som } from "../sons";
 import { CardVitrine, Fileira, Secao } from "../Vitrine";
 import { AbrirTranscricao, LinhaTranscricao } from "./Transcricoes";
@@ -254,7 +254,7 @@ function TentarDeNovo({ id, grande }: { id: string; grande?: boolean }) {
   );
 }
 
-export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
+export function Criar({ e, ir }: { e: Estado | null; ir: (a: Tela) => void }) {
   const [filtro, setFiltro] = useState<"tudo" | Tipo | "transcricao">("tudo");
   const [abertaT, setAbertaT] = useState<string | null>(null);
   const [aberta, setAberta] = useState<string | null>(null);
@@ -290,10 +290,13 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
   return (
     <div className="flex flex-col gap-6">
       <Cabecalho titulo="Criados" n={todos.length}>
+        <div className="flex items-center gap-2">
+        <Botao onClick={() => ir("mascotes")} className="px-4"><Smile className="size-4" /> Mascotes</Botao>
         <motion.button whileTap={{ scale: 0.9 }} whileHover={{ rotate: 90 }} transition={mola} aria-label="Criar novo" onClick={() => ir("inicio")}
           className="respira grid size-11 cursor-pointer place-items-center rounded-full bg-red text-white">
           <Plus className="size-5" strokeWidth={2.4} />
         </motion.button>
+        </div>
       </Cabecalho>
       <Segmentos id="criados" valor={filtro} onChange={setFiltro} className="self-start max-w-full"
         opcoes={[{ v: "tudo" as const, rotulo: "Tudo" }, ...TIPOS.filter((t) => conta(t.v)).map((t) => ({ v: t.v, rotulo: t.nome })), ...(transc.length ? [{ v: "transcricao" as const, rotulo: "Transcrições" }] : [])]} />

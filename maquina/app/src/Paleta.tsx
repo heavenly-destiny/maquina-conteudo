@@ -2,8 +2,8 @@
    pílula que desliza no item ativo, prévia que inclina com o cursor, teclas que afundam. Cores trocadas pro vinho/vermelho. */
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
-import { ArrowDown, ArrowUp, Clapperboard, CornerDownLeft, FileText, Film, Home, Link2, Megaphone, Scissors, Search, Send, Settings2, Sparkles, Telescope, Volume2, Wand2 } from "lucide-react";
-import type { Aba } from "./Dock";
+import { ArrowDown, ArrowUp, Clapperboard, CornerDownLeft, FileText, Film, Home, Link2, Megaphone, Scissors, Search, Send, Settings2, Smile, Sparkles, Telescope, Volume2, Wand2 } from "lucide-react";
+import type { Tela } from "./Dock";
 import type { Estado, Rascunho } from "./api";
 import { som } from "./sons";
 import { cx } from "./ui";
@@ -34,7 +34,7 @@ function Tecla({ children, baixo }: { children: ReactNode; baixo?: boolean }) {
 }
 
 export function Paleta({ e, ir, criarCom, abrirConfig, alternarSom }: {
-  e: Estado | null; ir: (a: Aba) => void; criarCom: (r: Rascunho) => void; abrirConfig: () => void; alternarSom: () => void;
+  e: Estado | null; ir: (a: Tela) => void; criarCom: (r: Rascunho) => void; abrirConfig: () => void; alternarSom: () => void;
 }) {
   const reduz = !!useReducedMotion();
   const uid = useId();
@@ -65,6 +65,7 @@ export function Paleta({ e, ir, criarCom, abrirConfig, alternarSom }: {
       { id: "roteiro", grupo: "Criar", titulo: "Só o roteiro", sub: "Copy pronta pra gravar", icone: <FileText className={I} />, chaves: "copy script", acao: () => criarCom({ tipo: "roteiro" }) },
       { id: "cortar", grupo: "Criar", titulo: "Cortar vídeo cru", sub: "Os melhores trechos com legenda", icone: <Scissors className={I} />, chaves: "cortes upload", acao: () => ir("cortes") },
       { id: "link", grupo: "Criar", titulo: "Analisar referência", sub: "Cola o link de um viral", icone: <Link2 className={I} />, chaves: "decupar inspirar link", acao: () => { ir("inspirar"); setTimeout(() => document.querySelector<HTMLInputElement>("main input")?.focus(), 200); } },
+      { id: "mascote", grupo: "Criar", titulo: "Criar mascote", sub: "Personagem com 32 reações", icone: <Smile className={I} />, chaves: "personagem quadrinho boneco historinha reacoes", desc: "Escolhe o modelo, descreve, e sai o mascote com todas as reações sem fundo pra animar.", acao: () => ir("mascotes") },
       { id: "inicio", grupo: "Ir para", titulo: "Início", icone: <Home className={I} />, atalho: "1", acao: () => ir("inicio") },
       { id: "cortes", grupo: "Ir para", titulo: "Cortes", icone: <Scissors className={I} />, atalho: "2", acao: () => ir("cortes") },
       { id: "criados", grupo: "Ir para", titulo: "Criados", icone: <Sparkles className={I} />, atalho: "3", acao: () => ir("criar") },
