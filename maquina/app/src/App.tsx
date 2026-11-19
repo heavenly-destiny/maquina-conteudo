@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
-import { Settings2, Volume2, VolumeX } from "lucide-react";
+import { Search, Settings2, Volume2, VolumeX } from "lucide-react";
 import { Onboarding, lerConfig, type Config } from "./Onboarding";
 import { Intro } from "./Intro";
 import { Dock, ABAS, type Aba } from "./Dock";
@@ -14,6 +14,7 @@ import { Criar } from "./telas/Criar";
 import type { Rascunho } from "./api";
 import { Inspirar } from "./telas/Inspirar";
 import { Postar, pendentes } from "./telas/Postar";
+import { Paleta } from "./Paleta";
 
 const lerAba = (): Aba => {
   const h = location.hash.slice(1) as Aba;
@@ -119,6 +120,10 @@ export default function App() {
                 {aba !== "inicio" && <span className="text-[15px] font-semibold tracking-tight">Forja</span>}
               </motion.button>
               <div className="flex items-center gap-2">
+              <button aria-label="Buscar" onClick={() => dispatchEvent(new Event("forja:paleta"))}
+                className="vidro grid size-10 cursor-pointer place-items-center rounded-full text-mute hover:text-ink">
+                <Search className="size-4" />
+              </button>
               <button aria-label="Conexões" onClick={abrirConfig}
                 className="vidro grid size-10 cursor-pointer place-items-center rounded-full text-mute hover:text-ink">
                 <Settings2 className="size-4" />
@@ -150,6 +155,7 @@ export default function App() {
               </AnimatePresence>
             </main>
             </div>
+            <Paleta e={e} ir={ir} criarCom={criarCom} abrirConfig={abrirConfig} alternarSom={() => setLigado(som.alternar())} />
             <AnimatePresence>{onboard && cfg && <Onboarding key="onb" inicial={cfg} onFim={() => { setOnboard(false); if (location.search) history.replaceState(null, "", location.pathname + location.hash); }} />}</AnimatePresence>
             <div className="lg:hidden"><Dock aba={aba} onAba={ir} badges={badges} /></div>
           </>

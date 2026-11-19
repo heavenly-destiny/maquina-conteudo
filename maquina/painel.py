@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Painel local da Máquina: http://127.0.0.1:4747
 Lista vídeos crus novos, jobs e cortes; dispara job, refazer e envio pro WhatsApp."""
-import json, os, re, subprocess, sys, threading, time
+import json, os, re, shutil, subprocess, sys, threading, time
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -959,8 +959,10 @@ def auto_atualizar():
                 g("stash", "pop", "-q")
                 mudou = g("diff", "--name-only", antes, "HEAD").stdout.split() if ok else []
                 if "tools/requirements-voz.txt" in mudou:
-                    subprocess.run([str(plataforma.venv_python(RAIZ / "tools/.venv-voz")), "-m", "pip", "install", "-q", "-r",
-                                    str(RAIZ / "tools/requirements-voz.txt")], capture_output=True, timeout=3600)
+                    vpy, req = str(plataforma.venv_python(RAIZ / "tools/.venv-voz")), str(RAIZ / "tools/requirements-voz.txt")
+                    uv = shutil.which("uv")  # venv criado pelo uv não tem pip (19/11: pip faltando quebrou a voz)
+                    subprocess.run([uv, "pip", "install", "-q", "--python", vpy, "-r", req] if uv else
+                                   [vpy, "-m", "pip", "install", "-q", "-r", req], capture_output=True, timeout=3600)
                 open(AQUI / "painel_jobs.log", "a").write(f"[atualizar] {antes[:7]} -> {len(mudou)} arquivos\n")
                 if any(x.endswith(".py") and x.startswith("maquina/") for x in mudou):
                     os._exit(3)  # o lançador liga de novo com o código novo

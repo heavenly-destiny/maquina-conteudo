@@ -107,6 +107,8 @@ kbd { font: 500 11px/1 var(--font-sans); padding: 3px 6px; border-radius: 6px; b
 .scroll-x { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
 .scroll-x::-webkit-scrollbar { display: none; }
 .scroll-x[data-transborda="1"] { mask-image: linear-gradient(90deg, #000 82%, transparent); }
+.scroll-x[data-esq="1"] { mask-image: linear-gradient(90deg, transparent, #000 18%); }
+.scroll-x[data-esq="1"][data-transborda="1"] { mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); }
 .tnum { font-variant-numeric: tabular-nums; }
 
 input, textarea { font: inherit; color: inherit; }
@@ -157,3 +159,13 @@ textarea::placeholder, input::placeholder { color: var(--color-faint); }
 [data-luz]:hover::after { opacity: 1; }
 @media (hover: none) { .luz-cursor, .tilt-luz { display: none; } [data-tilt] { transform: none; } }
 @media (prefers-reduced-motion: reduce) { [data-tilt] { transform: none !important; } }
+
+/* Text Shimmer (serafimcloud, 21st.dev): faixa de luz correndo no texto de tarefa rodando */
+@keyframes brilho-texto { from { background-position: 100% center; } to { background-position: 0% center; } }
+.texto-brilho {
+  display: inline-block; background-size: 250% 100%; background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-image: linear-gradient(90deg, rgb(246 240 240 / 0.55) 0%, rgb(246 240 240 / 0.55) 40%, #fff 47%, #ff8a92 52%, rgb(246 240 240 / 0.55) 60%, rgb(246 240 240 / 0.55) 100%);
+  animation: brilho-texto var(--brilho-dur, 1.8s) linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .texto-brilho { animation: none; color: rgb(246 240 240 / 0.8); background: none; } }

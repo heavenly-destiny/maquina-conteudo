@@ -1,7 +1,8 @@
 import { useId, useRef, createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { Numero, TextoBrilho } from "./fx";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Copy, Trash2, X } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Copy, Film, Sparkles, Trash2, X } from "lucide-react";
 import { som } from "./sons";
 
 export const mola = { type: "spring", stiffness: 380, damping: 30 } as const;
@@ -44,7 +45,7 @@ export function useTransborda<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   useEffect(() => {
     const el = ref.current; if (!el) return;
-    const medir = () => { el.dataset.transborda = el.scrollWidth - el.clientWidth - el.scrollLeft > 4 ? "1" : "0"; };
+    const medir = () => { el.dataset.transborda = el.scrollWidth - el.clientWidth - el.scrollLeft > 4 ? "1" : "0"; el.dataset.esq = el.scrollLeft > 4 ? "1" : "0"; };
     medir();
     const ro = new ResizeObserver(medir); ro.observe(el); [...el.children].forEach((c) => ro.observe(c));
     el.addEventListener("scroll", medir, { passive: true });
@@ -53,24 +54,42 @@ export function useTransborda<T extends HTMLElement>() {
   return ref;
 }
 
+/* Base: Animated Tabs (kuratlielia, 21st.dev): pílula com mola, setas nas bordas quando sobra aba escondida,
+   e a aba ativa rola sozinha pra dentro da tela. */
 export function Segmentos<T extends string>({ opcoes, valor, onChange, id, className }: {
   opcoes: { v: T; rotulo: ReactNode }[]; valor: T; onChange: (v: T) => void; id: string; className?: string;
 }) {
   const ref = useTransborda<HTMLDivElement>();
+  const [, refaz] = useState(0);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const ob = new MutationObserver(() => refaz((n) => n + 1)); ob.observe(el, { attributes: true, attributeFilter: ["data-transborda", "data-esq"] });
+    return () => ob.disconnect();
+  }, [ref]);
+  useEffect(() => { ref.current?.querySelector<HTMLElement>("[data-on='1']")?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" }); }, [valor, ref]);
+  const rolar = (d: number) => { som.toque(); ref.current?.scrollBy({ left: d * Math.max(160, (ref.current?.clientWidth ?? 300) * 0.6), behavior: "smooth" }); };
+  const esq = ref.current?.dataset.esq === "1", dir = ref.current?.dataset.transborda === "1";
+  const seta = "absolute top-1/2 z-10 grid size-8 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-[#1a0509]/90 text-mute shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_6px_16px_-4px_rgb(0_0_0/0.8)] backdrop-blur hover:text-ink";
   return (
-    <div ref={ref} className={cx("vidro scroll-x flex gap-0.5 rounded-full p-1", className)}>
-      {opcoes.map((o) => (
-        <motion.button
-          key={o.v}
-          whileTap={{ scale: 0.92 }}
-          transition={mola}
-          onClick={() => { if (o.v !== valor) { som.aba(); onChange(o.v); } }}
-          className={cx("relative min-h-9 shrink-0 cursor-pointer whitespace-nowrap rounded-full px-3 text-[13.5px] font-medium sm:px-4 sm:text-sm transition-colors", o.v === valor ? "text-ink" : "text-mute hover:text-ink")}
-        >
-          {o.v === valor && <motion.span layoutId={`seg-${id}`} transition={mola} className="absolute inset-0 rounded-full bg-white/[0.13] shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_4px_14px_-4px_rgb(0_0_0/0.6)]" />}
-          <span className="relative">{o.rotulo}</span>
-        </motion.button>
-      ))}
+    <div className={cx("relative min-w-0", className)}>
+      <div ref={ref} className="vidro scroll-x flex scroll-px-10 gap-0.5 rounded-full p-1">
+        {opcoes.map((o) => (
+          <motion.button
+            key={o.v} data-on={o.v === valor ? "1" : "0"}
+            whileTap={{ scale: 0.92 }}
+            transition={mola}
+            onClick={() => { if (o.v !== valor) { som.aba(); onChange(o.v); } }}
+            className={cx("relative min-h-9 shrink-0 cursor-pointer whitespace-nowrap rounded-full px-3 text-[13.5px] font-medium sm:px-4 sm:text-sm transition-colors", o.v === valor ? "text-ink" : "text-mute hover:text-ink")}
+          >
+            {o.v === valor && <motion.span layoutId={`seg-${id}`} transition={mola} className="absolute inset-0 rounded-full bg-white/[0.13] shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_4px_14px_-4px_rgb(0_0_0/0.6)]" />}
+            <span className="relative">{o.rotulo}</span>
+          </motion.button>
+        ))}
+      </div>
+      <AnimatePresence>
+        {esq && <motion.button key="e" aria-label="Ver abas anteriores" initial={{ opacity: 0, x: 6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 6 }} transition={mola} onClick={() => rolar(-1)} className={cx(seta, "-left-1")}><ChevronLeft className="size-4" /></motion.button>}
+        {dir && <motion.button key="d" aria-label="Ver mais abas" initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -6 }} transition={mola} onClick={() => rolar(1)} className={cx(seta, "-right-1")}><ChevronRight className="size-4" /></motion.button>}
+      </AnimatePresence>
     </div>
   );
 }
@@ -93,7 +112,7 @@ export function Status({ status, fase }: { status?: string; fase?: string }) {
         {ativo && <span className="absolute inline-flex size-full animate-ping rounded-full bg-red opacity-75" />}
         <span className={cx("relative inline-flex size-1.5 rounded-full", ativo ? "bg-red" : "bg-current")} />
       </span>
-      <span className="truncate">{nomeStatus(fase || status)}</span>
+      {ativo ? <TextoBrilho className="truncate">{nomeStatus(fase || status)}</TextoBrilho> : <span className="truncate">{nomeStatus(fase || status)}</span>}
     </span>
   );
 }
@@ -198,13 +217,26 @@ export function Avisos({ children }: { children: ReactNode }) {
 }
 
 /* ---------- vazio ---------- */
+/* Base: Interactive Empty State (remcostoeten, 21st.dev): três peças em leque que se abrem no hover, pontilhado de fundo. */
+const LEQUE = {
+  e: { initial: { scale: 0.8, opacity: 0, rotate: 0 }, animate: { scale: 1, opacity: 1, rotate: -8, transition: { ...molaSuave, delay: 0.1 } }, hover: { x: -24, y: -6, rotate: -16, scale: 1.08, transition: mola } },
+  c: { initial: { scale: 0.8, opacity: 0 }, animate: { scale: 1, opacity: 1, transition: { ...molaSuave, delay: 0.18 } }, hover: { y: -10, scale: 1.12, transition: mola } },
+  d: { initial: { scale: 0.8, opacity: 0, rotate: 0 }, animate: { scale: 1, opacity: 1, rotate: 8, transition: { ...molaSuave, delay: 0.26 } }, hover: { x: 24, y: -6, rotate: 16, scale: 1.08, transition: mola } },
+} as const;
 export function Vazio({ icone, titulo, children }: { icone: ReactNode; titulo: string; children?: ReactNode }) {
+  const peca = "grid size-14 place-items-center rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,#24070c,#140407)] shadow-[0_18px_40px_-16px_rgb(0_0_0/0.9),inset_0_1px_0_rgb(255_255_255/0.08)]";
   return (
-    <div className="flex flex-col items-center gap-3 py-16 text-center">
-      <div className="vidro grid size-14 place-items-center rounded-2xl text-mute">{icone}</div>
-      <p className="text-[17px] font-medium">{titulo}</p>
-      {children}
-    </div>
+    <motion.div initial="initial" animate="animate" whileHover="hover" className="group relative flex flex-col items-center gap-4 overflow-hidden rounded-[28px] py-16 text-center">
+      <span aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.07) 1px, transparent 1px)", backgroundSize: "22px 22px", maskImage: "radial-gradient(circle at 50% 40%, #000, transparent 70%)" }} />
+      <div className="relative flex h-16 items-center justify-center">
+        <motion.div variants={LEQUE.e} className={cx(peca, "absolute -translate-x-9 text-faint")}><Film className="size-5" /></motion.div>
+        <motion.div variants={LEQUE.d} className={cx(peca, "absolute translate-x-9 text-faint")}><Sparkles className="size-5" /></motion.div>
+        <motion.div variants={LEQUE.c} className={cx(peca, "relative z-10 text-red")}>{icone}</motion.div>
+      </div>
+      <motion.p variants={{ initial: { y: 12, opacity: 0 }, animate: { y: 0, opacity: 1, transition: { ...molaSuave, delay: 0.2 } } }} className="relative text-[17px] font-medium">{titulo}</motion.p>
+      {children && <motion.div variants={{ initial: { y: 12, opacity: 0 }, animate: { y: 0, opacity: 1, transition: { ...molaSuave, delay: 0.28 } } }} className="relative flex flex-col items-center gap-3">{children}</motion.div>}
+    </motion.div>
   );
 }
 
@@ -310,7 +342,7 @@ export function Cabecalho({ titulo, n, children }: { titulo: string; n?: number;
     <div className="flex flex-wrap items-center justify-between gap-3">
       <motion.h1 initial={{ opacity: 0, y: 10, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={molaSuave}
         className="flex items-baseline gap-2 text-[clamp(26px,4vw,36px)] font-semibold tracking-[-0.035em]">
-        {titulo}{n ? <span className="text-[15px] font-medium tracking-normal text-faint tnum">{n}</span> : null}
+        {titulo}{n ? <Numero valor={n} className="text-[15px] font-medium tracking-normal text-faint" /> : null}
       </motion.h1>
       {children}
     </div>
@@ -365,7 +397,7 @@ function Ocupado({ fundo, texto, status, fase, desde }: { fundo?: string | null;
           <AnimatePresence mode="wait" initial={false}>
             <motion.span key={rotulo} initial={{ opacity: 0, y: 6, filter: "blur(3px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -6, filter: "blur(3px)" }} transition={{ duration: 0.22 }} className="truncate">
-              {rotulo}{et !== undefined && <span className="text-ink/40 tnum"> {et + 1}/{ETAPAS.length}</span>}
+              <TextoBrilho>{rotulo}</TextoBrilho>{et !== undefined && <span className="text-ink/40 tnum"> {et + 1}/{ETAPAS.length}</span>}
             </motion.span>
           </AnimatePresence>
           {seg !== null && <span className="tnum shrink-0">{fmtT(seg)}</span>}
@@ -442,7 +474,7 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
 }
 
 /* grade padrão dos cards */
-export const GRADE = "grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5";
+export const GRADE = "grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5";
 
 /* excluir com confirmação no próprio botão: 1º toque arma, 2º exclui (3 s pra desistir) */
 export function Excluir({ onConfirmar, rotulo = "Excluir" }: { onConfirmar: () => Promise<void> | void; rotulo?: string }) {

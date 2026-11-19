@@ -81,12 +81,12 @@ function Excluir({ rotulo, onConfirmar, className, icone }: { rotulo: string; on
   useEffect(() => () => window.clearTimeout(t.current), []);
   return (
     <Botao tipo="fantasma" aria-label={rotulo}
-      className={cx("min-h-11 hover:bg-red/10 hover:text-red", icone && !armado ? "w-11 px-0 text-mute" : "text-red", armado && "bg-red/15 font-semibold text-red", className)}
+      className={cx("min-h-11 hover:bg-red/10 hover:text-red", icone && !armado ? "w-11 !px-0 text-mute" : "text-red", armado && "bg-red/15 font-semibold text-red", className)}
       onClick={() => {
         if (!armado) { setArmado(true); t.current = window.setTimeout(() => setArmado(false), 3000); return; }
         window.clearTimeout(t.current); setArmado(false); onConfirmar();
       }}>
-      <Trash2 className="size-4" /> {armado ? "Toca de novo pra excluir" : !icone && rotulo}
+      <Trash2 className="size-4 shrink-0" /> {armado ? "Toca de novo pra excluir" : !icone && rotulo}
     </Botao>
   );
 }
@@ -243,7 +243,7 @@ function Categoria({ job, todas }: { job: Job; todas: string[] }) {
 }
 
 function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
-  const [filtro, setFiltro] = useState<Filtro>(() => (job.cortes.some((c) => c.status === "planejado" || !c.status) ? "escolher" : "prontos"));
+  const [filtro, setFiltro] = useState<Filtro>(() => (["escolher", "prontos", "editando"] as Filtro[]).find((f) => job.cortes.some((c) => filtrar(c, f))) ?? "todos");
   const [sel, setSel] = useState<Set<number>>(new Set());
   const [formato, setFormato] = useState<"dividida" | "cheia">("dividida");
   const [aberto, setAberto] = useState<number | null>(null);
@@ -264,7 +264,7 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
           ) : (
           <div className="mt-1.5 flex items-center gap-2" aria-label={`Etapa: ${ETAPAS[et]}`}>
             <span className="flex gap-1">{ETAPAS.map((n, k) => <motion.span key={n} layout className={cx("h-1 rounded-full", k <= et ? "w-5 bg-red" : "w-2 bg-white/15")} transition={mola} />)}</span>
-            <span className={cx("text-[12px] font-medium", et < 3 ? "brilha-texto" : "text-mute")}>{ETAPAS[et]}</span>
+            <span className={cx("whitespace-nowrap text-[12px] font-medium", et < 3 ? "brilha-texto" : "text-mute")}>{ETAPAS[et]}</span>
           </div>
           )}
         </div>
@@ -287,7 +287,7 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
           ))}
         </div>
       ) : (
-        <p className="py-8 text-center text-[14px] text-faint">{job.cortes.length ? "Nada aqui" : job.ultimo || "Lendo o vídeo…"}</p>
+        <p className="py-8 text-center text-[14px] text-faint">{job.cortes.length ? "Nenhum corte nessa aba." : job.etapa === "escolher" ? "Todos os cortes deste vídeo foram excluídos." : job.ultimo || "Lendo o vídeo…"}</p>
       )}
       <Topo><AnimatePresence>
         {sel.size > 0 && (

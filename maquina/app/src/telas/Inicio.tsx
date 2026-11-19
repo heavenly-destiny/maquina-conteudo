@@ -4,6 +4,7 @@ import { ArrowUp, Captions, Check, Copy, SlidersHorizontal, FileText, Film, Layo
 import { atualizar, enviarInspiracao, enviarVideo, modoDec, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
 import { Folha, Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
+import { Luz } from "../fx";
 import { Configurar, ConfigurarVideo, type ConfigCorte } from "../Configurar";
 import { som } from "../sons";
 import { Aurora } from "../aurora";
@@ -154,6 +155,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
       <motion.div initial={{ opacity: 0, y: 24, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ ...molaSuave, delay: 0.12 }}
         className="w-full max-w-[720px]">
+        <Luz className="rounded-[26px]" tam={420}>
         <motion.div
           data-halo={foco || sobre ? "on" : "off"}
           animate={{ scale: sobre ? 1.015 : 1 }} transition={mola}
@@ -273,6 +275,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
             </motion.button>
           </div>
         </motion.div>
+        </Luz>
 
         {/* o envio vira um recibo que leva pro trabalho em andamento */}
         <div className="mt-4 flex h-9 justify-center">

@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
-import { PanelLeft, Settings2, Volume2, VolumeX } from "lucide-react";
+import { PanelLeft, Search, Settings2, Volume2, VolumeX } from "lucide-react";
 import { ABAS, type Aba } from "./Dock";
 import { som } from "./sons";
 import { Marca, cx, mola } from "./ui";
+import { Luz, Numero } from "./fx";
 
 /* barra lateral do computador (padrão Wensity/Higgsfield): marca, seções, item ativo com pílula que desliza, rodapé com a conta.
    Recolhe para trilho de ícones. No celular quem navega é o Dock. */
@@ -37,6 +38,13 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
           <PanelLeft className="size-[18px] rotate-180" />
         </button>
       )}
+      <Luz className="mb-4 rounded-[14px]">
+        <button onClick={() => dispatchEvent(new Event("forja:paleta"))} aria-label="Buscar e criar" title={aberta ? undefined : "Buscar (⌘K)"}
+          className={cx("flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-[14px] border border-white/[0.07] bg-white/[0.03] text-[14px] text-faint transition-colors hover:text-ink", aberta ? "px-3" : "justify-center")}>
+          <Search className="size-[17px] shrink-0" />
+          {aberta && <><span className="flex-1 text-left">Buscar</span><kbd className="rounded-md border border-white/10 px-1.5 py-0.5 text-[11px] text-mute">⌘K</kbd></>}
+        </button>
+      </Luz>
       <nav className="flex flex-1 flex-col gap-2">
         {grupos.map((g) => (
           <div key={g.nome} className="flex flex-col gap-1">
@@ -48,9 +56,12 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
                   title={aberta ? undefined : a.nome}
                   className={cx("relative flex min-h-11 cursor-pointer items-center gap-3 rounded-[14px] text-[14.5px] font-medium transition-colors", aberta ? "px-3" : "justify-center", ativa ? "text-ink" : "text-mute hover:bg-white/[0.04] hover:text-ink")}>
                   {ativa && <motion.span layoutId="side-ativa" transition={mola} className="absolute inset-0 rounded-[14px] bg-white/[0.08] shadow-[inset_0_1px_0_rgb(255_255_255/0.1)]" />}
+                  {/* ponto que quica até a aba nova (Bounce Sidebar, beui.dev via 21st) */}
+                  {ativa && <motion.span aria-hidden layoutId="side-ponto" transition={{ type: "spring", stiffness: 280, damping: 18, mass: 0.3 }}
+                    className="absolute -left-[3px] top-[calc(50%-3px)] size-1.5 rounded-full bg-red shadow-[0_0_10px_2px_rgb(225_29_42/0.7)]" />}
                   <a.Icone className={cx("relative size-[19px] shrink-0", ativa && "text-red")} strokeWidth={ativa ? 2.2 : 1.8} />
                   {aberta && <span className="relative flex-1 text-left">{a.nome}</span>}
-                  {!!b && <span className={cx("relative grid h-5 min-w-5 place-items-center rounded-full bg-red px-1.5 text-[11px] font-semibold text-white tnum", !aberta && "absolute right-1 top-0.5 h-4 min-w-4 px-1 text-[10px]")}>{b}</span>}
+                  {!!b && <span className={cx("relative grid h-5 min-w-5 place-items-center rounded-full bg-red px-1.5 text-[11px] font-semibold text-white tnum", !aberta && "absolute right-1 top-0.5 h-4 min-w-4 px-1 text-[10px]")}><Numero valor={b} /></span>}
                 </button>
               );
             })}
