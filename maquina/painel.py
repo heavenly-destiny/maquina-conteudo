@@ -790,6 +790,12 @@ class H(BaseHTTPRequestHandler):
             ped["copy_aprovada"] = False  # refazer gera voz de novo: a copy nova passa pela aprovação dele
             escrever(f, ped)
             disparar_script("gerar.py", f.parent.name)
+        elif u == "/api/tentar-de-novo":  # geração que deu erro: roda de novo igual, sem nota e sem mexer na copy
+            f = GER / Path(str(d.get("id", ""))).name / "pedido.json"
+            if not f.exists():
+                return self._json({"erro": "geração não existe"}, 404)
+            escrever(f.parent / "estado.json", {**lerj(f.parent / "estado.json", {}), "status": "na-fila", "fase": "", "erro": "", "desde": time.time()})
+            disparar_script("gerar.py", f.parent.name)
         elif u == "/api/aprovar-copy":
             f = GER / Path(str(d.get("id", ""))).name / "pedido.json"
             if not f.exists():

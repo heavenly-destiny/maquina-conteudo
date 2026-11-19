@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type MouseEvent } from "react";
 import { motion } from "motion/react";
 import { Check, ChevronRight, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
 import { lerRoteiro } from "../roteiro";
@@ -146,7 +146,12 @@ function Abrir({ g }: { g: Geracao }) {
           <ul className="list-disc space-y-1 pl-5 text-ink/90">{g.revisao.problemas.map((x, i) => <li key={i}>{x}</li>)}</ul>
         </div>
       )}
-      {g.erro && g.status === "erro" && <p className="rounded-[16px] bg-red-soft p-4 text-[14px]">{g.erro}</p>}
+      {g.status === "erro" && (
+        <div className="flex flex-col gap-3 rounded-[16px] bg-red-soft p-4 text-[14px]">
+          <p>{g.erro || "Parou no meio do caminho."}</p>
+          <TentarDeNovo id={g.id} grande />
+        </div>
+      )}
       {g.tipo !== "roteiro" && <Marcar g={g} />}
       {g.tipo !== "roteiro" && legenda}
       {(g.roteiro_txt || g.roteiro_json) && <Teleprompter txt={g.roteiro_txt ?? ""} json={g.roteiro_json} />}
@@ -164,6 +169,23 @@ function Abrir({ g }: { g: Geracao }) {
         </div>
       )}
     </div>
+  );
+}
+
+/* card que deu erro: um toque roda de novo do mesmo jeito (sem precisar escrever o que mudar) */
+function TentarDeNovo({ id, grande }: { id: string; grande?: boolean }) {
+  const avisar = useAviso();
+  const ir = async (ev: MouseEvent) => {
+    ev.stopPropagation();
+    try { await post("/api/tentar-de-novo", { id }); som.enviar(); avisar("Rodando de novo"); atualizar(); }
+    catch (er) { avisar((er as Error).message, true); }
+  };
+  return grande ? (
+    <Botao className="self-start" onClick={ir}><RotateCcw className="size-4" /> Tentar de novo</Botao>
+  ) : (
+    <button onClick={ir} aria-label="Tentar de novo" className="absolute bottom-2.5 right-2.5 z-10 inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-full bg-red px-3.5 text-[13px] font-semibold text-white shadow-[0_8px_20px_-8px_rgb(225_29_42/0.8)]">
+      <RotateCcw className="size-3.5" strokeWidth={2.4} /> Tentar de novo
+    </button>
   );
 }
 
@@ -207,7 +229,8 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
             <Tile key={g.id} i={i} capa={g.capa} video={g.video} titulo={g.titulo || g.briefing}
               texto={(g.titulo || g.roteiro_txt?.split("\n").find((l) => l.trim().length > 12) || g.briefing).replace(/^[#*\s]+/, "")}
               status={g.status} fase={g.fase} desde={g.desde} fundo={g.inspiracao ? e?.inspiracoes.find((x) => x.id === g.inspiracao)?.capa : null}
-              onClick={() => setAberta(g.id)} />
+              onClick={() => setAberta(g.id)}
+              canto={g.status === "erro" && <TentarDeNovo id={g.id} />} />
           ))}
         </div>
       )}

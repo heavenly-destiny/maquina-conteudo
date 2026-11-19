@@ -111,6 +111,13 @@ function Detalhe({ job, lista, idx, setIdx }: { job: Job; lista: Corte[]; idx: n
   const avisar = useAviso();
   if (!c) return null;
   const mudar = (d: number) => { som.aba(); setCru(false); setNota(""); setIdx((idx + d + lista.length) % lista.length); };
+  useEffect(() => { // ← → passa de corte com o teclado (fora de campo de texto)
+    const k = (ev: KeyboardEvent) => {
+      if ((ev.target as HTMLElement).closest("input,textarea,[contenteditable]")) return;
+      if (ev.key === "ArrowRight") mudar(1); else if (ev.key === "ArrowLeft") mudar(-1);
+    };
+    addEventListener("keydown", k); return () => removeEventListener("keydown", k);
+  });
   const fonte = cru || !c.video ? `/bruto?job=${encodeURIComponent(job.id)}#t=${c.inicio},${c.fim}` : c.video;
   return (
     <div className="flex flex-col gap-5 sm:flex-row">
@@ -321,6 +328,12 @@ export function Cortes({ e }: { e: Estado | null }) {
   const cats = [...new Set((e?.jobs ?? []).map((j) => j.categoria || "Sem categoria"))];
   const ativa = cats.includes(cat) ? cat : "";
   const jobs = (e?.jobs ?? []).filter((j) => !ativa || (j.categoria || "Sem categoria") === ativa);
+  // ver os cortes de todos os vídeos juntos (prontos ou editando) sem abrir vídeo por vídeo
+  const [vista, setVista] = useState<"video" | "prontos" | "editando">("video");
+  const [abertoG, setAbertoG] = useState<{ job: string; idx: number } | null>(null);
+  const juntos = vista === "video" ? [] : jobs.flatMap((j) => j.cortes.filter((c) => filtrar(c, vista)).map((c) => ({ j, c })));
+  const jobAberto = abertoG && jobs.find((j) => j.id === abertoG.job);
+  const listaAberta = jobAberto && vista !== "video" ? jobAberto.cortes.filter((c) => filtrar(c, vista)) : [];
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -336,13 +349,33 @@ export function Cortes({ e }: { e: Estado | null }) {
           </motion.div>
         ))}
       </div>
-      {cats.length > 1 && (
-        <Segmentos id="cat" valor={ativa} onChange={setCat} className="self-start max-w-full"
-          opcoes={[{ v: "", rotulo: "Tudo" }, ...cats.map((c) => ({ v: c, rotulo: c }))]} />
+      {!!e?.jobs.length && (
+        <div className="-mb-4 flex flex-wrap items-center gap-2">
+          <Segmentos id="vista" valor={vista} onChange={(v) => { setVista(v); setAbertoG(null); }} className="max-w-full"
+            opcoes={[{ v: "video", rotulo: "Por vídeo" }, { v: "prontos", rotulo: "Todos prontos" }, { v: "editando", rotulo: "Editando" }]} />
+          {cats.length > 1 && (
+            <Segmentos id="cat" valor={ativa} onChange={setCat} className="max-w-full"
+              opcoes={[{ v: "", rotulo: "Tudo" }, ...cats.map((c) => ({ v: c, rotulo: c }))]} />
+          )}
+        </div>
       )}
-      {e?.jobs.length ? jobs.map((j, i) => <BlocoJob key={j.id} job={j} i={i} cats={cats} />) : (
+      {!e?.jobs.length ? (
         <Vazio icone={<Film className="size-6" />} titulo="Nenhum vídeo cortado ainda" />
+      ) : vista === "video" ? jobs.map((j, i) => <BlocoJob key={j.id} job={j} i={i} cats={cats} />) : juntos.length ? (
+        <div className={GRADE}>
+          {juntos.map(({ j, c }, k) => (
+            <CardCorte key={`${j.id}:${c.n}`} c={c} i={k} sel={false}
+              onAbrir={() => { som.abrir(); setAbertoG({ job: j.id, idx: j.cortes.filter((x) => filtrar(x, vista)).indexOf(c) }); }} />
+          ))}
+        </div>
+      ) : (
+        <Vazio icone={<Film className="size-6" />} titulo={vista === "prontos" ? "Nenhum corte pronto ainda" : "Nada editando agora"} />
       )}
+      <Folha aberta={!!jobAberto && listaAberta.length > 0} onFechar={() => setAbertoG(null)} larga>
+        {jobAberto && abertoG && listaAberta.length > 0 && (
+          <Detalhe job={jobAberto} lista={listaAberta} idx={Math.min(abertoG.idx, listaAberta.length - 1)} setIdx={(i) => setAbertoG(i === null ? null : { job: jobAberto.id, idx: i })} />
+        )}
+      </Folha>
     </div>
   );
 }

@@ -72,6 +72,21 @@ export default function App() {
     scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  // atalhos: 1 a 5 trocam de aba, N (ou /) abre o campo de criar. Nunca dispara digitando, com modal aberto ou com ⌘/Ctrl.
+  useEffect(() => {
+    const k = (ev: KeyboardEvent) => {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey || (ev.target as HTMLElement).closest("input,textarea,select,[contenteditable]")) return;
+      if (document.body.style.overflow === "hidden") return;
+      const n = Number(ev.key);
+      if (n >= 1 && n <= ABAS.length) { ev.preventDefault(); som.aba(); ir(ABAS[n - 1].id); return; }
+      if (ev.key === "n" || ev.key === "/") {
+        ev.preventDefault(); ir("inicio");
+        setTimeout(() => document.querySelector<HTMLTextAreaElement>("main textarea, textarea")?.focus(), 60);
+      }
+    };
+    addEventListener("keydown", k); return () => removeEventListener("keydown", k);
+  }, [ir]);
+
   const fimIntro = useCallback(() => {
     try { localStorage.setItem("intro-dia", hoje()); } catch {}
     if (location.search) history.replaceState(null, "", location.pathname + location.hash);
