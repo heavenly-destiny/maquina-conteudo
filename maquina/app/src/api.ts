@@ -28,6 +28,7 @@ export type Transcricao = {
 export type Estado = {
   brutos: Bruto[]; jobs: Job[]; geracoes: Geracao[]; inspiracoes: Inspiracao[]; transcricoes?: Transcricao[];
   hoje: { feitos: number; meta: number; postados: number }; envio: { rodando: boolean; msg: string }; agora: number;
+  agenda?: { id: string; ref: string; quando: string; redes: string[]; legenda?: string; status: "agendado" | "avisado" }[];
 };
 export type ItemBib = {
   id: string; fonte: string; titulo?: string; autor?: string; url?: string; views?: number | string;

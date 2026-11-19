@@ -19,3 +19,4 @@
 - [Board antes de criar](feedback-board-antes-de-criar.md) — send opens settings board (legenda/trilha/duração) before any generation; music not in Inspirar
 - [Comunidade de ferramentas](comunidade-ferramentas.md) — community hub with many AI tools (Forja, page cloner, offer miner+board, swipe file), each sold alone, others locked inside for ascension
 - [Referências marketplaces UI](referencias-marketplaces-ui.md) — 21st + Skiper/Aceternity/Kokonut/Cult: how to present motion galleries in Forja
+- [Forja calendário + mascote](forja-mascote-calendario.md) — calendar built (no real network posting yet); mascot creator with reaction sheet pending

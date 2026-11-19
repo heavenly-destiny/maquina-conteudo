@@ -137,7 +137,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
 
   return (
-    <div className="flex min-h-[calc(100dvh-210px)] flex-col items-center justify-center gap-9 pb-10">
+    <div className="flex min-h-[calc(100dvh-210px)] flex-col items-center justify-center gap-9 pb-10 lg:min-h-[calc(100dvh-104px)] lg:pb-0 lg:pt-14">
       {/* a logo no meio, com uma luz que respira atrás */}
       <motion.div layoutId="marca" className="relative" transition={molaSuave}>
         <motion.span aria-hidden className="absolute inset-[-40%] rounded-full bg-red/40 blur-3xl"

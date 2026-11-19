@@ -19,6 +19,7 @@ INS = RAIZ / "inspiracoes"
 TRA = RAIZ / "transcricoes"
 MODOS_DEC = ("rapida", "completa", "fiel")
 POSTADOS = RAIZ / "postados.json"
+AGENDA = RAIZ / "agenda.json"  # calendário: {id, ref, quando "AAAA-MM-DDTHH:MM", redes, legenda, status agendado|avisado}
 HUB = RAIZ / "estilos/hub.json"
 TIPOS = ("roteiro", "animado", "criativo", "modelar", "clonar")
 REDES = ("instagram", "tiktok", "youtube", "outro")
@@ -686,7 +687,7 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/config":
             self._json(config_estado())
         elif u.path == "/api/estado":
-            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "envio": ENVIO, "agora": time.time()})
+            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "agenda": lerj(AGENDA, []), "envio": ENVIO, "agora": time.time()})
         elif u.path == "/api/biblioteca":  # sem a imagem base64: ela vem sob demanda em /api/bib-img
             fora = set(lerj(HUB.parent / "ocultos.json", []))  # excluídos pelo painel (o hub.json é a base e não é apagado)
             self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca()) if x["id"] not in fora])
@@ -912,6 +913,19 @@ class H(BaseHTTPRequestHandler):
                 return self._json({"erro": "ref ou rede inválida"}, 400)
             with TRAVA:
                 escrever(POSTADOS, [*lerj(POSTADOS, []), {"ref": d["ref"], "rede": d["rede"], "quando": time.strftime("%Y-%m-%dT%H:%M:%S")}])
+        elif u == "/api/agendar":  # cria ou move um post no calendário
+            quando, redes = str(d.get("quando", "")), [r for r in d.get("redes", []) if r in REDES]
+            if not d.get("ref") or not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}", quando) or not redes:
+                return self._json({"erro": "Escolha dia, hora e pelo menos uma rede"}, 400)
+            with TRAVA:
+                ag = [x for x in lerj(AGENDA, []) if x.get("id") != d.get("id")]
+                item = {"id": d.get("id") or f"ag-{int(time.time() * 1000)}", "ref": d["ref"], "quando": quando, "redes": redes,
+                        "legenda": str(d.get("legenda", ""))[:2200], "status": "agendado"}
+                escrever(AGENDA, sorted([*ag, item], key=lambda x: x["quando"]))
+            return self._json({"ok": True, "id": item["id"]})
+        elif u == "/api/desagendar":
+            with TRAVA:
+                escrever(AGENDA, [x for x in lerj(AGENDA, []) if x.get("id") not in set(d.get("ids") or [d.get("id")])])
         elif u == "/api/tocar-intro":  # o Chrome não toca som sem clique; o Mac toca
             arq = SOM / f"{Path(str(d.get('periodo', 'bom-dia'))).name}.mp3"
             if arq.exists():
@@ -989,8 +1003,28 @@ def auto_atualizar():
         time.sleep(3 * 3600)
 
 
+def lembrar_agenda():
+    """na hora marcada avisa no Mac (notificação). Postagem automática nas redes entra quando a rede estiver conectada."""
+    while True:
+        try:
+            agora = time.strftime("%Y-%m-%dT%H:%M")
+            with TRAVA:
+                ag = lerj(AGENDA, [])
+                vencidos = [x for x in ag if x.get("status") == "agendado" and x.get("quando", "9") <= agora]
+                for x in vencidos:
+                    x["status"] = "avisado"
+                if vencidos:
+                    escrever(AGENDA, ag)
+            for x in vencidos:
+                plataforma.notificar(f"Hora de postar no {', '.join(x['redes'])}. Abra a Forja em Postar.", "Forja · Calendário")
+        except Exception as er:
+            open(AQUI / "painel_jobs.log", "a").write(f"[agenda] {er}\n")
+        time.sleep(30)
+
+
 if __name__ == "__main__":
     threading.Thread(target=auto_atualizar, daemon=True).start()
+    threading.Thread(target=lembrar_agenda, daemon=True).start()
     JOBS.mkdir(exist_ok=True)
     print(f"painel em http://127.0.0.1:{PORTA}")
     ThreadingHTTPServer(("127.0.0.1", PORTA), H).serve_forever()

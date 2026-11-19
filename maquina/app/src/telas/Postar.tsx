@@ -5,6 +5,7 @@ import { atualizar, post, type Estado } from "../api";
 import { Cabecalho, Copiar, Folha, GRADE, Segmentos, Tile, Vazio, cx, mola, useAviso } from "../ui";
 import { som } from "../sons";
 import { CardVitrine, Fileira, Secao } from "../Vitrine";
+import { Calendario } from "./Calendario";
 
 const REDES = [
   { v: "instagram", nome: "Instagram", sigla: "IG" },
@@ -67,7 +68,7 @@ function Detalhe({ x, marcar }: { x: Item; marcar: (ref: string, rede: string) =
 }
 
 export function Postar({ e }: { e: Estado | null }) {
-  const [ver, setVer] = useState<"geral" | "fila" | "postados">("geral");
+  const [ver, setVer] = useState<"geral" | "calendario" | "fila" | "postados">("geral");
   const [aberto, setAberto] = useState<string | null>(null);
   const avisar = useAviso();
   const todos = e ? itens(e) : [];
@@ -82,9 +83,9 @@ export function Postar({ e }: { e: Estado | null }) {
   return (
     <div className="flex flex-col gap-6">
       <Cabecalho titulo="Postar" n={fila.length}>
-        <Segmentos id="postar" valor={ver} onChange={setVer} opcoes={[{ v: "geral", rotulo: "Visão geral" }, { v: "fila", rotulo: <>Na fila <span className="text-faint tnum">{fila.length}</span></> }, { v: "postados", rotulo: <>Postados <span className="text-faint tnum">{feitos.length}</span></> }]} />
+        <Segmentos id="postar" valor={ver} onChange={setVer} opcoes={[{ v: "geral", rotulo: "Visão geral" }, { v: "calendario", rotulo: <>Calendário <span className="text-faint tnum">{e?.agenda?.length || ""}</span></> }, { v: "fila", rotulo: <>Na fila <span className="text-faint tnum">{fila.length}</span></> }, { v: "postados", rotulo: <>Postados <span className="text-faint tnum">{feitos.length}</span></> }]} />
       </Cabecalho>
-      {ver === "geral" && todos.length ? (
+      {ver === "calendario" ? <Calendario itens={todos} agenda={e?.agenda ?? []} /> : ver === "geral" && todos.length ? (
         <div className="flex flex-col gap-10">
           {fila.length > 0 && (
             <Secao titulo="Na fila" sub="Esperando post" total={fila.length} verTudo={() => setVer("fila")}>
