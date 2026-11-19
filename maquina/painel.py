@@ -438,6 +438,7 @@ def carrossel(id_):
         troca = d / "trocas" / f"{k + 1:02d}.png"  # fundo que a pessoa trocou no editor
         # elemento recortado (elementos/NN-eK.png) vem como caminho da pasta: vira URL; data: e URL já prontas passam direto
         cam = [{**c, "src": url_arq(d / c["src"]) or c["src"]} if c.get("src") and not c["src"].startswith(("/", "data:", "http")) else c for c in cam]
+        cam = [{**c, "mascara": url_arq(d / c["mascara"]) or c["mascara"]} if c.get("mascara") and not c["mascara"].startswith(("/", "data:", "http")) else c for c in cam]
         slides.append({"origem": url_arq(o), "fundo": url_arq(troca) or (url_arq(fundo) if fundo else None) or url_arq(o),
                        "limpo": url_arq(d / s["limpo"]) if s.get("limpo") else None,
                        "w": s.get("w", 1080), "h": s.get("h", 1350), "camadas": cam})

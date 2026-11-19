@@ -25,3 +25,10 @@ On 19/11/2026 tanpz opened a carousel reference in Inspirar. He saw the video de
 - Properties panel must never move the slide (fixed column on desktop, overlay drawer on mobile) or the double-click misses.
 
 Slides de referência do Instagram (19/11/2026): `yt-dlp -J --ignore-no-formats-error` lê todos os slides de um carrossel público sem login (o `thumbnail` de cada entrada, 720 px). painel.py `ig_slides(url)` guarda em estilos/instagram-refs/slides/<shortcode>/ (fora do git). Inspirar mostra todos e "Clonar carrossel" manda a url pro /api/carrossel/novo, que importa os slides direto. Puxar pela API interna do Instagram no Chrome é bloqueado pelo classificador; não insistir.
+
+Modelar pro nicho (built 19/11/2026):
+- Flow: the "Modelar pro nicho" button in the carousel editor calls /api/carrossel/modelar, which makes a new copy of the carousel and runs `maquina.py modelar-carrossel` (sonnet + prompts/modelar_carrossel.md).
+- The model reads textos.json and writes modelado.json. Each text layer gets new copy at 70–115% of the original length; interface text stays as it was.
+- The result goes into edicao.json with `mexido` set. pedido.json gets an `imagens` list of which photos to swap, shown as a bar in the editor.
+- Tested with "confeitaria caseira": about 2 min.
+- Pending: swapping the photos automatically. Planned route is the forja-imagem Worker (FLUX, free), with organic iPhone-style photos.

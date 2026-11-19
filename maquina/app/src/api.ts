@@ -37,7 +37,7 @@ export type Camada = {
   id: string; tipo: "texto" | "imagem"; texto?: string; src?: string; x: number; y: number; w: number; h: number;
   tam?: number; cor?: string; peso?: number; alinhar?: "left" | "center" | "right"; fonte?: string; italico?: boolean; fundoCor?: string; fixo?: boolean; ajustado?: boolean;
   /* texto lido do slide: caixa onde ele está na foto. Enquanto não mexe, a foto original aparece; mexeu, a caixa é tapada pelo fundo limpo */
-  orig?: { x: number; y: number; w: number; h: number }; mexido?: boolean; oculto?: boolean;
+  orig?: { x: number; y: number; w: number; h: number }; mexido?: boolean; oculto?: boolean; mascara?: string; /* foto trocada pela modelagem: recorte do elemento antigo, pra tapar o lugar dele */
 };
 export type Carrossel = {
   id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string; nicho?: string; imagens?: string[]; modelo_de?: string;

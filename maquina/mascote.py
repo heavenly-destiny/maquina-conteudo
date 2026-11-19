@@ -67,8 +67,8 @@ def ref512(ref):
     return b.getvalue()
 
 
-def gerar(modelo, texto, ref=None, tentativas=3, lado=1024):
-    campos = {"prompt": texto, "modelo": modelo, "w": str(lado), "h": str(lado)}
+def gerar(modelo, texto, ref=None, tentativas=3, lado=1024, w=None, h=None):
+    campos = {"prompt": texto, "modelo": modelo, "w": str(w or lado), "h": str(h or lado)}
     for k in range(tentativas):
         fr = uuid.uuid4().hex
         corpo = b"".join(f'--{fr}\r\nContent-Disposition: form-data; name="{n}"\r\n\r\n{v}\r\n'.encode() for n, v in campos.items())

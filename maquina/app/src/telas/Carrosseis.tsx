@@ -197,12 +197,12 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
   // em cima do formato do elemento (e não só dentro da caixa dele): confere o alfa do recorte em alguns pontos do texto
   const sobre = (t: Camada, c: Camada) => {
     const o = t.orig!, q = c.orig!;
-    return [[0.5, 0.5], [0.2, 0.5], [0.8, 0.5]].some(([fx, fy]) => opaco(t.src, (q.x + q.w * fx - o.x) / o.w, (q.y + q.h * fy - o.y) / o.h));
+    return [[0.5, 0.5], [0.2, 0.5], [0.8, 0.5]].some(([fx, fy]) => opaco(t.mascara || t.src, (q.x + q.w * fx - o.x) / o.w, (q.y + q.h * fy - o.y) / o.h));
   };
   const visivel = (c: Camada) => !c.orig || mexeu(c) || [...tapados, ...(c.tipo === "texto" ? elemVisivel : [])].some((t) => t.id !== c.id && cruza(t.orig!, c.orig!) && (c.tipo !== "texto" || sobre(t, c)));
   // texto parado que cruza um elemento mexido passa a ser desenhado: a caixa original dele é tapada antes (senão aparece duas vezes)
   const textosTapados = s.camadas.filter((c) => c.tipo === "texto" && c.orig && !mexeu(c) && !c.oculto && visivel(c));
-  useEffect(() => { s.camadas.forEach((c) => c.tipo === "imagem" && c.orig && c.src && lerAlfa(c.src)); }, [s.camadas]);
+  useEffect(() => { s.camadas.forEach((c) => c.tipo === "imagem" && c.orig && [c.src, c.mascara].forEach((x) => x && lerAlfa(x))); }, [s.camadas]);
   const arrasto = useRef<{ id: string; x: number; y: number; cx: number; cy: number; modo: "mover" | "largura" | "canto"; w: number; h: number; grupo: { id: string; x: number; y: number }[] } | null>(null);
   const baixo = (ev: PE, c: Camada, modo: "mover" | "largura" | "canto") => {
     if (!mudar || editando === c.id) return;
@@ -234,7 +234,7 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
       {/* remendos: texto usa o fundo sem texto; elemento usa o fundo sem elementos e vem depois (tapa o próprio buraco inteiro) */}
       <Base src={verOriginal || sobreOriginal ? s.origem : s.fundo}
         remendos={verOriginal || !sobreOriginal ? [] : [...s.camadas.filter((c) => c.orig && c.tipo === "texto" && mexeu(c)), ...textosTapados, ...tapados]
-          .map((c) => ({ o: c.orig!, src: c.tipo === "imagem" ? s.limpo || s.fundo : s.fundo, mascara: c.tipo === "imagem" ? c.src : undefined }))} />
+          .map((c) => ({ o: c.orig!, src: c.tipo === "imagem" ? s.limpo || s.fundo : s.fundo, mascara: c.tipo === "imagem" ? c.mascara || c.src : undefined }))} />
       {!verOriginal && s.camadas.filter((c) => !c.oculto).map((c) => {
         const ativo = sel === c.id, edit = editando === c.id;
         const estilo = {

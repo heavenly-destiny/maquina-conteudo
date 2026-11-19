@@ -522,9 +522,20 @@ def modelar_carrossel(id_):
         est(fase="lendo o carrossel original")
         ed = d / "edicao.json"
         slides = json.loads((ed if ed.exists() else d / "camadas.json").read_text())["slides"]
+        from urllib.parse import urlparse, parse_qs
+        for s_ in slides:  # edição salva pelo editor guarda URL (/arquivo?p=...) e pode apontar pro carrossel de origem: volta pra caminho desta pasta
+            for c in s_["camadas"]:
+                for k in ("src", "mascara"):
+                    v = str(c.get(k) or "")
+                    if v.startswith("/arquivo?"):
+                        nome = Path(parse_qs(urlparse(v).query).get("p", [""])[0]).name
+                        if (d / "elementos" / nome).exists():
+                            c[k] = f"elementos/{nome}"
         textos = [[{"id": c["id"], "texto": c.get("texto", ""), "letras": len(c.get("texto", "")), "tamanho": c.get("tam"), "largura": round(c.get("w", 0), 3)}
                    for c in s["camadas"] if c.get("tipo") == "texto" and not c.get("oculto")] for s in slides]
-        (d / "textos.json").write_text(json.dumps({"slides": textos}, ensure_ascii=False, indent=1))
+        imgs = [[{"id": c["id"], "arquivo": c.get("mascara") or c["src"], "largura": round(c.get("w", 0), 3), "altura": round(c.get("h", 0), 3)}
+                 for c in s["camadas"] if c.get("tipo") == "imagem" and c.get("orig") and not c.get("oculto") and not str(c.get("src", "")).startswith("data:")] for s in slides]
+        (d / "textos.json").write_text(json.dumps({"slides": [{"textos": t, "imagens": i} for t, i in zip(textos, imgs)]}, ensure_ascii=False, indent=1))
         est(fase=f"escrevendo pro nicho {ped.get('nicho', '')}"[:80])
         (d / "modelado.json").unlink(missing_ok=True)
         claude(prompt("modelar_carrossel", pasta=d, nicho=ped.get("nicho", ""), direcao=ped.get("direcao", "") or "-"), d, "sonnet", "log_modelar.txt")
@@ -535,6 +546,12 @@ def modelar_carrossel(id_):
                 if isinstance(t, str) and t.strip() and t.strip() != c.get("texto", ""):
                     c.update(texto=t.strip(), mexido=True)
         ed.write_text(json.dumps({"slides": slides, "quando": time.time()}, ensure_ascii=False, indent=1))
+        trocas = [t for t in novo.get("trocas", []) if isinstance(t, dict) and t.get("prompt")][:12]
+        if trocas:  # fotos do nicho novo: Worker FLUX (grátis), encaixadas no lugar das antigas
+            (d / "fotos.json").write_text(json.dumps({"trocas": trocas}, ensure_ascii=False, indent=1))
+            est(fase=f"criando {len(trocas)} fotos do nicho")
+            r = subprocess.run([str(plataforma.venv_python(RAIZ / "tools/.venv")), str(AQUI / "carrossel_fotos.py"), d.name], capture_output=True, text=True, timeout=60 * 30)
+            (d / "log_fotos.txt").write_text(r.stdout + "\n--- stderr ---\n" + r.stderr)
         ped["imagens"] = [str(x)[:200] for x in novo.get("imagens", [])][:12]
         (d / "pedido.json").write_text(json.dumps(ped, ensure_ascii=False, indent=1))
         (d / "estado.json").write_text(json.dumps({"status": "pronto", "fase": "", "erro": ""}))
