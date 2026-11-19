@@ -16,6 +16,7 @@ Leva uns 15 minutos na primeira vez (baixa o modelo de transcrição). No fim o 
 
 1. Seu Claude (assinatura Pro/Max ou chave de API)
 2. Sua chave da ElevenLabs (voz)
+3. Opcional, grátis: chave do Gemini (aistudio.google.com/apikey) em `maquina/.env` como `GEMINI_API_KEY=`. Ela assiste as referências de fora com som e deixa a decupagem mais completa. Vídeo que você sobe do computador nunca vai pro Google.
 3. Quem você é: nome, nicho, @ e estilo
 
 Depois é só clicar no atalho **Forja** na Mesa quando quiser usar. Ela liga, abre no navegador e roda no seu computador (http://127.0.0.1:4747).

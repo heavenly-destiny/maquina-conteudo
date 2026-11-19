@@ -73,6 +73,36 @@ def analisar_inteiro(p, v, modo="completa"):
         shutil.rmtree(p / "sep", ignore_errors=True)
 
 
+PERGUNTA_GEMINI = ("Decupagem of this video for someone who will remake its style. Go shot by shot from 0 to the end: for each cut give "
+                   "MM:SS start, what is on screen, every on-screen text exactly as written, every animation (what moves, how, easing), "
+                   "camera moves, transitions, every sound effect and music change, and what is said. Then the hook, the structure and why it retains.")
+
+
+def gemini_key():
+    f = m.AQUI / ".env"
+    for l in (f.read_text().splitlines() if f.exists() else []):
+        k, _, v = l.partition("=")
+        if k.strip() == "GEMINI_API_KEY" and v.strip():
+            return v.strip().strip('"\'')
+
+
+def gemini(p, fonte):
+    """Segunda leitura pelo Gemini (grátis). Só referência de fora: arquivo subido pode ser da pessoa e não vai pro Google."""
+    key = gemini_key()
+    w = sorted(Path.home().glob(".claude/plugins/cache/*/watch/*/skills/watch/scripts/watch.py"))
+    if not key or not w:
+        return
+    try:
+        r = subprocess.run([sys.executable, str(w[-1]), fonte, "--engine", "gemini", "--question", PERGUNTA_GEMINI],
+                           capture_output=True, text=True, timeout=900, env={**m.os.environ, "GEMINI_API_KEY": key})
+        if r.returncode == 0 and r.stdout.strip():
+            (p / "gemini.txt").write_text(r.stdout)
+        else:
+            (p / "gemini-erro.txt").write_text((r.stderr or r.stdout)[-2000:])
+    except Exception as ex:  # ponytail: Gemini é extra; falhou, a decupagem local segue sozinha
+        (p / "gemini-erro.txt").write_text(str(ex))
+
+
 def rodar(id_):
     p = INS / id_
     ped = json.loads((p / "pedido.json").read_text())
@@ -110,6 +140,9 @@ def rodar(id_):
 
         modo = ped.get("modo") or "completa"
         analisar_inteiro(p, v, modo)
+        if url:
+            fase(p, e, "Gemini assistindo")
+            gemini(p, url if "youtu" in url else str(v))
 
         fase(p, e, "analisando")
         m.claude(m.prompt("decupar", pasta=p, modo=MODOS_TXT[modo]), p, m.MODELO_PLANO if modo == "fiel" else m.MODELO_CORTE, "log.txt")
