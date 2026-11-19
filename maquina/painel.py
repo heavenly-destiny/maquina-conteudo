@@ -790,6 +790,8 @@ class H(BaseHTTPRequestHandler):
             escrever(p / "pedido.json", {"tipo": d["tipo"], "briefing": d["briefing"][:5000], "estilo": d.get("estilo"),
                                          "inspiracao": d.get("inspiracao"), "duracao": d.get("duracao"), "idioma": d.get("idioma") or "original",
                                          "legenda": d.get("legenda") if isinstance(d.get("legenda"), dict) else None,
+                                         "trocas": [x for x in d.get("trocas") or [] if x in ("voz", "pessoa", "legenda", "fala", "trilha")],
+                                         "voz": d.get("voz") if d.get("voz") in ("feminina", "masculina") else None, "pessoa": str(d.get("pessoa") or "")[:300],
                                          "trilha": d.get("trilha") if isinstance(d.get("trilha"), (dict, str)) else None, "criado": time.time()})
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": "", "titulo": "", "saidas": {}})
             disparar_script("gerar.py", id_)

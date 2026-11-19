@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, ArrowUpRight, Copy, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
 import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type ModoDec, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
@@ -51,9 +51,6 @@ function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rasc
               <Botao tipo="principal" onClick={() => criarCom({ tipo: "modelar", inspiracao: i.id, briefing: "Modelar pro meu nicho" })}>
                 <Wand2 className="size-4" /> Modelar
               </Botao>
-              <Botao onClick={() => criarCom({ tipo: "clonar", inspiracao: i.id, briefing: "Clonar 100% igual" })}>
-                <Copy className="size-4" /> Clonar 100%
-              </Botao>
               {i.url && <a href={i.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>}
               <Excluir onConfirmar={excluir} />
             </div>
@@ -64,11 +61,11 @@ function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rasc
   );
 }
 
-/* quão a fundo decupar: rápida (1 quadro/s), completa (todo corte, 4/s) ou fiel (10/s + cada efeito sonoro e animação, pra clonar) */
+/* quão a fundo decupar: rápida (1 quadro/s), completa (todo corte, 4/s) ou fiel (10/s + cada efeito sonoro e animação, pra modelar com todos os efeitos) */
 const MODOS_DEC: { v: ModoDec; rotulo: string; dica: string }[] = [
   { v: "rapida", rotulo: "Rápida", dica: "1 quadro por segundo. Sai em 1 a 2 min." },
   { v: "completa", rotulo: "Completa", dica: "Todo corte, 4 quadros por segundo." },
-  { v: "fiel", rotulo: "Fiel 100%", dica: "10 quadros por segundo, cada animação e cada efeito sonoro. Pra clonar." },
+  { v: "fiel", rotulo: "Fiel", dica: "10 quadros por segundo, cada animação e cada efeito sonoro. Pra modelar com todos os efeitos." },
 ];
 function SeletorDecupagem({ modo, setModo }: { modo: ModoDec; setModo: (m: ModoDec) => void }) {
   return (

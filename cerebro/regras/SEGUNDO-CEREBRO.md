@@ -148,3 +148,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Forja (19/11): decupagem tem que pegar 100% do vídeo, sem deixar passar nada (todo corte, todo texto de tela, todo som).
 - Forja (19/11): decupagem em 3 modos (rápida, completa, fiel 100% com toda animação de motion e todo efeito sonoro). Por enquanto só ferramenta grátis, sem Gemini.
 - Forja, Criados (19/11): a grade principal é só vídeo pronto. Copy esperando aprovação, erro, gerando e foto aparecem embaixo em lista ("não é um card pra copy"). Excluir tem que estar visível no card (lixeira no canto), não escondido no detalhe.
+- Forja (19/11): música não é aba do Inspirar, é escolha na hora de criar. Todo vídeo passa por um painel de configuração antes de gerar (legenda com prévia, trilha, duração, formato); enviar nunca dispara direto ("se eu só clicar em mais, o vídeo já sai cortando... cadê um board pra escolher a legenda").

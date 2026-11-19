@@ -1,10 +1,10 @@
 {{base}}
 
-## Your job: CLONE A REFERENCE 100%
-This is step 1 of tanpz's reverse-engineering rule: rebuild the reference video identical before anyone adapts it. Never guess how it was made.
+## Your job: CLONE A REFERENCE
+Rebuild the reference video identical, changing ONLY what the CHANGES block at the end lists (voice, person, captions, language, soundtrack). Everything not listed stays exactly as in the reference. Never guess how it was made.
 The reference is in `{{ref}}`. Read `{{ref}}/decupagem.json`, `{{ref}}/decupagem.md` and the transcript (`{{ref}}/transcricao.txt`). Look at EVERY image in `{{ref}}/frames/` (not a sample). If `{{ref}}/video.mp4` exists, follow the reverse-any-video skill: extract more frames where the decupagem is thin, measure cut times, text positions, font weight and size, colors, motion and transitions.
 
-Rebuild it 1:1:
+Rebuild it identical (except the listed changes):
 - Same number of scenes, same order, same timing per beat (within 0.1 s), same total length.
 - Same on-screen text, word for word, same position, size, weight, colors and animation. If the reference is not in Portuguese, keep the original text unless the briefing asks for PT-BR; then translate literally, keeping length and rhythm.
 - Same spoken script, word for word (from the transcript), unless the SPOKEN LANGUAGE note at the end says PORTUGUESE: then translate it naturally to PT-BR keeping every beat and its timing. Same voice character (gender, age, energy, pace) using an ElevenLabs voice that matches.

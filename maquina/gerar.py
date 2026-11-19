@@ -59,6 +59,22 @@ IDIOMA_PT = ("\n\nSPOKEN LANGUAGE (chosen by tanpz): PORTUGUESE. Translate the s
              "This overrides the 'word for word' rule for speech only; everything else stays a 1:1 clone.\n")
 
 
+def trocas_clone(ped):
+    """clonar = igual à referência, só com o que ele marcou trocado."""
+    t = ped.get("trocas") or []
+    if not t:
+        return "\n\nCHANGES: none. Everything stays identical to the reference.\n"
+    txt = {"voz": f"VOICE: use a different {ped.get('voz') or 'feminina'} (female)" .replace("feminina (female)", "female").replace("masculina (female)", "male")
+                  + " ElevenLabs voice, same energy and pacing as the original.",
+           "pessoa": "PERSON: replace the person on screen with: " + (ped.get("pessoa") or "a different person that fits our audience (ordinary, organic iPhone look)") + ". Same framing, gestures and timing.",
+           "legenda": "CAPTIONS: use the caption template given in the video board choices instead of the original caption style.",
+           "fala": "SPOKEN LANGUAGE: see the language note below.",
+           "trilha": "SOUNDTRACK: use the soundtrack given in the video board choices instead of the original music mood (keep SFX on the same beats)."}
+    linhas = ["\n\nCHANGES HE PICKED (change ONLY these; every other element stays identical to the reference):"]
+    linhas += [f"- {txt[x]}" for x in t if x in txt]
+    return "\n".join(linhas) + "\n"
+
+
 def escolhas_video(ped):
     t = ped.get("trilha")
     linhas = ["\n\nCHOICES HE MADE ON THE VIDEO BOARD (follow exactly, they override the style defaults):"]
@@ -85,6 +101,7 @@ def montar_prompt(p, ped):
     if ped.get("legenda") or ped.get("trilha"):  # escolhas do board "Como vai ser o vídeo"
         extra += escolhas_video(ped)
     if ped["tipo"] == "clonar":
+        extra += trocas_clone(ped)
         extra += IDIOMA_PT if ped.get("idioma") == "pt" else IDIOMA_ORIGINAL
     return m.prompt(f"gerar_{ped['tipo']}", base=m.prompt("_gerar_base", **v), **v) + extra
 

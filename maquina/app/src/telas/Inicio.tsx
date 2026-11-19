@@ -10,13 +10,12 @@ import { Aurora } from "../aurora";
 
 // Referência: "AI Prompt Input Box" (kedhareswer, 21st.dev, nov/2026): composer de vidro, frase de exemplo
 // se digitando sozinha, chips de modo, menu de ajuste, anexo e botão que respira. Adaptado ao vinho da Máquina.
-type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar" | "clonar" | "transcrever";
+type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar" | "transcrever";
 const MODOS: { v: Modo; nome: string; Icone: typeof FileText }[] = [
   { v: "corte", nome: "Cortar", Icone: Scissors },
   { v: "animado", nome: "Animado", Icone: Smile },
   { v: "criativo", nome: "Criativo", Icone: Megaphone },
   { v: "modelar", nome: "Modelar", Icone: Telescope },
-  { v: "clonar", nome: "Clonar", Icone: Copy },
   { v: "transcrever", nome: "Transcrever", Icone: Captions },
   { v: "roteiro", nome: "Roteiro", Icone: FileText },
 ];
@@ -25,12 +24,10 @@ const EXEMPLOS: Record<Modo, string[]> = {
   roteiro: ["Como eu faço 10 vídeos por dia com o Claude", "3 erros que travam quem tá começando no digital", "O dia que eu parei de editar vídeo na mão"],
   animado: ["O que é uma skill do Claude, passo a passo", "Por que seu story não tem resposta, explicado pelo mascote"],
   criativo: ["Anúncio de 20s pro meu produto, gancho forte nos 3 primeiros segundos", "Anúncio de 30s pra quem perde tempo no Canva"],
-  modelar: ["Modelar esse viral pro meu nicho de IA", "Mesma estrutura, assunto: criar conteúdo com o Claude"],
+  modelar: ["Modelar esse viral pra minha marca, com todos os efeitos", "Mesmo vídeo, trocando a voz e a pessoa", "Mesma estrutura, assunto: criar conteúdo com o Claude"],
   transcrever: ["Cole o link do vídeo ou solte o arquivo", "Tiro o texto inteiro, com legenda .srt pronta"],
-  clonar: ["Clonar 100% igual: mesmas cenas, texto, tempo e som", "Clonar igual e traduzir a fala pro português"],
 };
 const COM_BOARD: Modo[] = ["animado", "criativo", "modelar"]; // vídeo gerado: legenda, trilha, duração antes de criar
-const IDIOMAS = [{ v: "original", rotulo: "Fala original" }, { v: "pt", rotulo: "Em português" }] as const;
 const ehLink = (s: string) => /^https?:\/\/\S+$/.test(s.trim());
 
 /* frase de exemplo que se digita e se apaga sozinha */
@@ -55,7 +52,6 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const [texto, setTexto] = useState("");
   const [board, setBoard] = useState<null | "corte" | "video">(null);
   const [insp, setInsp] = useState<string | undefined>();
-  const [idioma, setIdioma] = useState<"original" | "pt">("original");
   const inpInsp = useRef<HTMLInputElement>(null);
   const [arquivo, setArquivo] = useState<File | null>(null);
   const [prog, setProg] = useState<number | null>(null);
@@ -85,7 +81,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
   useEffect(() => {
     if (!rascunho) return;
-    setModo(rascunho.tipo); setTexto(rascunho.briefing ?? ""); setInsp(rascunho.inspiracao);
+    setModo(rascunho.tipo === "clonar" ? "modelar" : rascunho.tipo); setTexto(rascunho.briefing ?? ""); setInsp(rascunho.inspiracao);
     limpar(); ta.current?.focus();
   }, [rascunho, limpar]);
   useEffect(() => { // altura acompanha o texto
@@ -99,16 +95,16 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const subirInsp = async (f?: File | null) => { // modelar: o vídeo que a pessoa subiu vira a referência
     if (!f) return;
     if (!/\.(mov|mp4|m4v)$/i.test(f.name)) return avisar("Só vídeo .mov ou .mp4", true);
-    try { setProg(0); som.toque(); const id = await enviarInspiracao(f, setProg, "inspirar", modo === "clonar" ? "fiel" : modoDec()); setInsp(id); atualizar(); }
+    try { setProg(0); som.toque(); const id = await enviarInspiracao(f, setProg, "inspirar", modo === "modelar" ? "fiel" : modoDec()); setInsp(id); atualizar(); }
     catch (er) { avisar(String((er as Error).message), true); }
     setProg(null);
   };
   const link = ehLink(texto);
-  const pode = prog === null && (modo === "corte" ? !!arquivo : modo === "transcrever" ? !!arquivo || link : link || (texto.trim().length > 3 && ((modo !== "modelar" && modo !== "clonar") || !!insp)));
+  const pode = prog === null && (modo === "corte" ? !!arquivo : modo === "transcrever" ? !!arquivo || link : link || (texto.trim().length > 3 && (modo !== "modelar" || !!insp)));
   const anexar = (f?: File | null) => {
     if (!f) return;
     if (!/\.(mov|mp4|m4v)$/i.test(f.name)) return avisar("Só vídeo .mov ou .mp4", true);
-    if (modo === "modelar" || modo === "clonar") return void subirInsp(f);
+    if (modo === "modelar") return void subirInsp(f);
     som.toque(); setArquivo(f); if (modo !== "transcrever") setModo("corte");
   };
 
@@ -130,7 +126,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         await post("/api/inspirar", { url: texto.trim(), modo: modoDec() }); som.enviar();
         setRecibo({ msg: "Decupando o vídeo. Leva uns minutos.", aba: "inspirar" });
       } else {
-        await post("/api/gerar", { tipo: modo, briefing: texto, inspiracao: insp, estilo: "conteudo-organico", duracao: 30, ...extra, ...(modo === "clonar" ? { idioma } : {}) }); som.enviar();
+        await post("/api/gerar", { tipo: modo, briefing: texto.trim() || MODOS.find((m) => m.v === modo)!.nome, inspiracao: insp, estilo: "conteudo-organico", duracao: 30, ...extra }); som.enviar();
         setRecibo({ msg: `${MODOS.find((m) => m.v === modo)!.nome} na fila. A Forja já começou.`, aba: "criar" });
       }
       setTexto(""); setInsp(undefined); atualizar();
@@ -185,7 +181,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
           {/* modelar: escolher a inspiração */}
           <AnimatePresence initial={false}>
-            {(modo === "modelar" || modo === "clonar") && !link && (
+            {modo === "modelar" && !link && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={mola} className="overflow-hidden">
                 <input ref={inpInsp} type="file" accept="video/mp4,video/quicktime,.mov,.mp4,.m4v" hidden onChange={(ev) => { subirInsp(ev.target.files?.[0]); ev.target.value = ""; }} />
                 {insp ? (
@@ -195,17 +191,12 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-[14px] font-medium">{escolhida?.decupagem?.titulo || escolhida?.info?.titulo || "Vídeo de referência"}</p>
-                      <p className="text-[12.5px] text-faint">{escolhida?.status === "pronto" ? (modo === "clonar" ? "Pronto pra clonar" : "Pronto pra modelar") : "Analisando o vídeo…"}</p>
+                      <p className="text-[12.5px] text-faint">{escolhida?.status === "pronto" ? "Pronto pra modelar" : "Analisando o vídeo…"}</p>
                     </div>
                     <button onClick={() => { som.toque(); setInsp(undefined); }} aria-label="Tirar referência" className="grid size-10 cursor-pointer place-items-center rounded-full text-faint hover:text-ink"><X className="size-4" /></button>
                   </div>
                 ) : null}
-                {insp && modo === "clonar" ? (
-                  <div className="flex flex-wrap items-center gap-2 p-1 pb-2">
-                    <Segmentos id="m-idioma" valor={idioma} onChange={(v) => { som.toque(); setIdioma(v); }} opcoes={[...IDIOMAS]} />
-                    <span className="text-[12.5px] text-faint">{idioma === "pt" ? "Traduz a fala, mesmo ritmo" : "Mesmas palavras do vídeo"}</span>
-                  </div>
-                ) : insp ? null : (
+                {insp ? null : (
                   <div className="flex flex-col gap-2 p-1 pb-2">
                     <div className="flex flex-wrap items-center gap-2">
                       <button onClick={() => inpInsp.current?.click()} disabled={prog !== null}
