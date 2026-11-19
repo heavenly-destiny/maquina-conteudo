@@ -40,7 +40,7 @@ export type Camada = {
   orig?: { x: number; y: number; w: number; h: number }; mexido?: boolean; oculto?: boolean;
 };
 export type Carrossel = {
-  id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string;
+  id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string; nicho?: string; imagens?: string[]; modelo_de?: string;
   slides: { origem: string; fundo: string; limpo?: string | null; w: number; h: number; camadas: Camada[] }[]; /* limpo: fundo sem texto e sem elementos */
 };
 /* manda uma imagem pro servidor e devolve o nome que o pedido usa */

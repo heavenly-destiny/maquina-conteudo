@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from "motion/react";
 import { toPng } from "html-to-image";
 import {
   AlignCenter, AlignLeft, AlignRight, ArrowLeft, Bold, BringToFront, SendToBack, ChevronLeft, ChevronRight, Download, Eye, GalleryHorizontal,
-  ImagePlus, Italic, Layers, Plus, RotateCcw, Trash2, Type, Undo2, Upload, X,
+  ImagePlus, Italic, Layers, Plus, RotateCcw, Trash2, Type, Undo2, Upload, Wand2, X,
 } from "lucide-react";
 import { atualizar, post, subirImagem, type Camada, type Carrossel, type Estado } from "../api";
-import { Botao, Cabecalho, GRADE, LixeiraCanto, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
+import { Botao, Cabecalho, Folha, GRADE, LixeiraCanto, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
 
 const FONTES = ["Inter", "Montserrat", "Poppins", "DM Sans", "Anton", "Bebas Neue", "Oswald", "Playfair Display", "Instrument Serif", "Caveat", "Allura", "Bangers"];
@@ -332,7 +332,50 @@ function Painel({ c, mudar, excluir, ordem }: { c: Camada; mudar: (p: Partial<Ca
 }
 
 /* ---------------- editor ---------------- */
-function Editor({ id, fechar }: { id: string; fechar: () => void }) {
+/* modelar: mesma estrutura, design e ritmo do carrossel; a copy é reescrita pro nicho da pessoa (cópia nova, o original fica) */
+function Modelar({ id, aberta, fechar, abrir }: { id: string; aberta: boolean; fechar: () => void; abrir: (id: string) => void }) {
+  const avisar = useAviso();
+  const [nicho, setNicho] = useState("");
+  const [direcao, setDirecao] = useState("");
+  const [indo, setIndo] = useState(false);
+  useEffect(() => {
+    if (!aberta || nicho) return;
+    fetch("/api/config").then((r) => r.json()).then((j) => setNicho((v) => v || j?.perfil?.nicho || "")).catch(() => {});
+  }, [aberta]); // eslint-disable-line react-hooks/exhaustive-deps
+  const ir = async () => {
+    setIndo(true);
+    try { const r = await post("/api/carrossel/modelar", { id, nicho, direcao }); som.enviar(); avisar("Escrevendo pro seu nicho. Leva uns 2 min."); fechar(); abrir(r.id); }
+    catch (er) { avisar((er as Error).message, true); }
+    setIndo(false);
+  };
+  return (
+    <Folha aberta={aberta} onFechar={fechar}>
+      <div className="flex flex-col gap-4">
+        <div className="pr-12">
+          <h3 className="text-[21px] font-semibold tracking-[-0.02em]">Modelar pro seu nicho</h3>
+          <p className="mt-1 text-[14px] leading-relaxed text-mute">Mesmos slides, mesmo design e o mesmo ritmo de texto. A Forja reescreve cada texto pro seu nicho numa cópia nova; este carrossel fica como está.</p>
+        </div>
+        <label className="flex flex-col gap-1.5">
+          <span className="text-[13px] font-medium text-faint">Seu nicho ou assunto</span>
+          <input autoFocus value={nicho} onChange={(e) => setNicho(e.target.value)} maxLength={120} placeholder="Ex.: confeitaria caseira, estética, tráfego pago"
+            onKeyDown={(e) => { if (e.key === "Enter" && nicho.trim() && !indo) ir(); }}
+            className="vidro min-h-12 rounded-[14px] px-4 text-[16px] outline-none focus:shadow-[0_0_0_2px_rgb(225_29_42/0.6)]" />
+        </label>
+        <label className="flex flex-col gap-1.5">
+          <span className="text-[13px] font-medium text-faint">Direção (opcional)</span>
+          <textarea value={direcao} onChange={(e) => setDirecao(e.target.value)} maxLength={500} rows={3} placeholder="Ex.: vender meu curso de bolo de pote, CTA comentar BOLO"
+            className="vidro rounded-[14px] px-4 py-3 text-[16px] outline-none focus:shadow-[0_0_0_2px_rgb(225_29_42/0.6)]" />
+        </label>
+        <Botao tipo="principal" onClick={ir} carregando={indo} disabled={!nicho.trim()}><Wand2 className="size-4" /> Modelar</Botao>
+      </div>
+    </Folha>
+  );
+}
+
+function Editor({ id, fechar, abrir }: { id: string; fechar: () => void; abrir: (id: string) => void }) {
+  const [modelar, setModelar] = useState(false);
+  const [dicaFechada, setDicaFechada] = useState(false);
+  const [dicaAberta, setDicaAberta] = useState(false);
   const avisar = useAviso();
   const [c, setC] = useState<Carrossel | null>(null);
   const [k, setK] = useState(0);
@@ -467,9 +510,18 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
         <input value={c?.nome ?? ""} onChange={(ev) => setC((v) => { if (!v) return v; const n = { ...v, nome: ev.target.value }; salvar(n); return n; })}
           className="min-w-0 flex-1 truncate bg-transparent text-[16px] font-semibold outline-none" aria-label="Nome do carrossel" />
         <button aria-label="Desfazer" title="Desfazer (⌘Z)" onClick={() => desfazer()} className="grid size-10 shrink-0 cursor-pointer place-items-center rounded-full text-mute hover:bg-white/[0.06] hover:text-ink"><Undo2 className="size-[18px]" /></button>
+        <button onClick={() => { som.abrir(); setModelar(true); }} disabled={!c || !!ocupado} className="flex min-h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13.5px] font-medium text-ink/90 hover:bg-white/[0.06] disabled:opacity-40"><Wand2 className="size-4" /><span className="hidden sm:inline">Modelar pro nicho</span></button>
         {c?.editado && <button onClick={voltarOriginal} className="hidden min-h-10 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13.5px] text-mute hover:bg-white/[0.06] hover:text-ink sm:flex"><RotateCcw className="size-4" /> Original</button>}
         <Botao tipo="principal" onClick={exportar} carregando={exportando} disabled={!c || !!ocupado} className="shrink-0 px-4"><Download className="size-4" /><span className="hidden sm:inline">Baixar PNGs</span></Botao>
       </header>
+      <Modelar id={id} aberta={modelar} fechar={() => setModelar(false)} abrir={abrir} />
+      {c?.imagens?.length && !ocupado && !dicaFechada ? (
+        <div className="flex items-start gap-3 border-b border-white/[0.06] bg-white/[0.03] px-4 py-2.5 text-[13px] leading-relaxed text-mute sm:px-5">
+          <ImagePlus className="mt-0.5 size-4 shrink-0 text-red" />
+          <button onClick={() => setDicaAberta(!dicaAberta)} className={cx("min-w-0 flex-1 cursor-pointer text-left", !dicaAberta && "line-clamp-1")}><span className="font-medium text-ink">Fotos pra trocar ({c.nicho}): </span>{c.imagens.join(" · ")}</button>
+          <button aria-label="Fechar dica" onClick={() => setDicaFechada(true)} className="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full hover:bg-white/[0.06]"><X className="size-4" /></button>
+        </div>
+      ) : null}
 
       {!c || ocupado || c.status === "erro" ? (
         <div className="grid flex-1 place-items-center p-6 text-center">
@@ -585,7 +637,7 @@ export function Carrosseis({ e }: { e: Estado | null }) {
           </div>
         )}
       </section>
-      <AnimatePresence>{aberto && <Editor key={aberto} id={aberto} fechar={() => { setAberto(null); atualizar(); }} />}</AnimatePresence>
+      <AnimatePresence>{aberto && <Editor key={aberto} id={aberto} fechar={() => { setAberto(null); atualizar(); }} abrir={(n) => { setAberto(n); atualizar(); }} />}</AnimatePresence>
     </div>
   );
 }

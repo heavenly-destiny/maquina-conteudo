@@ -513,6 +513,35 @@ def achar_job(x):
     return Job(p if p.is_dir() else JOBS / x)
 
 
+def modelar_carrossel(id_):
+    """carrossel clonado reescrito pro nicho da pessoa: mesma estrutura, design e ritmo; só a copy muda (Claude escreve modelado.json)"""
+    d = RAIZ / "carrosseis" / Path(id_).name
+    ped = json.loads((d / "pedido.json").read_text())
+    est = lambda **k: (d / "estado.json").write_text(json.dumps({"status": "gerando", "fase": "", "desde": time.time(), "erro": "", **k}, ensure_ascii=False))
+    try:
+        est(fase="lendo o carrossel original")
+        ed = d / "edicao.json"
+        slides = json.loads((ed if ed.exists() else d / "camadas.json").read_text())["slides"]
+        textos = [[{"id": c["id"], "texto": c.get("texto", ""), "letras": len(c.get("texto", "")), "tamanho": c.get("tam"), "largura": round(c.get("w", 0), 3)}
+                   for c in s["camadas"] if c.get("tipo") == "texto" and not c.get("oculto")] for s in slides]
+        (d / "textos.json").write_text(json.dumps({"slides": textos}, ensure_ascii=False, indent=1))
+        est(fase=f"escrevendo pro nicho {ped.get('nicho', '')}"[:80])
+        (d / "modelado.json").unlink(missing_ok=True)
+        claude(prompt("modelar_carrossel", pasta=d, nicho=ped.get("nicho", ""), direcao=ped.get("direcao", "") or "-"), d, "sonnet", "log_modelar.txt")
+        novo = json.loads((d / "modelado.json").read_text())
+        for s, n in zip(slides, novo.get("slides", [])):
+            for c in s["camadas"]:
+                t = n.get(c["id"]) if c.get("tipo") == "texto" else None
+                if isinstance(t, str) and t.strip() and t.strip() != c.get("texto", ""):
+                    c.update(texto=t.strip(), mexido=True)
+        ed.write_text(json.dumps({"slides": slides, "quando": time.time()}, ensure_ascii=False, indent=1))
+        ped["imagens"] = [str(x)[:200] for x in novo.get("imagens", [])][:12]
+        (d / "pedido.json").write_text(json.dumps(ped, ensure_ascii=False, indent=1))
+        (d / "estado.json").write_text(json.dumps({"status": "pronto", "fase": "", "erro": ""}))
+    except Exception as e:
+        (d / "estado.json").write_text(json.dumps({"status": "erro", "fase": "", "erro": f"Não deu pra modelar: {str(e)[:160]}"}, ensure_ascii=False))
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     if not a:
@@ -536,6 +565,8 @@ if __name__ == "__main__":
         refazer(achar_job(a[1]), a[2], a[3])
     elif a[0] == "ajustar":
         ajustar(achar_job(a[1]), a[2])
+    elif a[0] == "modelar-carrossel":
+        modelar_carrossel(a[1])
     elif a[0] == "viral":
         viral(achar_job(a[1]))
     elif a[0] == "legendas":

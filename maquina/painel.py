@@ -1235,6 +1235,25 @@ class H(BaseHTTPRequestHandler):
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("carrossel.py", id_, plataforma.venv_python(RAIZ / "tools/.venv"))
             return self._json({"ok": True, "id": id_})
+        elif u == "/api/carrossel/modelar":  # cópia do carrossel com a copy reescrita pro nicho da pessoa
+            orig = CAR / Path(str(d.get("id") or "_")).name
+            nicho = " ".join(str(d.get("nicho") or "").split())[:120]
+            if not (orig / "camadas.json").exists():
+                return self._json({"erro": "Carrossel ainda não está pronto"}, 400)
+            if not nicho:
+                return self._json({"erro": "Escreva o seu nicho"}, 400)
+            id_, p = novo_id(CAR, "car")
+            for x in orig.iterdir():  # mesmas imagens e camadas; a edição atual vira o ponto de partida
+                if x.name in ("origem", "fundos", "elementos", "trocas"):
+                    shutil.copytree(x, p / x.name)
+                elif x.name in ("camadas.json", "edicao.json"):
+                    shutil.copy(x, p / x.name)
+            base = lerj(orig / "pedido.json", {})
+            escrever(p / "pedido.json", {"nome": f"{base.get('nome') or 'Carrossel'} · {nicho}"[:80], "url": base.get("url", ""), "criado": time.time(),
+                                         "nicho": nicho, "direcao": str(d.get("direcao") or "")[:500], "modelo_de": orig.name})
+            escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
+            disparar(["modelar-carrossel", id_])
+            return self._json({"ok": True, "id": id_})
         elif u == "/api/carrossel/salvar":
             c = CAR / Path(str(d.get("id", ""))).name
             if not (c / "pedido.json").exists() or not isinstance(d.get("slides"), list):
