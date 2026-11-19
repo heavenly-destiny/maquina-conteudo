@@ -38,3 +38,4 @@ Mascot creator built 19/11 (maquina/mascote.py, telas/Mascotes.tsx, /api/mascote
 - Server fix: ThreadingHTTPServer request_queue_size was 5, which refused the 6th parallel image load. It is now 128.
 - 19/11: the mascot creator must accept a photo. People want a mascot of themselves. The photo is the reference for the base character in the chosen style.
 - 19/11 lesson: `brew install gallery-dl` upgraded Homebrew python3 to 3.15 and dropped PIL, cryptography and mlx (they were installed for 3.14). Reinstalled them with pip --user --break-system-packages. Never brew-install a formula that pulls a Python upgrade without reinstalling deps after.
+- 19/11: Forja freeze root cause: /api/estado called brutos() which scans ~/Downloads; after the python 3.15 brew upgrade, reading Downloads hangs (TCC/iCloud). brutos now runs in a background thread; never touch ~/Downloads synchronously in a request.

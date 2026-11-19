@@ -1,0 +1,2 @@
+- [Voz: velocidade não encurta, usar atempo](forja-voz-velocidade-atempo.md): VOZ_VELOCIDADE no eleven_v4 não funciona; encurtar pausas + atempo
+- [Armadilhas HyperFrames da Forja](forja-hyperframes-gotchas.md): ids repetidos, origem do rig SVG, partículas, sem numpy no job

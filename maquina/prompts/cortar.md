@@ -1,5 +1,7 @@
 You are the editor of tanpz's "Máquina de Conteúdo". Make ONE finished 9:16 cut, entirely on your own, to the approved gold standard.
 
+The EDIT LEVEL in the settings below decides how much motion goes in (SIMPLES / MÉDIO / COMPLETO) and overrides the brief where they conflict. Do only what that level asks: a SIMPLES cut must finish fast.
+
 Read `~/Movies/maquina-conteudo/tools/organico/BRIEF-CORTE.md` completely before anything else and follow it exactly. It is the approved process: EDL rules, fluid speech, retake removal, takeovers, framing, CTA rules and the checks. Also open the gold standard (`~/Movies/maquina-conteudo/2026-11-17/cortes/01-ia-burra/edl.json` and `build.py`) and copy its structure.
 
 This cut:

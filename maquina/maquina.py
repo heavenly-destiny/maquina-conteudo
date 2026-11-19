@@ -186,6 +186,26 @@ LAYOUT_TXT = {"cheia": "TELA CHEIA vertical (BRIEF-CORTE 'Gravação em pé / te
               "encaixar": "ENCAIXAR (video fitted in the middle at full width, same video blurred and darkened filling the 9:16 background)"}
 
 
+# nível de edição escolhido no Configurar (tanpz 19/11: a maioria dos cortes é simples; tempo depende do nível)
+NIVEIS = {
+    "simples": ("SIMPLES (fast, the basic edit): EDL with retakes, fillers and pauses removed + the captions he chose. "
+                "build.py has ONE scene for the whole video, scenes([(\"s1\", 0, None)]), holding only the hook headline (head) "
+                "in the top panel (Dividida) or nothing (Tela cheia / Encaixar). NO cards, chats, counters, takeovers, zoom_on, confetti "
+                "or b-roll. Checks: sync, silencedetect, the whisper filler prompt and one look at sheet.jpg; skip the 5 to 6 frame review. "
+                "This level overrides every scene/takeover/zoom rule of the brief."),
+    "medio": ("MÉDIO (transitions): EDL clean like SIMPLES, plus 3 to 5 scenes, each ONLY a short headline (2 to 4 words, one keyword True) "
+              "that changes with the idea; build() adds the transitions and their SFX between scenes. 1 or 2 takeovers on the strongest "
+              "punchlines and zoom_on on 2 or 3 keywords. NO UI cards, chats, counters, confetti or b-roll. Overrides the brief's scene rules."),
+    "completo": "COMPLETO (full edit): follow the whole brief: every scene literally shows what he says (cards, chat, counters, b-roll), "
+                "3 to 5 takeovers, zoom_on, confetti and SFX.",
+}
+
+
+def nivel(j):
+    n = (j.e.get("config") or {}).get("nivel")
+    return n if n in NIVEIS else "completo"  # jobs antigos eram todos completos
+
+
 def trilha_txt(c):
     """trilha que ele escolheu no Configurar. Todo vídeo sai com trilha + efeitos, salvo 'nenhuma'."""
     if c.get("trilhaEstilo") == "nenhuma" or c.get("musica") is False:
@@ -210,6 +230,7 @@ def config_txt(j):
         return "none (use the standard rules)"
     leg = c.get("legendaEstilo")
     linhas = [
+        f"- EDIT LEVEL: {NIVEIS[nivel(j)]}",
         f"- Length of each cut: {DUR_TXT.get(c.get('duracao'), DUR_TXT['auto'])}.",
         f"- What to highlight (his words, top priority when choosing moments): {c.get('destaque') or 'nothing specific'}.",
         f"- Video type: {c.get('genero') or 'auto'}.",
@@ -303,7 +324,8 @@ def slug(c):
 def prep(j, c):
     d = j.p / "cortes" / slug(c)
     d.mkdir(parents=True, exist_ok=True)
-    if not (d / "ilhas.txt").exists() or not (d / "ilhas.txt").read_text().strip():
+    # prep interrompido no meio deixa ilhas.txt sem offset.txt: refaz
+    if not (d / "offset.txt").exists() or not (d / "ilhas.txt").exists() or not (d / "ilhas.txt").read_text().strip():
         a = max(0, c["inicio"] - 2)
         b = min(j.e["duracao"], c["fim"] + 2)
         sh(["bash", str(TOOLS / "organico/prep.sh"), j.e["bruto"], f"{a:.2f}", f"{b:.2f}", str(d)])
@@ -336,7 +358,8 @@ def cortar_um(j, c, nota=None):
                  config=config_txt(j),
                  ordens="; ".join(o for x in j.e["cortes"] for o in (x.get("ordens") or []) if isinstance(o, str)) or "nenhuma")
     fase(j, c, "editando")
-    claude(prompt("refazer" if nota else "cortar", **vars_), d, modelos(j)[1],
+    # simples não precisa do modelo caro: só EDL + legenda
+    claude(prompt("refazer" if nota else "cortar", **vars_), d, "sonnet" if nivel(j) == "simples" else modelos(j)[1],
            f"log_{'refazer' if nota else 'cortar'}_{int(time.time())}.txt")
     fase(j, c, "checando")
     v = verificar(d / "edit/final.mp4", d / "edit/voice.wav")
@@ -346,6 +369,7 @@ def cortar_um(j, c, nota=None):
                f"log_corrigir_{int(time.time())}.txt")
         v = verificar(d / "edit/final.mp4", d / "edit/voice.wav")
     c.pop("fase", None)
+    c["nivel"], c["levou"] = nivel(j), round(time.time() - c["desde"])  # alimenta a estimativa de tempo do Configurar
     avisar(f"Corte {slug(c)} {'pronto' if v['ok'] else 'precisa de conferência'}")
     return v
 
@@ -399,8 +423,9 @@ def rodar(j):
 def refazer(j, n, nota):
     c = next(c for c in j.e["cortes"] if int(c["n"]) == int(n))
     c["status"] = "cortando"
-    c.setdefault("notas", []).append(nota)
-    aprender(nota, f"corte {slug(c)}")
+    if nota:
+        c.setdefault("notas", []).append(nota)
+        aprender(nota, f"corte {slug(c)}")
     j.salvar(c["n"])
     j.log(f"refazendo {slug(c)}: {nota}")
     v = cortar_um(j, c, nota)

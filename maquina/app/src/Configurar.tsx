@@ -1,23 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Check, Film, Link2, Pause, Play, Sparkles } from "lucide-react";
-import { musicas, type Musicas } from "./api";
+import { Check, Clock, Film, Link2, Pause, Play, Sparkles } from "lucide-react";
+import { musicas, tempos, type Musicas, type Tempos } from "./api";
 import { LEGENDAS, type Legenda } from "./legendas";
 import { Botao, cx, mola } from "./ui";
 import { som } from "./sons";
 
 /* Tela "Configurar" (modelo Recipe do OpusClip 4.0, ESPEC.md f3): tudo que muda o resultado, escolhido antes de gerar. */
 export type ConfigCorte = {
-  duracao: string; destaque: string; genero: string; layouts: string[]; legenda: string;
+  nivel: string; duracao: string; destaque: string; genero: string; layouts: string[]; legenda: string;
   gancho: string; limpar: boolean; palavraChave: boolean; emojis: boolean; zoom: boolean; musica: boolean; modelo: string;
   trilhaEstilo: string; trilhaFaixa: string | null; trilha?: unknown; legendaEstilo?: unknown;
 };
 export const CONFIG_PADRAO: ConfigCorte = {
-  duracao: "auto", destaque: "", genero: "auto", layouts: ["dividida"], legenda: "maquina",
+  nivel: "simples", duracao: "auto", destaque: "", genero: "auto", layouts: ["dividida"], legenda: "maquina",
   gancho: "titulo", limpar: true, palavraChave: true, emojis: false, zoom: true, musica: true, modelo: "economico",
   trilhaEstilo: "auto", trilhaFaixa: null,
 };
 const lerSalvo = (): ConfigCorte => { try { return { ...CONFIG_PADRAO, ...JSON.parse(localStorage.getItem("config-corte") || "{}") }; } catch { return CONFIG_PADRAO; } };
+
+/* nível de edição (tanpz 19/11): a maioria dos cortes é simples; quanto mais motion, mais demora */
+const NIVEIS = [["simples", "Simples", "legenda e tira respiros e pausas"], ["medio", "Médio", "+ títulos com transições e efeitos"], ["completo", "Completo", "+ cenas animadas, telas cheias e b-roll"]];
+const PADRAO_MIN: Record<string, number> = { simples: 8, medio: 11, completo: 15 };
+const fmtMin = (m: number) => (m < 60 ? `${Math.max(1, Math.round(m))} min` : `${Math.floor(m / 60)}h${String(Math.round(m % 60)).padStart(2, "0")}`);
 
 const DURACOES = [["auto", "Auto"], ["<30", "Até 30s"], ["30-59", "30 a 59s"], ["60-89", "60 a 89s"], ["90-180", "90s a 3min"], ["180-600", "3 a 10min"]];
 const GENEROS = [["auto", "A IA vê"], ["podcast", "Podcast"], ["aula", "Aula"], ["venda", "Venda"], ["motivacional", "Motivacional"], ["lifestyle", "Lifestyle"]];
@@ -201,6 +206,10 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
   const leg = LEGENDAS.find((l) => l.id === c.legenda) ?? LEGENDAS[0];
   const [d, setD] = useState<Musicas | null>(null);
   useEffect(() => { musicas().then(setD).catch(() => {}); }, []);
+  const [tp, setTp] = useState<Tempos | null>(null);
+  useEffect(() => { tempos().then(setTp).catch(() => {}); }, []);
+  const minCorte = (id: string) => tp?.min[id] ?? PADRAO_MIN[id];
+  const par = tp?.paralelo || 2;
   const estT = d?.estilos.find((x) => x.id === c.trilhaEstilo);
   const faixaT = d?.musicas.find((m) => m.id === c.trilhaFaixa);
   const gerar = () => {
@@ -209,10 +218,11 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
     onGerar({ ...c, musica: c.trilhaEstilo !== "nenhuma", trilha: pacoteTrilha(d, c.trilhaEstilo, c.trilhaFaixa), legendaEstilo: leg });
   };
   const resumo = [
+    `Edição ${NIVEIS.find((n) => n[0] === c.nivel)?.[1]}`,
     DURACOES.find((d) => d[0] === c.duracao)?.[1] === "Auto" ? "Duração automática" : `Cortes de ${DURACOES.find((d) => d[0] === c.duracao)?.[1]}`,
     c.layouts.map((x) => LAYOUTS.find((l) => l[0] === x)?.[1]).join(" + "),
     `Legenda ${leg.nome}`,
-    c.limpar && "Tira pausas e vícios", c.zoom && "Zoom automático",
+    c.limpar && "Tira pausas e vícios", c.nivel !== "simples" && c.zoom && "Zoom automático",
     c.trilhaEstilo === "nenhuma" ? "Sem trilha, só efeitos" : faixaT ? `Trilha: ${faixaT.titulo}` : estT ? `Trilha ${curto(estT.nome)}` : "Trilha que a IA escolher",
     `Modelo ${MODELOS.find((m) => m[0] === c.modelo)?.[1]}`,
   ].filter(Boolean) as string[];
@@ -224,6 +234,19 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
           <span className="grid size-11 shrink-0 place-items-center rounded-[14px] bg-white/[0.06] text-mute">{origem.tipo === "link" ? <Link2 className="size-[18px]" /> : <Film className="size-[18px]" />}</span>
           <div className="min-w-0"><h3 className="text-[20px] font-semibold tracking-[-0.02em]">Como vão ser os cortes</h3><p className="truncate text-[13px] text-faint">{origem.nome}</p></div>
         </div>
+        <Linha t="Nível de edição">
+          <div className="grid gap-2 sm:grid-cols-3">
+            {NIVEIS.map(([id, rot, sub]) => (
+              <button key={id} onClick={() => { som.toque(); up({ nivel: id }); }} aria-pressed={c.nivel === id}
+                className={cx("flex cursor-pointer flex-col gap-1 rounded-[16px] p-3.5 text-left transition-colors", c.nivel === id ? "bg-red/[0.12] shadow-[inset_0_0_0_1.5px_rgb(225_29_42/0.7)]" : "bg-white/[0.04] hover:bg-white/[0.07]")}>
+                <span className="flex items-center justify-between gap-2"><span className="text-[14.5px] font-semibold">{rot}</span>
+                  <span className="flex shrink-0 items-center gap-1 text-[12px] tabular-nums text-faint"><Clock className="size-3" />~{fmtMin(minCorte(id))}</span></span>
+                <span className="text-[12.5px] leading-snug text-faint">{sub}</span>
+              </button>
+            ))}
+          </div>
+          <p className="text-[12.5px] text-faint">Tempo por corte. Ficam prontos {par} por vez: 10 cortes no {NIVEIS.find((n) => n[0] === c.nivel)?.[1]} levam ~{fmtMin(Math.ceil(10 / par) * minCorte(c.nivel))}.</p>
+        </Linha>
         <Linha t="Duração de cada corte"><Chips op={DURACOES} v={c.duracao} set={(x) => up({ duracao: x })} /></Linha>
         <Linha t="O que destacar">
           <input value={c.destaque} onChange={(e) => up({ destaque: e.target.value })} placeholder="Ex.: os momentos em que falo de preço"
@@ -256,7 +279,7 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
           <div className="grid gap-2 sm:grid-cols-2">
             <Chave rot="Tirar pausas e vícios" v={c.limpar} set={(b) => up({ limpar: b })} />
             <Chave rot="Destacar palavra-chave" v={c.palavraChave} set={(b) => up({ palavraChave: b })} />
-            <Chave rot="Zoom automático" v={c.zoom} set={(b) => up({ zoom: b })} />
+            {c.nivel !== "simples" && <Chave rot="Zoom automático" v={c.zoom} set={(b) => up({ zoom: b })} />}
             <Chave rot="Emojis" v={c.emojis} set={(b) => up({ emojis: b })} />
           </div>
         </Linha>
@@ -280,6 +303,7 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
           </ul>
         </div>
         <Botao tipo="principal" className="w-full justify-center" onClick={gerar}><Sparkles className="size-4" /> Gerar cortes</Botao>
+        <p className="-mt-2 flex items-center justify-center gap-1.5 text-[12.5px] tabular-nums text-faint"><Clock className="size-3.5" />~{fmtMin(minCorte(c.nivel))} por corte</p>
       </aside>
     </div>
   );

@@ -110,6 +110,8 @@ export type EstiloMusica = { id: string; nome: string; prompt_trilha: string; bp
 export type Musicas = { atualizado_em: string | null; atualizando: boolean; estilos: EstiloMusica[]; musicas: Musica[] };
 export type ResultadoBusca = { deezer_id: number | null; titulo: string; artista: string; capa?: string; preview?: string; link?: string; spotify: string };
 export const musicas = (): Promise<Musicas> => fetch("/api/musicas").then((r) => r.json());
+export type Tempos = { paralelo: number; min: Record<string, number>; medido: Record<string, number> };
+export const tempos = (): Promise<Tempos> => fetch("/api/tempos").then((r) => r.json());
 
 let bib: Promise<ItemBib[]> | null = null;
 export const biblioteca = () => (bib ??= fetch("/api/biblioteca").then((r) => r.json()));

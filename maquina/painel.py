@@ -284,6 +284,21 @@ def url_arq(f):
     return f"/arquivo?p={f}&v={int(f.stat().st_mtime)}" if f.exists() else None
 
 
+TEMPO_PADRAO = {"simples": 8, "medio": 11, "completo": 15}  # min por corte medidos 19/11 (simples 8 sozinho, completo ~14 com 2 juntos)
+
+
+def tempos():
+    """média real (últimos 20 cortes de cada nível); sem histórico, o padrão. Paralelo vem do maquina.py."""
+    vis = {k: [] for k in TEMPO_PADRAO}
+    for j in sorted(JOBS.glob("*/estado.json"), key=lambda f: f.stat().st_mtime, reverse=True)[:30]:
+        for c in lerj(j, {}).get("cortes", []):
+            if c.get("levou") and c.get("nivel") in vis and len(vis[c["nivel"]]) < 20:
+                vis[c["nivel"]].append(c["levou"] / 60)
+    return {"paralelo": int(os.environ.get("MAQUINA_PARALELO", "2")),
+            "min": {k: round(sum(v) / len(v), 1) if v else TEMPO_PADRAO[k] for k, v in vis.items()},
+            "medido": {k: len(v) for k, v in vis.items()}}
+
+
 def pastas(base):
     """pedido + estado + id de cada pasta, mais nova primeiro"""
     out = []
@@ -777,6 +792,8 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/biblioteca":  # sem a imagem base64: ela vem sob demanda em /api/bib-img
             fora = set(lerj(HUB.parent / "ocultos.json", []))  # excluídos pelo painel (o hub.json é a base e não é apagado)
             self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca()) if x["id"] not in fora])
+        elif u.path == "/api/tempos":  # minutos por corte em cada nível, da média real (estimativa do Configurar)
+            self._json(tempos())
         elif u.path == "/api/musicas":
             self._json(musicas())
         elif u.path == "/api/musicas/busca":

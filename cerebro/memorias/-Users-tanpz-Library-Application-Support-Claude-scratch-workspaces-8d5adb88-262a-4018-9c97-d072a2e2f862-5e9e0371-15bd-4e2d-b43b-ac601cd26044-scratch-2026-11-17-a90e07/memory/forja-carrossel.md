@@ -18,3 +18,8 @@ On 19/11/2026 tanpz opened a carousel reference in Inspirar. He saw the video de
 - He mentioned "o paper", the tool carousel creators use. Prefer a free alternative: HTML slides rendered to PNG locally.
 - Carousel rules from [[maquina-v2-produto]] still apply: up to 10 linked slides, panorama continuity.
 - 19/11: he wants Canva's "separate layers" magic inside Forja. It reads any image (a carousel slide), splits it into editable layers (text, objects, background), and lets him move elements and change text. Our Canva MCP connector has `separate-image-layers` (+ get-separate-image-layers-job), which is the first thing to test for the clone step. Free fallback: OCR + inpainting locally.
+
+**Built 19/11 (published):** tela Carrosséis (sidebar + paleta + Criar). Upload slides → carrossel.py (Vision OCR on Mac, RapidOCR elsewhere) → fundo limpo (inpaint) + camadas de texto editáveis. Editor: drag, double-click to type, font/color/size/highlight, add text/image, swap background, undo (⌘Z), export PNG. Inspirar carrossel item shows "Clonar carrossel" (no video modes).
+- Text over photos (stories inside the slide) stays baked in the background: filter = mean |Laplacian| of the text-free ring < 5.5 (design ≈ 0–5, photo > 6). Pure std failed (gradients + neighbor lines).
+- OCR layers are `fixo` (keep original line breaks, `white-space: pre`); first render shrinks to the measured box once and saves `ajustado`, so edited text keeps its size.
+- Properties panel must never move the slide (fixed column on desktop, overlay drawer on mobile) or the double-click misses.
