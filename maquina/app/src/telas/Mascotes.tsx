@@ -166,7 +166,7 @@ export function Mascotes({ e }: { e: Estado | null }) {
             className="min-h-[52px] w-full flex-1 resize-none rounded-[14px] bg-white/[0.05] px-4 py-3 text-[16px] outline-none ring-1 ring-white/[0.06] focus:ring-2 focus:ring-red/60" />
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[13px] text-faint">{foto ? "Seu mascote com o seu rosto" : "Sai o mascote"} e 32 reações sem fundo · cerca de 2 min</p>
+          <p className="text-[13px] text-faint">{foto ? "Seu mascote com o seu rosto" : "Sai o mascote"} e 32 reações sem fundo · cerca de 4 min, grátis</p>
           <Botao tipo="principal" onClick={criar} carregando={enviando} className="w-full sm:w-auto"><Sparkles className="size-4" /> Criar mascote</Botao>
         </div>
       </section>

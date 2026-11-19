@@ -23,3 +23,5 @@
 - [Forja carrossel](forja-carrossel.md) — carousel refs get own creator (clone+edit slides), never video decupagem modes
 - [Forja níveis de corte](forja-cortes-niveis.md) — built: Simples/Médio/Completo picker + learned time estimate (/api/tempos); text-based cut editor (Editor.tsx, ajustes.json, ~2 min re-render)
 - [Sempre português](feedback-sempre-portugues.md) — every user-visible text in pt-BR, especially right after compaction
+- [Imagem grátis Forja](forja-imagem-gratis.md) — mascot images via his Cloudflare Worker forja-imagem (FLUX.2), Gemini/ElevenLabs API blocked
+- [Carrossel estilo Canva](feedback-carrossel-canva.md) — original photo untouched, every text editable, patch only the edited box
