@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring, useAnimationControls } from "motion/react";
 import { ArrowUp, Captions, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
-import { atualizar, enviarInspiracao, enviarVideo, post, type Estado, type Rascunho } from "../api";
+import { atualizar, enviarInspiracao, enviarVideo, modoDec, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
 import { Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
 import { som } from "../sons";
@@ -103,7 +103,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const subirInsp = async (f?: File | null) => { // modelar: o vídeo que a pessoa subiu vira a referência
     if (!f) return;
     if (!/\.(mov|mp4|m4v)$/i.test(f.name)) return avisar("Só vídeo .mov ou .mp4", true);
-    try { setProg(0); som.toque(); const id = await enviarInspiracao(f, setProg); setInsp(id); atualizar(); }
+    try { setProg(0); som.toque(); const id = await enviarInspiracao(f, setProg, "inspirar", modo === "clonar" ? "fiel" : modoDec()); setInsp(id); atualizar(); }
     catch (er) { avisar(String((er as Error).message), true); }
     setProg(null);
   };
@@ -128,7 +128,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         await enviarVideo(arquivo, setProg);
         setArquivo(null); setRecibo({ msg: "Vídeo recebido. Já estou cortando.", aba: "cortes" });
       } else if (link) {
-        await post("/api/inspirar", { url: texto.trim() }); som.enviar();
+        await post("/api/inspirar", { url: texto.trim(), modo: modoDec() }); som.enviar();
         setRecibo({ msg: "Decupando o vídeo. Leva uns minutos.", aba: "inspirar" });
       } else {
         await post("/api/gerar", { tipo: modo, briefing: texto, estilo, duracao: Number(duracao), inspiracao: insp, ...(modo === "clonar" ? { idioma } : {}) }); som.enviar();

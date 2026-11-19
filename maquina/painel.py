@@ -16,6 +16,7 @@ PORTA = int(os.environ.get("PORTA", 4747))
 GER = RAIZ / "geracoes"
 INS = RAIZ / "inspiracoes"
 TRA = RAIZ / "transcricoes"
+MODOS_DEC = ("rapida", "completa", "fiel")
 POSTADOS = RAIZ / "postados.json"
 HUB = RAIZ / "estilos/hub.json"
 TIPOS = ("roteiro", "animado", "criativo", "modelar", "clonar")
@@ -713,7 +714,7 @@ class H(BaseHTTPRequestHandler):
             except (BrokenPipeError, ConnectionResetError):
                 pass
 
-    def _upload(self, nome, config=None, destino=None):
+    def _upload(self, nome, config=None, destino=None, modo=None):
         nome = re.sub(r"[^\w.\- ]", "_", Path(nome).name)
         if Path(nome).suffix.lower() not in (".mov", ".mp4", ".m4v"):
             return self._json({"erro": "só vídeo .mov ou .mp4"}, 400)
@@ -740,7 +741,7 @@ class H(BaseHTTPRequestHandler):
         if destino == "inspirar":  # modelar: o vídeo que a pessoa subiu vira a inspiração (não vai pra corte)
             id_, p = novo_id(INS, "insp")
             tmp.replace(p / f"video{Path(nome).suffix.lower()}")
-            escrever(p / "pedido.json", {"arquivo": nome, "criado": time.time()})
+            escrever(p / "pedido.json", {"arquivo": nome, "modo": modo if modo in MODOS_DEC else "completa", "criado": time.time()})
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("inspirar.py", id_)
             return self._json({"ok": True, "id": id_})
@@ -754,7 +755,7 @@ class H(BaseHTTPRequestHandler):
         u = urlparse(self.path).path
         if u == "/api/upload":
             q = parse_qs(urlparse(self.path).query)
-            return self._upload(q["nome"][0], (q.get("config") or [None])[0], (q.get("destino") or [None])[0])
+            return self._upload(q["nome"][0], (q.get("config") or [None])[0], (q.get("destino") or [None])[0], (q.get("modo") or [None])[0])
         n = int(self.headers.get("Content-Length", 0))
         d = json.loads(self.rfile.read(n) or b"{}")
         if u.startswith("/api/config/"):
@@ -803,7 +804,7 @@ class H(BaseHTTPRequestHandler):
             if not re.match(r"https?://\S+$", str(d.get("url", ""))):
                 return self._json({"erro": "URL inválida"}, 400)
             id_, p = novo_id(INS, "insp")
-            escrever(p / "pedido.json", {"url": d["url"], "criado": time.time()})
+            escrever(p / "pedido.json", {"url": d["url"], "modo": d.get("modo") if d.get("modo") in MODOS_DEC else "completa", "criado": time.time()})
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("inspirar.py", id_)
             return self._json({"ok": True, "id": id_})

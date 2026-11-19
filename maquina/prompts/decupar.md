@@ -6,6 +6,8 @@ Folder: {{pasta}}
 - `folhas/`: the WHOLE video as contact sheets, 12 frames each (4 per second on short videos). `folhas/indice.txt` says the time range of each sheet.
 - `volume.txt`: loudness every 0.5 s (drops, hits, silences, music swells).
 
+{{modo}}
+
 NOTHING MAY BE MISSED (tanpz's rule: the decupagem covers 100% of the video). Read indice.txt and cortes.txt, then Read EVERY sheet in folhas/ in order and EVERY image in cortes/, and read the whole transcript and volume.txt. Do not sample, do not skip a sheet. Watch like an editor, second by second: what is on screen, every on-screen text (exact words, color, position, animation), every caption style change, zooms, camera moves, b-roll, transitions, graphics, and where the sound hits or drops.
 
 Write `{{pasta}}/decupagem.json` (all values PT-BR):

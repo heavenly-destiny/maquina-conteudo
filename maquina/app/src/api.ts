@@ -90,10 +90,13 @@ export const fmtViews = (v?: number | string) => {
 };
 
 /* sobe o vídeo cru; o servidor já começa a cortar quando termina */
-export function enviarInspiracao(f: File, prog: (p: number) => void, destino = "inspirar") {
+export type ModoDec = "rapida" | "completa" | "fiel";
+export const modoDec = (): ModoDec => { try { return (localStorage.getItem("modo-dec") as ModoDec) || "completa"; } catch { return "completa"; } };
+export const guardarModoDec = (m: ModoDec) => { try { localStorage.setItem("modo-dec", m); } catch {} };
+export function enviarInspiracao(f: File, prog: (p: number) => void, destino = "inspirar", modo: ModoDec = modoDec()) {
   return new Promise<string>((ok, erro) => {
     const x = new XMLHttpRequest();
-    x.open("POST", `/api/upload?destino=${destino}&nome=${encodeURIComponent(f.name)}`);
+    x.open("POST", `/api/upload?destino=${destino}&modo=${modo}&nome=${encodeURIComponent(f.name)}`);
     x.upload.onprogress = (ev) => prog(ev.loaded / ev.total);
     x.onload = () => { try { x.status < 300 ? ok(JSON.parse(x.responseText).id) : erro(new Error("O envio falhou")); } catch { erro(new Error("O envio falhou")); } };
     x.onerror = () => erro(new Error("O envio falhou"));

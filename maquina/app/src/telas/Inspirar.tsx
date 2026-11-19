@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp, ArrowUpRight, Copy, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
-import { atualizar, biblioteca, limparBiblioteca, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
+import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type ModoDec, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
@@ -65,7 +65,22 @@ function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rasc
   );
 }
 
-function ItemDetalhe({ x, decupar, criarCom, excluir }: { x: ItemBib; decupar: (u: string) => void; criarCom: (r: Rascunho) => void; excluir: () => void }) {
+/* quão a fundo decupar: rápida (1 quadro/s), completa (todo corte, 4/s) ou fiel (10/s + cada efeito sonoro e animação, pra clonar) */
+const MODOS_DEC: { v: ModoDec; rotulo: string; dica: string }[] = [
+  { v: "rapida", rotulo: "Rápida", dica: "1 quadro por segundo. Sai em 1 a 2 min." },
+  { v: "completa", rotulo: "Completa", dica: "Todo corte, 4 quadros por segundo." },
+  { v: "fiel", rotulo: "Fiel 100%", dica: "10 quadros por segundo, cada animação e cada efeito sonoro. Pra clonar." },
+];
+function SeletorDecupagem({ modo, setModo }: { modo: ModoDec; setModo: (m: ModoDec) => void }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Segmentos id="modo-dec" valor={modo} onChange={(m) => { som.toque(); setModo(m); guardarModoDec(m); }} opcoes={MODOS_DEC.map((x) => ({ v: x.v, rotulo: x.rotulo }))} />
+      <span className="text-[12.5px] text-faint">{MODOS_DEC.find((x) => x.v === modo)!.dica}</span>
+    </div>
+  );
+}
+
+function ItemDetalhe({ x, decupar, criarCom, excluir, modo, setModo }: { x: ItemBib; decupar: (u: string) => void; criarCom: (r: Rascunho) => void; excluir: () => void; modo: ModoDec; setModo: (m: ModoDec) => void }) {
   return (
     <div className="flex flex-col gap-5 sm:flex-row">
       {x.video ? <video src={x.video} poster={x.img} controls autoPlay muted loop playsInline className="mx-auto max-h-[52dvh] w-full max-w-[300px] shrink-0 rounded-[20px] object-contain bg-black/30" />
@@ -84,6 +99,7 @@ function ItemDetalhe({ x, decupar, criarCom, excluir }: { x: ItemBib; decupar: (
             <p className="max-h-[22dvh] overflow-y-auto whitespace-pre-wrap font-mono text-[12.5px] leading-relaxed text-ink/85">{x.prompt}</p>
           </div>
         )}
+        {x.url && <SeletorDecupagem modo={modo} setModo={setModo} />}
         <div className="flex flex-wrap gap-2">
           {x.prompt && <Botao tipo="principal" onClick={() => criarCom({ tipo: "animado", briefing: `Usar o motion "${x.titulo}" como referência (técnica: ${x.tecnica ?? "-"}). Prompt de origem: ${x.prompt}\n\nAssunto do meu vídeo: ` })}><Sparkles className="size-4" /> Usar no meu vídeo</Botao>}
           {x.url && <Botao tipo={x.prompt ? "fantasma" : "principal"} onClick={() => decupar(x.url!)}><Telescope className="size-4" /> Decupar</Botao>}
@@ -131,13 +147,14 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   const [limite, setLimite] = useState(40);
   const [aberta, setAberta] = useState<string | null>(null);
   const [item, setItem] = useState<ItemBib | null>(null);
+  const [modo, setModo] = useState<ModoDec>(modoDec);
   const campoBusca = useRef<HTMLInputElement>(null);
   const avisar = useAviso();
   useEffect(() => { biblioteca().then(setBib).catch(() => {}); }, []);
   useEffect(() => { if (buscando) campoBusca.current?.focus(); }, [buscando]);
 
   const decupar = async (u: string) => {
-    try { await post("/api/inspirar", { url: u.trim() }); som.enviar(); avisar("Decupando. Leva uns minutos."); setUrl(""); setItem(null); setFonte("decupados"); atualizar(); }
+    try { await post("/api/inspirar", { url: u.trim(), modo }); som.enviar(); avisar("Decupando. Leva uns minutos."); setUrl(""); setItem(null); setFonte("decupados"); atualizar(); }
     catch (er) { avisar((er as Error).message, true); }
   };
   const excluirInsp = async (id: string) => {
@@ -189,6 +206,14 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
         </motion.button>
       </form>
 
+      <AnimatePresence initial={false}>
+        {valido && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={mola} className="-mt-2 overflow-hidden">
+            <SeletorDecupagem modo={modo} setModo={setModo} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Segmentos id="fonte" valor={fonte} onChange={(f) => { setFonte(f); setLimite(40); }} className="self-start max-w-full"
         opcoes={FONTES.map((f) => ({ v: f.v, rotulo: f.nome }))} />
       <AnimatePresence initial={false}>
@@ -213,7 +238,7 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
       {fonte !== "decupados" && !emMusicas && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
 
       <Folha aberta={!!aberto} onFechar={() => setAberta(null)} larga>{aberto && <Decupagem i={aberto} criarCom={criarCom} excluir={() => excluirInsp(aberto.id)} />}</Folha>
-      <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} excluir={() => excluirItem(item)} />}</Folha>
+      <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} excluir={() => excluirItem(item)} modo={modo} setModo={setModo} />}</Folha>
     </div>
   );
 }
