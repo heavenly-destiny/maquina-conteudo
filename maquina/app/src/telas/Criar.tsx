@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Check, ChevronRight, Pencil, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
 import { lerRoteiro } from "../roteiro";
 import { atualizar, post, type Estado, type Geracao } from "../api";
-import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
+import { Botao, Cabecalho, Copiar, Excluir, Folha, GRADE, LixeiraCanto, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import type { Aba } from "../Dock";
 import { som } from "../sons";
 import { AbrirTranscricao, LinhaTranscricao } from "./Transcricoes";
@@ -94,6 +94,28 @@ function LinhaRoteiro({ g, i, onClick }: { g: Geracao; i: number; onClick: () =>
   );
 }
 
+/* tudo que não é vídeo pronto (copy esperando, gerando, foto, erro): linha discreta embaixo da grade */
+function LinhaGeracao({ g, i, onClick, sel, excluir }: { g: Geracao; i: number; onClick: () => void; sel?: boolean; excluir: () => void }) {
+  const ocupado = ["na-fila", "rodando", "gerando"].includes(g.status);
+  const sub = g.status === "aprovar-copy" ? "Copy pronta. Toque pra aprovar" : g.status === "erro" ? "Deu erro. Toque pra ver" : null;
+  return (
+    <motion.div {...cascata(i)} data-tile={g.id} className={cx("group relative scroll-mt-24 rounded-[18px]", sel && "shadow-[0_0_0_2px_rgb(225_29_42/0.8)]")}>
+      <button data-luz onClick={() => { som.abrir(); onClick(); }}
+        className="vidro flex w-full cursor-pointer items-center gap-3.5 rounded-[18px] p-3.5 pr-12 text-left transition-colors hover:bg-white/[0.07]">
+        <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-[13px] bg-white/[0.06] text-mute">
+          {g.capa ? <img src={g.capa} alt="" className="size-full object-cover" /> : g.status === "aprovar-copy" ? <Pencil className="size-[18px] text-red" /> : <Sparkles className="size-[18px]" />}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[15px] font-semibold tracking-tight">{(g.titulo || g.briefing).replace(/^[#*\s]+/, "")}</span>
+          <span className="mt-0.5 block truncate text-[13px]">{sub ? <span className={g.status === "erro" ? "text-red" : "text-mute"}>{sub}</span> : <Status status={g.status} fase={g.fase} />}</span>
+        </span>
+        <ChevronRight className="size-4 shrink-0 text-faint transition-transform group-hover:translate-x-0.5" />
+      </button>
+      {!ocupado && <LixeiraCanto onConfirmar={excluir} className="right-9 top-1/2 -translate-y-1/2" />}
+    </motion.div>
+  );
+}
+
 /* nicho e status do criativo: só o necessário pra organizar */
 function Marcar({ g }: { g: Geracao }) {
   const [nicho, setNicho] = useState(g.nicho ?? "");
@@ -147,7 +169,7 @@ function EditorCopy({ g, fechar }: { g: Geracao; fechar: () => void }) {
   );
 }
 
-function Abrir({ g, aoAprovar }: { g: Geracao; aoAprovar: () => void }) {
+function Abrir({ g, aoAprovar, excluir }: { g: Geracao; aoAprovar: () => void; excluir: () => void }) {
   const [editando, setEditando] = useState(false);
   const [nota, setNota] = useState("");
   const avisar = useAviso();
@@ -199,6 +221,7 @@ function Abrir({ g, aoAprovar }: { g: Geracao; aoAprovar: () => void }) {
       </>}
       <div className="flex flex-wrap gap-2">
         {g.video && <a href={`${g.video}&baixar=1`} className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10"><Download className="size-4" /> Baixar</a>}
+        {!["na-fila", "rodando", "gerando"].includes(g.status) && <Excluir onConfirmar={excluir} rotulo="Excluir" />}
       </div>
       {!["na-fila", "rodando", "gerando"].includes(g.status) && (
         <div className="flex flex-col gap-2">
@@ -242,11 +265,20 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
   const nichoAt = nichos.includes(nicho) ? nicho : "";
   const lista = useMemo(() => todos.filter((g) => g.tipo !== "roteiro" && (filtro === "tudo" || g.tipo === filtro)
     && (!nichoAt || g.nicho === nichoAt) && (!val || (g.validacao ?? "teste") === val)), [todos, filtro, nichoAt, val]);
+  const videos = lista.filter((g) => g.video && g.status !== "erro");
+  const resto = lista.filter((g) => !videos.includes(g));
+  const esperando = resto.filter((g) => !["na-fila", "rodando", "gerando"].includes(g.status));
+  const criando = resto.filter((g) => ["na-fila", "rodando", "gerando"].includes(g.status));
   const roteiros = useMemo(() => todos.filter((g) => g.tipo === "roteiro" && (filtro === "tudo" || filtro === "roteiro")), [todos, filtro]);
   const aberto = todos.find((g) => g.id === aberta);
   const transc = e?.transcricoes ?? [];
   const abertoT = transc.find((t) => t.id === abertaT);
   // aprovou a copy: fecha a folha, limpa os filtros e leva até o card que está gerando
+  const avisar = useAviso();
+  const excluirGeracao = async (id: string) => {
+    try { await post("/api/excluir-geracao", { id }); avisar("Vídeo excluído."); setAberta(null); atualizar(); }
+    catch (er) { avisar((er as Error).message, true); }
+  };
   const irPraGeracao = (id: string) => {
     setAberta(null); setFiltro("tudo"); setNicho(""); setVal(""); setFoco(id);
     setTimeout(() => document.querySelector(`[data-tile="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 350);
@@ -274,17 +306,26 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
           )}
         </div>
       )}
-      {lista.length > 0 && (
+      {videos.length > 0 && (
         <div className={GRADE}>
-          {lista.map((g, i) => (
+          {videos.map((g, i) => (
             <Tile key={g.id} i={i} capa={g.capa} video={g.video} titulo={g.titulo || g.briefing}
               texto={(g.titulo || g.roteiro_txt?.split("\n").find((l) => l.trim().length > 12) || g.briefing).replace(/^[#*\s]+/, "")}
-              status={g.status} fase={g.fase} desde={g.desde} fundo={g.inspiracao ? e?.inspiracoes.find((x) => x.id === g.inspiracao)?.capa : null}
+              status={g.status} fase={g.fase} desde={g.desde}
               onClick={() => setAberta(g.id)} id={g.id} sel={foco === g.id}
-              canto={g.status === "erro" && <TentarDeNovo id={g.id} />} />
+              canto={<>{g.status === "erro" && <TentarDeNovo id={g.id} />}
+                {!["na-fila", "rodando", "gerando"].includes(g.status) && <LixeiraCanto onConfirmar={() => excluirGeracao(g.id)} />}</>} />
           ))}
         </div>
       )}
+      {[{ nome: "Criando agora", itens: criando }, { nome: "Esperando você", itens: esperando }].map((b) => b.itens.length > 0 && (
+        <section key={b.nome} className="flex flex-col gap-2.5">
+          <h2 className={cx("text-[17px] font-semibold tracking-tight", videos.length > 0 && "mt-4")}>{b.nome} <span className="text-[14px] font-normal text-faint tnum">{b.itens.length}</span></h2>
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5 lg:grid-cols-2">
+            {b.itens.map((g, i) => <LinhaGeracao key={g.id} g={g} i={i} sel={foco === g.id} onClick={() => setAberta(g.id)} excluir={() => excluirGeracao(g.id)} />)}
+          </div>
+        </section>
+      ))}
       {roteiros.length > 0 && (
         <section className="flex flex-col gap-2.5">
           {filtro === "tudo" && lista.length > 0 && <h2 className="mt-4 text-[17px] font-semibold tracking-tight">Roteiros <span className="text-[14px] font-normal text-faint tnum">{roteiros.length}</span></h2>}
@@ -299,7 +340,7 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
       )}
       <Folha aberta={!!abertoT} onFechar={() => setAbertaT(null)}>{abertoT && <AbrirTranscricao t={abertoT} fechar={() => setAbertaT(null)} />}</Folha>
       {!lista.length && !roteiros.length && !transc.length && <Vazio icone={<Sparkles className="size-6" />} titulo="Nada criado ainda"><Botao tipo="principal" onClick={() => ir("inicio")}>Criar o primeiro</Botao></Vazio>}
-      <Folha aberta={!!aberto} onFechar={() => setAberta(null)}>{aberto && <Abrir g={aberto} aoAprovar={() => irPraGeracao(aberto.id)} />}</Folha>
+      <Folha aberta={!!aberto} onFechar={() => setAberta(null)}>{aberto && <Abrir g={aberto} aoAprovar={() => irPraGeracao(aberto.id)} excluir={() => excluirGeracao(aberto.id)} />}</Folha>
     </div>
   );
 }

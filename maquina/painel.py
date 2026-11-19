@@ -890,6 +890,13 @@ class H(BaseHTTPRequestHandler):
                     escrever(f, sorted({*lerj(f, []), str(d["id"])}))
             else:
                 return self._json({"erro": "nada pra excluir"}, 400)
+        elif u == "/api/excluir-geracao":
+            g = GER / Path(str(d.get("id", ""))).name
+            if not (g / "pedido.json").exists():
+                return self._json({"erro": "vídeo não existe"}, 404)
+            if lerj(g / "estado.json", {}).get("status") in ("na-fila", "rodando", "gerando"):
+                return self._json({"erro": "esse vídeo ainda está sendo criado"}, 409)
+            lixeira(g)
         elif u == "/api/excluir-transcricao":
             t = TRA / Path(str(d.get("id", ""))).name
             if not (t / "pedido.json").exists():

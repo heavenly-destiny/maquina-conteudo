@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp, ArrowUpRight, Copy, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
 import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type ModoDec, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
-import { Botao, Cabecalho, Copiar, Excluir, Folha, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
+import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
 import { Musicas } from "./Musicas";
 
@@ -113,14 +113,15 @@ function ItemDetalhe({ x, decupar, criarCom, excluir, modo, setModo }: { x: Item
 
 /* card do mural: só a imagem; título aparece no hover (padrão Pinterest) */
 /* prévia no hover: o vídeo só carrega quando o mouse entra (preload none) */
-function Card({ img, video, titulo, sub, status, fase, i, onClick, alto }: { img?: string | null; video?: string | null; titulo?: string; sub?: string; status?: string; fase?: string; i: number; onClick: () => void; alto?: boolean }) {
+function Card({ img, video, titulo, sub, status, fase, i, onClick, alto, excluir }: { img?: string | null; video?: string | null; titulo?: string; sub?: string; status?: string; fase?: string; i: number; onClick: () => void; alto?: boolean; excluir?: () => void }) {
   const vid = useRef<HTMLVideoElement>(null);
   return (
-    <motion.button onClick={() => { som.abrir(); onClick(); }}
+    <motion.div
       onMouseEnter={() => vid.current?.play().catch(() => {})} onMouseLeave={() => { if (vid.current) { vid.current.pause(); vid.current.currentTime = 0; } }}
       initial={{ opacity: 0, y: 18, scale: 0.96, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       transition={{ ...molaSuave, delay: Math.min(i % 20, 14) * 0.03 }} whileHover={{ y: -4 }} whileTap={{ scale: 0.97 }}
-      className="group relative mb-2.5 block w-full cursor-pointer break-inside-avoid overflow-hidden rounded-[20px] bg-white/[0.04] text-left shadow-[inset_0_0_0_1px_rgb(255_255_255/0.06)] sm:mb-3">
+      className="group relative mb-2.5 block w-full break-inside-avoid overflow-hidden rounded-[20px] bg-white/[0.04] text-left shadow-[inset_0_0_0_1px_rgb(255_255_255/0.06)] sm:mb-3">
+      <button onClick={() => { som.abrir(); onClick(); }} aria-label={titulo || "Abrir"} className="block w-full cursor-pointer text-left">
       {img ? <img src={img} alt="" loading="lazy" className={cx("w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]", alto && "aspect-[9/16]")} />
         : <span className="block aspect-[4/5] p-4 text-[14px] font-semibold leading-snug" style={{ background: "linear-gradient(160deg,#3a0711,#0b0204)" }}>{titulo}</span>}
       {video && img && <video ref={vid} src={video} muted playsInline loop preload="none" className="pointer-events-none absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
@@ -128,10 +129,12 @@ function Card({ img, video, titulo, sub, status, fase, i, onClick, alto }: { img
       {sub && <span className="absolute right-2.5 top-2.5 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{sub}</span>}
       {img && titulo && (
         <span className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-black/90 to-transparent p-3 pt-10 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="line-clamp-2 text-[13px] font-semibold leading-snug">{titulo}</span>
+          <span className={cx("line-clamp-2 text-[13px] font-semibold leading-snug", excluir && "pr-11")}>{titulo}</span>
         </span>
       )}
-    </motion.button>
+      </button>
+      {excluir && <LixeiraCanto onConfirmar={excluir} className="bottom-2.5 right-2.5" />}
+    </motion.div>
   );
 }
 
@@ -228,10 +231,11 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
         <div className="columns-2 gap-2.5 sm:columns-3 sm:gap-3 lg:columns-5">
           {verMinhas && minhas.map((i, k) => (
             <Card key={i.id} i={k} alto img={i.capa} video={i.video} titulo={i.decupagem?.titulo || i.info?.titulo} status={i.status} fase={i.fase}
-              sub={fmtViews(i.info?.views) || undefined} onClick={() => setAberta(i.id)} />
+              sub={fmtViews(i.info?.views) || undefined} onClick={() => setAberta(i.id)}
+              excluir={["na-fila", "gerando"].includes(i.status) ? undefined : () => excluirInsp(i.id)} />
           ))}
           {fonte !== "decupados" && lista.slice(0, limite).map((x, k) => (
-            <Card key={x.id + k} i={k} img={x.img} video={x.video} titulo={x.titulo} sub={fmtViews(x.views) || undefined} onClick={() => setItem(x)} />
+            <Card key={x.id + k} i={k} img={x.img} video={x.video} titulo={x.titulo} sub={fmtViews(x.views) || undefined} onClick={() => setItem(x)} excluir={() => excluirItem(x)} />
           ))}
         </div>
       ) : <Vazio icone={<Search className="size-6" />} titulo={fonte === "decupados" ? "Cole um link acima pra decupar" : bib.length ? "Nada com esse nome" : "Carregando a biblioteca"} />}

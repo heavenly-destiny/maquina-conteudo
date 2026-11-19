@@ -88,12 +88,12 @@ export function Status({ status, fase }: { status?: string; fase?: string }) {
   const ativo = status && !["pronto", "erro", "enviado", "descartado", "planejado", "aguardando-voz", "revisar", "aprovar-copy"].includes(status);
   const cor = status === "pronto" || status === "enviado" ? "text-ok" : status === "erro" ? "text-red" : ativo ? "text-ink" : "text-mute";
   return (
-    <span className={cx("inline-flex items-center gap-1.5 text-xs font-medium", cor)}>
-      <span className="relative flex size-1.5">
+    <span className={cx("inline-flex min-w-0 max-w-full items-center gap-1.5 text-xs font-medium", cor)}>
+      <span className="relative flex size-1.5 shrink-0">
         {ativo && <span className="absolute inline-flex size-full animate-ping rounded-full bg-red opacity-75" />}
         <span className={cx("relative inline-flex size-1.5 rounded-full", ativo ? "bg-red" : "bg-current")} />
       </span>
-      {nomeStatus(fase || status)}
+      <span className="truncate">{nomeStatus(fase || status)}</span>
     </span>
   );
 }
@@ -430,8 +430,8 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
           </span>
         )}
       </button>
-      {ocupado && <span className="pointer-events-none absolute left-2.5 top-2.5 rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={undefined} /></span>}
-      {mostrarStatus && <span className="pointer-events-none absolute left-2.5 top-2.5 rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={fase} /></span>}
+      {ocupado && <span className="pointer-events-none absolute left-2.5 top-2.5 flex max-w-[calc(100%-4.5rem)] rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={undefined} /></span>}
+      {mostrarStatus && <span className="pointer-events-none absolute left-2.5 top-2.5 flex max-w-[calc(100%-4.5rem)] rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={fase} /></span>}
       {dur && <span className="pointer-events-none absolute right-2.5 top-2.5 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{dur}</span>}
       <span aria-hidden className="tilt-luz" />
       {canto}
@@ -452,5 +452,20 @@ export function Excluir({ onConfirmar, rotulo = "Excluir" }: { onConfirmar: () =
     <Botao onClick={() => { if (!certeza) { som.toque(); setCerteza(true); } else onConfirmar(); }} className={certeza ? "bg-red text-white" : "text-mute"}>
       <Trash2 className="size-4" /> {certeza ? "Toque de novo pra excluir" : rotulo}
     </Botao>
+  );
+}
+
+/* lixeira no canto do card: 1º toque vira "Excluir?" em vermelho, 2º exclui. Sempre visível no celular; no computador aparece no hover */
+export function LixeiraCanto({ onConfirmar, className }: { onConfirmar: () => Promise<void> | void; className?: string }) {
+  const [certeza, setCerteza] = useState(false);
+  useEffect(() => { if (!certeza) return; const k = setTimeout(() => setCerteza(false), 3000); return () => clearTimeout(k); }, [certeza]);
+  return (
+    <button aria-label={certeza ? "Confirmar exclusão" : "Excluir"}
+      onClick={(ev) => { ev.stopPropagation(); if (!certeza) { som.toque(); setCerteza(true); } else onConfirmar(); }}
+      className={cx("absolute z-10 grid min-h-10 min-w-10 cursor-pointer place-items-center rounded-full backdrop-blur transition-[opacity,background-color]",
+        certeza ? "bg-red px-3.5 text-[13px] font-semibold text-white opacity-100" : "bg-black/55 text-white/85 hover:bg-black/75 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 focus-visible:opacity-100",
+        className ?? "right-2.5 top-2.5")}>
+      {certeza ? "Excluir?" : <Trash2 className="size-4" />}
+    </button>
   );
 }

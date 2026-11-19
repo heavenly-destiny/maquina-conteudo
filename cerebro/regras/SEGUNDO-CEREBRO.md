@@ -146,3 +146,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Forja (19/11): quer poder editar a copy na mão antes de aprovar (falas e legenda), além de pedir mudança pra IA.
 - Forja (19/11): pediu a Forja como artifact do claude.ai. Oferta dele (Stories Lab) não pode aparecer pra ninguém: exemplos genéricos na tela e artifact sem os dados dele.
 - Forja (19/11): decupagem tem que pegar 100% do vídeo, sem deixar passar nada (todo corte, todo texto de tela, todo som).
+- Forja (19/11): decupagem em 3 modos (rápida, completa, fiel 100% com toda animação de motion e todo efeito sonoro). Por enquanto só ferramenta grátis, sem Gemini.
