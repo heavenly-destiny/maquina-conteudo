@@ -140,7 +140,7 @@ function Marcar({ g }: { g: Geracao }) {
 function EditorCopy({ g, fechar }: { g: Geracao; fechar: () => void }) {
   const avisar = useAviso();
   const [falas, setFalas] = useState(() => (g.roteiro_json?.falas ?? []).map((f) => f.texto));
-  const [legenda, setLegenda] = useState(g.legenda ?? "");
+  const [legenda, setLegenda] = useState(typeof g.legenda === "string" ? g.legenda : "");
   const [salvando, setSalvando] = useState(false);
   const campo = "vidro w-full resize-none rounded-[14px] px-4 py-3 text-[15.5px] leading-relaxed outline-none [field-sizing:content] focus:shadow-[0_0_0_2px_rgb(225_29_42/0.6)]";
   const salvar = async () => {
@@ -158,7 +158,7 @@ function EditorCopy({ g, fechar }: { g: Geracao; fechar: () => void }) {
           <textarea value={f} rows={1} aria-label={`Fala ${i + 1}`} onChange={(e) => setFalas(falas.map((x, j) => (j === i ? e.target.value : x)))} className={campo} />
         </label>
       ))}
-      {g.legenda != null && (<>
+      {typeof g.legenda === "string" && (<>
         <p className="mt-2 text-[13px] font-medium text-faint">Legenda do post</p>
         <textarea value={legenda} rows={3} aria-label="Legenda do post" onChange={(e) => setLegenda(e.target.value)} className={campo} />
       </>)}
@@ -174,7 +174,7 @@ function Abrir({ g, aoAprovar, excluir }: { g: Geracao; aoAprovar: () => void; e
   const [editando, setEditando] = useState(false);
   const [nota, setNota] = useState("");
   const avisar = useAviso();
-  const legenda = g.legenda ? (
+  const legenda = typeof g.legenda === "string" && g.legenda ? (
         <div className="vidro rounded-[18px] p-4">
           <p className="whitespace-pre-line text-[14px] leading-relaxed">{g.legenda}</p>
           {g.hashtags && <p className="mt-2 text-[13px] text-mute">{g.hashtags}</p>}

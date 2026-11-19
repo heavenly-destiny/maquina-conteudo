@@ -17,7 +17,7 @@
 - [Decupagem completa](feedback-decupagem-completa.md) — every cut + whole-video frame sheets, one beat per shot, nothing skipped
 - [Criados só vídeo](feedback-criados-so-video.md) — Criados grid only finished videos; copy/erro/gerando as rows; trash visible on cards
 - [Board antes de criar](feedback-board-antes-de-criar.md) — send opens settings board (legenda/trilha/duração) before any generation; music not in Inspirar
-- [Comunidade de ferramentas](comunidade-ferramentas.md) — community hub with many AI tools (Forja, page cloner, offer miner+board, swipe file), each sold alone, others locked inside for ascension
+- [Comunidade de ferramentas](comunidade-ferramentas.md) — community hub with many AI tools (Forja, page cloner, offer miner+board, swipe file), each sold alone, others locked inside for ascension; hub + other tools local only (~/Movies/comunidade), never in git
 - [Referências marketplaces UI](referencias-marketplaces-ui.md) — 21st + Skiper/Aceternity/Kokonut/Cult: how to present motion galleries in Forja
 - [Forja calendário + mascote](forja-mascote-calendario.md) — calendar built (no real network posting yet); mascot creator with reaction sheet pending
 - [Forja carrossel](forja-carrossel.md) — carousel refs get own creator (clone+edit slides), never video decupagem modes

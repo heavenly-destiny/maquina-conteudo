@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, ChevronLeft, ChevronRight, Download, Film, Trash2, Undo2, UploadCloud, Wand2, MessageCircle, Minus, Plus } from "lucide-react";
-import { atualizar, enviarVideo, fmtTempo, post, type Corte, type Estado, type Job } from "../api";
-import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Topo, Vazio, cascata, cx, mola, useAviso } from "../ui";
+import { atualizar, enviarVideo, fmtTempo, notaDe, post, type Corte, type Estado, type Job } from "../api";
+import { Botao, Nota, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Topo, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import { som } from "../sons";
 import { CardVitrine, Fileira, Secao } from "../Vitrine";
 import { Configurar, type ConfigCorte } from "../Configurar";
@@ -96,7 +96,7 @@ function Excluir({ rotulo, onConfirmar, className, icone }: { rotulo: string; on
 
 function CardCorte({ c, sel, onSel, onAbrir, i }: { c: Corte; sel: boolean; onSel?: () => void; onAbrir: () => void; i: number }) {
   return (
-    <Tile i={i} capa={c.capa} video={c.video} titulo={c.titulo} texto={c.gancho || c.titulo} sel={sel}
+    <Tile i={i} capa={c.capa} video={c.video} titulo={c.titulo} texto={c.gancho || c.titulo} sel={sel} nota={notaDe(c) || undefined}
       status={c.status || "planejado"} fase={c.status === "editando" ? c.fase : undefined} dur={c.dur ? fmtTempo(c.dur) : undefined} onClick={onAbrir}
       canto={onSel && (
         <button aria-label="Selecionar" onClick={() => { som.toque(); onSel(); }}
@@ -134,6 +134,7 @@ function Detalhe({ job, lista, idx, setIdx }: { job: Job; lista: Corte[]; idx: n
           <h3 className="text-[21px] font-semibold leading-tight tracking-[-0.02em]">{c.titulo}</h3>
           <span className="text-[13px] text-faint tnum">{fmtTempo(c.inicio)} a {fmtTempo(c.fim)} do vídeo cru</span>
         </div>
+        {c.viral && <PainelViral v={c.viral} />}
         {c.legenda && (
           <div className="vidro rounded-[18px] p-4">
             <p className="whitespace-pre-line text-[14px] leading-relaxed text-ink/90">{c.legenda}</p>
@@ -187,6 +188,32 @@ function Detalhe({ job, lista, idx, setIdx }: { job: Job; lista: Corte[]; idx: n
   );
 }
 
+/* nota de viral do corte: número grande + as 4 notas e o porquê (estilo OpusClip) */
+function PainelViral({ v }: { v: NonNullable<Corte["viral"]> }) {
+  const itens: [string, number][] = [["Gancho", v.gancho], ["Ritmo", v.ritmo], ["Valor", v.valor], ["Tendência", v.tendencia]];
+  return (
+    <div className="vidro flex flex-col gap-3.5 rounded-[18px] p-4">
+      <div className="flex items-center gap-3">
+        <span className={cx("text-[34px] font-bold leading-none tracking-[-0.04em] tnum", v.nota >= 80 ? "text-red" : v.nota >= 65 ? "text-[#ff5a64]" : "text-ink/80")}>{v.nota}</span>
+        <div className="min-w-0">
+          <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-faint">Nota de viral</p>
+          <p className="text-[13.5px] leading-snug text-ink/85">{v.porque}</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-4">
+        {itens.map(([r, n], k) => (
+          <div key={r} className="flex flex-col gap-1.5">
+            <span className="flex justify-between text-[12px] text-mute"><span>{r}</span><span className="tnum text-ink/80">{n}</span></span>
+            <span className="h-1.5 overflow-hidden rounded-full bg-white/[0.07]">
+              <motion.span className="block h-full rounded-full bg-red" initial={{ width: 0 }} animate={{ width: `${n * 10}%` }} transition={{ ...mola, delay: 0.05 * k }} />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const ETAPAS = ["Ouvindo o vídeo", "Escolhendo cortes", "Editando", "Pronto"];
 function etapaIdx(j: Job) {
   if (!j.cortes.length) return j.etapa === "planejando" ? 1 : 0;
@@ -198,8 +225,8 @@ function etapaIdx(j: Job) {
 /* a IA diz quanto o vídeo rende; a pessoa escolhe quantos quer (os melhores primeiro) */
 function Quantos({ job, sel, setSel }: { job: Job; sel: Set<number>; setSel: (s: Set<number>) => void }) {
   const livres = job.cortes.filter((c) => c.status === "planejado" || !c.status);
-  const ranking = [...livres].sort((a, b) => (b.forca ?? 0) - (a.forca ?? 0) || a.n - b.n);
-  const fortes = livres.filter((c) => (c.forca ?? 0) >= 7).length;
+  const ranking = [...livres].sort((a, b) => notaDe(b) - notaDe(a) || a.n - b.n);
+  const fortes = livres.filter((c) => notaDe(c) >= 70).length;
   if (livres.length < 2) return null;
   const n = sel.size;
   const marcar = (k: number) => { som.toque(); setSel(new Set(ranking.slice(0, Math.max(0, Math.min(k, ranking.length))).map((c) => c.n))); };
@@ -256,7 +283,7 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
   const [formato, setFormato] = useState<"dividida" | "cheia">("dividida");
   const [aberto, setAberto] = useState<number | null>(null);
   const avisar = useAviso();
-  const lista = useMemo(() => { const l = job.cortes.filter((c) => filtrar(c, filtro)); return filtro === "escolher" ? l.sort((a, b) => (b.forca ?? 0) - (a.forca ?? 0) || a.n - b.n) : l; }, [job, filtro]);
+  const lista = useMemo(() => { const l = job.cortes.filter((c) => filtrar(c, filtro)); return filtro === "escolher" ? l.sort((a, b) => notaDe(b) - notaDe(a) || a.n - b.n) : l; }, [job, filtro]);
   const conta = (f: Filtro) => job.cortes.filter((c) => filtrar(c, f)).length;
   const et = etapaIdx(job);
   const selPlan = [...sel].filter((n) => job.cortes.find((c) => c.n === n && (c.status === "planejado" || !c.status)));
@@ -344,7 +371,7 @@ export function Cortes({ e }: { e: Estado | null }) {
   const [vista, setVista] = useState<"geral" | "video" | "prontos" | "editando">("geral");
   const [abertoV, setAbertoV] = useState<{ job: Job; lista: Corte[]; idx: number } | null>(null);
   const nomeJob = (j: Job) => (j.bruto || j.id).replace(/\.(mov|mp4|m4v)$/i, "");
-  const porForca = (a: Corte, b: Corte) => (b.forca ?? 0) - (a.forca ?? 0) || a.n - b.n;
+  const porForca = (a: Corte, b: Corte) => notaDe(b) - notaDe(a) || a.n - b.n;
   const prontosG = jobs.flatMap((j) => j.cortes.filter((c) => filtrar(c, "prontos")).map((c) => ({ j, c }))).sort((a, b) => porForca(a.c, b.c));
   const editandoG = jobs.flatMap((j) => j.cortes.filter((c) => c.status === "editando").map((c) => ({ j, c })));
   const abrirV = (j: Job, lista: Corte[], c: Corte) => { som.abrir(); setAbertoV({ job: j, lista, idx: lista.indexOf(c) }); };
@@ -388,7 +415,7 @@ export function Cortes({ e }: { e: Estado | null }) {
               <Fileira>
                 {prontosG.slice(0, 16).map(({ j, c }, k) => (
                   <CardVitrine key={`${j.id}:${c.n}`} i={k} img={c.capa} video={c.video} titulo={c.titulo} meta={metaCorte(j, c)}
-                    selo={c.status === "enviado" ? "Enviado" : undefined} onClick={() => abrirV(j, prontosG.map((x) => x.c).filter((x) => j.cortes.includes(x)), c)} />
+                    selo={c.status === "enviado" ? "Enviado" : undefined} nota={notaDe(c) || undefined} onClick={() => abrirV(j, prontosG.map((x) => x.c).filter((x) => j.cortes.includes(x)), c)} />
                 ))}
               </Fileira>
             </Secao>
@@ -412,7 +439,7 @@ export function Cortes({ e }: { e: Estado | null }) {
                 <Fileira>
                   {lista.slice(0, 16).map((c, n) => (
                     <CardVitrine key={c.n} i={n} img={c.capa} video={c.video} titulo={c.titulo} meta={c.gancho || fmtTempo(c.dur ?? c.fim - c.inicio)}
-                      selo={c.status === "pronto" ? "Pronto" : c.status === "editando" ? "Editando" : c.forca ? `Força ${c.forca}` : undefined}
+                      selo={c.status === "editando" ? "Editando" : undefined} nota={notaDe(c) || undefined}
                       onClick={() => abrirV(j, lista, c)} />
                   ))}
                 </Fileira>

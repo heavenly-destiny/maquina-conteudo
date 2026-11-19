@@ -1,0 +1,7 @@
+name = "forja-imagem"
+main = "index.js"
+account_id = "18374d1d24c8719460c31d9eed22762d"
+compatibility_date = "2026-11-01"
+workers_dev = true
+[ai]
+binding = "AI"

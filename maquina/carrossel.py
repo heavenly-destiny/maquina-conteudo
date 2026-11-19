@@ -77,7 +77,8 @@ def blocos(linhas):
             perto = 0 <= l["y0"] - ult["y1"] < 0.8 * max(h, hb)
             mesma = 0.75 < h / hb < 1.33
             alinha = abs(l["x0"] - ult["x0"]) < hb * 1.5 or abs((l["x0"] + l["x1"]) - (ult["x0"] + ult["x1"])) / 2 < hb * 1.5
-            if perto and mesma and alinha:
+            parecido = float(np.abs(l["bg"] - ult["bg"]).sum()) < 45
+            if perto and mesma and alinha and parecido:
                 b["linhas"].append(l); break
         else:
             out.append({"linhas": [l]})
@@ -85,30 +86,26 @@ def blocos(linhas):
 
 
 def slide(ocr, arq, saida_fundo, W):
-    img = cv2.imread(str(arq))
-    h, w = img.shape[:2]
+    bruta = cv2.imread(str(arq), cv2.IMREAD_UNCHANGED)
+    if bruta.ndim == 2:
+        bruta = cv2.cvtColor(bruta, cv2.COLOR_GRAY2BGR)
+    h, w = bruta.shape[:2]
     if w > W:  # trabalha em 1080 de largura (padrão do feed); acelera e deixa os tamanhos comparáveis
-        img = cv2.resize(img, (W, round(h * W / w)), interpolation=cv2.INTER_AREA)
-        h, w = img.shape[:2]
+        bruta = cv2.resize(bruta, (W, round(h * W / w)), interpolation=cv2.INTER_AREA)
+        h, w = bruta.shape[:2]
+    # PNG com transparência: o OpenCV leria a cor escondida atrás do transparente (mudava a foto toda).
+    # Trabalha em cima do que se vê (sobre preto) e devolve a transparência no fundo limpo.
+    alfa = bruta[..., 3] if bruta.shape[2] == 4 else None
+    img = (bruta[..., :3].astype(np.float32) * (alfa[..., None] / 255.0)).astype(np.uint8) if alfa is not None else bruta[..., :3]
     linhas = [l for l in ler_textos(ocr, arq, img) if l["x1"] - l["x0"] > 3 and l["y1"] - l["y0"] > 3]
-    for l in linhas:  # caixa sempre dentro do slide
+    for l in linhas:  # caixa sempre dentro do slide; bg = brilho do fundo da linha (pra não juntar título com barra colorida)
         l["x0"], l["x1"] = max(l["x0"], 0), min(l["x1"], w)
         l["y0"], l["y1"] = max(l["y0"], 0), min(l["y1"], h)
-    # texto em cima de foto (print de story dentro do slide, legenda da foto) fica no fundo: apagar borra a foto
-    # e a camada solta fica estranha. Fundo liso em volta = texto do design = vira camada.
+        borda = np.concatenate([img[l["y0"], l["x0"]:l["x1"]], img[l["y1"] - 1, l["x0"]:l["x1"]]]).astype(int)
+        l["bg"] = np.median(borda, axis=0) if len(borda) else np.zeros(3)
+    # Todo texto lido vira camada. A foto original continua intacta no editor: só o retângulo do texto que a
+    # pessoa mexer é trocado pelo fundo limpo (estilo "editar texto" do Canva), então texto em cima de foto não borra nada.
     cinza = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    caixas = np.zeros((h, w), bool)  # o anel em volta de uma linha não conta as outras linhas de texto
-    for l in linhas:
-        caixas[l["y0"]:l["y1"], l["x0"]:l["x1"]] = True
-    def liso(l):
-        a = max(6, (l["y1"] - l["y0"]) // 2)
-        x0, y0, x1, y1 = max(l["x0"] - a, 0), max(l["y0"] - a, 0), min(l["x1"] + a, w), min(l["y1"] + a, h)
-        livre = ~caixas[y0:y1, x0:x1]
-        if livre.sum() < 20:  # linha engolida por outras caixas: quase sempre texto miúdo dentro de foto
-            return False
-        # textura do entorno (Laplaciano): gradiente liso do design fica < 2, foto passa de 6
-        return float(np.abs(cv2.Laplacian(cinza[y0:y1, x0:x1], cv2.CV_64F))[livre].mean()) < 5.5
-    linhas = [l for l in linhas if liso(l)]
     # máscara do texto: dentro de cada caixa, o que destoa do fundo; dilata pra pegar a borda suave
     mascara = np.zeros((h, w), np.uint8)
     for l in linhas:
@@ -117,13 +114,30 @@ def slide(ocr, arq, saida_fundo, W):
         if reg.shape[0] < 4 or reg.shape[1] < 4:
             continue
         _, bin_ = cv2.threshold(reg, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        borda = np.concatenate([reg[0], reg[-1], reg[:, 0], reg[:, -1]])
-        letra = bin_ if np.median(borda) < 128 else 255 - bin_  # letra é o lado que não é o fundo
+        letra = bin_ if (bin_ > 0).mean() < 0.5 else 255 - bin_  # letra é o lado minoritário da caixa (a borda pode pegar a barra vizinha)
         mascara[y0:y1, x0:x1] = np.maximum(mascara[y0:y1, x0:x1], letra)
     letras = mascara.copy()
-    mascara = cv2.dilate(mascara, np.ones((5, 5), np.uint8), iterations=3)
-    fundo = cv2.inpaint(img, mascara, 7, cv2.INPAINT_TELEA) if linhas else img
-    cv2.imwrite(str(saida_fundo), fundo)
+    mascara = cv2.dilate(mascara, np.ones((3, 3), np.uint8), iterations=2)
+    fundo = img.copy()
+    alfa_f = alfa.copy() if alfa is not None else None  # a transparência também perde o texto (senão ele vaza pelo remendo)
+    resto = np.zeros((h, w), np.uint8)
+    for l in linhas:  # caixa em fundo chapado (barra, faixa, cartão): pinta com a cor do fundo, sem borrão
+        a = 1
+        x0, y0, x1, y1 = max(l["x0"] - a, 0), max(l["y0"] - a, 0), min(l["x1"] + a, w), min(l["y1"] + a, h)
+        m = mascara[y0:y1, x0:x1] > 0
+        anel = img[y0:y1, x0:x1][~m].astype(int)
+        if len(anel) > 20 and anel.std(axis=0).max() < 14:
+            fundo[y0:y1, x0:x1][m] = np.median(anel, axis=0).astype(np.uint8)
+            if alfa_f is not None:
+                alfa_f[y0:y1, x0:x1][m] = np.uint8(np.median(alfa[y0:y1, x0:x1][~m]))
+        else:
+            resto[max(l["y0"] - 2, 0):l["y1"] + 2, max(l["x0"] - 2, 0):l["x1"] + 2] = 255  # degradê/foto: o Otsu erra a letra, apaga a caixa inteira
+    if resto.any():
+        r2 = cv2.dilate(resto, np.ones((3, 3), np.uint8))
+        fundo = cv2.inpaint(fundo, r2, 7, cv2.INPAINT_TELEA)
+        if alfa_f is not None:
+            alfa_f = cv2.inpaint(alfa_f, r2, 7, cv2.INPAINT_TELEA)
+    cv2.imwrite(str(saida_fundo), np.dstack([fundo, alfa_f]) if alfa is not None else fundo)
 
     camadas = []
     for i, b in enumerate(blocos(linhas)):
@@ -142,7 +156,8 @@ def slide(ocr, arq, saida_fundo, W):
             "x": x0 / w, "y": y0 / h, "w": (x1 - x0) / w, "h": (y1 - y0) / h,
             "tam": round(alt * 0.86 / w, 4),  # tamanho da fonte relativo à largura do slide (altura da caixa ≈ 1,16 × fonte)
             "cor": cor, "peso": 800 if tinta > 0.36 else 600 if tinta > 0.26 else 400, "alinhar": alinhar,
-            "fonte": "Inter", "fixo": True,  # mantém as quebras do original (o editor encolhe se a fonte sair larga)
+            "fonte": "Inter", "fixo": True,
+            "orig": {"x": x0 / w, "y": y0 / h, "w": (x1 - x0) / w, "h": (y1 - y0) / h},  # mantém as quebras do original (o editor encolhe se a fonte sair larga)
         })
     return {"w": w, "h": h, "camadas": camadas}
 

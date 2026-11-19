@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { som } from "./sons";
-import { cx, molaSuave } from "./ui";
+import { Nota, cx, molaSuave } from "./ui";
 
 export function Secao({ titulo, sub, total, verTudo, children, i = 0 }: { titulo: string; sub?: string; total?: number; verTudo?: () => void; children: ReactNode; i?: number }) {
   return (
@@ -54,8 +54,8 @@ export function Fileira({ children }: { children: ReactNode }) {
 }
 
 /* card da vitrine: mídia 9:16 com vídeo que toca no hover (só carrega quando o mouse entra), título e meta embaixo */
-export function CardVitrine({ img, video, titulo, meta, selo, rank, i, onClick, canto, largura = "w-[42vw] max-w-[188px] sm:w-[188px]" }: {
-  img?: string | null; video?: string | null; titulo?: string; meta?: ReactNode; selo?: ReactNode; rank?: number; i: number; onClick: () => void; canto?: ReactNode; largura?: string;
+export function CardVitrine({ img, video, titulo, meta, selo, nota, rank, i, onClick, canto, largura = "w-[42vw] max-w-[188px] sm:w-[188px]" }: {
+  img?: string | null; video?: string | null; titulo?: string; meta?: ReactNode; selo?: ReactNode; nota?: number; rank?: number; i: number; onClick: () => void; canto?: ReactNode; largura?: string;
 }) {
   const vid = useRef<HTMLVideoElement>(null);
   const [tocando, setTocando] = useState(false);
@@ -89,6 +89,7 @@ export function CardVitrine({ img, video, titulo, meta, selo, rank, i, onClick, 
               <Play className="size-3 fill-current" />
             </span>
           )}
+          {!selo && !!nota && <span className="absolute left-2 top-2"><Nota n={nota} /></span>}
           {selo && <span className="absolute left-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{selo}</span>}
         </button>
         {canto}

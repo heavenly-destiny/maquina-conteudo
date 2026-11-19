@@ -8,7 +8,7 @@ import { Fundo } from "./Fundo";
 import { Sidebar } from "./Sidebar";
 import { useEstado } from "./api";
 import { som } from "./sons";
-import { Avisos, Marca, cx, molaSuave } from "./ui";
+import { Avisos, Marca, Protege, cx, molaSuave } from "./ui";
 import { Inicio } from "./telas/Inicio";
 // telas pesadas ou raras carregam só quando abertas (bundle inicial menor)
 const Ajustes = lazy(() => import("./telas/Ajustes").then((m) => ({ default: m.Ajustes })));
@@ -152,7 +152,7 @@ export default function App() {
                   exit={{ opacity: 0, y: -8, filter: "blur(6px)", transition: { duration: 0.15 } }}
                   transition={molaSuave}
                 >
-                  <Suspense fallback={null}>
+                  <Protege key={aba}><Suspense fallback={null}>
                   {aba === "inicio" && <Inicio e={e} ir={ir} rascunho={rascunho} limpar={limparRascunho} />}
                   {aba === "cortes" && <Cortes e={e} />}
                   {aba === "criar" && <Criar e={e} ir={ir} />}
@@ -161,7 +161,7 @@ export default function App() {
                   {aba === "mascotes" && <Mascotes e={e} />}
                   {aba === "carrosseis" && <Carrosseis e={e} />}
                   {aba === "ajustes" && <Ajustes ligado={ligado} alternarSom={() => setLigado(som.alternar())} lateral={lateral} setLateral={setLateral} refazer={refazerConfig} fechar={() => ir("inicio")} />}
-                  </Suspense>
+                  </Suspense></Protege>
                 </motion.div>
               </AnimatePresence>
             </main>

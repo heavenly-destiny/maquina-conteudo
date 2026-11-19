@@ -124,6 +124,9 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
   verOriginal?: boolean; refNo?: (el: HTMLDivElement | null) => void; ajustar?: (id: string, tam: number) => void;
 }) {
   const altura = largura * (s.h / s.w);
+  // foto original de base (nada borra); só tapa com o fundo limpo a caixa do texto que a pessoa mexeu
+  const sobreOriginal = s.camadas.some((c) => c.orig) && !s.fundo.includes("/trocas/");
+  const mexeu = (c: Camada) => !!(c.mexido || c.oculto || editando === c.id);
   const arrasto = useRef<{ id: string; x: number; y: number; cx: number; cy: number; modo: "mover" | "largura"; w: number } | null>(null);
   const baixo = (ev: PE, c: Camada, modo: "mover" | "largura") => {
     if (!mudar || editando === c.id) return;
@@ -140,8 +143,14 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
   return (
     <div ref={refNo} onPointerDown={() => { setSel?.(null); setEditando?.(null); }} onPointerMove={mexe} onPointerUp={() => (arrasto.current = null)}
       className="relative select-none overflow-hidden bg-[#1a0a0d]" style={{ width: largura, height: altura }}>
-      <img src={verOriginal ? s.origem : s.fundo} alt="" draggable={false} className="absolute inset-0 size-full object-cover" crossOrigin="anonymous" />
-      {!verOriginal && s.camadas.map((c) => {
+      <img src={verOriginal || sobreOriginal ? s.origem : s.fundo} alt="" draggable={false} className="absolute inset-0 size-full object-cover" crossOrigin="anonymous" />
+      {!verOriginal && sobreOriginal && s.camadas.filter((c) => c.orig && mexeu(c)).map((c) => {
+        const o = c.orig!, p = 2, x = o.x * largura - p, y = o.y * altura - p;
+        return <div key={`r${c.id}`} className="pointer-events-none absolute" style={{ left: x, top: y, width: o.w * largura + 2 * p, height: o.h * altura + 2 * p,
+          backgroundColor: "#1a0a0d", /* mesma cor do palco: em PNG transparente o texto original não vaza pelo remendo */
+          backgroundImage: `url("${s.fundo}")`, backgroundSize: `${largura}px ${altura}px`, backgroundPosition: `${-x}px ${-y}px` }} />;
+      })}
+      {!verOriginal && s.camadas.filter((c) => !c.oculto).map((c) => {
         const ativo = sel === c.id, edit = editando === c.id;
         const estilo = {
           left: c.x * largura, top: c.y * altura, ...(c.tipo === "texto" && c.fixo ? { minWidth: c.w * largura } : { width: c.w * largura }),
@@ -153,8 +162,10 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
             className={cx("absolute", mudar && !edit && "cursor-move", mudar && (ativo ? "outline outline-2 outline-red" : "hover:outline hover:outline-1 hover:outline-white/40"))}>
             {c.tipo === "imagem" ? <img src={c.src} alt="" draggable={false} className="size-full object-contain" />
               : (
+                <div style={sobreOriginal && c.orig && !mexeu(c) ? { opacity: 0 } : undefined}>
                 <TextoCamada c={c} largura={largura} edit={edit} ajustar={ajustar && ((tam) => ajustar(c.id, tam))}
                   salvar={(texto) => { if (texto !== c.texto) mudar?.(c.id, { texto }); setEditando?.(null); }} />
+                </div>
               )}
             {ativo && mudar && !edit && (
               <span onPointerDown={(ev) => baixo(ev, c, "largura")} aria-label="Largura"
@@ -272,7 +283,8 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
     const n = { ...v, editado: true, slides: v.slides.map((s, i) => (i === k ? { ...s, camadas: fn(s.camadas) } : s)) };
     salvar(n); return n;
   });
-  const mudar = (cid: string, p: Partial<Camada>) => mudarCamadas((cs) => cs.map((x) => (x.id === cid ? { ...x, ...p } : x)));
+  const mudar = (cid: string, p: Partial<Camada>) => mudarCamadas((cs) => cs.map((x) => (x.id === cid ? { ...x, ...p, mexido: true } : x)));
+  const tirar = (cid: string) => mudarCamadas((cs) => cs.flatMap((x) => (x.id !== cid ? [x] : x.orig ? [{ ...x, oculto: true, mexido: true }] : [])));
   const ajustar = (cid: string, tam: number) => setC((v) => { // correção automática de tamanho: não entra no desfazer
     if (!v) return v;
     const n = { ...v, slides: v.slides.map((s, i) => (i === k ? { ...s, camadas: s.camadas.map((x) => (x.id === cid ? { ...x, tam, ajustado: true } : x)) } : s)) };
@@ -332,7 +344,7 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
       if (editando || (ev.target as HTMLElement)?.closest("input,textarea,select,[contenteditable=true]")) return;
       if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === "z") { ev.preventDefault(); desfazer(ev.shiftKey); return; }
       if (ev.key === "Escape") { if (sel) setSel(null); else fechar(); }
-      if ((ev.key === "Delete" || ev.key === "Backspace") && sel) { mudarCamadas((cs) => cs.filter((x) => x.id !== sel)); setSel(null); }
+      if ((ev.key === "Delete" || ev.key === "Backspace") && sel) { tirar(sel); setSel(null); }
       if (ev.key === "ArrowRight" && c) setK((v) => Math.min(v + 1, c.slides.length - 1));
       if (ev.key === "ArrowLeft") setK((v) => Math.max(v - 1, 0));
     };
@@ -413,7 +425,7 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
           {!camada && (
             <aside className="hidden shrink-0 border-l border-white/[0.06] p-5 lg:block lg:w-[300px]">
               <span className="text-[15px] font-semibold">Editar</span>
-              <p className="mt-2 text-[13.5px] leading-relaxed text-mute">Clique num texto pra mudar fonte, cor e tamanho. Duplo clique troca o texto. Arraste pra mover.</p>
+              <p className="mt-2 text-[13.5px] leading-relaxed text-mute">Passe o mouse pra ver cada texto do slide. Clique pra mudar fonte, cor e tamanho, duplo clique troca o texto, arraste pra mover. A foto só muda onde você mexer.</p>
               <p className="mt-3 text-[12.5px] text-faint">⌘Z desfaz · Delete tira a camada · setas trocam o slide</p>
             </aside>
           )}
@@ -425,7 +437,7 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
                   <span className="text-[15px] font-semibold">{camada.tipo === "texto" ? "Texto" : "Imagem"}</span>
                   <button aria-label="Fechar painel" onClick={() => setSel(null)} className="grid size-9 cursor-pointer place-items-center rounded-full text-faint hover:bg-white/[0.06] hover:text-ink"><X className="size-4" /></button>
                 </div>
-                <Painel c={camada} mudar={(p) => mudar(camada.id, p)} excluir={() => { mudarCamadas((cs) => cs.filter((x) => x.id !== camada.id)); setSel(null); }} />
+                <Painel c={camada} mudar={(p) => mudar(camada.id, p)} excluir={() => { tirar(camada.id); setSel(null); }} />
               </motion.aside>
             )}
           </AnimatePresence>

@@ -6,18 +6,19 @@ Uso: python3 mascote.py <id>   (pasta RAIZ/mascotes/<id> com pedido.json: modelo
 2. folhas: a base vai de referência e o modelo desenha 4x4 reações do MESMO personagem por folha
 3. recorte: cada célula vira um PNG transparente em reacoes/<nome>.png, pronto pra animar no vídeo
 
-Imagem pelo Gemini (chave do .env). O plano grátis do Gemini não gera imagem (cota zero):
-precisa de faturamento ativo no Google AI Studio, ~US$0,04 por imagem (uma folha = 1 imagem).
+Imagem pelo Workers AI da Cloudflare (FLUX.2), via o Worker forja-imagem (maquina/worker-imagem).
+Grátis dentro da cota diária do Workers AI. Cada reação é uma edição da base, então o personagem não muda.
 """
-import base64, json, sys, time, urllib.request, urllib.error
+import io, json, sys, time, urllib.request, urllib.error, uuid
 from pathlib import Path
 from PIL import Image, ImageFilter
 
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent
 MASC = RAIZ / "mascotes"
-MODELO_BASE = "gemini-3.1-flash-lite-image"  # mais barato, só pro personagem de frente
-MODELO_FOLHA = "gemini-3.1-flash-image"      # segura o personagem igual em todas as células
+URL = "https://forja-imagem.tanpzdigital-183.workers.dev"
+MODELO_BASE = "@cf/black-forest-labs/flux-2-dev"      # personagem de frente, mais caprichado
+MODELO_REACAO = "@cf/black-forest-labs/flux-2-klein-9b"  # edita a base: ~5 s por reação, segura o personagem
 
 MODELOS = {  # o mesmo texto que a tela mostra; aqui vira o estilo do prompt
     "traco": "minimalist hand-drawn doodle character, black marker lines, simple dot eyes, like viral YouTube explainer cartoons, flat white body",
@@ -47,7 +48,7 @@ def chave():
     f = AQUI / ".env"
     for l in (f.read_text().splitlines() if f.exists() else []):
         k, _, v = l.partition("=")
-        if k.strip() == "GEMINI_API_KEY" and v.strip():
+        if k.strip() == "FORJA_IMG_CHAVE" and v.strip():
             return v.strip().strip("\"'")
 
 
@@ -58,32 +59,38 @@ def estado(d, **kw):
     f.write_text(json.dumps(e, ensure_ascii=False))
 
 
-def gerar(modelo, texto, ref=None, tentativas=3):
-    partes = [{"text": texto}]
-    if ref:
-        mime = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}.get(ref.suffix.lower(), "image/png")
-        partes.insert(0, {"inlineData": {"mimeType": mime, "data": base64.b64encode(ref.read_bytes()).decode()}})
-    corpo = json.dumps({"contents": [{"parts": partes}], "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "1:1"}}}).encode()
+def ref512(ref):
+    """o FLUX.2 aceita referência de até 512 px"""
+    im = Image.open(ref).convert("RGB")
+    im.thumbnail((512, 512))
+    b = io.BytesIO(); im.save(b, "PNG")
+    return b.getvalue()
+
+
+def gerar(modelo, texto, ref=None, tentativas=3, lado=1024):
+    campos = {"prompt": texto, "modelo": modelo, "w": str(lado), "h": str(lado)}
     for k in range(tentativas):
-        req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent", corpo,
-                                     {"content-type": "application/json", "x-goog-api-key": chave() or ""})
+        fr = uuid.uuid4().hex
+        corpo = b"".join(f'--{fr}\r\nContent-Disposition: form-data; name="{n}"\r\n\r\n{v}\r\n'.encode() for n, v in campos.items())
+        if ref:
+            corpo += f'--{fr}\r\nContent-Disposition: form-data; name="ref0"; filename="ref.png"\r\nContent-Type: image/png\r\n\r\n'.encode() + ref512(ref) + b"\r\n"
+        corpo += f"--{fr}--\r\n".encode()
+        req = urllib.request.Request(URL, corpo, {"content-type": f"multipart/form-data; boundary={fr}", "x-chave": chave() or "", "user-agent": "Forja/1.0"})
         try:
-            d = json.load(urllib.request.urlopen(req, timeout=180))
-            for p in d["candidates"][0]["content"]["parts"]:
-                if "inlineData" in p:
-                    return base64.b64decode(p["inlineData"]["data"])
-            raise RuntimeError("o Gemini respondeu sem imagem")
+            return urllib.request.urlopen(req, timeout=180).read()
         except urllib.error.HTTPError as er:
             msg = er.read().decode(errors="ignore")
-            if er.code == 429 and "limit: 0" in msg:
-                raise RuntimeError("O plano grátis do Gemini não gera imagem. Ative o faturamento em aistudio.google.com (cerca de US$0,04 por imagem) e tente de novo.")
-            if er.code in (429, 500, 503) and k < tentativas - 1:
-                time.sleep(8 * (k + 1)); continue
-            raise RuntimeError(f"Gemini {er.code}: {msg[:200]}")
+            if er.code == 401:
+                raise RuntimeError("O gerador de imagem recusou a chave. Rode a instalação de novo.")
+            if "neuron" in msg.lower() or "quota" in msg.lower() or "4006" in msg:
+                raise RuntimeError("A cota grátis de imagem de hoje acabou. Amanhã ela volta, toque em Tentar de novo.")
+            if k < tentativas - 1:
+                time.sleep(5 * (k + 1)); continue
+            raise RuntimeError(f"O gerador de imagem falhou ({er.code}). Toque em Tentar de novo.")
         except (TimeoutError, urllib.error.URLError) as er:
             if k < tentativas - 1:
                 time.sleep(5); continue
-            raise RuntimeError(f"Gemini não respondeu: {er}")
+            raise RuntimeError("O gerador de imagem não respondeu. Toque em Tentar de novo.")
 
 
 def chroma(cor):
@@ -91,9 +98,18 @@ def chroma(cor):
     return ("#FF00FF", (255, 0, 255)) if "verde" in cor.lower() or "green" in cor.lower() else ("#00FF00", (0, 255, 0))
 
 
+def fundo(img, pedido):
+    """cor do fundo de verdade: mediana da borda (o modelo pinta um verde parecido, não o #00FF00 exato)"""
+    w, h = img.size
+    px = [img.getpixel((x, y)) for x in range(0, w, 8) for y in (2, h - 3)] + [img.getpixel((x, y)) for y in range(0, h, 8) for x in (2, w - 3)]
+    px = [p for p in px if abs(p[0] - pedido[0]) + abs(p[1] - pedido[1]) + abs(p[2] - pedido[2]) < 300] or [pedido]
+    return tuple(sorted(c)[len(c) // 2] for c in zip(*px))
+
+
 def recortar(img, chave_rgb, saida):
     """tira o fundo chapado (distância da cor-chave, com borda suave) e corta no personagem"""
     img = img.convert("RGB")
+    chave_rgb = fundo(img, chave_rgb)
     kr, kg, kb = chave_rgb
     px = img.load()
     alfa = Image.new("L", img.size)
@@ -104,9 +120,11 @@ def recortar(img, chave_rgb, saida):
             r, g, b = px[x, y]
             dist = abs(r - kr) + abs(g - kg) + abs(b - kb)
             pa[x, y] = 0 if dist < 110 else 255 if dist > 230 else int((dist - 110) * 255 / 120)
-            if kg == 255 and g > max(r, b):  # despill: o verde que reflete no cabelo e na borda some
+            if kg > max(kr, kb) and g > max(r, b) + 12:  # sombra esverdeada no chão: some junto com o fundo
+                pa[x, y] = min(pa[x, y], max(0, int(255 * (1 - 1.6 * (g - max(r, b)) / max(1, kg - max(kr, kb))))))
+            if kg > max(kr, kb) and g > max(r, b):  # despill: o verde que reflete no cabelo e na borda some
                 px[x, y] = (r, max(r, b), b)
-            elif kg == 0 and min(r, b) > g:  # chave magenta
+            elif kg < min(kr, kb) and min(r, b) > g:  # chave magenta
                 px[x, y] = (min(r, g + (r - g) // 3), g, min(b, g + (b - g) // 3)) if dist < 230 else (r, g, b)
     alfa = alfa.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.6))
     out = img.convert("RGBA")
@@ -160,7 +178,7 @@ def rodar(id_):
             estado(d, status="gerando", fase="desenhando o mascote")
             foto = d / p["foto"] if p.get("foto") else None
             if foto and foto.exists():  # mascote da própria pessoa: a foto é a referência do rosto, cabelo e roupa
-                (d / "base.png").write_bytes(gerar(MODELO_FOLHA,
+                (d / "base.png").write_bytes(gerar(MODELO_BASE,
                     f"Turn the person in this photo into a mascot character. Keep what makes them recognizable: face shape, hair, skin tone, "
                     f"glasses or beard if any, clothing colors. {('Extra details: ' + p['caracteristicas'] + '. ') if p.get('caracteristicas') else ''}"
                     f"Style: {estilo}. Full body, front view, neutral friendly pose, centered, plain flat solid {hexa} background, "
@@ -170,22 +188,19 @@ def rodar(id_):
                     f"Character design of {quem}. Style: {estilo}. Full body, front view, neutral friendly pose, centered, "
                     f"plain flat solid {hexa} background, no shadow on the background, no text."))
         (d / "reacoes").mkdir(exist_ok=True)
-        for k, nomes in enumerate(FOLHAS, 1):
-            folha = d / f"folha{k}.png"
-            if not folha.exists():
-                estado(d, status="gerando", fase=f"folha de reações {k} de {len(FOLHAS)}")
-                lista = "; ".join(f"cell {i + 1}: {EN[n]}" for i, n in enumerate(nomes))
-                folha.write_bytes(gerar(MODELO_FOLHA,
-                    f"This is the mascot. Draw a character reaction sheet of EXACTLY this same character (same design, colors, proportions and style: {estilo}). "
-                    f"A 4 by 4 grid of 16 equal square cells, one full-body pose per cell, centered with empty margin, never touching the cell edges. "
-                    f"Reading order left to right, top to bottom. {lista}. Every cell on the same plain flat solid {hexa} background, "
-                    f"no grid lines, no borders, no text, no labels.", ref=d / "base.png"))
-            estado(d, status="gerando", fase=f"recortando a folha {k}")
-            im = Image.open(folha)
-            qs = quadros(im, rgb)
-            for i, q in enumerate(qs):  # nome só quando a folha veio com o número pedido; senão a ordem não bate
-                n = nomes[i] if len(qs) == len(nomes) else f"folha{k}-{i + 1:02d}"
-                recortar(im.crop(q), rgb, d / "reacoes" / f"{n}.png")
+        todas = [n for f in FOLHAS for n in f]
+        for i, n in enumerate(todas, 1):
+            png = d / "reacoes" / f"{n}.png"
+            if png.exists():
+                continue
+            estado(d, status="gerando", fase=f"reação {i} de {len(todas)}")
+            bruto = d / "reacoes" / f"_{n}.jpg"
+            bruto.write_bytes(gerar(MODELO_REACAO,
+                f"The same character from image 0 (identical design, colors, outfit and accessories, style: {estilo}), now {EN[n]}. "
+                f"Expressive face and body language. Full body, centered with empty margin, plain flat solid {hexa} background, "
+                f"no shadow on the background, no text.", ref=d / "base.png", lado=768))
+            recortar(Image.open(bruto), rgb, png)
+            bruto.unlink()
         recortar(Image.open(d / "base.png"), rgb, d / "mascote.png")
         estado(d, status="pronto", fase="")
     except Exception as er:

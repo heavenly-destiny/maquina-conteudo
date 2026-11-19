@@ -13,3 +13,5 @@ Vision stated 19/11/2026 (community name not decided yet):
 
 **Why:** shapes how every tool is designed: they must share one visual system and shell so they feel like one premium product, and each must be sellable alone.
 **How to apply:** build Forja (and future tools) with a design system that can live inside a shared hub (same tokens, sidebar, account), and keep each tool's UI "muito foda" since it is also the product shown in ads. Related: [[maquina-v2-produto]], [[maquina-repositorio]].
+
+**Git rule (19/11/2026, tanpz):** "o git é só forja por enquanto". The community hub visual and the other community tools (page cloner, offer miner) stay local only, outside the maquina-conteudo repo. Never commit or publish them with publicar.sh. Local folder: ~/Movies/comunidade (not a git repo).

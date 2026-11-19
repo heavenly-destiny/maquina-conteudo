@@ -138,6 +138,18 @@ def jobs():
     return out
 
 
+def erro_humano(e):
+    """erro técnico (comando do claude inteiro, stack) vira frase que a pessoa entende."""
+    e = str(e)
+    if "timed out" in e:
+        return "Passou de 1 hora e parou. Toque em Tentar de novo."
+    if "auth" in e.lower() or "login" in e.lower() or "401" in e:
+        return "A conta do Claude desconectou. Entre de novo em Ajustes > Conexões e tente de novo."
+    if "--allowedTools" in e or "Traceback" in e or len(e) > 300:
+        return "Algo falhou no meio da geração. Toque em Tentar de novo."
+    return e
+
+
 def pasta_corte(job, n):
     """pasta do corte n do job (sem sair de jobs/)."""
     j = (JOBS / str(job)).resolve()
@@ -351,7 +363,13 @@ def pastas(base):
     out = []
     for d in sorted(base.glob("*"), key=lambda x: -x.stat().st_mtime) if base.exists() else []:
         if (d / "pedido.json").exists():
-            out.append((d, {**lerj(d / "pedido.json", {}), **lerj(d / "estado.json", {}), "id": d.name}))
+            ped = lerj(d / "pedido.json", {})
+            if isinstance(ped.get("legenda"), dict):  # estilo de legenda do pedido não é a legenda do post (quebrava a tela)
+                ped["legendaEstilo"] = ped.pop("legenda")
+            est = lerj(d / "estado.json", {})
+            if est.get("erro"):
+                est["erro"] = erro_humano(est["erro"])
+            out.append((d, {**ped, **est, "id": d.name}))
     return out
 
 
@@ -1130,7 +1148,7 @@ class H(BaseHTTPRequestHandler):
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("mascote.py", id_)
             return self._json({"ok": True, "id": id_})
-        elif u == "/api/refazer-mascote":  # tenta de novo de onde parou (depois de ligar o faturamento, por ex.)
+        elif u == "/api/refazer-mascote":  # tenta de novo de onde parou (cota do dia acabou, rede caiu)
             m = MASC / Path(str(d.get("id", ""))).name
             if not (m / "pedido.json").exists():
                 return self._json({"erro": "mascote não existe"}, 404)

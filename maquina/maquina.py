@@ -295,6 +295,7 @@ def planejar(j):
     j.salvar()
     j.log(f"{len(plano)} cortes planejados")
     legendas(j)
+    viral(j)
     avisar(f"Esse vídeo rende {len(plano)} cortes. Escolha quantos quer fazer")
 
 
@@ -314,6 +315,25 @@ def legendas(j):
     for c in j.e["cortes"]:
         if int(c["n"]) in leg:
             c.update(leg[int(c["n"])])
+            j.salvar(c["n"])
+
+
+def viral(j):
+    """nota de viral (0-99) de cada corte, estilo OpusClip: gancho, ritmo, valor, tendência e o porquê. Roda uma vez por job."""
+    f = j.p / "viral.json"
+    if not f.exists():
+        j.log("dando nota de viral")
+        try:
+            claude(prompt("viral", job=j.p), j.p, MODELO_CORTE, "log_viral.txt")
+        except Exception as ex:
+            return j.log(f"viral: ERRO {ex}")
+    try:
+        v = {int(k): x for k, x in json.loads(f.read_text()).items()}
+    except Exception as ex:
+        return j.log(f"viral.json inválido: {ex}")
+    for c in j.e["cortes"]:
+        if int(c["n"]) in v:
+            c["viral"] = v[int(c["n"])]
             j.salvar(c["n"])
 
 
@@ -497,6 +517,8 @@ if __name__ == "__main__":
         refazer(achar_job(a[1]), a[2], a[3])
     elif a[0] == "ajustar":
         ajustar(achar_job(a[1]), a[2])
+    elif a[0] == "viral":
+        viral(achar_job(a[1]))
     elif a[0] == "legendas":
         legendas(achar_job(a[1]))
     elif a[0] == "status":

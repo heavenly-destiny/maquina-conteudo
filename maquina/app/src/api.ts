@@ -4,7 +4,11 @@ export type Corte = {
   n: number; slug: string; titulo: string; gancho?: string; inicio: number; fim: number;
   status?: string; fase?: string; desde?: number; video?: string | null; capa?: string | null;
   nome: string; trecho?: string; dur?: number | null; legenda?: string; hashtags?: string; nota?: string; forca?: number;
+  viral?: Viral; erro_ajuste?: string;
 };
+/* nota de viral estilo OpusClip (maquina.py viral): 0-99 + notas 0-10 e o porquê */
+export type Viral = { nota: number; gancho: number; ritmo: number; valor: number; tendencia: number; porque: string };
+export const notaDe = (c: Corte) => c.viral?.nota ?? (c.forca ? c.forca * 10 : 0);
 export type Job = { id: string; categoria?: string; etapa?: string; duracao?: number; cortes: Corte[]; ultimo: string; bruto: string };
 export type Bruto = { path: string; nome: string; min: number; feito: boolean; data: number };
 export type Geracao = {
@@ -32,6 +36,8 @@ export type Mascote = {
 export type Camada = {
   id: string; tipo: "texto" | "imagem"; texto?: string; src?: string; x: number; y: number; w: number; h: number;
   tam?: number; cor?: string; peso?: number; alinhar?: "left" | "center" | "right"; fonte?: string; italico?: boolean; fundoCor?: string; fixo?: boolean; ajustado?: boolean;
+  /* texto lido do slide: caixa onde ele está na foto. Enquanto não mexe, a foto original aparece; mexeu, a caixa é tapada pelo fundo limpo */
+  orig?: { x: number; y: number; w: number; h: number }; mexido?: boolean; oculto?: boolean;
 };
 export type Carrossel = {
   id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string;

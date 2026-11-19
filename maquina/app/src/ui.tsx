@@ -1,8 +1,8 @@
-import { useId, useRef, createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { Component, useId, useRef, createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { Numero, TextoBrilho } from "./fx";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, ChevronLeft, ChevronRight, Copy, Film, Sparkles, Trash2, X } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, Copy, Film, Flame, Sparkles, Trash2, X } from "lucide-react";
 import { som } from "./sons";
 
 export const mola = { type: "spring", stiffness: 380, damping: 30 } as const;
@@ -408,8 +408,8 @@ function Ocupado({ fundo, texto, status, fase, desde }: { fundo?: string | null;
 }
 
 /* ---------- card de vídeo 9:16 (padrão hover-to-preview do skiper/21st): capa, toca no hover, título por cima ---------- */
-export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onClick, canto, rodape, sel, desde, fundo, id }: {
-  capa?: string | null; video?: string | null; titulo?: string; texto?: string; status?: string; fase?: string; dur?: string;
+export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onClick, canto, rodape, sel, desde, fundo, id, nota }: {
+  nota?: number; capa?: string | null; video?: string | null; titulo?: string; texto?: string; status?: string; fase?: string; dur?: string;
   i?: number; onClick: () => void; canto?: ReactNode; rodape?: ReactNode; sel?: boolean; desde?: number; fundo?: string | null; id?: string;
 }) {
   const vid = useRef<HTMLVideoElement>(null);
@@ -464,6 +464,7 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
       </button>
       {ocupado && <span className="pointer-events-none absolute left-2.5 top-2.5 flex max-w-[calc(100%-4.5rem)] rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={undefined} /></span>}
       {mostrarStatus && <span className="pointer-events-none absolute left-2.5 top-2.5 flex max-w-[calc(100%-4.5rem)] rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={fase} /></span>}
+      {!!nota && !ocupado && !mostrarStatus && <span className="pointer-events-none absolute left-2.5 top-2.5"><Nota n={nota} /></span>}
       {dur && <span className="pointer-events-none absolute right-2.5 top-2.5 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{dur}</span>}
       <span aria-hidden className="tilt-luz" />
       {canto}
@@ -471,6 +472,33 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
     </div>
     </motion.div>
   );
+}
+
+/* nota de viral no card: forte (80+) em vermelho cheio, boa (65+) com número vermelho, o resto discreto */
+export function Nota({ n, className }: { n: number; className?: string }) {
+  return (
+    <span title="Nota de viral" className={cx("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11.5px] font-semibold tnum backdrop-blur",
+      n >= 80 ? "bg-red text-white shadow-[0_6px_18px_-6px_rgb(225_29_42/0.9)]" : n >= 65 ? "bg-black/60 text-[#ff5a64]" : "bg-black/55 text-white/70", className)}>
+      <Flame className="size-3" strokeWidth={2.4} />{n}
+    </span>
+  );
+}
+
+/* uma tela que quebra não apaga o app inteiro: mostra o aviso e deixa recarregar */
+export class Protege extends Component<{ children: ReactNode }, { erro: Error | null }> {
+  state = { erro: null as Error | null };
+  static getDerivedStateFromError(erro: Error) { return { erro }; }
+  componentDidCatch(erro: Error) { console.error("tela quebrou:", erro); }
+  render() {
+    if (!this.state.erro) return this.props.children;
+    return (
+      <div className="vidro mx-auto mt-10 flex max-w-md flex-col items-center gap-3 rounded-[24px] p-7 text-center">
+        <p className="text-[17px] font-semibold tracking-tight">Essa tela travou</p>
+        <p className="text-[14px] text-mute">Já registrei o erro. Recarrega que volta.</p>
+        <Botao tipo="principal" onClick={() => location.reload()}>Recarregar</Botao>
+      </div>
+    );
+  }
 }
 
 /* grade padrão dos cards */
