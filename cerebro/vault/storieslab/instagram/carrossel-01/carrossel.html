@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=block" rel="stylesheet">
+<style>
+@font-face{font-family:'Instrument Sans';src:url(src/instrument-sans.woff2) format('woff2');font-weight:400 700}
+@font-face{font-family:'Instrument Serif';src:url(src/instrument-serif-italic.woff2) format('woff2');font-style:italic}
+:root{--bg:#FFF7F5;--pink:#FF2E74;--pink-d:#D92B63;--soft:#FFD9E5;--ink:#2A1630;--muted:#806c7b}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:5400px;height:1350px;overflow:hidden;background:var(--bg)}
+.c{position:relative;width:5400px;height:1350px;background:var(--bg);font-family:'Instrument Sans',sans-serif;color:var(--ink)}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55;background:#FFC9DA}
+.serif{font-family:'Fraunces',Georgia,serif;letter-spacing:-.02em}
+em{font-style:italic;color:var(--pink-d)}
+.mk{background:linear-gradient(transparent 58%,var(--soft) 58%,var(--soft) 92%,transparent 92%);padding:0 .06em}
+svg.thread{position:absolute;inset:0;pointer-events:none}
+.story{position:absolute;width:380px;height:676px;border-radius:34px;overflow:hidden;transform:rotate(var(--r));
+  box-shadow:0 2px 0 rgba(255,255,255,.6) inset,0 10px 22px rgba(42,22,48,.16),0 46px 90px rgba(42,22,48,.20),0 30px 80px rgba(255,46,116,.10);background:#ddd}
+.story .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 78%,rgba(0,0,0,.32) 100%)}
+.bars{position:absolute;top:14px;left:14px;right:14px;display:flex;gap:5px;z-index:3}
+.bars i{flex:1;height:4px;border-radius:3px;background:rgba(255,255,255,.45)}
+.bars i.on{background:#fff}
+.who{position:absolute;top:30px;left:16px;display:flex;align-items:center;gap:10px;z-index:3;color:#fff;font-weight:600;font-size:19px;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.who img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.who span{font-weight:400;opacity:.8}
+.stk{position:absolute;z-index:2;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18))}
+.reply{position:absolute;left:16px;right:76px;bottom:18px;height:50px;border:2px solid rgba(255,255,255,.75);border-radius:26px;z-index:3;color:#fff;font-size:18px;display:flex;align-items:center;padding-left:20px}
+.heart{position:absolute;right:20px;bottom:24px;z-index:3;width:38px;height:38px}
+.day{position:absolute;font-family:'Instrument Serif',serif;font-style:italic;font-size:92px;color:var(--pink);line-height:1;transform:rotate(var(--r))}
+.txt{position:absolute}
+.phone{position:absolute;width:390px;height:840px;border-radius:62px;background:#16121a;padding:14px;
+  box-shadow:0 0 0 2px #3a3340 inset,0 14px 30px rgba(42,22,48,.22),0 60px 120px rgba(42,22,48,.26),0 40px 110px rgba(255,46,116,.14)}
+.phone .scr{width:100%;height:100%;border-radius:49px;overflow:hidden;position:relative;background:#FBF6F2;padding-top:50px}
+.phone .scr img{width:100%;display:block}
+.phone .isl{position:absolute;top:28px;left:50%;transform:translateX(-50%);width:128px;height:36px;border-radius:20px;background:#000;z-index:2}
+.btn{position:absolute;height:104px;border-radius:52px;background:var(--pink);color:#fff;font-weight:600;font-size:38px;display:flex;align-items:center;justify-content:center;gap:16px;
+  box-shadow:0 14px 34px rgba(255,46,116,.35),0 2px 0 rgba(255,255,255,.35) inset}
+</style></head><body>
+<div class="c">
+  <!-- glows atravessando as emendas -->
+  <div class="glow" style="width:900px;height:700px;left:700px;top:520px"></div>
+  <div class="glow" style="width:900px;height:700px;left:2300px;top:80px"></div>
+  <div class="glow" style="width:1000px;height:800px;left:4300px;top:300px;opacity:.7"></div>
+
+  <!-- linha que costura os 5 slides -->
+  <svg class="thread" width="5400" height="1350" viewBox="0 0 5400 1350">
+    <path d="M 640 1080 C 860 1180, 960 1000, 1080 940 S 1440 560, 1640 668 S 1980 980, 2160 898 S 2520 520, 2700 658 S 3080 1000, 3240 918 S 3700 1240, 4100 1060 S 4500 700, 4640 640"
+      fill="none" stroke="#FF2E74" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 16" opacity=".55"/>
+  </svg>
+
+  <!-- SLIDE 1 · capa -->
+  <div class="txt serif" style="left:84px;top:96px;font-size:40px;font-weight:600;letter-spacing:-.01em">stories<em style="font-weight:500">lab</em></div>
+  <div class="txt serif" style="left:80px;top:250px;font-size:132px;line-height:.98;font-weight:600;width:900px">
+    Uma semana<br>de stories<br><span class="mk"><em>prontinha.</em></span>
+  </div>
+  <div class="txt" style="left:86px;top:738px;font-size:34px;color:var(--muted);line-height:1.35;width:560px">Uma ideia pra cada dia.<br>Copia, cola e posta.</div>
+  <div class="txt" style="left:86px;top:1160px;font-size:28px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:14px;letter-spacing:.02em">
+    arrasta pro lado
+    <svg width="54" height="20" viewBox="0 0 54 20"><path d="M2 10h46M40 3l8 7-8 7" fill="none" stroke="#FF2E74" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- cards da semana (emendas em 1080, 2160, 3240) -->
+  <div class="day" style="left:900px;top:470px;--r:-7deg">seg.</div>
+  <div class="story" style="left:890px;top:600px;--r:-7deg">
+    <div class="bars"><i class="on"></i><i></i><i></i></div>
+    <div class="who"><img src="src/av-1.webp">você <span>2 h</span></div>
+    <img class="ph" src="src/academia-01.jpg" style="object-position:50% 30%">
+    <img class="stk" src="src/treino-3.webp" style="width:250px;left:66px;top:420px;transform:rotate(-4deg)">
+    <div class="reply">Enviar mensagem</div>
+    <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+
+  <div class="day" style="left:1480px;top:200px;--r:5deg">ter.</div>
+  <div class="story" style="left:1450px;top:330px;--r:5deg">
+    <div class="bars"><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="who"><img src="src/av-2.webp">você <span>8 h</span></div>
+    <img class="ph" src="src/cafe-manha-03.jpg">
+    <img class="stk" src="src/bomdia-4.webp" style="width:230px;left:76px;top:70px;transform:rotate(3deg)">
+    <div class="reply">Enviar mensagem</div>
+    <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+
+  <div class="day" style="left:1990px;top:430px;--r:-4deg">qua.</div>
+  <div class="story" style="left:1970px;top:560px;--r:-4deg">
+    <div class="bars"><i class="on"></i><i></i></div>
+    <div class="who"><img src="src/av-3.webp">você <span>5 h</span></div>
+    <img class="ph" src="src/pet-02.jpg">
+    <img class="stk" src="src/pet-3.webp" style="width:250px;left:64px;top:96px;transform:rotate(-5deg)">
+    <div class="reply">Enviar mensagem</div>
+    <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+
+  <div class="day" style="left:2540px;top:190px;--r:6deg">qui.</div>
+  <div class="story" style="left:2510px;top:320px;--r:6deg">
+    <div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="who"><img src="src/av-1.webp">você <span>1 h</span></div>
+    <img class="ph" src="src/aniversario-03.jpg">
+    <img class="stk" src="src/niver-3.webp" style="width:270px;left:56px;top:96px;transform:rotate(-3deg)">
+    <div class="reply">Enviar mensagem</div>
+    <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+
+  <div class="day" style="left:3070px;top:450px;--r:-5deg">sex.</div>
+  <div class="story" style="left:3050px;top:580px;--r:-5deg">
+    <div class="bars"><i class="on"></i><i></i><i></i></div>
+    <div class="who"><img src="src/av-2.webp">você <span>3 h</span></div>
+    <img class="ph" src="src/praia-03.jpg">
+    <img class="stk" src="src/praia-1.webp" style="width:250px;left:64px;top:110px;transform:rotate(4deg)">
+    <div class="reply">Enviar mensagem</div>
+    <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+
+  <!-- SLIDE 2 · texto -->
+  <div class="txt serif" style="left:1300px;top:1080px;width:640px;font-size:62px;line-height:1.04;font-weight:600">Cada dia, um story <em>diferente.</em></div>
+  <!-- SLIDE 3 · texto -->
+  <div class="txt serif" style="left:2380px;top:1060px;width:640px;font-size:62px;line-height:1.04;font-weight:600">Sem Canva.<br>Sem Drive. <span class="mk"><em>Sem esforço.</em></span></div>
+  <!-- SLIDE 4 · virada -->
+  <div class="txt serif" style="left:3540px;top:300px;width:720px;font-size:120px;line-height:.98;font-weight:600">É só<br>copiar e<br><span class="mk"><em>colar.</em></span></div>
+  <div class="txt" style="left:3546px;top:720px;width:640px;font-size:34px;line-height:1.35;color:var(--muted)">A figurinha já vem pronta.<br>Você só escolhe a do dia.</div>
+
+  <!-- SLIDE 5 · app + CTA -->
+  <div class="txt serif" style="left:4320px;width:1080px;top:84px;text-align:center;font-size:66px;line-height:1.02;font-weight:600"><span style="font-size:116px;color:var(--pink)">+24.000</span><br>figurinhas num app <em>só.</em></div>
+  <div class="phone" style="left:4665px;top:356px"><div class="isl"></div><div class="scr"><img src="src/home.png"></div></div>
+  <div class="btn" style="left:4580px;width:560px;top:1224px;height:92px;font-size:34px">Link na bio
+    <svg width="40" height="20" viewBox="0 0 54 20"><path d="M2 10h46M40 3l8 7-8 7" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+</body></html>

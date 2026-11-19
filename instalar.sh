@@ -74,12 +74,13 @@ ok "hyperframes, gsap, marketing, social media, taste, claude-mem e os outros"
 
 passo "Atalho"
 chmod +x maquina/abrir.sh maquina/bin/* atualizar.sh 2>/dev/null || true
-cat > "$HOME/Desktop/Máquina.command" <<A
+rm -f "$HOME/Desktop/Máquina.command"
+cat > "$HOME/Desktop/Forja.command" <<A
 #!/bin/zsh
 "$ALVO/maquina/abrir.sh"
 A
-chmod +x "$HOME/Desktop/Máquina.command"
-ok "Máquina.command na Mesa"
+chmod +x "$HOME/Desktop/Forja.command"
+ok "Forja na Mesa: clique pra abrir quando quiser"
 
 passo "Ligando"
 maquina/abrir.sh

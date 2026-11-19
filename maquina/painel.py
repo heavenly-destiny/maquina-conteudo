@@ -5,6 +5,7 @@ import json, os, re, subprocess, sys, threading, time
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
+import plataforma
 
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent  # pasta do repositório
@@ -131,16 +132,11 @@ def mexer(job, n, **campos):
 
 
 def lixeira(*arqs):
-    """nunca apaga de vez: manda pra Lixeira do macOS (sufixo de hora se o nome já existe)"""
-    lx = Path.home() / ".Trash"
+    """nunca apaga de vez: manda pra Lixeira do sistema (Mac ou Windows)"""
     for a in arqs:
         a = Path(a)
-        if not (a.exists() or a.is_symlink()):
-            continue
-        dest = lx / a.name
-        if dest.exists():
-            dest = lx / f"{a.stem}-{time.strftime('%H%M%S')}{a.suffix}"
-        a.rename(dest)
+        if a.exists() or a.is_symlink():
+            plataforma.lixeira(a)
 
 
 JOB_OK = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,120}$")
@@ -225,7 +221,7 @@ def excluir_job(job):
 
 def disparar(args):
     subprocess.Popen([sys.executable, str(AQUI / "maquina.py"), *args], cwd=AQUI,
-                     stdout=open(AQUI / "painel_jobs.log", "a"), stderr=subprocess.STDOUT, start_new_session=True)
+                     stdout=open(AQUI / "painel_jobs.log", "a"), stderr=subprocess.STDOUT, **plataforma.segundo_plano())
 
 
 def salvar_config(video, config):
@@ -458,7 +454,7 @@ def novo_id(base, sufixo):
 
 def disparar_script(script, id_):
     subprocess.Popen([sys.executable, str(AQUI / script), id_], cwd=AQUI,
-                     stdout=open(AQUI / "painel_jobs.log", "a"), stderr=subprocess.STDOUT, start_new_session=True)
+                     stdout=open(AQUI / "painel_jobs.log", "a"), stderr=subprocess.STDOUT, **plataforma.segundo_plano())
 
 
 def escrever(f, obj):
@@ -499,9 +495,11 @@ CONFIG = AQUI / "config.json"
 FERR = {"claude": "Claude Code", "ffmpeg": "ffmpeg", "node": "Node.js", "whisper-cli": "Whisper", "yt-dlp": "yt-dlp", "hyperframes": "HyperFrames (render)"}
 INSTALA = {"claude": "npm install -g @anthropic-ai/claude-code", "ffmpeg": "brew install ffmpeg", "node": "brew install node",
            "whisper-cli": "brew install whisper-cpp", "yt-dlp": "brew install yt-dlp", "hyperframes": "npm install -g hyperframes"}
+if plataforma.WIN:  # no Windows tudo isso vem do instalar.ps1; rodar de novo instala só o que falta
+    INSTALA = {k: "rode de novo o instalar.ps1" for k in INSTALA}
 # o que não é comando: arquivo que precisa existir (instalar.sh resolve tudo de uma vez)
 EXTRAS = [("modelo", "Modelo de transcrição", lambda: (Path.home() / ".cache/whisper/ggml-large-v3-turbo.bin").exists()),
-          ("voz-local", "Limpeza de voz", lambda: (RAIZ / "tools/.venv-voz/bin/python").exists()),
+          ("voz-local", "Limpeza de voz", lambda: plataforma.venv_python(RAIZ / "tools/.venv-voz").exists()),
           ("base", "Base de conhecimento (skills)", lambda: any((Path.home() / ".claude/skills").glob("motion-reel-premium")))]
 CHAVES_CLAUDE = ("CLAUDE_CODE_OAUTH_TOKEN", "ANTHROPIC_API_KEY")
 
@@ -873,7 +871,7 @@ class H(BaseHTTPRequestHandler):
         elif u == "/api/tocar-intro":  # o Chrome não toca som sem clique; o Mac toca
             arq = SOM / f"{Path(str(d.get('periodo', 'bom-dia'))).name}.mp3"
             if arq.exists():
-                subprocess.Popen(["afplay", str(arq)])
+                plataforma.tocar(arq)
         elif u == "/api/descartar":
             mexer(d["job"], d["n"], status="descartado" if d.get("sim", True) else "planejado")
         elif u in ("/api/marcar-job", "/api/marcar-geracao"):
@@ -919,7 +917,34 @@ class H(BaseHTTPRequestHandler):
         self._json({"ok": True})
 
 
+def auto_atualizar():
+    """Puxa a versão nova do GitHub sozinho (ao ligar e a cada 3 h). A camada da pessoa (perfil/, .env, vídeos) não é
+    versionada, então nunca é tocada. Mudou Python: sai e o lançador (launchd no Mac, laço no Windows) liga de novo.
+    No Mac de quem publica existe RAIZ/.dev e nada disso roda."""
+    if (RAIZ / ".dev").exists() or not (RAIZ / ".git").exists():
+        return
+    g = lambda *a: subprocess.run(["git", "-C", str(RAIZ), *a], capture_output=True, text=True, timeout=300)
+    while True:
+        try:
+            if g("fetch", "-q").returncode == 0 and g("rev-list", "--count", "HEAD..@{u}").stdout.strip() not in ("", "0"):
+                antes = g("rev-parse", "HEAD").stdout.strip()
+                g("stash", "-q")
+                ok = g("pull", "-q", "--ff-only").returncode == 0
+                g("stash", "pop", "-q")
+                mudou = g("diff", "--name-only", antes, "HEAD").stdout.split() if ok else []
+                if "tools/requirements-voz.txt" in mudou:
+                    subprocess.run([str(plataforma.venv_python(RAIZ / "tools/.venv-voz")), "-m", "pip", "install", "-q", "-r",
+                                    str(RAIZ / "tools/requirements-voz.txt")], capture_output=True, timeout=3600)
+                open(AQUI / "painel_jobs.log", "a").write(f"[atualizar] {antes[:7]} -> {len(mudou)} arquivos\n")
+                if any(x.endswith(".py") and x.startswith("maquina/") for x in mudou):
+                    os._exit(3)  # o lançador liga de novo com o código novo
+        except Exception as er:
+            open(AQUI / "painel_jobs.log", "a").write(f"[atualizar] falhou: {er}\n")
+        time.sleep(3 * 3600)
+
+
 if __name__ == "__main__":
+    threading.Thread(target=auto_atualizar, daemon=True).start()
     JOBS.mkdir(exist_ok=True)
     print(f"painel em http://127.0.0.1:{PORTA}")
     ThreadingHTTPServer(("127.0.0.1", PORTA), H).serve_forever()

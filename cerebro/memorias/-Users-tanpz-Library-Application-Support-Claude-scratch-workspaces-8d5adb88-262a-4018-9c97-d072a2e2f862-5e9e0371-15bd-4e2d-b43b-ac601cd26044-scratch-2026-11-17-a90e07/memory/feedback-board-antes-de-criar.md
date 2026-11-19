@@ -8,4 +8,6 @@ In Forja, pressing send on Cortar/Animado/Criativo/Modelar opens a settings boar
 
 **Why:** tanpz (19/11): "se eu só clicar em mais, o vídeo já sai cortando... cadê um board pra pessoa escolher a legenda?" and "música no inspirar não faz sentido nenhum".
 
-**How to apply:** any new creation mode gets the board before it runs. Clonar skips it (100% igual keeps the original's caption/sound). Related: [[feedback-trilha-obrigatoria]], [[maquina-v2-produto]].
+**How to apply:** any new creation mode gets the board before it runs. Clonar mode was removed on 19/11; Modelar covers it. Related: [[feedback-trilha-obrigatoria]], [[maquina-v2-produto]].
+
+Update 19/11: no "Clonar" mode. Modelar = same video with every effect of the reference (scenes, timing, transitions, motion, captions, music mood, SFX), adapted to any brand/subject; modelar uploads decupagem in Fiel. Never write "100% igual" in the UI.

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# "python3" que funciona no Mac e no Windows (lá o python3 do PATH costuma ser o atalho da Microsoft Store)
+[ -n "$FORJA_PY" ] && exec "$FORJA_PY" "$@"
+AQUI="$(cd "$(dirname "$0")" && pwd)"
+PATH="$(echo "$PATH" | tr ':' '\n' | grep -vx "$AQUI" | paste -sd: -)"
+exec "$(command -v python3 || command -v python)" "$@"

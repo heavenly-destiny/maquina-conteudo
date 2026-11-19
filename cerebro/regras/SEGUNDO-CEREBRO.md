@@ -149,3 +149,8 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Forja (19/11): decupagem em 3 modos (rápida, completa, fiel 100% com toda animação de motion e todo efeito sonoro). Por enquanto só ferramenta grátis, sem Gemini.
 - Forja, Criados (19/11): a grade principal é só vídeo pronto. Copy esperando aprovação, erro, gerando e foto aparecem embaixo em lista ("não é um card pra copy"). Excluir tem que estar visível no card (lixeira no canto), não escondido no detalhe.
 - Forja (19/11): música não é aba do Inspirar, é escolha na hora de criar. Todo vídeo passa por um painel de configuração antes de gerar (legenda com prévia, trilha, duração, formato); enviar nunca dispara direto ("se eu só clicar em mais, o vídeo já sai cortando... cadê um board pra escolher a legenda").
+- Forja (19/11): não existe "Clonar". Modelar já é isso: o vídeo com todos os efeitos da referência (cenas, tempo, transições, motion, legenda, trilha, SFX), adaptado pra qualquer marca ou assunto. Nunca usar "100% igual" no sistema.
+- Forja, visual (19/11): "tá muito feio, basicão, tipografia". Reclamou que do 21st.dev só usei o fundo vermelho. Quer o sistema modelado num site de referência que ele vai mandar, com muito mais componentes do 21st em todas as telas.
+- Forja, deploy (19/11): site hospedado + agente que cada pessoa instala uma vez no próprio computador (roda o Claude e as ferramentas dela, se atualiza sozinho). Tem que funcionar no Windows e no Mac. Ele não quer ficar instalando nem atualizando nada.
+
+- Instagram do Stories Lab (19/11): feed é capa de revista; carrossel é panorama contínuo (emendas ligadas, parece uma foto só), mínimo 5 slides. Primeiro feito em HTML com fotos do acervo e figurinhas reais, custo zero.

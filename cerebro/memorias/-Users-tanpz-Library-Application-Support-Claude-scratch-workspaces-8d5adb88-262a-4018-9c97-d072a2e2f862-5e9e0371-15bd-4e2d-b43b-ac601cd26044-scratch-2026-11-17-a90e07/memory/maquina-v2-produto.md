@@ -18,7 +18,7 @@ Vision dictated by tanpz on 18/11/2026 for the Máquina de Conteúdo (to sell/ha
 **Why:** he wants a product-grade tool other people use, not a personal script.
 **How to apply:** design from real Higgsfield/OpusClip references first; keep wine/red identity and approved screens (generation, animation, SFX approved 18/11). Related: [[maquina-de-conteudo]], [[feedback-painel-minimalista]].
 
-Clonar mode (19/11): tipo "clonar" rebuilds a reference 100% (prompts/gerar_clonar.md, clone_espec.md), copy gate kept, copy stage on sonnet. Render stage of every voiced type gets the 5 best-matching ready motion prompts (gerar.motions_prontos). Tiles tilt 3D with red light; cursor light; logo follows mouse.
+Clonar mode was removed from the UI on 19/11 (he said Modelar already is that); gerar_clonar.md stays only for old items. Modelar keeps every effect of the reference and adapts to the brand. Render stage of every voiced type gets the 5 best-matching ready motion prompts (gerar.motions_prontos). Tiles tilt 3D with red light; cursor light; logo follows mouse.
 
 Formats (18/11): the machine must know many video formats and adapt any of them to any niche: question box (caixinha de pergunta, mostly native Instagram), many split-screen variants, "historinha" story videos with little characters (pixel art, 2D, 3D, very hyped now), plus the aslaniedits families. Acervo collects examples of each format; the AI picks/adapts per user niche.
 
@@ -37,3 +37,5 @@ Music is grouped by video style (one track type per style); the user picks the t
 - 18/11/2026: Músicas DONE (estilos/musicas: 85 faixas, 13 estilos, Em alta auto 24h, busca Deezer/iTunes). Configurar tem seção Trilha (A IA escolhe / estilo / faixa com prévia / Sem trilha) que vai pro prompt via maquina.trilha_txt(). WhatsApp send needs Chrome 'Permitir JavaScript dos Eventos da Apple' (he must turn on).
 
 Identity (19/11/2026): the user rejected the ribbon "M" logo as too basic and asked for a fusion animation plus a new name. Name "Forja" approved by the user on 19/11/2026. Mark = slanted liquid-metal F built from three drops that fuse (SVG gooey filter), with one drop falling from the middle bar as the signature, on a wine glass squircle. Component Marca in app/src/ui.tsx; preview at http://localhost:4747/?marca. Backup of the old logo in ui_bak15.tsx.
+
+Deploy decision 19/11: hosted site (Vercel: UI, login, library) plus a "Forja Agente" that each user installs once. The agent runs their own Claude Code, ffmpeg, whisper, Demucs and yt-dlp, talks to the site, and updates itself, so nobody reinstalls. It must work on BOTH Windows and Mac. The user brings their own Claude, so tanpz pays no AI cost on this plan. A managed plan (no install, his servers, he pays the AI) can come later. The current code has Mac-only pieces to port: zsh scripts, /opt/homebrew paths, Trash via macOS, LaunchAgent.

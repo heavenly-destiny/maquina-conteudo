@@ -3,6 +3,7 @@
 import glob, json, re, subprocess, sys, time
 from pathlib import Path
 import maquina as m
+import plataforma
 
 INS = m.RAIZ / "inspiracoes"
 MODOS_TXT = {
@@ -67,7 +68,7 @@ def analisar_inteiro(p, v, modo="completa"):
             vol.append(f"{float(t):6.1f}s {mm} LUFS"); ult = float(t)
     (p / "volume.txt").write_text("\n".join(vol) + "\n")
     if modo == "fiel":  # voz x música separadas, cada efeito sonoro e cada trecho animado (tudo local)
-        subprocess.run([str(m.RAIZ / "tools/.venv-voz/bin/python"), str(m.RAIZ / "tools/decupar_fiel.py"), str(p), str(v)], check=True,
+        subprocess.run([str(plataforma.venv_python(m.RAIZ / "tools/.venv-voz")), str(m.RAIZ / "tools/decupar_fiel.py"), str(p), str(v)], check=True,
                        capture_output=True, text=True, timeout=1800)
         shutil.rmtree(p / "sep", ignore_errors=True)
 

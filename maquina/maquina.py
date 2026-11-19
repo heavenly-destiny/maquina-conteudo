@@ -14,6 +14,7 @@ O cérebro de cada etapa é o `claude -p` seguindo os prompts em maquina/prompts
 """
 import json, os, subprocess, sys, time, datetime, threading, concurrent.futures as cf
 from pathlib import Path
+import plataforma
 
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent  # a pasta do repositório (no Mac do tanpz: ~/Movies/maquina-conteudo)
@@ -100,9 +101,10 @@ def conta_claude():
 
 def claude(prompt, pasta, modelo, log_nome):
     """Roda o claude headless numa pasta. Devolve o texto final."""
-    cmd = ["claude", "-p", prompt, "--model", modelo, "--permission-mode", "acceptEdits",
+    cmd = [plataforma.exe("claude"), "-p", prompt, "--model", modelo, "--permission-mode", "acceptEdits",
            "--allowedTools", *FERRAMENTAS, "--add-dir", *[str(x) for x in (RAIZ, APOIO, PERFIL, CEREBRO, H / ".claude", VAULT, H / "Documents/Stories Lab Criativos", base("~/Documents/banco-motion")) if Path(x).exists()], "--output-format", "text"]
-    env = {**os.environ, "PATH": f"{AQUI / 'bin'}:{os.environ['PATH']}"}  # clean-voice e render-corte
+    env = {**os.environ, "PATH": plataforma.junta_path(AQUI / "bin"), "FORJA_PY": sys.executable,
+           "FORJA_VOZ_PY": str(plataforma.venv_python(RAIZ / "tools/.venv-voz"))}  # clean-voice e render-corte
     env.update(conta_claude())  # conta conectada no onboarding (token da assinatura ou chave de API)
     r = subprocess.run(cmd, cwd=pasta, capture_output=True, text=True, timeout=60 * 60, env=env)
     (Path(pasta) / log_nome).write_text(r.stdout + "\n--- stderr ---\n" + r.stderr)
@@ -316,8 +318,7 @@ def fase(j, c, f):
 
 
 def avisar(msg):
-    subprocess.run(["osascript", "-e", f'display notification {json.dumps(msg)} with title "Máquina de Conteúdo" sound name "Glass"'],
-                   capture_output=True)
+    plataforma.notificar(msg)
 
 
 def cortar_um(j, c, nota=None):

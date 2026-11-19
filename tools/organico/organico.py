@@ -21,7 +21,7 @@ import json, os, re, shutil, unicodedata, html as _html, subprocess, random
 FPS = 30
 TOOLS = os.path.expanduser("~/Movies/maquina-conteudo/tools")
 HERE = os.path.dirname(os.path.abspath(__file__))
-GSAP = os.path.expanduser("~/.claude/plugins/cache/claude-plugins-official/hyperframes/0.8.61/skills/talking-head-recut/assets/vendor/gsap.min.js")
+GSAP = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "vendor", "gsap.min.js")
 
 OUT = None
 words, cuts, DUR = [], [], 0.0

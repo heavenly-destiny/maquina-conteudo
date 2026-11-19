@@ -3,6 +3,7 @@
 !/.gitignore
 !/README.md
 !/instalar.sh
+!/instalar.ps1
 !/atualizar.sh
 !/publicar.sh
 !/maquina/

@@ -9,7 +9,8 @@ Tipos de card: hook, strike, chip, big, checklist, steps.
 import json, os, re, shutil, subprocess, sys, unicodedata, html
 
 FPS, W, H = 30, 1080, 1920
-VENDOR = os.path.expanduser("~/.claude/plugins/cache/claude-plugins-official/hyperframes/0.8.61/skills/talking-head-recut/assets/vendor/gsap.min.js")
+ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+VENDOR = os.path.join(ASSETS, "vendor", "gsap.min.js")
 FONTS = {"Black": "Montserrat-Black.ttf", "ExtraBold": "Montserrat-ExtraBold.ttf", "Bold": "Montserrat-Bold.ttf"}
 
 
@@ -124,7 +125,7 @@ def main(spec_path, rdir):
     os.makedirs(pub + "/fonts", exist_ok=True)
     os.makedirs(pub + "/vendor", exist_ok=True)
     for f in FONTS.values():
-        shutil.copy(os.path.expanduser("~/Library/Fonts/" + f), pub + "/fonts/")
+        shutil.copy(os.path.join(ASSETS, "fonts", f), pub + "/fonts/")
     shutil.copy(VENDOR, pub + "/vendor/")
     if not os.path.exists(pub + "/video.mp4"):
         os.link(os.path.join(rdir, "video.mp4"), pub + "/video.mp4")
