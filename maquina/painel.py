@@ -591,6 +591,7 @@ def config_estado():
     claude_ok = bool(cfg.get("claude_ok"))
     return {"claude": {"ok": claude_ok, "tipo": tipo, "final": fim(env.get("CLAUDE_CODE_OAUTH_TOKEN") or env.get("ANTHROPIC_API_KEY") or "")},
             "voz": {"ok": bool(env.get("ELEVENLABS_API_KEY")), "final": fim(env.get("ELEVENLABS_API_KEY", ""))},
+            "gemini": {"ok": bool(env.get("GEMINI_API_KEY")), "final": fim(env.get("GEMINI_API_KEY", ""))},
             "perfil": lerj(RAIZ / "perfil/perfil.json", {}),
             "ferramentas": ferr, "pronto": claude_ok and all(f["ok"] for f in ferr), "concluido": bool(cfg.get("concluido"))}
 
@@ -624,6 +625,23 @@ def config_post(u, d):
         if ok:
             salvar_env(ELEVENLABS_API_KEY=ch)
         return {"ok": ok, "erro": erro}
+    if u == "/api/config/gemini":  # opcional: segundo olho na decupagem de referências por link
+        ch = str(d.get("chave", "")).strip()
+        if not ch:
+            salvar_env(GEMINI_API_KEY="")
+            return {"ok": True}
+        if not re.match(r"^AIza[A-Za-z0-9_\-]{30,}$", ch):
+            return {"ok": False, "erro": "Essa chave não parece do Google. Ela começa com AIza"}
+        import urllib.request, urllib.error
+        try:
+            q = urllib.request.Request("https://generativelanguage.googleapis.com/v1beta/models?pageSize=1", headers={"x-goog-api-key": ch})
+            urllib.request.urlopen(q, timeout=15).read()
+        except urllib.error.HTTPError as e:
+            return {"ok": False, "erro": "Chave inválida" if e.code in (400, 401, 403) else f"Google respondeu {e.code}"}
+        except Exception as e:
+            return {"ok": False, "erro": str(e)[:120]}
+        salvar_env(GEMINI_API_KEY=ch)
+        return {"ok": True}
     if u == "/api/config/perfil":
         p = {k: str(d.get(k, "")).strip()[:1500] for k in ("nome", "nicho", "quem", "estilo", "instagram")}
         if not p["nome"]:

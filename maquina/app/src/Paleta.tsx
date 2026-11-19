@@ -70,7 +70,7 @@ export function Paleta({ e, ir, criarCom, abrirConfig, alternarSom }: {
       { id: "criados", grupo: "Ir para", titulo: "Criados", icone: <Sparkles className={I} />, atalho: "3", acao: () => ir("criar") },
       { id: "inspirar", grupo: "Ir para", titulo: "Inspirar", icone: <Telescope className={I} />, atalho: "4", acao: () => ir("inspirar") },
       { id: "postar", grupo: "Ir para", titulo: "Postar", icone: <Send className={I} />, atalho: "5", acao: () => ir("postar") },
-      { id: "conta", grupo: "Ajustes", titulo: "Conta e conexões", sub: "Claude, voz e perfil", icone: <Settings2 className={I} />, acao: abrirConfig },
+      { id: "conta", grupo: "Ajustes", titulo: "Ajustes", sub: "Perfil, conexões, ferramentas e preferências", icone: <Settings2 className={I} />, acao: abrirConfig },
       { id: "som", grupo: "Ajustes", titulo: "Ligar ou desligar sons", icone: <Volume2 className={I} />, acao: alternarSom },
     ];
     const feitos: Item[] = (e?.geracoes ?? []).filter((g) => g.titulo || g.briefing).slice(0, 40).map((g) => ({

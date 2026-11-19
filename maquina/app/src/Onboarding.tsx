@@ -9,6 +9,7 @@ import { som } from "./sons";
 export type Config = {
   claude: { ok: boolean; tipo: "assinatura" | "api" | "login" | null; final: string };
   voz: { ok: boolean; final: string };
+  gemini?: { ok: boolean; final: string };
   ferramentas: { id: string; nome: string; ok: boolean; instalar: string }[];
   perfil?: { nome?: string; nicho?: string; quem?: string; estilo?: string; instagram?: string };
   pronto: boolean; concluido: boolean;
@@ -18,7 +19,7 @@ export const lerConfig = (): Promise<Config> => fetch("/api/config").then((r) =>
 
 const PASSOS = 6;
 
-function Campo({ valor, setValor, placeholder, onEnter }: { valor: string; setValor: (v: string) => void; placeholder: string; onEnter: () => void }) {
+export function Campo({ valor, setValor, placeholder, onEnter }: { valor: string; setValor: (v: string) => void; placeholder: string; onEnter: () => void }) {
   const [ver, setVer] = useState(false);
   return (
     <div className="vidro flex min-h-12 items-center gap-1 rounded-[16px] pl-4 pr-1.5 focus-within:shadow-[0_0_0_2px_rgb(225_29_42/0.55)]">
@@ -44,16 +45,16 @@ function Feito({ texto }: { texto: string }) {
   );
 }
 
-function Erro({ msg }: { msg: string }) {
+export function Erro({ msg }: { msg: string }) {
   return msg ? <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="text-[13.5px] text-red" role="alert">{msg}</motion.p> : null;
 }
 
-function PassoClaude({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
+export function PassoClaude({ cfg, pronto, compacto }: { cfg: Config; pronto: () => void; compacto?: boolean }) {
   const [modo, setModo] = useState<"assinatura" | "api">("assinatura");
   const [token, setToken] = useState("");
   const [testando, setTestando] = useState<"" | "token" | "login">("");
   const [erro, setErro] = useState("");
-  const [ok, setOk] = useState(cfg.claude.ok);
+  const [ok, setOk] = useState(compacto ? false : cfg.claude.ok);
   const [trocar, setTrocar] = useState(false);
   const testar = async (t: string) => {
     setErro(""); setTestando(t ? "token" : "login");
@@ -65,7 +66,7 @@ function PassoClaude({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
   };
   return (
     <div className="flex flex-col gap-5">
-      <div>
+      <div hidden={compacto}>
         <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.02em]">Conecte seu Claude</h2>
         <p className="mt-1.5 text-[15px] text-mute">É ele que corta, escreve e monta os vídeos. Usa a sua conta.</p>
       </div>
@@ -116,11 +117,11 @@ function PassoClaude({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
   );
 }
 
-function PassoVoz({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
+export function PassoVoz({ cfg, pronto, compacto }: { cfg: Config; pronto: () => void; compacto?: boolean }) {
   const [chave, setChave] = useState("");
   const [testando, setTestando] = useState(false);
   const [erro, setErro] = useState("");
-  const [ok, setOk] = useState(cfg.voz.ok);
+  const [ok, setOk] = useState(compacto ? false : cfg.voz.ok);
   const [trocar, setTrocar] = useState(false);
   const testar = async () => {
     setErro(""); setTestando(true);
@@ -132,7 +133,7 @@ function PassoVoz({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
   };
   return (
     <div className="flex flex-col gap-5">
-      <div>
+      <div hidden={compacto}>
         <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.02em]">Conecte sua voz</h2>
         <p className="mt-1.5 text-[15px] text-mute">A ElevenLabs narra os vídeos animados e os criativos. Os cortes funcionam sem ela.</p>
       </div>
@@ -151,7 +152,7 @@ function PassoVoz({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
           <Erro msg={erro} />
           <div className="flex flex-wrap gap-2">
             <Botao tipo="principal" disabled={!chave} carregando={testando} onClick={testar}>{testando ? <><Gira /> Testando</> : "Conectar"}</Botao>
-            <Botao tipo="fantasma" onClick={pronto}>Pular por agora</Botao>
+            <Botao tipo="fantasma" onClick={pronto}>{compacto ? "Cancelar" : "Pular por agora"}</Botao>
           </div>
         </>
       )}
@@ -161,8 +162,8 @@ function PassoVoz({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
 
 /* Perfil: a camada de quem usa. A base de conhecimento vem junto e nunca é apagada; o que está aqui e as correções
    que a pessoa faz no painel ficam por cima (perfil/, só neste Mac) e a máquina aprende o estilo dela. */
-const ESTILOS = ["Educativo", "Motivacional", "Humor", "Bastidores", "Venda", "Storytelling", "Podcast"];
-function Texto({ v, set, ph, linhas }: { v: string; set: (x: string) => void; ph: string; linhas?: number }) {
+export const ESTILOS = ["Educativo", "Motivacional", "Humor", "Bastidores", "Venda", "Storytelling", "Podcast"];
+export function Texto({ v, set, ph, linhas }: { v: string; set: (x: string) => void; ph: string; linhas?: number }) {
   const cls = "vidro w-full rounded-[16px] px-4 py-3 text-[15px] outline-none focus:shadow-[0_0_0_2px_rgb(225_29_42/0.55)]";
   return linhas ? <textarea value={v} onChange={(e) => set(e.target.value)} placeholder={ph} rows={linhas} className={cx(cls, "resize-none")} />
     : <input value={v} onChange={(e) => set(e.target.value)} placeholder={ph} className={cx(cls, "min-h-12")} />;

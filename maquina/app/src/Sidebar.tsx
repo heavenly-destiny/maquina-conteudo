@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { PanelLeft, Search, Settings2, Volume2, VolumeX } from "lucide-react";
-import { ABAS, type Aba } from "./Dock";
+import { ABAS, type Aba, type Tela } from "./Dock";
 import { som } from "./sons";
 import { Marca, cx, mola } from "./ui";
 import { Luz, Numero } from "./fx";
@@ -8,7 +8,7 @@ import { Luz, Numero } from "./fx";
 /* barra lateral do computador (padrão Wensity/Higgsfield): marca, seções, item ativo com pílula que desliza, rodapé com a conta.
    Recolhe para trilho de ícones. No celular quem navega é o Dock. */
 export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alternarSom, abrirConfig }: {
-  aba: Aba; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>>;
+  aba: Tela; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>>;
   aberta: boolean; setAberta: (v: boolean) => void; ligado: boolean; alternarSom: () => void; abrirConfig: () => void;
 }) {
   // cinco itens não precisam de grupo com título (o grupo "Criar" tinha um item "Criar" dentro): um separador fino basta
@@ -69,8 +69,8 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
         ))}
       </nav>
       <div className={cx("flex gap-1 border-t border-white/[0.06] pt-3", aberta ? "items-center" : "flex-col items-center")}>
-        <button onClick={abrirConfig} className={cx("flex min-h-11 flex-1 cursor-pointer items-center gap-3 rounded-[14px] text-[14px] font-medium text-mute hover:bg-white/[0.04] hover:text-ink", aberta ? "px-3" : "w-11 flex-none justify-center")} aria-label="Conta e conexões">
-          <Settings2 className="size-[18px] shrink-0" />{aberta && "Conta"}
+        <button onClick={abrirConfig} aria-current={aba === "ajustes" ? "page" : undefined} className={cx("flex min-h-11 flex-1 cursor-pointer items-center gap-3 rounded-[14px] text-[14px] font-medium hover:bg-white/[0.04] hover:text-ink", aba === "ajustes" ? "bg-white/[0.07] text-ink" : "text-mute", aberta ? "px-3" : "w-11 flex-none justify-center")} aria-label="Ajustes">
+          <Settings2 className={cx("size-[18px] shrink-0", aba === "ajustes" && "text-red")} />{aberta && "Ajustes"}
         </button>
         <button aria-label={ligado ? "Desligar sons" : "Ligar sons"} onClick={alternarSom} className="grid size-11 cursor-pointer place-items-center rounded-[14px] text-mute hover:bg-white/[0.04] hover:text-ink">
           {ligado ? <Volume2 className="size-[18px]" /> : <VolumeX className="size-[18px]" />}

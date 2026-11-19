@@ -18,3 +18,4 @@
 - [Criados só vídeo](feedback-criados-so-video.md) — Criados grid only finished videos; copy/erro/gerando as rows; trash visible on cards
 - [Board antes de criar](feedback-board-antes-de-criar.md) — send opens settings board (legenda/trilha/duração) before any generation; music not in Inspirar
 - [Comunidade de ferramentas](comunidade-ferramentas.md) — community hub with many AI tools (Forja, page cloner, offer miner+board, swipe file), each sold alone, others locked inside for ascension
+- [Referências marketplaces UI](referencias-marketplaces-ui.md) — 21st + Skiper/Aceternity/Kokonut/Cult: how to present motion galleries in Forja

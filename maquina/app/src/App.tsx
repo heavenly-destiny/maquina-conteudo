@@ -3,7 +3,8 @@ import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { Search, Settings2, Volume2, VolumeX } from "lucide-react";
 import { Onboarding, lerConfig, type Config } from "./Onboarding";
 import { Intro } from "./Intro";
-import { Dock, ABAS, type Aba } from "./Dock";
+import { Dock, ABAS, type Aba, type Tela } from "./Dock";
+import { Ajustes } from "./telas/Ajustes";
 import { Fundo } from "./Fundo";
 import { Sidebar } from "./Sidebar";
 import { useEstado } from "./api";
@@ -17,21 +18,21 @@ import { Inspirar } from "./telas/Inspirar";
 import { Postar, pendentes } from "./telas/Postar";
 import { Paleta } from "./Paleta";
 
-const lerAba = (): Aba => {
-  const h = location.hash.slice(1) as Aba;
-  return ABAS.some((a) => a.id === h) ? h : "inicio";
+const lerAba = (): Tela => {
+  const h = location.hash.slice(1) as Tela;
+  return h === "ajustes" || ABAS.some((a) => a.id === h) ? h : "inicio";
 };
 
 // abertura uma vez por dia (lição do INFLU LAB: repetir toda hora cansa); ?intro=1 força
 const hoje = () => new Date().toLocaleDateString("sv");
 function querIntro() {
   if (new URLSearchParams(location.search).has("intro")) return true;
-  try { return localStorage.getItem("intro-dia") !== hoje(); } catch { return true; }
+  try { return localStorage.getItem("abertura") !== "0" && localStorage.getItem("intro-dia") !== hoje(); } catch { return true; }
 }
 
 export default function App() {
   const [intro, setIntro] = useState(querIntro);
-  const [aba, setAba] = useState<Aba>(lerAba);
+  const [aba, setAba] = useState<Tela>(lerAba);
   const [ligado, setLigado] = useState(som.ligado);
   const [lateral, setLateralSt] = useState(() => { try { return localStorage.getItem("lateral") !== "0"; } catch { return true; } });
   const setLateral = useCallback((v: boolean) => { setLateralSt(v); try { localStorage.setItem("lateral", v ? "1" : "0"); } catch {} }, []);
@@ -43,7 +44,8 @@ export default function App() {
   useEffect(() => {
     lerConfig().then((c) => { setCfg(c); if (!c.pronto && !c.concluido || new URLSearchParams(location.search).has("onboard")) setOnboard(true); }).catch(() => {});
   }, []);
-  const abrirConfig = useCallback(async () => { som.abrir(); setCfg(await lerConfig()); setOnboard(true); }, []);
+  const refazerConfig = useCallback(async () => { som.abrir(); setCfg(await lerConfig()); setOnboard(true); }, []);
+  const abrirConfig = useCallback(() => { som.abrir(); ir("ajustes"); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => { // luz que segue o mouse + data-luz acendendo no ponto exato
     let r = 0;
@@ -68,7 +70,7 @@ export default function App() {
     return () => removeEventListener("hashchange", f);
   }, []);
 
-  const ir = useCallback((a: Aba) => {
+  const ir = useCallback((a: Tela) => {
     history.replaceState(null, "", a === "inicio" ? location.pathname : `#${a}`);
     setAba(a);
     scrollTo({ top: 0, behavior: "smooth" });
@@ -125,7 +127,7 @@ export default function App() {
                 className="vidro grid size-10 cursor-pointer place-items-center rounded-full text-mute hover:text-ink">
                 <Search className="size-4" />
               </button>
-              <button aria-label="Conexões" onClick={abrirConfig}
+              <button aria-label="Ajustes" onClick={abrirConfig}
                 className="vidro grid size-10 cursor-pointer place-items-center rounded-full text-mute hover:text-ink">
                 <Settings2 className="size-4" />
               </button>
@@ -152,6 +154,7 @@ export default function App() {
                   {aba === "criar" && <Criar e={e} ir={ir} />}
                   {aba === "inspirar" && <Inspirar e={e} criarCom={criarCom} />}
                   {aba === "postar" && <Postar e={e} />}
+                  {aba === "ajustes" && <Ajustes ligado={ligado} alternarSom={() => setLigado(som.alternar())} lateral={lateral} setLateral={setLateral} refazer={refazerConfig} fechar={() => ir("inicio")} />}
                 </motion.div>
               </AnimatePresence>
             </main>

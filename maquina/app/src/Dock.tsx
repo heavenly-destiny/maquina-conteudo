@@ -5,6 +5,7 @@ import { som } from "./sons";
 import { cx, mola } from "./ui";
 
 export type Aba = "inicio" | "cortes" | "criar" | "inspirar" | "postar";
+export type Tela = Aba | "ajustes";
 export const ABAS: { id: Aba; nome: string; Icone: typeof Home }[] = [
   { id: "inicio", nome: "Início", Icone: Home },
   { id: "cortes", nome: "Cortes", Icone: Scissors },
@@ -38,7 +39,7 @@ function Item({ aba, ativa, mx, onClick, badge }: { aba: (typeof ABAS)[number]; 
   );
 }
 
-export function Dock({ aba, onAba, badges }: { aba: Aba; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>> }) {
+export function Dock({ aba, onAba, badges }: { aba: Tela; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>> }) {
   const mx = useMotionValue(Infinity);
   return (
     <motion.nav
