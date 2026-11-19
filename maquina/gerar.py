@@ -14,6 +14,7 @@ PARA_NA_COPY = """
 
 ## Copy approval gate (his rule: he approves the full copy before any voice, music or asset is generated)
 Do step zero and write ONLY: conhecimento-usado.md, roteiro.md, roteiro.json, emotion-map.json (and decupagem_aplicada.md when modeling, clone_espec.md when cloning).
+Be fast: this stage must finish in a few minutes. Read only what the copy needs (rules, playbook, the reference), no exploration, no second drafts. Before stopping, check the copy yourself against the rules (no em dashes, no kickers, his words and tone).
 Then STOP. Do not call voz or som, do not generate images, do not build or render anything. tanpz reads the copy in the panel and approves it."""
 COPY_APROVADA = """
 
@@ -50,6 +51,14 @@ def salvar(p, e):
     tmp.replace(p / "estado.json")
 
 
+IDIOMA_ORIGINAL = "\n\nSPOKEN LANGUAGE (chosen by tanpz): keep the original speech, word for word, in the original language. Do not translate.\n"
+IDIOMA_PT = ("\n\nSPOKEN LANGUAGE (chosen by tanpz): PORTUGUESE. Translate the spoken script into natural Brazilian Portuguese "
+             "(how a Brazilian creator would say it, not a literal word swap). Keep the same beats, same order, same timing per line "
+             "and same total length; trim or expand phrasing so each line fits its original duration. On-screen text also goes to PT-BR "
+             "with the same length and rhythm. Use a native pt-BR ElevenLabs voice with the same character (gender, age, energy, pace). "
+             "This overrides the 'word for word' rule for speech only; everything else stays a 1:1 clone.\n")
+
+
 def montar_prompt(p, ped):
     estilo = ped.get("estilo") or ("criativo-direct-response" if ped["tipo"] == "criativo" else "conteudo-organico")
     ref = m.RAIZ / "inspiracoes" / str(ped.get("inspiracao") or "x")
@@ -60,6 +69,8 @@ def montar_prompt(p, ped):
     extra = PARA_NA_COPY if so_copy(ped) else COPY_APROVADA if ped["tipo"] in COM_VOZ else ""
     if ped["tipo"] in COM_VOZ and not so_copy(ped):
         extra += motions_prontos(ped["briefing"])
+    if ped["tipo"] == "clonar":
+        extra += IDIOMA_PT if ped.get("idioma") == "pt" else IDIOMA_ORIGINAL
     return m.prompt(f"gerar_{ped['tipo']}", base=m.prompt("_gerar_base", **v), **v) + extra
 
 
@@ -87,7 +98,7 @@ def rodar(id_):
         threading.Thread(target=vigiar, args=(p, e, parar), daemon=True).start()
         m.claude(montar_prompt(p, ped), p, m.MODELO_CORTE if ped["tipo"] == "clonar" and so_copy(ped) else MODELO[ped["tipo"]], "log.txt")  # clonar: a copy é a transcrição, sonnet basta
         # revisão obrigatória contra regras, memórias e vereditos antigos; reprovou = refaz uma vez com as correções
-        for volta in (1, 2):
+        for volta in (() if so_copy(ped) else (1, 2)):  # copy tem que sair rápido (tanpz 19/11): sem revisão na etapa de copy, ele mesmo aprova; revisão fica no vídeo final
             e["fase"] = "revisando"
             salvar(p, e)
             (p / "revisao.json").unlink(missing_ok=True)

@@ -7,7 +7,7 @@ The reference is in `{{ref}}`. Read `{{ref}}/decupagem.json`, `{{ref}}/decupagem
 Rebuild it 1:1:
 - Same number of scenes, same order, same timing per beat (within 0.1 s), same total length.
 - Same on-screen text, word for word, same position, size, weight, colors and animation. If the reference is not in Portuguese, keep the original text unless the briefing asks for PT-BR; then translate literally, keeping length and rhythm.
-- Same spoken script, word for word (from the transcript). Same voice character (gender, age, energy, pace) using an ElevenLabs voice that matches.
+- Same spoken script, word for word (from the transcript), unless the SPOKEN LANGUAGE note at the end says PORTUGUESE: then translate it naturally to PT-BR keeping every beat and its timing. Same voice character (gender, age, energy, pace) using an ElevenLabs voice that matches.
 - Same visual style: framing, backgrounds, characters, b-roll type, captions style, effects, transitions.
 - Same music mood, BPM and drop points, and the same SFX on the same beats (royalty-free equivalents, never the copyrighted track).
 - Images that only exist in the reference: recreate the closest equivalent; never reuse the creator's face, name, logo or claims as our own.

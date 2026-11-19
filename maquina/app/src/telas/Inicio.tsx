@@ -28,6 +28,7 @@ const EXEMPLOS: Record<Modo, string[]> = {
 };
 const ESTILOS = [{ v: "conteudo-organico", rotulo: "Orgânico" }, { v: "criativo-direct-response", rotulo: "Anúncio" }, { v: "motivacional", rotulo: "Motivacional" }];
 const DURACOES = ["15", "30", "45", "60"];
+const IDIOMAS = [{ v: "original", rotulo: "Fala original" }, { v: "pt", rotulo: "Em português" }] as const;
 const ehLink = (s: string) => /^https?:\/\/\S+$/.test(s.trim());
 
 /* frase de exemplo que se digita e se apaga sozinha */
@@ -53,6 +54,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const [estilo, setEstilo] = useState("conteudo-organico");
   const [duracao, setDuracao] = useState("30");
   const [insp, setInsp] = useState<string | undefined>();
+  const [idioma, setIdioma] = useState<"original" | "pt">("original");
   const inpInsp = useRef<HTMLInputElement>(null);
   const [arquivo, setArquivo] = useState<File | null>(null);
   const [prog, setProg] = useState<number | null>(null);
@@ -123,7 +125,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         await post("/api/inspirar", { url: texto.trim() }); som.enviar();
         setRecibo({ msg: "Decupando o vídeo. Leva uns minutos.", aba: "inspirar" });
       } else {
-        await post("/api/gerar", { tipo: modo, briefing: texto, estilo, duracao: Number(duracao), inspiracao: insp }); som.enviar();
+        await post("/api/gerar", { tipo: modo, briefing: texto, estilo, duracao: Number(duracao), inspiracao: insp, ...(modo === "clonar" ? { idioma } : {}) }); som.enviar();
         setRecibo({ msg: `${MODOS.find((m) => m.v === modo)!.nome} na fila. A Forja já começou.`, aba: "criar" });
       }
       setTexto(""); setInsp(undefined); atualizar();
@@ -193,7 +195,13 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                     </div>
                     <button onClick={() => { som.toque(); setInsp(undefined); }} aria-label="Tirar referência" className="grid size-10 cursor-pointer place-items-center rounded-full text-faint hover:text-ink"><X className="size-4" /></button>
                   </div>
-                ) : (
+                ) : null}
+                {insp && modo === "clonar" ? (
+                  <div className="flex flex-wrap items-center gap-2 p-1 pb-2">
+                    <Segmentos id="m-idioma" valor={idioma} onChange={(v) => { som.toque(); setIdioma(v); }} opcoes={[...IDIOMAS]} />
+                    <span className="text-[12.5px] text-faint">{idioma === "pt" ? "Traduz a fala, mesmo ritmo" : "Mesmas palavras do vídeo"}</span>
+                  </div>
+                ) : insp ? null : (
                   <div className="flex flex-col gap-2 p-1 pb-2">
                     <div className="flex flex-wrap items-center gap-2">
                       <button onClick={() => inpInsp.current?.click()} disabled={prog !== null}
