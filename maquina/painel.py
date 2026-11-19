@@ -796,6 +796,33 @@ class H(BaseHTTPRequestHandler):
                 return self._json({"erro": "geração não existe"}, 404)
             escrever(f.parent / "estado.json", {**lerj(f.parent / "estado.json", {}), "status": "na-fila", "fase": "", "erro": "", "desde": time.time()})
             disparar_script("gerar.py", f.parent.name)
+        elif u == "/api/editar-copy":  # tanpz edita a copy no painel antes de aprovar
+            d_ = GER / Path(str(d.get("id", ""))).name
+            r = lerj(d_ / "roteiro.json", None)
+            novas = d.get("falas")
+            if not r or not isinstance(novas, list) or len(novas) != len(r.get("falas", [])) or not all(isinstance(x, str) and x.strip() for x in novas):
+                return self._json({"erro": "copy inválida"}, 400)
+            if lerj(d_ / "estado.json", {}).get("status") != "aprovar-copy":
+                return self._json({"erro": "essa copy já foi aprovada"}, 409)
+            md = (d_ / "roteiro.md").read_text() if (d_ / "roteiro.md").exists() else ""
+            for f, nova in zip(r["falas"], novas):
+                nova = nova.strip()
+                if nova != f["texto"]:
+                    md = md.replace(f["texto"], nova)  # a mesma fala aparece no roteiro.md e no gancho
+                    r["gancho"] = (r.get("gancho") or "").replace(f["texto"], nova)
+                    f["texto"] = nova
+            if isinstance(d.get("legenda"), str) and d["legenda"].strip():
+                if r.get("legenda"):
+                    md = md.replace(r["legenda"], d["legenda"].strip())
+                r["legenda"] = d["legenda"].strip()
+            escrever(d_ / "roteiro.json", r)
+            (d_ / "roteiro.md").write_text(md)
+            e_ = lerj(d_ / "estado.json", {})
+            e_["legenda"] = r.get("legenda", e_.get("legenda", ""))
+            escrever(d_ / "estado.json", e_)
+            ped = lerj(d_ / "pedido.json", {})
+            ped["copy_editada"] = True
+            escrever(d_ / "pedido.json", ped)
         elif u == "/api/aprovar-copy":
             f = GER / Path(str(d.get("id", ""))).name / "pedido.json"
             if not f.exists():

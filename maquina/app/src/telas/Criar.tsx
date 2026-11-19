@@ -1,6 +1,6 @@
 import { useMemo, useState, type MouseEvent } from "react";
 import { motion } from "motion/react";
-import { Check, ChevronRight, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
+import { Check, ChevronRight, Pencil, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
 import { lerRoteiro } from "../roteiro";
 import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
@@ -112,7 +112,42 @@ function Marcar({ g }: { g: Geracao }) {
   );
 }
 
+/* editar a copy antes de aprovar: cada fala vira um campo; salva no roteiro.json/roteiro.md */
+function EditorCopy({ g, fechar }: { g: Geracao; fechar: () => void }) {
+  const avisar = useAviso();
+  const [falas, setFalas] = useState(() => (g.roteiro_json?.falas ?? []).map((f) => f.texto));
+  const [legenda, setLegenda] = useState(g.legenda ?? "");
+  const [salvando, setSalvando] = useState(false);
+  const campo = "vidro w-full resize-none rounded-[14px] px-4 py-3 text-[15.5px] leading-relaxed outline-none [field-sizing:content] focus:shadow-[0_0_0_2px_rgb(225_29_42/0.6)]";
+  const salvar = async () => {
+    setSalvando(true);
+    try { await post("/api/editar-copy", { id: g.id, falas, legenda }); som.enviar(); avisar("Copy salva."); atualizar(); fechar(); }
+    catch (er) { avisar((er as Error).message, true); setSalvando(false); }
+  };
+  if (!falas.length) return <p className="text-[14px] text-mute">Essa copy não tem falas separadas pra editar.</p>;
+  return (
+    <div className="flex flex-col gap-3">
+      <p className="text-[13px] font-medium text-faint">Fala</p>
+      {falas.map((f, i) => (
+        <label key={i} className="flex flex-col gap-1.5">
+          {g.roteiro_json?.falas?.[i]?.cena && <span className="text-[12.5px] text-faint">{g.roteiro_json.falas[i].cena}</span>}
+          <textarea value={f} rows={1} aria-label={`Fala ${i + 1}`} onChange={(e) => setFalas(falas.map((x, j) => (j === i ? e.target.value : x)))} className={campo} />
+        </label>
+      ))}
+      {g.legenda != null && (<>
+        <p className="mt-2 text-[13px] font-medium text-faint">Legenda do post</p>
+        <textarea value={legenda} rows={3} aria-label="Legenda do post" onChange={(e) => setLegenda(e.target.value)} className={campo} />
+      </>)}
+      <div className="flex flex-wrap gap-2">
+        <Botao tipo="principal" onClick={salvar} disabled={salvando || falas.some((f) => !f.trim())}><Check className="size-4" /> {salvando ? "Salvando…" : "Salvar copy"}</Botao>
+        <Botao onClick={fechar}>Cancelar</Botao>
+      </div>
+    </div>
+  );
+}
+
 function Abrir({ g }: { g: Geracao }) {
+  const [editando, setEditando] = useState(false);
   const [nota, setNota] = useState("");
   const avisar = useAviso();
   const legenda = g.legenda ? (
@@ -134,10 +169,13 @@ function Abrir({ g }: { g: Geracao }) {
       )}
       {g.status === "aprovar-copy" && (
         <div className="vidro flex flex-col gap-3 rounded-[18px] p-4">
-          <p className="text-[14px] text-mute">Leia a copy. Aprovando, a Forja gera voz, música e vídeo sem mudar nenhuma palavra.</p>
-          <Botao tipo="principal" className="self-start" onClick={async () => { await post("/api/aprovar-copy", { id: g.id }); som.enviar(); avisar("Copy aprovada. Gerando o vídeo."); atualizar(); }}>
-            <Check className="size-4" /> Aprovar copy
-          </Botao>
+          <p className="text-[14px] text-mute">Leia a copy e mude o que quiser. Aprovando, a Forja gera voz, música e vídeo sem mudar nenhuma palavra.</p>
+          {!editando && <div className="flex flex-wrap gap-2">
+            <Botao tipo="principal" onClick={async () => { await post("/api/aprovar-copy", { id: g.id }); som.enviar(); avisar("Copy aprovada. Gerando o vídeo."); atualizar(); }}>
+              <Check className="size-4" /> Aprovar copy
+            </Botao>
+            {!!g.roteiro_json?.falas?.length && <Botao onClick={() => { som.toque(); setEditando(true); }}><Pencil className="size-4" /> Editar copy</Botao>}
+          </div>}
         </div>
       )}
       {g.revisao && !g.revisao.aprovado && !!g.revisao.problemas?.length && (
@@ -153,9 +191,11 @@ function Abrir({ g }: { g: Geracao }) {
         </div>
       )}
       {g.tipo !== "roteiro" && <Marcar g={g} />}
+      {editando && g.status === "aprovar-copy" ? <EditorCopy g={g} fechar={() => setEditando(false)} /> : <>
       {g.tipo !== "roteiro" && legenda}
       {(g.roteiro_txt || g.roteiro_json) && <Teleprompter txt={g.roteiro_txt ?? ""} json={g.roteiro_json} />}
       {g.tipo === "roteiro" && legenda}
+      </>}
       <div className="flex flex-wrap gap-2">
         {g.video && <a href={`${g.video}&baixar=1`} className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10"><Download className="size-4" /> Baixar</a>}
       </div>

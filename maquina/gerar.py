@@ -69,6 +69,8 @@ def montar_prompt(p, ped):
     extra = PARA_NA_COPY if so_copy(ped) else COPY_APROVADA if ped["tipo"] in COM_VOZ else ""
     if ped["tipo"] in COM_VOZ and not so_copy(ped):
         extra += motions_prontos(ped["briefing"])
+    if ped.get("copy_editada") and not so_copy(ped):
+        extra += "\ntanpz edited some spoken lines by hand in the panel: roteiro.json is the truth. Make on-screen text, captions and scene timing match the edited lines.\n"
     if ped["tipo"] == "clonar":
         extra += IDIOMA_PT if ped.get("idioma") == "pt" else IDIOMA_ORIGINAL
     return m.prompt(f"gerar_{ped['tipo']}", base=m.prompt("_gerar_base", **v), **v) + extra
