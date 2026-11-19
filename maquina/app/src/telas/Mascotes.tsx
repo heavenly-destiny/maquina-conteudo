@@ -1,9 +1,9 @@
 /* Criador de mascote: escolhe o modelo, descreve o personagem e a Forja desenha o mascote e uma folha
    com 32 reações recortadas (PNG sem fundo), prontas pra animar dentro do vídeo de historinha/quadrinho. */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Download, RotateCcw, Smile, Sparkles } from "lucide-react";
-import { atualizar, post, type Estado, type Mascote } from "../api";
+import { Camera, Check, Download, RotateCcw, Smile, Sparkles, X } from "lucide-react";
+import { atualizar, post, subirImagem, type Estado, type Mascote } from "../api";
 import { Botao, Cabecalho, Excluir, Folha, GRADE, LixeiraCanto, Status, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import { som } from "../sons";
 
@@ -97,16 +97,21 @@ export function Mascotes({ e }: { e: Estado | null }) {
   const [nome, setNome] = useState("");
   const [carac, setCarac] = useState("");
   const [enviando, setEnviando] = useState(false);
+  const [foto, setFoto] = useState<File | null>(null);
+  const previa = useMemo(() => (foto ? URL.createObjectURL(foto) : null), [foto]);
+  useEffect(() => () => { if (previa) URL.revokeObjectURL(previa); }, [previa]);
+  const inputFoto = useRef<HTMLInputElement>(null);
   const [abertoId, setAbertoId] = useState<string | null>(null);
   const lista = useMemo(() => e?.mascotes ?? [], [e]);
   const aberto = lista.find((m) => m.id === abertoId);
 
   const criar = async () => {
-    if (!carac.trim()) { avisar("Descreve como ele é", true); return; }
+    if (!carac.trim() && !foto) { avisar("Manda uma foto ou descreve como ele é", true); return; }
     setEnviando(true);
     try {
-      await post("/api/mascote", { modelo, nome: nome.trim(), caracteristicas: carac.trim() });
-      atualizar(); setNome(""); setCarac(""); avisar("Desenhando o mascote");
+      const img = foto ? await subirImagem(foto) : undefined;
+      await post("/api/mascote", { modelo, nome: nome.trim(), caracteristicas: carac.trim(), foto: img });
+      atualizar(); setNome(""); setCarac(""); setFoto(null); avisar("Desenhando o mascote");
     } catch (er) { avisar((er as Error).message, true); }
     setEnviando(false);
   };
@@ -143,13 +148,25 @@ export function Mascotes({ e }: { e: Estado | null }) {
 
       <section className="vidro flex flex-col gap-4 rounded-[24px] p-4 sm:p-5">
         <div className="flex flex-col gap-3 sm:flex-row">
+          {/* foto da pessoa: o mascote sai com o rosto, cabelo e roupa dela no estilo escolhido */}
+          <input ref={inputFoto} type="file" accept="image/*" hidden onChange={(ev) => { const a = ev.target.files?.[0]; if (a) { som.toque(); setFoto(a); } ev.target.value = ""; }} />
+          {previa ? (
+            <div className="relative size-[104px] shrink-0 overflow-hidden rounded-[16px] ring-1 ring-white/10 sm:size-[52px]">
+              <img src={previa} alt="Sua foto" className="size-full object-cover" />
+              <button aria-label="Tirar a foto" onClick={() => { som.toque(); setFoto(null); }} className="absolute right-1 top-1 grid size-6 cursor-pointer place-items-center rounded-full bg-black/60 backdrop-blur"><X className="size-3.5" /></button>
+            </div>
+          ) : (
+            <button onClick={() => inputFoto.current?.click()} className="flex min-h-[52px] shrink-0 cursor-pointer items-center justify-center gap-2 rounded-[14px] bg-white/[0.05] px-4 text-[15px] text-mute ring-1 ring-white/[0.06] transition-colors hover:bg-white/[0.08] hover:text-ink">
+              <Camera className="size-[18px]" /> Usar minha foto
+            </button>
+          )}
           <input value={nome} onChange={(ev) => setNome(ev.target.value)} placeholder="Nome (opcional)" maxLength={60}
             className="w-full rounded-[14px] bg-white/[0.05] px-4 py-3 text-[16px] outline-none ring-1 ring-white/[0.06] focus:ring-2 focus:ring-red/60 sm:w-56" />
-          <textarea value={carac} onChange={(ev) => setCarac(ev.target.value)} rows={2} placeholder={`Como ele é. Ex.: ${IDEIAS[modelo]}`} maxLength={1200}
+          <textarea value={carac} onChange={(ev) => setCarac(ev.target.value)} rows={2} placeholder={foto ? "Algum detalhe a mais? (opcional)" : `Como ele é. Ex.: ${IDEIAS[modelo]}`} maxLength={1200}
             className="min-h-[52px] w-full flex-1 resize-none rounded-[14px] bg-white/[0.05] px-4 py-3 text-[16px] outline-none ring-1 ring-white/[0.06] focus:ring-2 focus:ring-red/60" />
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[13px] text-faint">Sai o mascote e 32 reações sem fundo · cerca de 2 min</p>
+          <p className="text-[13px] text-faint">{foto ? "Seu mascote com o seu rosto" : "Sai o mascote"} e 32 reações sem fundo · cerca de 2 min</p>
           <Botao tipo="principal" onClick={criar} carregando={enviando} className="w-full sm:w-auto"><Sparkles className="size-4" /> Criar mascote</Botao>
         </div>
       </section>

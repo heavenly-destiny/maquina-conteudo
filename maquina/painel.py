@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Painel local da Máquina: http://127.0.0.1:4747
 Lista vídeos crus novos, jobs e cortes; dispara job, refazer e envio pro WhatsApp."""
-import json, os, re, shutil, subprocess, sys, threading, time
+import gzip, json, os, re, shutil, subprocess, sys, threading, time
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
@@ -17,6 +17,8 @@ PORTA = int(os.environ.get("PORTA", 4747))
 GER = RAIZ / "geracoes"
 INS = RAIZ / "inspiracoes"
 MASC = RAIZ / "mascotes"
+CAR = RAIZ / "carrosseis"
+IMG_IN = RAIZ / "entrada-img"  # foto/slide que chegou e ainda não foi ligado a um pedido
 TRA = RAIZ / "transcricoes"
 MODOS_DEC = ("rapida", "completa", "fiel")
 POSTADOS = RAIZ / "postados.json"
@@ -45,7 +47,26 @@ def duracao(p):
     return c[k]
 
 
+_BRUTOS = {"v": [], "t": 0.0, "rodando": False}
+
+
 def brutos():
+    """lista de vídeos crus sem travar a tela: Downloads pode demorar (arquivo no iCloud, permissão do macOS);
+    a varredura roda numa thread e o estado usa o último resultado"""
+    if not _BRUTOS["rodando"] and time.time() - _BRUTOS["t"] > 20:
+        _BRUTOS["rodando"] = True
+        def ler():
+            try:
+                _BRUTOS["v"] = _brutos()
+            except Exception as er:
+                open(AQUI / "painel_jobs.log", "a").write(f"[brutos] {er}\n")
+            finally:
+                _BRUTOS["t"], _BRUTOS["rodando"] = time.time(), False
+        threading.Thread(target=ler, daemon=True).start()
+    return _BRUTOS["v"]
+
+
+def _brutos():
     feitos = {json.loads((j / "estado.json").read_text()).get("bruto") for j in JOBS.glob("*") if (j / "estado.json").exists()}
     out = []
     achados = [*DOWN.glob("*.MOV"), *DOWN.glob("*.mov"), *ENTRADA.glob("*")]
@@ -282,6 +303,54 @@ def geracoes():
     return out
 
 
+_EST = {"t": 0.0, "b": b""}
+_EST_TRAVA = threading.Lock()
+
+
+def estado_cache():
+    """o estado inteiro percorre todas as pastas; várias abas e telas pedindo junto custam uma montagem só a cada 1,5 s"""
+    with _EST_TRAVA:
+        if time.time() - _EST["t"] > 1.5:
+            _EST["b"] = json.dumps({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(),
+                                    "hoje": hoje(), "postados": lerj(POSTADOS, []), "agenda": lerj(AGENDA, []), "mascotes": mascotes(), "carrosseis": carrosseis(),
+                                    "envio": ENVIO, "agora": time.time()}, ensure_ascii=False).encode()
+            _EST["t"] = time.time()
+        return _EST["b"]
+
+
+def estado_mudou():
+    _EST["t"] = 0.0  # depois de um POST a próxima leitura já vem nova
+
+
+def carrosseis():
+    out = []
+    for d, g in pastas(CAR):
+        origens = sorted((d / "origem").glob("*")) if (d / "origem").exists() else []
+        g["capa"] = url_arq(origens[0]) if origens else None
+        g["n"] = len(origens)
+        out.append(g)
+    return out
+
+
+def carrossel(id_):
+    """slides com fundo limpo e camadas; edição salva vence a leitura automática"""
+    d = CAR / Path(str(id_)).name
+    if not (d / "pedido.json").exists():
+        return None
+    origens = sorted((d / "origem").glob("*"))
+    base = lerj(d / "camadas.json", {}).get("slides", [])
+    edit = lerj(d / "edicao.json", {}).get("slides")
+    slides = []
+    for k, o in enumerate(origens):
+        s = base[k] if k < len(base) else {"w": 1080, "h": 1350, "camadas": []}
+        cam = edit[k]["camadas"] if edit and k < len(edit) else s.get("camadas", [])
+        fundo = d / s["fundo"] if s.get("fundo") else None
+        troca = d / "trocas" / f"{k + 1:02d}.png"  # fundo que a pessoa trocou no editor
+        slides.append({"origem": url_arq(o), "fundo": url_arq(troca) or (url_arq(fundo) if fundo else None) or url_arq(o),
+                       "w": s.get("w", 1080), "h": s.get("h", 1350), "camadas": cam})
+    return {**lerj(d / "pedido.json", {}), **lerj(d / "estado.json", {}), "id": d.name, "slides": slides, "editado": bool(edit)}
+
+
 def mascotes():
     out = []
     for d, g in pastas(MASC):
@@ -490,8 +559,8 @@ def novo_id(base, sufixo):
     return n, base / n
 
 
-def disparar_script(script, id_):
-    subprocess.Popen([sys.executable, str(AQUI / script), id_], cwd=AQUI,
+def disparar_script(script, id_, py=None):
+    subprocess.Popen([str(py or sys.executable), str(AQUI / script), id_], cwd=AQUI,
                      stdout=open(AQUI / "painel_jobs.log", "a"), stderr=subprocess.STDOUT, **plataforma.segundo_plano())
 
 
@@ -677,9 +746,12 @@ class H(BaseHTTPRequestHandler):
         pass
 
     def _json(self, obj, code=200):
-        b = json.dumps(obj, ensure_ascii=False).encode()
+        b = obj if isinstance(obj, bytes) else json.dumps(obj, ensure_ascii=False).encode()
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        if len(b) > 2048 and "gzip" in (self.headers.get("Accept-Encoding") or ""):  # 90 KB de estado viram ~10 KB
+            b = gzip.compress(b, 5)
+            self.send_header("Content-Encoding", "gzip")
         self.send_header("Content-Length", str(len(b)))
         self.end_headers()
         self.wfile.write(b)
@@ -698,7 +770,10 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/config":
             self._json(config_estado())
         elif u.path == "/api/estado":
-            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "agenda": lerj(AGENDA, []), "mascotes": mascotes(), "envio": ENVIO, "agora": time.time()})
+            self._json(estado_cache())
+        elif u.path == "/api/carrossel":
+            c = carrossel(parse_qs(u.query).get("id", [""])[0])
+            self._json(c if c else {"erro": "carrossel não existe"}, 200 if c else 404)
         elif u.path == "/api/biblioteca":  # sem a imagem base64: ela vem sob demanda em /api/bib-img
             fora = set(lerj(HUB.parent / "ocultos.json", []))  # excluídos pelo painel (o hub.json é a base e não é apagado)
             self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca()) if x["id"] not in fora])
@@ -805,8 +880,34 @@ class H(BaseHTTPRequestHandler):
         disparar(["novo", str(dest)])  # arrastou = quer cortar
         self._json({"ok": True})
 
+    def _upload_img(self, q):
+        """foto do mascote ou slide do carrossel: vai pra entrada-img e devolve o nome pro pedido usar"""
+        ext = Path(q.get("nome", ["x.jpg"])[0]).suffix.lower()
+        if ext not in (".jpg", ".jpeg", ".png", ".webp", ".heic"):
+            return self._json({"erro": "só imagem .jpg, .png ou .webp"}, 400)
+        falta = int(self.headers.get("Content-Length") or 0)
+        if not 0 < falta < 40 << 20:
+            return self._json({"erro": "imagem vazia ou maior que 40 MB"}, 400)
+        IMG_IN.mkdir(exist_ok=True)
+        nome = f"{time.strftime('%Y%m%d-%H%M%S')}-{os.urandom(3).hex()}{ext}"
+        dados = self.rfile.read(falta)
+        if len(dados) != falta:
+            return self._json({"erro": "upload cortado"}, 400)
+        if ext == ".heic":  # foto do iPhone: o Mac converte
+            (IMG_IN / nome).write_bytes(dados)
+            jpg = IMG_IN / (Path(nome).stem + ".jpg")
+            subprocess.run(["sips", "-s", "format", "jpeg", str(IMG_IN / nome), "--out", str(jpg)], capture_output=True)
+            (IMG_IN / nome).unlink(missing_ok=True)
+            nome = jpg.name
+        else:
+            (IMG_IN / nome).write_bytes(dados)
+        return self._json({"ok": True, "img": nome})
+
     def do_POST(self):
+        estado_mudou()
         u = urlparse(self.path).path
+        if u == "/api/upload-img":
+            return self._upload_img(parse_qs(urlparse(self.path).query))
         if u == "/api/upload":
             q = parse_qs(urlparse(self.path).query)
             return self._upload(q["nome"][0], (q.get("config") or [None])[0], (q.get("destino") or [None])[0], (q.get("modo") or [None])[0])
@@ -935,10 +1036,13 @@ class H(BaseHTTPRequestHandler):
                 escrever(AGENDA, sorted([*ag, item], key=lambda x: x["quando"]))
             return self._json({"ok": True, "id": item["id"]})
         elif u == "/api/mascote":  # cria o mascote e a folha de reações
-            if d.get("modelo") not in ("traco", "3d", "bicho", "objeto", "quadrinho", "massinha") or not str(d.get("caracteristicas", "")).strip():
-                return self._json({"erro": "Escolha o modelo e descreva o mascote"}, 400)
+            if d.get("modelo") not in ("traco", "3d", "bicho", "objeto", "quadrinho", "massinha") or not (str(d.get("caracteristicas", "")).strip() or d.get("foto")):
+                return self._json({"erro": "Escolha o modelo e mande uma foto ou descreva o mascote"}, 400)
             id_, p = novo_id(MASC, d["modelo"])
-            escrever(p / "pedido.json", {"modelo": d["modelo"], "nome": str(d.get("nome") or "")[:60],
+            foto = IMG_IN / Path(str(d.get("foto") or "_")).name
+            if foto.is_file():
+                foto.replace(p / f"foto{foto.suffix}")
+            escrever(p / "pedido.json", {"modelo": d["modelo"], "nome": str(d.get("nome") or "")[:60], "foto": f"foto{foto.suffix}" if (p / f"foto{foto.suffix}").exists() else None,
                                          "caracteristicas": str(d["caracteristicas"])[:1200], "criado": time.time()})
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("mascote.py", id_)
@@ -949,6 +1053,49 @@ class H(BaseHTTPRequestHandler):
                 return self._json({"erro": "mascote não existe"}, 404)
             escrever(m / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
             disparar_script("mascote.py", m.name)
+        elif u == "/api/carrossel/novo":  # slides já subidos em entrada-img, na ordem
+            imgs = [IMG_IN / Path(str(x)).name for x in d.get("imgs") or []]
+            imgs = [x for x in imgs if x.is_file()][:20]
+            if not imgs:
+                return self._json({"erro": "Mande as imagens dos slides"}, 400)
+            id_, p = novo_id(CAR, "car")
+            (p / "origem").mkdir()
+            for k, x in enumerate(imgs, 1):
+                x.replace(p / "origem" / f"{k:02d}{x.suffix.lower()}")
+            escrever(p / "pedido.json", {"nome": str(d.get("nome") or "")[:80] or f"Carrossel de {len(imgs)} slides", "url": str(d.get("url") or "")[:500], "criado": time.time()})
+            escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": ""})
+            disparar_script("carrossel.py", id_, plataforma.venv_python(RAIZ / "tools/.venv"))
+            return self._json({"ok": True, "id": id_})
+        elif u == "/api/carrossel/salvar":
+            c = CAR / Path(str(d.get("id", ""))).name
+            if not (c / "pedido.json").exists() or not isinstance(d.get("slides"), list):
+                return self._json({"erro": "carrossel não existe"}, 404)
+            escrever(c / "edicao.json", {"slides": [{"camadas": s.get("camadas", [])[:60]} for s in d["slides"][:20]], "quando": time.time()})
+            if d.get("nome"):
+                escrever(c / "pedido.json", {**lerj(c / "pedido.json", {}), "nome": str(d["nome"])[:80]})
+        elif u == "/api/carrossel/fundo":  # troca o fundo de um slide por uma imagem que a pessoa subiu
+            c = CAR / Path(str(d.get("id", ""))).name
+            img = IMG_IN / Path(str(d.get("img") or "_")).name
+            k = int(d.get("slide", 0))
+            if not (c / "pedido.json").exists() or not img.is_file():
+                return self._json({"erro": "imagem ou carrossel não existe"}, 404)
+            (c / "trocas").mkdir(exist_ok=True)
+            from PIL import Image  # converte pra png do tamanho do slide
+            Image.open(img).convert("RGB").save(c / "trocas" / f"{k + 1:02d}.png")
+            img.unlink(missing_ok=True)
+        elif u == "/api/carrossel/original":  # volta o texto e o fundo pro que a leitura achou
+            c = CAR / Path(str(d.get("id", ""))).name
+            if (c / "edicao.json").exists():
+                lixeira(c / "edicao.json")
+            if (c / "trocas").exists():
+                lixeira(c / "trocas")
+        elif u == "/api/excluir-carrossel":
+            c = CAR / Path(str(d.get("id", ""))).name
+            if not (c / "pedido.json").exists():
+                return self._json({"erro": "carrossel não existe"}, 404)
+            if lerj(c / "estado.json", {}).get("status") in ("na-fila", "gerando"):
+                return self._json({"erro": "esse carrossel ainda está sendo separado"}, 409)
+            lixeira(c)
         elif u == "/api/excluir-mascote":
             m = MASC / Path(str(d.get("id", ""))).name
             if not (m / "pedido.json").exists():

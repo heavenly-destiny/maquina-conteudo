@@ -5,7 +5,7 @@ import { som } from "./sons";
 import { cx, mola } from "./ui";
 
 export type Aba = "inicio" | "cortes" | "criar" | "inspirar" | "postar";
-export type Tela = Aba | "ajustes" | "mascotes";
+export type Tela = Aba | "ajustes" | "mascotes" | "carrosseis";
 export const ABAS: { id: Aba; nome: string; Icone: typeof Home }[] = [
   { id: "inicio", nome: "Início", Icone: Home },
   { id: "cortes", nome: "Cortes", Icone: Scissors },

@@ -1,27 +1,29 @@
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { Search, Settings2, Volume2, VolumeX } from "lucide-react";
 import { Onboarding, lerConfig, type Config } from "./Onboarding";
 import { Intro } from "./Intro";
 import { Dock, ABAS, type Aba, type Tela } from "./Dock";
-import { Ajustes } from "./telas/Ajustes";
-import { Mascotes } from "./telas/Mascotes";
 import { Fundo } from "./Fundo";
 import { Sidebar } from "./Sidebar";
 import { useEstado } from "./api";
 import { som } from "./sons";
 import { Avisos, Marca, cx, molaSuave } from "./ui";
 import { Inicio } from "./telas/Inicio";
+// telas pesadas ou raras carregam só quando abertas (bundle inicial menor)
+const Ajustes = lazy(() => import("./telas/Ajustes").then((m) => ({ default: m.Ajustes })));
+const Mascotes = lazy(() => import("./telas/Mascotes").then((m) => ({ default: m.Mascotes })));
+const Carrosseis = lazy(() => import("./telas/Carrosseis").then((m) => ({ default: m.Carrosseis })));
+const Inspirar = lazy(() => import("./telas/Inspirar").then((m) => ({ default: m.Inspirar })));
 import { Cortes } from "./telas/Cortes";
 import { Criar } from "./telas/Criar";
 import type { Rascunho } from "./api";
-import { Inspirar } from "./telas/Inspirar";
 import { Postar, pendentes } from "./telas/Postar";
 import { Paleta } from "./Paleta";
 
 const lerAba = (): Tela => {
-  const h = location.hash.slice(1) as Tela;
-  return h === "ajustes" || h === "mascotes" || ABAS.some((a) => a.id === h) ? h : "inicio";
+  const h = location.hash.slice(1).split("?")[0] as Tela;
+  return h === "ajustes" || h === "mascotes" || h === "carrosseis" || ABAS.some((a) => a.id === h) ? h : "inicio";
 };
 
 // abertura uma vez por dia (lição do INFLU LAB: repetir toda hora cansa); ?intro=1 força
@@ -81,7 +83,7 @@ export default function App() {
   useEffect(() => {
     const k = (ev: KeyboardEvent) => {
       if (ev.metaKey || ev.ctrlKey || ev.altKey || (ev.target as HTMLElement).closest("input,textarea,select,[contenteditable]")) return;
-      if (document.body.style.overflow === "hidden") return;
+      if (document.body.style.overflow === "hidden" || document.querySelector("[data-tela-cheia]")) return; // editor em tela cheia tem atalhos próprios
       const n = Number(ev.key);
       if (n >= 1 && n <= ABAS.length) { ev.preventDefault(); som.aba(); ir(ABAS[n - 1].id); return; }
       if (ev.key === "n" || ev.key === "/") {
@@ -150,13 +152,16 @@ export default function App() {
                   exit={{ opacity: 0, y: -8, filter: "blur(6px)", transition: { duration: 0.15 } }}
                   transition={molaSuave}
                 >
+                  <Suspense fallback={null}>
                   {aba === "inicio" && <Inicio e={e} ir={ir} rascunho={rascunho} limpar={limparRascunho} />}
                   {aba === "cortes" && <Cortes e={e} />}
                   {aba === "criar" && <Criar e={e} ir={ir} />}
                   {aba === "inspirar" && <Inspirar e={e} criarCom={criarCom} />}
                   {aba === "postar" && <Postar e={e} />}
                   {aba === "mascotes" && <Mascotes e={e} />}
+                  {aba === "carrosseis" && <Carrosseis e={e} />}
                   {aba === "ajustes" && <Ajustes ligado={ligado} alternarSom={() => setLigado(som.alternar())} lateral={lateral} setLateral={setLateral} refazer={refazerConfig} fechar={() => ir("inicio")} />}
+                  </Suspense>
                 </motion.div>
               </AnimatePresence>
             </main>

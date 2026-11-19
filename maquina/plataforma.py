@@ -55,4 +55,7 @@ def tocar(arq):
 
 def segundo_plano():
     """processo filho que sobrevive ao painel."""
-    return {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS} if WIN else {"start_new_session": True}
+    # prioridade baixa: corte, voz e render não roubam a CPU do painel (a tela fica rápida mesmo com 4 ffmpeg rodando)
+    if WIN:
+        return {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS | subprocess.BELOW_NORMAL_PRIORITY_CLASS}
+    return {"start_new_session": True, "preexec_fn": lambda: os.nice(10)}

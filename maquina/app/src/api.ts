@@ -29,10 +29,26 @@ export type Mascote = {
   id: string; modelo: string; nome?: string; caracteristicas: string; status: string; fase?: string; erro?: string; desde?: number;
   imagem?: string | null; folhas: string[]; reacoes: { nome: string; url: string }[];
 };
+export type Camada = {
+  id: string; tipo: "texto" | "imagem"; texto?: string; src?: string; x: number; y: number; w: number; h: number;
+  tam?: number; cor?: string; peso?: number; alinhar?: "left" | "center" | "right"; fonte?: string; italico?: boolean; fundoCor?: string; fixo?: boolean; ajustado?: boolean;
+};
+export type Carrossel = {
+  id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string;
+  slides: { origem: string; fundo: string; w: number; h: number; camadas: Camada[] }[];
+};
+/* manda uma imagem pro servidor e devolve o nome que o pedido usa */
+export async function subirImagem(arq: File) {
+  const r = await fetch(`/api/upload-img?nome=${encodeURIComponent(arq.name)}`, { method: "POST", body: arq });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.erro || "Não subiu a imagem");
+  return j.img as string;
+}
 export type Estado = {
   brutos: Bruto[]; jobs: Job[]; geracoes: Geracao[]; inspiracoes: Inspiracao[]; transcricoes?: Transcricao[];
   hoje: { feitos: number; meta: number; postados: number }; envio: { rodando: boolean; msg: string }; agora: number;
   mascotes?: Mascote[];
+  carrosseis?: { id: string; nome: string; status: string; fase?: string; erro?: string; capa?: string | null; n: number; criado?: number }[];
   agenda?: { id: string; ref: string; quando: string; redes: string[]; legenda?: string; status: "agendado" | "avisado" }[];
 };
 export type ItemBib = {
@@ -51,20 +67,35 @@ export async function post(rota: string, corpo: unknown) {
 let cache: Estado | null = null;
 const ouvintes = new Set<(e: Estado) => void>();
 let timer: number | undefined;
+let emVoo: Promise<void> | null = null;
+let deNovo = false;
 
-async function puxar() {
-  try {
-    const r = await fetch("/api/estado");
-    if (r.ok) { cache = await r.json(); ouvintes.forEach((f) => f(cache!)); }
-  } catch {}
+// um pedido por vez: se já tem um no ar, o próximo sai quando ele voltar (antes empilhava 7 de uma vez com o servidor ocupado)
+function puxar(): Promise<void> {
+  if (emVoo) { deNovo = true; return emVoo; }
+  emVoo = (async () => {
+    try {
+      const r = await fetch("/api/estado");
+      if (r.ok) { cache = await r.json(); ouvintes.forEach((f) => f(cache!)); }
+    } catch {}
+  })().finally(() => { emVoo = null; if (deNovo) { deNovo = false; puxar(); } });
+  return emVoo;
 }
 export const atualizar = puxar;
+
+// próximo ciclo só depois do anterior; aba escondida pergunta bem menos
+function ciclo() {
+  timer = window.setTimeout(async () => { await puxar(); ciclo(); }, document.hidden ? 15000 : 3000);
+}
 
 export function useEstado() {
   const [e, setE] = useState<Estado | null>(cache);
   useEffect(() => {
     ouvintes.add(setE);
-    if (!timer) { puxar(); timer = window.setInterval(puxar, 2500); }
+    if (!timer) {
+      puxar(); ciclo();
+      document.addEventListener("visibilitychange", () => { if (!document.hidden) puxar(); });
+    }
     return () => { ouvintes.delete(setE); };
   }, []);
   return e;

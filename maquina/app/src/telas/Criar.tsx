@@ -1,6 +1,6 @@
 import { useMemo, useState, type MouseEvent } from "react";
 import { motion } from "motion/react";
-import { Check, ChevronRight, Pencil, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
+import { Check, ChevronRight, GalleryHorizontal, Pencil, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
 import { lerRoteiro } from "../roteiro";
 import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, GRADE, LixeiraCanto, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
@@ -291,6 +291,7 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Tela) => void }) {
     <div className="flex flex-col gap-6">
       <Cabecalho titulo="Criados" n={todos.length}>
         <div className="flex items-center gap-2">
+        <Botao onClick={() => ir("carrosseis")} className="hidden px-4 sm:inline-flex"><GalleryHorizontal className="size-4" /> Carrosséis</Botao>
         <Botao onClick={() => ir("mascotes")} className="px-4"><Smile className="size-4" /> Mascotes</Botao>
         <motion.button whileTap={{ scale: 0.9 }} whileHover={{ rotate: 90 }} transition={mola} aria-label="Criar novo" onClick={() => ir("inicio")}
           className="respira grid size-11 cursor-pointer place-items-center rounded-full bg-red text-white">

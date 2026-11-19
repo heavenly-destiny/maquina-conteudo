@@ -61,7 +61,8 @@ def estado(d, **kw):
 def gerar(modelo, texto, ref=None, tentativas=3):
     partes = [{"text": texto}]
     if ref:
-        partes.insert(0, {"inlineData": {"mimeType": "image/png", "data": base64.b64encode(ref.read_bytes()).decode()}})
+        mime = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}.get(ref.suffix.lower(), "image/png")
+        partes.insert(0, {"inlineData": {"mimeType": mime, "data": base64.b64encode(ref.read_bytes()).decode()}})
     corpo = json.dumps({"contents": [{"parts": partes}], "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "1:1"}}}).encode()
     for k in range(tentativas):
         req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent", corpo,
@@ -157,9 +158,17 @@ def rodar(id_):
     try:
         if not (d / "base.png").exists():
             estado(d, status="gerando", fase="desenhando o mascote")
-            (d / "base.png").write_bytes(gerar(MODELO_BASE,
-                f"Character design of {quem}. Style: {estilo}. Full body, front view, neutral friendly pose, centered, "
-                f"plain flat solid {hexa} background, no shadow on the background, no text."))
+            foto = d / p["foto"] if p.get("foto") else None
+            if foto and foto.exists():  # mascote da própria pessoa: a foto é a referência do rosto, cabelo e roupa
+                (d / "base.png").write_bytes(gerar(MODELO_FOLHA,
+                    f"Turn the person in this photo into a mascot character. Keep what makes them recognizable: face shape, hair, skin tone, "
+                    f"glasses or beard if any, clothing colors. {('Extra details: ' + p['caracteristicas'] + '. ') if p.get('caracteristicas') else ''}"
+                    f"Style: {estilo}. Full body, front view, neutral friendly pose, centered, plain flat solid {hexa} background, "
+                    f"no shadow on the background, no text.", ref=foto))
+            else:
+                (d / "base.png").write_bytes(gerar(MODELO_BASE,
+                    f"Character design of {quem}. Style: {estilo}. Full body, front view, neutral friendly pose, centered, "
+                    f"plain flat solid {hexa} background, no shadow on the background, no text."))
         (d / "reacoes").mkdir(exist_ok=True)
         for k, nomes in enumerate(FOLHAS, 1):
             folha = d / f"folha{k}.png"

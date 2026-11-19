@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X, GalleryHorizontal } from "lucide-react";
 import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type ModoDec, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
@@ -97,10 +97,13 @@ function ItemDetalhe({ x, decupar, criarCom, excluir, modo, setModo }: { x: Item
             <p className="max-h-[22dvh] overflow-y-auto whitespace-pre-wrap font-mono text-[12.5px] leading-relaxed text-ink/85">{x.prompt}</p>
           </div>
         )}
-        {x.url && <SeletorDecupagem modo={modo} setModo={setModo} />}
+        {x.url && x.tipo !== "carrossel" && <SeletorDecupagem modo={modo} setModo={setModo} />}
+        {x.tipo === "carrossel" && <p className="text-[13.5px] leading-relaxed text-mute">Salve os slides (print ou imagem) e mande no criador. A Forja separa cada texto do fundo pra você trocar, mover e baixar.</p>}
         <div className="flex flex-wrap gap-2">
           {x.prompt && <Botao tipo="principal" onClick={() => criarCom({ tipo: "animado", briefing: `Usar o motion "${x.titulo}" como referência (técnica: ${x.tecnica ?? "-"}). Prompt de origem: ${x.prompt}\n\nAssunto do meu vídeo: ` })}><Sparkles className="size-4" /> Usar no meu vídeo</Botao>}
-          {x.url && <Botao tipo={x.prompt ? "fantasma" : "principal"} onClick={() => decupar(x.url!)}><Telescope className="size-4" /> Decupar</Botao>}
+          {x.tipo === "carrossel"
+            ? <Botao tipo="principal" onClick={() => { location.hash = "carrosseis?novo=1"; }}><GalleryHorizontal className="size-4" /> Clonar carrossel</Botao>
+            : x.url && <Botao tipo={x.prompt ? "fantasma" : "principal"} onClick={() => decupar(x.url!)}><Telescope className="size-4" /> Decupar</Botao>}
           {x.url && <a href={x.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>}
           <Excluir onConfirmar={excluir} />
         </div>

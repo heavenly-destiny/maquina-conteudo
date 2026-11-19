@@ -2,7 +2,7 @@
    pílula que desliza no item ativo, prévia que inclina com o cursor, teclas que afundam. Cores trocadas pro vinho/vermelho. */
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
-import { ArrowDown, ArrowUp, Clapperboard, CornerDownLeft, FileText, Film, Home, Link2, Megaphone, Scissors, Search, Send, Settings2, Smile, Sparkles, Telescope, Volume2, Wand2 } from "lucide-react";
+import { ArrowDown, ArrowUp, Clapperboard, CornerDownLeft, FileText, Film, GalleryHorizontal, Home, Link2, Megaphone, Scissors, Search, Send, Settings2, Smile, Sparkles, Telescope, Volume2, Wand2 } from "lucide-react";
 import type { Tela } from "./Dock";
 import type { Estado, Rascunho } from "./api";
 import { som } from "./sons";
@@ -66,6 +66,7 @@ export function Paleta({ e, ir, criarCom, abrirConfig, alternarSom }: {
       { id: "cortar", grupo: "Criar", titulo: "Cortar vídeo cru", sub: "Os melhores trechos com legenda", icone: <Scissors className={I} />, chaves: "cortes upload", acao: () => ir("cortes") },
       { id: "link", grupo: "Criar", titulo: "Analisar referência", sub: "Cola o link de um viral", icone: <Link2 className={I} />, chaves: "decupar inspirar link", acao: () => { ir("inspirar"); setTimeout(() => document.querySelector<HTMLInputElement>("main input")?.focus(), 200); } },
       { id: "mascote", grupo: "Criar", titulo: "Criar mascote", sub: "Personagem com 32 reações", icone: <Smile className={I} />, chaves: "personagem quadrinho boneco historinha reacoes", desc: "Escolhe o modelo, descreve, e sai o mascote com todas as reações sem fundo pra animar.", acao: () => ir("mascotes") },
+      { id: "carrossel", grupo: "Criar", titulo: "Clonar carrossel", sub: "Separa texto e fundo pra editar", icone: <GalleryHorizontal className={I} />, chaves: "carrossel slides instagram editar canva camadas", desc: "Manda os slides de um carrossel que viralizou. A Forja separa cada texto do fundo e você troca, move e baixa em PNG.", acao: () => ir("carrosseis") },
       { id: "inicio", grupo: "Ir para", titulo: "Início", icone: <Home className={I} />, atalho: "1", acao: () => ir("inicio") },
       { id: "cortes", grupo: "Ir para", titulo: "Cortes", icone: <Scissors className={I} />, atalho: "2", acao: () => ir("cortes") },
       { id: "criados", grupo: "Ir para", titulo: "Criados", icone: <Sparkles className={I} />, atalho: "3", acao: () => ir("criar") },
