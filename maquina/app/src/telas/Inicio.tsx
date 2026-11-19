@@ -23,7 +23,7 @@ const EXEMPLOS: Record<Modo, string[]> = {
   corte: ["Solte aqui o vídeo cru da gravação de hoje", "Arraste a live inteira, eu digo quantos cortes ela rende"],
   roteiro: ["Como eu faço 10 vídeos por dia com o Claude", "3 erros que travam quem tá começando no digital", "O dia que eu parei de editar vídeo na mão"],
   animado: ["O que é uma skill do Claude, passo a passo", "Por que seu story não tem resposta, explicado pelo mascote"],
-  criativo: ["Stories Lab: stories prontos em 60 segundos, pra quem vende no Instagram", "Anúncio de 30s pra quem perde tempo no Canva"],
+  criativo: ["Anúncio de 20s pro meu produto, gancho forte nos 3 primeiros segundos", "Anúncio de 30s pra quem perde tempo no Canva"],
   modelar: ["Modelar esse viral pro meu nicho de IA", "Mesma estrutura, assunto: criar conteúdo com o Claude"],
   transcrever: ["Cole o link do vídeo ou solte o arquivo", "Tiro o texto inteiro, com legenda .srt pronta"],
   clonar: ["Clonar 100% igual: mesmas cenas, texto, tempo e som", "Clonar igual e traduzir a fala pro português"],

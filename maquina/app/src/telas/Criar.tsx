@@ -107,7 +107,7 @@ function Marcar({ g }: { g: Geracao }) {
       <Segmentos id={`val-${g.id}`} valor={val} onChange={(v) => salvar({ validacao: v })} className="self-start"
         opcoes={[{ v: "teste" as const, rotulo: "Em teste" }, { v: "validado" as const, rotulo: "Validado" }]} />
       <input value={nicho} onChange={(e) => setNicho(e.target.value)} onBlur={() => nicho.trim() !== (g.nicho ?? "") && salvar({ nicho })}
-        onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()} maxLength={30} placeholder="Nicho (ex.: Stories Lab)"
+        onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()} maxLength={30} placeholder="Nicho (ex.: estética)"
         className="vidro min-h-11 min-w-0 flex-1 rounded-full px-4 text-[14.5px] outline-none placeholder:text-faint focus:shadow-[0_0_0_2px_rgb(225_29_42/0.6)]" />
     </div>
   );
