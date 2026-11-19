@@ -290,6 +290,29 @@ def transcricoes():
     return out
 
 
+TIPOS_VIDEO = [  # tipo de vídeo do Inspirar, na ordem em que as regras são testadas (o primeiro que bate vence)
+    ("carrossel", ("carross",)),
+    ("animado", ("pixel art", "stick figure", "palitinho", "cartoon", "2d ", "3d cgi", "pixar", "clay", "massinha", "mascote", "bonequ",
+                 "objeto com rosto", "kurzgesagt", "desenho", "whiteboard", "personagem", "zack d")),
+    ("formatos", ("caixinha", "responder coment", "comment-reply", "whatsapp", "imessage", "conversa de", "raw-vs-edited",
+                  "tela dividida", "split", "esquete", "antes e depois")),
+    ("cortes", ("podcast", "corte de", "entrevista", "doac")),
+    ("anuncio", ("anuncio", "anúncio", "criativo", "ugc", "venda", "produto-app", "oferta", "cta")),
+    ("motivacional", ("motivac",)),
+    ("legenda", ("legenda", "caption", "talking head", "fala pra", "fala para", "palavra a palavra", "talking-head")),
+]
+
+
+def tipo_video(fonte, x):
+    if fonte == "ads":
+        return "anuncio"
+    t = json.dumps({k: v for k, v in x.items() if k not in ("img", "video", "prompt")}, ensure_ascii=False).lower()
+    for tipo, chaves in TIPOS_VIDEO:
+        if any(c in t for c in chaves):
+            return tipo
+    return "legenda" if fonte == "virais" else "motion"
+
+
 def inspiracoes():
     out = []
     for d, g in pastas(INS):
@@ -298,6 +321,7 @@ def inspiracoes():
         g["video"], g["capa"] = url_arq(d / "video.mp4"), url_arq(d / "capa.jpg")
         g["info"] = {"titulo": i.get("title"), "autor": i.get("uploader") or i.get("channel"), "views": i.get("view_count"),
                      "duracao": i.get("duration")}
+        g["tipo"] = (g["decupagem"] or {}).get("tipo") if (g["decupagem"] or {}).get("tipo") in dict(TIPOS_VIDEO) or (g["decupagem"] or {}).get("tipo") in ("motion", "legenda") else tipo_video("meus", {"d": g["decupagem"], "t": i.get("title"), "desc": str(i.get("description") or "")[:300]})
         out.append(g)
     return out
 
@@ -318,6 +342,7 @@ def biblioteca():
     mt = HUB.stat().st_mtime if HUB.exists() else 0
     if BIB["mtime"] != mt:
         hub = lerj(HUB, {})
+        tipos = lerj(HUB.parent / "tipos.json", {})  # classificado pela IA (tipo de vídeo); o resto cai nas palavras-chave
         def item(fonte, x, i):
             g = lambda *ks: next((x[k] for k in ks if x.get(k) not in (None, "")), None)
             return {"id": f"{fonte}:{g('id', 'slug', 'name') or str(g('url') or i).rstrip('/').split('/')[-1]}", "fonte": fonte,
@@ -335,6 +360,7 @@ def biblioteca():
             chave = yt[1] if yt else it["id"].split(":", 1)[1]
             it["arq"] = str(locais[chave]) if chave in locais else None  # prévia no hover: arquivo local ou mp4 remoto
             it["video"] = f"/api/bib-vid?i={k}" if it["arq"] else (x.get("video") or None)
+            it["tipo"] = tipos.get(it["id"]) or tipo_video(it["fonte"], x)
         BIB.update(mtime=mt, lista=lista)
     return BIB["lista"]
 

@@ -40,3 +40,8 @@ Ordem no grid (alterna carrossel e vídeo, para o perfil nunca ter dois iguais l
 - Antes e depois: sempre a MESMA foto, e a ligação entre slides continua (elemento atravessando a emenda).
 - Figurinha tem que fazer sentido com a foto (pizza à noite = "hoje é dia de pizza", nunca "bora almoçar").
 - Post mais compartilhado do perfil (10 compartilhamentos): "Sua foto. Vários moods." (Estúdio de Fotos, mesma foto em 3 looks). Resultado visível do produto é o que gera compartilhamento.
+
+## 7. Carrossel · "Sua selfie de treino. Vários moods." (FEITO, pasta carrossel-04-moods)
+- Continuação do post mais compartilhado. 6 slides numa tela de 6480x1350, looks reais do Estúdio de Fotos (saídas do app, não filtro fake).
+- S1 leque de 3 looks. S2 comparador Original x Academia Glow. S3 grade 2x2. S4 celular com a tela do Estúdio. S5 o look em outras fotos (café, flores, natureza). S6 "Qual mood combina com você?" + Link na bio.
+- Legenda sugerida: "qual desses você postaria? 👇 comenta o número do mood"

@@ -6,12 +6,13 @@ import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
 
+// organizado pelo tipo de vídeo que a pessoa quer fazer; dentro de cada um, os mais vistos primeiro
 const FONTES = [
-  { v: "todas", nome: "Tudo" }, { v: "decupados", nome: "Analisados" }, { v: "meus", nome: "Meus" }, { v: "virais", nome: "Virais" }, { v: "ads", nome: "Anúncios" },
-  { v: "estilos", nome: "Estilos" },
+  { v: "todas", nome: "Tudo" }, { v: "decupados", nome: "Analisados" }, { v: "motion", nome: "Motion" }, { v: "legenda", nome: "Legenda dinâmica" },
+  { v: "cortes", nome: "Cortes" }, { v: "animado", nome: "Animado" }, { v: "anuncio", nome: "Anúncio" }, { v: "motivacional", nome: "Motivacional" },
+  { v: "formatos", nome: "Formatos virais" }, { v: "carrossel", nome: "Carrossel" },
 ];
-// Motion, HyperFrames, prompts e formatos ficam dentro de Estilos (menos escolha de uma vez na tela)
-const ESTILOS = [{ v: "motion", nome: "Motion" }, { v: "hf", nome: "HyperFrames" }, { v: "acervo", nome: "Prompts" }, { v: "formatos", nome: "Formatos" }];
+const vistas = (v?: number | string) => Number(v) || 0;
 
 function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rascunho) => void; excluir: () => void }) {
   const d = i.decupagem;
@@ -138,8 +139,6 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   const [url, setUrl] = useState("");
   const [bib, setBib] = useState<ItemBib[]>([]);
   const [fonte, setFonte] = useState("todas");
-  const [sub, setSub] = useState("motion");
-  const fonteReal = fonte === "estilos" ? sub : fonte;
   const [busca, setBusca] = useState("");
   const [buscando, setBuscando] = useState(false);
   const [foco, setFoco] = useState(false);
@@ -165,9 +164,10 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
     catch (er) { avisar((er as Error).message, true); }
   };
   const q = busca.toLowerCase();
-  const minhas = (e?.inspiracoes ?? []).filter((i) => !q || `${i.decupagem?.titulo} ${i.info?.titulo} ${i.info?.autor}`.toLowerCase().includes(q));
-  const lista = useMemo(() => bib.filter((x) => (fonteReal === "todas" ? x.fonte !== "musicas" : x.fonte === fonteReal) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q))).sort((a, b) => fonteReal === "acervo" ? (b.relevancia ?? 0) - (a.relevancia ?? 0) : 0), [bib, fonteReal, q]);
-  const verMinhas = fonte === "todas" || fonte === "decupados";
+  const minhas = (e?.inspiracoes ?? []).filter((i) => (fonte === "todas" || fonte === "decupados" || i.tipo === fonte) && (!q || `${i.decupagem?.titulo} ${i.info?.titulo} ${i.info?.autor}`.toLowerCase().includes(q)));
+  const lista = useMemo(() => bib.filter((x) => x.fonte !== "musicas" && (fonte === "todas" || x.tipo === fonte) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q)))
+    .sort((a, b) => vistas(b.views) - vistas(a.views) || (b.relevancia ?? 0) - (a.relevancia ?? 0)), [bib, fonte, q]);
+  const verMinhas = true;
   const aberto = (e?.inspiracoes ?? []).find((i) => i.id === aberta);
   const valido = /^https?:\/\//.test(url.trim());
 
@@ -214,13 +214,6 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
 
       <Segmentos id="fonte" valor={fonte} onChange={(f) => { setFonte(f); setLimite(40); }} className="self-start max-w-full"
         opcoes={FONTES.map((f) => ({ v: f.v, rotulo: f.nome }))} />
-      <AnimatePresence initial={false}>
-        {fonte === "estilos" && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={mola} className="-mt-2 overflow-hidden">
-            <Segmentos id="sub-estilo" valor={sub} onChange={(s) => { setSub(s); setLimite(40); }} className="max-w-full" opcoes={ESTILOS.map((f) => ({ v: f.v, rotulo: f.nome }))} />
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {(verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
         <div className="columns-2 gap-2.5 sm:columns-3 sm:gap-3 lg:columns-5">

@@ -23,6 +23,17 @@ Before writing anything, READ these files in full. Every rule in them applies to
 - ElevenLabs: `voz` (speech with emotion tags) and `som sfx "..." out.mp3 [s]` / `som musica "..." out.mp3 s` (SFX and music made for this video's emotional arc).
 - WebSearch/WebFetch and yt-dlp for references; Agent for parallel subtasks.
 
+## Skills by video type (load the ones for this job's type with the Skill tool before planning; they are the craft of that kind of video)
+- Motion / app promo / kinetic type: motionmaxxing, bang-motion, kinetic-typography, launch-video, motion-art-direction, animation-principles, shot-composition, motion-background, logo-animation, business-motion-film, motion-showreel, website-to-hyperframes, gsap-skills.
+- Dynamic captions (person talking): short-form-edit, caption-animation, talking-head-b-roll, hyperframes-video-beats, video-storytelling, hyperframes:embedded-captions. Caption style references to port to HTML/GSAP: ~/Movies/maquina-conteudo/estilos/legendas-ref/.
+- Cuts from long video / podcast: cut-silences, cut-mistakes, makemyclip-editor, edit-video, short-form-edit; `auto-editor` CLI cuts silence.
+- Animated characters / drawn stories: whiteboard-animation, isometric-animation, explainer-video, diagram-animation, hyperframes:faceless-explainer.
+- Ads / direct response / UGC: ad-creative-video, testimonial-video, launch-video, short-form-video, motion-reel-premium.
+- Motivational: short-form-edit, caption-animation, beat-sync-editing, kinetic-typography.
+- Viral formats (chat, question box, countdown, recap): text-message-animation, countdown-video, wrapped-video, short-form-video.
+- Every video: short-form-video (hook, retention, 9:16 safe areas), beat-sync-editing (cuts on the music), color-motion, video-design.
+Our engine is HyperFrames (HTML + GSAP). When a skill shows Remotion, After Effects or a paid API, take its technique and build it in HyperFrames.
+
 ## References and toolbox (never start from a blank page, never lock to one project)
 He produces every kind of content (his own IA/tráfego/motivational profile, ads for any product, clients). Each job picks the reference that matches ITS category, product and format:
 1. The inspiration chosen in the request (aba Inspirar: ~/Movies/maquina-conteudo/inspiracoes/<id>/decupagem.json + video). If there is one, model it.

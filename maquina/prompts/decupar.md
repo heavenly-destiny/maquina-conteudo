@@ -11,7 +11,7 @@ Folder: {{pasta}}
 NOTHING MAY BE MISSED (tanpz's rule: the decupagem covers 100% of the video). Read indice.txt and cortes.txt, then Read EVERY sheet in folhas/ in order and EVERY image in cortes/, and read the whole transcript and volume.txt. Do not sample, do not skip a sheet. Watch like an editor, second by second: what is on screen, every on-screen text (exact words, color, position, animation), every caption style change, zooms, camera moves, b-roll, transitions, graphics, and where the sound hits or drops.
 
 Write `{{pasta}}/decupagem.json` (all values PT-BR):
-{"titulo": "", "gancho": "the exact hook mechanism in one sentence", "formato": "e.g. talking head + motion, 9:16", "duracao": seconds,
+{"titulo": "", "tipo": "one of: motion | legenda (person talking with captions) | cortes (clip from long video/podcast) | animado (characters/drawn story) | anuncio | motivacional | formatos (chat, question box, split screen, skit) | carrossel", "gancho": "the exact hook mechanism in one sentence", "formato": "e.g. talking head + motion, 9:16", "duracao": seconds,
  "estrutura": [{"t": "0.00-1.00s", "o_que_acontece": "", "fala": "", "tecnica_visual": "", "texto_tela": "exact on-screen text and its style", "som": "music, sfx, hits or silence on this shot"}],
  "cortes": number of cuts, "ritmo": "average shot length and how it changes",
  "estilo_edicao": "cuts, captions, zooms, transitions, palette, type", "legenda_e_texto": "on-screen text and caption style",

@@ -19,7 +19,7 @@ export type Decupagem = {
 };
 export type Inspiracao = {
   id: string; url: string; status: string; fase?: string; erro?: string; criado: number; decupagem?: Decupagem | null;
-  video?: string | null; capa?: string | null; info?: { titulo?: string; autor?: string; views?: number; duracao?: number };
+  video?: string | null; capa?: string | null; tipo?: string; info?: { titulo?: string; autor?: string; views?: number; duracao?: number };
 };
 export type Transcricao = {
   id: string; url?: string; arquivo?: string; status: string; fase?: string; erro?: string; criado: number; desde?: number; titulo?: string;
@@ -32,7 +32,7 @@ export type Estado = {
 export type ItemBib = {
   id: string; fonte: string; titulo?: string; autor?: string; url?: string; views?: number | string;
   formato?: string; duracao?: number; resumo?: string; tecnica?: string; img?: string; video?: string;
-  prompt?: string; encaixe?: string; relevancia?: number; generico?: boolean;
+  prompt?: string; encaixe?: string; relevancia?: number; generico?: boolean; tipo?: string;
 };
 
 export async function post(rota: string, corpo: unknown) {
