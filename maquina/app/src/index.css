@@ -19,7 +19,8 @@
 }
 
 :root { color-scheme: dark; }
-html, body { background: var(--color-bg); color: var(--color-ink); }
+html { background: var(--color-bg); color: var(--color-ink); }
+body { background: transparent; color: var(--color-ink); }
 body {
   margin: 0;
   font-family: var(--font-sans);

@@ -3,8 +3,9 @@ import { AnimatePresence, motion, useMotionValue, useSpring, useAnimationControl
 import { ArrowUp, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
 import { atualizar, enviarInspiracao, enviarVideo, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
-import { Marca, Segmentos, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
+import { Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
 import { som } from "../sons";
+import { Aurora } from "../aurora";
 
 // Referência: "AI Prompt Input Box" (kedhareswer, 21st.dev, nov/2026): composer de vidro, frase de exemplo
 // se digitando sozinha, chips de modo, menu de ajuste, anexo e botão que respira. Adaptado ao vinho da Máquina.
@@ -134,6 +135,11 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
   return (
     <div className="flex min-h-[calc(100dvh-210px)] flex-col items-center justify-center gap-9 pb-10">
+      {/* cortinas de luz vinho atrás de tudo que se inclinam pro mouse; clique solta um anel */}
+      <Topo><div aria-hidden className="pointer-events-none fixed inset-0 opacity-75" style={{ zIndex: -1 }}>
+        <Aurora colors={["#e11d2a", "#9b1027", "#ff3b4a", "#5a0618"]} background="#0b0204" backgroundDark="#0b0204" intensity={0.28} height={0.06} spread={0.16} layers={3} waviness={1.1} lean={1.4} speed={0.6} grain={0.03} maxFps={45}
+          style={{ position: "absolute", inset: 0 }} />
+      </div></Topo>
       {/* a logo no meio, com uma luz que respira atrás */}
       <motion.div layoutId="marca" className="relative" transition={molaSuave}>
         <motion.span aria-hidden className="absolute inset-[-40%] rounded-full bg-red/40 blur-3xl"
