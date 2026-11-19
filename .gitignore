@@ -1,0 +1,30 @@
+# só entra no repositório o que está liberado aqui (o resto do Mac fica de fora)
+/*
+!/.gitignore
+!/README.md
+!/instalar.sh
+!/atualizar.sh
+!/publicar.sh
+!/maquina/
+!/tools/
+!/estilos/
+!/cerebro/
+
+# segredos e coisas de cada Mac
+maquina/.env
+maquina/config.json
+maquina/CONHECIMENTO.md
+maquina/.duracoes.json
+maquina/*.log
+maquina/_bak-ui-1811/
+tools/.venv*/
+**/node_modules/
+**/__pycache__/
+**/.DS_Store
+**/*_bak*
+**/*.bak
+**/*.pyc
+*.mov
+*.MOV
+# acima do limite do GitHub
+estilos/opusclip-re/videos/dvO5NsYovM4.mp4

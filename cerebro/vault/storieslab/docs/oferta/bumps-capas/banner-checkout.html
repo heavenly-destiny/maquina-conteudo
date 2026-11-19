@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:IS;src:url(instrument-serif-italic.woff2);font-style:italic}
+@font-face{font-family:ISans;src:url(instrument-sans.woff2);font-weight:400 700}
+@font-face{font-family:Brico;src:url(bricolage-grotesque-v2.woff2);font-weight:600 800}
+:root{--bg:#FFF7F5;--ink:#2A1630;--muted:#7A6578;--pink:#FF2E74;--pink-d:#E01A5E;--pink-soft:#FFE4EC;--sun:#FFD84D}
+*{box-sizing:border-box;margin:0}
+html,body{overflow:hidden}
+body{background:var(--bg);font-family:ISans,sans-serif;color:var(--ink);position:relative}
+body:before{content:"";position:absolute;inset:0;background:radial-gradient(38% 80% at 50% 45%,rgba(255,46,116,.10),transparent 70%),radial-gradient(30% 60% at 15% 20%,rgba(255,216,77,.10),transparent 70%)}
+.sh{box-shadow:0 1px 3px rgba(58,22,64,.10),0 18px 40px -14px rgba(58,22,64,.35)}
+h1{font-family:Brico;font-weight:800;letter-spacing:-.03em;line-height:1.08;position:relative}
+h1 mark{background:var(--pink-soft);color:var(--ink);padding:0 .14em;border-radius:.12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+h1 .p{color:var(--pink)}
+.chips{display:flex;flex-wrap:wrap;position:relative}
+.chip{display:flex;align-items:center;background:#fff;border:1px solid #F3DEE2;border-radius:999px;font-weight:600;white-space:nowrap}
+.chip i{flex:none;border-radius:50%;background:var(--pink);display:grid;place-items:center}
+.chip i svg{width:60%;height:60%}
+.chip b{color:var(--pink-d);font-weight:700}
+.phones{position:absolute;background:url(phones.png) center/contain no-repeat;}
+.card{position:absolute;overflow:hidden;border:4px solid #fff;border-radius:16px;background:#fff}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;background:var(--ink);color:#fff;font-weight:700;border-radius:999px;white-space:nowrap;z-index:9}
+.tag b{color:var(--sun)}
+.strip{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(90deg,var(--pink-d),var(--pink),var(--pink-d));color:#fff;font-family:Brico;font-weight:800;text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;gap:.7em;z-index:20}
+.strip u{color:var(--sun);text-decoration-thickness:.09em;text-underline-offset:.15em}
+.strip svg{height:1.15em;width:1.15em}
+
+/* DESKTOP 1920x340, visível em 1440: 240..1680 */
+body.d{width:1920px;height:340px}
+body.d .txt{position:absolute;left:310px;top:44px;width:640px}
+body.d h1{font-size:40px}
+body.d .chips{position:absolute;left:310px;top:158px;gap:10px;width:620px}
+body.d .chip{font-size:17px;padding:6px 15px 6px 6px;gap:9px}
+body.d .chip i{width:26px;height:26px}
+body.d .strip{height:50px;font-size:21px}
+body.d .phones{width:352px;height:314px;left:940px;top:-4px}
+body.d .s1{width:120px;height:213px;left:1300px;top:30px;transform:rotate(-6deg)}
+body.d .s2{width:120px;height:213px;left:1410px;top:46px;transform:rotate(5deg)}
+body.d .b1{width:112px;height:112px;left:1286px;top:170px;transform:rotate(-5deg);z-index:3;border-radius:14px}
+body.d .b2{width:112px;height:112px;left:1405px;top:178px;transform:rotate(4deg);z-index:4;border-radius:14px}
+body.d .b3{width:112px;height:112px;left:1520px;top:150px;transform:rotate(9deg);z-index:2;border-radius:14px}
+body.d .s3{width:116px;height:206px;left:120px;top:40px;transform:rotate(-7deg)}
+body.d .s4{width:116px;height:206px;left:1720px;top:40px;transform:rotate(7deg)}
+body.d .tag{font-size:15px;padding:7px 14px;left:1540px;top:96px;transform:rotate(4deg)}
+body.d .xm{display:none}
+
+/* MOBILE 430x310, visível em 360: 35..395 */
+body.m{width:430px;height:310px}
+body.m .txt{position:absolute;left:42px;top:16px;width:346px;text-align:center}
+body.m h1{font-size:18.5px}
+body.m .chips{position:absolute;left:42px;top:94px;flex-direction:column;align-items:flex-start;gap:7px}
+body.m .chip{font-size:11.5px;padding:4px 10px 4px 4px;gap:6px}
+body.m .chip i{width:18px;height:18px}
+body.m .strip{height:34px;font-size:12px;gap:.5em}
+body.m .phones{width:214px;height:191px;left:196px;top:84px}
+body.m .s1,body.m .s2,body.m .s3,body.m .s4,body.m .b1,body.m .b2,body.m .b3,body.m .tag{display:none}
+body.m .b2{width:58px;height:58px;left:150px;top:206px;transform:rotate(-6deg);z-index:4;border-width:2.5px;border-radius:10px}
+body.m .tag{font-size:10px;padding:4px 9px;left:162px;top:254px;transform:rotate(-4deg)}
+body.m .xd{display:none}
+</style></head><body>
+<div class="txt">
+  <h1>Mais de <mark>20 mil usuárias</mark> já fazem stories que <span class="p">ninguém ignora.</span></h1>
+</div>
+<div class="chips">
+  <span class="chip sh"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>+24 mil</b> figurinhas</span></span>
+  <span class="chip sh"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span><b>+60</b> temas</span></span>
+  <span class="chip sh"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Estúdio de fotos e câmera</span></span>
+  <span class="chip sh"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>Novidades <b>toda semana</b></span></span>
+  <span class="chip sh xm"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span>+ <b>6 bônus</b></span></span>
+</div>
+<div class="phones"></div>
+<div class="card sh s3"><img src="t-fe-2.webp"></div>
+<div class="card sh s4"><img src="t-treino-1.webp"></div>
+<div class="card sh s1"><img src="t-beleza-2.webp"></div>
+<div class="card sh s2"><img src="t-rotina-5.webp"></div>
+<div class="card sh b1"><img src="bonus-5.webp"></div>
+<div class="card sh b2"><img src="bonus-4.webp"></div>
+<div class="card sh b3"><img src="bonus-6.webp"></div>
+<span class="tag sh">+ <b>6 bônus</b></span>
+<div class="strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l6 6 6-6M6 13l6 6 6-6"/></svg><span><span class="xd">Preencha os dados abaixo e </span><span class="xm">Preencha e </span><u>libere seu acesso agora!</u></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l6 6 6-6M6 13l6 6 6-6"/></svg></div>
+<script>document.body.classList.add(new URLSearchParams(location.search).get('v')||'d')</script>
+</body></html>

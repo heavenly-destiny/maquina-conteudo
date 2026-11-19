@@ -1,0 +1,129 @@
+<title>Radar de Criativos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: mesa de triagem em 3 abas (anúncios, virais, HyperFrames); grade de cards, ficha em modal. */
+:root{
+  --bg:#f2f3f7; --surface:#fff; --sunk:#e8e9f0; --fg:#14151b; --muted:#5d6070; --line:#d9dbe5;
+  --accent:#5543f0; --accent-ink:#fff; --accent-soft:#e6e3ff; --hot:#c2410c; --good:#13795b;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0f14;--surface:#171922;--sunk:#1f2230;--fg:#ecedf3;--muted:#9a9db0;--line:#2b2e3d;--accent:#9187ff;--accent-ink:#0e0f14;--accent-soft:#25234a;--hot:#ff8a4c;--good:#4fd1a1;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e0f14;--surface:#171922;--sunk:#1f2230;--fg:#ecedf3;--muted:#9a9db0;--line:#2b2e3d;--accent:#9187ff;--accent-ink:#0e0f14;--accent-soft:#25234a;--hot:#ff8a4c;--good:#4fd1a1;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--body)}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{padding-block:34px 14px}
+h1{font:800 clamp(32px,5vw,54px)/1 var(--display);letter-spacing:-.02em;margin:0}
+.lede{color:var(--muted);max-width:72ch;margin:12px 0 0}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:600 14px var(--body);padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab small{font-weight:500;opacity:.7;margin-left:4px;font-variant-numeric:tabular-nums}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.chip{font:13px var(--body);padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.count{margin-left:auto;font-size:13px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);background:var(--sunk);border-radius:10px;padding:10px 12px;margin-top:14px;max-width:110ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;padding-block:16px 60px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;min-width:0}
+.card:hover{border-color:var(--accent)}
+.card:focus-visible,.tab:focus-visible,.chip:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.thumb{position:relative;aspect-ratio:4/5;background:var(--sunk);overflow:hidden}
+.thumb.wide{aspect-ratio:16/10}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.bd{position:absolute;font:600 11px var(--body);padding:2px 7px;border-radius:6px;background:rgba(10,10,14,.75);color:#fff}
+.tl{left:8px;top:8px}.tr{right:8px;top:8px;background:var(--accent);color:var(--accent-ink)}.bl{left:8px;bottom:8px}
+.cb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.k{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ct{font-weight:600;font-size:15px;line-height:1.25}
+.cd{font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.q{font-size:13px;border-left:3px solid var(--accent);padding-left:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+dialog{border:none;padding:0;border-radius:16px;max-width:min(940px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 24px);background:var(--surface);color:var(--fg)}
+dialog::backdrop{background:rgba(8,8,12,.6)}
+.dl{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+@media (max-width:720px){.dl{grid-template-columns:1fr}}
+.dimg{background:var(--sunk)}.dimg img{width:100%;display:block}
+.ds{padding:20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ds h3{font:700 24px/1.1 var(--display);margin:0}
+.kv{display:grid;gap:10px;margin:0}.kv dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.kv dd{margin:2px 0 0}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:600 13px var(--body);padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;cursor:pointer}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+pre{font:12.5px/1.55 var(--mono);white-space:pre-wrap;word-break:break-word;background:var(--sunk);padding:12px;border-radius:10px;margin:0;max-height:34vh;overflow:auto}
+.x{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:999px;border:none;background:rgba(10,10,14,.7);color:#fff;font-size:18px;cursor:pointer;z-index:2}
+.foot{color:var(--muted);font-size:12px;padding-block:0 40px}
+</style>
+<div class="wrap"><header>
+<h1>Radar de Criativos</h1>
+<p class="lede">Anúncios escalados da Biblioteca de Anúncios da Meta (Brasil), Shorts virais escolhidos pela edição e os modelos prontos do HyperFrames que servem pros seus cortes. Clique num card pra ver a ficha completa e o link.</p>
+</header></div>
+<div class="bar"><div class="wrap">
+ <div class="tabs" role="tablist">
+  <button class="tab" role="tab" data-t="anuncios">Anúncios escalados<small id="n-anuncios"></small></button>
+  <button class="tab" role="tab" data-t="virais">Virais pela edição<small id="n-virais"></small></button>
+  <button class="tab" role="tab" data-t="hyperframes">Modelos HyperFrames<small id="n-hyperframes"></small></button>
+ </div>
+ <div class="row" id="filters"></div>
+</div></div>
+<div class="wrap"><p class="note" id="note"></p><main class="grid" id="grid"></main>
+<p class="foot">Levantado em 17/11/2026 só com ferramentas gratuitas: Biblioteca de Anúncios da Meta, yt-dlp e o catálogo do HyperFrames. Ganchos dos anúncios transcritos com Whisper a partir dos primeiros 30 segundos.</p></div>
+<dialog id="dlg" aria-label="Ficha"></dialog>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NICHO_AD={"curso-trafego":"Curso de tráfego","ferramenta-trafego":"Ferramenta de tráfego","conteudo":"Conteúdo","curso-marketing":"Marketing","ia-claude":"IA / Claude","ia":"IA","low-ticket":"Low ticket","renda-digital":"Renda digital","humor-trafego":"Humor","motivacional":"Autoridade","infoproduto-dr":"Outros nichos (copy DR)"};
+const NICHO_V={trafego:"Tráfego",ia:"IA",motivacional:"Motivacional",marketing:"Marketing",outro:"Outro"};
+const CAT_HF={legenda:"Legendas","criativo-ads":"Criativo ads",prova:"Prova",dados:"Dados",hook:"Hook",cta:"CTA",explicacao:"Explicação",transicao:"Transição","produto-app":"Produto",motivacional:"Motivacional",organico:"Orgânico",branding:"Branding"};
+const fmtN=n=>n>=1e6?(n/1e6).toFixed(1).replace(".",",")+"M":n>=1e3?Math.round(n/1e3)+"k":n;
+const meses=d=>d>=365?(d/365).toFixed(1).replace(".",",")+" anos":d>=60?Math.round(d/30)+" meses":d+" dias";
+const NOTES={
+ anuncios:"Como escolhi: busquei por termos do seu nicho, ordenei por impressões e fiquei com os anúncios que rodam há mais tempo ou têm várias versões do mesmo criativo. Ninguém paga anúncio perdedor por meses, então tempo no ar e variações são o melhor sinal público de escala. A Meta não mostra gasto nem vendas de anúncio comercial. Os de outros nichos entraram pela estrutura de copy.",
+ virais:"Shorts com mais views nos seus temas, escolhidos pela edição. Views e duração foram conferidos com yt-dlp. O estilo de edição foi deduzido do título, da miniatura e do canal, sem assistir aos vídeos: abra os que interessarem antes de virar ficha de estilo.",
+ hyperframes:"53 dos 448 itens do catálogo do HyperFrames, os que servem pra cortes 9:16, legendas, prova e criativo. Todos são gratuitos e se instalam com o comando da ficha. O comando 'templates' do HyperFrames é Pro e pago, por isso ficou de fora."};
+let D,tab="anuncios",F=new Set();
+const ttl=document.title;
+function filtersFor(t){const m=t==="anuncios"?NICHO_AD:t==="virais"?NICHO_V:CAT_HF;return m}
+function keyOf(t,o){return t==="anuncios"?o.nicho:t==="virais"?o.nicho:o.cat}
+function cardA(o,i){return `<button class="card" data-i="${i}"><div class="thumb">${o.img?`<img loading="lazy" src="${o.img}" alt="">`:""}<span class="bd tl">${meses(o.days)} no ar</span>${o.v>1?`<span class="bd tr">${o.v} versões</span>`:""}<span class="bd bl">${o.dur}s</span></div><div class="cb"><div class="k">${esc(o.adv)} · ${esc(NICHO_AD[o.nicho])}</div><div class="ct">${esc(o.tipo)}</div><div class="q">${esc(o.hook||o.copy)}</div></div></button>`}
+function cardV(o,i){return `<button class="card" data-i="${i}"><div class="thumb">${o.img?`<img loading="lazy" src="${o.img}" alt="">`:""}<span class="bd tl">${fmtN(o.views)} views</span><span class="bd tr">${o.idioma.toUpperCase()}</span><span class="bd bl">${o.duracao_s}s</span></div><div class="cb"><div class="k">${esc(o.canal)} · ${esc(NICHO_V[o.nicho]||o.nicho)}</div><div class="ct">${esc(o.titulo)}</div><div class="cd">${esc(o.estilo_edicao)}</div></div></button>`}
+function cardH(o,i){const f=o.w&&o.h?(o.h>o.w*1.2?"9:16":o.w>o.h*1.2?"16:9":"1:1"):"";return `<button class="card" data-i="${i}"><div class="thumb wide">${o.img?`<img loading="lazy" src="${o.img}" alt="">`:""}<span class="bd tl">${o.type==="block"?"Bloco":"Componente"}</span>${f?`<span class="bd tr">${f}</span>`:""}</div><div class="cb"><div class="k">${esc(CAT_HF[o.cat]||o.cat)}</div><div class="ct">${esc(o.title)}</div><div class="cd">${esc(o.desc)}</div></div></button>`}
+function list(){return tab==="anuncios"?D.ads:tab==="virais"?D.virais:D.hf}
+function render(){
+  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
+  const m=filtersFor(tab),L=list();const present=new Set(L.map(o=>keyOf(tab,o)));
+  $("#filters").innerHTML=Object.entries(m).filter(([k])=>present.has(k)).map(([k,v])=>`<button class="chip" data-k="${k}" aria-pressed="${F.has(k)}">${v}</button>`).join("")+'<span class="count" id="count"></span>';
+  let r=L.map((o,i)=>[o,i]).filter(([o])=>!F.size||F.has(keyOf(tab,o)));
+  if(tab==="anuncios")r.sort((a,b)=>(b[0].nicho==="infoproduto-dr"?0:1)-(a[0].nicho==="infoproduto-dr"?0:1)||b[0].days*b[0].v-a[0].days*a[0].v);
+  if(tab==="virais")r.sort((a,b)=>b[0].views-a[0].views);
+  const c=tab==="anuncios"?cardA:tab==="virais"?cardV:cardH;
+  $("#grid").innerHTML=r.map(([o,i])=>c(o,i)).join("")||'<p class="note">Nada com esse filtro.</p>';
+  $("#count").textContent=`${r.length} de ${L.length}`;$("#note").textContent=NOTES[tab];
+}
+function copyBtn(b,txt,pre){navigator.clipboard.writeText(txt).then(()=>b.textContent="Copiado",()=>{const s=getSelection(),g=document.createRange();g.selectNodeContents(pre);s.removeAllRanges();s.addRange(g);b.textContent="Selecionado, use Cmd+C"})}
+function openI(i){const o=list()[i],d=$("#dlg");let side="";
+ if(tab==="anuncios")side=`<div><div class="k">${esc(o.adv)} · ${meses(o.days)} no ar · ${o.v} ${o.v>1?"versões":"versão"} · ${o.dur}s</div><h3>${esc(o.tipo)}</h3></div>
+  <dl class="kv"><div><dt>Estrutura da copy</dt><dd>${esc(o.estrutura)}</dd></div><div><dt>Por que deve estar escalando</dt><dd>${esc(o.porque)}</dd></div><div><dt>Como modelar pra você</dt><dd>${esc(o.aplicar)}</dd></div></dl>
+  <div class="links"><a class="btn pri" href="${o.url}" target="_blank" rel="noopener">Abrir na Biblioteca de Anúncios</a></div>
+  ${o.hook?`<div><div class="k">O que ele fala nos primeiros 30s</div><pre id="p1">${esc(o.hook)}</pre></div>`:""}
+  ${o.copy?`<div><div class="k" style="display:flex;align-items:center;gap:8px">Texto do anúncio <button class="btn" id="cp">Copiar</button></div><pre id="p2">${esc(o.copy)}</pre></div>`:""}`;
+ if(tab==="virais")side=`<div><div class="k">${esc(o.canal)} · ${fmtN(o.views)} views · ${o.duracao_s}s</div><h3>${esc(o.titulo)}</h3></div>
+  <dl class="kv"><div><dt>Estilo de edição (não verificado)</dt><dd>${esc(o.estilo_edicao)}</dd></div><div><dt>Por que é referência</dt><dd>${esc(o.por_que_referencia)}</dd></div></dl>
+  <div class="links"><a class="btn pri" href="${o.url}" target="_blank" rel="noopener">Assistir no YouTube</a></div>`;
+ if(tab==="hyperframes")side=`<div><div class="k">${o.type==="block"?"Bloco":"Componente"}${o.w?` · ${o.w}×${o.h}`:""}${o.dur?` · ${Math.round(o.dur)}s`:""}</div><h3>${esc(o.title)}</h3></div>
+  <dl class="kv"><div><dt>O que faz</dt><dd>${esc(o.desc)}</dd></div><div><dt>Onde usar nos seus cortes</dt><dd>${esc(o.uso)}</dd></div><div><dt>Tags</dt><dd>${esc(o.tags.join(", "))}</dd></div></dl>
+  <div class="links">${o.video?`<a class="btn pri" href="${o.video}" target="_blank" rel="noopener">Ver prévia em vídeo</a>`:""}</div>
+  <div><div class="k" style="display:flex;align-items:center;gap:8px">Instalar <button class="btn" id="cp">Copiar</button></div><pre id="p2">${esc(o.cmd)}</pre></div>`;
+ d.innerHTML=`<button class="x" aria-label="Fechar">×</button><div class="dl"><div class="dimg">${o.img?`<img src="${o.img}" alt="">`:""}</div><div class="ds">${side}</div></div>`;
+ d.querySelector(".x").onclick=()=>d.close();
+ const cp=d.querySelector("#cp");if(cp)cp.onclick=()=>copyBtn(cp,tab==="hyperframes"?o.cmd:o.copy,d.querySelector("#p2"));
+ d.showModal();d.scrollTop=0}
+$("#dlg").addEventListener("click",e=>{if(e.target.id==="dlg")e.target.close()});
+$("#grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openI(+c.dataset.i)});
+$("#filters").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;const k=c.dataset.k;F.has(k)?F.delete(k):F.add(k);render()});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{location.hash=b.dataset.t});
+function route(){const h=location.hash.slice(1);tab=["anuncios","virais","hyperframes"].includes(h)?h:"anuncios";F.clear();if(D)render()}
+addEventListener("hashchange",route);
+fetch("referencias.json").then(r=>r.json()).then(j=>{D=j;$("#n-anuncios").textContent=j.ads.length;$("#n-virais").textContent=j.virais.length;$("#n-hyperframes").textContent=j.hf.length;route()}).catch(()=>{$("#grid").innerHTML='<p class="note">Não consegui carregar os dados. Recarregue a página.</p>'});
+</script>

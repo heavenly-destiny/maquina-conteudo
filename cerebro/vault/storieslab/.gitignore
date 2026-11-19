@@ -1,0 +1,11 @@
+.DS_Store
+.wrangler/
+.env*
+node_modules/
+vendas/dist/
+
+# Old page backups; git history replaces them
+*.pre-*
+
+# Over Pages' 25 MiB limit; served from R2 bucket "storieslab-bonus"
+vendas/site/e/eabpuFvO266o/figurinhas-animadas-parte-*.zip

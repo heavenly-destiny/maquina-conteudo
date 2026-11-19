@@ -1,0 +1,844 @@
+[
+  {
+    "slug": "0xevinho-3777d8",
+    "titulo_pt": "Mago pixel com tema cripto",
+    "o_que_faz": "Personagem em pixel art (mago) lança feitiços e símbolos de cripto em loop animado.",
+    "tecnica": "sprite pixel art animado quadro a quadro com efeitos de magia",
+    "melhor_para": [
+      "organico",
+      "branding"
+    ],
+    "encaixe": "painel de baixo quando ele fala de dinheiro digital, mascote pixel reagindo à fala",
+    "retencao": "personagem carismático e estética retrô destoam do feed liso",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "0xfemyn-e114d3",
+    "titulo_pt": "Promo de chave de API",
+    "o_que_faz": "Interface de produto mostra geração e uso de uma API key, com cards e código entrando em sequência rápida por 15s.",
+    "tecnica": "UI de produto reconstruída em camadas que entram escalonadas no ritmo",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "painel quando ele mostra como conectar o Claude via API: chave aparecendo e request rodando",
+    "retencao": "ver o produto funcionando em segundos dá sensação de facilidade",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "0xnfrith-5be616",
+    "titulo_pt": "Explicador de posse de tarefas",
+    "o_que_faz": "Diagrama animado com caixas e setas mostrando quem é dono de cada job e por que a ferramenta resolve o caos.",
+    "tecnica": "diagrama de nós e conexões que se desenham em sequência para explicar uma lógica",
+    "melhor_para": [
+      "explicacao",
+      "dados"
+    ],
+    "encaixe": "painel de baixo explicando a estrutura de campanha (campanha, conjunto, anúncio) como fluxo",
+    "retencao": "o raciocínio se monta na frente do espectador, ele quer ver o fim",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "1littlecoder-9fef89",
+    "titulo_pt": "Autoapresentação do Claude",
+    "o_que_faz": "Tipografia cinética e formas geométricas se transformam em 10s apresentando o Claude, sem textos de canto típicos de IA.",
+    "tecnica": "texto cinético grande com shapes que se transformam no centro da tela, sem molduras genéricas",
+    "melhor_para": [
+      "hook",
+      "branding"
+    ],
+    "encaixe": "abertura do corte quando ele fala de IA: nome da ferramenta montado por formas",
+    "retencao": "troca visual a cada fração de segundo não deixa o olho descansar",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "1stnoel-c20a89",
+    "titulo_pt": "Explicador de app de leitura",
+    "o_que_faz": "Vídeo de 1 minuto com narração sintetizada mostrando telas do app num celular enquanto a voz explica cada função.",
+    "tecnica": "telas de celular sincronizadas a narração por voz sintética",
+    "melhor_para": [
+      "explicacao",
+      "produto-app"
+    ],
+    "encaixe": "painel com mockup de celular quando ele demonstra um app ou ferramenta passo a passo",
+    "retencao": "casar fala e tela elimina dúvida sobre o que está sendo mostrado",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "3xtihor-0f6911",
+    "titulo_pt": "Showreel de motion designer",
+    "o_que_faz": "Reel de 15s com gráficos, tipografia cinética e formas sincronizadas com música, trocando de cena a cada batida.",
+    "tecnica": "cortes de cena travados no beat da música",
+    "melhor_para": [
+      "hook",
+      "transicao"
+    ],
+    "encaixe": "transição entre blocos do corte: 1 a 2s de formas e números no beat",
+    "retencao": "ritmo musical cria expectativa da próxima batida",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "abderrahmen-g-9e8ed0",
+    "titulo_pt": "Animais de caderno ganham vida",
+    "o_que_faz": "Desenhos feitos à mão de animais são animados e ganham som sincronizado via JavaScript.",
+    "tecnica": "ilustração estática do usuário animada por partes com SFX gerado em código",
+    "melhor_para": [
+      "organico",
+      "branding"
+    ],
+    "encaixe": "pouco encaixe; serve para um corte orgânico leve com rabiscos animados",
+    "retencao": "estética artesanal parece humana em meio a conteúdo de IA",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "adamdesgns-478d6d",
+    "titulo_pt": "Promo de app técnico",
+    "o_que_faz": "Telas de app num celular e diagramas técnicos entram com tipografia, em formato showreel de 15s.",
+    "tecnica": "mockup de celular combinado com diagrama que se desenha ao lado",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "painel mostrando o app ou planilha que ele usa, com diagrama explicando o dado",
+    "retencao": "alternância entre tela e diagrama mantém novidade visual",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "agonaliu-466a8f",
+    "titulo_pt": "Reel de app com texto cinético",
+    "o_que_faz": "Telas do app e palavras grandes alternam em cortes rápidos de 15s com movimento constante.",
+    "tecnica": "alternância rápida entre UI e palavra-chave em tela cheia",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "criativo de anúncio: benefício em palavra grande e logo depois a tela que prova",
+    "retencao": "palavra grande lida em meio segundo, prova visual logo depois",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "ai-baymax-0ef9dd",
+    "titulo_pt": "Promo de produto a partir do código",
+    "o_que_faz": "Promo de 1 minuto gerada lendo o código do produto, com telas reais animadas e textos de benefício.",
+    "tecnica": "extrair telas e copy reais do próprio projeto em vez de inventar",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "quando ele vender mentoria ou ferramenta própria: telas reais da área de membros",
+    "retencao": "produto real gera mais confiança que mockup genérico",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "aichrislee-a6cb42",
+    "titulo_pt": "Showreel com câmera real",
+    "o_que_faz": "15s onde algo se move a cada segundo, tipografia enorme, cor forte e movimentos de câmera, sem fades lentos.",
+    "tecnica": "cada frame é função pura do tempo (renderizável quadro a quadro), câmera virtual movendo",
+    "melhor_para": [
+      "hook",
+      "transicao"
+    ],
+    "encaixe": "abertura do corte: frase-gancho enorme com zoom e pan de câmera no painel",
+    "retencao": "regra de 'algo se move todo segundo' mata o tempo morto",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "aisongman-71ffac",
+    "titulo_pt": "Jogo de cartas em pixel art",
+    "o_que_faz": "Duelo de cartas estilo Hearthstone em pixel art com cartas sendo jogadas e efeitos de ataque.",
+    "tecnica": "cartas que viram, atacam e causam dano com números saltando",
+    "melhor_para": [
+      "organico"
+    ],
+    "encaixe": "comparação 'estratégia A vs B' como duelo de cartas, uso raro",
+    "retencao": "gamificação desperta curiosidade de quem vai ganhar",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "aistocksavvy-3fb9f5",
+    "titulo_pt": "Promo de app de ações",
+    "o_que_faz": "App de análise de ações com gráficos que sobem, números e transições suaves em 15s.",
+    "tecnica": "gráfico de linha que se desenha com número contando junto",
+    "melhor_para": [
+      "dados",
+      "prova"
+    ],
+    "encaixe": "painel de cima quando ele fala de ROI ou ROAS: gráfico subindo e número contando",
+    "retencao": "número em movimento ascendente gera desejo e prova resultado",
+    "relevancia": 5,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "ajith-io-4c248f",
+    "titulo_pt": "Showreel com partículas épico",
+    "o_que_faz": "40s de partículas e grandes revelações com trilha composta no estilo épico tipo Oppenheimer.",
+    "tecnica": "partículas que se agregam em formas ao som de trilha épica crescente",
+    "melhor_para": [
+      "motivacional",
+      "branding"
+    ],
+    "encaixe": "fundo de corte motivacional: partículas formando a frase chave no clímax",
+    "retencao": "tensão crescente da trilha segura até a revelação",
+    "relevancia": 3,
+    "esforco": "alto"
+  },
+  {
+    "slug": "ajith-io-b5626e",
+    "titulo_pt": "Reel abstrato de motion",
+    "o_que_faz": "Formas abstratas e tipografia trocam rápido no ritmo da música em 15s.",
+    "tecnica": "shapes abstratos sincronizados ao beat como ponte entre ideias",
+    "melhor_para": [
+      "transicao",
+      "hook"
+    ],
+    "encaixe": "transição de 1s entre tópicos do corte",
+    "retencao": "troca rítmica de formas cria sensação de energia",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "ajith-io-c52e09",
+    "titulo_pt": "Vídeo de produto pesquisado",
+    "o_que_faz": "Pesquisa o produto e monta 40s de UI animada com benefícios em sequência.",
+    "tecnica": "pesquisar o produto antes e roteirizar a partir de fatos reais",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "demonstração da ferramenta de IA que ele recomenda, com telas reais",
+    "retencao": "informação concreta prende mais que slogan",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "ajith-io-ea7f2d",
+    "titulo_pt": "Showreel com estilo de referência",
+    "o_que_faz": "Replica o estilo visual de um vídeo de referência com formas e partículas em 30s.",
+    "tecnica": "copiar a linguagem visual de uma referência e aplicar a outro produto",
+    "melhor_para": [
+      "branding"
+    ],
+    "encaixe": "base para criar um estilo próprio de painel a partir de um vídeo que ele curte",
+    "retencao": "estilo consistente vira marca reconhecível",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "alex-prompter-1ea044",
+    "titulo_pt": "Explicador de negócio em 5 cenas",
+    "o_que_faz": "30s em 5 cenas: dor do cliente, o que faço, como funciona em 3 passos, uma prova e o nome no final, com texto forte e cores da marca.",
+    "tecnica": "estrutura fixa dor, solução, 3 passos, prova, assinatura",
+    "melhor_para": [
+      "criativo-ads",
+      "explicacao",
+      "cta"
+    ],
+    "encaixe": "template direto para criativo de anúncio da mentoria no painel ao lado dele falando",
+    "retencao": "segue a lógica de venda que o cérebro espera, cada cena responde uma objeção",
+    "relevancia": 5,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "allforbigfire-86ff3c",
+    "titulo_pt": "Robô anime que se combina",
+    "o_que_faz": "Três veículos se transformam e se encaixam formando um robô gigante em 3D estilo anime, vertical.",
+    "tecnica": "montagem de partes separadas que se encaixam num todo (3D)",
+    "melhor_para": [
+      "hook",
+      "organico"
+    ],
+    "encaixe": "metáfora de 'juntar as peças do funil' em corte orgânico, uso raro",
+    "retencao": "transformação mecânica é hipnótica",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "amitsingha89-150378",
+    "titulo_pt": "Explicador de marca têxtil",
+    "o_que_faz": "Explicador para visitante novo com fotos de produto e tipografia cinética contando a história da marca.",
+    "tecnica": "fotos reais com texto cinético por cima contando a história",
+    "melhor_para": [
+      "branding",
+      "explicacao"
+    ],
+    "encaixe": "corte contando a história dele com fotos pessoais e frases entrando",
+    "retencao": "fotos reais criam conexão humana",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "amol909s-27533e",
+    "titulo_pt": "Showreel de app com layout",
+    "o_que_faz": "App de produtividade em 20s mostrando layout em tiles, classificador de modelo e trechos de código.",
+    "tecnica": "UI dividida em tiles que se reorganizam",
+    "melhor_para": [
+      "produto-app"
+    ],
+    "encaixe": "mostrar o fluxo de trabalho dele com várias janelas de IA se organizando",
+    "retencao": "reorganização de layout dá sensação de controle",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "anas0ra-e57aea",
+    "titulo_pt": "Mascote de chatbot de loja",
+    "o_que_faz": "Mascote simpático de chatbot interage com uma loja online em formato 4:5.",
+    "tecnica": "mascote personagem que conversa com o produto",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "criativo para atendimento automatizado com IA: mascote respondendo cliente",
+    "retencao": "personagem simpático baixa a guarda do espectador",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "andginja-333d32",
+    "titulo_pt": "Showreel de site de estúdio",
+    "o_que_faz": "Site do estúdio rolando com fotos e cortes em 15s, em formato showreel.",
+    "tecnica": "navegar pelo site real como se fosse câmera passando",
+    "melhor_para": [
+      "branding",
+      "prova"
+    ],
+    "encaixe": "painel mostrando a página de vendas ou portfólio rolando",
+    "retencao": "ver o site real dá credibilidade",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "anilraok-eff262",
+    "titulo_pt": "História com peças de Scrabble",
+    "o_que_faz": "Peças de Scrabble viram personagens 3D em uma historinha estilo Pixar, vertical, promovendo sutilmente um app.",
+    "tecnica": "storytelling com personagens 3D que promove o produto de forma indireta",
+    "melhor_para": [
+      "organico",
+      "branding"
+    ],
+    "encaixe": "pouco encaixe direto; inspiração de anúncio narrativo sem cara de anúncio",
+    "retencao": "história com personagem prende mais que pitch direto",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "anthonyriera-9b1b2a",
+    "titulo_pt": "Vídeo de lançamento de ferramenta Reddit",
+    "o_que_faz": "Lançamento de ferramenta de marketing no Reddit com UI do produto e personagens, gerado por skill.",
+    "tecnica": "skill reutilizável que transforma repo em vídeo de lançamento",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "modelo para lançar uma ferramenta ou bônus da mentoria",
+    "retencao": "mistura de UI e personagem quebra a monotonia de tela de software",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "antonio-kodheli-490109",
+    "titulo_pt": "Promo de galeria Prompt Motion",
+    "o_que_faz": "23s em 120 BPM: câmera contínua sobre uma página real, mergulha num card até tela cheia, 3 cortes secos no drop, match cut de volta, cursor clica e copia o prompt.",
+    "tecnica": "uma câmera única sobre um 'mundo' (foco x, y, escala log) com cantos indo a zero para whip-in e match cut exatos",
+    "melhor_para": [
+      "transicao",
+      "produto-app",
+      "prova"
+    ],
+    "encaixe": "mostrar print real de resultado ou página: câmera entra no número do gerenciador até tela cheia",
+    "retencao": "movimento de câmera contínuo e cortes no drop dão ritmo sem perder contexto",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "apoorvjain25-d24184",
+    "titulo_pt": "Jornada de um fóton do Sol",
+    "o_que_faz": "20s seguindo um fóton saindo do Sol com partículas e tipografia sobre a distância e o tempo da viagem.",
+    "tecnica": "jornada em escala (zoom extremo) com números de distância na tela",
+    "melhor_para": [
+      "organico",
+      "motivacional"
+    ],
+    "encaixe": "corte motivacional sobre jornada longa: pontinho viajando enquanto ele fala de persistência",
+    "retencao": "curiosidade científica e escala absurda",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "arjunsh1607-93005d",
+    "titulo_pt": "Showreel de estúdio de produto",
+    "o_que_faz": "Showreel de 15s para estúdio com fotos e UI, muito detalhado.",
+    "tecnica": "obsessão por detalhe em micro elementos de UI e foto",
+    "melhor_para": [
+      "branding",
+      "prova"
+    ],
+    "encaixe": "painel de prova com cases de clientes em cards",
+    "retencao": "detalhe rico pede para assistir de novo",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "aschapmann-131210",
+    "titulo_pt": "Vídeo de lançamento SaaS",
+    "o_que_faz": "30s em 4 a 5 cenas (por que importa, dor, solução, o que você ganha) com tipografia palavra por palavra, springs, câmera, glow e um SFX suave por elemento, fechando com logo.",
+    "tecnica": "texto cinético palavra por palavra e um SFX para cada elemento que aparece, silêncio no resto",
+    "melhor_para": [
+      "criativo-ads",
+      "cta",
+      "explicacao"
+    ],
+    "encaixe": "criativo de anúncio da mentoria: dor, solução e oferta com palavras entrando e som em cada uma",
+    "retencao": "som pontual em cada aparição dá peso e ritmo sem poluir",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "astrodevil-3f2054",
+    "titulo_pt": "Showreel de introdução de estúdio",
+    "o_que_faz": "15s com gráficos e tipografia cinética resumindo cases do estúdio.",
+    "tecnica": "dados de case transformados em gráfico e texto cinético",
+    "melhor_para": [
+      "prova",
+      "dados"
+    ],
+    "encaixe": "painel de prova: resultado de aluno virando gráfico e número",
+    "retencao": "números de case dão prova social rápida",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "axtonliu-0b861d",
+    "titulo_pt": "Pelicano de bicicleta detalhado",
+    "o_que_faz": "Animação SVG super detalhada de um pelicano pedalando uma bicicleta.",
+    "tecnica": "SVG com articulação de partes e física de pedal",
+    "melhor_para": [
+      "organico"
+    ],
+    "encaixe": "quase sem encaixe; só como piada visual sobre testes de IA",
+    "retencao": "detalhe absurdo em tema bobo é divertido",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "ayushunleashed-ece3e3",
+    "titulo_pt": "Showreel com partículas e música",
+    "o_que_faz": "15s misturando texto cinético, formas e partículas sincronizados à música.",
+    "tecnica": "combinação de texto cinético com partículas no beat",
+    "melhor_para": [
+      "hook",
+      "transicao"
+    ],
+    "encaixe": "gancho inicial com a palavra chave explodindo em partículas",
+    "retencao": "impacto visual no primeiro segundo",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "bizibeast-10f264",
+    "titulo_pt": "Vídeo de produto Bento",
+    "o_que_faz": "40s com telas de celular e UI do produto, ritmo de showreel.",
+    "tecnica": "sequência de telas de celular com transições rápidas",
+    "melhor_para": [
+      "produto-app"
+    ],
+    "encaixe": "demonstrar um app no celular passo a passo no painel",
+    "retencao": "troca constante de tela mantém novidade",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "blue-clarity-ef56d0",
+    "titulo_pt": "Reel com esfera de partículas",
+    "o_que_faz": "Esfera de partículas gira e se transforma enquanto palavras aparecem em 15s.",
+    "tecnica": "nuvem de partículas 3D que morfa entre formas",
+    "melhor_para": [
+      "hook",
+      "motivacional",
+      "branding"
+    ],
+    "encaixe": "fundo de corte de IA: esfera de partículas pulsando com a fala",
+    "retencao": "forma orgânica viva hipnotiza",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "blueoctopusai-dd17bd",
+    "titulo_pt": "Explicador da linha amarela",
+    "o_que_faz": "Diagramas explicam como a linha amarela do futebol americano é desenhada na transmissão, passo a passo.",
+    "tecnica": "explicação técnica em passos com diagrama sobre imagem",
+    "melhor_para": [
+      "explicacao"
+    ],
+    "encaixe": "painel explicando como o pixel ou o algoritmo rastreia o clique, passo a passo",
+    "retencao": "resolver um 'como funciona' gera satisfação",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "blushpetal795-0c85c2",
+    "titulo_pt": "Autoapresentação para recrutador",
+    "o_que_faz": "15s apresentando a pessoa com números, gráficos, tipografia e partículas como um currículo animado.",
+    "tecnica": "currículo animado com dados pessoais virando gráficos",
+    "melhor_para": [
+      "branding",
+      "prova",
+      "hook"
+    ],
+    "encaixe": "abertura de corte 'quem sou eu': anos de experiência e valor gerenciado contando",
+    "retencao": "números pessoais criam autoridade instantânea",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "bogdandragomir-35e024",
+    "titulo_pt": "Intro de produto sincronizada à música",
+    "o_que_faz": "Intro de produto com UI e partículas, música criada junto e cada evento sincronizado com ela.",
+    "tecnica": "gerar a música e cravar cada animação nos eventos dela",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "criativo com trilha própria onde cada benefício entra num hit",
+    "retencao": "sincronia perfeita com som prende quem assiste com áudio",
+    "relevancia": 3,
+    "esforco": "alto"
+  },
+  {
+    "slug": "brainextends-e19ac3",
+    "titulo_pt": "Filme de produto Spotify",
+    "o_que_faz": "18s dentro de um palco escuro arredondado: ícone vira marca, UI sobe com perspectiva, busca digitada, capa expande, zoom com motion blur, capas convergem no logo e player fixo conecta tudo.",
+    "tecnica": "transição por posição compartilhada: o mesmo elemento (capa) atravessa todas as cenas, com springs criticamente amortecidos e motion blur por subframes",
+    "melhor_para": [
+      "produto-app",
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "painel com um elemento fixo (ex: card do resultado) que atravessa todas as cenas enquanto ele fala",
+    "retencao": "continuidade do mesmo objeto faz o cérebro seguir sem perder o fio",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "bthreeagency-b9b8d9",
+    "titulo_pt": "Tela de desbloqueio de badge",
+    "o_que_faz": "Badge 3D aparece, inclina com física e explode em partículas douradas de celebração.",
+    "tecnica": "objeto sólido inclinando com física e burst de partículas douradas na conquista",
+    "melhor_para": [
+      "prova",
+      "motivacional"
+    ],
+    "encaixe": "quando ele cita conquista de aluno: badge de 'primeira venda' surgindo com ouro",
+    "retencao": "recompensa visual ativa sensação de vitória",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "buildfastwithai-53234e",
+    "titulo_pt": "Filme da civilização indiana",
+    "o_que_faz": "Vídeo histórico com mapas, diagramas, música e efeitos sonoros contando a história.",
+    "tecnica": "linha do tempo com mapas e diagramas narrando história",
+    "melhor_para": [
+      "explicacao",
+      "organico"
+    ],
+    "encaixe": "linha do tempo da trajetória dele ou da evolução dos anúncios",
+    "retencao": "narrativa cronológica cria vontade de ver o próximo marco",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "buildfastwithai-ed9447",
+    "titulo_pt": "Avião Skyraider em Three.js",
+    "o_que_faz": "Modelo 3D detalhado de avião militar construído e girando em Three.js.",
+    "tecnica": "modelo 3D procedural em Three.js",
+    "melhor_para": [
+      "branding"
+    ],
+    "encaixe": "pouco encaixe; só como objeto 3D de impacto",
+    "retencao": "detalhe técnico impressiona",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "cansincengiz-me-cf68dd",
+    "titulo_pt": "Promo de app quadrada",
+    "o_que_faz": "15s para apresentar um app em 1080x1080 para 10 mil pessoas no X, com UI animada.",
+    "tecnica": "composição quadrada pensada para feed",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "criativo de anúncio quadrado mostrando a ferramenta",
+    "retencao": "feito para feed, curto e direto",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "ceowinkz-7c776b",
+    "titulo_pt": "Pitch de atacado Amazon",
+    "o_que_faz": "15s com UI de loja e texto cinético mostrando a marca por que deveria deixar a empresa vender seus produtos.",
+    "tecnica": "pitch B2B em texto cinético com prova de UI",
+    "melhor_para": [
+      "criativo-ads",
+      "prova",
+      "cta"
+    ],
+    "encaixe": "criativo para vender serviço de tráfego a empresas: por que contratar, com números",
+    "retencao": "argumento de venda em frases curtas e rápidas",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "charlesmendez-73b6e4",
+    "titulo_pt": "Explicador de anúncios no ChatGPT",
+    "o_que_faz": "Fluxo de usuário criando campanha de anúncios no ChatGPT, conectando métricas, atribuição, agente de voz, follow up e analytics.",
+    "tecnica": "jornada de usuário encadeada passo a passo em UI com gráficos",
+    "melhor_para": [
+      "explicacao",
+      "dados",
+      "produto-app"
+    ],
+    "encaixe": "explicar a jornada da campanha no painel: criar, medir, atribuir, escalar",
+    "retencao": "é exatamente o nicho dele, anúncios mais IA, cada passo leva ao próximo",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "chatgptastra-0d95c7",
+    "titulo_pt": "Showreel de princípios de motion",
+    "o_que_faz": "15s com diagramas, tipografia e partículas em estética refinada de motion designer.",
+    "tecnica": "demonstrar princípios de animação (easing, timing) visualmente",
+    "melhor_para": [
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "referência de qualidade de easing para as transições dos painéis",
+    "retencao": "acabamento refinado passa sensação premium",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "chrisjdimarco-f068db",
+    "titulo_pt": "Samurai de fogo",
+    "o_que_faz": "Samurai feito em JavaScript executa poses impressionantes num ponto fixo cercado de fogo.",
+    "tecnica": "personagem procedural com partículas de fogo",
+    "melhor_para": [
+      "motivacional"
+    ],
+    "encaixe": "fundo de corte motivacional sobre disciplina, uso raro",
+    "retencao": "fogo e movimento marcial passam intensidade",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "codestackr-c071bf",
+    "titulo_pt": "Reel do Claude com formas",
+    "o_que_faz": "15s de texto cinético e formas geométricas no estilo showreel.",
+    "tecnica": "shapes e texto cinético se alternando no centro",
+    "melhor_para": [
+      "hook",
+      "transicao"
+    ],
+    "encaixe": "transição curta entre blocos de fala",
+    "retencao": "movimento constante e formas simples",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "crazyalphaaa-bc7e75",
+    "titulo_pt": "Showreel com partículas e texto",
+    "o_que_faz": "15s de partículas formando e desfazendo palavras.",
+    "tecnica": "partículas que formam e desfazem palavras",
+    "melhor_para": [
+      "hook",
+      "motivacional"
+    ],
+    "encaixe": "palavra chave do corte motivacional formando-se em partículas",
+    "retencao": "revelação da palavra cria micro suspense",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "dale-vaz-cc612a",
+    "titulo_pt": "Revelação de terminal de trading",
+    "o_que_faz": "Começa num ponto preto, janelas de gráficos e posições surgem, câmera dá zoom em várias escalas, o desktop vira um ponto no espaço e reabre num celular com gráfico e opções.",
+    "tecnica": "zoom multi-escala contínuo (ponto vira tela, tela vira ponto)",
+    "melhor_para": [
+      "hook",
+      "dados",
+      "produto-app"
+    ],
+    "encaixe": "painel mostrando o gerenciador de anúncios nascendo de um ponto e abrindo métricas",
+    "retencao": "escala infinita surpreende e prende até o fim",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "daniel-haida-8691d4",
+    "titulo_pt": "Filme de app de contabilidade",
+    "o_que_faz": "15s estilo Apple: brilho dourado revela a marca, dashboard real com número e gráfico, recibo encaixa em lançamento, fatura muda de status, tudo se dobra no logo.",
+    "tecnica": "transições guiadas por objeto (linha do gráfico vira borda do documento, número vira valor da fatura) e uma ideia por cena",
+    "melhor_para": [
+      "prova",
+      "dados",
+      "branding"
+    ],
+    "encaixe": "painel premium: número do faturamento vira gráfico que vira o card do resultado",
+    "retencao": "cada cena nasce da anterior, o olho não tem onde sair",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "danilowm-d3720d",
+    "titulo_pt": "Showreel com HyperFrames",
+    "o_que_faz": "15s feito com a skill HyperFrames no Cursor, com UI, gráficos e texto cinético usando o contexto do projeto.",
+    "tecnica": "usar a própria skill HyperFrames com o contexto do projeto",
+    "melhor_para": [
+      "hook",
+      "dados"
+    ],
+    "encaixe": "base direta para ele: mesmo pipeline que ele já usa, adaptar para painel 1080x960",
+    "retencao": "prova que o fluxo dele consegue esse nível",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "davidmarcus-a28a60",
+    "titulo_pt": "Vídeo social vertical de fintech",
+    "o_que_faz": "Vídeo vertical curto e moderno com texto cinético e trechos de código promovendo capacidades da empresa, com som.",
+    "tecnica": "texto cinético vertical com som de produção para redes",
+    "melhor_para": [
+      "criativo-ads",
+      "hook"
+    ],
+    "encaixe": "criativo vertical de anúncio com frases fortes e trechos de prompt do Claude",
+    "retencao": "pensado nativamente para 9:16 e com áudio",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "davidshulmanfl-371638",
+    "titulo_pt": "Clipe musical estilo massinha",
+    "o_que_faz": "Clipe de 60s em estilo stop motion de massinha com música composta inspirada em Peter Gabriel.",
+    "tecnica": "estética stop motion com personagens e música original",
+    "melhor_para": [
+      "organico"
+    ],
+    "encaixe": "pouco encaixe; inspiração para corte humorístico",
+    "retencao": "estética incomum quebra o padrão do feed",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "ddryo-loos-300829",
+    "titulo_pt": "Lançamento de framework CSS",
+    "o_que_faz": "15s simples e dinâmico mostrando código CSS e UI resultante para anunciar versão 1.0.",
+    "tecnica": "código digitando e virando interface ao lado",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "painel mostrando o prompt digitando e o resultado do Claude aparecendo",
+    "retencao": "ver causa (código) e efeito (UI) juntos",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "deebeeeff-50fcd0",
+    "titulo_pt": "Aniversário de 20 anos de marca",
+    "o_que_faz": "10s quadrado celebrando 20 anos com partículas e o número em destaque.",
+    "tecnica": "número comemorativo grande com partículas de celebração",
+    "melhor_para": [
+      "branding",
+      "motivacional"
+    ],
+    "encaixe": "marco pessoal: '100 alunos' ou '1 milhão investido' com celebração",
+    "retencao": "celebração dispara emoção positiva",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "deifosv-04e4d3",
+    "titulo_pt": "Lançamento de jogo de tênis",
+    "o_que_faz": "Vídeo de alta energia com stats ao vivo do site, jogo no desktop e celular e vários temas.",
+    "tecnica": "stats reais do site animados como prova de tração",
+    "melhor_para": [
+      "prova",
+      "dados",
+      "produto-app"
+    ],
+    "encaixe": "prova social: número de alunos e resultados ao vivo contando",
+    "retencao": "números reais em alta energia geram FOMO",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "demitiyageekzen-7770ad",
+    "titulo_pt": "Pavilhão ao luar no rio",
+    "o_que_faz": "Cena poética de pavilhão chinês à beira do rio sob a lua, com interatividade.",
+    "tecnica": "cena atmosférica ilustrada com camadas em parallax",
+    "melhor_para": [
+      "motivacional"
+    ],
+    "encaixe": "fundo calmo para corte reflexivo motivacional",
+    "retencao": "atmosfera contemplativa segura quem busca calma",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "demonugc-4c5753",
+    "titulo_pt": "Loop de estados de UI que morfam",
+    "o_que_faz": "Um único shape, sem cortes, vira botão, loader, check, dynamic island, player, slider, toggle, abas, gráfico, ⌘K e toast, guiado por cursor real, em 120 BPM, voltando ao início em loop.",
+    "tecnica": "um único shape que morfa entre estados com springs em forma fechada (soma de um spring por mudança), bordas com springs diferentes para esticar",
+    "melhor_para": [
+      "transicao",
+      "produto-app",
+      "hook"
+    ],
+    "encaixe": "painel contínuo do corte: um card que vira gráfico, depois número de ROAS, depois botão de CTA, sem cortes",
+    "retencao": "nada some, tudo se transforma, o olho segue o objeto o tempo todo",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "devius-maximus-beab45",
+    "titulo_pt": "Showreel de app de áudio",
+    "o_que_faz": "Motion com UI de app, celular, tipografia e personagens no estilo showreel.",
+    "tecnica": "mistura de UI, celular e personagem em ritmo de showreel",
+    "melhor_para": [
+      "produto-app",
+      "organico"
+    ],
+    "encaixe": "demonstração de app com mascote no painel",
+    "retencao": "variedade visual alta",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "elliot-garreffa-f334bc",
+    "titulo_pt": "Promo de rastreador de conectores",
+    "o_que_faz": "Promo de produto construído com storyboard primeiro, guidelines da marca e vídeos de referência.",
+    "tecnica": "storyboard aprovado antes de animar, com referência de marca",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "processo para criativos: definir storyboard e referência antes de pedir ao Claude",
+    "retencao": "planejamento evita cenas sem propósito",
+    "relevancia": 3,
+    "esforco": "baixo"
+  }
+]

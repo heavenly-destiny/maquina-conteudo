@@ -1,0 +1,3769 @@
+{
+ "atualizado_em": "2026-11-18T23:13:50",
+ "estilos": [
+  {
+   "id": "motivacional-reflexivo",
+   "nome": "Motivacional / reflexivo (talking head emocional)",
+   "prompt_trilha": "Cinematic emotional piano and strings, slow build over 45 seconds, soft sustained pad, warm low cello, gentle riser to a hopeful swell at the end, no vocals, room left for a speaking voice",
+   "bpm": 70,
+   "drop_s": 35,
+   "faixas": [
+    "m001",
+    "m005",
+    "m006",
+    "m026",
+    "m035",
+    "m039",
+    "m046",
+    "m047"
+   ]
+  },
+  {
+   "id": "storytime",
+   "nome": "Storytime",
+   "prompt_trilha": "Intimate piano with light ambient pad, nostalgic and warm, minimal percussion, subtle tension in the middle then resolution, instrumental, under a spoken narration",
+   "bpm": 75,
+   "drop_s": 20,
+   "faixas": [
+    "m014",
+    "m024",
+    "m028",
+    "m029",
+    "m033",
+    "m047",
+    "m052",
+    "m053"
+   ]
+  },
+  {
+   "id": "tutorial-dica",
+   "nome": "Tutorial / dica rápida",
+   "prompt_trilha": "Light lo-fi hip hop beat, mellow keys, soft vinyl texture, steady drums, bright and focused, loopable, instrumental, leaves space for voice",
+   "bpm": 85,
+   "drop_s": 0,
+   "faixas": [
+    "m016",
+    "m017",
+    "m064",
+    "m065",
+    "m066"
+   ]
+  },
+  {
+   "id": "antes-depois",
+   "nome": "Antes e depois / transição",
+   "prompt_trilha": "Cinematic build with rising snare roll and riser, then an impact drop with bass hit and bright synth lead, energetic and satisfying, instrumental",
+   "bpm": 120,
+   "drop_s": 6,
+   "faixas": [
+    "m001",
+    "m010",
+    "m013",
+    "m015",
+    "m019",
+    "m020",
+    "m022",
+    "m023"
+   ]
+  },
+  {
+   "id": "pov-humor",
+   "nome": "POV / humor",
+   "prompt_trilha": "Quirky playful bounce with pizzicato, funky bass and brass stabs, comedic timing with a sudden stop, instrumental",
+   "bpm": 110,
+   "drop_s": 2,
+   "faixas": [
+    "m007",
+    "m011",
+    "m012",
+    "m018",
+    "m021",
+    "m025",
+    "m031",
+    "m032"
+   ]
+  },
+  {
+   "id": "lista-ranking",
+   "nome": "Lista / ranking",
+   "prompt_trilha": "Upbeat modern pop-electronic with steady pulse, short punchy stabs every beat, clean and rhythmic, instrumental",
+   "bpm": 118,
+   "drop_s": 0,
+   "faixas": [
+    "m008",
+    "m010",
+    "m015",
+    "m016",
+    "m022",
+    "m042",
+    "m044",
+    "m045"
+   ]
+  },
+  {
+   "id": "bastidores-rotina",
+   "nome": "Bastidores / rotina",
+   "prompt_trilha": "Warm acoustic guitar and soft pop beat, cozy daily-life mood, light claps, feel-good, instrumental",
+   "bpm": 100,
+   "drop_s": 0,
+   "faixas": [
+    "m002",
+    "m003",
+    "m004",
+    "m005",
+    "m006",
+    "m008",
+    "m011",
+    "m012"
+   ]
+  },
+  {
+   "id": "venda-oferta",
+   "nome": "Venda / oferta",
+   "prompt_trilha": "Confident upbeat commercial pop with punchy drums, bright synth plucks, energetic call-to-action lift, drop on the offer reveal, instrumental",
+   "bpm": 125,
+   "drop_s": 3,
+   "faixas": [
+    "m002",
+    "m003",
+    "m004",
+    "m007",
+    "m009",
+    "m018",
+    "m044",
+    "m045"
+   ]
+  },
+  {
+   "id": "podcast-recut",
+   "nome": "Podcast recut",
+   "prompt_trilha": "Subtle soft ambient bed, light lo-fi chords, very low presence, steady and unobtrusive, instrumental",
+   "bpm": 80,
+   "drop_s": 0,
+   "faixas": [
+    "m064",
+    "m065",
+    "m066"
+   ]
+  },
+  {
+   "id": "luxo-resultado",
+   "nome": "Luxo / ostentação / resultado",
+   "prompt_trilha": "Dark trap and phonk beat with deep 808 bass, cowbell, slow and dominant, hard drop, instrumental",
+   "bpm": 140,
+   "drop_s": 4,
+   "faixas": [
+    "m009",
+    "m013",
+    "m019",
+    "m020",
+    "m027",
+    "m038",
+    "m049",
+    "m057"
+   ]
+  },
+  {
+   "id": "tensao-suspense",
+   "nome": "Tensão / suspense",
+   "prompt_trilha": "Dark cinematic pulse with low strings ostinato, deep drone, ticking rhythm that accelerates, ends on a hard stinger, instrumental",
+   "bpm": 90,
+   "drop_s": 25,
+   "faixas": [
+    "m025",
+    "m046",
+    "m056",
+    "m057",
+    "m058",
+    "m059"
+   ]
+  },
+  {
+   "id": "epico-inspiracional",
+   "nome": "Épico / inspiracional",
+   "prompt_trilha": "Epic orchestral trailer music, heroic brass, driving strings and taiko drums, big choir-like swell and triumphant climax, instrumental",
+   "bpm": 100,
+   "drop_s": 12,
+   "faixas": [
+    "m014",
+    "m046",
+    "m047",
+    "m048",
+    "m049",
+    "m050",
+    "m051",
+    "m056"
+   ]
+  },
+  {
+   "id": "hit-do-momento",
+   "nome": "Hit do momento (BR)",
+   "prompt_trilha": "Current Brazilian trend sound; use native trending audio only when he posts himself, in machine renders use the style bed instead",
+   "bpm": 100,
+   "drop_s": 0,
+   "faixas": [
+    "m026",
+    "m027",
+    "m028",
+    "m029",
+    "m030",
+    "m031",
+    "m032",
+    "m033"
+   ]
+  }
+ ],
+ "musicas": [
+  {
+   "id": "m001",
+   "titulo": "Time",
+   "artista": "Pink Floyd",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Pink+Floyd+Time",
+    "spotify": "https://open.spotify.com/search/Pink+Floyd+Time",
+    "youtube": "https://www.youtube.com/results?search_query=Pink+Floyd+Time",
+    "deezer": "https://www.deezer.com/track/116914022"
+   },
+   "por_que_viral": "Glow-up 'então e agora': foto de infância e depois a pessoa hoje; o relógio do começo marca a virada.",
+   "formato_de_uso": "transição antes/depois",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "motivacional-reflexivo"
+   ],
+   "mood": "nostálgico, grandioso",
+   "energia": 3,
+   "bpm": 123,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": 12,
+   "drop_fonte": "estimado",
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "beleza",
+    "motivacional",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "ig": 1
+   },
+   "usado_por": [],
+   "rank": 10,
+   "preview": "previews/m001.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/e635a8510c1a74bc089b3566ebbb9cb8/250x250-000000-80-0-0.jpg",
+   "score": 33
+  },
+  {
+   "id": "m002",
+   "titulo": "Last Christmas",
+   "artista": "Wham!",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Wham%21+Last+Christmas",
+    "spotify": "https://open.spotify.com/search/Wham%21+Last+Christmas",
+    "youtube": "https://www.youtube.com/results?search_query=Wham%21+Last+Christmas",
+    "deezer": "https://www.deezer.com/track/1036586"
+   },
+   "por_que_viral": "Luzes, decoração e anúncio de promoção de fim de ano.",
+   "formato_de_uso": "venda/oferta sazonal, decoração",
+   "estilo_de_video": "venda-oferta",
+   "estilos": [
+    "venda-oferta",
+    "bastidores-rotina"
+   ],
+   "mood": "festivo, leve",
+   "energia": 3,
+   "bpm": 107,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": 0.5,
+   "drop_fonte": "estimado",
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "varejo",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "global": 10
+   },
+   "usado_por": [],
+   "rank": 26,
+   "preview": "previews/m002.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/02a714c827c267c60b3d3d99ab4499a4/250x250-000000-80-0-0.jpg",
+   "score": 21
+  },
+  {
+   "id": "m003",
+   "titulo": "It's Beginning to Look a Lot Like Christmas",
+   "artista": "Michael Bublé",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Michael+Bubl%C3%A9+It%27s+Beginning+to+Look+a+Lot+Like+Christmas",
+    "spotify": "https://open.spotify.com/search/Michael+Bubl%C3%A9+It%27s+Beginning+to+Look+a+Lot+Like+Christmas",
+    "youtube": "https://www.youtube.com/results?search_query=Michael+Bubl%C3%A9+It%27s+Beginning+to+Look+a+Lot+Like+Christmas",
+    "deezer": "https://www.deezer.com/track/1934770197"
+   },
+   "por_que_viral": "Revelação de casa decorada, receitas e promoções de Natal.",
+   "formato_de_uso": "revelação/decoração",
+   "estilo_de_video": "venda-oferta",
+   "estilos": [
+    "venda-oferta",
+    "bastidores-rotina"
+   ],
+   "mood": "festivo, caloroso",
+   "energia": 3,
+   "bpm": 130,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": 0.5,
+   "drop_fonte": "estimado",
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "varejo",
+    "gastronomia"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "ig": 3
+   },
+   "usado_por": [],
+   "rank": 17,
+   "preview": "previews/m003.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/47f69f524f4560d5c843dfef4d70c8cd/250x250-000000-80-0-0.jpg",
+   "score": 27
+  },
+  {
+   "id": "m004",
+   "titulo": "Christmas Market",
+   "artista": "Eoneun",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Eoneun+Christmas+Market",
+    "spotify": "https://open.spotify.com/search/Eoneun+Christmas+Market",
+    "youtube": "https://www.youtube.com/results?search_query=Eoneun+Christmas+Market",
+    "deezer": "https://www.deezer.com/track/3718102232"
+   },
+   "por_que_viral": "Passeio lento por cantinhos natalinos de lojas e casas, termina com CTA 'comente SHOP'.",
+   "formato_de_uso": "rotina/bastidor com CTA",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "venda-oferta"
+   ],
+   "mood": "aconchegante, calmo",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "varejo"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m004.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/c5907126fa8a7d6c6175afaf6ff0e22c/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m005",
+   "titulo": "November",
+   "artista": "Past Day",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Past+Day+November",
+    "spotify": "https://open.spotify.com/search/Past+Day+November",
+    "youtube": "https://www.youtube.com/results?search_query=Past+Day+November",
+    "deezer": "https://www.deezer.com/track/2485814641"
+   },
+   "por_que_viral": "Fotos do mês, caminhadas no frio, reflexão calma.",
+   "formato_de_uso": "photo dump/rotina",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "motivacional-reflexivo"
+   ],
+   "mood": "calmo, reflexivo",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "motivacional"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "ig": 5
+   },
+   "usado_por": [],
+   "rank": 27,
+   "preview": "previews/m005.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/e692916b5fdf158c108268c614bf26e2/250x250-000000-80-0-0.jpg",
+   "score": 21
+  },
+  {
+   "id": "m006",
+   "titulo": "Coming Up Roses",
+   "artista": "Harry Styles",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Harry+Styles+Coming+Up+Roses",
+    "spotify": "https://open.spotify.com/search/Harry+Styles+Coming+Up+Roses",
+    "youtube": "https://www.youtube.com/results?search_query=Harry+Styles+Coming+Up+Roses",
+    "deezer": "https://www.deezer.com/track/3881984701"
+   },
+   "por_que_viral": "Montagem 'vida boba' de pequenos momentos felizes e mensagem 'você fez mais do que pensa'.",
+   "formato_de_uso": "motivacional suave/montagem",
+   "estilo_de_video": "motivacional-reflexivo",
+   "estilos": [
+    "motivacional-reflexivo",
+    "bastidores-rotina"
+   ],
+   "mood": "esperançoso, suave",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "lifestyle",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m006.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/fee004942feff253f7bbca63740ab519/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m007",
+   "titulo": "Stop The Wedding!",
+   "artista": "Ashe",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Ashe+Stop+The+Wedding%21",
+    "spotify": "https://open.spotify.com/search/Ashe+Stop+The+Wedding%21",
+    "youtube": "https://www.youtube.com/results?search_query=Ashe+Stop+The+Wedding%21",
+    "deezer": "https://www.deezer.com/track/4209416002"
+   },
+   "por_que_viral": "Setup dramático seguido de algo pequeno ou engraçado; marcas usam em sorteios.",
+   "formato_de_uso": "POV/humor com virada",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "venda-oferta"
+   ],
+   "mood": "dramático, irônico",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "global": 1,
+    "ig": 7
+   },
+   "usado_por": [],
+   "rank": 1,
+   "preview": "previews/m007.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/556af4b24a45d8fd6912014d706ff7d4/250x250-000000-80-0-0.jpg",
+   "score": 45
+  },
+  {
+   "id": "m008",
+   "titulo": "I Knew It, I Knew You",
+   "artista": "Taylor Swift",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Taylor+Swift+I+Knew+It%2C+I+Knew+You",
+    "spotify": "https://open.spotify.com/search/Taylor+Swift+I+Knew+It%2C+I+Knew+You",
+    "youtube": "https://www.youtube.com/results?search_query=Taylor+Swift+I+Knew+It%2C+I+Knew+You",
+    "deezer": "https://www.deezer.com/track/4058916481"
+   },
+   "por_que_viral": "Momentos do dia a dia 'essa é a minha vida' e bump que entra numa dança em grupo.",
+   "formato_de_uso": "rotina/bastidores",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "lista-ranking"
+   ],
+   "mood": "leve, pop",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "beleza"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m008.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/3524f60445caca0b06a75c30f1e9817c/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m009",
+   "titulo": "Beauty And A Beat x Cola (Altégo Mix)",
+   "artista": "altego_music",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=altego_music+Beauty+And+A+Beat+x+Cola+%28Alt%C3%A9go+Mix%29",
+    "spotify": "https://open.spotify.com/search/altego_music+Beauty+And+A+Beat+x+Cola+%28Alt%C3%A9go+Mix%29",
+    "youtube": "https://www.youtube.com/results?search_query=altego_music+Beauty+And+A+Beat+x+Cola+%28Alt%C3%A9go+Mix%29"
+   },
+   "por_que_viral": "Revelações de alta energia (cílios, produtos) e promoções de Black Friday.",
+   "formato_de_uso": "revelação rápida/oferta",
+   "estilo_de_video": "venda-oferta",
+   "estilos": [
+    "venda-oferta",
+    "luxo-resultado"
+   ],
+   "mood": "energético, brilhante",
+   "energia": 5,
+   "bpm": 128,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": 2,
+   "drop_fonte": "estimado",
+   "nichos_que_funcionam": [
+    "beleza",
+    "varejo",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "ig": 9
+   },
+   "usado_por": [],
+   "rank": 44,
+   "preview": null,
+   "capa": null,
+   "score": 9
+  },
+  {
+   "id": "m010",
+   "titulo": "Mr. Brightside",
+   "artista": "The Killers",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=The+Killers+Mr.+Brightside",
+    "spotify": "https://open.spotify.com/search/The+Killers+Mr.+Brightside",
+    "youtube": "https://www.youtube.com/results?search_query=The+Killers+Mr.+Brightside",
+    "deezer": "https://www.deezer.com/track/953097"
+   },
+   "por_que_viral": "Conteúdo nostalgia e treino de alta energia, 'como era vs como está'.",
+   "formato_de_uso": "transição/treino",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "lista-ranking"
+   ],
+   "mood": "explosivo, nostálgico",
+   "energia": 5,
+   "bpm": 148,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": 3,
+   "drop_fonte": "estimado",
+   "nichos_que_funcionam": [
+    "fitness",
+    "lifestyle",
+    "humor"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m010.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ecff532dd84c6538099b58baefccb8fb/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m011",
+   "titulo": "The Blue Danube Waltz",
+   "artista": "Royal Symphony Orchestra",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Royal+Symphony+Orchestra+The+Blue+Danube+Waltz",
+    "spotify": "https://open.spotify.com/search/Royal+Symphony+Orchestra+The+Blue+Danube+Waltz",
+    "youtube": "https://www.youtube.com/results?search_query=Royal+Symphony+Orchestra+The+Blue+Danube+Waltz",
+    "deezer": "https://www.deezer.com/track/814214932"
+   },
+   "por_que_viral": "Tarefa comum filmada como balé grandioso; compras 'sem motivo'.",
+   "formato_de_uso": "POV/humor contraste",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "bastidores-rotina"
+   ],
+   "mood": "clássico, cômico",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {
+    "ig": 11
+   },
+   "usado_por": [],
+   "rank": 45,
+   "preview": "previews/m011.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/21faa757da8553b2edf2a166b553e633/250x250-000000-80-0-0.jpg",
+   "score": 3
+  },
+  {
+   "id": "m012",
+   "titulo": "Housewife",
+   "artista": "Tate McRae",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Tate+McRae+Housewife",
+    "spotify": "https://open.spotify.com/search/Tate+McRae+Housewife",
+    "youtube": "https://www.youtube.com/results?search_query=Tate+McRae+Housewife",
+    "deezer": "https://www.deezer.com/track/4350411742"
+   },
+   "por_que_viral": "Coreografia em dupla e lip-sync de rotina matinal.",
+   "formato_de_uso": "rotina/lip-sync",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "pov-humor"
+   ],
+   "mood": "pop, sassy",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "beleza"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends + https://kworb.net/spotify/country/global_daily.html",
+   "origem": "artigo",
+   "posicoes": {
+    "global": 3
+   },
+   "usado_por": [],
+   "rank": 16,
+   "preview": "previews/m012.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/0717657c0f9540946fb9813d3383a500/250x250-000000-80-0-0.jpg",
+   "score": 28
+  },
+  {
+   "id": "m013",
+   "titulo": "Angel Of My Dreams",
+   "artista": "JADE",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=JADE+Angel+Of+My+Dreams",
+    "spotify": "https://open.spotify.com/search/JADE+Angel+Of+My+Dreams",
+    "youtube": "https://www.youtube.com/results?search_query=JADE+Angel+Of+My+Dreams",
+    "deezer": "https://www.deezer.com/track/2892817641"
+   },
+   "por_que_viral": "Revelações com visual luxo: viagem, unhas, joias.",
+   "formato_de_uso": "revelação luxo",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado",
+    "antes-depois"
+   ],
+   "mood": "sedoso, sofisticado",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "beleza",
+    "lifestyle",
+    "moda"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m013.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/6a167c30a495e5a9af7cc3a0575cc881/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m014",
+   "titulo": "November Rain",
+   "artista": "Guns N' Roses",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Guns+N%27+Roses+November+Rain",
+    "spotify": "https://open.spotify.com/search/Guns+N%27+Roses+November+Rain",
+    "youtube": "https://www.youtube.com/results?search_query=Guns+N%27+Roses+November+Rain",
+    "deezer": "https://www.deezer.com/track/1169683"
+   },
+   "por_que_viral": "Montagem cinematográfica de viagem e nostalgia anos 90.",
+   "formato_de_uso": "montagem cinematográfica",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "storytime"
+   ],
+   "mood": "épico, nostálgico",
+   "energia": 3,
+   "bpm": 80,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "viagem"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m014.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/546fe1eca5d3bf48c6a48fb3c0ddac63/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m015",
+   "titulo": "Everlong",
+   "artista": "Foo Fighters",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Foo+Fighters+Everlong",
+    "spotify": "https://open.spotify.com/search/Foo+Fighters+Everlong",
+    "youtube": "https://www.youtube.com/results?search_query=Foo+Fighters+Everlong",
+    "deezer": "https://www.deezer.com/track/4762041"
+   },
+   "por_que_viral": "'Como começou vs como está' construindo algo do zero.",
+   "formato_de_uso": "transição antes/depois",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "lista-ranking"
+   ],
+   "mood": "intenso, crescente",
+   "energia": 4,
+   "bpm": 158,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "fitness",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m015.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/266f01f1c7a04843d11cd08f9c07d11f/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m016",
+   "titulo": "Sunshine (Instrumental)",
+   "artista": "Twista",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Twista+Sunshine+%28Instrumental%29",
+    "spotify": "https://open.spotify.com/search/Twista+Sunshine+%28Instrumental%29",
+    "youtube": "https://www.youtube.com/results?search_query=Twista+Sunshine+%28Instrumental%29"
+   },
+   "por_que_viral": "Dicas rápidas e receitas com texto na tela; instrumental deixa a voz livre.",
+   "formato_de_uso": "tutorial/dica rápida",
+   "estilo_de_video": "tutorial-dica",
+   "estilos": [
+    "tutorial-dica",
+    "lista-ranking"
+   ],
+   "mood": "leve, otimista",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "gastronomia",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": null,
+   "capa": null,
+   "score": 0
+  },
+  {
+   "id": "m017",
+   "titulo": "Blue Moon",
+   "artista": "Zara Larsson",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Zara+Larsson+Blue+Moon",
+    "spotify": "https://open.spotify.com/search/Zara+Larsson+Blue+Moon",
+    "youtube": "https://www.youtube.com/results?search_query=Zara+Larsson+Blue+Moon",
+    "deezer": "https://www.deezer.com/track/4329807422"
+   },
+   "por_que_viral": "Rotinas de autocuidado e tutoriais de beleza.",
+   "formato_de_uso": "rotina/tutorial",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "tutorial-dica"
+   ],
+   "mood": "suave, feminino",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "beleza",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m017.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/a36eb290c83ffee8985276b027678eb9/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m018",
+   "titulo": "Hold On, We're Going Home",
+   "artista": "Drake, Majid Jordan",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Drake%2C+Majid+Jordan+Hold+On%2C+We%27re+Going+Home",
+    "spotify": "https://open.spotify.com/search/Drake%2C+Majid+Jordan+Hold+On%2C+We%27re+Going+Home",
+    "youtube": "https://www.youtube.com/results?search_query=Drake%2C+Majid+Jordan+Hold+On%2C+We%27re+Going+Home",
+    "deezer": "https://www.deezer.com/track/70697364"
+   },
+   "por_que_viral": "Esquetes de identificação e aviso 'agenda aberta'.",
+   "formato_de_uso": "POV/oferta de agenda",
+   "estilo_de_video": "venda-oferta",
+   "estilos": [
+    "venda-oferta",
+    "pov-humor"
+   ],
+   "mood": "cool, noturno",
+   "energia": 2,
+   "bpm": 100,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "serviços",
+    "humor",
+    "beleza"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m018.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/64ec37a4cf512c7810c40ba0d318ff1e/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m019",
+   "titulo": "Nicole Kidman",
+   "artista": "ADÉLA",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=AD%C3%89LA+Nicole+Kidman",
+    "spotify": "https://open.spotify.com/search/AD%C3%89LA+Nicole+Kidman",
+    "youtube": "https://www.youtube.com/results?search_query=AD%C3%89LA+Nicole+Kidman",
+    "deezer": "https://www.deezer.com/track/4250696681"
+   },
+   "por_que_viral": "Revelação do simples ao glam em lip-sync.",
+   "formato_de_uso": "transição antes/depois",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "luxo-resultado"
+   ],
+   "mood": "pop, confiante",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "beleza",
+    "moda",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends + https://kworb.net/spotify/country/global_daily.html",
+   "origem": "artigo",
+   "posicoes": {
+    "global": 5
+   },
+   "usado_por": [],
+   "rank": 20,
+   "preview": "previews/m019.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/68502d8730fa4ce6a41e2cb4db6d2fb7/250x250-000000-80-0-0.jpg",
+   "score": 26
+  },
+  {
+   "id": "m020",
+   "titulo": "WINDOWS IN BRAZIL (Sped Up)",
+   "artista": "VHM4D, ahh",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=VHM4D%2C+ahh+WINDOWS+IN+BRAZIL+%28Sped+Up%29",
+    "spotify": "https://open.spotify.com/search/VHM4D%2C+ahh+WINDOWS+IN+BRAZIL+%28Sped+Up%29",
+    "youtube": "https://www.youtube.com/results?search_query=VHM4D%2C+ahh+WINDOWS+IN+BRAZIL+%28Sped+Up%29",
+    "deezer": "https://www.deezer.com/track/4247320871"
+   },
+   "por_que_viral": "Glow-up '0% a 100%'. Nome puxa Brasil, uso global.",
+   "formato_de_uso": "transição antes/depois",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "luxo-resultado"
+   ],
+   "mood": "phonk-pop, acelerado",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "fitness",
+    "beleza",
+    "negócios"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m020.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/2a72cc543b6adc2d26750c7749d8e579/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m021",
+   "titulo": "Dame Hombro",
+   "artista": "Bulin 47, Kevin Wai, Breyco En Producidera",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Bulin+47%2C+Kevin+Wai%2C+Breyco+En+Producidera+Dame+Hombro",
+    "spotify": "https://open.spotify.com/search/Bulin+47%2C+Kevin+Wai%2C+Breyco+En+Producidera+Dame+Hombro",
+    "youtube": "https://www.youtube.com/results?search_query=Bulin+47%2C+Kevin+Wai%2C+Breyco+En+Producidera+Dame+Hombro",
+    "deezer": "https://www.deezer.com/track/4336396762"
+   },
+   "por_que_viral": "Dancinha de ombro em equipe, bom para humor de escritório.",
+   "formato_de_uso": "humor/dança de equipe",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "bastidores-rotina"
+   ],
+   "mood": "latino, dançante",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m021.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/853bb2e2bcc3e6ae7d6eb5a2f529a7b5/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m022",
+   "titulo": "Funkytown",
+   "artista": "Lipps Inc.",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Lipps+Inc.+Funkytown",
+    "spotify": "https://open.spotify.com/search/Lipps+Inc.+Funkytown",
+    "youtube": "https://www.youtube.com/results?search_query=Lipps+Inc.+Funkytown",
+    "deezer": "https://www.deezer.com/track/1241609712"
+   },
+   "por_que_viral": "Try-ons de disco, transformação e preparação de festa.",
+   "formato_de_uso": "transição/try-on",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "lista-ranking"
+   ],
+   "mood": "disco, festivo",
+   "energia": 4,
+   "bpm": 120,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "moda",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m022.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/22c3b83d9c00899886508e1dffcf93ef/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m023",
+   "titulo": "Upside Down",
+   "artista": "Diana Ross",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Diana+Ross+Upside+Down",
+    "spotify": "https://open.spotify.com/search/Diana+Ross+Upside+Down",
+    "youtube": "https://www.youtube.com/results?search_query=Diana+Ross+Upside+Down",
+    "deezer": "https://www.deezer.com/track/4677572"
+   },
+   "por_que_viral": "Revelação com transição de mão.",
+   "formato_de_uso": "transição de mão",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois"
+   ],
+   "mood": "disco, suave",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "moda",
+    "beleza"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m023.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/b7694952d41739a995da2e56eec6ee46/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m024",
+   "titulo": "Linger",
+   "artista": "The Cranberries",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=The+Cranberries+Linger",
+    "spotify": "https://open.spotify.com/search/The+Cranberries+Linger",
+    "youtube": "https://www.youtube.com/results?search_query=The+Cranberries+Linger",
+    "deezer": "https://www.deezer.com/track/910534"
+   },
+   "por_que_viral": "Diários com câmera digital no outono.",
+   "formato_de_uso": "rotina/diário",
+   "estilo_de_video": "bastidores-rotina",
+   "estilos": [
+    "bastidores-rotina",
+    "storytime"
+   ],
+   "mood": "melancólico, doce",
+   "energia": 2,
+   "bpm": 189,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.socialpilot.co/blog/instagram-trends",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m024.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/9628e1cad0709c01a9ea4b0a0d583722/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m025",
+   "titulo": "Thriller",
+   "artista": "Michael Jackson",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Michael+Jackson+Thriller",
+    "spotify": "https://open.spotify.com/search/Michael+Jackson+Thriller",
+    "youtube": "https://www.youtube.com/results?search_query=Michael+Jackson+Thriller",
+    "deezer": "https://www.deezer.com/track/555639"
+   },
+   "por_que_viral": "Fantasias e edições assustadoras de Halloween; ainda ativa em novembro.",
+   "formato_de_uso": "POV/humor",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "tensao-suspense"
+   ],
+   "mood": "sombrio, dançante",
+   "energia": 4,
+   "bpm": 118,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://metricool.com/trending-instagram-songs/",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m025.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/92a024220a9532489c75c9d994835697/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m026",
+   "titulo": "the cure",
+   "artista": "Olivia Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Olivia+Rodrigo+the+cure",
+    "spotify": "https://open.spotify.com/search/Olivia+Rodrigo+the+cure",
+    "youtube": "https://www.youtube.com/results?search_query=Olivia+Rodrigo+the+cure",
+    "deezer": "https://www.deezer.com/track/4078104981"
+   },
+   "por_que_viral": "Top 4 global no Spotify; usos de lip-sync e emoção.",
+   "formato_de_uso": "lip-sync/emocional",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "motivacional-reflexivo"
+   ],
+   "mood": "pop-rock, emotivo",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "humor"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 4
+   },
+   "usado_por": [],
+   "rank": 18,
+   "preview": "previews/m026.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/07d6896c8afea3a87dcf9381c3d0e6c7/250x250-000000-80-0-0.jpg",
+   "score": 27
+  },
+  {
+   "id": "m027",
+   "titulo": "BbY WOW",
+   "artista": "KAROL G",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=KAROL+G+BbY+WOW",
+    "spotify": "https://open.spotify.com/search/KAROL+G+BbY+WOW",
+    "youtube": "https://www.youtube.com/results?search_query=KAROL+G+BbY+WOW",
+    "deezer": "https://www.deezer.com/track/4208859922"
+   },
+   "por_que_viral": "Top 2 global no Spotify.",
+   "formato_de_uso": "revelação/dança",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "luxo-resultado"
+   ],
+   "mood": "latino, ousado",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "beleza",
+    "lifestyle",
+    "moda"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 2
+   },
+   "usado_por": [],
+   "rank": 14,
+   "preview": "previews/m027.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/f794dd1931dac42fc13f938850b686c6/250x250-000000-80-0-0.jpg",
+   "score": 29
+  },
+  {
+   "id": "m028",
+   "titulo": "back to friends",
+   "artista": "sombr",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=sombr+back+to+friends",
+    "spotify": "https://open.spotify.com/search/sombr+back+to+friends",
+    "youtube": "https://www.youtube.com/results?search_query=sombr+back+to+friends",
+    "deezer": "https://www.deezer.com/track/3151351511"
+   },
+   "por_que_viral": "Entre os top 10 globais; storytime de relacionamentos.",
+   "formato_de_uso": "storytime emocional",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "storytime"
+   ],
+   "mood": "indie, melancólico",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 9
+   },
+   "usado_por": [],
+   "rank": 25,
+   "preview": "previews/m028.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/37a20b62f754b7ff5a9a29a8f2fe9d27/250x250-000000-80-0-0.jpg",
+   "score": 22
+  },
+  {
+   "id": "m029",
+   "titulo": "Die With A Smile",
+   "artista": "Lady Gaga, Bruno Mars",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Lady+Gaga%2C+Bruno+Mars+Die+With+A+Smile",
+    "spotify": "https://open.spotify.com/search/Lady+Gaga%2C+Bruno+Mars+Die+With+A+Smile",
+    "youtube": "https://www.youtube.com/results?search_query=Lady+Gaga%2C+Bruno+Mars+Die+With+A+Smile",
+    "deezer": "https://www.deezer.com/track/2947516331"
+   },
+   "por_que_viral": "Presença constante no ranking global; ótimo para casais e histórias.",
+   "formato_de_uso": "storytime/romântico",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "storytime"
+   ],
+   "mood": "romântico, épico",
+   "energia": 3,
+   "bpm": 157,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 15
+   },
+   "usado_por": [],
+   "rank": 36,
+   "preview": "previews/m029.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/4bd5903f4ce8f2601916bfadb44efe8a/250x250-000000-80-0-0.jpg",
+   "score": 16
+  },
+  {
+   "id": "m030",
+   "titulo": "Pós - Ao Vivo",
+   "artista": "Felipe e Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Felipe+e+Rodrigo+P%C3%B3s+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Felipe+e+Rodrigo+P%C3%B3s+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Felipe+e+Rodrigo+P%C3%B3s+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/4337389322"
+   },
+   "por_que_viral": "Nº1 do Spotify Brasil; sertanejo universitário, trilha de rotina e superação.",
+   "formato_de_uso": "rotina/lip-sync",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "bastidores-rotina"
+   ],
+   "mood": "sertanejo, emotivo",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "humor"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 1
+   },
+   "usado_por": [],
+   "rank": 2,
+   "preview": "previews/m030.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/4c07cc728fd1531094bbf11235afef34/250x250-000000-80-0-0.jpg",
+   "score": 45.0
+  },
+  {
+   "id": "m031",
+   "titulo": "Postinho de Gasolina",
+   "artista": "João Gustavo e Murilo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Jo%C3%A3o+Gustavo+e+Murilo+Postinho+de+Gasolina",
+    "spotify": "https://open.spotify.com/search/Jo%C3%A3o+Gustavo+e+Murilo+Postinho+de+Gasolina",
+    "youtube": "https://www.youtube.com/results?search_query=Jo%C3%A3o+Gustavo+e+Murilo+Postinho+de+Gasolina",
+    "deezer": "https://www.deezer.com/track/4179195042"
+   },
+   "por_que_viral": "Nº2 do Brasil; humor de relacionamento.",
+   "formato_de_uso": "POV/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "pov-humor"
+   ],
+   "mood": "sertanejo, divertido",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 2
+   },
+   "usado_por": [],
+   "rank": 3,
+   "preview": "previews/m031.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/73162157e1fc438ddfc4273aaae892c6/250x250-000000-80-0-0.jpg",
+   "score": 43.5
+  },
+  {
+   "id": "m032",
+   "titulo": "Geme Baixo",
+   "artista": "MC Jvila",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+Jvila+Geme+Baixo",
+    "spotify": "https://open.spotify.com/search/MC+Jvila+Geme+Baixo",
+    "youtube": "https://www.youtube.com/results?search_query=MC+Jvila+Geme+Baixo",
+    "deezer": "https://www.deezer.com/track/4323836632"
+   },
+   "por_que_viral": "Subiu 6 posições no Brasil; funk para edits e humor.",
+   "formato_de_uso": "POV/transição",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "pov-humor"
+   ],
+   "mood": "funk, malicioso",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "moda",
+    "fitness"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 4
+   },
+   "usado_por": [],
+   "rank": 5,
+   "preview": "previews/m032.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/b2cc408a69943e984269a2358e97b5de/250x250-000000-80-0-0.jpg",
+   "score": 40.5
+  },
+  {
+   "id": "m033",
+   "titulo": "Flash",
+   "artista": "Hugo & Guilherme",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hugo+%26+Guilherme+Flash",
+    "spotify": "https://open.spotify.com/search/Hugo+%26+Guilherme+Flash",
+    "youtube": "https://www.youtube.com/results?search_query=Hugo+%26+Guilherme+Flash",
+    "deezer": "https://www.deezer.com/track/4200755112"
+   },
+   "por_que_viral": "Duas versões no top 6 do Brasil.",
+   "formato_de_uso": "storytime/lip-sync",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "storytime"
+   ],
+   "mood": "sertanejo, romântico",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 8
+   },
+   "usado_por": [],
+   "rank": 9,
+   "preview": "previews/m033.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ae6c8bdfeebf2715328e687d61715bfd/250x250-000000-80-0-0.jpg",
+   "score": 34.5
+  },
+  {
+   "id": "m034",
+   "titulo": "Mega Hair - Ao Vivo",
+   "artista": "Netto Brito",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Netto+Brito+Mega+Hair+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Netto+Brito+Mega+Hair+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Netto+Brito+Mega+Hair+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/4257221701"
+   },
+   "por_que_viral": "Top 5 Brasil; beleza e humor de salão.",
+   "formato_de_uso": "rotina/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "bastidores-rotina"
+   ],
+   "mood": "pagode-sertanejo",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "beleza",
+    "humor"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 5
+   },
+   "usado_por": [],
+   "rank": 6,
+   "preview": "previews/m034.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/26b5899bb076ace43141a11bf4a5f1aa/250x250-000000-80-0-0.jpg",
+   "score": 39.0
+  },
+  {
+   "id": "m035",
+   "titulo": "Eu Me Rendo - Ao Vivo",
+   "artista": "Felipe e Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Felipe+e+Rodrigo+Eu+Me+Rendo+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Felipe+e+Rodrigo+Eu+Me+Rendo+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Felipe+e+Rodrigo+Eu+Me+Rendo+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/4353584322"
+   },
+   "por_que_viral": "Entrada nova no top 7 do Brasil.",
+   "formato_de_uso": "emotivo/lip-sync",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "motivacional-reflexivo"
+   ],
+   "mood": "sertanejo, romântico",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 3
+   },
+   "usado_por": [],
+   "rank": 4,
+   "preview": "previews/m035.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d92a947ad4e9a8e5576ecda91325c944/250x250-000000-80-0-0.jpg",
+   "score": 42.0
+  },
+  {
+   "id": "m036",
+   "titulo": "Puxa o Lança",
+   "artista": "MC Jvila",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+Jvila+Puxa+o+Lan%C3%A7a",
+    "spotify": "https://open.spotify.com/search/MC+Jvila+Puxa+o+Lan%C3%A7a",
+    "youtube": "https://www.youtube.com/results?search_query=MC+Jvila+Puxa+o+Lan%C3%A7a",
+    "deezer": "https://www.deezer.com/track/4238620212"
+   },
+   "por_que_viral": "Funk em top 13 do Brasil, ótimo para transição.",
+   "formato_de_uso": "transição/dança",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "antes-depois"
+   ],
+   "mood": "funk, agressivo",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "fitness",
+    "moda",
+    "humor"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 9
+   },
+   "usado_por": [],
+   "rank": 11,
+   "preview": "previews/m036.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ae4b1b96126a99355622bf6571479fa1/250x250-000000-80-0-0.jpg",
+   "score": 33.0
+  },
+  {
+   "id": "m037",
+   "titulo": "Ta Pedindo Toma",
+   "artista": "MC Leozinho ZS",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+Leozinho+ZS+Ta+Pedindo+Toma",
+    "spotify": "https://open.spotify.com/search/MC+Leozinho+ZS+Ta+Pedindo+Toma",
+    "youtube": "https://www.youtube.com/results?search_query=MC+Leozinho+ZS+Ta+Pedindo+Toma",
+    "deezer": "https://www.deezer.com/track/4100798411"
+   },
+   "por_que_viral": "Funk de top 10 do Brasil.",
+   "formato_de_uso": "POV/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "pov-humor"
+   ],
+   "mood": "funk, malicioso",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 10
+   },
+   "usado_por": [],
+   "rank": 12,
+   "preview": "previews/m037.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/9afb8f27ca0daebf95ea2bd4d048a69e/250x250-000000-80-0-0.jpg",
+   "score": 31.5
+  },
+  {
+   "id": "m038",
+   "titulo": "DESFILE BÉLICO",
+   "artista": "TOKIODK",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=TOKIODK+DESFILE+B%C3%89LICO",
+    "spotify": "https://open.spotify.com/search/TOKIODK+DESFILE+B%C3%89LICO",
+    "youtube": "https://www.youtube.com/results?search_query=TOKIODK+DESFILE+B%C3%89LICO",
+    "deezer": "https://www.deezer.com/track/4382863691"
+   },
+   "por_que_viral": "Funk bélico/phonk BR muito usado em edits de resultado, carro e luxo.",
+   "formato_de_uso": "edit de resultado/ostentação",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado",
+    "antes-depois"
+   ],
+   "mood": "agressivo, sombrio",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "fitness",
+    "moda"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m038.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/b36e4f145edd11f2c3a069e058284332/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m039",
+   "titulo": "Eu Não Sou Terapia - Ao Vivo",
+   "artista": "Danilo e Davi",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Danilo+e+Davi+Eu+N%C3%A3o+Sou+Terapia+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Danilo+e+Davi+Eu+N%C3%A3o+Sou+Terapia+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Danilo+e+Davi+Eu+N%C3%A3o+Sou+Terapia+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/3996803841"
+   },
+   "por_que_viral": "Top 11 do Brasil; frase vira áudio de desabafo.",
+   "formato_de_uso": "desabafo/motivacional",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "motivacional-reflexivo"
+   ],
+   "mood": "sertanejo, direto",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "motivacional"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 11
+   },
+   "usado_por": [],
+   "rank": 13,
+   "preview": "previews/m039.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d2ea41d7dbb2bad32b032361693af17a/250x250-000000-80-0-0.jpg",
+   "score": 30.0
+  },
+  {
+   "id": "m040",
+   "titulo": "Aproveita Que Eu Tô Brigado - Ao Vivo",
+   "artista": "NATTAN",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=NATTAN+Aproveita+Que+Eu+T%C3%B4+Brigado+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/NATTAN+Aproveita+Que+Eu+T%C3%B4+Brigado+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=NATTAN+Aproveita+Que+Eu+T%C3%B4+Brigado+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/3979983291"
+   },
+   "por_que_viral": "Top 12 do Brasil; humor de relacionamento.",
+   "formato_de_uso": "POV/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento",
+    "pov-humor"
+   ],
+   "mood": "forró, dançante",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 12
+   },
+   "usado_por": [],
+   "rank": 15,
+   "preview": "previews/m040.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ec3899c0f68c2baf764588e687402a5f/250x250-000000-80-0-0.jpg",
+   "score": 28.5
+  },
+  {
+   "id": "m041",
+   "titulo": "Cuida do Pet",
+   "artista": "Oldilla",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Oldilla+Cuida+do+Pet",
+    "spotify": "https://open.spotify.com/search/Oldilla+Cuida+do+Pet",
+    "youtube": "https://www.youtube.com/results?search_query=Oldilla+Cuida+do+Pet",
+    "deezer": "https://www.deezer.com/track/4003509191"
+   },
+   "por_que_viral": "Top 14 do Brasil; humor com pets e rotina.",
+   "formato_de_uso": "POV/humor",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "bastidores-rotina"
+   ],
+   "mood": "divertido, funk",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "pets",
+    "humor"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 17
+   },
+   "usado_por": [],
+   "rank": 28,
+   "preview": "previews/m041.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/0fd527a4f0a366fb3f1db9e6ca6539c2/250x250-000000-80-0-0.jpg",
+   "score": 21.0
+  },
+  {
+   "id": "m042",
+   "titulo": "Mentira ou Verdade",
+   "artista": "DJ Biel do Furduncinho",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=DJ+Biel+do+Furduncinho+Mentira+ou+Verdade",
+    "spotify": "https://open.spotify.com/search/DJ+Biel+do+Furduncinho+Mentira+ou+Verdade",
+    "youtube": "https://www.youtube.com/results?search_query=DJ+Biel+do+Furduncinho+Mentira+ou+Verdade",
+    "deezer": "https://www.deezer.com/track/4086936421"
+   },
+   "por_que_viral": "Funk de brincadeira 'mentira ou verdade'.",
+   "formato_de_uso": "quiz/humor",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "lista-ranking"
+   ],
+   "mood": "funk, brincalhão",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 23
+   },
+   "usado_por": [],
+   "rank": 41,
+   "preview": "previews/m042.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/2365284bb2c9d15af34693b2bece7382/250x250-000000-80-0-0.jpg",
+   "score": 12.0
+  },
+  {
+   "id": "m043",
+   "titulo": "Ritmo Era Uma Vez (Fantasy)",
+   "artista": "MC VN Cria",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+VN+Cria+Ritmo+Era+Uma+Vez+%28Fantasy%29",
+    "spotify": "https://open.spotify.com/search/MC+VN+Cria+Ritmo+Era+Uma+Vez+%28Fantasy%29",
+    "youtube": "https://www.youtube.com/results?search_query=MC+VN+Cria+Ritmo+Era+Uma+Vez+%28Fantasy%29",
+    "deezer": "https://www.deezer.com/track/4126729541"
+   },
+   "por_que_viral": "Funk melódico para vídeos de virada.",
+   "formato_de_uso": "POV/transição",
+   "estilo_de_video": "pov-humor",
+   "estilos": [
+    "pov-humor",
+    "antes-depois"
+   ],
+   "mood": "funk melódico",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "humor",
+    "moda"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 22
+   },
+   "usado_por": [],
+   "rank": 39,
+   "preview": "previews/m043.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d84743de8e25366369301aaf8d48665c/250x250-000000-80-0-0.jpg",
+   "score": 13.5
+  },
+  {
+   "id": "m044",
+   "titulo": "Countdown 10-9-8-7...",
+   "artista": "original audio",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Countdown+10-9-8-7...",
+    "spotify": "https://open.spotify.com/search/Countdown+10-9-8-7...",
+    "youtube": "https://www.youtube.com/results?search_query=Countdown+10-9-8-7...",
+    "deezer": "https://www.deezer.com/track/65561635"
+   },
+   "por_que_viral": "Contagem regressiva com os pontos positivos do seu trabalho, setor ou negócio.",
+   "formato_de_uso": "lista/contagem",
+   "estilo_de_video": "lista-ranking",
+   "estilos": [
+    "lista-ranking",
+    "venda-oferta"
+   ],
+   "mood": "rítmico, direto",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "serviços"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.heyorca.com/blog/trending-audio-for-reels-tiktok",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m044.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/bb617202cfdb4f13204c24a25ff1683b/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m045",
+   "titulo": "Oh you're a ___ can I see your work?",
+   "artista": "original audio",
+   "plataforma_origem": "Instagram Reels",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Oh+you%27re+a+___+can+I+see+your+work%3F",
+    "spotify": "https://open.spotify.com/search/Oh+you%27re+a+___+can+I+see+your+work%3F",
+    "youtube": "https://www.youtube.com/results?search_query=Oh+you%27re+a+___+can+I+see+your+work%3F"
+   },
+   "por_que_viral": "Mostrar portfólio ou melhores trabalhos no ritmo.",
+   "formato_de_uso": "portfólio/oferta",
+   "estilo_de_video": "venda-oferta",
+   "estilos": [
+    "venda-oferta",
+    "lista-ranking"
+   ],
+   "mood": "rítmico, confiante",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "serviços",
+    "negócios",
+    "beleza"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://www.heyorca.com/blog/trending-audio-for-reels-tiktok",
+   "origem": "artigo",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": null,
+   "capa": null,
+   "score": 0
+  },
+  {
+   "id": "m046",
+   "titulo": "Time (Inception)",
+   "artista": "Hans Zimmer",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hans+Zimmer+Time+%28Inception%29",
+    "spotify": "https://open.spotify.com/search/Hans+Zimmer+Time+%28Inception%29",
+    "youtube": "https://www.youtube.com/results?search_query=Hans+Zimmer+Time+%28Inception%29",
+    "deezer": "https://www.deezer.com/track/6524423"
+   },
+   "por_que_viral": "A trilha mais usada em reels motivacionais e de reflexão; crescendo emocional que explode no final.",
+   "formato_de_uso": "fala emocional/talking head",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "motivacional-reflexivo",
+    "tensao-suspense"
+   ],
+   "mood": "épico, emotivo",
+   "energia": 4,
+   "bpm": 60,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "negócios",
+    "fitness"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m046.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/937f53e1a199b4d3bd34deccc9f1fe1a/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m047",
+   "titulo": "Cornfield Chase",
+   "artista": "Hans Zimmer",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hans+Zimmer+Cornfield+Chase",
+    "spotify": "https://open.spotify.com/search/Hans+Zimmer+Cornfield+Chase",
+    "youtube": "https://www.youtube.com/results?search_query=Hans+Zimmer+Cornfield+Chase",
+    "deezer": "https://www.deezer.com/track/1137370842"
+   },
+   "por_que_viral": "Órgão crescente de Interestelar; esperança e propósito.",
+   "formato_de_uso": "motivacional/storytime",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "motivacional-reflexivo",
+    "storytime"
+   ],
+   "mood": "inspirador, amplo",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "negócios"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m047.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/4193cfd449576b01d33adeb54c2589ce/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m048",
+   "titulo": "Heart of Courage",
+   "artista": "Two Steps From Hell",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Two+Steps+From+Hell+Heart+of+Courage",
+    "spotify": "https://open.spotify.com/search/Two+Steps+From+Hell+Heart+of+Courage",
+    "youtube": "https://www.youtube.com/results?search_query=Two+Steps+From+Hell+Heart+of+Courage",
+    "deezer": "https://www.deezer.com/track/3112605561"
+   },
+   "por_que_viral": "Orquestral heroico para discurso de superação.",
+   "formato_de_uso": "motivacional épico",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "motivacional-reflexivo"
+   ],
+   "mood": "heroico",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "fitness",
+    "negócios"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m048.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ceb98158979633b90bb2cee1c8f1656d/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m049",
+   "titulo": "Victory",
+   "artista": "Two Steps From Hell",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Two+Steps+From+Hell+Victory",
+    "spotify": "https://open.spotify.com/search/Two+Steps+From+Hell+Victory",
+    "youtube": "https://www.youtube.com/results?search_query=Two+Steps+From+Hell+Victory",
+    "deezer": "https://www.deezer.com/track/3106124431"
+   },
+   "por_que_viral": "Clímax de conquista, resultado e faturamento.",
+   "formato_de_uso": "resultado/conquista",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "luxo-resultado"
+   ],
+   "mood": "triunfal",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "fitness",
+    "motivacional"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m049.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/de73d8a610b7baab1b31e398dd5fd44c/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m050",
+   "titulo": "Strength of a Thousand Men",
+   "artista": "Two Steps From Hell",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Two+Steps+From+Hell+Strength+of+a+Thousand+Men",
+    "spotify": "https://open.spotify.com/search/Two+Steps+From+Hell+Strength+of+a+Thousand+Men",
+    "youtube": "https://www.youtube.com/results?search_query=Two+Steps+From+Hell+Strength+of+a+Thousand+Men",
+    "deezer": "https://www.deezer.com/track/3106017241"
+   },
+   "por_que_viral": "Coros épicos para virada de discurso.",
+   "formato_de_uso": "motivacional épico",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "motivacional-reflexivo"
+   ],
+   "mood": "poderoso",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "fitness"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m050.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/46dc858c5eb62a3ffc63b017e8d9c4a1/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m051",
+   "titulo": "Now We Are Free",
+   "artista": "Hans Zimmer, Lisa Gerrard",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hans+Zimmer%2C+Lisa+Gerrard+Now+We+Are+Free",
+    "spotify": "https://open.spotify.com/search/Hans+Zimmer%2C+Lisa+Gerrard+Now+We+Are+Free",
+    "youtube": "https://www.youtube.com/results?search_query=Hans+Zimmer%2C+Lisa+Gerrard+Now+We+Are+Free",
+    "deezer": "https://www.deezer.com/track/3055975"
+   },
+   "por_que_viral": "Voz feminina etérea de Gladiador, fecha vídeo de reflexão.",
+   "formato_de_uso": "reflexão/final emocional",
+   "estilo_de_video": "epico-inspiracional",
+   "estilos": [
+    "epico-inspiracional",
+    "motivacional-reflexivo"
+   ],
+   "mood": "etéreo, emocional",
+   "energia": 2,
+   "bpm": 137,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m051.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/e4a2b155bcfe69895de1eacfffcc9b70/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m052",
+   "titulo": "Experience",
+   "artista": "Ludovico Einaudi",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Ludovico+Einaudi+Experience",
+    "spotify": "https://open.spotify.com/search/Ludovico+Einaudi+Experience",
+    "youtube": "https://www.youtube.com/results?search_query=Ludovico+Einaudi+Experience",
+    "deezer": "https://www.deezer.com/track/2126036777"
+   },
+   "por_que_viral": "Cordas em crescendo para talking head emocional e storytime.",
+   "formato_de_uso": "talking head emocional",
+   "estilo_de_video": "motivacional-reflexivo",
+   "estilos": [
+    "motivacional-reflexivo",
+    "storytime"
+   ],
+   "mood": "emotivo, crescente",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m052.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/5e0c863081f7ab5ea5af116960df757f/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m053",
+   "titulo": "Nuvole Bianche",
+   "artista": "Ludovico Einaudi",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Ludovico+Einaudi+Nuvole+Bianche",
+    "spotify": "https://open.spotify.com/search/Ludovico+Einaudi+Nuvole+Bianche",
+    "youtube": "https://www.youtube.com/results?search_query=Ludovico+Einaudi+Nuvole+Bianche",
+    "deezer": "https://www.deezer.com/track/1415882742"
+   },
+   "por_que_viral": "Piano suave para histórias pessoais.",
+   "formato_de_uso": "storytime/piano",
+   "estilo_de_video": "storytime",
+   "estilos": [
+    "storytime",
+    "motivacional-reflexivo"
+   ],
+   "mood": "íntimo, melancólico",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle",
+    "motivacional"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m053.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/692d31bfb3057a273a43f853d6214913/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m054",
+   "titulo": "On the Nature of Daylight",
+   "artista": "Max Richter",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Max+Richter+On+the+Nature+of+Daylight",
+    "spotify": "https://open.spotify.com/search/Max+Richter+On+the+Nature+of+Daylight",
+    "youtube": "https://www.youtube.com/results?search_query=Max+Richter+On+the+Nature+of+Daylight",
+    "deezer": "https://www.deezer.com/track/497150662"
+   },
+   "por_que_viral": "Cordas melancólicas para conteúdo de dor e virada.",
+   "formato_de_uso": "reflexivo/emocional",
+   "estilo_de_video": "motivacional-reflexivo",
+   "estilos": [
+    "motivacional-reflexivo",
+    "storytime"
+   ],
+   "mood": "melancólico, profundo",
+   "energia": 2,
+   "bpm": 117,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "motivacional",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m054.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ed07053951a44ce34a5ca9c61a2d680f/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m055",
+   "titulo": "Comptine d'un autre été",
+   "artista": "Yann Tiersen",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Yann+Tiersen+Comptine+d%27un+autre+%C3%A9t%C3%A9",
+    "spotify": "https://open.spotify.com/search/Yann+Tiersen+Comptine+d%27un+autre+%C3%A9t%C3%A9",
+    "youtube": "https://www.youtube.com/results?search_query=Yann+Tiersen+Comptine+d%27un+autre+%C3%A9t%C3%A9",
+    "deezer": "https://www.deezer.com/track/767500042"
+   },
+   "por_que_viral": "Piano de Amélie, histórias delicadas.",
+   "formato_de_uso": "storytime/rotina",
+   "estilo_de_video": "storytime",
+   "estilos": [
+    "storytime",
+    "bastidores-rotina"
+   ],
+   "mood": "delicado, nostálgico",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m055.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d870423299d2fc67a522dd7a207e5c5c/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m056",
+   "titulo": "Lux Aeterna",
+   "artista": "Clint Mansell",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Clint+Mansell+Lux+Aeterna",
+    "spotify": "https://open.spotify.com/search/Clint+Mansell+Lux+Aeterna",
+    "youtube": "https://www.youtube.com/results?search_query=Clint+Mansell+Lux+Aeterna",
+    "deezer": "https://www.deezer.com/track/5416678"
+   },
+   "por_que_viral": "Cordas em ritmo crescente para revelação dramática ou 'a verdade que ninguém conta'.",
+   "formato_de_uso": "suspense/revelação",
+   "estilo_de_video": "tensao-suspense",
+   "estilos": [
+    "tensao-suspense",
+    "epico-inspiracional"
+   ],
+   "mood": "tenso, urgente",
+   "energia": 4,
+   "bpm": 133,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "motivacional",
+    "marketing"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m056.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d5aa666919111e78c5296fda614b3b7c/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m057",
+   "titulo": "Mind Heist",
+   "artista": "Hans Zimmer",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hans+Zimmer+Mind+Heist",
+    "spotify": "https://open.spotify.com/search/Hans+Zimmer+Mind+Heist",
+    "youtube": "https://www.youtube.com/results?search_query=Hans+Zimmer+Mind+Heist",
+    "deezer": "https://www.deezer.com/track/2777503701"
+   },
+   "por_que_viral": "Sintetizador sombrio e batida pesada em vídeos de estratégia e dinheiro.",
+   "formato_de_uso": "suspense/estratégia",
+   "estilo_de_video": "tensao-suspense",
+   "estilos": [
+    "tensao-suspense",
+    "luxo-resultado"
+   ],
+   "mood": "sombrio, ritmado",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "marketing"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m057.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/ef8f35e48a5c18d68495d6f3e0076e49/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m058",
+   "titulo": "Dream Is Collapsing",
+   "artista": "Hans Zimmer",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hans+Zimmer+Dream+Is+Collapsing",
+    "spotify": "https://open.spotify.com/search/Hans+Zimmer+Dream+Is+Collapsing",
+    "youtube": "https://www.youtube.com/results?search_query=Hans+Zimmer+Dream+Is+Collapsing",
+    "deezer": "https://www.deezer.com/track/6524407"
+   },
+   "por_que_viral": "Pulso grave constante que cria urgência.",
+   "formato_de_uso": "suspense/gancho",
+   "estilo_de_video": "tensao-suspense",
+   "estilos": [
+    "tensao-suspense",
+    "epico-inspiracional"
+   ],
+   "mood": "urgente, grave",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "marketing"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m058.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/937f53e1a199b4d3bd34deccc9f1fe1a/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m059",
+   "titulo": "Murder In My Mind",
+   "artista": "Kordhell",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Kordhell+Murder+In+My+Mind",
+    "spotify": "https://open.spotify.com/search/Kordhell+Murder+In+My+Mind",
+    "youtube": "https://www.youtube.com/results?search_query=Kordhell+Murder+In+My+Mind",
+    "deezer": "https://www.deezer.com/track/1617024092"
+   },
+   "por_que_viral": "Phonk sombrio, muito usado em edits de resultado, carro e disciplina.",
+   "formato_de_uso": "edit de resultado/ostentação",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado",
+    "tensao-suspense"
+   ],
+   "mood": "agressivo, sombrio",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "fitness",
+    "negócios",
+    "carros"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m059.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/63390e141158f4cfd0b30b86040a0218/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m060",
+   "titulo": "Close Eyes",
+   "artista": "DVRST",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=DVRST+Close+Eyes",
+    "spotify": "https://open.spotify.com/search/DVRST+Close+Eyes",
+    "youtube": "https://www.youtube.com/results?search_query=DVRST+Close+Eyes",
+    "deezer": "https://www.deezer.com/track/1413655312"
+   },
+   "por_que_viral": "Phonk de edit com baixo distorcido e drop forte.",
+   "formato_de_uso": "edit/transição",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado",
+    "antes-depois"
+   ],
+   "mood": "phonk, intenso",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "fitness",
+    "negócios",
+    "carros"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m060.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/927d033421b24eb3ba981d8551cdcbde/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m061",
+   "titulo": "Metamorphosis",
+   "artista": "INTERWORLD",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=INTERWORLD+Metamorphosis",
+    "spotify": "https://open.spotify.com/search/INTERWORLD+Metamorphosis",
+    "youtube": "https://www.youtube.com/results?search_query=INTERWORLD+Metamorphosis",
+    "deezer": "https://www.deezer.com/track/1655692952"
+   },
+   "por_que_viral": "Phonk de transformação, usado em antes/depois.",
+   "formato_de_uso": "transição antes/depois",
+   "estilo_de_video": "antes-depois",
+   "estilos": [
+    "antes-depois",
+    "luxo-resultado"
+   ],
+   "mood": "phonk, hipnótico",
+   "energia": 5,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "fitness",
+    "beleza"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m061.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/983ca9673268b4ad9f3b49317ab8a0ee/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m062",
+   "titulo": "Mask Off",
+   "artista": "Future",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Future+Mask+Off",
+    "spotify": "https://open.spotify.com/search/Future+Mask+Off",
+    "youtube": "https://www.youtube.com/results?search_query=Future+Mask+Off",
+    "deezer": "https://www.deezer.com/track/142337683"
+   },
+   "por_que_viral": "Flauta icônica para dinheiro, estilo de vida e ostentação.",
+   "formato_de_uso": "resultado/lifestyle",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado"
+   ],
+   "mood": "trap, luxuoso",
+   "energia": 3,
+   "bpm": 150,
+   "bpm_fonte": "estimado",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m062.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/5186078c5bd5623ebec9b2753d8aaebe/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m063",
+   "titulo": "Superhero (Heroes & Villains)",
+   "artista": "Metro Boomin, Future, Chris Brown",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Metro+Boomin%2C+Future%2C+Chris+Brown+Superhero+%28Heroes+%26+Villains%29",
+    "spotify": "https://open.spotify.com/search/Metro+Boomin%2C+Future%2C+Chris+Brown+Superhero+%28Heroes+%26+Villains%29",
+    "youtube": "https://www.youtube.com/results?search_query=Metro+Boomin%2C+Future%2C+Chris+Brown+Superhero+%28Heroes+%26+Villains%29",
+    "deezer": "https://www.deezer.com/track/2047662397"
+   },
+   "por_que_viral": "Hustle, ambição e resultados.",
+   "formato_de_uso": "resultado/ambição",
+   "estilo_de_video": "luxo-resultado",
+   "estilos": [
+    "luxo-resultado",
+    "motivacional-reflexivo"
+   ],
+   "mood": "trap épico",
+   "energia": 4,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "motivacional"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m063.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/862ab860ff69c30deeb5979db6e46b62/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m064",
+   "titulo": "Mighty Love",
+   "artista": "Joakim Karud",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Joakim+Karud+Mighty+Love",
+    "spotify": "https://open.spotify.com/search/Joakim+Karud+Mighty+Love",
+    "youtube": "https://www.youtube.com/results?search_query=Joakim+Karud+Mighty+Love"
+   },
+   "por_que_viral": "Lo-fi royalty-free comum em tutoriais e cama de fala.",
+   "formato_de_uso": "tutorial/cama de fala",
+   "estilo_de_video": "tutorial-dica",
+   "estilos": [
+    "tutorial-dica",
+    "podcast-recut"
+   ],
+   "mood": "lo-fi, leve",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "tutorial",
+    "negócios"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": null,
+   "capa": null,
+   "score": 0
+  },
+  {
+   "id": "m065",
+   "titulo": "Inspired",
+   "artista": "Kevin MacLeod",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Kevin+MacLeod+Inspired",
+    "spotify": "https://open.spotify.com/search/Kevin+MacLeod+Inspired",
+    "youtube": "https://www.youtube.com/results?search_query=Kevin+MacLeod+Inspired",
+    "deezer": "https://www.deezer.com/track/3089819641"
+   },
+   "por_que_viral": "Instrumental livre (CC) para cama de podcast/corte.",
+   "formato_de_uso": "podcast recut/cama",
+   "estilo_de_video": "podcast-recut",
+   "estilos": [
+    "podcast-recut",
+    "tutorial-dica"
+   ],
+   "mood": "leve, otimista",
+   "energia": 2,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "negócios",
+    "educação"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m065.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/c7cff44018e422f1e28cb6be7d20fa87/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m066",
+   "titulo": "Dreams",
+   "artista": "Joakim Karud",
+   "plataforma_origem": "trilha clássica de fundo",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Joakim+Karud+Dreams",
+    "spotify": "https://open.spotify.com/search/Joakim+Karud+Dreams",
+    "youtube": "https://www.youtube.com/results?search_query=Joakim+Karud+Dreams",
+    "deezer": "https://www.deezer.com/track/123232834"
+   },
+   "por_que_viral": "Lo-fi royalty-free de fundo para tutoriais.",
+   "formato_de_uso": "tutorial/cama",
+   "estilo_de_video": "tutorial-dica",
+   "estilos": [
+    "tutorial-dica",
+    "podcast-recut"
+   ],
+   "mood": "lo-fi, calmo",
+   "energia": 2,
+   "bpm": 95,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "tutorial",
+    "educação"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "estável",
+   "data_coleta": "2026-11-18",
+   "fonte": "curadoria: trilha de uso recorrente em reels (não é ranking)",
+   "origem": "curadoria",
+   "posicoes": {},
+   "usado_por": [],
+   "rank": null,
+   "preview": "previews/m066.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/1ef366c80bfea973b7bf254d536395c4/250x250-000000-80-0-0.jpg",
+   "score": 0
+  },
+  {
+   "id": "m067",
+   "titulo": "Fala Pra Sua Saudade - Ao Vivo",
+   "artista": "Felipe e Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Felipe+e+Rodrigo+Fala+Pra+Sua+Saudade+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Felipe+e+Rodrigo+Fala+Pra+Sua+Saudade+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Felipe+e+Rodrigo+Fala+Pra+Sua+Saudade+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/4353584352"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 6
+   },
+   "usado_por": [],
+   "rank": 7,
+   "preview": "previews/m067.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d92a947ad4e9a8e5576ecda91325c944/250x250-000000-80-0-0.jpg",
+   "score": 37.5
+  },
+  {
+   "id": "m068",
+   "titulo": "Cadeira Cativa - Ao Vivo",
+   "artista": "Zé Neto & Cristiano",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Z%C3%A9+Neto+%26+Cristiano+Cadeira+Cativa+-+Ao+Vivo",
+    "spotify": "https://open.spotify.com/search/Z%C3%A9+Neto+%26+Cristiano+Cadeira+Cativa+-+Ao+Vivo",
+    "youtube": "https://www.youtube.com/results?search_query=Z%C3%A9+Neto+%26+Cristiano+Cadeira+Cativa+-+Ao+Vivo",
+    "deezer": "https://www.deezer.com/track/4053915861"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 13
+   },
+   "usado_por": [],
+   "rank": 19,
+   "preview": "previews/m068.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/1a07a2b0a950baa2953d75ffc2f765e4/250x250-000000-80-0-0.jpg",
+   "score": 27.0
+  },
+  {
+   "id": "m069",
+   "titulo": "Nada Pra Fazer (Casa das P*)",
+   "artista": "MC GP",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+GP+Nada+Pra+Fazer+%28Casa+das+P%2A%29",
+    "spotify": "https://open.spotify.com/search/MC+GP+Nada+Pra+Fazer+%28Casa+das+P%2A%29",
+    "youtube": "https://www.youtube.com/results?search_query=MC+GP+Nada+Pra+Fazer+%28Casa+das+P%2A%29",
+    "deezer": "https://www.deezer.com/track/4229865892"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 15
+   },
+   "usado_por": [],
+   "rank": 21,
+   "preview": "previews/m069.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/f7940309770f61ce88cb84bc46f1b6fa/250x250-000000-80-0-0.jpg",
+   "score": 24.0
+  },
+  {
+   "id": "m070",
+   "titulo": "Ignora (Ao Vivo)",
+   "artista": "Felipe e Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Felipe+e+Rodrigo+Ignora+%28Ao+Vivo%29",
+    "spotify": "https://open.spotify.com/search/Felipe+e+Rodrigo+Ignora+%28Ao+Vivo%29",
+    "youtube": "https://www.youtube.com/results?search_query=Felipe+e+Rodrigo+Ignora+%28Ao+Vivo%29",
+    "deezer": "https://www.deezer.com/track/3682660782"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 16
+   },
+   "usado_por": [],
+   "rank": 24,
+   "preview": "previews/m070.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/e8489eac19c73870d5d9866ef4b3928a/250x250-000000-80-0-0.jpg",
+   "score": 22.5
+  },
+  {
+   "id": "m071",
+   "titulo": "EXAGERADO",
+   "artista": "MC Jvila",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=MC+Jvila+EXAGERADO",
+    "spotify": "https://open.spotify.com/search/MC+Jvila+EXAGERADO",
+    "youtube": "https://www.youtube.com/results?search_query=MC+Jvila+EXAGERADO",
+    "deezer": "https://www.deezer.com/track/4008389051"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 18
+   },
+   "usado_por": [],
+   "rank": 30,
+   "preview": "previews/m071.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/dbe314e321469d40c0fbc9976bbc8e27/250x250-000000-80-0-0.jpg",
+   "score": 19.5
+  },
+  {
+   "id": "m072",
+   "titulo": "Pau Pra Toda Obra",
+   "artista": "Mc Jacaré",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Mc+Jacare%CC%81+Pau+Pra+Toda+Obra",
+    "spotify": "https://open.spotify.com/search/Mc+Jacare%CC%81+Pau+Pra+Toda+Obra",
+    "youtube": "https://www.youtube.com/results?search_query=Mc+Jacare%CC%81+Pau+Pra+Toda+Obra",
+    "deezer": "https://www.deezer.com/track/4100657281"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 19
+   },
+   "usado_por": [],
+   "rank": 32,
+   "preview": "previews/m072.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/78179e8420bb79081b47f4da1bd84007/250x250-000000-80-0-0.jpg",
+   "score": 18.0
+  },
+  {
+   "id": "m073",
+   "titulo": "Um Peão Desse",
+   "artista": "CountryBeat",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=CountryBeat+Um+Pe%C3%A3o+Desse",
+    "spotify": "https://open.spotify.com/search/CountryBeat+Um+Pe%C3%A3o+Desse",
+    "youtube": "https://www.youtube.com/results?search_query=CountryBeat+Um+Pe%C3%A3o+Desse",
+    "deezer": "https://www.deezer.com/track/4194449262"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 20
+   },
+   "usado_por": [],
+   "rank": 35,
+   "preview": "previews/m073.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/e3e7324417845b9a4c02d679b3041efc/250x250-000000-80-0-0.jpg",
+   "score": 16.5
+  },
+  {
+   "id": "m074",
+   "titulo": "Ain't In LA",
+   "artista": "ADÉLA",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=AD%C3%89LA+Ain%27t+In+LA",
+    "spotify": "https://open.spotify.com/search/AD%C3%89LA+Ain%27t+In+LA",
+    "youtube": "https://www.youtube.com/results?search_query=AD%C3%89LA+Ain%27t+In+LA",
+    "deezer": "https://www.deezer.com/track/4158551132"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 7
+   },
+   "usado_por": [],
+   "rank": 22,
+   "preview": "previews/m074.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/68502d8730fa4ce6a41e2cb4db6d2fb7/250x250-000000-80-0-0.jpg",
+   "score": 24
+  },
+  {
+   "id": "m075",
+   "titulo": "Earrings",
+   "artista": "Malcolm Todd",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Malcolm+Todd+Earrings",
+    "spotify": "https://open.spotify.com/search/Malcolm+Todd+Earrings",
+    "youtube": "https://www.youtube.com/results?search_query=Malcolm+Todd+Earrings",
+    "deezer": "https://www.deezer.com/track/2732302771"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 8
+   },
+   "usado_por": [],
+   "rank": 23,
+   "preview": "previews/m075.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/bee99e8730b8fb1ad941bbe2607a5a99/250x250-000000-80-0-0.jpg",
+   "score": 23
+  },
+  {
+   "id": "m076",
+   "titulo": "stupid song",
+   "artista": "Olivia Rodrigo",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Olivia+Rodrigo+stupid+song",
+    "spotify": "https://open.spotify.com/search/Olivia+Rodrigo+stupid+song",
+    "youtube": "https://www.youtube.com/results?search_query=Olivia+Rodrigo+stupid+song",
+    "deezer": "https://www.deezer.com/track/4078104881"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 11
+   },
+   "usado_por": [],
+   "rank": 29,
+   "preview": "previews/m076.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/07d6896c8afea3a87dcf9381c3d0e6c7/250x250-000000-80-0-0.jpg",
+   "score": 20
+  },
+  {
+   "id": "m077",
+   "titulo": "Suzuki (from GTAVI: The Album)",
+   "artista": "Fuerza Regida",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Fuerza+Regida+Suzuki+%28from+GTAVI%3A+The+Album%29",
+    "spotify": "https://open.spotify.com/search/Fuerza+Regida+Suzuki+%28from+GTAVI%3A+The+Album%29",
+    "youtube": "https://www.youtube.com/results?search_query=Fuerza+Regida+Suzuki+%28from+GTAVI%3A+The+Album%29",
+    "deezer": "https://www.deezer.com/track/4337604802"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 12
+   },
+   "usado_por": [],
+   "rank": 31,
+   "preview": "previews/m077.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/dc492b8d028525c713a52713b9bb005d/250x250-000000-80-0-0.jpg",
+   "score": 19
+  },
+  {
+   "id": "m078",
+   "titulo": "Sweater Weather",
+   "artista": "The Neighbourhood",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=The+Neighbourhood+Sweater+Weather",
+    "spotify": "https://open.spotify.com/search/The+Neighbourhood+Sweater+Weather",
+    "youtube": "https://www.youtube.com/results?search_query=The+Neighbourhood+Sweater+Weather",
+    "deezer": "https://www.deezer.com/track/66506871"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 124,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 13
+   },
+   "usado_por": [],
+   "rank": 33,
+   "preview": "previews/m078.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/6f55ff3cc5c478510c948024e95cf8d6/250x250-000000-80-0-0.jpg",
+   "score": 18
+  },
+  {
+   "id": "m079",
+   "titulo": "The One That Got Away",
+   "artista": "Katy Perry",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Katy+Perry+The+One+That+Got+Away",
+    "spotify": "https://open.spotify.com/search/Katy+Perry+The+One+That+Got+Away",
+    "youtube": "https://www.youtube.com/results?search_query=Katy+Perry+The+One+That+Got+Away",
+    "deezer": "https://www.deezer.com/track/17135114"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 133,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 14
+   },
+   "usado_por": [],
+   "rank": 34,
+   "preview": "previews/m079.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/99578b0bb8c838383c414a5b62b5e15d/250x250-000000-80-0-0.jpg",
+   "score": 17
+  },
+  {
+   "id": "m080",
+   "titulo": "Just Give Me a Reason",
+   "artista": "P!nk",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=P%21nk+Just+Give+Me+a+Reason",
+    "spotify": "https://open.spotify.com/search/P%21nk+Just+Give+Me+a+Reason",
+    "youtube": "https://www.youtube.com/results?search_query=P%21nk+Just+Give+Me+a+Reason",
+    "deezer": "https://www.deezer.com/track/60200391"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 95,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 16
+   },
+   "usado_por": [],
+   "rank": 37,
+   "preview": "previews/m080.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/a43e104f2ff2872df2e1bf4207b6b5e6/250x250-000000-80-0-0.jpg",
+   "score": 15
+  },
+  {
+   "id": "m081",
+   "titulo": "All I Want for Christmas Is You",
+   "artista": "Mariah Carey",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Mariah+Carey+All+I+Want+for+Christmas+Is+You",
+    "spotify": "https://open.spotify.com/search/Mariah+Carey+All+I+Want+for+Christmas+Is+You",
+    "youtube": "https://www.youtube.com/results?search_query=Mariah+Carey+All+I+Want+for+Christmas+Is+You",
+    "deezer": "https://www.deezer.com/track/62710442"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 150,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 17
+   },
+   "usado_por": [],
+   "rank": 38,
+   "preview": "previews/m081.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/60d8f7635ead9b3c5e571aec47a8c73e/250x250-000000-80-0-0.jpg",
+   "score": 14
+  },
+  {
+   "id": "m082",
+   "titulo": "Beauty And A Beat",
+   "artista": "Justin Bieber",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Justin+Bieber+Beauty+And+A+Beat",
+    "spotify": "https://open.spotify.com/search/Justin+Bieber+Beauty+And+A+Beat",
+    "youtube": "https://www.youtube.com/results?search_query=Justin+Bieber+Beauty+And+A+Beat",
+    "deezer": "https://www.deezer.com/track/37027991"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 128,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 18
+   },
+   "usado_por": [],
+   "rank": 40,
+   "preview": "previews/m082.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/312ece7b31fb86c7a13afd757e99437c/250x250-000000-80-0-0.jpg",
+   "score": 13
+  },
+  {
+   "id": "m083",
+   "titulo": "Self Aware",
+   "artista": "Temper City",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Temper+City+Self+Aware",
+    "spotify": "https://open.spotify.com/search/Temper+City+Self+Aware",
+    "youtube": "https://www.youtube.com/results?search_query=Temper+City+Self+Aware",
+    "deezer": "https://www.deezer.com/track/3848530521"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "caindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 19
+   },
+   "usado_por": [],
+   "rank": 42,
+   "preview": "previews/m083.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/4e803aeb014d512c960b5cc7ccaa1800/250x250-000000-80-0-0.jpg",
+   "score": 12
+  },
+  {
+   "id": "m084",
+   "titulo": "Iris",
+   "artista": "The Goo Goo Dolls",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=The+Goo+Goo+Dolls+Iris",
+    "spotify": "https://open.spotify.com/search/The+Goo+Goo+Dolls+Iris",
+    "youtube": "https://www.youtube.com/results?search_query=The+Goo+Goo+Dolls+Iris",
+    "deezer": "https://www.deezer.com/track/4290138"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": 154,
+   "bpm_fonte": "deezer",
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "global",
+   "tendencia": "no pico",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/global_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "global": 20
+   },
+   "usado_por": [],
+   "rank": 43,
+   "preview": "previews/m084.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/fb8ad0c24c1a3fef50c7ec20f157923b/250x250-000000-80-0-0.jpg",
+   "score": 11
+  },
+  {
+   "id": "m085",
+   "titulo": "Flash (Minha Mente) 💠",
+   "artista": "Hugo & Guilherme",
+   "plataforma_origem": "Spotify (kworb)",
+   "links": {
+    "instagram_audio": null,
+    "tiktok": "https://www.tiktok.com/search?q=Hugo+%26+Guilherme+Flash+%28Minha+Mente%29+%F0%9F%92%A0",
+    "spotify": "https://open.spotify.com/search/Hugo+%26+Guilherme+Flash+%28Minha+Mente%29+%F0%9F%92%A0",
+    "youtube": "https://www.youtube.com/results?search_query=Hugo+%26+Guilherme+Flash+%28Minha+Mente%29+%F0%9F%92%A0",
+    "deezer": "https://www.deezer.com/track/4349203682"
+   },
+   "por_que_viral": "Entrou no top do Spotify (entrada automática).",
+   "formato_de_uso": "lip-sync/humor",
+   "estilo_de_video": "hit-do-momento",
+   "estilos": [
+    "hit-do-momento"
+   ],
+   "mood": "a definir",
+   "energia": 3,
+   "bpm": null,
+   "bpm_fonte": null,
+   "momento_do_drop_s": null,
+   "drop_fonte": null,
+   "nichos_que_funcionam": [
+    "lifestyle"
+   ],
+   "uso_brasil": "br",
+   "tendencia": "subindo",
+   "data_coleta": "2026-11-18",
+   "fonte": "https://kworb.net/spotify/country/br_daily.html",
+   "origem": "kworb",
+   "posicoes": {
+    "br": 7
+   },
+   "usado_por": [],
+   "rank": 8,
+   "preview": "previews/m085.mp3",
+   "capa": "https://cdn-images.dzcdn.net/images/cover/d3f128e332409ed26dd57a39f56215fb/250x250-000000-80-0-0.jpg",
+   "score": 36.0
+  }
+ ]
+}

@@ -1,0 +1,407 @@
+{
+  "intro": "Este é um método de 21 dias com uma tarefa por dia, feita no celular em 15 a 30 minutos. Você abre o dia, segue os passos, copia os modelos prontos e marca como feito. Sem teoria: é só fazer, um dia de cada vez, e seu perfil passa a ser encontrado por mais gente.",
+  "weeks": [
+    { "title": "Semana 1: Arrume a casa", "from": 1, "to": 7 },
+    { "title": "Semana 2: Conteúdo que atrai", "from": 8, "to": 14 },
+    { "title": "Semana 3: Cresça com gente", "from": 15, "to": 21 }
+  ],
+  "days": [
+    {
+      "n": 1,
+      "title": "Quem você quer atrair",
+      "goal": "Você define o tipo de pessoa que o seu perfil vai chamar.",
+      "why": "Perfil que fala com todo mundo não prende ninguém. Quando você sabe quem quer atrair, cada post fica mais fácil e a pessoa certa se vê ali.",
+      "steps": [
+        "Escreva em uma frase quem você quer que te siga (ex: mães da sua cidade, noivas, donas de pet).",
+        "Anote 3 dores ou desejos dessa pessoa.",
+        "Escolha 3 assuntos sobre os quais você vai falar sempre.",
+        "Entre em 5 perfis do seu nicho e veja o que mais engaja neles.",
+        "Salve esses 5 perfis numa lista no bloco de notas."
+      ],
+      "copy": [
+        { "label": "Modelo de frase de público", "text": "Eu quero atrair [quem] que quer [desejo] mas tem dificuldade com [dor]." },
+        { "label": "Exemplo para manicure", "text": "Eu quero atrair mulheres da minha região que querem unha bonita e duradoura mas já se decepcionaram com outras manicures." },
+        { "label": "Exemplo para perfil pessoal", "text": "Eu quero atrair mulheres que se identificam com a minha rotina de mãe e trabalho, e gostam de dicas simples do dia a dia." }
+      ],
+      "check": "Você tem a frase do público, 3 assuntos e 5 perfis salvos."
+    },
+    {
+      "n": 2,
+      "title": "Nome que aparece na busca",
+      "goal": "O campo Nome do seu perfil passa a ter a palavra que as pessoas procuram.",
+      "why": "O Instagram busca pelo campo Nome, não só pelo @. Com a palavra certa ali, você aparece quando alguém pesquisa o que você faz.",
+      "steps": [
+        "Abra Editar perfil e veja o campo Nome (não é o @).",
+        "Escolha a palavra que sua cliente digitaria na busca (ex: confeiteira, nail designer, pet shop).",
+        "Escreva seu nome ou marca, uma barra e essa palavra.",
+        "Se atende numa cidade, inclua a cidade.",
+        "Salve e pesquise essa palavra na busca para ver se aparece."
+      ],
+      "copy": [
+        { "label": "Confeitaria", "text": "Ana | Bolos e Doces Caseiros" },
+        { "label": "Manicure", "text": "Carol Nail Designer | Campinas" },
+        { "label": "Perfil pessoal", "text": "Juliana | Rotina de mãe e dicas" },
+        { "label": "Loja", "text": "Bella Modas | Moda Feminina" }
+      ],
+      "check": "Seu nome tem uma palavra de busca e você já testou na pesquisa."
+    },
+    {
+      "n": 3,
+      "title": "Foto que dá vontade de seguir",
+      "goal": "Sua foto de perfil fica nítida, com rosto ou marca, e reconhecível pequena.",
+      "why": "A foto é a primeira coisa que a pessoa vê, no tamanho de uma moeda. Foto clara passa confiança e faz a pessoa clicar para conhecer.",
+      "steps": [
+        "Tire uma foto perto de uma janela, com luz natural no rosto.",
+        "Enquadre rosto e ombros, bem no centro, porque o Instagram corta em círculo.",
+        "Prefira sorriso e olhar para a câmera. Se for marca, use a logo simples e legível.",
+        "Use o fundo mais limpo que você tiver.",
+        "Troque a foto e veja como ela fica pequena no feed."
+      ],
+      "copy": [],
+      "check": "A foto nova está no ar e dá para ver seu rosto ou logo mesmo pequena."
+    },
+    {
+      "n": 4,
+      "title": "Bio em 4 linhas",
+      "goal": "Sua bio explica em 5 segundos quem você é, o que entrega e o que fazer agora.",
+      "why": "Quem chega no perfil decide em poucos segundos se segue. Uma bio clara responde as três dúvidas: o que é, é pra mim, o que faço agora.",
+      "steps": [
+        "Linha 1: o que você faz e para quem.",
+        "Linha 2: seu diferencial ou resultado que entrega.",
+        "Linha 3: uma prova (anos de experiência, clientes atendidas, cidade).",
+        "Linha 4: chamada para ação (agende, chame no zap, veja o link).",
+        "Releia como se fosse uma desconhecida: ficou claro?"
+      ],
+      "copy": [
+        { "label": "Fórmula da bio", "text": "[O que você faz] para [quem]\n[Diferencial ou resultado]\n[Prova: cidade, tempo, clientes]\n[Chamada: ex. Agende no link]" },
+        { "label": "Confeitaria", "text": "Bolos e doces caseiros para festas\nSabor de casa, entrega no dia certo\nMais de 300 festas em Goiânia\nPeça seu orçamento no link" },
+        { "label": "Salão", "text": "Cabelo saudável sem sofrimento\nCortes e coloração que respeitam seu fio\nAtendimento em Niterói há 6 anos\nAgende pelo link" },
+        { "label": "Perfil pessoal", "text": "Mãe, esposa e organizada na marra\nDicas simples de rotina e casa\nSigo de volta quem comenta\nVeja meu guia gratuito no link" }
+      ],
+      "check": "Sua bio tem 4 linhas curtas e termina com uma chamada para ação."
+    },
+    {
+      "n": 5,
+      "title": "Link que leva a algum lugar",
+      "goal": "O link da bio leva para um único lugar útil: zap, agenda, catálogo ou lista de transmissão.",
+      "why": "Sem link claro, quem quer comprar ou falar com você desiste. Um destino só, simples, converte mais do que dez opções.",
+      "steps": [
+        "Escolha o objetivo do link: pedido, agendamento ou contato.",
+        "Crie um link direto do WhatsApp com mensagem pronta, ou use um catálogo.",
+        "Cole o link no campo Links do perfil.",
+        "Teste clicando como se fosse cliente, no celular.",
+        "Coloque uma frase na bio que mande clicar nele."
+      ],
+      "copy": [
+        { "label": "Mensagem pronta para o link do WhatsApp", "text": "Oi! Vim pelo Instagram e quero saber mais sobre seus serviços." },
+        { "label": "Chamada na bio", "text": "Chame no link e peça seu orçamento" },
+        { "label": "Chamada para perfil pessoal", "text": "Entre na minha lista do zap, no link" }
+      ],
+      "check": "Você clicou no link e chegou onde queria, sem travar."
+    },
+    {
+      "n": 6,
+      "title": "Destaques que vendem",
+      "goal": "Seus destaques ganham capas padronizadas e uma ordem pensada.",
+      "why": "Os destaques são a vitrine fixa do perfil. Capas limpas e na ordem certa mostram quem você é sem a pessoa precisar rolar o feed.",
+      "steps": [
+        "Escolha de 4 a 6 destaques: Quem sou, Serviços ou Produtos, Resultados, Dúvidas, Avaliações, Como comprar.",
+        "Coloque na ordem: o que a pessoa mais precisa saber vem primeiro.",
+        "Crie capas com a mesma cor e um ícone simples para cada destaque. Use as figurinhas e modelos do Stories Lab para montar rápido.",
+        "Nomeie com no máximo 10 letras, sem emoji bagunçado.",
+        "Arquive stories antigos que não ajudam e salve nos destaques só os melhores."
+      ],
+      "copy": [
+        { "label": "Nomes de destaque para negócio", "text": "Sobre | Serviços | Antes e depois | Opiniões | Dúvidas | Agende" },
+        { "label": "Nomes de destaque para perfil pessoal", "text": "Eu | Rotina | Dicas | Receitas | Viagens | Contato" }
+      ],
+      "check": "Seus destaques têm capas padronizadas, nomes curtos e ordem estratégica."
+    },
+    {
+      "n": 7,
+      "title": "Vitrine: 3 posts fixados",
+      "goal": "Você fixa 3 posts que mostram em segundos o melhor de você.",
+      "why": "Quem chega de um Reel vai olhar seus três primeiros posts. Fixar os certos vira sua página de vendas dentro do Instagram.",
+      "steps": [
+        "Fixe um post que diga quem você é e o que faz.",
+        "Fixe um post de resultado, prova ou depoimento.",
+        "Fixe um post que seja seu mais curtido ou salvo.",
+        "Se não tiver nenhum bom, crie hoje um post simples de apresentação.",
+        "Abra seu perfil como visitante e veja se dá para entender tudo em 5 segundos."
+      ],
+      "copy": [
+        { "label": "Legenda de post de apresentação", "text": "Oi, eu sou a [nome]! Ajudo [quem] a [resultado]. Aqui você vai encontrar [3 assuntos]. Se faz sentido pra você, segue aqui e me conta nos comentários de onde você é." },
+        { "label": "Legenda de post de resultado", "text": "Olha o que a [cliente] me contou depois do atendimento. Isso é o que me move todo dia. Quer o mesmo resultado? Chama no link da bio." }
+      ],
+      "check": "Seus 3 posts fixados contam quem você é, mostram prova e seu melhor conteúdo."
+    },
+    {
+      "n": 8,
+      "title": "Ganchos que seguram",
+      "goal": "Você aprende e guarda frases de abertura que fazem a pessoa parar de rolar.",
+      "why": "O Instagram mede se as pessoas ficam nos primeiros segundos. Um bom gancho segura o olhar e faz o post chegar a mais gente.",
+      "steps": [
+        "Leia os modelos de gancho abaixo.",
+        "Adapte 5 deles para o seu nicho e salve numa nota.",
+        "Entre nos 5 perfis do dia 1 e veja como eles abrem os posts.",
+        "Escolha o gancho para o seu próximo Reel e escreva a frase.",
+        "Regra: a primeira frase tem que caber em uma linha."
+      ],
+      "copy": [
+        { "label": "Gancho de erro", "text": "O erro que faz seu [produto ou serviço] durar menos." },
+        { "label": "Gancho de segredo", "text": "Ninguém te conta isso sobre [assunto], mas muda tudo." },
+        { "label": "Gancho de lista", "text": "3 coisas que eu faria se começasse do zero no [nicho]." },
+        { "label": "Gancho de identificação", "text": "Se você também [situação comum], esse vídeo é pra você." }
+      ],
+      "check": "Você tem 5 ganchos adaptados ao seu nicho salvos para usar."
+    },
+    {
+      "n": 9,
+      "title": "Seu primeiro Reel de alcance",
+      "goal": "Você grava e publica um Reel curto pensado para chegar em quem ainda não te segue.",
+      "why": "Reels são o formato que o Instagram mais mostra para desconhecidos. Um Reel simples e útil é a porta de entrada de novas seguidoras.",
+      "steps": [
+        "Escolha uma dúvida real que suas clientes têm.",
+        "Grave em pé ou sentada, com luz da janela, de 15 a 30 segundos.",
+        "Comece com um gancho, mostre a resposta rápido e termine com uma chamada.",
+        "Coloque legenda na tela para quem assiste sem som.",
+        "Publique e responda todos os comentários na primeira hora."
+      ],
+      "copy": [
+        { "label": "Roteiro rápido", "text": "Gancho: [frase]. Meio: 3 passos curtos. Final: Segue aqui para ver mais dicas assim." },
+        { "label": "Legenda do Reel", "text": "Salva para não esquecer e manda para quem precisa ver isso. Qual dica você já fazia? Me conta aqui." },
+        { "label": "Exemplo para pet shop", "text": "Gancho: Seu cachorro faz isso depois do banho? Meio: o motivo e como evitar. Final: Segue para mais cuidados de pet." }
+      ],
+      "check": "Seu Reel está publicado, com legenda na tela e comentários respondidos."
+    },
+    {
+      "n": 10,
+      "title": "Carrossel que dá salvamento",
+      "goal": "Você publica um carrossel útil que as pessoas vão querer guardar.",
+      "why": "Salvamento mostra ao Instagram que seu conteúdo vale a pena. Carrossel de passo a passo ou lista é o que mais é guardado.",
+      "steps": [
+        "Escolha um tema de lista ou passo a passo (5 a 7 telas).",
+        "Tela 1: título forte com a promessa. Telas do meio: uma ideia por tela, pouco texto.",
+        "Última tela: peça para salvar e seguir.",
+        "Use os modelos do Stories Lab para deixar o visual limpo e bonito.",
+        "Publique e releia a legenda antes de enviar."
+      ],
+      "copy": [
+        { "label": "Título para carrossel", "text": "5 passos para [resultado] sem [dificuldade]" },
+        { "label": "Última tela", "text": "Gostou? Salva este post para consultar depois e segue para mais dicas." },
+        { "label": "Exemplo para maquiagem", "text": "Título: Maquiagem para pele madura em 5 passos. Última tela: Salva para fazer no próximo evento." }
+      ],
+      "check": "Seu carrossel foi publicado com título claro e pedido de salvar na última tela."
+    },
+    {
+      "n": 11,
+      "title": "Stories que criam laço",
+      "goal": "Você posta uma sequência de stories mostrando bastidores e personalidade.",
+      "why": "Stories são para quem já te segue. Mostrar o dia a dia cria confiança, e quem confia compra, indica e comenta mais.",
+      "steps": [
+        "Poste de 5 a 8 stories hoje, em sequência.",
+        "Mostre bastidores: o seu trabalho, o café, o processo, um erro engraçado.",
+        "Fale olhando para a câmera, como numa conversa com uma amiga.",
+        "Use figurinhas e a câmera do Stories Lab para deixar os stories bonitos sem perder tempo.",
+        "Termine com uma pergunta ou convite para responder."
+      ],
+      "copy": [
+        { "label": "Abertura de sequência", "text": "Bom dia! Vem comigo ver como é um dia por aqui." },
+        { "label": "Pergunta final", "text": "E você, como é a sua manhã? Me conta aqui na resposta." }
+      ],
+      "check": "Você postou uma sequência de stories com rosto ou bastidores e uma pergunta no fim."
+    },
+    {
+      "n": 12,
+      "title": "Tendência do jeito certo",
+      "goal": "Você usa uma tendência ou áudio em alta ligado ao seu nicho.",
+      "why": "Tendências recebem mais alcance extra do Instagram. Mas só funciona se você adaptar ao seu assunto, em vez de copiar sem sentido.",
+      "steps": [
+        "Abra a aba Reels e salve 3 vídeos em alta que dá para adaptar ao seu nicho.",
+        "Escolha um que combine com sua personalidade.",
+        "Mantenha o formato e troque o conteúdo para o seu assunto.",
+        "Use o áudio original, direto pelo botão Usar áudio.",
+        "Evite tendências que não têm nada a ver com você."
+      ],
+      "copy": [
+        { "label": "Legenda adaptada", "text": "Aquele momento em que [situação do seu nicho]. Marca aqui quem vive isso também." },
+        { "label": "Exemplo para confeitaria", "text": "Quando a cliente pergunta se o bolo já está pronto e você ainda está decorando. Marca uma confeiteira aqui." }
+      ],
+      "check": "Você publicou um vídeo usando uma tendência adaptada ao seu assunto."
+    },
+    {
+      "n": 13,
+      "title": "Comentários que atraem",
+      "goal": "Você deixa comentários de valor em perfis do seu nicho e na sua audiência.",
+      "why": "Comentário bom aparece para os seguidores do outro perfil. É a forma mais rápida de ser vista por gente nova sem criar nada.",
+      "steps": [
+        "Abra os 5 perfis salvos no dia 1.",
+        "Comente em 10 posts recentes, com frases de pelo menos 8 palavras.",
+        "Prefira posts recentes, nos primeiros 30 minutos, quando o comentário é mais visto.",
+        "Evite emoji solto ou frases como Lindo. Diga algo que mostre que você viu o conteúdo.",
+        "Responda todos os comentários que chegarem nos seus posts."
+      ],
+      "copy": [
+        { "label": "Comentário que acrescenta", "text": "Amei a dica! Eu faço assim também e percebi que [sua experiência]. Obrigada por compartilhar." },
+        { "label": "Comentário com pergunta", "text": "Que ideia boa! Você usa esse passo com [variação]? Fiquei curiosa." },
+        { "label": "Resposta a quem comentou", "text": "Obrigada por comentar! Posso te mandar mais detalhes? Me conta o que você mais quer ver aqui." }
+      ],
+      "check": "Você fez 10 comentários de valor e respondeu todos os seus."
+    },
+    {
+      "n": 14,
+      "title": "Calendário simples de 7 dias",
+      "goal": "Você monta um calendário leve que cabe na sua rotina.",
+      "why": "Quem cresce não é quem posta mais, é quem não para. Um plano pequeno e realista evita a culpa e mantém o ritmo.",
+      "steps": [
+        "Escolha quantos posts por semana você aguenta de verdade (3 já funciona).",
+        "Defina os dias e o tipo: 1 Reel, 1 carrossel, stories todo dia.",
+        "Escreva 3 ideias para cada tipo numa nota do celular.",
+        "Grave tudo de uma vez num dia da semana e programe os posts.",
+        "Coloque um lembrete diário de 10 minutos para comentar e responder."
+      ],
+      "copy": [
+        { "label": "Modelo de semana", "text": "Segunda: Reel. Quarta: carrossel. Sexta: Reel de tendência. Todo dia: 3 stories e 5 comentários." }
+      ],
+      "check": "Você tem os dias, os formatos e 9 ideias anotadas."
+    },
+    {
+      "n": 15,
+      "title": "Parceria com perfil do seu tamanho",
+      "goal": "Você convida um perfil parecido com o seu para um post em parceria.",
+      "why": "Post em colaboração aparece nos dois perfis ao mesmo tempo. Uma troca com alguém do seu tamanho dobra o público sem custo.",
+      "steps": [
+        "Liste 5 perfis com número de seguidores parecido, que não sejam concorrentes diretos (vizinhas de rua, outros serviços para o mesmo público).",
+        "Interaja com eles por 2 dias antes de mandar mensagem.",
+        "Mande a mensagem convidando para uma ideia simples e clara.",
+        "Combine quem grava o quê e o dia de postar.",
+        "Publique usando o recurso Colaboração no Reels ou no post."
+      ],
+      "copy": [
+        { "label": "Mensagem de convite", "text": "Oi, [nome]! Acompanho seu trabalho e acho que nossos públicos combinam. Que tal um post juntas? Eu mostro [sua parte] e você mostra [parte dela]. Topa?" },
+        { "label": "Ideia para manicure e maquiadora", "text": "Dica de beleza juntas: eu mostro unha para o evento e você mostra a make que combina." },
+        { "label": "Ideia para loja e confeitaria", "text": "Sorteio ou mesa de festa: a loja entra com a roupa, a confeitaria com os doces." }
+      ],
+      "check": "Você enviou pelo menos 3 convites de parceria."
+    },
+    {
+      "n": 16,
+      "title": "Live curta de 10 minutos",
+      "goal": "Você faz sua primeira live curta e tranquila.",
+      "why": "Lives avisam seus seguidores e criam conexão ao vivo. Mesmo com pouca gente, elas aumentam a confiança e geram conversas.",
+      "steps": [
+        "Escolha um tema que você domina e anote 3 pontos.",
+        "Avise nos stories no dia anterior com a hora marcada.",
+        "Entre ao vivo, dê boas vindas e fale do tema por 10 minutos.",
+        "Leia e responda os comentários pelo nome.",
+        "Salve a live nos destaques ou corte o melhor trecho para um Reel."
+      ],
+      "copy": [
+        { "label": "Aviso nos stories", "text": "Amanhã às 20h eu entro ao vivo aqui para falar sobre [tema]. Quer que eu responda alguma dúvida? Manda aqui na caixinha." },
+        { "label": "Abertura da live", "text": "Oi, gente! Vou falar rapidinho sobre [tema]. Quem chegar, comenta de onde está assistindo." }
+      ],
+      "check": "Você fez uma live de pelo menos 10 minutos."
+    },
+    {
+      "n": 17,
+      "title": "Enquete e caixinha nos stories",
+      "goal": "Você usa enquete e caixinha de perguntas para sua audiência falar com você.",
+      "why": "Quem interage nos stories passa a ver mais do seu conteúdo. Além disso, as respostas mostram o que as pessoas querem e viram ideia de post.",
+      "steps": [
+        "Poste uma enquete simples, de duas opções, sobre algo fácil de escolher.",
+        "Poste uma caixinha de perguntas sobre o seu nicho.",
+        "Responda cada pergunta em stories, com rosto ou texto.",
+        "Anote as perguntas mais comuns, elas viram seus próximos Reels.",
+        "Repita pelo menos 2 vezes por semana."
+      ],
+      "copy": [
+        { "label": "Enquete para salão", "text": "Qual cabelo você quer ver no próximo vídeo? Loiro iluminado ou castanho chocolate?" },
+        { "label": "Caixinha para confeitaria", "text": "Qual a sua maior dúvida na hora de pedir um bolo? Manda aqui que eu respondo." },
+        { "label": "Enquete para perfil pessoal", "text": "Você prefere dica de rotina ou dica de organização da casa?" },
+        { "label": "Caixinha para pet", "text": "Qual dúvida você tem sobre seu pet? Eu respondo aqui." }
+      ],
+      "check": "Você postou uma enquete e uma caixinha e respondeu as respostas."
+    },
+    {
+      "n": 18,
+      "title": "Reaproveite com gancho novo",
+      "goal": "Você pega um post que funcionou e o refaz com uma abertura diferente.",
+      "why": "A maioria dos seus seguidores não viu seus posts antigos. Reposte com outro gancho e o mesmo conteúdo chega a gente nova.",
+      "steps": [
+        "Abra os insights e escolha seu post mais salvo ou compartilhado.",
+        "Anote o assunto e escreva 3 ganchos novos para ele.",
+        "Grave de novo ou monte outro carrossel com o mesmo conteúdo.",
+        "Publique o novo e deixe o antigo no perfil.",
+        "Faça isso uma vez por semana com um post bom."
+      ],
+      "copy": [
+        { "label": "Gancho novo para o mesmo conteúdo", "text": "Antes: 5 dicas de skincare. Agora: O erro de skincare que eu cometi por 3 anos." },
+        { "label": "Legenda de reposte", "text": "Esse assunto foi o que mais salvaram aqui, então trouxe de novo com mais detalhes. Salva e manda para quem precisa." }
+      ],
+      "check": "Você publicou uma versão nova de um conteúdo antigo que deu certo."
+    },
+    {
+      "n": 19,
+      "title": "Entenda seus números",
+      "goal": "Você lê os insights e descobre o que está trazendo gente nova.",
+      "why": "Sem olhar os números, você repete o que não funciona. Três métricas simples mostram o caminho: alcance, contas alcançadas que não te seguem e salvamentos.",
+      "steps": [
+        "Abra Painel profissional e depois Insights dos últimos 30 dias.",
+        "Veja o alcance total e quantas contas alcançadas não te seguem.",
+        "Abra os 3 posts com mais alcance e os 3 com mais salvamentos.",
+        "Anote o que eles têm em comum: assunto, gancho ou formato.",
+        "Decida: faça mais disso e menos do que ninguém viu."
+      ],
+      "copy": [
+        { "label": "Anotação de aprendizado", "text": "Meu post que mais alcançou foi [tipo]. O gancho foi [frase]. Na próxima semana vou repetir esse formato com outro assunto." }
+      ],
+      "check": "Você anotou o que mais deu resultado e o que vai repetir."
+    },
+    {
+      "n": 20,
+      "title": "Seguidora vira cliente",
+      "goal": "Você cria um caminho simples para a seguidora comprar ou agendar.",
+      "why": "Seguidor sem conversa vira número. Um convite claro e uma conversa no direct transformam audiência em clientes e em indicação.",
+      "steps": [
+        "Poste um conteúdo com chamada para ação clara, convidando a chamar no direct.",
+        "Responda quem comentar com uma pergunta e leve para o direct.",
+        "Mande uma mensagem de boas vindas a cada nova seguidora que for do seu público.",
+        "Crie uma oferta simples e limitada para seguidoras do Instagram.",
+        "Peça depoimento para quem já comprou e poste nos stories."
+      ],
+      "copy": [
+        { "label": "Mensagem de boas vindas", "text": "Oi, [nome]! Obrigada por seguir. Me conta o que te trouxe aqui? Se quiser, posso te ajudar com [seu serviço]." },
+        { "label": "Chamada em post", "text": "Quer saber como funciona? Me manda a palavra QUERO no direct que eu te explico." },
+        { "label": "Pedido de depoimento", "text": "Oi, [nome]! Posso postar um comentário seu sobre o atendimento? Fico muito feliz com seu retorno." },
+        { "label": "Oferta para seguidoras", "text": "Só para quem me segue no Instagram: [condição especial] até domingo. Chama no direct." }
+      ],
+      "check": "Você enviou convites no direct e publicou um conteúdo com chamada para ação."
+    },
+    {
+      "n": 21,
+      "title": "Sua rotina para continuar",
+      "goal": "Você fecha os 21 dias com uma rotina semanal fixa e leve.",
+      "why": "O perfil ímã se constrói com constância, não com pico. A rotina é o que mantém seu crescimento depois do desafio.",
+      "steps": [
+        "Releia a rotina semanal no fim deste guia.",
+        "Escolha os horários fixos para gravar, postar e comentar.",
+        "Coloque lembretes diários no celular.",
+        "Compare seu perfil de hoje com o do dia 1: bio, destaques, posts e seguidoras.",
+        "Escolha sua meta do próximo mês, sem prometer número, só hábito (ex: 12 posts e 20 comentários por semana)."
+      ],
+      "copy": [
+        { "label": "Post de balanço", "text": "Passei 21 dias arrumando meu perfil passo a passo. O que mais mudou foi [aprendizado]. Se você quer fazer o mesmo, me conta aqui que eu te explico como comecei." }
+      ],
+      "check": "Você tem a rotina fixa no celular e sua meta de hábito escrita."
+    }
+  ],
+  "routine": [
+    "Segunda: planeje a semana, escolha 3 ideias e escreva os ganchos. Comente em 5 posts do seu nicho.",
+    "Terça: grave 2 Reels de uma vez e poste o primeiro. Responda todos os comentários.",
+    "Quarta: publique um carrossel com passo a passo ou lista. Faça uma enquete nos stories.",
+    "Quinta: posts de conexão: stories de bastidores e resposta da caixinha. Comente em 5 posts.",
+    "Sexta: poste o segundo Reel ou uma tendência adaptada. Mande mensagem para 2 possíveis parcerias.",
+    "Sábado: live curta ou stories de rotina. Reposte um conteúdo bom com gancho novo.",
+    "Domingo: veja os insights (alcance, não seguidores e salvamentos), anote o que funcionou e descanse."
+  ]
+}

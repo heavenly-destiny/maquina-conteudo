@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "6e8816bef2a05673",
+    "type": "split",
+    "children": [
+      {
+        "id": "a2d90e8dc0ac6ce5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5edf56cff589cafc",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9c43353a714c0655",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd8ac703279813bd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cae97490ccacb519",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "55b2c06e9e1043be",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "121b739cc747fd65",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 293.08984375
+  },
+  "right": {
+    "id": "af4306fd6960f192",
+    "type": "split",
+    "children": [
+      {
+        "id": "b6afb96fb0f0da99",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "81721c9e73a38a7a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "f1433ead8e00ebb2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "159046fd8d74dc2a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "4902028dfee76456",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "fa8c6074355fdf47",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "5edf56cff589cafc",
+  "lastOpenFiles": [
+    "360/tdbdns.md",
+    "Sem título",
+    "360",
+    "Sem título.md",
+    "marketing/afiliado-vs-produtor-tradeoff-operacional.md",
+    "livros/segredos-do-trafego/01-quem-e-seu-dream-customer.md",
+    "marketing/processo-de-vsl-engenharia-reversa.md",
+    "podcasts/segredos-da-escala-164/04-processo-de-vsl.md",
+    "tanpz-brain-chat.html",
+    "paginas/bumbumflix-gluteo/vsl-15-faq-objecoes-e-fechamento.md",
+    "paginas/bumbumflix-gluteo/vsl-14-custo-de-oportunidade-e-tres-caminhos.md",
+    "paginas/bumbumflix-gluteo/vsl-13-qualificacao-negativa.md",
+    "paginas/bumbumflix-gluteo/vsl-12-depoimentos-em-video-e-print.md",
+    "paginas/bumbumflix-gluteo/vsl-10-ancoragem-e-preco.md",
+    "paginas/bumbumflix-gluteo/vsl-09-stack-de-bonus.md",
+    "paginas/bumbumflix-gluteo/vsl-08-revelacao-do-produto-e-projecao-futura.md",
+    "paginas/bumbumflix-gluteo/vsl-07-prova-social-em-massa-e-reframe-de-culpa.md",
+    "paginas/bumbumflix-gluteo/vsl-06-quebra-de-mito-e-metodo-proprietario.md",
+    "paginas/bumbumflix-gluteo/vsl-04-credibilidade-do-especialista.md",
+    "paginas/bumbumflix-gluteo/vsl-03-mecanismo-unico-sindrome-da-amnesia-glutea.md",
+    "paginas/bumbumflix-gluteo/vsl-02-regras-e-prova-social-inicial.md",
+    "paginas/bumbumflix-gluteo/vsl-01-hook-e-promessa.md",
+    "paginas/bumbumflix-gluteo/quiz-04-micro-compromisso.md",
+    "paginas/bumbumflix-gluteo/quiz-03-promessa-do-mecanismo.md",
+    "paginas/bumbumflix-gluteo/quiz-02-diagnostico-de-dor.md",
+    "paginas/bumbumflix-gluteo/quiz-01-qualificacao-genero-e-prova-social.md",
+    "marketing/framework-ecossistema-de-funis.md",
+    "ecossistemas/Como Criar um Funil de Quiz do Zero.md",
+    "ecossistemas/Como Escrever uma VSL do Zero.md",
+    "marketing/hack-do-13o-mes-ciclo-de-cobranca.md.tmp.17605.6de3becdf01a",
+    "livros/100m-leads/15-get-lead-getters-3-agencias.md.tmp.17605.f0c0a22e37da",
+    "livros/100m-money-models/17-downsell-por-remocao-de-recurso.md.tmp.17605.019fea881e01",
+    "marketing/regra-dos-100-cem-acoes-diarias-por-100-dias.md.tmp.17605.a8a493acb32f",
+    "livros/100m-leads",
+    "livros/100m-money-models",
+    "livros/100m-offers",
+    "Sem título 1.canvas",
+    "Sem título.canvas"
+  ]
+}

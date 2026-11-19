@@ -1,0 +1,40 @@
+// Real-browser check of the deployed app: gate -> login -> home/offers -> category images from CDN -> PNG copy.
+const puppeteer = require('C:/Users/tanpz/felipe-coronado-canvas/tools/node_modules/puppeteer-core');
+const A = process.argv[2] || 'https://storieslab-app.tanpzdigital-183.workers.dev';
+const OUT = 'C:/Users/tanpz/stories-lab/appsrv/shots';
+(async () => {
+  require('fs').mkdirSync(OUT, {recursive: true});
+  const b = await puppeteer.launch({executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', args: ['--no-sandbox']});
+  const p = await b.newPage();
+  await p.setViewport({width: 390, height: 844, deviceScaleFactor: 2});
+  await p.evaluateOnNewDocument(() => localStorage.setItem('sl_asked', '1'));   // skip the first-visit profile question
+  const errs = [];
+  p.on('pageerror', e => errs.push('pageerror ' + e.message));
+  p.on('console', m => m.type() === 'error' && errs.push('console ' + m.text()));
+  await p.goto(A, {waitUntil: 'networkidle2'});
+  await p.screenshot({path: OUT + '/1-gate.png'});
+  await p.type('#gateEmail', 'ninguem@example.com'); await p.click('#gateBtn');
+  await p.waitForFunction(() => document.querySelector('#gateMsg').textContent.length > 5);
+  console.log('wrong email msg:', await p.$eval('#gateMsg', e => e.textContent.slice(0, 60)));
+  await p.$eval('#gateEmail', e => (e.value = '')); await p.type('#gateEmail', 'basico@storieslab.test'); await p.click('#gateBtn');
+  await p.waitForFunction(() => !document.body.classList.contains('out') && document.querySelectorAll('.card').length > 10, {timeout: 15000});
+  await new Promise(r => setTimeout(r, 2500));
+  await p.screenshot({path: OUT + '/2-home.png'});
+  const offers = await p.$$eval('.of', a => a.map(x => x.querySelector('b').textContent + (x.querySelector('.tag.b') ? ' [own]' : '')));
+  console.log('offers:', offers.join(' | '));
+  await p.evaluate(() => document.querySelector('#extras').scrollIntoView());
+  await p.screenshot({path: OUT + '/3-offers.png'});
+  const firstFree = await p.$eval('.card:not(.locked)', a => a.getAttribute('href'));
+  await p.goto(A + '/' + firstFree, {waitUntil: 'networkidle2'});
+  await new Promise(r => setTimeout(r, 2500));
+  const imgs = await p.$$eval('#stickers img', a => ({n: a.length, broken: a.filter(i => i.complete && !i.naturalWidth).length, host: a[0] && new URL(a[0].src).host}));
+  console.log('category imgs:', JSON.stringify(imgs));
+  await p.screenshot({path: OUT + '/4-cat.png'});
+  await p.click('#stickers .st');
+  const png = await p.evaluate(() => S.png.then(b => b.size).catch(e => 'ERR ' + e.message));
+  console.log('png blob:', png);
+  await p.screenshot({path: OUT + '/5-sheet.png'});
+  console.log('locked premium cards:', await p.evaluate(() => CATS.filter(locked).length));
+  console.log('errors:', errs.length ? errs.slice(0, 5) : 'none');
+  await b.close();
+})().catch(e => { console.error('FAIL', e.message); process.exit(1); });

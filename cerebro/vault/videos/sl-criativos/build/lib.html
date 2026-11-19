@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jak"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 900; }
+      :root { --brand: #d92e64; --brand-2: #f0548a; --ink: #2a1f24; --cream: #fbf5f1; --blush: #f7e6e9; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Jak", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1600px; }
+      .bg { position: absolute; inset: 0; background: var(--cream); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: 200px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.28), rgba(240, 84, 138, 0) 62%); }
+      .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; left: 300px; top: 1100px;
+        background: radial-gradient(circle, rgba(255, 196, 150, 0.35), rgba(255, 196, 150, 0) 62%); }
+      .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+      .shade { position: absolute; inset: 0; }
+
+      /* captions: typed like a real Story (white label, dark text, key word pink) */
+      .cap { position: absolute; left: 70px; width: 940px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+        padding: 26px 34px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 62px; font-weight: 800;
+        line-height: 1.12; letter-spacing: -0.02em; text-align: center; perspective: 900px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.18); }
+      .cap.dark { background: rgba(20, 12, 16, 0.78); color: #fff; }
+      .cap.clear { background: none; box-shadow: none; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); }
+      .cap span { display: block; }
+      .cap .k { color: var(--brand); }
+      .cap.dark .k, .cap.clear .k { color: #ff8db3; }
+
+      /* phone with the real app */
+      .phone { position: absolute; width: 714px; height: 1518px; padding: 12px; border-radius: 82px; background: linear-gradient(145deg, #2b2b30, #0b0b0d);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 14px 28px rgba(60, 10, 30, 0.22), 0 70px 140px rgba(60, 10, 30, 0.32), 0 0 0 2px #3a3a40;
+        transform-origin: 50% 50%; }
+      .screen { position: relative; width: 690px; height: 1494px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+      .screen > img, .screen > .layer { position: absolute; left: 0; top: 0; width: 690px; height: 1494px; display: block; }
+      .island { position: absolute; left: 50%; top: 22px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+      .tap { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; z-index: 8; opacity: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 30%, rgba(217, 46, 100, 0.35) 31% 60%, rgba(217, 46, 100, 0) 61%); }
+      .ring { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 5px solid rgba(217, 46, 100, 0.8); z-index: 8; opacity: 0; }
+      .toast { position: absolute; left: 70px; bottom: 150px; width: 550px; padding: 26px 30px; border-radius: 30px; z-index: 7; opacity: 0;
+        background: rgba(30, 20, 25, 0.92); color: #fff; font-size: 30px; font-weight: 700; display: flex; align-items: center; gap: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+      .toast i { display: block; flex: none; width: 52px; height: 52px; border-radius: 50%; background: #22c55e; position: relative; }
+      .toast i::after { content: ""; position: absolute; left: 18px; top: 10px; width: 13px; height: 25px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .toast small { display: block; font-size: 24px; font-weight: 500; opacity: 0.8; }
+
+      /* a Story frame */
+      .story { position: absolute; width: 860px; height: 1528px; border-radius: 44px; overflow: hidden; background: #222;
+        box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 80px 160px rgba(60, 10, 30, 0.35); }
+      .story .photo { inset: -2%; }
+      .sbar { position: absolute; left: 26px; right: 26px; top: 22px; height: 6px; display: flex; gap: 8px; z-index: 5; }
+      .sbar i { flex: 1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.4); overflow: hidden; }
+      .sbar i b { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+      .shead { position: absolute; left: 30px; top: 50px; display: flex; align-items: center; gap: 16px; z-index: 5; color: #fff; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+      .shead i { display: block; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #f7c1cf, #d92e64); border: 3px solid #fff; }
+      .shead small { font-weight: 500; opacity: 0.85; }
+      .stk { position: absolute; display: block; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
+      .views { position: absolute; left: 34px; bottom: 40px; z-index: 5; color: #fff; font-size: 30px; font-weight: 600; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+
+      /* DM / reply notification */
+      .dm { position: absolute; left: 90px; width: 900px; padding: 24px 28px; border-radius: 40px; display: flex; align-items: center; gap: 22px;
+        background: rgba(255, 255, 255, 0.94); color: var(--ink); z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.14), 0 40px 90px rgba(60, 10, 30, 0.24); }
+      .dm .av { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; }
+      .dm b { display: block; font-size: 32px; font-weight: 800; }
+      .dm b small { font-weight: 500; color: #6b5d63; font-size: 26px; margin-left: 8px; }
+      .dm p { font-size: 34px; font-weight: 500; line-height: 1.2; }
+
+      .chip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 40px; font-weight: 800; display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); white-space: nowrap; z-index: 15; }
+      .chip.pink { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chip em { font-style: normal; }
+      .ptbox { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 30; }
+      .pt { position: absolute; display: block; }
+      .heart { position: absolute; width: 60px; height: 54px; }
+      .heart::before, .heart::after { content: ""; position: absolute; top: 0; width: 32px; height: 50px; border-radius: 32px 32px 0 0; background: var(--brand); }
+      .heart::before { left: 30px; transform: rotate(-45deg); transform-origin: 0 100%; }
+      .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+      #fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+      .flash { position: absolute; inset: 0; opacity: 0; }
+      .rays { position: absolute; left: -960px; top: -540px; width: 3000px; height: 3000px; opacity: 0;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 220, 230, 0) 0deg 7deg, rgba(255, 220, 230, 0.55) 9deg, rgba(255, 220, 230, 0) 11deg 18deg);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); }
+      .leak { position: absolute; width: 2600px; height: 2600px; border-radius: 50%; opacity: 0; }
+      .endlogo { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 26px; }
+      .endlogo img { display: block; }
+      .url { position: absolute; left: 0; width: 100%; text-align: center; font-size: 44px; font-weight: 700; color: var(--ink); }
+      .cta { position: absolute; left: 190px; width: 700px; height: 140px; border-radius: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
+        background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; font-size: 52px; font-weight: 800; letter-spacing: -0.01em;
+        box-shadow: 0 16px 34px rgba(197, 31, 85, 0.35), 0 50px 110px rgba(197, 31, 85, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.35); overflow: hidden; }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+      .arrow { position: absolute; left: 50%; width: 0; height: 0; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-top: 44px solid var(--brand); }
+      .orb { position: absolute; width: 270px; }
+      .orb.far { filter: blur(5px); opacity: 0.75; }
+      .shot { position: absolute; left: 28px; top: 241px; width: 634px; height: 790px; border-radius: 40px 40px 0 0; overflow: hidden; }
+      .shot .photo { inset: 0; background-position: 50% 35%; }
+      .g-orig { filter: saturate(0.55) contrast(0.82) brightness(1.1); }
+      .g-grade { filter: contrast(1.2) saturate(1.2) sepia(0.14) brightness(0.92); }
+      .divider { position: absolute; top: 0; width: 6px; margin-left: -3px; height: 100%; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); }
+      .divider i { position: absolute; left: -33px; top: 390px; width: 72px; height: 72px; border-radius: 50%; background: #fff; display: block; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+      .lab { position: absolute; top: 22px; padding: 8px 18px; border-radius: 22px; font-size: 22px; font-weight: 700; color: #fff; }
+      .agenda { position: absolute; left: 190px; top: 760px; width: 700px; border-radius: 36px; overflow: hidden; z-index: 16; box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 60px 120px rgba(60, 10, 30, 0.3); }
+      .agenda img { display: block; width: 100%; }
+      .gif { position: absolute; left: 640px; top: 760px; width: 380px; z-index: 16; }
+      .gif img { width: 100%; display: block; filter: drop-shadow(0 16px 30px rgba(60, 10, 30, 0.35)); }
+      .gif b { position: absolute; right: 10px; top: -30px; padding: 6px 16px; border-radius: 14px; background: #fff; color: var(--brand); font-size: 28px; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+      .tag { position: absolute; left: 90px; width: 900px; text-align: center; font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+      .tag em { font-style: normal; color: var(--brand); }
+      .plain { position: absolute; left: 0; width: 100%; text-align: center; font-family: "Courier New", monospace; font-size: 46px; color: #fff; }
+      .clock { position: absolute; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 46px; font-weight: 800; font-variant-numeric: tabular-nums; z-index: 25;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); display: flex; gap: 12px; align-items: center; }
+/*__CSS__*/
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="vb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="vbg" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="__TOTAL__" data-width="1080" data-height="1920">
+      <audio id="mix" src="assets/__MIX__" data-start="0" data-duration="__TOTAL__" data-volume="1"></audio>
+<!--__HTML__-->
+    </div>
+    <script>
+      const VO = __VO__;
+      const TOTAL = __TOTAL__;
+      const tl = gsap.timeline({ paused: true });
+      const w = (ln, i) => VO.lines[ln].words[i][1];
+      const we = (ln, i) => VO.lines[ln].words[i][2];
+      const $ = (s) => document.querySelector(s);
+
+      // seeded PRNG: renders stay deterministic
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+      const ENERGY = {
+        curious: { d: 0.4, ease: "back.out(1.6)", blur: 10, y: 30, rx: 40 },
+        secret: { d: 0.6, ease: "sine.out", blur: 12, y: 16, rx: 0 },
+        melancholy: { d: 0.8, ease: "sine.out", blur: 12, y: 18, rx: 0 },
+        hope: { d: 0.5, ease: "power3.out", blur: 14, y: 26, rx: 40 },
+        excited: { d: 0.34, ease: "back.out(2)", blur: 12, y: 40, rx: 60 },
+        triumph: { d: 0.36, ease: "expo.out", blur: 16, y: 50, rx: 70 },
+        warm: { d: 0.55, ease: "power3.out", blur: 12, y: 24, rx: 30 },
+      };
+      // caption: words revealed across the VO words a..b of line ln
+      const caption = (id, ln, a, b, mood, delay = 0) => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        const t0 = w(ln, a) + delay, t1 = w(ln, b) + delay;
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "back.out(1.8)" }, t0 - 0.12);
+        spans.forEach((s, i) => {
+          const t = spans.length < 2 ? t0 : t0 + ((t1 - t0) * i) / (spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" },
+            { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.06);
+        });
+      };
+      const capOut = (id, t) => tl.to("#" + id, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, t);
+      const out = (sel, t, d = 0.3) => tl.to(sel, { opacity: 0, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const camera = (sel, t0, t1, s0, s1, ease = "none") => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: t1 - t0, ease }, t0);
+      const drift = (sel, t0, t1, amp = 10, rot = 3) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot }, { y: -amp, rotation: rot, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const sweep = (sel, t, d = 0.8) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: 420, duration: d, ease: "power2.inOut" }, t);
+      const pop = (sel, t, rot = 0, s = 1) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.2, rotation: rot - 18, filter: "blur(8px)" }, { opacity: 1, scale: s, rotation: rot, filter: "blur(0px)", duration: 0.5, ease: "back.out(2.2)" }, t);
+      // phone: tap at screen coords (690x1494 space)
+      const tap = (scr, x, y, t) => {
+        const box = document.querySelector(scr);
+        const a = document.createElement("div"); a.className = "tap"; a.style.left = x + "px"; a.style.top = y + "px"; box.appendChild(a);
+        const r = document.createElement("div"); r.className = "ring"; r.style.left = x + "px"; r.style.top = y + "px"; box.appendChild(r);
+        tl.fromTo(a, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 0.8, duration: 0.14, ease: "power2.out" }, t - 0.14);
+        tl.to(a, { opacity: 0, scale: 1, duration: 0.25, ease: "power2.in" }, t + 0.08);
+        tl.fromTo(r, { opacity: 0.9, scale: 0.6 }, { opacity: 0, scale: 2.2, duration: 0.5, ease: "power2.out" }, t);
+      };
+      // swap screens inside a phone: new one slides in from the right (push) or up (modal)
+      const push = (from, to, t, d = 0.42) => {
+        tl.fromTo(to, { x: 690, opacity: 1 }, { x: 0, opacity: 1, duration: d, ease: "power3.inOut" }, t);
+        tl.fromTo(from, { x: 0 }, { x: -230, duration: d, ease: "power3.inOut", immediateRender: false }, t);
+      };
+      const sheet = (to, t, d = 0.5) => tl.fromTo(to, { y: 1494, opacity: 1 }, { y: 0, opacity: 1, duration: d, ease: "expo.out" }, t);
+      const vblur = (from, to, t, d, ease) => {
+        const g = document.getElementById("vbg"), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", "0 " + p.v);
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t);
+      };
+      // particle systems per mood
+      const hearts = (box, t0, n, x0, y0, spread = 700) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const h = document.createElement("div"); h.className = "heart pt"; const s = 0.5 + rnd() * 0.9;
+          h.style.left = x0 + (rnd() - 0.5) * spread + "px"; h.style.top = y0 + "px"; b.appendChild(h);
+          const t = t0 + i * 0.09;
+          tl.fromTo(h, { opacity: 0, scale: 0, y: 0, x: 0, rotation: (rnd() - 0.5) * 40 },
+            { opacity: 1, scale: s, y: -260 - rnd() * 260, x: (rnd() - 0.5) * 160, duration: 0.6, ease: "back.out(2)" }, t);
+          tl.to(h, { opacity: 0, y: "-=320", duration: 1.0, ease: "sine.in" }, t + 0.6);
+        }
+      };
+      const confetti = (box, t, n, x0, y0) => {
+        const b = document.getElementById(box); const cols = ["#d92e64", "#f0548a", "#ffd166", "#ffffff", "#ff9fbf", "#8fd3ff"];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement("i"); c.className = "pt"; const s = 12 + rnd() * 16;
+          Object.assign(c.style, { left: x0 + "px", top: y0 + "px", width: s + "px", height: s * (0.4 + rnd() * 0.6) + "px", background: cols[i % cols.length], borderRadius: i % 3 ? "3px" : "50%" });
+          b.appendChild(c);
+          const a = rnd() * Math.PI * 2, r = 260 + rnd() * 520;
+          tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.4 }, { x: Math.cos(a) * r, y: Math.sin(a) * r * 0.8 - 120, rotation: rnd() * 540, scale: 1, duration: 0.7, ease: "expo.out" }, t);
+          tl.to(c, { y: "+=" + (420 + rnd() * 400), rotation: "+=" + rnd() * 360, opacity: 0, duration: 1.6, ease: "sine.in" }, t + 0.7);
+        }
+      };
+      const sparks = (box, t0, t1, n, color = "rgba(255,210,225,0.95)") => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 6 + rnd() * 12;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: 900 + rnd() * 1000 + "px",
+            background: `radial-gradient(circle, ${color}, rgba(255,255,255,0))`, boxShadow: `0 0 ${s * 2}px ${color}` });
+          b.appendChild(p);
+          const st = t0 + rnd() * (t1 - t0) * 0.6;
+          tl.fromTo(p, { opacity: 0, y: 0 }, { opacity: 1, y: -200 - rnd() * 300, duration: 0.6, ease: "sine.out" }, st);
+          tl.to(p, { opacity: 0, y: "-=" + (200 + rnd() * 300), duration: 1.2, ease: "sine.in" }, st + 0.6);
+        }
+      };
+      const ash = (box, t0, t1, n) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 5 + rnd() * 9;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: -40 + rnd() * 900 + "px", background: "rgba(120,110,115,0.45)" });
+          b.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0, opacity: 0 }, { y: 500 + rnd() * 600, x: (rnd() - 0.5) * 120, opacity: 0.8, duration: t1 - t0, ease: "sine.inOut" }, t0 + rnd() * 0.5);
+        }
+      };
+      const dm = (sel, t, y, fromY = -260) => {
+        tl.fromTo(sel, { opacity: 0, y: fromY, scale: 0.9, rotationX: -40, filter: "blur(10px)" }, { opacity: 1, y, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.55, ease: "back.out(1.4)" }, t);
+      };
+      const storyBar = (sel, t0, t1) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: t1 - t0, ease: "none" }, t0);
+
+      // before/after slider inside the editor screen
+      const slider = (gradeSel, divSel, from, to, t, d) => {
+        const o = { p: from }, g = $(gradeSel), dv = $(divSel);
+        const set = () => { g.style.clipPath = `inset(0 0 0 ${o.p}%)`; dv.style.left = o.p + "%"; };
+        tl.fromTo(o, { p: from }, { p: to, duration: d, ease: "power2.inOut", onUpdate: set, immediateRender: false }, t);
+      };
+      const clock = (sel, from, to, t, d, fmt) => {
+        const o = { v: from }, n = $(sel), set = () => (n.textContent = fmt(o.v));
+        set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "none", onUpdate: set, immediateRender: false }, t);
+      };
+/*__JS__*/
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

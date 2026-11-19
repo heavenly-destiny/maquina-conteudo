@@ -1,0 +1,25 @@
+<!-- EXPERIMENTE (owner 02/11): quiz-style Story simulator. Logic in /experimente.js, styles in /experimente.css. -->
+<section class="try xp" id="experimente" data-reach="teste">
+ <div class="wrap" id="xp">
+  <span class="kicker">Teste agora, de graça</span>
+  <h2>Seu Story, do <em>seu jeito.</em></h2>
+  <p class="lead">Escolha uma foto, cole a figurinha e ajuste com o dedo, igual no Instagram.</p>
+  <div class="xp-scenes" id="xpScenes" role="group" aria-label="Fotos de exemplo"><button type="button" class="mine" id="xpMine" aria-pressed="false">📷 Sua foto</button></div>
+  <input type="file" id="xpFile" accept="image/*" hidden>
+  <p class="xp-step" id="xpStep" aria-live="polite"></p>
+  <div class="xp-phone" id="xpPhone" aria-label="Prévia do seu Story">
+   <div class="xp-top"><span class="ln"><i></i></span><span class="av"><i></i></span>Seu story <span style="opacity:.7;font-weight:500">agora</span></div>
+   <div class="xp-tools" aria-hidden="true"><span>Aa</span><span>☺</span><span>♫</span></div>
+   <div class="xp-trash" id="xpTrash" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></div>
+   <div class="xp-bot" aria-hidden="true"><span>Seu story</span><span>Melhores amigos</span><span class="go">➜</span></div>
+  </div>
+  <p class="xp-tray-l">Toque pra adicionar mais figurinhas</p>
+  <div class="xp-tray" id="xpTray"></div>
+  <div class="xp-acts">
+   <button type="button" class="hot" id="xpSave" disabled>⬇️ Baixar meu Story</button>
+   <button type="button" id="xpReset">Recomeçar</button>
+  </div>
+  <p class="xp-priv">Sua foto fica só no seu celular.</p>
+  <a class="xp-next" href="#transformacao">Gostou? Veja o que vem no pack →</a>
+ </div>
+</section>

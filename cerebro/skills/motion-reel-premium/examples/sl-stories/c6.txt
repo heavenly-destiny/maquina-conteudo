@@ -1,0 +1,161 @@
+C6 "CONVERSA DE AMIGAS": the whole ad is a dark chat between two friends, with real voice notes (two voices) + live transcription as captions
+===CSS===
+      #chat { position: absolute; inset: 0; background: #0f0d12; overflow: hidden; }
+      #chat .pat { position: absolute; inset: 0; opacity: 0.07; background-image: radial-gradient(#fff 1.5px, transparent 1.5px); background-size: 46px 46px; }
+      .hdr { position: absolute; left: 0; top: 0; width: 1080px; height: 250px; background: rgba(28, 25, 32, 0.96); z-index: 20; display: flex; align-items: flex-end; gap: 24px; padding: 0 40px 36px; }
+      .hdr .back { color: #f0548a; font-size: 64px; font-weight: 300; line-height: 1; margin-bottom: 14px; }
+      .hdr .av { width: 110px; height: 110px; border-radius: 50%; background-size: cover; background-position: center; border: 4px solid #f0548a; }
+      .hdr b { display: block; color: #fff; font-size: 46px; font-weight: 800; }
+      .hdr small { display: block; color: #9a93a3; font-size: 32px; font-weight: 500; margin-top: 4px; }
+      .hdr small.rec { color: #f0548a; }
+      .inbar { position: absolute; left: 0; top: 1720px; width: 1080px; height: 200px; background: rgba(28, 25, 32, 0.96); z-index: 20; padding: 30px 40px; display: flex; gap: 22px; }
+      .inbar i { flex: 1; height: 100px; border-radius: 50px; background: #2a2630; color: #7d7686; font-style: normal; font-size: 36px; display: flex; align-items: center; padding: 0 40px; }
+      .inbar b { width: 100px; height: 100px; border-radius: 50%; background: #d92e64; display: flex; align-items: center; justify-content: center; font-size: 46px; }
+      #feed { position: absolute; left: 0; top: 0; width: 1080px; height: 6000px; }
+      .msg { position: absolute; border-radius: 40px; opacity: 0; font-size: 42px; line-height: 52px; color: #fff; }
+      .msg.me { right: 40px; background: linear-gradient(135deg, #e8417a, #c51f55); border-bottom-right-radius: 12px; transform-origin: 100% 100%; }
+      .msg.fr { left: 40px; background: #26232b; border-bottom-left-radius: 12px; transform-origin: 0% 100%; }
+      .msg.txt { padding: 26px 34px; white-space: nowrap; }
+      .msg .tm { font-size: 24px; opacity: 0.6; margin-left: 16px; }
+      .msg.img { padding: 14px; }
+      .msg.img .pic { border-radius: 28px; overflow: hidden; position: relative; background-size: cover; background-position: center; }
+      .msg.img .cap2 { font-size: 34px; padding: 14px 10px 4px; }
+      .vn { width: 840px; padding: 26px 30px; }
+      .vn .row { display: flex; align-items: center; gap: 22px; height: 110px; }
+      .vn .play { flex: none; width: 92px; height: 92px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; }
+      .vn .play::after { content: ""; border-left: 30px solid #fff; border-top: 19px solid transparent; border-bottom: 19px solid transparent; margin-left: 8px; }
+      .vn .wave { position: relative; flex: 1; height: 90px; }
+      .vn .bars, .vn .bars2 { position: absolute; inset: 0; display: flex; align-items: center; gap: 6px; }
+      .vn .bars i, .vn .bars2 i { display: block; flex: 1; border-radius: 4px; background: rgba(255, 255, 255, 0.35); }
+      .vn .bars2 i { background: #fff; }
+      .vn .dur { flex: none; font-size: 30px; opacity: 0.8; width: 80px; text-align: right; }
+      .vn .av2 { flex: none; width: 92px; height: 92px; border-radius: 50%; background-size: cover; background-position: center; border: 3px solid rgba(255,255,255,0.6); }
+      .vn .tr { margin-top: 14px; padding-top: 16px; border-top: 2px solid rgba(255, 255, 255, 0.15); font-size: 38px; line-height: 50px; white-space: normal; }
+      .vn .tr span { opacity: 0.22; }
+      .vn .tr em { font-style: normal; display: block; font-size: 24px; opacity: 0.55; margin-bottom: 6px; letter-spacing: 0.06em; }
+      .sep { position: absolute; left: 0; width: 1080px; text-align: center; opacity: 0; }
+      .sep b { display: inline-block; padding: 18px 40px; border-radius: 40px; background: #fff; color: #c51f55; font-size: 44px; font-weight: 800; letter-spacing: 0.04em; box-shadow: 0 10px 40px rgba(240, 84, 138, 0.5); }
+      .lnk { width: 760px; padding: 0; overflow: hidden; }
+      .lnk .top { background: #faf5f1; height: 190px; display: flex; align-items: center; justify-content: center; }
+      .lnk .top img { width: 560px; display: block; }
+      .lnk .bot { padding: 20px 30px 26px; }
+      .lnk .bot b { display: block; font-size: 36px; } .lnk .bot small { font-size: 28px; opacity: 0.6; }
+      .shots { display: flex; gap: 10px; }
+      .shots i { display: block; width: 230px; height: 498px; border-radius: 22px; background-size: cover; background-position: top center; }
+      .pcard { width: 700px; background: #fff; color: #2a1f24; border-radius: 28px; padding: 30px; }
+      .pcard .top { display: flex; align-items: center; gap: 30px; }
+      .pcard .pav { width: 120px; height: 120px; border-radius: 50%; background-size: cover; background-position: center; border: 5px solid #d92e64; }
+      .pcard .st { display: flex; gap: 30px; text-align: center; flex: 1; justify-content: space-around; }
+      .pcard .st b { display: block; font-size: 44px; font-weight: 800; font-variant-numeric: tabular-nums; } .pcard .st small { font-size: 24px; color: #6b5d63; }
+      .pcard .gr { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .pcard .gr i { display: block; height: 200px; background-size: cover; background-position: center; border-radius: 8px; }
+      .fol { position: absolute; left: 50px; width: 980px; padding: 22px 26px; border-radius: 34px; background: rgba(250, 248, 250, 0.97); display: flex; align-items: center; gap: 20px; z-index: 30;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3), 0 30px 70px rgba(0, 0, 0, 0.35); font-size: 32px; color: #2a1f24; opacity: 0; }
+      .fol .fav { flex: none; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 36px; }
+      .fol p { flex: 1; line-height: 1.2; } .fol small { color: #6b5d63; font-size: 26px; }
+      #shade { position: absolute; inset: 0; background: rgba(10, 6, 12, 0.6); z-index: 40; opacity: 0; }
+      #sheetC { position: absolute; left: 0; top: 820px; width: 1080px; height: 1100px; background: #fbf5f1; border-radius: 60px 60px 0 0; z-index: 41; }
+      #sheetC .grab { width: 140px; height: 12px; border-radius: 6px; background: #ddd2d5; margin: 26px auto 0; }
+      #sheetC .tag { position: absolute; left: 90px; width: 900px; top: 300px; text-align: center; font-size: 46px; font-weight: 700; color: #2a1f24; line-height: 1.25; }
+      #sheetC .tag em { font-style: normal; color: #d92e64; }
+===HTML===
+      <div id="sC" class="scene clip" data-start="0" data-duration="__TOTAL__" data-track-index="0">
+        <div class="inner" id="sC-in">
+          <div id="chat">
+            <div class="pat"></div>
+            <div id="feed" data-layout-ignore></div>
+            <div class="hdr"><div class="back">‹</div><div class="av" style="background-image: url(assets/photos/gym.jpg)"></div><div><b>Mari 💗</b><small id="st1">online</small><small class="rec" id="st2" style="display: none">gravando áudio…</small></div></div>
+            <div class="inbar"><i>Mensagem</i><b>🎤</b></div>
+          </div>
+          <div id="fols" data-layout-ignore></div>
+          <div class="ptbox" data-layout-ignore id="ptC"></div>
+          <div id="shade"></div>
+          <div id="sheetC">
+            <div class="grab"></div>
+            <div class="endlogo" style="top: 90px"><img id="logo" src="assets/app/logo-t.png" style="width: 760px" alt="Stories Lab" /></div>
+            <div class="tag" id="tag">o app que tá fazendo <em>todo mundo</em><br />crescer no Instagram</div>
+            <div class="cta" id="cta" style="top: 520px">Toca aqui 👇<div class="gloss"><i id="ctaG"></i></div></div>
+            <div class="url" id="url" style="top: 710px">storieslab.app</div>
+          </div>
+        </div>
+      </div>
+      <div id="fx" class="clip" data-start="0" data-duration="__TOTAL__" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+===JS===
+      const fmtF = (v) => (v < 1000 ? String(Math.round(v)) : (v / 1000).toFixed(1).replace(".", ",") + " mil");
+      const feed = $("#feed"), GAP = 18, BOTTOM = 1690;
+      let y = 300; const MSG = [];
+      // add a message with a known height; returns its element; t = when it appears
+      const add = (side, cls, h, html, t, id) => {
+        const d = document.createElement("div"); d.className = `msg ${side} ${cls}`; if (id) d.id = id;
+        d.style.top = y + "px"; d.style.height = h + "px"; d.innerHTML = html; feed.appendChild(d);
+        MSG.push({ d, top: y, h, t }); y += h + GAP; return d;
+      };
+      const voice = (side, h, ln, avatar, id) => {
+        const bars = Array.from({ length: 38 }, (_, i) => `<i style="height:${18 + Math.round(70 * Math.abs(Math.sin(i * 1.7 + ln) * Math.cos(i * 0.6)))}px"></i>`).join("");
+        const words = VO.lines[ln].words.map((w) => `<span>${w[0]}</span>`).join(" ");
+        const dur = Math.round(VO.lines[ln].dur);
+        return add(side, "vn", h, `<div class="row"><div class="av2" style="background-image:url(assets/photos/${avatar}.jpg)"></div><div class="play"></div><div class="wave"><div class="bars">${bars}</div><div class="bars2" id="${id}w">${bars}</div></div><div class="dur">0:${String(dur).padStart(2, "0")}</div></div><div class="tr"><em>TRANSCRIÇÃO</em>${words}</div>`, VO.lines[ln].start - 0.25, id);
+      };
+      const L0 = VO.lines[0].start, L1 = VO.lines[1].start, L2 = VO.lines[2].start, L3 = VO.lines[3].start;
+
+      // ---- the conversation ----
+      add("me", "txt", 104, 'amiga socorro 😭<span class="tm">07:42</span>', 0.15);
+      add("me", "img", 720, '<div class="pic" style="width:380px;height:620px;background-image:url(assets/photos/plaincoffee.jpg);filter:saturate(0.45) brightness(0.9)"><div class="plain" style="top:150px;font-size:26px">bom dia</div></div><div class="cap2">👁 3 visualizações</div>', 0.75);
+      add("me", "txt", 104, 'ninguém viu, ninguém respondeu 🥲', 1.45);
+      voice("me", 420, 0, "plaincoffee", "v1");
+      voice("fr", 420, 1, "gym", "v2");
+      add("fr", "lnk", 330, '<div class="top"><img src="assets/app/logo-t.png" alt=""></div><div class="bot"><b>storieslab.app</b><small>o app que te falei 👇</small></div>', w(1, 7) - 0.1);
+      add("fr", "img", 526, '<div class="shots"><i style="background-image:url(assets/app/cat-bomdia.png)"></i><i style="background-image:url(assets/app/editor.png)"></i><i style="background-image:url(assets/app/materiais.png)"></i></div>', w(1, 11) - 0.1);
+      const T_SEP = 19.45;
+      const sep = document.createElement("div"); sep.className = "sep"; sep.style.top = y + 20 + "px"; sep.innerHTML = "<b>⏩ 7 DIAS DEPOIS</b>"; feed.appendChild(sep);
+      MSG.push({ d: sep, top: y + 20, h: 100, t: T_SEP, sep: true }); y += 140 + GAP;
+      add("me", "txt", 104, 'AMIGAAAAAAA', 19.95);
+      add("me", "txt", 150, '<span style="font-size:96px;line-height:100px">😱😱😱</span>', 20.2);
+      add("me", "img", 450, '<div class="pcard"><div class="top"><div class="pav" style="background-image:url(assets/photos/breakfast.jpg)"></div><div class="st"><div><b>34</b><small>posts</small></div><div><b id="pcN">312</b><small>seguidores</small></div><div><b>480</b><small>seguindo</small></div></div></div><div class="gr"><i style="background-image:url(assets/photos/breakfast.jpg)"></i><i style="background-image:url(assets/photos/night.jpg)"></i><i style="background-image:url(assets/photos/gym.jpg)"></i></div></div>', 20.55);
+      voice("me", 420, 2, "breakfast", "v3");
+      voice("fr", 350, 3, "gym", "v4");
+
+      // ---- animate: each message pops in and the feed scrolls so it sits above the input bar ----
+      MSG.forEach((m, i) => {
+        const target = Math.min(0, BOTTOM - (m.top + m.h));
+        tl.to(feed, { y: target, duration: m.sep ? 0.5 : 0.32, ease: "power3.out" }, m.t);
+        if (m.sep) tl.fromTo(m.d, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, m.t + 0.15);
+        else tl.fromTo(m.d, { opacity: 0, scale: 0.6, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "back.out(1.8)" }, m.t);
+      });
+      // voice notes: progress fill + transcription word by word
+      [["v1", 0], ["v2", 1], ["v3", 2], ["v4", 3]].forEach(([id, ln]) => {
+        const L = VO.lines[ln], wv = $("#" + id + "w"), o = { p: 0 };
+        const set = () => (wv.style.clipPath = `inset(0 ${100 - o.p}% 0 0)`); set();
+        tl.fromTo(o, { p: 0 }, { p: 100, duration: L.dur, ease: "none", onUpdate: set, immediateRender: false }, L.start);
+        $("#" + id).querySelectorAll(".tr span").forEach((s, k) => tl.fromTo(s, { opacity: 0.22 }, { opacity: 1, duration: 0.12, immediateRender: false }, L.words[k][1] - 0.04));
+      });
+      // header status: "gravando áudio…" before the friend's notes
+      [[L1 - 0.9, L1], [L3 - 0.6, L3]].forEach(([a, b]) => { tl.set("#st1", { display: "none" }, a); tl.set("#st2", { display: "block" }, a); tl.set("#st1", { display: "block" }, b); tl.set("#st2", { display: "none" }, b); });
+      // 7 days later: the screen flashes, the feed blurs as it jumps
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.1, immediateRender: false }, T_SEP + 0.1);
+      tl.to("#flash", { opacity: 0, duration: 0.5 }, T_SEP + 0.2);
+      tl.fromTo(feed, { filter: "blur(0px)" }, { filter: "blur(10px)", duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, T_SEP);
+      confetti("ptC", 20.25, 40, 760, 900);
+      // the follower counter inside the screenshot
+      const pc = { v: 312 }, pn = $("#pcN"); tl.fromTo(pc, { v: 312 }, { v: 3412, duration: 2.2, ease: "power2.out", onUpdate: () => (pn.textContent = fmtF(pc.v)), immediateRender: false }, 20.8);
+      tl.fromTo("#pcN", { color: "#2a1f24" }, { color: "#d92e64", duration: 0.3, immediateRender: false }, 21.5);
+      // follow notifications drop over the chat while she screams
+      const NAMES = [["bia.costa", "#d92e64"], ["carol.m", "#f08a4b"], ["ju.lima", "#7a5cf0"], ["nanda_", "#3b82f6"], ["lu.alves", "#22c55e"], ["dani.s", "#f0548a"]];
+      NAMES.forEach(([n, c], i) => { const d = document.createElement("div"); d.className = "fol";
+        d.innerHTML = `<div class="fav" style="background:${c}">${n[0].toUpperCase()}</div><p><b>${n}</b> começou a seguir você.<br><small>Instagram · agora</small></p>`; $("#fols").appendChild(d);
+        const t = w(2, 5) + i * 0.38, yy = 270 + (i % 3) * 150;
+        tl.fromTo(d, { opacity: 0, y: yy - 260 }, { opacity: 1, y: yy, duration: 0.35, ease: "back.out(1.6)" }, t);
+        tl.to(d, { opacity: 0, y: yy - 120, duration: 0.3, ease: "power2.in" }, t + 1.1); });
+      hearts("ptC", w(2, 10), 14, 540, 1700, 900);
+      // CTA: the sheet slides up over the dimmed chat
+      const T_CTA = w(3, 7) - 0.35;
+      tl.fromTo("#shade", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T_CTA);
+      tl.fromTo("#sheetC", { y: 1150 }, { y: 0, duration: 0.6, ease: "expo.out" }, T_CTA);
+      tl.fromTo("#cta", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, T_CTA + 0.35);
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 5 }, T_CTA + 0.9);
+      sweep("#ctaG", T_CTA + 0.8, 0.8);
+      tl.fromTo("#url", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T_CTA + 0.5);
+      // camera: a gentle handheld drift so the chat never sits still
+      tl.fromTo("#chat", { scale: 1.0, rotation: 0 }, { scale: 1.03, rotation: 0.4, duration: TOTAL, ease: "sine.inOut" }, 0);

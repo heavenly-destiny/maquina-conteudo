@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jak"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 900; }
+      :root { --brand: #d92e64; --brand-2: #f0548a; --ink: #2a1f24; --cream: #fbf5f1; --blush: #f7e6e9; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Jak", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1600px; }
+      .bg { position: absolute; inset: 0; background: var(--cream); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: 200px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.28), rgba(240, 84, 138, 0) 62%); }
+      .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; left: 300px; top: 1100px;
+        background: radial-gradient(circle, rgba(255, 196, 150, 0.35), rgba(255, 196, 150, 0) 62%); }
+      .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+      .shade { position: absolute; inset: 0; }
+
+      /* captions: typed like a real Story (white label, dark text, key word pink) */
+      .cap { position: absolute; left: 70px; width: 940px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+        padding: 26px 34px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 62px; font-weight: 800;
+        line-height: 1.12; letter-spacing: -0.02em; text-align: center; perspective: 900px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.18); }
+      .cap.dark { background: rgba(20, 12, 16, 0.78); color: #fff; }
+      .cap.clear { background: none; box-shadow: none; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); }
+      .cap span { display: block; }
+      .cap .k { color: var(--brand); }
+      .cap.dark .k, .cap.clear .k { color: #ff8db3; }
+
+      /* phone with the real app */
+      .phone { position: absolute; width: 714px; height: 1518px; padding: 12px; border-radius: 82px; background: linear-gradient(145deg, #2b2b30, #0b0b0d);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 14px 28px rgba(60, 10, 30, 0.22), 0 70px 140px rgba(60, 10, 30, 0.32), 0 0 0 2px #3a3a40;
+        transform-origin: 50% 50%; }
+      .screen { position: relative; width: 690px; height: 1494px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+      .screen > img, .screen > .layer { position: absolute; left: 0; top: 0; width: 690px; height: 1494px; display: block; }
+      .island { position: absolute; left: 50%; top: 22px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+      .tap { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; z-index: 8; opacity: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 30%, rgba(217, 46, 100, 0.35) 31% 60%, rgba(217, 46, 100, 0) 61%); }
+      .ring { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 5px solid rgba(217, 46, 100, 0.8); z-index: 8; opacity: 0; }
+      .toast { position: absolute; left: 70px; bottom: 150px; width: 550px; padding: 26px 30px; border-radius: 30px; z-index: 7; opacity: 0;
+        background: rgba(30, 20, 25, 0.92); color: #fff; font-size: 30px; font-weight: 700; display: flex; align-items: center; gap: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+      .toast i { display: block; flex: none; width: 52px; height: 52px; border-radius: 50%; background: #22c55e; position: relative; }
+      .toast i::after { content: ""; position: absolute; left: 18px; top: 10px; width: 13px; height: 25px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .toast small { display: block; font-size: 24px; font-weight: 500; opacity: 0.8; }
+
+      /* a Story frame */
+      .story { position: absolute; width: 860px; height: 1528px; border-radius: 44px; overflow: hidden; background: #222;
+        box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 80px 160px rgba(60, 10, 30, 0.35); }
+      .story .photo { inset: -2%; }
+      .sbar { position: absolute; left: 26px; right: 26px; top: 22px; height: 6px; display: flex; gap: 8px; z-index: 5; }
+      .sbar i { flex: 1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.4); overflow: hidden; }
+      .sbar i b { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+      .shead { position: absolute; left: 30px; top: 50px; display: flex; align-items: center; gap: 16px; z-index: 5; color: #fff; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+      .shead i { display: block; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #f7c1cf, #d92e64); border: 3px solid #fff; }
+      .shead small { font-weight: 500; opacity: 0.85; }
+      .stk { position: absolute; display: block; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
+      .views { position: absolute; left: 34px; bottom: 40px; z-index: 5; color: #fff; font-size: 30px; font-weight: 600; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+
+      /* DM / reply notification */
+      .dm { position: absolute; left: 90px; width: 900px; padding: 24px 28px; border-radius: 40px; display: flex; align-items: center; gap: 22px;
+        background: rgba(255, 255, 255, 0.94); color: var(--ink); z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.14), 0 40px 90px rgba(60, 10, 30, 0.24); }
+      .dm .av { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; }
+      .dm b { display: block; font-size: 32px; font-weight: 800; }
+      .dm b small { font-weight: 500; color: #6b5d63; font-size: 26px; margin-left: 8px; }
+      .dm p { font-size: 34px; font-weight: 500; line-height: 1.2; }
+
+      .chip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 40px; font-weight: 800; display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); white-space: nowrap; z-index: 15; }
+      .chip.pink { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chip em { font-style: normal; }
+      .ptbox { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 30; }
+      .pt { position: absolute; display: block; }
+      .heart { position: absolute; width: 60px; height: 54px; }
+      .heart::before, .heart::after { content: ""; position: absolute; top: 0; width: 32px; height: 50px; border-radius: 32px 32px 0 0; background: var(--brand); }
+      .heart::before { left: 30px; transform: rotate(-45deg); transform-origin: 0 100%; }
+      .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+      #fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+      .flash { position: absolute; inset: 0; opacity: 0; }
+      .rays { position: absolute; left: -960px; top: -540px; width: 3000px; height: 3000px; opacity: 0;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 220, 230, 0) 0deg 7deg, rgba(255, 220, 230, 0.55) 9deg, rgba(255, 220, 230, 0) 11deg 18deg);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); }
+      .leak { position: absolute; width: 2600px; height: 2600px; border-radius: 50%; opacity: 0; }
+      .endlogo { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 26px; }
+      .endlogo img { display: block; }
+      .url { position: absolute; left: 0; width: 100%; text-align: center; font-size: 44px; font-weight: 700; color: var(--ink); }
+      .cta { position: absolute; left: 190px; width: 700px; height: 140px; border-radius: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
+        background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; font-size: 52px; font-weight: 800; letter-spacing: -0.01em;
+        box-shadow: 0 16px 34px rgba(197, 31, 85, 0.35), 0 50px 110px rgba(197, 31, 85, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.35); overflow: hidden; }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+      .arrow { position: absolute; left: 50%; width: 0; height: 0; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-top: 44px solid var(--brand); }
+      .orb { position: absolute; width: 270px; }
+      .orb.far { filter: blur(5px); opacity: 0.75; }
+      .shot { position: absolute; left: 28px; top: 241px; width: 634px; height: 790px; border-radius: 40px 40px 0 0; overflow: hidden; }
+      .shot .photo { inset: 0; background-position: 50% 35%; }
+      .g-orig { filter: saturate(0.55) contrast(0.82) brightness(1.1); }
+      .g-grade { filter: contrast(1.2) saturate(1.2) sepia(0.14) brightness(0.92); }
+      .divider { position: absolute; top: 0; width: 6px; margin-left: -3px; height: 100%; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); }
+      .divider i { position: absolute; left: -33px; top: 390px; width: 72px; height: 72px; border-radius: 50%; background: #fff; display: block; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+      .lab { position: absolute; top: 22px; padding: 8px 18px; border-radius: 22px; font-size: 22px; font-weight: 700; color: #fff; }
+      .agenda { position: absolute; left: 190px; top: 760px; width: 700px; border-radius: 36px; overflow: hidden; z-index: 16; box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 60px 120px rgba(60, 10, 30, 0.3); }
+      .agenda img { display: block; width: 100%; }
+      .gif { position: absolute; left: 640px; top: 760px; width: 380px; z-index: 16; }
+      .gif img { width: 100%; display: block; filter: drop-shadow(0 16px 30px rgba(60, 10, 30, 0.35)); }
+      .gif b { position: absolute; right: 10px; top: -30px; padding: 6px 16px; border-radius: 14px; background: #fff; color: var(--brand); font-size: 28px; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+      .tag { position: absolute; left: 90px; width: 900px; text-align: center; font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+      .tag em { font-style: normal; color: var(--brand); }
+      .plain { position: absolute; left: 0; width: 100%; text-align: center; font-family: "Courier New", monospace; font-size: 46px; color: #fff; }
+      .clock { position: absolute; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 46px; font-weight: 800; font-variant-numeric: tabular-nums; z-index: 25;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); display: flex; gap: 12px; align-items: center; }
+      /* illustrated characters (Open Peeps, CC0) + cursor + typing caret */
+      .peep { position: absolute; z-index: 12; }
+      .peep .pb { position: absolute; inset: 0; transform-origin: 50% 100%; }
+      .peep img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+      .cur { position: absolute; left: 0; top: 0; width: 84px; height: 104px; z-index: 45; opacity: 0; transform-origin: 8px 6px; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25)); }
+      .cring { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid #fff; z-index: 44; opacity: 0; box-shadow: 0 0 0 3px rgba(42, 31, 36, 0.35); }
+      .caret { display: inline-block; width: 5px; height: 1em; margin-left: 4px; background: #e0a100; vertical-align: -0.12em; }
+
+      #sA .bg { background: #fffaf0; }
+      .ruled { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 99px, rgba(224, 161, 0, 0.12) 99px 101px); }
+      .nbar { position: absolute; left: 60px; right: 60px; display: flex; justify-content: space-between; color: #e0a100; font-size: 46px; font-weight: 600; }
+      .ntitle { position: absolute; left: 90px; font-size: 80px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+      .ndate { position: absolute; left: 90px; font-size: 32px; font-weight: 500; color: #a39a8e; }
+      .nitem { position: absolute; left: 90px; right: 60px; font-size: 64px; font-weight: 700; color: var(--ink); display: flex; gap: 18px; align-items: baseline; }
+      .nitem b { color: #a39a8e; }
+      .strike { position: absolute; left: 70px; top: 6px; width: 760px; height: 80px; overflow: visible; }
+      .strike path { fill: none; stroke: var(--brand); stroke-width: 12; stroke-linecap: round; }
+      .qm { position: absolute; font-size: 150px; font-weight: 800; color: var(--brand); z-index: 14; opacity: 0; }
+      #sB .bg { background: radial-gradient(120% 80% at 50% 60%, #fff0f4 0%, #f9d3df 70%, #f2bccd 100%); }
+      .mini { position: absolute; width: 150px; height: 267px; border-radius: 18px; overflow: hidden; background: #333; z-index: 10;
+        box-shadow: 0 6px 14px rgba(60, 10, 30, 0.18), 0 24px 50px rgba(60, 10, 30, 0.22); border: 4px solid #fff; }
+      .mini .photo { filter: saturate(0.5) brightness(0.95); }
+      .bchip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 44px; font-weight: 800; display: flex; gap: 14px; align-items: center;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); z-index: 16; font-variant-numeric: tabular-nums; white-space: nowrap; opacity: 0; }
+      .bchip.red { background: #2a1f24; color: #fff; }
+      #sC .bg { background: radial-gradient(110% 80% at 50% 50%, #f1efee 0%, #dcd8d7 100%); }
+      .card { position: absolute; left: 390px; top: 640px; width: 300px; height: 533px; border-radius: 30px; overflow: hidden; background: #333; border: 6px solid #fff;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16), 0 30px 70px rgba(0, 0, 0, 0.2); transform-origin: 50% 100%; }
+      .card .photo { filter: saturate(0.45) brightness(0.92); }
+      .lens { position: absolute; width: 300px; height: 300px; z-index: 18; opacity: 0; }
+      .lens i { position: absolute; left: 0; top: 0; width: 240px; height: 240px; border-radius: 50%; border: 14px solid var(--ink); background: rgba(255, 255, 255, 0.18); display: block; }
+      .lens b { position: absolute; left: 210px; top: 200px; width: 40px; height: 120px; border-radius: 20px; background: var(--ink); transform: rotate(-45deg); display: block; }
+      .fcol { position: absolute; top: 0; width: 300px; }
+      .gcell { position: relative; width: 300px; height: 533px; margin-bottom: 30px; border-radius: 26px; overflow: hidden; border: 5px solid #fff; background: #333; opacity: 0;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18); }
+      .gcell .photo { filter: saturate(0.5) brightness(0.9) contrast(0.92); }
+      .gcell .hd { position: absolute; left: 16px; top: 18px; display: flex; align-items: center; gap: 10px; color: #fff; font-size: 22px; font-weight: 700; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+      .gcell .hd i { display: block; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; background: #bdb6b9; }
+      .acard { position: absolute; width: 300px; border-radius: 34px; overflow: hidden; border: 6px solid #fff; z-index: 19; opacity: 0; box-shadow: 0 20px 50px rgba(90, 0, 30, 0.35); }
+      .acard img { display: block; width: 100%; }
+      .trow { position: absolute; left: 10px; display: flex; gap: 20px; z-index: 4; }
+      .tile { position: relative; flex: none; width: 250px; height: 444px; border-radius: 28px; overflow: hidden; border: 5px solid #fff; background: #333; opacity: 0;
+        box-shadow: 0 8px 18px rgba(90, 20, 40, 0.16), 0 26px 60px rgba(90, 20, 40, 0.22); }
+      .tile .stk { left: 50%; top: 50%; }
+      .tile .bar { position: absolute; left: 14px; right: 14px; top: 12px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.85); z-index: 3; }
+      .tst { position: absolute; left: 50%; top: 58%; width: 230px; text-align: center; color: #fff; z-index: 3; line-height: 0.95;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.55), 0 6px 18px rgba(0,0,0,0.45); }
+      .tst b { display: block; font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
+      .tst i { display: block; font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 40px; font-weight: 400; margin-top: 4px; }
+      .plate { position: absolute; left: 90px; width: 900px; top: 960px; height: 330px; border-radius: 60px; background: rgba(255, 250, 246, 0.94); z-index: 8; opacity: 0;
+        box-shadow: 0 30px 80px rgba(90, 20, 40, 0.25); }
+      .appi { position: absolute; left: 430px; top: 880px; width: 220px; height: 220px; border-radius: 52px; background: #fff; z-index: 20; opacity: 0; overflow: hidden;
+        box-shadow: 0 0 0 10px rgba(240, 84, 138, 0.35), 0 20px 50px rgba(197, 31, 85, 0.45), 0 0 120px rgba(240, 84, 138, 0.8); display: flex; align-items: center; justify-content: center; }
+      .appi img { width: 180px; display: block; }
+      #sD .bg { background: radial-gradient(110% 80% at 50% 45%, #f0548a 0%, #d92e64 55%, #a8174a 100%); }
+      .badge { position: absolute; left: 610px; top: 560px; padding: 20px 30px; border-radius: 34px; background: #fff; z-index: 22; transform: rotate(6deg); opacity: 0; text-align: center;
+        box-shadow: 0 16px 40px rgba(90, 0, 30, 0.35); }
+      .badge b { display: block; font-size: 84px; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+      .badge small { display: block; font-size: 32px; font-weight: 700; color: var(--ink); }
+      #sE .bg { background: radial-gradient(110% 80% at 50% 40%, #fff6f8 0%, #fbdbe5 100%); }
+      .dm.big { border: 5px solid var(--brand); }
+      .dm.big p span { display: inline-block; margin-right: 10px; }
+      .dots { position: absolute; left: 110px; padding: 22px 30px; border-radius: 40px; background: #fff; display: flex; gap: 10px; z-index: 21; opacity: 0; box-shadow: 0 10px 26px rgba(60, 10, 30, 0.18); }
+      .dots i { display: block; width: 18px; height: 18px; border-radius: 50%; background: #b3a7ac; }
+      #sF .bg { background: var(--cream); }
+
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="vb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="vbg" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="34.93" data-width="1080" data-height="1920">
+      <audio id="mix" src="assets/mix-c1.wav" data-start="0" data-duration="34.93" data-volume="1"></audio>
+
+      <!-- A: the note (hook) -->
+      <div id="sA" class="scene clip" data-start="0" data-duration="5.3" data-track-index="0">
+        <div class="inner" id="sA-in">
+          <div class="bg"></div><div class="ruled"></div>
+          <div class="nbar" style="top: 150px"><span>‹ Notas</span><span>Ok</span></div>
+          <div class="ntitle" style="top: 600px">metas pro insta 📌</div>
+          <div class="ndate" style="top: 712px">18 de novembro · 08:12</div>
+          <div class="nitem" id="it1" style="top: 800px"><b>1.</b><span><span id="ty1"></span><i class="caret" id="car1"></i></span>
+            <svg class="strike" viewBox="0 0 760 80"><path id="stk1" d="M6 44 C 140 30, 280 54, 420 38 S 650 30, 754 42" /></svg></div>
+          <div id="pAbox"></div>
+          <div class="qm" id="qm" style="left: 760px; top: 930px">?</div>
+          <div class="cap" id="cA1" style="top: 290px"><span>o</span><span>motivo</span><span>de</span><span class="k">ninguém</span><span class="k">responder</span><span>seus</span><span>stories…</span></div>
+          <div class="cap" id="cA2" style="top: 290px"><span>não</span><span>tem</span><span class="k">nada</span><span>a</span><span>ver</span><span>com</span><span>postar</span><span>mais</span></div>
+        </div>
+      </div>
+
+      <!-- B: ten a day, forty views, zero -->
+      <div id="sB" class="scene clip" data-start="4.6" data-duration="7.3" data-track-index="1">
+        <div class="inner" id="sB-in">
+          <div class="bg"></div>
+          <div id="minis"></div>
+          <div id="pBbox"></div>
+          <div class="bchip" id="views" style="left: 70px; top: 900px">👁 <span id="vN">0</span></div>
+          <div class="bchip red" id="zero" style="left: 560px; top: 900px">💬 0 respostas</div>
+          <div class="ptbox" data-layout-ignore id="ptB"></div>
+          <div class="cap" id="cB1" style="top: 290px"><span>eu</span><span>postava</span><span class="k">10</span><span>stories</span><span>por</span><span>dia</span></div>
+          <div class="cap" id="cB2" style="top: 290px"><span>40</span><span>visualizações.</span><span class="k">zero</span><span class="k">resposta.</span></div>
+        </div>
+      </div>
+
+      <!-- C: the real problem: everyone's story looks the same -->
+      <div id="sC" class="scene clip" data-start="11.4" data-duration="9.6" data-track-index="2">
+        <div class="inner" id="sC-in">
+          <div class="bg"></div>
+          <div id="stack"></div>
+          <div id="grid"></div>
+          <div class="lens" id="lens" style="left: 420px; top: 760px"><i></i><b></b></div>
+          <div class="appi" id="appi"><img src="assets/app/logo-crop.png" alt="" /></div>
+          <div id="curCbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptC"></div>
+          <div class="cap" id="cC1" style="top: 290px"><span>o</span><span>problema</span><span>nunca</span><span>foi</span><span>a</span><span class="k">quantidade</span></div>
+          <div class="cap" id="cC2" style="top: 290px"><span>era</span><span>a</span><span class="k">cara</span><span class="k">do</span><span class="k">story</span></div>
+          <div class="cap" id="cC3" style="top: 290px"><span>foto</span><span>solta,</span><span>sem</span><span>nada,</span><span class="k">igual</span><span class="k">à</span><span class="k">de</span><span class="k">todo</span><span class="k">mundo</span></div>
+          <div class="cap" id="cC4" style="top: 290px"><span>aí</span><span>eu</span><span>achei</span><span>um</span><span class="k">app</span></div>
+        </div>
+      </div>
+
+      <!-- D: the app (drop) -->
+      <div id="sD" class="scene clip" data-start="20.4" data-duration="5.3" data-track-index="3">
+        <div class="inner" id="sD-in">
+          <div class="bg"></div><div class="glow" id="gD" style="opacity: 0.6"></div>
+          <div id="acards"></div>
+          <div class="phone" id="phD" style="left: 183px; top: 321px">
+            <div class="screen" id="scrD">
+              <img id="d-home" src="assets/app/home.png" alt="" />
+              <img id="d-cat" src="assets/app/maisusados.png" style="opacity: 0" alt="" />
+              <img id="d-modal" src="assets/app/modal-legday.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+              <div class="toast" id="toastD"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div>
+              <div class="island"></div>
+            </div>
+          </div>
+          <div class="story" id="stD" style="left: 110px; top: 196px; opacity: 0">
+            <div class="photo" id="stDp" style="filter: saturate(0.45) brightness(0.92)"></div>
+            <div class="sbar"><i><b></b></i></div>
+            <div class="shead"><i></i>seu story <small>· agora</small></div>
+            <img class="stk" id="d-s1" style="left: 130px; top: 820px; width: 600px; opacity: 0" alt="" />
+          </div>
+          <div class="badge" id="badge"><b id="bN">+0</b><small>figurinhas prontas</small></div>
+          <div id="pDbox"></div>
+          <div id="curDbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptD"></div>
+          <div class="cap" id="cD1" style="top: 290px"><span>com</span><span class="k">+24</span><span class="k">mil</span><span>figurinhas</span><span>prontas</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span>é</span><span>só</span><span class="k">copiar</span><span>e</span><span class="k">colar ✌️</span></div>
+        </div>
+      </div>
+
+      <!-- E: replies -->
+      <div id="sE" class="scene clip" data-start="25.0" data-duration="4.5" data-track-index="4">
+        <div class="inner" id="sE-in">
+          <div class="bg"></div><div class="glow2"></div>
+          <div class="story" id="stE" style="left: 110px; top: 196px">
+            <div class="photo" id="stEp"></div>
+            <div class="sbar"><i><b id="sbE"></b></i></div>
+            <div class="shead"><i></i>seu story <small>· 2h</small></div>
+            <img class="stk" id="e-s1" style="left: 330px; top: 250px; width: 460px; transform: rotate(-5deg)" alt="" />
+          </div>
+          <div class="bchip" id="repl" style="left: 610px; top: 560px">💬 <span id="rN">0</span></div>
+          <div class="dm" id="dm1" style="top: 0"><div class="av" style="background: #f08a4b">A</div><div><b>ana.lu <small>agora</small></b><p>amiga que story lindo 😍</p></div></div>
+          <div class="dm" id="dm2" style="top: 0"><div class="av" style="background: #3b82f6">C</div><div><b>carol.m <small>agora</small></b><p>me ensina??</p></div></div>
+          <div class="dots" id="dots" style="top: 1300px"><i></i><i></i><i></i></div>
+          <div class="dm big" id="dm3" style="top: 0"><div class="av" style="background: var(--brand)">B</div><div><b>bia.costa <small>agora</small></b>
+            <p><span>onde</span><span>você</span><span>fez</span><span>esse</span><span>story?? 😍</span></p></div></div>
+          <div id="pEbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptE"></div>
+          <div class="cap" id="cE" style="top: 290px"><span>no</span><span>mesmo</span><span>dia</span><span class="k">chegou</span><span class="k">resposta</span></div>
+        </div>
+      </div>
+
+      <!-- F: CTA -->
+      <div id="sF" class="scene clip" data-start="28.9" data-duration="6.03" data-track-index="5">
+        <div class="inner" id="sF-in">
+          <div class="bg"></div><div class="glow" id="gF"></div><div class="glow2"></div>
+          <div class="trow" id="row1" style="top: 500px"></div>
+          <div class="trow" id="row2" style="top: 1330px"></div>
+          <div class="plate" id="plate"></div>
+          <div class="endlogo" style="top: 990px; z-index: 9"><img id="logo" src="assets/app/logo-t.png" style="width: 640px" alt="Stories Lab" /></div>
+          <div class="cta" id="cta" style="top: 1140px; z-index: 9">Saiba mais<div class="gloss"><i id="ctaG"></i></div></div>
+          <div class="ptbox" data-layout-ignore id="ptF"></div>
+          <div class="cap" id="cF1" style="top: 290px"><span>toca</span><span>em</span><span class="k">saiba</span><span class="k">mais</span><span>e</span><span>vê</span><span>todos</span><span>os</span><span>temas</span></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="34.93" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+
+    </div>
+    <script>
+      const VO = {"take": "1b", "total": 34.93, "lines": [{"text": "O motivo de ninguém responder seus stories não tem nada a ver com postar mais.", "mood": "authority", "start": 0.25, "dur": 4.22, "words": [["O", 0.25, 0.37], ["motivo", 0.37, 0.61], ["de", 0.61, 0.85], ["ninguém", 0.85, 1.23], ["responder", 1.23, 1.69], ["seus", 1.69, 1.99], ["stories", 1.99, 2.49], ["não", 2.49, 2.73], ["tem", 2.73, 2.93], ["nada", 2.93, 3.39], ["a", 3.39, 3.55], ["ver", 3.55, 3.63], ["com", 3.63, 3.77], ["postar", 3.77, 4.13], ["mais.", 4.13, 4.47]]}, {"text": "Eu postava dez stories por dia. Quarenta visualizações. Zero resposta.", "mood": "pain", "start": 4.99, "dur": 5.88, "words": [["Eu", 4.99, 5.35], ["postava", 5.35, 5.77], ["dez", 5.88, 6.056], ["stories", 6.21, 6.65], ["por", 6.65, 6.91], ["dia.", 6.91, 7.27], ["Quarenta", 7.49, 7.842], ["visualizações.", 8.15, 9.07], ["Zero", 9.57, 10.35], ["resposta.", 10.35, 10.87]]}, {"text": "O problema nunca foi a quantidade. Era a cara do story. Foto solta, sem nada, igual à de todo mundo.", "mood": "secret", "start": 11.79, "dur": 7.28, "words": [["O", 11.79, 11.89], ["problema", 11.89, 12.29], ["nunca", 12.29, 12.93], ["foi", 12.93, 13.33], ["a", 13.33, 13.43], ["quantidade.", 13.43, 13.81], ["Era", 14.57, 14.77], ["a", 14.77, 14.87], ["cara", 14.87, 15.23], ["do", 15.23, 15.43], ["story.", 15.43, 15.81], ["Foto", 16.19, 16.49], ["solta,", 16.49, 17.13], ["sem", 17.21, 17.35], ["nada,", 17.35, 17.77], ["igual", 18.13, 18.25], ["à", 18.25, 18.39], ["de", 18.39, 18.45], ["todo", 18.45, 18.63], ["mundo.", 18.63, 19.07]]}, {"text": "Aí eu achei um app com mais de vinte e quatro mil figurinhas prontas. É só copiar e colar.", "mood": "excited", "start": 19.69, "dur": 5.44, "words": [["Aí", 19.69, 19.91], ["eu", 19.91, 20.07], ["achei", 20.07, 20.29], ["um", 20.29, 20.49], ["app", 20.58, 20.724], ["com", 20.85, 21.03], ["mais", 21.03, 21.21], ["de", 21.21, 21.43], ["vinte", 21.52, 21.664], ["e", 21.7, 21.844], ["quatro", 21.88, 22.024], ["mil", 22.15, 22.67], ["figurinhas", 22.67, 23.19], ["prontas.", 23.19, 23.85], ["É", 24.03, 24.15], ["só", 24.15, 24.39], ["copiar", 24.39, 24.73], ["e", 24.73, 24.85], ["colar.", 24.85, 25.13]]}, {"text": "No mesmo dia chegou resposta: onde você fez esse story?", "mood": "triumph", "start": 25.47, "dur": 3.72, "words": [["No", 25.47, 25.67], ["mesmo", 25.67, 26.09], ["dia", 26.09, 26.53], ["chegou", 26.53, 26.81], ["resposta:", 26.87, 27.33], ["onde", 27.73, 27.99], ["você", 27.99, 28.25], ["fez", 28.25, 28.53], ["esse", 28.53, 28.71], ["story?", 28.71, 29.19]]}, {"text": "Toca em saiba mais e vê todos os temas.", "mood": "warm", "start": 29.375, "dur": 2.555, "words": [["Toca", 29.375, 29.671], ["em", 29.93, 30.05], ["saiba", 30.05, 30.37], ["mais", 30.37, 30.63], ["e", 30.63, 30.91], ["vê", 30.91, 31.03], ["todos", 31.03, 31.37], ["os", 31.37, 31.69], ["temas.", 31.69, 31.93]]}]};
+      const TOTAL = 34.93;
+      const tl = gsap.timeline({ paused: true });
+      const w = (ln, i) => VO.lines[ln].words[i][1];
+      const we = (ln, i) => VO.lines[ln].words[i][2];
+      const $ = (s) => document.querySelector(s);
+
+      // seeded PRNG: renders stay deterministic
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+      const ENERGY = {
+        curious: { d: 0.4, ease: "back.out(1.6)", blur: 10, y: 30, rx: 40 },
+        secret: { d: 0.6, ease: "sine.out", blur: 12, y: 16, rx: 0 },
+        melancholy: { d: 0.8, ease: "sine.out", blur: 12, y: 18, rx: 0 },
+        hope: { d: 0.5, ease: "power3.out", blur: 14, y: 26, rx: 40 },
+        excited: { d: 0.34, ease: "back.out(2)", blur: 12, y: 40, rx: 60 },
+        triumph: { d: 0.36, ease: "expo.out", blur: 16, y: 50, rx: 70 },
+        warm: { d: 0.55, ease: "power3.out", blur: 12, y: 24, rx: 30 },
+      };
+      // caption: words revealed across the VO words a..b of line ln
+      const caption = (id, ln, a, b, mood, delay = 0) => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        const t0 = w(ln, a) + delay, t1 = w(ln, b) + delay;
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "back.out(1.8)" }, t0 - 0.12);
+        spans.forEach((s, i) => {
+          const t = spans.length < 2 ? t0 : t0 + ((t1 - t0) * i) / (spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" },
+            { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.06);
+        });
+      };
+      const capOut = (id, t) => tl.to("#" + id, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, t);
+      const out = (sel, t, d = 0.3) => tl.to(sel, { opacity: 0, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const camera = (sel, t0, t1, s0, s1, ease = "none") => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: t1 - t0, ease }, t0);
+      const drift = (sel, t0, t1, amp = 10, rot = 3) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot }, { y: -amp, rotation: rot, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const sweep = (sel, t, d = 0.8) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: 420, duration: d, ease: "power2.inOut" }, t);
+      const pop = (sel, t, rot = 0, s = 1) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.2, rotation: rot - 18, filter: "blur(8px)" }, { opacity: 1, scale: s, rotation: rot, filter: "blur(0px)", duration: 0.5, ease: "back.out(2.2)" }, t);
+      // phone: tap at screen coords (690x1494 space)
+      const tap = (scr, x, y, t) => {
+        const box = document.querySelector(scr);
+        const a = document.createElement("div"); a.className = "tap"; a.style.left = x + "px"; a.style.top = y + "px"; box.appendChild(a);
+        const r = document.createElement("div"); r.className = "ring"; r.style.left = x + "px"; r.style.top = y + "px"; box.appendChild(r);
+        tl.fromTo(a, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 0.8, duration: 0.14, ease: "power2.out" }, t - 0.14);
+        tl.to(a, { opacity: 0, scale: 1, duration: 0.25, ease: "power2.in" }, t + 0.08);
+        tl.fromTo(r, { opacity: 0.9, scale: 0.6 }, { opacity: 0, scale: 2.2, duration: 0.5, ease: "power2.out" }, t);
+      };
+      // swap screens inside a phone: new one slides in from the right (push) or up (modal)
+      const push = (from, to, t, d = 0.42) => {
+        tl.fromTo(to, { x: 690, opacity: 1 }, { x: 0, opacity: 1, duration: d, ease: "power3.inOut" }, t);
+        tl.fromTo(from, { x: 0 }, { x: -230, duration: d, ease: "power3.inOut", immediateRender: false }, t);
+      };
+      const sheet = (to, t, d = 0.5) => tl.fromTo(to, { y: 1494, opacity: 1 }, { y: 0, opacity: 1, duration: d, ease: "expo.out" }, t);
+      const vblur = (from, to, t, d, ease) => {
+        const g = document.getElementById("vbg"), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", "0 " + p.v);
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t);
+      };
+      // particle systems per mood
+      const hearts = (box, t0, n, x0, y0, spread = 700) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const h = document.createElement("div"); h.className = "heart pt"; const s = 0.5 + rnd() * 0.9;
+          h.style.left = x0 + (rnd() - 0.5) * spread + "px"; h.style.top = y0 + "px"; b.appendChild(h);
+          const t = t0 + i * 0.09;
+          tl.fromTo(h, { opacity: 0, scale: 0, y: 0, x: 0, rotation: (rnd() - 0.5) * 40 },
+            { opacity: 1, scale: s, y: -260 - rnd() * 260, x: (rnd() - 0.5) * 160, duration: 0.6, ease: "back.out(2)" }, t);
+          tl.to(h, { opacity: 0, y: "-=320", duration: 1.0, ease: "sine.in" }, t + 0.6);
+        }
+      };
+      const confetti = (box, t, n, x0, y0) => {
+        const b = document.getElementById(box); const cols = ["#d92e64", "#f0548a", "#ffd166", "#ffffff", "#ff9fbf", "#8fd3ff"];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement("i"); c.className = "pt"; const s = 12 + rnd() * 16;
+          Object.assign(c.style, { left: x0 + "px", top: y0 + "px", width: s + "px", height: s * (0.4 + rnd() * 0.6) + "px", background: cols[i % cols.length], borderRadius: i % 3 ? "3px" : "50%" });
+          b.appendChild(c);
+          const a = rnd() * Math.PI * 2, r = 260 + rnd() * 520;
+          tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.4 }, { x: Math.cos(a) * r, y: Math.sin(a) * r * 0.8 - 120, rotation: rnd() * 540, scale: 1, duration: 0.7, ease: "expo.out" }, t);
+          tl.to(c, { y: "+=" + (420 + rnd() * 400), rotation: "+=" + rnd() * 360, opacity: 0, duration: 1.6, ease: "sine.in" }, t + 0.7);
+        }
+      };
+      const sparks = (box, t0, t1, n, color = "rgba(255,210,225,0.95)") => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 6 + rnd() * 12;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: 900 + rnd() * 1000 + "px",
+            background: `radial-gradient(circle, ${color}, rgba(255,255,255,0))`, boxShadow: `0 0 ${s * 2}px ${color}` });
+          b.appendChild(p);
+          const st = t0 + rnd() * (t1 - t0) * 0.6;
+          tl.fromTo(p, { opacity: 0, y: 0 }, { opacity: 1, y: -200 - rnd() * 300, duration: 0.6, ease: "sine.out" }, st);
+          tl.to(p, { opacity: 0, y: "-=" + (200 + rnd() * 300), duration: 1.2, ease: "sine.in" }, st + 0.6);
+        }
+      };
+      const ash = (box, t0, t1, n) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 5 + rnd() * 9;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: -40 + rnd() * 900 + "px", background: "rgba(120,110,115,0.45)" });
+          b.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0, opacity: 0 }, { y: 500 + rnd() * 600, x: (rnd() - 0.5) * 120, opacity: 0.8, duration: t1 - t0, ease: "sine.inOut" }, t0 + rnd() * 0.5);
+        }
+      };
+      const dm = (sel, t, y, fromY = -260) => {
+        tl.fromTo(sel, { opacity: 0, y: fromY, scale: 0.9, rotationX: -40, filter: "blur(10px)" }, { opacity: 1, y, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.55, ease: "back.out(1.4)" }, t);
+      };
+      const storyBar = (sel, t0, t1) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: t1 - t0, ease: "none" }, t0);
+
+      // before/after slider inside the editor screen
+      const slider = (gradeSel, divSel, from, to, t, d) => {
+        const o = { p: from }, g = $(gradeSel), dv = $(divSel);
+        const set = () => { g.style.clipPath = `inset(0 0 0 ${o.p}%)`; dv.style.left = o.p + "%"; };
+        tl.fromTo(o, { p: from }, { p: to, duration: d, ease: "power2.inOut", onUpdate: set, immediateRender: false }, t);
+      };
+      const clock = (sel, from, to, t, d, fmt) => {
+        const o = { v: from }, n = $(sel), set = () => (n.textContent = fmt(o.v));
+        set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "none", onUpdate: set, immediateRender: false }, t);
+      };
+      // ---- illustrated characters: stacked face SVGs, swap = emotion, EyesClosed = blink, .pb breathes ----
+      const peep = (box, id, base, faces, x, y, wd) => {
+        const d = document.createElement("div"); d.className = "peep"; d.id = id;
+        Object.assign(d.style, { left: x + "px", top: y + "px", width: wd + "px", height: (wd * 1200) / 850 + "px" });
+        const b = document.createElement("div"); b.className = "pb"; d.appendChild(b);
+        faces.forEach((f, i) => { const im = document.createElement("img"); im.src = `assets/peeps/${base}-${f}.svg`; im.dataset.f = f; im.style.opacity = i ? 0 : 1; b.appendChild(im); });
+        $(box).appendChild(d); return "#" + id;
+      };
+      const face = (id, f, t) => { tl.set(`#${id} img`, { opacity: 0 }, t); tl.set(`#${id} img[data-f="${f}"]`, { opacity: 1 }, t); };
+      const blinks = (id, times, back) => times.forEach((t) => { face(id, "EyesClosed", t); face(id, back, t + 0.13); });
+      const breathe = (id, t0, t1, amt = 0.018) => tl.fromTo(`#${id} .pb`, { scaleY: 1, scaleX: 1 },
+        { scaleY: 1 + amt, scaleX: 1 - amt / 3, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((t1 - t0) / 1.1)) }, t0);
+      // ---- illustrated cursor: glides, presses, ripple (tip = element top-left) ----
+      const CUR_SVG = '<svg viewBox="0 0 84 104" width="84" height="104"><path d="M8 6 L8 82 L28 64 L42 96 L56 90 L42 58 L70 58 Z" fill="#fff" stroke="#2a1f24" stroke-width="6" stroke-linejoin="round"/></svg>';
+      const cursor = (box, id, x, y) => { const c = document.createElement("div"); c.className = "cur"; c.id = id; c.innerHTML = CUR_SVG; $(box).appendChild(c); gsap.set(c, { x, y }); return "#" + id; };
+      const click = (box, sel, x, y, t, move = 0.5) => {
+        tl.to(sel, { x, y, duration: move, ease: "power3.inOut" }, t - move - 0.05);
+        tl.to(sel, { scale: 0.8, duration: 0.07, yoyo: true, repeat: 1, ease: "power2.out" }, t - 0.05);
+        const r = document.createElement("div"); r.className = "cring"; r.style.left = x + "px"; r.style.top = y + "px"; $(box).appendChild(r);
+        tl.fromTo(r, { opacity: 1, scale: 0.3 }, { opacity: 0, scale: 1.8, duration: 0.5, ease: "power2.out", immediateRender: false }, t);
+      };
+      // ---- typing: text grows char by char (emoji safe) ----
+      const typer = (sel, text, t0, t1) => {
+        const el = $(sel), ch = Array.from(text), o = { n: 0 }, set = () => (el.textContent = ch.slice(0, Math.round(o.n)).join(""));
+        set(); tl.fromTo(o, { n: 0 }, { n: ch.length, duration: t1 - t0, ease: "none", onUpdate: set, immediateRender: false }, t0);
+      };
+      const caretBlink = (sel, t0, t1) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: Math.floor((t1 - t0) / 0.45) }, t0);
+      const draw = (sel, t, d = 0.35) => { const p = $(sel), L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+        tl.fromTo(sel, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease: "power2.out", immediateRender: false }, t); };
+const T = {"TYPE0": 0.3, "TYPE1": 1.85, "STRIKE": 2.44, "B": 4.67, "CARDS": 5.88, "VIEWS": 7.49, "ZERO": 9.57, "C": 11.49, "FAN": 13.43, "FACE": 14.57, "BARE": 17.21, "CLONE": 18.13, "CURIN": 19.69, "DROP": 20.55, "NUM": 21.52, "STK": 22.67, "SHEET": 23.44, "COPY": 24.39, "PASTE": 24.85, "E": 25.17, "DM1": 26.53, "DM2": 27.17, "DM3": 27.73, "F": 28.975, "CTA": 30.05, "TEMAS": 31.03};
+
+      // ALL photos and stickers of G01 live here (every file used exactly once in the video). Swap files here only.
+      const P = {
+        mine: ["cafe-manha-04", "varanda-plantas-03", "selfie-carro-04", "look-espelho-01", "praia-14", "pizza-caseira-23", "pet-04", "mesa-trabalho-12", "feira-03", "bolo-caseiro-21"],
+        stack: ["costura-01", "marmita-07", "mae-filho-08", "aniversario-12", "praia-04", "feira-08", "pizza-caseira-03", "selfie-carro-14"],
+        feed: [["unhas-14", "unhas.dani"], ["sobrancelha-07", "sobrancelha.ka"], ["salao-cabelo-02", "salao.da.lu"], ["lojinha-01", "lojinha.mari"],
+               ["loja-celular-01", "capinhas.da.bia"], ["marmita-12", "marmitas.ju"], ["bolo-caseiro-01", "bolos.da.re"], ["academia-05", "personal.carla"],
+               ["costura-06", "atelie.nina"], ["escritorio-selfie-06", "ana.contabil"], ["mae-filho-13", "mae.da.gabi"], ["pet-14", "luna.e.eu"]],
+        paste: ["academia-00", "stk/academia-e-treino-432"],
+        reply: ["pet-09", "stk2/pet-2"],
+        cta: [["aniversario-07", "html:parabéns|pra mim 🎂", 0, -6], ["bolo-caseiro-06", "html:saiu do|forno 🔥", 0, 4], ["praia-09", "stk2/praia-2", 190, -6], ["academia-10", "stk/academia-e-treino-190", 210, 5],
+              ["selfie-carro-09", "stk/frases-22", 220, -4], ["cafe-manha-14", "stk/bom-dia-25", 96, 0], ["mae-filho-03", "stk2/date-1", 200, 6], ["marmita-17", "stk2/treino-1", 180, -8]],
+      };
+      const IMG = (f) => `assets/org/${f}.jpg`, STKP = (f) => `assets/${f}.webp`;
+      $("#stDp").style.backgroundImage = `url(${IMG(P.paste[0])})`; $("#d-s1").src = STKP(P.paste[1]);
+      $("#stEp").style.backgroundImage = `url(${IMG(P.reply[0])})`; $("#e-s1").src = STKP(P.reply[1]);
+
+      // ---------- A: the note (0 – 5.0) ----------
+      camera("#sA-in", 0, T.B + 0.3, 1.0, 1.06, "sine.inOut");
+      const pA = peep("#pAbox", "pA", "me-device", ["Concerned", "Awe", "EyesClosed", "Calm"], 230, 1010, 620);
+      tl.fromTo(pA, { y: 260 }, { y: 0, duration: 0.7, ease: "expo.out" }, 0);
+      breathe("pA", 0.4, T.B);
+      typer("#ty1", "postar mais stories", T.TYPE0, T.TYPE1);
+      caretBlink("#car1", T.TYPE1, T.B);
+      tl.to(pA, { rotation: -1.5, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.75);
+      caption("cA1", 0, 0, 6, "secret");
+      capOut("cA1", T.STRIKE - 0.12);
+      caption("cA2", 0, 7, 14, "curious");
+      draw("#stk1", T.STRIKE, 0.32);
+      tl.to("#it1 > span", { color: "#b9b0a6", duration: 0.25 }, T.STRIKE + 0.2);
+      tl.fromTo("#it1", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, T.STRIKE + 0.3);
+      face("pA", "Awe", T.STRIKE + 0.1);
+      tl.to(pA, { y: -24, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T.STRIKE + 0.1);
+      pop("#qm", w(0, 9) + 0.05, 10, 1);
+      tl.to("#qm", { y: -20, rotation: -6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, w(0, 9) + 0.55);
+      blinks("pA", [1.6], "Concerned"); blinks("pA", [w(0, 12)], "Awe");
+
+      // A -> B: horizontal blur-smear push
+      tl.to("#sA-in", { x: -1080, filter: "blur(18px)", duration: 0.34, ease: "power3.inOut" }, T.B);
+      tl.fromTo("#sB-in", { x: 1080, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.34, ease: "power3.inOut" }, T.B);
+
+      // ---------- B: ten a day > 40 views > ZERO (4.7 – 11.5) ----------
+      const pB = peep("#pBbox", "pB", "me-device", ["SmileBig", "Smile", "EyesClosed", "Tired", "Concerned"], 230, 960, 620);
+      breathe("pB", T.B, T.C, 0.022);
+      caption("cB1", 1, 0, 5, "excited");
+      tl.to(pB, { rotation: 2, y: -10, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, T.CARDS - 0.1);
+      P.mine.forEach((p, i) => {
+        const d = document.createElement("div"); d.className = "mini";
+        d.innerHTML = `<div class="photo" style="background-image:url(${IMG(p)})"></div>`;
+        const x = 30 + i * 100, y = 520 + Math.abs(i - 4.5) * 20, t = T.CARDS + i * 0.13;
+        Object.assign(d.style, { left: x + "px", top: y + "px" }); $("#minis").appendChild(d);
+        tl.fromTo(d, { x: 745 - x - 75, y: 1500 - y - 130, scale: 0.15, rotation: 0, opacity: 0 },
+          { x: 0, y: 0, scale: 1, rotation: (i - 4.5) * 4, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, t);
+        tl.to(d, { y: 6, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, t + 0.5);
+        // ZERO: colour drains, they fall
+        tl.to(d, { filter: "grayscale(1) brightness(0.8)", duration: 0.25 }, T.ZERO + 0.05);
+        tl.to(d, { y: 1500, rotation: (rnd() - 0.5) * 120, duration: 1.0 + rnd() * 0.4, ease: "power2.in" }, T.ZERO + 0.35 + i * 0.05);
+      });
+      face("pB", "Smile", T.VIEWS - 0.2);
+      capOut("cB1", T.VIEWS - 0.15);
+      caption("cB2", 1, 6, 9, "melancholy");
+      tl.fromTo("#views", { opacity: 0, scale: 0.4, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, T.VIEWS - 0.05);
+      clock("#vN", 0, 40, T.VIEWS + 0.1, 0.9, (v) => Math.round(v) + " visualizações");
+      // ZERO: freeze, thud, she sinks
+      tl.fromTo("#zero", { opacity: 0, scale: 1.8, y: -60 }, { opacity: 1, scale: 1, y: 0, duration: 0.28, ease: "power4.in" }, T.ZERO - 0.25);
+      tl.fromTo("#sB-in", { x: 0 }, { x: 14, duration: 0.04, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.ZERO + 0.03);
+      tl.to("#views", { opacity: 0.35, duration: 0.4 }, T.ZERO + 0.2);
+      face("pB", "Concerned", T.ZERO); face("pB", "Tired", T.ZERO + 0.9);
+      blinks("pB", [6.6, 8.9], "Smile"); blinks("pB", [T.ZERO + 1.7], "Tired");
+      tl.to(pB, { y: 70, rotation: -3, duration: 1.4, ease: "sine.inOut" }, T.ZERO + 0.4);
+      tl.to("#sB .bg", { filter: "saturate(0.2) brightness(0.92)", duration: 1.2 }, T.ZERO + 0.2);
+      camera("#sB-in", T.ZERO + 0.1, T.C + 0.3, 1.0, 1.08, "sine.inOut");
+      ash("ptB", T.ZERO + 0.3, T.C + 0.4, 26);
+
+      // B -> C: push into the dark chip, C opens
+      tl.to("#sB-in", { scale: 2.0, opacity: 0, filter: "blur(16px)", duration: 0.42, ease: "power2.in", transformOrigin: "75% 48%" }, T.C - 0.1);
+      tl.fromTo("#sC-in", { opacity: 0, scale: 0.86, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, T.C + 0.15);
+
+      // ---------- C: quantity was never it (11.5 – 20.6) ----------
+      caption("cC1", 2, 0, 5, "secret");
+      const cards = P.stack.map((p, i) => {
+        const d = document.createElement("div"); d.className = "card";
+        d.innerHTML = `<div class="photo" style="background-image:url(${IMG(p)})"></div>`;
+        $("#stack").appendChild(d); return d; });
+      const NC = cards.length, MC = (NC - 1) / 2;
+      cards.forEach((d, i) => {
+        tl.fromTo(d, { y: 1300, rotation: (rnd() - 0.5) * 60, opacity: 1 }, { y: -i * 3, x: (rnd() - 0.5) * 30, rotation: (rnd() - 0.5) * 10, duration: 0.5, ease: "back.out(1.2)" }, T.C + 0.2 + i * 0.1);
+        tl.to(d, { rotation: (i - MC) * 8, x: (i - MC) * 42, duration: 0.45, ease: "back.out(1.5)" }, T.FAN - 0.1 + i * 0.02);
+        tl.to(d, { rotation: 0, x: 0, y: 0, duration: 0.3, ease: "power3.in" }, T.FACE - 0.4);
+        if (i < NC - 1) tl.to(d, { opacity: 0, duration: 0.2 }, T.FACE - 0.05);
+      });
+      const hero = cards[NC - 1];
+      tl.to(hero, { scale: 1.9, y: -60, duration: 0.55, ease: "expo.out" }, T.FACE - 0.08);
+      capOut("cC1", T.FACE - 0.15);
+      caption("cC2", 2, 6, 10, "curious");
+      tl.fromTo("#lens", { opacity: 0, x: 380, y: 420, rotation: 20 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, T.FACE + 0.25);
+      tl.to("#lens", { x: -120, y: 120, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.FACE + 0.9);
+      capOut("cC2", w(2, 11) - 0.15);
+      caption("cC3", 2, 11, 19, "melancholy");
+      tl.to(hero.querySelector(".photo"), { filter: "saturate(0) brightness(0.85)", duration: 0.5 }, T.BARE);
+      tl.to("#lens", { y: 1400, rotation: 30, duration: 0.5, ease: "power2.in" }, T.BARE + 0.2);
+      // everyone else: 12 different people, 12 different businesses, all posting the same bare photo-only story
+      const cols = [0, 1, 2].map((ci) => { const c = document.createElement("div"); c.className = "fcol"; c.style.left = 70 + ci * 330 + "px"; $("#grid").appendChild(c); return c; });
+      P.feed.forEach(([p, h], k) => {
+        const c = document.createElement("div"); c.className = "gcell";
+        c.innerHTML = `<div class="photo" style="background-image:url(${IMG(p)})"></div><div class="hd"><i></i>${h}</div>`;
+        cols[k % 3].appendChild(c);
+        const t = T.CLONE + 0.1 + k * 0.05;
+        tl.fromTo(c, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.4)" }, t);
+        tl.to(c, { filter: "brightness(0.7) saturate(0)", duration: 0.4 }, T.CURIN);
+      });
+      const FEED = T.DROP + 0.3 - T.CLONE;
+      tl.fromTo(cols[0], { y: 380 }, { y: -560, duration: FEED, ease: "none" }, T.CLONE);
+      tl.fromTo(cols[1], { y: -700 }, { y: 200, duration: FEED, ease: "none" }, T.CLONE);
+      tl.fromTo(cols[2], { y: 300 }, { y: -640, duration: FEED, ease: "none" }, T.CLONE);
+      tl.to(hero, { scale: 0.65, opacity: 0, duration: 0.35, ease: "power3.in" }, T.CLONE + 0.05);
+      camera("#sC-in", T.C, T.DROP, 1.0, 1.05, "sine.inOut");
+      // the one app that is different
+      capOut("cC3", T.CURIN - 0.15);
+      caption("cC4", 3, 0, 4, "curious");
+      tl.fromTo("#appi", { opacity: 0, scale: 0.2, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: "back.out(2)" }, T.CURIN + 0.05);
+      tl.to("#appi", { scale: 1.08, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.CURIN + 0.6);
+      const curC = cursor("#curCbox", "curC", 1150, 1500);
+      tl.set(curC, { opacity: 1 }, T.CURIN);
+      click("#curCbox", curC, 545, 995, T.DROP, 0.7);
+
+      // C -> D: pink iris from the click
+      tl.fromTo("#sD-in", { clipPath: "circle(0% at 50% 52%)" }, { clipPath: "circle(140% at 50% 52%)", duration: 0.55, ease: "expo.out" }, T.DROP + 0.02);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.7, duration: 0.06, immediateRender: false }, T.DROP + 0.05);
+      tl.to("#flash", { opacity: 0, duration: 0.4 }, T.DROP + 0.11);
+
+      // ---------- D: the app (20.6 – 25.2) ----------
+      tl.set("#phD", { scale: 0.66 }, 0);
+      tl.fromTo("#phD", { y: 900, rotationX: 30 }, { y: 0, rotationX: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, T.DROP + 0.05);
+      tl.fromTo("#phD", { rotationY: -7 }, { rotationY: 7, duration: 3.6, ease: "sine.inOut", immediateRender: false }, T.DROP + 0.4);
+      tl.fromTo("#gD", { x: -200 }, { x: 160, y: -200, duration: 5, ease: "sine.inOut" }, T.DROP);
+      caption("cD1", 3, 5, 13, "excited");
+      push("#d-home", "#d-cat", T.NUM - 0.2, 0.35);
+      tl.fromTo("#badge", { opacity: 0, scale: 0.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: 6, duration: 0.5, ease: "back.out(2)" }, T.NUM - 0.05);
+      clock("#bN", 0, 24000, T.NUM, 1.1, (v) => "+" + Math.round(v).toLocaleString("pt-BR"));
+      tl.to("#badge", { scale: 1.12, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T.NUM + 1.1);
+      [["materiais", 40, 560, -9], ["editor", 760, 1100, 8], ["agenda-crop", 30, 1380, -5]].forEach(([f, x, y, r], i) => {
+        const d = document.createElement("div"); d.className = "acard"; d.innerHTML = `<img src="assets/app/${f}.png" alt="" />`;
+        Object.assign(d.style, { left: x + "px", top: y + "px", width: (f === "agenda-crop" ? 360 : 280) + "px" }); $("#acards").appendChild(d);
+        const t = T.STK - 0.1 + i * 0.1;
+        tl.fromTo(d, { x: 540 - x - 140, y: 1080 - y - 200, scale: 0.2, opacity: 0, rotation: 0 }, { x: 0, y: 0, scale: 1, opacity: 1, rotation: r, duration: 0.5, ease: "back.out(1.6)" }, t);
+        tl.to(d, { y: -14, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 0.5);
+        tl.to(d, { x: 540 - x - 140, y: 1080 - y - 200, scale: 0.2, opacity: 0, duration: 0.3, ease: "power3.in" }, T.SHEET - 0.15 + i * 0.03);
+      });
+      tl.to("#badge", { opacity: 0, scale: 0.6, duration: 0.25 }, T.SHEET - 0.1);
+      sheet("#d-modal", T.SHEET, 0.35);
+      const pD = peep("#pDbox", "pD", "me-device", ["SmileBig", "Smile", "EyesClosed"], -70, 1280, 460);
+      tl.fromTo(pD, { x: -400, rotation: -10 }, { x: 0, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, T.DROP + 0.3);
+      breathe("pD", T.DROP + 0.9, T.E);
+      blinks("pD", [22.4, 24.1], "SmileBig");
+      const curD = cursor("#curDbox", "curD", 1150, 1700);
+      tl.set(curD, { opacity: 1 }, T.SHEET);
+      click("#curDbox", curD, 548, 1210, T.COPY, 0.55);
+      tl.to(curD, { opacity: 0, duration: 0.2 }, T.PASTE);
+      tl.fromTo("#toastD", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(1.8)" }, T.COPY + 0.08);
+      capOut("cD1", w(3, 14) - 0.15);
+      caption("cD2", 3, 14, 18, "triumph");
+      tl.to("#phD", { x: 1000, rotationY: 40, duration: 0.32, ease: "power3.in" }, T.PASTE - 0.2);
+      tl.fromTo("#stD", { opacity: 1, x: -1000, rotationY: -35, scale: 0.62 }, { opacity: 1, x: 0, rotationY: 0, scale: 0.62, duration: 0.42, ease: "expo.out" }, T.PASTE - 0.1);
+      tl.fromTo("#d-s1", { opacity: 0, scale: 2.4, rotation: 30, y: -300 }, { opacity: 1, scale: 1, rotation: -4, y: 0, duration: 0.36, ease: "back.out(1.6)" }, T.PASTE + 0.08);
+      tl.to("#stDp", { filter: "saturate(1.1) brightness(1)", duration: 0.35 }, T.PASTE + 0.2);
+      confetti("ptD", T.PASTE + 0.3, 36, 540, 900);
+
+      // D -> E: vertical whip
+      tl.to("#sD-in", { y: -1920, filter: "blur(16px)", duration: 0.34, ease: "power3.in" }, T.E + 0.12);
+      tl.fromTo("#sE-in", { y: 1920, filter: "blur(16px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, T.E + 0.24);
+
+      // ---------- E: the replies (25.3 – 29.2) ----------
+      tl.set("#stE", { scale: 0.56, y: -40 }, 0);
+      storyBar("#sbE", T.E, T.F + 0.5);
+      tl.fromTo("#stE", { rotation: -2 }, { rotation: 2, duration: 4, ease: "sine.inOut", immediateRender: false }, T.E);
+      caption("cE", 4, 0, 4, "triumph");
+      tl.fromTo("#repl", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, T.E + 0.4);
+      clock("#rN", 0, 12, T.DM1, 2.2, (v) => Math.round(v) + (Math.round(v) === 1 ? " resposta" : " respostas"));
+      dm("#dm1", T.DM1, 1040);
+      dm("#dm2", T.DM2, 1200);
+      tl.to("#dm1", { y: 870, opacity: 0.55, scale: 0.94, duration: 0.35, ease: "power2.out" }, T.DM3 - 0.1);
+      tl.to("#dm2", { y: 1030, opacity: 0.55, scale: 0.94, duration: 0.35, ease: "power2.out" }, T.DM3 - 0.1);
+      tl.fromTo("#dots", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, T.DM3 - 0.55);
+      tl.fromTo("#dots i", { y: 0 }, { y: -12, duration: 0.14, yoyo: true, repeat: 3, stagger: 0.07, ease: "sine.inOut" }, T.DM3 - 0.5);
+      tl.to("#dots", { opacity: 0, duration: 0.1 }, T.DM3 - 0.08);
+      dm("#dm3", T.DM3 - 0.1, 1290, 1600);
+      document.querySelectorAll("#dm3 p span").forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, w(4, 5 + i) - 0.05));
+      capOut("cE", T.DM3 + 0.4);
+      const pE = peep("#pEbox", "pE", "me-device", ["LoveGrin", "SmileBig", "EyesClosed"], 600, 1260, 470);
+      tl.fromTo(pE, { y: 600 }, { y: 0, duration: 0.5, ease: "back.out(1.4)" }, T.E + 0.3);
+      tl.to(pE, { y: -26, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 7 }, T.DM1);
+      blinks("pE", [27.0], "LoveGrin"); face("pE", "SmileBig", T.DM3 + 0.3);
+      hearts("ptE", T.DM1 + 0.1, 14, 820, 1500, 400);
+      sparks("ptE", T.DM3, T.F + 0.4, 14);
+
+      // E -> F: iris
+      tl.fromTo("#sF-in", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(140% at 50% 50%)", duration: 0.6, ease: "expo.inOut" }, T.F);
+
+      // ---------- F: CTA ----------
+      tl.fromTo("#gF", { x: -200 }, { x: 200, y: -300, duration: 6, ease: "sine.inOut" }, T.F);
+      caption("cF1", 5, 0, 8, "warm");
+      P.cta.forEach(([p, st, wd, rot], i) => {
+        const d = document.createElement("div"); d.className = "tile";
+        const tall = st.includes("bom-dia"), sh = tall ? "filter: drop-shadow(0 0 3px rgba(0,0,0,0.85)) drop-shadow(0 2px 10px rgba(0,0,0,0.6));" : "";
+        d.innerHTML = `<div class="photo" style="background-image:url(${IMG(p)})"></div><div class="bar"></div>${st.startsWith("html:") ? `<div class="tst" style="transform: translate(-50%, -50%) rotate(${rot}deg)"><b>${st.slice(5).split("|")[0]}</b><i>${st.slice(5).split("|")[1]}</i></div>` : `<img class="stk" src="${STKP(st)}" style="width:${wd}px; ${sh} transform: translate(-50%, -50%) rotate(${rot}deg)" alt="" />`}`;
+        $(i < 4 ? "#row1" : "#row2").appendChild(d);
+        const t = T.F + 0.15 + (i % 4) * 0.08 + (i < 4 ? 0 : 0.12);
+        tl.fromTo(d, { opacity: 0, y: i < 4 ? -120 : 120, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, t);
+        tl.to(d, { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T.TEMAS + (i % 4) * 0.08 + (i < 4 ? 0 : 0.04));
+      });
+      tl.fromTo("#row1", { x: 0 }, { x: -10, duration: TOTAL - T.F, ease: "none" }, T.F);
+      tl.fromTo("#row2", { x: -10 }, { x: 0, duration: TOTAL - T.F, ease: "none" }, T.F);
+      tl.fromTo("#plate", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, T.F + 0.25);
+      tl.fromTo("#logo", { opacity: 0, scale: 0.8, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, T.F + 0.3);
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, T.CTA - 0.1);
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 5 }, T.CTA + 0.5);
+      sweep("#ctaG", T.CTA + 0.4, 0.8); sweep("#ctaG", T.CTA + 2.4, 0.8);
+      sparks("ptF", T.F + 0.3, TOTAL, 14);
+
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

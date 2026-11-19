@@ -1,0 +1,942 @@
+/* 16/11 page rewrite: promise-led hero, first-person CTAs, demo pop-up. Loaded last, overrides older layers. */
+
+/* Hero */
+.hero h1{font-size:clamp(29px,7.7vw,58px);line-height:1.05;letter-spacing:-.02em}
+@media(max-width:699px){
+  .hero h1{font-size:clamp(28px,7.6vw,40px)}
+  .hero .wrap{grid-template-areas:"top" "cta" "fan" "lead" "trust"}
+  .hero .h-cta{margin-top:18px}
+}
+.lp-points{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px;font:500 16.5px/1.38 var(--sans);color:var(--ink)}
+.lp-points li{display:flex;gap:10px;align-items:flex-start}
+.lp-points li::before{content:"";flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;
+  background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
+.lp-points b{color:var(--pink-d)}
+
+/* Hero, composed like a poster: centered, one pink phrase, one highlighter phrase, bold keywords */
+.hero .h-top{text-align:center}
+header.nav{justify-content:center;display:flex}
+header.nav .logo{transform:scale(1.15)}
+.hero h1{font-weight:800;color:#2B2230}
+.hero h1 .lp-hl{color:var(--pink)}
+.hero h1 .lp-mark{color:inherit;background:linear-gradient(transparent 12%,#FFC2D8 12%,#FFC2D8 92%,transparent 92%);padding:0 .12em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.12em}
+.lp-points{max-width:430px;margin-inline:auto;text-align:left}
+.lp-points li{font-weight:400;color:#5C4E60}
+.lp-points b{color:#2B2230;font-weight:700}
+
+/* First-person CTA (owner 16/11: always eye-catching, softly pulsing, prettier).
+   Action colour used nowhere else (green), glossy top, arrow, gentle scale pulse + glow ring + periodic shine. */
+.lp-cta{position:relative;overflow:hidden;isolation:isolate;flex-direction:column;gap:3px;min-height:74px;padding:13px 54px 14px;text-align:center;
+  border-radius:22px;color:#06301A!important;border:1px solid rgba(255,255,255,.55);
+  background:linear-gradient(180deg,#8BF7A8 0%,#45E07A 48%,#22C45F 100%);
+  box-shadow:0 18px 32px -16px rgba(22,163,74,.85),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -4px 0 rgba(6,48,26,.14);
+  animation:lp-pulse 2.4s ease-in-out infinite}
+.lp-cta::before{content:"";position:absolute;right:16px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;z-index:1;
+  background:rgba(6,48,26,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306301A' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/16px no-repeat}
+.lp-cta::after{content:"";position:absolute;inset:-30% auto -30% -45%;width:32%;z-index:0;transform:skewX(-20deg) translateX(0);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:lp-shine 3.6s ease-in-out infinite}
+.lp-cta>span{position:relative;z-index:1}
+.lp-cta-main{font:800 18px/1.15 var(--display);letter-spacing:.01em;text-transform:uppercase}
+.lp-cta-sub{font:600 13.5px/1.2 var(--sans);opacity:.78}
+.lp-cta:hover{filter:brightness(1.04)}
+.lp-cta:active{transform:scale(.97)}
+@keyframes lp-pulse{0%,100%{transform:scale(1);box-shadow:0 18px 32px -16px rgba(22,163,74,.85),0 0 0 0 rgba(69,224,122,.45),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -4px 0 rgba(6,48,26,.14)}
+  50%{transform:scale(1.025);box-shadow:0 22px 36px -16px rgba(22,163,74,.9),0 0 0 10px rgba(69,224,122,0),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -4px 0 rgba(6,48,26,.14)}}
+@keyframes lp-shine{0%,60%{transform:skewX(-20deg) translateX(0)}100%{transform:skewX(-20deg) translateX(560%)}}
+
+/* Sticky bar and the pop-up offer buttons use the same action style */
+.sticky .btn,.ds .dv-cta{color:#06301A!important;border-radius:16px;background:linear-gradient(180deg,#8BF7A8 0%,#45E07A 48%,#22C45F 100%)!important;
+  box-shadow:0 12px 24px -12px rgba(22,163,74,.85),inset 0 1px 0 rgba(255,255,255,.75)!important;font-weight:800;animation:lp-pulse 2.4s ease-in-out infinite!important}
+
+/* Demo pop-up */
+.lp-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(26,12,30,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+.lp-modal.on{opacity:1;pointer-events:auto}
+.lp-box{position:relative;width:100%;max-width:400px;padding:30px 22px 22px;border-radius:28px;background:#fff;text-align:center;
+  box-shadow:0 30px 70px -20px rgba(58,22,64,.55);transform:translateY(24px) scale(.94);transition:transform .38s cubic-bezier(.2,1.4,.4,1)}
+.lp-modal.on .lp-box{transform:none}
+.lp-shot{width:132px;aspect-ratio:9/16;margin:-74px auto 14px;border-radius:18px;border:4px solid #fff;background:#eee center/cover;
+  box-shadow:0 18px 30px -12px rgba(58,22,64,.5);transform:rotate(-4deg)}
+.lp-box h3{margin:0 0 8px;font:800 25px/1.12 var(--display);color:var(--ink)}
+.lp-box h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink)}
+.lp-box p{margin:0 0 18px;font:500 15.5px/1.45 var(--sans);color:var(--muted)}
+.lp-box .lp-cta{width:100%}
+.lp-more{display:block;width:100%;margin-top:10px;min-height:48px;border:2px solid var(--line);border-radius:999px;background:#fff;
+  font:700 15px/1 var(--sans);color:var(--ink);cursor:pointer}
+.lp-x{position:absolute;top:10px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;font-size:22px;color:var(--muted);cursor:pointer}
+
+/* Pain block */
+.lp-pain{background:linear-gradient(180deg,#2A1630 0%,#3A1640 100%);color:#fff}
+.lp-pain .wrap{max-width:640px}
+.lp-pain .kicker{background:rgba(255,255,255,.12);color:#FFD84D}
+.lp-pain h2{color:#fff;margin:12px 0 22px}
+.lp-pain h2 em{color:#FF7AA8}
+.lp-pain-list{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:12px}
+.lp-pain-list li{position:relative;padding:14px 16px 14px 50px;border-radius:16px;background:rgba(255,255,255,.07);font:400 15.5px/1.45 var(--sans);color:rgba(255,255,255,.82)}
+.lp-pain-list li::before{content:"✕";position:absolute;left:14px;top:14px;width:24px;height:24px;border-radius:50%;background:rgba(255,46,116,.22);color:#FF7AA8;font:800 13px/24px var(--sans);text-align:center}
+.lp-pain-list b{color:#fff}
+.lp-turn{margin:0 0 22px;font:500 18px/1.4 var(--sans);color:rgba(255,255,255,.85)}
+.lp-turn b{color:#FFD84D}
+
+/* CTAs inside sections keep a comfortable width */
+section .lp-cta{max-width:440px;margin-inline:auto;display:flex}
+.lp-no{display:block;margin:14px auto 0;text-align:center;font:500 14px/1.3 var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+
+/* Social proof */
+.lp-proof .wrap{max-width:760px}
+.lp-proof-num{display:flex;flex-direction:column;align-items:center;gap:4px;margin:18px auto 26px;padding:18px 20px;max-width:440px;
+  border-radius:22px;background:linear-gradient(135deg,#FFE4EC,#F4ECFF);text-align:center}
+.lp-proof-num b{font:800 44px/1 var(--display);color:var(--pink)}
+.lp-proof-num span{font:500 15px/1.35 var(--sans);color:var(--ink)}
+/* #clientes.lp-proof beats the older cv-blocos/vendas-0711 layers, which forced a horizontal scroller and hid the video */
+#clientes.lp-proof .lp-proof-grid{display:grid;gap:16px;align-items:start;margin-bottom:26px}
+#clientes.lp-proof .sp-vids{display:flex!important;justify-content:center;overflow:visible;margin:0;padding:0}
+#clientes.lp-proof .sp-vid{width:min(62vw,260px);flex:none;aspect-ratio:9/16;border-radius:22px;overflow:hidden;
+  border:5px solid #fff;box-shadow:0 22px 40px -18px rgba(58,22,64,.45);transform:rotate(-2deg);background:#111}
+#clientes.lp-proof .sp-vid video{width:100%;height:100%;object-fit:cover;display:block}
+#clientes.lp-proof .sp-prints{display:flex!important;flex-direction:column!important;gap:10px;overflow:visible;max-width:520px;margin:6px auto 0;padding:0;background:none;border-radius:0}
+#clientes.lp-proof .sp-prints::before{display:none}
+#clientes.lp-proof .sp-print{width:100%;max-height:none;margin:0;padding:0;border-radius:16px;overflow:hidden;background:#0c1014;
+  box-shadow:0 12px 26px -16px rgba(58,22,64,.5)}
+#clientes.lp-proof .sp-print img{width:100%;height:auto;display:block;object-fit:contain}
+#clientes.lp-proof .sp-print:nth-child(odd){transform:rotate(-.6deg)}
+#clientes.lp-proof .sp-print:nth-child(even){transform:rotate(.6deg)}
+#clientes.lp-proof .sp-ph{display:none}
+#clientes.lp-proof .sp-print.empty,#clientes.lp-proof .sp-vid.empty,#clientes.lp-proof .sp-vids.none{display:none!important}
+/* Branded wall behind the prints: brand gradient, faint logo-mark pattern, two stickers, Direct-style header */
+.lp-wall{position:relative;padding:16px 14px 18px;border-radius:28px;overflow:hidden;isolation:isolate;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 80' width='34' height='45'%3E%3Cpath d='M14 4H42Q52 4 52 14V42L24 76H14Q4 76 4 66V14Q4 4 14 4Z' fill='%23ffffff' fill-opacity='.14'/%3E%3C/svg%3E") 0 0/46px 58px,
+    radial-gradient(120% 80% at 0% 0%,#FF5A93 0%,transparent 60%),
+    radial-gradient(100% 70% at 100% 100%,#9B5CFF 0%,transparent 60%),
+    linear-gradient(160deg,#FF2E74 0%,#C2338F 55%,#6E3BD8 100%);
+  box-shadow:0 26px 50px -24px rgba(110,59,216,.6)}
+.lp-wall-head{display:flex;align-items:center;gap:8px;margin:0 2px 14px;color:#fff}
+.lp-wall-head .mk{width:18px;height:24px;flex:none}
+.lp-wall-head b{font:800 17px/1 var(--display)}
+.lp-wall-head b em{font-family:var(--serif);font-style:italic;font-weight:400}
+.lp-wall-head span{margin-left:auto;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.18);font:600 11.5px/1 var(--sans);letter-spacing:.02em}
+.lp-wall-stk{position:absolute;z-index:2;width:74px;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.lp-wall-stk.s1{right:-8px;top:46px;transform:rotate(12deg)}
+.lp-wall-stk.s2{left:-10px;bottom:-6px;transform:rotate(-10deg)}
+#clientes.lp-proof .lp-wall .sp-prints{position:relative;z-index:1;margin:0;gap:12px}
+#clientes.lp-proof .lp-wall .sp-print{position:relative;overflow:visible;width:92%;border:0;border-radius:18px;background:none;
+  box-shadow:none;transform:none!important}
+#clientes.lp-proof .lp-wall .sp-print img{border-radius:18px;box-shadow:0 18px 34px -16px rgba(26,12,30,.7)}
+#clientes.lp-proof .lp-wall .sp-print:nth-child(even){margin-left:auto}
+/* reaction heart, like a liked message */
+#clientes.lp-proof .lp-wall .sp-print::after{content:"❤️";position:absolute;bottom:-9px;width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;font-size:14px;background:#fff;box-shadow:0 6px 14px -4px rgba(26,12,30,.45)}
+#clientes.lp-proof .lp-wall .sp-print::after{right:14px}   /* always right: the sender's photo sits bottom-left */
+/* slide in one by one, from alternating sides (class added by lp.js) */
+.lp-wall.lp-armed .sp-print{opacity:0;transition:opacity .5s ease,translate .6s cubic-bezier(.2,1,.3,1)}
+.lp-wall.lp-armed .sp-print:nth-child(odd){translate:-28px 0}
+.lp-wall.lp-armed .sp-print:nth-child(even){translate:28px 0}
+.lp-wall.lp-armed .sp-print.lp-in{opacity:1;translate:0 0}
+
+@media(min-width:700px){#clientes.lp-proof .lp-proof-grid{grid-template-columns:260px 1fr;gap:28px}#clientes.lp-proof .sp-vid{width:100%}}
+
+/* Offer: one-time payment, made impossible to miss */
+.lp-once{display:flex;align-items:center;gap:12px;width:fit-content;max-width:100%;margin:16px auto 6px;padding:11px 20px 11px 12px;
+  border-radius:999px;background:#fff;border:1.5px solid #BDEBCF;box-shadow:0 10px 24px -16px rgba(20,113,58,.45);text-align:left}
+.lp-once i{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,#46D17D,#22A85A);color:#fff;font:800 17px/1 var(--sans);font-style:normal;box-shadow:0 4px 10px -3px rgba(34,168,90,.6)}
+.lp-once p{margin:0;display:flex;flex-direction:column;gap:2px}
+.lp-once b{font:800 15.5px/1.2 var(--display);color:#14713A}
+.lp-once span{font:500 13.5px/1.3 var(--sans);color:#3E6B50}
+#planos .plan .once.lp-once-pill,#planos .plan.pro .once.lp-once-pill{display:inline-block;margin-top:8px;padding:7px 13px;border-radius:999px;background:#fff!important;color:#14713A!important;
+  opacity:1!important;border:2px solid #34C26B;font:800 13px/1.2 var(--sans)}
+.plan .lp-once-pill::before{content:"✓ ";color:#34C26B}
+
+/* Before/after, slider only */
+.lp-ba .lp-ba-solo{max-width:340px;margin:22px auto 0}
+#transformacao.lp-ba .ba-wrap{display:block!important}   /* vendas-0711.css hid the slider when the section used a video */
+#transformacao.lp-ba .ba-thumbs{display:flex!important}
+/* "Tudo num app só" checklist: readable rows again (cv-blocos had squeezed it into 10px pills and hid the descriptions) */
+#oferta .stack{display:grid!important;gap:9px;max-width:520px;margin:26px auto 0;justify-content:stretch}
+#oferta .stack li{display:grid!important;grid-template-columns:28px 1fr;column-gap:12px;align-items:start;padding:13px 15px;border-radius:16px;
+  background:#fff;border:1px solid var(--line);box-shadow:0 6px 16px -14px rgba(58,22,64,.35);font-size:inherit}
+#oferta .stack li b{font:700 15.5px/1.3 var(--sans);color:var(--ink)}
+#oferta .stack li span{display:block!important;grid-column:2;font:400 13.5px/1.4 var(--sans);color:var(--muted)}
+#oferta .stack li svg.ck{display:block!important;grid-row:span 2}
+#oferta .stack:not(.ck-arm) li::before{display:block!important}
+/* Category ticker now lives inside "tudo num app só" */
+.bonus-sec .cats2{margin:28px 0 6px}
+
+/* Footer trust */
+.lp-trust{margin-top:10px;font:600 13px/1.5 var(--sans);color:var(--ink)}
+.lp-legal{margin-top:8px;font:400 12px/1.5 var(--sans);color:var(--muted);max-width:640px}
+
+/* ===== Motion clean-up (16/11): one calm system instead of ~40 loops fighting for attention =====
+   - buttons: no endless pulse/shine; the shine plays once when a button reaches the screen (lp.js adds .lp-seen)
+   - only the hero CTA and the Premium CTA keep a slow, soft glow
+   - decorative loops (spinning seal, floating stickers, neon border, blinking dot) stop */
+.btn:not(.ghost):not(.lp-cta):not([data-sticky]):not(.dv-cta),.btn:not(.ghost):not(.lp-cta)::after,.vt-cta{animation:none!important}
+.plan.pro{animation:none!important}
+.fan .stk,.seal2 .sg-ring,.hp-chip,.hero h1 .num{animation:none!important}
+.tb-dot{animation:lp-dot 2.4s ease-in-out infinite!important}
+@keyframes lp-dot{0%,100%{opacity:1}50%{opacity:.35}}
+.rv{transition-duration:.5s!important}
+
+@media (prefers-reduced-motion:reduce){.lp-cta,.lp-cta::after{animation:none!important}.lp-box{transition:none}}
+
+/* ===== Premium layer (owner 16/11: "tá tudo muito simples") =====
+   Soft colour mesh behind the page, stronger section titles, depth on cards, stacked "sheets" between sections. */
+body{background:#FFF6F3}
+body::before{content:"";position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;
+  background:radial-gradient(40vmax 30vmax at 0% 0%,#FFD9C2 0%,transparent 60%),
+             radial-gradient(38vmax 30vmax at 100% 8%,#E9DBFF 0%,transparent 60%),
+             radial-gradient(40vmax 30vmax at 50% 100%,#FFD3E3 0%,transparent 65%)}
+.hero{background:transparent!important;position:relative}
+.hero::before{content:"";position:absolute;inset:-60px 0 auto;height:520px;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 55% at 50% 20%,rgba(255,255,255,.85),transparent 70%)}
+header.nav .logo{filter:drop-shadow(0 6px 10px rgba(255,46,116,.25))}
+
+/* Section titles: kicker as a glossy pill, emphasis with a pink→violet gradient instead of a flat colour */
+main section .kicker{transform:none;border-radius:999px;padding:8px 14px;font-size:11.5px!important;letter-spacing:.08em;
+  background:linear-gradient(135deg,#FFE27A,#FFC94D)!important;color:#3A2400!important;box-shadow:0 8px 18px -12px rgba(180,120,0,.7)!important}
+main section .kicker::before{content:"✦ "}
+main section h2{letter-spacing:-.025em;line-height:1.08}
+main section h2 em{background:linear-gradient(90deg,#FF2E74,#B43CF0);-webkit-background-clip:text;background-clip:text;color:transparent!important;
+  -webkit-text-fill-color:transparent;padding:0 .14em .06em}
+.lp-pain h2 em{background:linear-gradient(90deg,#FF8BB3,#D59BFF);-webkit-background-clip:text;background-clip:text}
+
+/* Sections stack like sheets: rounded top, soft shadow on the edge */
+main>section:not(.hero){position:relative;border-radius:34px 34px 0 0;margin-top:-26px;box-shadow:0 -14px 30px -24px rgba(58,22,64,.35)}
+main>section:not(.hero):not(.lp-pain):not(.pack){background:rgba(255,255,255,.78)!important;backdrop-filter:blur(2px)}
+main>section:nth-of-type(odd):not(.hero):not(.lp-pain):not(.pack){background:rgba(255,248,251,.9)!important}
+
+/* Cards get depth */
+#oferta .stack li,.faq details,.g2-list li,.plan:not(.pro){box-shadow:0 14px 30px -22px rgba(58,22,64,.45)!important;border-color:#F4E3EA!important}
+.faq details{border-radius:16px!important;background:#fff!important}
+
+/* Audit fixes 16/11 */
+.lp-proofbar{display:inline-block;margin:0 auto 14px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #F6D7E3;
+  box-shadow:0 10px 22px -16px rgba(255,46,116,.6);font:500 13.5px/1.35 var(--sans);color:#5C4E60}
+.lp-proofbar b{color:var(--pink)}
+.lp-proofbar i{font-style:normal;font-weight:700;color:#2B2230}
+.hero-motion{display:none!important}
+.lp-day{text-align:center;margin:14px auto 0;max-width:460px;font:500 14.5px/1.45 var(--sans);color:var(--ink)}
+.lp-day b{color:#14713A}
+.lp-sample{margin:30px -20px 6px;overflow:hidden}
+.lp-sample .pack-cap{text-align:center;font:800 12px/1 var(--sans);letter-spacing:.12em;color:var(--pink);margin-bottom:12px}
+.bonus div span{display:block;margin-top:4px;font:500 12.5px/1.35 var(--sans);color:var(--muted)}
+.lp-why{max-width:440px;margin:10px auto 0;font:500 14.5px/1.45 var(--sans);color:#5C4E60;text-align:center}
+.lp-why b{color:#2B2230}
+/* Premium price lands with a small bounce after counting down from 197 */
+#planos .plan.pro .price{display:inline-flex;transform-origin:30% 70%;font-variant-numeric:tabular-nums}
+#planos .plan.pro .price.lp-landed{animation:lp-land .55s cubic-bezier(.2,1.6,.4,1)}
+@keyframes lp-land{0%{transform:scale(1.18)}60%{transform:scale(.96)}100%{transform:scale(1)}}
+/* Urgency pill (copy untouched, owner): hot gradient, white text, live dot */
+#planos .ate-tag{display:inline-flex!important;align-items:center;gap:0;white-space:pre;margin:12px auto 0;padding:9px 16px!important;border-radius:999px!important;
+  background:linear-gradient(135deg,#FF2E74,#FF6A3D)!important;color:#fff!important;border:0!important;
+  font:700 14px/1.2 var(--sans)!important;box-shadow:0 12px 24px -14px rgba(255,46,116,.9)!important}
+#planos .ate-tag b{color:#FFE27A!important}
+#planos .ate-tag::before{content:"";margin-right:9px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:lp-live 1.6s ease-out infinite}
+@keyframes lp-live{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}100%{box-shadow:0 0 0 8px rgba(255,255,255,0)}}
+/* Price block clean-up: per-day and social proof live inside the Premium card; one clear comparison below */
+#planos .plan.pro .lp-perday{margin:8px 0 2px;font:500 14px/1.3 var(--sans);color:#FFE3EE}
+#planos .plan.pro .lp-perday b{color:#fff}
+#planos .plan.pro .lp-social{margin:12px 0 0;text-align:center;font:500 13.5px/1.3 var(--sans);color:#FFE3EE}
+#planos .plan.pro .lp-social b{color:#fff}
+.lp-compare{max-width:460px;margin:22px auto 0;padding:16px;border-radius:20px;background:#fff;border:1px solid #F4E3EA;box-shadow:0 14px 30px -22px rgba(58,22,64,.45)}
+.lp-compare-t{margin:0 0 10px;text-align:center;font:800 16px/1.2 var(--display);color:var(--ink)}
+.lp-compare-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;font:500 14.5px/1.2 var(--sans);color:var(--muted)}
+.lp-compare-row b{color:var(--ink);font-weight:700}
+.lp-compare-row small{font:700 14px/1 var(--sans);color:var(--ink)}
+.lp-compare-row.pro{background:linear-gradient(135deg,#FFE4EC,#F4ECFF);color:var(--ink)}
+.lp-compare-row.pro span{font-weight:800;color:var(--pink)}
+.lp-compare-f{margin:12px 2px 0;text-align:center;font:500 14px/1.45 var(--sans);color:#5C4E60}
+.lp-compare-f b{color:var(--ink)}
+
+/* "Como você recebe seu acesso": four tall cards → one swipeable row of phones with numbered steps */
+#acesso .ac-steps{counter-reset:ac;display:flex!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 18px;margin:18px -20px 0;
+  max-width:none;scrollbar-width:none}
+#acesso .ac-steps::-webkit-scrollbar{display:none}
+#acesso .ac-steps li{counter-increment:ac;flex:0 0 min(64vw,240px);scroll-snap-align:center;display:flex!important;flex-direction:column;align-items:center;gap:8px;
+  padding:16px 14px 18px;border-radius:24px;background:#fff;border:1px solid #F4E3EA;text-align:center;box-shadow:0 16px 30px -22px rgba(58,22,64,.5)}
+#acesso .ac-steps li::before{content:counter(ac);display:grid;place-items:center;width:30px;height:30px;margin-bottom:2px;border-radius:50%;
+  background:linear-gradient(135deg,#FF2E74,#B43CF0);color:#fff;font:800 15px/1 var(--display)}
+#acesso .ac-art{width:150px!important;height:auto!important;aspect-ratio:9/16;margin:0 auto 6px;border-radius:22px!important;border:5px solid #1b1320!important;
+  box-shadow:0 14px 24px -14px rgba(26,12,30,.6)}
+#acesso .ac-steps h3{font:800 16.5px/1.2 var(--display)!important;margin:0}
+#acesso .ac-steps h3::first-letter{color:var(--pink)}
+#acesso .ac-steps>li>p{font-size:13.5px!important;line-height:1.4;color:var(--muted);margin:0}
+.lp-swipe{text-align:center;margin:10px 0 0;font:700 12.5px/1 var(--sans);letter-spacing:.04em;color:var(--pink)}
+@media(min-width:900px){#acesso .ac-steps{justify-content:center;overflow:visible}.lp-swipe{display:none}}
+#acesso .ac-steps h3{align-self:center!important;width:100%;text-align:center}
+#acesso .ac-steps h3::first-letter{color:inherit}
+/* owner 16/11: no arrow on the buttons */
+.lp-cta::before{display:none!important}
+.lp-cta{padding-left:24px!important;padding-right:24px!important}
+/* Proof pill, short and on one line (owner: the long version looked bad) */
+.lp-proofbar{display:inline-flex!important;align-items:center;gap:9px;padding:6px 14px 6px 6px!important;white-space:nowrap;font-size:14px!important}
+.lp-pb-stk{display:inline-flex}
+.lp-pb-stk img{width:26px;height:26px;border-radius:50%;object-fit:cover;background:#2B2230;border:2px solid #fff;margin-left:-8px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.lp-pb-stk img:first-child{margin-left:0}
+/* Real sample: big mosaic with the number on top, then the two rows rolling (owner liked this format) */
+.lp-sample-head{padding:0 20px}
+.lp-sample-head h2{margin:12px 0 18px}
+.lp-mosaic{position:relative;margin:0 16px 18px;aspect-ratio:4/3.3;border-radius:28px;overflow:hidden;background:#1b1320;
+  box-shadow:0 26px 50px -24px rgba(58,22,64,.6)}
+.lp-mosaic-grid{position:absolute;inset:-6%;display:grid;grid-template-columns:repeat(6,1fr);gap:5px;animation:lp-pan 18s ease-in-out infinite alternate}
+.lp-mosaic-grid img{width:100%;height:100%;aspect-ratio:9/13;object-fit:cover;border-radius:6px}
+.lp-mosaic::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 50%,rgba(26,12,30,.55),rgba(26,12,30,.25))}
+.lp-mosaic-txt{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 18px;color:#fff}
+.lp-mosaic-txt b{font:800 clamp(52px,16vw,96px)/1 var(--display);letter-spacing:-.03em;color:#FFE27A;text-shadow:0 6px 24px rgba(0,0,0,.45)}
+.lp-mosaic-txt span{margin-top:6px;font:700 clamp(15px,4.4vw,20px)/1.25 var(--display);text-shadow:0 2px 12px rgba(0,0,0,.5)}
+@keyframes lp-pan{from{transform:translate(0,0) scale(1)}to{transform:translate(-3%,-4%) scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.lp-mosaic-grid{animation:none}}
+
+/* Premium list: crisp icons instead of pastel bubbles, a real "bonus" block, and the video course highlighted */
+#planos .plan.pro li{font-size:15px!important;color:#fff!important;align-items:center}
+#planos .plan.pro li::before{width:22px;height:22px;margin-top:0;border-radius:50%;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF2E74' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat!important;
+  box-shadow:0 3px 8px -2px rgba(120,0,40,.45)}
+#planos .plan.pro li.lp-course{display:block;margin:4px 0;padding:12px 14px 12px 46px;position:relative;border-radius:14px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);line-height:1.35}
+#planos .plan.pro li.lp-course::before{content:"▶";position:absolute;left:12px;top:50%;margin-top:-12px;width:24px;height:24px;display:grid;place-items:center;
+  background:#FFE27A!important;color:#3A2400;font-size:10px;padding-left:2px;box-shadow:none}
+#planos .plan.pro li.lp-gift-h{margin-top:8px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.4);font:800 15px/1.2 var(--display)!important;color:#FFE27A!important}
+#planos .plan.pro li.lp-gift-h::before{display:none}
+#planos .plan.pro li.gift::before{content:"BÔNUS";width:auto;height:auto;padding:4px 7px;border-radius:7px;
+  background:linear-gradient(135deg,#FFE27A,#FFC94D)!important;color:#3A2400;font:800 9.5px/1 var(--sans);letter-spacing:.06em;box-shadow:none}
+/* Básico (white card): clean green checks */
+#planos .plan:not(.pro) li:not(.off)::before{background:#E7F8EE url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231FA855' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat!important}
+/* Mosaic background keeps moving: three rows of real sticker sheets rolling in alternate directions */
+.lp-sample{margin-left:-20px!important;margin-right:-20px!important}
+.lp-mosaic{margin:0 20px 18px!important;aspect-ratio:4/3.6!important}
+.lp-mosaic-grid{inset:0!important;display:flex!important;flex-direction:column;justify-content:center;gap:6px;animation:none!important;transform:rotate(-4deg) scale(1.12)}
+.lp-mrow{display:flex;gap:6px;width:max-content;animation:lp-roll 34s linear infinite}
+.lp-mrow.rev{animation-direction:reverse;animation-duration:40s}
+.lp-mrow img{width:92px!important;height:132px!important;flex:none;aspect-ratio:auto!important;object-fit:cover;border-radius:8px}
+@keyframes lp-roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.lp-mrow{animation:none}}
+/* Owner: sheets must fit whole in the frame, like the reference: small upright tiles, four rows, nothing tilted or cropped */
+.lp-mosaic{aspect-ratio:4/3.5!important}
+.lp-mosaic-grid{transform:none!important;gap:5px!important;justify-content:center}
+.lp-mrow{gap:5px}
+.lp-mrow img{width:64px!important;height:114px!important;object-fit:cover;border-radius:6px}
+.lp-mosaic::after{background:radial-gradient(75% 60% at 50% 50%,rgba(26,12,30,.6),rgba(26,12,30,.3))!important}
+/* rows below the frame: smaller cards so more of each sheet shows at once */
+.lp-sample .marquee img{width:112px!important;border-radius:12px}
+.lp-sample .marquee.rev img{width:104px!important}
+.lp-mosaic{aspect-ratio:4/4.8!important}
+.lp-mrow img{width:54px!important;height:96px!important}
+.lp-mosaic{aspect-ratio:auto!important;height:410px}
+
+/* ===== Bonus block redesign (owner: "muito feio") =====
+   One dark "gift box" panel; every bonus is the same clean row: thumbnail, gold BÔNUS tag, title, one-liner. */
+#oferta .stack-plus{margin:34px auto 12px!important;font:800 22px/1.2 var(--display)!important;color:var(--ink)!important;text-align:center}
+#oferta .stack-plus::before{content:"🎁 "}
+#oferta .bonuses{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;max-width:560px;margin:0 auto!important;padding:14px;border-radius:28px;
+  background:radial-gradient(120% 80% at 0% 0%,#5B2266 0%,transparent 60%),linear-gradient(160deg,#3A1640,#24102A);box-shadow:0 26px 50px -26px rgba(36,16,42,.8)}
+#oferta .bonus,#oferta .bonus.cv-bonus-animation{display:grid!important;grid-template-columns:76px 1fr!important;gap:14px!important;align-items:center;padding:10px!important;
+  border-radius:18px!important;background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.1)!important;text-align:left;grid-column:auto!important}
+#oferta .bonus>img,#oferta .bonus .cv-bonus-live{width:76px!important;height:76px!important;aspect-ratio:1!important;object-fit:cover;object-position:50% 38%;border-radius:12px!important;overflow:hidden}
+#oferta .bonus>div{padding:0!important}
+#oferta .bonus small{display:inline-block;padding:4px 8px;border-radius:7px;background:linear-gradient(135deg,#FFE27A,#FFC94D);color:#3A2400!important;
+  font:800 10px/1 var(--sans)!important;letter-spacing:.06em}
+#oferta .bonus b{display:block;margin-top:6px!important;font:800 16px/1.2 var(--display)!important;color:#fff!important}
+#oferta .bonus div span,#oferta .cv-bonus-animation span{display:block;margin-top:3px!important;font:500 13px/1.35 var(--sans)!important;color:rgba(255,255,255,.72)!important}
+@media(min-width:760px){#oferta .bonuses{grid-template-columns:1fr 1fr!important;max-width:820px}}
+/* Vertical ticker of bonuses */
+#oferta .bonuses.lp-roll{display:block!important;height:440px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 9%,#000 91%,transparent 100%)}
+.lp-btrack{display:grid;gap:10px;animation:lp-up 30s linear infinite}
+.lp-btrack>.bonus{margin:0!important}
+#oferta .bonuses.lp-roll:hover .lp-btrack,#oferta .bonuses.lp-roll:active .lp-btrack{animation-play-state:paused}
+@keyframes lp-up{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 5px))}}
+@media(min-width:760px){.lp-btrack{grid-template-columns:1fr 1fr}}
+/* Bonus icons replace the slide screenshots */
+.lp-bico{display:grid;place-items:center;width:76px;height:76px;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 20px -12px rgba(0,0,0,.6)}
+.lp-bico svg{width:36px;height:36px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.25))}
+.lp-bico.g1{background:linear-gradient(135deg,#FFB86B,#FF5E8A)}
+.lp-bico.g2{background:linear-gradient(135deg,#FF7AB6,#B43CF0)}
+.lp-bico.g3{background:linear-gradient(135deg,#7AA8FF,#7B4DFF)}
+.lp-bico.g4{background:linear-gradient(135deg,#FF5A7A,#FF2E74)}
+.lp-bico.g5{background:linear-gradient(135deg,#44D7B6,#1FA07A)}
+.lp-bico.g6{background:linear-gradient(135deg,#FFD25E,#FF8A3D)}
+/* Bonus covers: the real professional covers, bigger so they read */
+#oferta .bonus,#oferta .bonus.cv-bonus-animation{grid-template-columns:96px 1fr!important}
+#oferta .bonus>img.lp-bcover,#oferta .bonus .cv-bonus-live{width:96px!important;height:96px!important;object-fit:cover;object-position:center;border-radius:14px!important}
+#oferta{padding-bottom:72px!important}
+
+/* ===== Bonus covers v3: two columns of big covers rolling up/down (replaces the dark list) ===== */
+#oferta .bonuses.lp-bcols{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;height:560px;overflow:hidden;padding:0!important;
+  background:none!important;box-shadow:none!important;border-radius:0!important;max-width:560px;
+  -webkit-mask-image:linear-gradient(transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 7%,#000 93%,transparent 100%)}
+#oferta .bonuses.lp-still{height:auto;-webkit-mask-image:none;mask-image:none}
+.lp-bcol{display:flex;flex-direction:column;gap:10px;animation:lp-up 28s linear infinite}
+.lp-bcol.down{animation-name:lp-down;animation-duration:32s}
+#oferta .bonuses.lp-bcols:hover .lp-bcol{animation-play-state:paused}
+@keyframes lp-down{from{transform:translateY(calc(-50% - 5px))}to{transform:translateY(0)}}
+#oferta .lp-bcols .bonus,#oferta .lp-bcols .bonus.cv-bonus-animation{display:block!important;position:relative;padding:0!important;border:0!important;border-radius:20px!important;
+  overflow:hidden;background:#fff!important;box-shadow:0 16px 30px -18px rgba(58,22,64,.55)!important}
+#oferta .lp-bcols .bonus>img,#oferta .lp-bcols .bonus .cv-bonus-live{display:block;width:100%!important;height:auto!important;aspect-ratio:1!important;border-radius:0!important;object-fit:cover}
+#oferta .lp-bcols .bonus>div{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 12px!important;
+  background:linear-gradient(transparent,rgba(26,12,30,.82) 55%)}
+#oferta .lp-bcols .bonus small{font-size:9.5px!important}
+#oferta .lp-bcols .bonus b{margin-top:5px!important;font:800 14.5px/1.2 var(--display)!important;color:#fff!important}
+#oferta .lp-bcols .bonus div span{display:none!important}
+/* Mosaic v3: columns roll vertically, alternating up/down (owner) */
+.lp-mosaic-grid.lp-vert{flex-direction:row!important;justify-content:center;align-items:flex-start;gap:5px!important;inset:0!important}
+.lp-mcol{display:flex;flex-direction:column;gap:5px;flex:none;animation:lp-up 26s linear infinite}
+.lp-mcol.down{animation-name:lp-down;animation-duration:30s}
+.lp-mcol img{width:54px;height:96px;object-fit:cover;border-radius:6px;flex:none}
+@media (prefers-reduced-motion:reduce){.lp-mcol{animation:none}}
+/* bonus columns hold 3 copies; move by one copy (gap 10px) */
+.lp-bcol{animation-name:lp-up3!important}
+.lp-bcol.down{animation-name:lp-down3!important}
+@keyframes lp-up3{from{transform:translateY(0)}to{transform:translateY(calc(-33.3333% - 3.3333px))}}
+@keyframes lp-down3{from{transform:translateY(calc(-33.3333% - 3.3333px))}to{transform:translateY(0)}}
+#xpScenes .lp-mine{background:linear-gradient(135deg,#FF2E74,#B43CF0)!important;color:#fff!important;border-color:transparent!important;font-weight:800!important;
+  box-shadow:0 10px 20px -10px rgba(255,46,116,.8)!important}
+/* Demo hint "Toque para criar": pink pill that pulses, with a ring rippling out (owner: animate it) */
+#xpPhone .xp-hint{background:linear-gradient(135deg,#FF2E74,#B43CF0)!important;color:#fff!important;font:800 15px/1.2 var(--sans)!important;padding:12px 18px!important;
+  border-radius:999px!important;box-shadow:0 12px 26px -10px rgba(255,46,116,.9)!important;animation:lp-hint 1.6s ease-in-out infinite!important}
+#xpPhone .xp-hint span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.25);font-size:18px;line-height:1}
+#xpPhone .xp-hint::after{content:""!important;display:block!important;position:absolute;inset:-6px;border-radius:inherit;border:3px solid rgba(255,46,116,.75);
+  animation:lp-ring 1.6s ease-out infinite!important;pointer-events:none}
+@keyframes lp-hint{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes lp-ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+@media (prefers-reduced-motion:reduce){#xpPhone .xp-hint,#xpPhone .xp-hint::after{animation:none!important}}
+/* Hero: a fast wall of finished stories, two rows passing in opposite directions (owner: show the variety) */
+.hero .lp-storywall{grid-area:trust;margin:18px -20px 0;overflow:hidden}
+.lp-sw-t{text-align:center;margin:0 0 10px;font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
+.lp-swrow{display:flex;gap:8px;width:max-content;animation:lp-roll 26s linear infinite}
+.lp-swrow+.lp-swrow{margin-top:8px}
+.lp-swrow.rev{animation-direction:reverse;animation-duration:30s}
+.lp-swrow img{width:92px;height:164px;object-fit:cover;border-radius:14px;flex:none;box-shadow:0 10px 18px -12px rgba(58,22,64,.55)}
+@media (prefers-reduced-motion:reduce){.lp-swrow{animation:none}}
+/* fan swap: quick pop instead of a slow fade */
+.fan .card img{transition:transform .35s cubic-bezier(.2,1.4,.4,1)}
+.hero .lp-storywall{grid-area:auto!important;grid-row:99;grid-column:1/-1}
+.lp-swrow img:not([src]){background:#f3e6ec}
+
+/* ===== Hero reel: Instagram-style story viewer with cube turns ===== */
+.fan.lp-reel{position:relative;height:auto!important;max-width:none!important;width:100%;margin:22px auto 6px!important;display:flex;justify-content:center}
+.lp-phone{--w:224px;--h:112px;position:relative;width:var(--w);aspect-ratio:9/16;border-radius:30px;background:#111;
+  border:6px solid #1b1320;box-shadow:0 30px 60px -24px rgba(58,22,64,.65);overflow:hidden;perspective:900px}
+.lp-cube{position:absolute;inset:0;transform-style:preserve-3d;transform:translateZ(calc(-1 * var(--h)));transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.lp-cube.turn{transform:translateZ(calc(-1 * var(--h))) rotateY(-90deg)}
+.lp-face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden}
+.lp-face.f{transform:translateZ(var(--h))}
+.lp-face.r{transform:rotateY(90deg) translateZ(var(--h))}
+.lp-bars{position:absolute;top:8px;left:8px;right:8px;z-index:2;display:flex;gap:3px}
+.lp-bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+.lp-bars i::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.lp-bars i.done::after{transform:scaleX(1)}
+.lp-bars i.run::after{animation:lp-bar 1.8s linear forwards}
+@keyframes lp-bar{to{transform:scaleX(1)}}
+.lp-ig{position:absolute;top:18px;left:10px;z-index:2;display:flex;align-items:center;gap:6px;color:#fff;font:600 11px/1 var(--sans);text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.lp-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#FF2E74,#FFD84D);border:2px solid #fff}
+.lp-ig i{font-style:normal;opacity:.75;font-weight:500}
+.lp-bubbles{position:absolute;inset:0;pointer-events:none}
+.lp-bub{position:absolute;top:58%;padding:9px 13px;border-radius:16px;background:#fff;color:#2B2230;font:700 12.5px/1.2 var(--sans);white-space:nowrap;
+  box-shadow:0 14px 28px -12px rgba(58,22,64,.55);animation:lp-bub 2.6s cubic-bezier(.2,1.2,.4,1) forwards;z-index:3}
+.lp-bub.r{right:calc(50% - 190px)}
+.lp-bub.l{left:calc(50% - 190px)}
+@keyframes lp-bub{0%{opacity:0;transform:translateY(16px) scale(.8)}12%{opacity:1;transform:none}75%{opacity:1;transform:translateY(-34px)}100%{opacity:0;transform:translateY(-48px)}}
+@media(max-width:420px){.lp-bub.r{right:4px}.lp-bub.l{left:4px}}
+@media(min-width:700px){.lp-phone{--w:270px;--h:135px}}
+.lp-sample-head .lead{margin:-6px auto 18px;max-width:420px}
+.lp-sample-sub{text-align:center;margin:6px 20px 4px;font:800 15px/1.3 var(--display);color:var(--ink)}
+.lp-mcol img{background:#2a1a30}
+/* Frame always filled edge to edge: columns share the width, tiles scale with it (no dark side bars on wider screens) */
+.lp-mosaic-grid.lp-vert{justify-content:stretch!important;padding:0 5px}
+.lp-mcol{flex:1 1 0!important;min-width:0}
+.lp-mcol img{width:100%!important;height:auto!important;aspect-ratio:9/16}
+
+/* ===== Hero reel v2: real iPhone mockup + story UI + live interactions ===== */
+.lp-device{position:relative;padding:9px;border-radius:46px;
+  background:linear-gradient(145deg,#4a4350,#1d1822 35%,#2c2632 65%,#0f0c12);
+  box-shadow:0 40px 70px -28px rgba(58,22,64,.7),inset 0 0 0 1.5px rgba(255,255,255,.18),inset 0 0 0 3px #0c0a0e}
+.lp-btn{position:absolute;width:3px;border-radius:2px;background:linear-gradient(#5a5260,#2a242e)}
+.lp-btn.b1{left:-3px;top:92px;height:22px}.lp-btn.b2{left:-3px;top:128px;height:42px}.lp-btn.b3{left:-3px;top:178px;height:42px}
+.lp-btn.b4{right:-3px;top:138px;height:64px}
+.lp-device .lp-phone{border:0;border-radius:37px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.lp-island{position:absolute;top:9px;left:50%;translate:-50% 0;z-index:4;width:78px;height:23px;border-radius:999px;background:#000}
+.lp-status{position:absolute;top:12px;left:22px;right:20px;z-index:3;display:flex;justify-content:space-between;color:#fff;font:700 11px/1 var(--sans);text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.lp-status span{font-size:8px;letter-spacing:1px;opacity:.95}
+.lp-device .lp-bars{top:40px}
+.lp-device .lp-ig{top:50px}
+.lp-bars i.run::after{animation-duration:1.25s!important}
+.lp-cube{transition-duration:.52s!important}
+/* bottom bar of a story */
+.lp-send{position:absolute;left:10px;right:10px;bottom:12px;z-index:3;display:flex;align-items:center;gap:10px;color:#fff}
+.lp-send span{flex:1;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.7);font:500 10.5px/1 var(--sans);text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.lp-send i{font-style:normal;font-size:17px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+/* floating hearts / emoji rising from the heart button */
+.lp-hearts{position:absolute;right:30px;bottom:44px;width:30px;height:60%;z-index:3;pointer-events:none}
+.lp-heart{position:absolute;bottom:0;left:50%;font-size:20px;animation:lp-float var(--d,2.2s) ease-out forwards;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+@keyframes lp-float{0%{opacity:0;transform:translate(-50%,0) scale(.5)}15%{opacity:1;transform:translate(calc(-50% + var(--x)*.3),-20px) scale(1.1)}
+  100%{opacity:0;transform:translate(calc(-50% + var(--x)),-220px) scale(.9)}}
+/* replies land as DM toasts at the bottom of the story */
+.lp-toasts{position:absolute;left:10px;right:10px;bottom:54px;z-index:3;pointer-events:none}
+.lp-toast{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:14px;
+  background:rgba(255,255,255,.95);box-shadow:0 10px 20px -10px rgba(0,0,0,.5);animation:lp-toast 2.3s cubic-bezier(.2,1.2,.4,1) forwards}
+.lp-tav{width:22px;height:22px;flex:none;border-radius:50%;background:linear-gradient(135deg,#B43CF0,#FF2E74)}
+.lp-toast p{margin:0;font:500 10px/1.25 var(--sans);color:#6b5d70}
+.lp-toast b{color:#2B2230}
+.lp-toast p span{display:block;font:700 11.5px/1.25 var(--sans);color:#2B2230}
+@keyframes lp-toast{0%{opacity:0;transform:translateY(20px) scale(.92)}12%{opacity:1;transform:none}80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-14px)}}
+.lp-bub{animation-duration:2.4s!important}
+@media(max-width:420px){.lp-cta-main{font-size:16px!important}}
+/* Bigger iPhone (owner): ~78% of the phone screen width, up to 330px on desktop */
+.lp-phone{--w:min(76vw,300px)!important;--h:calc(var(--w) / 2)!important}
+@media(min-width:700px){.lp-phone{--w:330px!important}}
+.lp-island{width:30%;height:26px}
+.lp-btn.b1{top:16%}.lp-btn.b2{top:24%;height:9%}.lp-btn.b3{top:35%;height:9%}.lp-btn.b4{top:27%;height:13%}
+.lp-send span{font-size:12px;padding:10px 14px}
+.lp-toast p{font-size:11px}.lp-toast p span{font-size:13px}
+.lp-ig{font-size:12.5px}
+/* Real iPhone proportions (19.5:9) and corner radius, so it stops looking like an egg */
+.lp-device .lp-phone{aspect-ratio:9/19.5!important;border-radius:42px}
+.lp-device{border-radius:52px;padding:10px}
+.lp-phone{--w:min(70vw,290px)!important}
+@media(min-width:700px){.lp-phone{--w:300px!important}}
+/* Reactions pushed out to the sides of the phone (owner), at varied heights */
+.lp-bubbles{left:-6px!important;right:-6px!important}
+.lp-bub.r{right:0!important;left:auto!important}
+.lp-bub.l{left:0!important;right:auto!important}
+.lp-bub{max-width:62%;white-space:normal!important;font-size:13px!important}
+@media(min-width:520px){.lp-bub{max-width:240px}}
+/* Story fits the tall iPhone like the real Instagram: full 9:16 story, black strips above (status) and below (reply bar) */
+.lp-device .lp-phone{background:#000}
+.lp-stage{position:absolute;left:0;right:0;top:calc(var(--w) * .13);height:calc(var(--w) * 16 / 9);overflow:hidden;border-radius:12px;perspective:900px}
+.lp-stage .lp-cube{position:absolute;inset:0}
+.lp-device .lp-bars{top:calc(var(--w) * .13 + 8px)}
+.lp-device .lp-ig{top:calc(var(--w) * .13 + 18px)}
+.lp-device .lp-send{bottom:calc(var(--w) * .055)}
+.lp-device .lp-toasts{bottom:calc(var(--w) * .27 + 10px)}
+.lp-device .lp-hearts{bottom:calc(var(--w) * .27 + 6px)}
+.lp-status{top:14px}
+/* Reactions v2: frosted glass chips, emoji in a soft circle, glide in from the side with a blur, float, then dissolve */
+.lp-bub{display:inline-flex!important;align-items:center;gap:7px;padding:6px 12px 6px 6px!important;border-radius:999px!important;
+  background:rgba(255,255,255,.78)!important;backdrop-filter:blur(10px) saturate(1.4);-webkit-backdrop-filter:blur(10px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.9);color:#2B2230!important;font:600 12px/1.25 var(--sans)!important;
+  box-shadow:0 10px 24px -14px rgba(58,22,64,.45)!important;animation:lp-bub2 3s cubic-bezier(.22,1,.36,1) forwards!important}
+.lp-bub i{display:grid;place-items:center;width:24px;height:24px;flex:none;border-radius:50%;font-style:normal;font-size:13px;
+  background:linear-gradient(135deg,#FFE4EC,#F4ECFF)}
+.lp-bub.l{--from:-22px}.lp-bub.r{--from:22px}
+@keyframes lp-bub2{
+  0%{opacity:0;filter:blur(6px);transform:translateX(var(--from)) scale(.92)}
+  14%{opacity:1;filter:blur(0);transform:none}
+  70%{opacity:1;transform:translateY(-10px)}
+  100%{opacity:0;filter:blur(4px);transform:translateY(-22px) scale(.97)}}
+/* DM toast: same glass, gentler entrance */
+.lp-toast{background:rgba(255,255,255,.86)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);
+  animation:lp-toast2 2.3s cubic-bezier(.22,1,.36,1) forwards!important}
+@keyframes lp-toast2{0%{opacity:0;filter:blur(5px);transform:translateY(14px)}15%{opacity:1;filter:blur(0);transform:none}82%{opacity:1}100%{opacity:0;transform:translateY(-8px)}}
+/* hearts: smaller and softer */
+.lp-heart{font-size:16px!important;opacity:.95}
+img.lp-tav{width:26px;height:26px;object-fit:cover;background:none;border:2px solid #fff;box-shadow:0 0 0 1.5px #FF2E74}
+.lp-av{background:url(/img/av-1.webp) center/cover,linear-gradient(135deg,#FF2E74,#FFD84D)!important;box-shadow:0 0 0 2px #FF2E74}
+/* Hero reel v3 (owner 16/11): faster turns (0.9 s). Reactions stay sharp while readable, then blur and slide
+   out to the side in one quick motion, so a new one replaces them instead of a smudge lingering on screen. */
+.lp-cube{transition-duration:.42s!important}
+.lp-bars i.run::after{animation-duration:.9s!important}
+.lp-bub{animation:lp-bub3 2.4s linear forwards!important}
+@keyframes lp-bub3{
+  0%{opacity:0;filter:blur(8px);transform:translateX(var(--from)) scale(.9);animation-timing-function:cubic-bezier(.22,1,.36,1)}
+  14%{opacity:1;filter:blur(0);transform:none;animation-timing-function:linear}
+  74%{opacity:1;filter:blur(0);transform:translateY(-8px);animation-timing-function:cubic-bezier(.55,0,.75,.2)}
+  100%{opacity:0;filter:blur(10px);transform:translate(var(--from),-14px) scale(.96)}}
+.lp-toast{animation-duration:1.8s!important}
+#clientes.lp-proof .lp-proof-grid{grid-template-columns:1fr!important}
+/* Downsell v3 (owner 16/11): centered on phones (it was stuck to the left edge), access time first in the
+   comparison, bigger bonus covers, painful decline link under the green button. */
+dialog.ds{margin:auto!important;width:min(380px,calc(100vw - 20px))!important;max-height:calc(100dvh - 20px)}
+#downsell .dv-top{text-align:center}
+#downsell .dv-top h3{font-size:clamp(25px,7.2vw,31px);line-height:1.08}
+#downsell .dv-sub{margin:8px 0 0;color:#FFE4EF;font-size:14px;line-height:1.35}
+#downsell .dv-sub b{color:#fff}
+#downsell .dv-cmp td.t{font:800 13.5px/1.1 var(--sans);color:var(--muted)}
+#downsell .dv-cmp td.pro.t{color:var(--pink)}
+#downsell .ds-bonus{display:block!important;text-align:center;padding:12px!important}
+#downsell .ds-bonus .th{display:grid!important;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 10px;width:auto!important}
+#downsell .ds-bonus .th img{width:100%!important;height:auto!important;aspect-ratio:1;object-fit:cover;border-radius:12px;margin:0!important;
+  box-shadow:0 8px 16px -10px rgba(58,22,64,.5);transform:none!important;position:static!important}
+#downsell .ds-bonus p{margin:0;font-size:13.5px}
+#downsell .ds-note{margin:8px 0 2px}
+#downsell .ds-no{font-size:13.5px;color:#8A7A8E}
+/* keep the green button on the first screen of a phone */
+#downsell .dv-top{padding:18px 20px 14px!important}
+#downsell .dv-price.dv-center{margin:10px 0 8px!important}
+#downsell .dv-price.dv-center b{font-size:46px!important}
+#downsell .dv-off{padding:5px 9px;margin-bottom:2px}
+#downsell .dv-cmp{font-size:13.5px}
+#downsell .dv-cmp th,#downsell .dv-cmp td{padding:7px 8px!important}
+#downsell .ds-bonus{padding:10px!important;margin-bottom:12px!important}
+#downsell .ds-bonus .th{width:78%!important;margin:0 auto 8px}
+#downsell .dv-cta{font-size:17px!important;letter-spacing:-.01em}
+/* Speed: the browser skips layout and paint of sections far below the screen until she scrolls near them */
+#reacoes,#transformacao,#clientes,#oferta,#planos,section.g2,section[data-reach="faq"],#acesso,section[data-reach="final"]{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* Bonus columns: each column keeps its own height (it was stretched to the taller one), so the loop shifts
+   by exactly one copy of its own covers and never leaves a blank gap at the bottom */
+#oferta .bonuses.lp-bcols{align-items:start!important}
+/* "Pagamento único" pill v2 (owner 16/11: the green outline looked cheap). Frosted glass on the pink
+   Premium card, soft blush on the white Básico card, check in a small round badge. */
+#planos .plan .once.lp-once-pill{display:inline-flex!important;align-items:center;gap:7px;padding:6px 13px 6px 6px!important;
+  border:1px solid #F1DCE6!important;background:#FBF3F7!important;color:#5B4660!important;font:700 12.5px/1.2 var(--sans)!important;
+  letter-spacing:.01em;box-shadow:none!important}
+#planos .plan .lp-once-pill::before{content:"✓"!important;display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;
+  background:var(--pink);color:#fff!important;font:900 11px/1 var(--sans)}
+#planos .plan.pro .once.lp-once-pill{background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.42)!important;color:#fff!important;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)!important}
+#planos .plan.pro .lp-once-pill::before{background:#fff;color:var(--pink)!important}
+/* Premium plan button: same bright green and dark text as the hero CTA (it still carried the old darker
+   gradient with white text), one line of copy, so less height */
+#planos .plan.pro .btn.lp-cta{background:linear-gradient(180deg,#8BF7A8 0%,#45E07A 48%,#22C45F 100%)!important;color:#06301A!important;
+  text-shadow:none!important;min-height:64px;padding:12px 18px!important}
+#planos .plan.pro .btn.lp-cta .lp-cta-main{color:#06301A!important;font-size:17px;line-height:1.15}
+/* Big idea under the hero headline (copy audit 16/11) */
+.hero .lp-bigidea{margin:10px 0 4px;font:600 16px/1.35 var(--sans);color:var(--ink)}
+.hero .lp-bigidea em{font:italic 400 1.22em/1.1 "Instrument Serif",Georgia,serif;color:var(--pink);white-space:nowrap}
+@media(max-width:380px){.hero .lp-bigidea em{white-space:normal}}
+.hero .lp-bigidea em{display:block;white-space:normal;margin-top:2px}
+/* Big idea moved (owner 16/11): it now titles the story wall under the phone instead of the hero */
+.lp-storywall .lp-bigidea{margin:0 16px 14px;text-align:center;font:700 17px/1.3 var(--display);color:var(--ink)}
+.lp-storywall .lp-bigidea em{display:block;margin-top:2px;font:italic 400 1.35em/1.1 "Instrument Serif",Georgia,serif;color:var(--pink)}
+/* Accessibility (16/11): small pink text on the light background read at 3.7:1; a deeper pink reaches 4.5:1+ */
+.cats2-h b,#acesso .lp-swipe,.ac-steps .mk-btn{color:#C2185B!important}
+.ac-steps .mk-copy{color:#0E7A43!important;border-color:#0E7A43!important}
+/* Accessibility pass 2: every text at 4.5:1 or better (checked over the whole page, not only what Lighthouse sees) */
+.lp-storywall .lp-bigidea em{color:#C2185B}
+.ba .t-sem{background:rgba(26,12,30,.82)!important}
+.ba .t-com{background:#C2185B!important}
+.plan li.off{color:#7A6578!important}
+#planos .plan.pro .save{background:#0E7A43!important}
+.dv-off{background:#0E7A43!important}
+.dv-price s,.ds-v2 .ds-note,.dv-foot{color:#7A6578!important}
+.dv-cmp th.pro{background:#C2185B!important}
+#downsell .dv-cmp td.pro.t{color:#C2185B}
+.ds-v2 .ds-no,#downsell .ds-no{color:#6E5E6B!important}
+.ac-steps .ac-mail2 small{color:#666!important}
+/* Experimente v2 (owner 16/11: better stickers + experience). Tiles show the sticker on the current photo
+   (hers or the scene's) under a soft shade, so white stickers stand out; the chosen one gets a pink ring. */
+#xp .xp-tray button{background-image:linear-gradient(rgba(26,10,30,.22),rgba(26,10,30,.42)),var(--bg,linear-gradient(#cdb9c4,#a8909f))!important;
+  background-size:cover!important;background-position:center!important;background-color:#b9a4b1!important;
+  box-shadow:0 6px 14px -8px rgba(58,22,64,.5)!important;transition:transform .15s ease,box-shadow .15s ease}
+#xp .xp-tray button img{filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+#xp .xp-tray button.on{box-shadow:0 0 0 2.5px #fff,0 0 0 5px #FF2E74,0 8px 16px -8px rgba(58,22,64,.55)!important}
+#xp .xp-tray button:active{transform:scale(.94)}
+#xp .xp-tray-l{color:var(--ink)!important;font-weight:800!important}
+/* "Pronto" button: soft while empty, green CTA once a sticker is on the Story */
+#xp #xpSave{border-radius:12px!important;font-weight:800!important;transition:background .2s ease,color .2s ease}
+#xp #xpSave:disabled{background:#F3E8EE!important;color:#9A8A9E!important;cursor:default}
+#xp #xpSave:not(:disabled){background:linear-gradient(180deg,#8BF7A8,#22C45F)!important;color:#06301A!important;
+  box-shadow:0 10px 18px -10px rgba(22,163,74,.8)!important;animation:lp-pulse 2.4s ease-in-out infinite}
+/* Audit 16/11: BÔNUS 01's live photo is a div, so the caption overlay rule (.bonus>div, absolute) caught it and
+   the card collapsed to 0 px. Keep it in the flow like the cover images of the other bonuses. */
+#oferta .lp-bcols .bonus>.cv-bonus-live{position:relative!important;inset:auto!important;padding:0!important;background:none!important;aspect-ratio:1}
+/* Plans intro in one box (audit 16/11): the launch-price reason moved inside, so the price card comes up sooner */
+.lp-once span b{font:inherit;font-weight:700;color:#14713A}
+.lp-once{max-width:min(440px,100%)}
+/* the loop copies are clones made after the scroll-reveal hid the cards (.rv), and the reveal never sees them:
+   cards inside the moving columns are always visible */
+#oferta .lp-bcols .bonus{opacity:1!important;transform:none!important}
+
+/* Sticky bar price (owner 18/11): "De R$ 197 por" readable above the R$ 27 */
+.sticky small{font-size:12px!important;line-height:1.1;color:#6E5A70}
+.sticky small s{text-decoration-thickness:1.5px;text-decoration-color:#E01A5E}
+
+/* ===== Green CTA v2 (owner 18/11): white text, richer green, a shine that keeps sweeping =====
+   Applies to every action button: hero, plans, final, proof, sticky bar and the pop-up offers. */
+.lp-cta,.sticky .btn,.ds .dv-cta,#planos .plan.pro .btn.lp-cta{
+  background:linear-gradient(180deg,#3BE584 0%,#17B65A 48%,#0B8E43 100%)!important;color:#fff!important;
+  text-shadow:0 1px 2px rgba(0,55,22,.45)!important;border:1px solid rgba(255,255,255,.4)!important;
+  box-shadow:0 16px 30px -12px rgba(11,142,67,.8),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(0,60,25,.28)!important}
+#planos .plan.pro .btn.lp-cta .lp-cta-main,.lp-cta .lp-cta-main{color:#fff!important}
+.lp-cta .lp-cta-sub{opacity:.95;color:#fff}
+.lp-cta::before{background:rgba(255,255,255,.22) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/16px no-repeat!important}
+.lp-cta::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)!important;animation:lp-shine 3s ease-in-out infinite!important}
+.sticky .btn,.ds .dv-cta{position:relative;overflow:hidden;isolation:isolate}
+.sticky .btn::after,.ds .dv-cta::after{content:"";position:absolute;top:-30%;bottom:-30%;left:-45%;width:32%;z-index:-1;pointer-events:none;
+  transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:lp-shine 3s ease-in-out infinite!important}
+.ds .dv-cta>span{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){.sticky .btn::after,.ds .dv-cta::after,.lp-cta::after{animation:none!important;display:none}}
+/* Social proof count (owner 18/11): one quiet line like the one under the Premium button, so the prints fit the screen */
+.lp-proof-line{margin:8px auto 16px;text-align:center;font:500 14px/1.3 var(--sans);color:var(--muted)}
+.lp-proof-line b{color:var(--ink)}
+/* Premium price reveal (owner 18/11): strike "De R$ 197", then R$ 27 rises in with a soft spring */
+#planos .plan.pro.lp-arm .old s{text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 55%/0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)}
+#planos .plan.pro.lp-go .old s{background-size:100% 2px}
+#planos .plan.pro.lp-arm .price{opacity:0;transform:translateY(10px) scale(.96);filter:blur(4px)}
+#planos .plan.pro.lp-go .price{opacity:1;transform:none;filter:none;
+  transition:opacity .3s ease .05s,transform .45s cubic-bezier(.2,1.3,.4,1) .05s,filter .3s ease .05s}
+/* Hero (owner 18/11): short headline + lighter line under it; iPhone/Android under the first button */
+.hero .lp-hsub{margin:8px 0 0;font:500 clamp(18px,4.8vw,24px)/1.25 var(--sans);color:#7A6680;letter-spacing:-.005em}
+.hero .lp-os{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px 0 0;font:600 13px/1 var(--sans);color:#6E5A70}
+.hero .lp-os svg{width:14px;height:14px;fill:currentColor;flex:none}
+.hero .lp-os i{font-style:normal;margin:0 4px;opacity:.6}
+/* Hero sizes (owner 18/11: subtitle and bullets were too big) */
+.hero .lp-hsub{font-size:clamp(15.5px,4.1vw,19px)!important;margin-top:6px}
+.hero .lp-points{font-size:14.5px;gap:7px;margin-top:13px}
+.hero .lp-points li{gap:8px}
+.hero .lp-points li::before{width:18px;height:18px;margin-top:1px;background-size:11px}
+/* Pain section v2 (owner 18/11: "muito extensa", ugly): four one-line pains in one glass card, one closing line */
+.lp-pain .wrap{text-align:center}
+.lp-pain h2{margin:10px 0 18px}
+.lp-pain-v2{max-width:420px;margin:0 auto 18px!important;padding:4px 18px!important;gap:0!important;text-align:left;
+  border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.lp-pain-v2 li{padding:14px 0 14px 34px!important;border-radius:0!important;background:none!important;font:500 15.5px/1.35 var(--sans)!important;color:rgba(255,255,255,.72)!important}
+.lp-pain-v2 li+li{border-top:1px solid rgba(255,255,255,.09)}
+.lp-pain-v2 li::before{left:0!important;top:50%!important;margin-top:-11px;width:22px!important;height:22px!important;font:800 11px/22px var(--sans)!important}
+.lp-pain-v2 b{color:#fff;font-weight:700}
+.lp-turn-v2{margin:0 0 18px;font:600 17px/1.3 var(--sans);color:rgba(255,255,255,.8)}
+.lp-turn-v2 b{color:#FFD84D}
+/* Hero on phones (owner 18/11): the button sits under the phone */
+@media(max-width:699px){.hero .wrap{grid-template-areas:"top" "fan" "cta" "lead" "trust"!important}.hero .h-cta{margin-top:4px}}
+@media(max-width:400px){.lp-pain-v2{padding:2px 14px!important}.lp-pain-v2 li{font-size:14.5px!important;padding-left:30px!important;text-wrap:balance}}
+/* "Tudo que faltava" v2 (owner 18/11): three mini iPhones (same frame as the hero), title only; perks as three small tiles */
+#oferta .lp-tools-lead{max-width:420px;margin-inline:auto}
+.lp-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:540px;margin:26px auto 0}
+.lp-tools figure{margin:0;text-align:center;min-width:0}
+.lp-mini{padding:4px;border-radius:24px;background:linear-gradient(145deg,#4a4350,#1d1822 35%,#2c2632 65%,#0f0c12);
+  box-shadow:0 20px 32px -18px rgba(58,22,64,.6),inset 0 0 0 1px rgba(255,255,255,.18)}
+.lp-mini-scr{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#000;isolation:isolate}
+.lp-mini-scr video,.lp-mini-scr>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0!important;box-shadow:none!important;aspect-ratio:auto!important}
+.lp-mini-isl{position:absolute;top:5px;left:50%;translate:-50% 0;width:30%;height:8px;border-radius:99px;background:#000;z-index:3}
+.lp-cam-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-around;padding:22% 6% 9%;
+  background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.lp-cam-bar i{width:28%;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(0,0,0,.55),0 0 0 4px #fff}
+.lp-cam-bar svg{width:15%;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lp-tools figcaption{margin-top:12px;font:700 13.5px/1.25 var(--sans);color:var(--ink);padding:0!important}
+.lp-perks{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:540px;margin:24px auto 0;padding:0}
+.lp-perks li{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;border-radius:16px;background:#fff;border:1px solid #F4E3EA;
+  box-shadow:0 14px 26px -22px rgba(58,22,64,.5);text-align:center;font:700 12.5px/1.25 var(--sans);color:var(--ink)}
+.lp-perks svg{width:30px;height:30px;padding:6px;border-radius:50%;background:#FFE4EE;fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:700px){.lp-tools{gap:24px}.lp-mini{padding:6px;border-radius:32px}.lp-mini-scr{border-radius:27px}.lp-mini-isl{top:8px;height:11px}
+  .lp-tools figcaption{font-size:15.5px}.lp-perks li{font-size:14px;flex-direction:row;justify-content:center;padding:14px}}
+/* +60 categorias v2 (owner 18/11): real category covers from the app instead of emoji pills; two rows drifting in opposite directions */
+.bonus-sec .cats2 .lp-cats-row{overflow:hidden;margin:0 -16px;padding:4px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.bonus-sec .cats2 .lp-cats-row+.lp-cats-row{margin-top:10px}
+.lp-cats-track{display:flex;gap:10px;width:max-content;animation:lpCats 46s linear infinite}
+.lp-cats-row.r2 .lp-cats-track{animation-direction:reverse;animation-duration:52s}
+@keyframes lpCats{to{transform:translateX(calc(-50% - 5px))}}
+.lp-cats-track figure{position:relative;margin:0;flex:0 0 auto;width:104px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#2a1f2e;
+  box-shadow:0 14px 24px -18px rgba(58,22,64,.65)}
+.lp-cats-track img{width:100%;height:100%;object-fit:cover;display:block}
+.lp-cats-track figure::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(20,10,22,.78))}
+.lp-cats-track figcaption{position:absolute;left:10px;right:8px;bottom:9px;z-index:1;font:700 12.5px/1.15 var(--sans);color:#fff;text-align:left;letter-spacing:-.01em}
+@media(min-width:700px){.lp-cats-track figure{width:132px;border-radius:22px}.lp-cats-track figcaption{font-size:14px;left:12px;bottom:11px}
+  .bonus-sec .cats2 .lp-cats-row{margin:0;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}}
+@media(prefers-reduced-motion:reduce){.lp-cats-track{animation:none}}
+.bonus-sec .cats2 .lp-cats-row{padding:4px 0 22px}
+.bonus-sec .cats2 .lp-cats-row+.lp-cats-row{margin-top:-12px}
+.bonus-sec .cats2-h,.bonus-sec .cats2-f{text-wrap:balance}
+.bonus-sec .cats2-f{margin-top:2px}
+/* Bonuses v3 (owner 18/11): compact, glanceable list instead of big rolling covers */
+.bonus-sec .lp-bm-h{font:700 17px/1.3 var(--sans)!important;margin-top:34px!important;color:var(--ink)}
+.bonus-sec .lp-bm-h b{color:#C2185B}
+.lp-bmini{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:560px;margin:14px auto 0;padding:0}
+.lp-bmini li{display:flex;align-items:center;gap:10px;padding:7px 10px 7px 7px;border-radius:14px;background:#fff;border:1px solid #F4E3EA;min-width:0}
+.lp-bmini li>img,.lp-bm-anim{flex:0 0 auto;width:42px;height:42px;border-radius:10px;object-fit:cover;display:block}
+.lp-bm-anim{position:relative;overflow:hidden}
+.lp-bm-anim img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lp-bm-anim img+img{inset:12%;width:76%;height:76%;object-fit:contain}
+.lp-bmini b{font:700 12.5px/1.25 var(--sans);color:var(--ink);min-width:0}
+.lp-bmini li:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 4px)}
+@media(min-width:700px){.lp-bmini{grid-template-columns:repeat(3,1fr);max-width:720px;gap:10px}.lp-bmini b{font-size:13.5px}
+  .lp-bmini li:last-child:nth-child(odd){grid-column:auto;width:auto}.lp-bmini li:first-child{grid-column:1/-1;justify-self:center;width:calc(33.33% - 7px)}}
+.bonus-sec .lp-bm-h{text-wrap:balance;font-size:16.5px!important}
+#oferta .lp-bm-h{font:700 17px/1.3 var(--sans)!important;margin-top:34px!important}#oferta .lp-bm-h b{white-space:nowrap}
+/* Hero phone sized by screen height on mobile, so headline, bullets and the whole phone share the first fold (owner 18/11) */
+@media(max-width:699px){
+  .lp-phone{--w:clamp(150px,calc((100svh - 410px) * .45),min(70vw,290px))!important}
+  .fan.lp-reel{margin:14px auto 4px!important}
+}
+/* Calmer hero reactions (owner 18/11): smaller bubbles, DMs and hearts */
+.lp-bub{font-size:11.5px!important;padding:4px 10px 4px 4px!important;max-width:54%}
+.lp-bub i{width:20px!important;height:20px!important;font-size:11px!important}
+.lp-toast{padding:6px 8px!important;gap:6px!important;transform-origin:bottom center;scale:.88}
+.lp-toast p{font-size:9.5px!important}.lp-toast p span{font-size:11px!important}
+.lp-heart{font-size:13px!important}
+/* Hero v3 (owner 18/11): headline alone, bigger, then one line of objections; no feature bullets */
+.hero h1#heroH1{font-size:clamp(38px,10.6vw,64px)!important;line-height:1.04!important;letter-spacing:-.03em}
+.hero .lp-hsub-v2{margin-top:14px!important;font:500 clamp(15px,4.1vw,19px)/1.4 var(--sans)!important;color:#7A6680;text-wrap:balance}
+.hero .lp-hsub-v2 span{white-space:nowrap}
+@media(max-width:699px){.lp-phone{--w:clamp(150px,calc((100svh - 360px) * .45),min(72vw,290px))!important}}
+@media(max-width:699px){.lp-phone{--w:clamp(150px,calc((100svh - 405px) * .45),min(72vw,290px))!important}}
+/* Premium card v3 (owner 18/11): same clean look as the Básico (white card, dark price), thin pink frame,
+   short list and the 7 bonuses in one line, so the buy button comes much sooner */
+#planos .plans .plan.pro.lp-pro2{background:#fff!important;border:1.5px solid #F2A5C2!important;color:var(--ink)!important;
+  box-shadow:0 22px 44px -30px rgba(194,24,91,.45)!important;animation:none!important;padding-top:26px!important}
+#planos .plans .plan.pro.lp-pro2::before,#planos .plans .plan.pro.lp-pro2::after{display:none!important;content:none!important}
+#planos .plan.pro.lp-pro2 .badge{background:#C2185B!important;color:#fff!important;border:0!important;box-shadow:0 6px 14px -6px rgba(194,24,91,.6)!important;
+  font:700 11px/1 var(--sans)!important;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px!important}
+#planos .plan.pro.lp-pro2 h3{color:var(--ink)!important}
+#planos .plan.pro.lp-pro2 .old{color:var(--muted)!important}
+#planos .plan.pro.lp-pro2 .old s{color:#B8A9BC}
+#planos .plans .plan.pro.lp-pro2 .price,#planos .plan.pro.lp-pro2 .price small,#planos .plan.pro.lp-pro2 .price span{color:var(--ink)!important;text-shadow:none!important}
+#planos .plan.pro.lp-pro2 .once.lp-once-pill{background:#EAF8F0!important;border:1px solid #BFE9D0!important;color:#14713A!important}
+#planos .plan.pro.lp-pro2 .lp-once-pill::before{background:#1FA85A!important;color:#fff!important}
+#planos .plan.pro.lp-pro2 ul{margin:14px 0 0!important;gap:8px!important}
+#planos .plans .plan.pro.lp-pro2 li{color:var(--ink)!important;font-size:15px!important;line-height:1.35!important;align-items:flex-start}
+#planos .plans .plan.pro.lp-pro2 li b{color:var(--ink)!important}
+#planos .plan.pro.lp-pro2 li::before{background:#E9F7EF!important;color:#1FA85A!important;border:0!important;box-shadow:none!important;width:20px!important;height:20px!important;margin-top:1px!important}
+.lp-pro-gift{display:flex;align-items:center;gap:12px;margin:14px 0 16px;padding:10px 12px;border-radius:14px;background:#FFF4F8;border:1px solid #F8DCE7}
+.lp-pro-thumbs{display:flex;flex:none}
+.lp-pro-thumbs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-9px;box-shadow:0 2px 6px rgba(58,22,64,.18)}
+.lp-pro-thumbs img:first-child{margin-left:0}
+.lp-pro-gift p{margin:0;min-width:0;font:500 12.5px/1.3 var(--sans);color:var(--muted)}
+.lp-pro-gift b{display:block;font:700 14.5px/1.25 var(--sans);color:#C2185B}
+#planos .plan.pro.lp-pro2 .micro,#planos .plan.pro.lp-pro2 .micro span{color:var(--muted)!important}
+#planos .plan.pro.lp-pro2 .micro svg{color:#1FA85A}
+#planos .plan.pro.lp-pro2 .lp-social{color:var(--muted)!important}
+#planos .plan.pro.lp-pro2 .lp-social b{color:var(--ink)!important}
+#planos .plan.pro.lp-pro2 li::before{content:""!important;background:#E7F8EE url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231FA855' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat!important;border-radius:50%!important;flex:none}
+
+/* Premium card: pulsing badge and light running around the pink border (owner 18/11) */
+@property --lp-ring{syntax:'<angle>';inherits:false;initial-value:0deg}
+#planos .plan.pro.lp-pro2 .badge{font:800 12.5px/1 var(--sans)!important;padding:9px 16px!important;letter-spacing:.07em;z-index:2!important;
+  animation:lpBadgePulse 2.2s cubic-bezier(.4,0,.2,1) infinite!important}
+@keyframes lpBadgePulse{
+  0%,100%{scale:1;box-shadow:0 6px 14px -6px rgba(194,24,91,.6),0 0 0 0 rgba(194,24,91,.38)}
+  50%{scale:1.06;box-shadow:0 8px 18px -6px rgba(194,24,91,.7),0 0 0 7px rgba(194,24,91,0)}}
+#planos .plans .plan.pro.lp-pro2::after{display:block!important;content:""!important;position:absolute!important;inset:-2px!important;
+  border-radius:inherit!important;padding:2.5px!important;pointer-events:none;z-index:1;opacity:1!important;transform:none!important;
+  background:conic-gradient(from var(--lp-ring),transparent 0 52%,rgba(233,30,99,.25) 64%,#E91E63 76%,#FF7AAE 82%,#E91E63 88%,rgba(233,30,99,.25) 95%,transparent 100%)!important;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:lpRing 3.4s linear infinite!important;filter:drop-shadow(0 0 6px rgba(233,30,99,.6))}
+@keyframes lpRing{to{--lp-ring:360deg}}
+@media(prefers-reduced-motion:reduce){#planos .plan.pro.lp-pro2 .badge,#planos .plans .plan.pro.lp-pro2::after{animation:none!important}}
+
+/* Sample wall: small tiles fade in as they arrive; headline names the three tools (owner 18/11) */
+.lp-mcol img{opacity:0;transition:opacity .45s ease}
+.lp-mcol img.on{opacity:1}
+.lp-mosaic-txt.lp-mtxt2 b{font:800 clamp(30px,8.9vw,60px)/1.04!important;font-family:var(--display)!important;letter-spacing:-.03em;color:#FFE27A;text-shadow:0 6px 24px rgba(0,0,0,.5)}
+.lp-mosaic-txt.lp-mtxt2 span{margin-top:10px}
+
+/* Social proof v2: one compact row of real messages sliding sideways, no big pink frame (owner 18/11) */
+#clientes.lp-proof .lp-proof-line{margin:10px 0 0!important}
+.lp-proof2{margin:18px 0 22px}
+.lp-pv-row{overflow:hidden;margin:0 -16px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.lp-pv-track{display:flex;align-items:center;gap:12px;width:max-content;padding:10px 0 16px;animation:lpPv 70s linear infinite}
+.lp-pv-row:hover .lp-pv-track,.lp-pv-row:active .lp-pv-track{animation-play-state:paused}
+@keyframes lpPv{to{transform:translateX(calc(-50% - 6px))}}
+.lp-pv{flex:none;width:272px;margin:0;border-radius:16px;overflow:hidden;background:#12161b;box-shadow:0 14px 26px -18px rgba(26,12,30,.55)}
+.lp-pv img{display:block;width:100%;height:auto;opacity:0;transition:opacity .4s ease}
+.lp-pv img.on{opacity:1}
+.lp-pv-cap{margin:2px 0 0;text-align:center;font:600 12.5px/1.3 var(--sans);color:var(--muted)}
+@media(min-width:700px){.lp-pv{width:320px}.lp-pv-row{margin:0;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}}
+@media(prefers-reduced-motion:reduce){.lp-pv-track{animation:none}.lp-pv-row{overflow-x:auto}}
+
+/* FAQ compact (owner 18/11): one grouped card with hairline rows instead of twelve separate cards */
+[data-reach="faq"] .faq{gap:0!important;margin-top:20px!important;background:#fff;border:1px solid #F4E3EA;border-radius:20px;overflow:hidden;
+  box-shadow:0 14px 30px -24px rgba(58,22,64,.4)}
+[data-reach="faq"] .faq details{border:0!important;border-bottom:1px solid #F4E3EA!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;padding:0 16px!important}
+[data-reach="faq"] .faq details:last-child{border-bottom:0!important}
+[data-reach="faq"] .faq details[open]{background:#FFFAFB!important}
+[data-reach="faq"] .faq summary{min-height:48px!important;padding:12px 0!important;font-size:14.5px!important;line-height:1.3!important}
+[data-reach="faq"] .faq summary::after{font-size:22px}
+[data-reach="faq"] .faq details p{padding:0 0 14px!important;font-size:14px!important;line-height:1.55!important}
+
+/* Hero iPhone v2 (owner 18/11): titanium edge, thin black bezel, real Dynamic Island, real status icons, glass glare */
+.hero .lp-device{--bz:calc(var(--w) * .034);padding:var(--bz)!important;border-radius:calc(var(--w) * .2)!important;background:#050506!important;
+  box-shadow:0 46px 70px -34px rgba(58,22,64,.6),0 18px 30px -22px rgba(0,0,0,.45)!important;isolation:isolate}
+.hero .lp-device::before{content:"";position:absolute;inset:-3px;z-index:-1;border-radius:calc(var(--w) * .2 + 3px);padding:3px;
+  background:linear-gradient(155deg,#a8a2ad 0%,#4a4650 14%,#24222a 38%,#3d3a43 62%,#1b191f 82%,#8f8996 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.hero .lp-device::after{content:"";position:absolute;inset:var(--bz);z-index:6;pointer-events:none;border-radius:calc(var(--w) * .2 - var(--bz));
+  background:linear-gradient(118deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,.04) 22%,transparent 38%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.hero .lp-device .lp-phone{border-radius:calc(var(--w) * .2 - var(--bz))!important;box-shadow:none!important}
+.hero .lp-btn{width:3px!important;background:linear-gradient(90deg,#2a272e,#6d6873 60%,#3a363f)!important;border-radius:2px}
+.hero .lp-btn.b1,.hero .lp-btn.b2,.hero .lp-btn.b3{left:-5px!important;border-radius:2px 0 0 2px}
+.hero .lp-btn.b4{right:-5px!important;border-radius:0 2px 2px 0}
+.hero .lp-island{top:calc(var(--w) * .03)!important;width:32%!important;height:calc(var(--w) * .092)!important;background:#000!important;
+  box-shadow:inset 0 0 0 .5px rgba(255,255,255,.06)}
+.hero .lp-island::after{content:"";position:absolute;right:13%;top:50%;translate:0 -50%;width:calc(var(--w) * .036);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#3b4a6b 0 18%,#141a28 45%,#07080c 70%)}
+.hero .lp-status{top:calc(var(--w) * .052)!important;left:9.5%!important;right:8%!important;align-items:center;
+  font:600 calc(var(--w) * .052)/1 -apple-system,"SF Pro Text",var(--sans)!important;letter-spacing:-.01em;text-shadow:none!important}
+.hero .lp-status b{font-weight:600;width:22%;text-align:center}
+.hero .lp-sicons{display:flex;align-items:center;gap:calc(var(--w) * .016);color:#fff}
+.hero .lp-sicons svg{height:calc(var(--w) * .04);width:auto;fill:currentColor}
+.hero .lp-sicons .lp-batt{height:calc(var(--w) * .046)}
+.hero .lp-send span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:calc(var(--w) * .05)!important;padding:calc(var(--w) * .035) calc(var(--w) * .05)!important}
+/* the frame needs the phone width too: --w now lives on the device and the screen inherits it */
+.hero .lp-device{--w:300px}
+@media(max-width:699px){.hero .lp-device{--w:clamp(150px,calc((100svh - 405px) * .45),min(72vw,290px))}}
+.hero .lp-device .lp-phone{--w:inherit!important}
+/* Hero objection line v3 (owner 18/11): "Sem Drive. Sem horas no Canva. Mesmo sem saber editar nada.", a bit smaller */
+.hero .lp-hsub-v2{font-size:clamp(14px,3.85vw,17.5px)!important;margin-top:12px!important}
+
+/* Hero 3 phones preview v2 (owner 18/11): smaller center reel so the sides show more, live editor video on the left,
+   camera on the right taking photos (focus, flash, thumbnail), all three floating gently */
+.hero .lp-reel{--cw:240px}
+@media(max-width:699px){.hero .lp-reel{--cw:clamp(150px,calc((100svh - 405px) * .37),min(42vw,240px))}}
+.hero .lp-reel .lp-device{--w:var(--cw);position:relative;z-index:2;animation:mkBobC 6.4s ease-in-out infinite}
+.hero .lp-reel .lp-bubbles{z-index:3}
+.mk-side{--w:calc(var(--cw) * .9);position:absolute;z-index:1;top:calc(var(--cw) * .2);margin:0;box-sizing:border-box;
+  width:var(--w);aspect-ratio:71.6/147.6;padding:calc(var(--w) * .034);border-radius:calc(var(--w) * .2);background:#050506;isolation:isolate;
+  box-shadow:0 calc(var(--w) * .16) calc(var(--w) * .24) calc(var(--w) * -.11) rgba(58,22,64,.5),0 calc(var(--w) * .06) calc(var(--w) * .1) calc(var(--w) * -.07) rgba(0,0,0,.4);
+  animation:mkSideIn .8s cubic-bezier(.22,1.15,.36,1) .15s both,var(--bob) 7s ease-in-out .95s infinite}
+.mk-side.l{--bob:mkBobL;left:calc(50% - var(--cw) * .5 - var(--w) * .58);rotate:-6deg;transform-origin:100% 60%}
+.mk-side.r{--bob:mkBobR;right:calc(50% - var(--cw) * .5 - var(--w) * .58);rotate:6deg;transform-origin:0 60%;animation-delay:.15s,-2.6s}
+.mk-side::before{content:"";position:absolute;inset:-2px;z-index:-1;border-radius:calc(var(--w) * .2 + 2px);padding:2px;
+  background:linear-gradient(155deg,#a8a2ad 0%,#4a4650 14%,#24222a 38%,#3d3a43 62%,#1b191f 82%,#8f8996 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.mk-side::after{content:"";position:absolute;inset:calc(var(--w) * .034);z-index:6;pointer-events:none;border-radius:calc(var(--w) * .166);
+  background:linear-gradient(118deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.04) 22%,transparent 38%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.mk-scr{position:relative;height:100%;overflow:hidden;border-radius:calc(var(--w) * .166);background:#0b0b0d;color:#fff}
+.mk-scr>video{position:absolute;left:0;right:0;bottom:0;top:calc(var(--w) * .13);width:100%;height:calc(100% - var(--w) * .13);object-fit:cover;object-position:50% 0;background:#0b0b0d}
+.mk-bar{position:absolute;z-index:4;top:calc(var(--w) * .045);height:calc(var(--w) * .07);left:9.5%;right:8%;margin:0;padding:0;display:flex;justify-content:space-between;align-items:center;
+  font:600 calc(var(--w) * .052)/1 -apple-system,"SF Pro Text",system-ui,sans-serif;letter-spacing:-.01em;color:#fff}
+.mk-bar b{font-weight:600;width:22%;text-align:center}
+.mk-bar span{display:flex;align-items:center;gap:calc(var(--w) * .016)}
+.mk-bar svg{height:calc(var(--w) * .04);width:auto;fill:currentColor}
+.mk-isl{position:absolute;z-index:5;left:50%;translate:-50% 0;top:calc(var(--w) * .064);width:32%;height:calc(var(--w) * .092);border-radius:99px;background:#000}
+.mk-isl::after{content:"";position:absolute;right:13%;top:50%;translate:0 -50%;width:calc(var(--w) * .036);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#3b4a6b 0 18%,#141a28 45%,#07080c 70%)}
+/* camera screen */
+.mk-cam{background:#000}
+.mk-ctop{position:absolute;top:calc(var(--w) * .135);left:52%;right:8%;height:calc(var(--w) * .06);display:flex;justify-content:space-between;align-items:center}
+.mk-ctop svg{height:calc(var(--w) * .052);width:auto;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ctop .on{fill:#ffd60a;stroke:#ffd60a}
+.mk-vf{position:absolute;left:0;right:0;top:calc(var(--w) * .215);aspect-ratio:3/4;overflow:hidden;background:#111}
+.mk-vf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease}
+.mk-vf img.on{opacity:1;animation:mkKen 2.6s ease-out both}
+.mk-flash{position:absolute;inset:0;z-index:3;background:#fff;opacity:0;pointer-events:none}
+.mk-flash.go{animation:mkFlash .34s ease-out}
+.mk-focus{position:absolute;z-index:2;width:24%;aspect-ratio:1;border:1.5px solid #ffd60a;border-radius:2px;opacity:0;translate:-50% -50%;pointer-events:none}
+.mk-focus.on{animation:mkFocus .55s cubic-bezier(.22,1.2,.36,1) both}
+.mk-modes{position:absolute;left:30%;right:0;top:calc(var(--w) * 1.5);display:flex;justify-content:center;gap:calc(var(--w) * .07);
+  font:600 calc(var(--w) * .04)/1 -apple-system,"SF Pro Text",system-ui,sans-serif;letter-spacing:.06em;color:rgba(255,255,255,.7)}
+.mk-modes b{color:#ffd60a;font-weight:600}
+.mk-shut{position:absolute;left:66%;top:calc(var(--w) * 1.6);translate:-50% 0;width:calc(var(--w) * .21);aspect-ratio:1;border-radius:50%;
+  border:calc(var(--w) * .013) solid #fff;box-sizing:border-box}
+.mk-shut::after{content:"";position:absolute;inset:calc(var(--w) * .014);border-radius:50%;background:#fff;transition:scale .12s ease}
+.mk-shut.press::after{scale:.84}
+.mk-thumb{position:absolute;left:36%;top:calc(var(--w) * 1.645);width:calc(var(--w) * .12);height:calc(var(--w) * .12);border-radius:calc(var(--w) * .026);
+  object-fit:cover;background:#222;box-shadow:0 0 0 1px rgba(255,255,255,.55)}
+.mk-thumb.pop{animation:mkPop .4s cubic-bezier(.22,1.4,.36,1)}
+.mk-flip{position:absolute;right:7%;top:calc(var(--w) * 1.645);width:calc(var(--w) * .12);height:calc(var(--w) * .12);border-radius:50%;background:rgba(255,255,255,.14);
+  display:grid;place-items:center}
+.mk-flip svg{width:56%;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes mkSideIn{from{opacity:0;rotate:0deg;translate:0 4%}}
+@keyframes mkBobC{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -7px;rotate:.6deg}}
+@keyframes mkBobL{0%,100%{translate:0 0;rotate:-6deg}50%{translate:0 -9px;rotate:-7.2deg}}
+@keyframes mkBobR{0%,100%{translate:0 0;rotate:6deg}50%{translate:0 -9px;rotate:7.2deg}}
+@keyframes mkKen{from{scale:1.07}to{scale:1}}
+@keyframes mkFlash{0%{opacity:0}18%{opacity:.9}100%{opacity:0}}
+@keyframes mkFocus{from{opacity:0;scale:1.5}to{opacity:1;scale:1}}
+@keyframes mkPop{from{scale:.6}to{scale:1}}
+@media (prefers-reduced-motion:reduce){.mk-side,.hero .lp-reel .lp-device{animation:none}}
+/* Hero desktop (owner 18/11): headline and the 3 phones side by side, vertically centered; the story strip runs full width below, one row, soft edges */
+@media(min-width:860px){
+  .hero .wrap{grid-template-areas:". fan" "top fan" "cta fan" ". fan" "wall wall"!important;grid-template-rows:1fr auto auto 1fr auto!important;row-gap:0!important;align-content:center}
+  .hero .h-cta{margin-top:22px!important}
+  .hero .lp-reel{--cw:clamp(160px,20vw,240px)}
+  .hero .fan.lp-reel{align-self:center;margin:0 auto!important;padding:10px 0 30px}
+  .hero .lp-storywall{grid-row:wall!important;grid-column:wall!important;margin:30px 0 0!important;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+  .hero .lp-storywall .lp-swrow+.lp-swrow{display:none}
+  .hero .lp-swrow{gap:12px}
+  .hero .lp-swrow img{width:118px;height:210px;border-radius:16px}
+  .hero .lp-storywall .lp-bigidea{margin:0 0 18px}
+}

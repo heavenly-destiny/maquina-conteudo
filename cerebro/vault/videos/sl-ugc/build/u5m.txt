@@ -1,0 +1,143 @@
+===SHARED===
+
+===TIMES===
+MUSIC_FROM = 8.5
+T_P1 = W("indiquei") - 0.12; T_A1 = W("Eu", 1) - 0.1
+T_M1 = W("e", 0) - 0.1; T_A2 = W("É", 1) - 0.1
+T_M2 = W("são") - 0.08; T_SEP = W("separadas") - 0.1; T_A3 = W("É", 3) - 0.1; T_PASTE = W("colar") - 0.25; T_A4 = W("E", 5) - 0.1
+T_P3 = W("pede") - 0.3; T_A5 = W("Quer") - 0.1
+T_END = D["talk_end"]; T_INK = W("Clique") - 0.3
+===CSS===
+      .orbchip { position: absolute; padding: 14px 26px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 38px; font-weight: 800; white-space: nowrap; opacity: 0; box-shadow: 0 10px 24px rgba(80,20,40,0.14), 0 30px 70px rgba(80,20,40,0.2); z-index: 16; }
+===HTML===
+      <!-- PiP 1: shared with every friend -->
+      <div class="pipfx" id="p1fx">
+        <div class="share2" id="p1s"><h4>Enviar para…</h4><div class="avs">
+          <div class="av"><i style="background:#f7c1cf">💅</i>Bia<em></em></div><div class="av"><i style="background:#bfe3ff">🦷</i>Lu<em></em></div><div class="av"><i style="background:#ffe2a8">🛍️</i>Carol<em></em></div><div class="av"><i style="background:#d9c8ff">📐</i>Dani<em></em></div></div></div>
+        <div class="chip pink" id="p1ok" style="left: 0; right: 0; margin: 0 auto; width: max-content; top: 1640px; opacity: 0">indiquei pra todas ✓</div>
+      </div>
+      <!-- PiP 2: friends from every profession -->
+      <div class="pipfx" id="p2fx">
+        <div class="mini" id="n1" style="left: 40px; top: 1260px; background: linear-gradient(160deg, #334155, #94a3b8)"><div class="emo">📐</div></div>
+        <div class="mini" id="n2" style="left: 295px; top: 1260px"><div class="photo" style="background-image: url(assets/site/beleza-3.webp)"></div></div>
+        <div class="mini" id="n3" style="left: 550px; top: 1260px; background: linear-gradient(160deg, #e0f2fe, #38bdf8)"><div class="emo">🦷</div></div>
+        <div class="mini" id="n4" style="left: 805px; top: 1260px"><div class="photo" style="background-image: url(assets/site/rotina-4.webp)"></div></div>
+        <div class="pchip" id="c1" style="left: 50px; top: 1700px">arquiteta 📐</div>
+        <div class="pchip" id="c2" style="left: 290px; top: 1700px">nail designer 💅</div>
+        <div class="pchip" id="c3" style="left: 570px; top: 1700px">dentista 🦷</div>
+        <div class="pchip" id="c4" style="left: 830px; top: 1700px">loja 🛍️</div>
+      </div>
+      <!-- M1: everybody asks -->
+      <div class="mscene" id="m1"><div class="inner" id="m1-in">
+        <div class="bg"></div><div class="glow" id="g1"></div><div class="glow2"></div>
+        <div class="story" id="m1st" style="left: 110px; top: 336px"><div class="photo" style="background-image: url(assets/site/beleza-4.webp)"></div><div class="sbar"><i><b id="m1bar"></b></i><i></i></div><div class="shead"><i></i>meu story <small>· 1 h</small></div></div>
+        <div class="dm" id="m1d1" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #f7a6c0, #d92e64)">B</div><div><b>Bia <small>respondeu ao seu story</small></b><p>amiga como vc deixa assim?? 😍</p></div></div>
+        <div class="dm" id="m1d2" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #8fd3ff, #3b82f6)">L</div><div><b>Lu <small>respondeu ao seu story</small></b><p>me passa o app pelo amor 🙏</p></div></div>
+        <div class="dm" id="m1d3" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #ffd08a, #f08a4b)">C</div><div><b>Carol <small>respondeu ao seu story</small></b><p>que estética linda 🤍</p></div></div>
+        <div class="ptbox" data-layout-ignore id="m1pt"></div>
+        <div class="cap" id="m1c" style="top: 150px"><span>elas</span><span>sempre</span><span class="k">perguntavam</span><span>👀</span></div>
+      </div></div>
+      <!-- M2: the app, 24 mil, themes and professions -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="phone" id="m2ph" style="left: 183px; top: 391px"><div class="screen" id="m2scr"><img id="m2home" src="assets/app/home.png" alt="" /><img id="m2mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" /><img id="m2cat" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" /><div class="island"></div></div></div>
+        <div class="count" id="m2n" style="top: 150px; opacity: 0"><span class="n" id="m2nn">+0</span><span class="l">figurinhas</span></div>
+        <div class="orbchip" id="o1" style="left: 30px; top: 560px">Bom dia ☀️</div><div class="orbchip" id="o2" style="left: 760px; top: 640px">Treino 💪</div>
+        <div class="orbchip" id="o3" style="left: 20px; top: 980px">Nails 💅</div><div class="orbchip" id="o4" style="left: 770px; top: 1060px">Estética ✨</div>
+        <div class="orbchip" id="o5" style="left: 40px; top: 1420px">Odonto 🦷</div><div class="orbchip" id="o6" style="left: 760px; top: 1500px">Lojas 🛍️</div>
+        <div class="cap" id="m2c" style="top: 170px"><span>por</span><span class="k">temas</span><span>e</span><span class="k">profissões</span></div>
+      </div></div>
+      <!-- M3: find, copy, paste -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="phone" id="m3ph" style="left: 183px; top: 391px"><div class="screen" id="m3scr"><img id="m3cat" src="assets/app/cat-bomdia.png" alt="" /><img id="m3mod" src="assets/app/modal-boanoite.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+          <div class="toast" id="m3t"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div><div class="island"></div></div></div>
+        <div class="story" id="m3st" style="left: 110px; top: 386px; opacity: 0"><div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg)"></div><div class="sbar"><i><b id="m3bar"></b></i></div><div class="shead"><i></i>meu story <small>· agora</small></div>
+          <img class="stk" id="m3s" src="assets/stk/bomdia-51.webp" style="left: 150px; top: 280px; width: 560px; opacity: 0" alt="" /></div>
+        <div class="cap" id="m3c" style="top: 170px"><span>acha,</span><span class="k">copia</span><span>e</span><span class="k">cola</span></div>
+      </div></div>
+      <!-- PiP 3: ask and they create it -->
+      <div class="pipfx" id="p3fx">
+        <div class="dmq2"><p class="me" id="q1">vocês têm figurinha pra dentista? 🦷</p><p class="they" id="q2">ainda não… mas a gente cria pra você! ✨</p></div>
+        <div class="chip pink" id="q3" style="left: 0; right: 0; margin: 0 auto; width: max-content; top: 1680px; opacity: 0">novidade todo mês ✨</div>
+      </div>
+===JS===
+      window.ORIG = [[T_A2 - 0.05, T_M2 + 0.1]];
+      window.MW = [[T_M1, T_A2], [T_M2, T_A4]];
+      window.HER = [[2.4, 3.62], [4.38, 4.9], [8.1, 9.05], [14.06, 14.8], [16.36, 17.2]];
+      window.PIP = [[T_P1, T_A1], [T_A1, T_M1], [T_P3, T_A5]];
+      window.HOOK_END = T_P1 - 0.1;
+      window.CAM = [
+        [0, 0.3, 1.3, 1.0, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [0.3, T_P1, 1.0, 1.05, 540, 600],
+        [T_A2, T_A2 + 0.45, 1.0, 1.6, 540, 1500, 0, 0, 0, -520, "power2.inOut"],
+        [T_A2 + 0.45, T_M2, 1.6, 1.66, 540, 1500, 0, -520, 0, -520],
+        [T_A4, T_P3, 1.05, 1.1, 540, 600],
+        [T_A5, W("atenção") - 0.05, 1.05, 1.1, 540, 600],
+        [W("atenção") - 0.05, T_INK, 1.32, 1.12, 540, 600, 0, 0, 0, 0, "expo.out"],
+      ];
+      // PiP 1: shared with every friend
+      pip(T_P1, T_M1, 1500, "none", "#p1fx");
+      rise("#p1s", T_P1 + 0.15, -2);
+      $("#p1s").querySelectorAll("em").forEach((m, i) => tl.fromTo(m, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, W("aplicativo") + i * 0.22));
+      tl.fromTo("#p1ok", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, W("amigas") - 0.1);
+      tl.to(["#p1s", "#p1ok"], { opacity: 0, y: 200, duration: 0.2, ease: "power2.in" }, T_A1 - 0.1);
+      // PiP 2: same card stays, friends from every profession
+      tl.set("#p2fx", { opacity: 1 }, T_A1);
+      [["#n1", "#c1", W("arquiteta")], ["#n2", "#c2", W("nail designer")], ["#n3", "#c3", W("dentista")], ["#n4", "#c4", W("loja")]].forEach(([m, c, t], i) => { rise(m, t - 0.08, i % 2 ? 4 : -4); pop(c, t + 0.05, i % 2 ? 3 : -3); });
+      tl.set("#p2fx", { opacity: 0 }, T_M1 + 0.3);
+      // M1: DMs land on her story
+      zoomIn("#m1", "#m1-in", T_M1);
+      tl.fromTo("#m1st", { scale: 0.8, rotation: -2, rotationY: -10 }, { scale: 0.84, rotation: 1, rotationY: 8, duration: T_A2 - T_M1, ease: "sine.inOut" }, T_M1);
+      storyBar("#m1bar", T_M1, T_A2); mcap("m1c", W("elas") - 0.05, T_A2 - 0.25, "curious");
+      dm("#m1d1", W("perguntavam") - 0.1, 620); dm("#m1d2", W("deixava") - 0.1, 800); dm("#m1d3", W("estética") - 0.15, 980);
+      hearts("m1pt", W("estética"), 10, 540, 1500, 700);
+      backToHer("#m1", T_A2);
+      // M2: iris from the phone on the table into the app
+      irisIn("#m2", T_M2, "50% 55%");
+      tl.fromTo("#m2ph", { y: 160, scale: 1.25 }, { y: 0, scale: 0.78, duration: 0.8, ease: "power3.out" }, T_M2);
+      tl.fromTo("#m2ph", { rotationY: 0 }, { rotationY: -8, rotationX: -4, duration: T_A3 - T_M2 - 0.8, ease: "sine.inOut", immediateRender: false }, T_M2 + 0.8);
+      tl.fromTo("#m2n", { opacity: 0, scale: 0.5, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, W("24") - 0.15);
+      counter("#m2nn", 0, 24000, W("24"), 0.8); tl.to("#m2nn", { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, W("24") + 0.8);
+      tl.to("#m2n", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.22 }, T_SEP - 0.1);
+      mcap("m2c", T_SEP, T_A3 - 0.2, "excited");
+      tap("#m2scr", 150, 268, T_SEP - 0.1); push("#m2home", "#m2mais", T_SEP + 0.05);
+      tap("#m2scr", 155, 386, W("profissões") - 0.4); push("#m2mais", "#m2cat", W("profissões") - 0.25);
+      ["#o1", "#o2", "#o3", "#o4", "#o5", "#o6"].forEach((o, i) => { const t = (i < 3 ? W("temas") : W("profissões")) - 0.1 + (i % 3) * 0.1;
+        tl.fromTo(o, { opacity: 0, x: (i % 2 ? -1 : 1) * 260, y: 120, scale: 0.3, rotationY: (i % 2 ? -1 : 1) * 70, transformPerspective: 1000 }, { opacity: 1, x: 0, y: 0, scale: 1, rotationY: 0, rotation: (i % 2 ? 4 : -4), duration: 0.5, ease: "back.out(1.6)" }, t); });
+      // M3: find, copy, paste
+      whipUpTo("#m2", "#m3", T_A3); mcap("m3c", T_A3 + 0.1, T_A4 - 0.2, "excited");
+      tl.fromTo("#m3ph", { y: 200, scale: 0.7, rotationY: 25, transformPerspective: 1400 }, { y: 0, scale: 0.8, rotationY: 0, duration: 0.5, ease: "expo.out" }, T_A3);
+      tap("#m3scr", 178, 797, W("encontrar") + 0.1);
+      tl.fromTo("#m3cat", { filter: "brightness(1)" }, { filter: "brightness(0.55)", duration: 0.3, immediateRender: false }, W("encontrar") + 0.2);
+      sheet("#m3mod", W("encontrar") + 0.2);
+      tap("#m3scr", 345, 932, W("copiar") - 0.05);
+      tl.fromTo("#m3t", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copiar"));
+      tl.to("#m3ph", { x: -980, rotationY: -40, scale: 0.7, filter: "blur(8px)", duration: 0.45, ease: "power3.in" }, T_PASTE);
+      tl.fromTo("#m3st", { opacity: 1, x: 1000, rotationY: 35, scale: 0.7, filter: "blur(8px)" }, { opacity: 1, x: 0, rotationY: 0, scale: 0.8, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, T_PASTE + 0.12);
+      storyBar("#m3bar", T_PASTE + 0.3, T_A4); pop("#m3s", W("Story") - 0.05, -4);
+      backToHer("#m3", T_A4);
+      // PiP 3: ask, they create; new every month
+      pip(T_P3, T_A5, 1500, "expand", "#p3fx");
+      tl.fromTo("#q1", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, W("pede") - 0.15);
+      tl.fromTo("#q2", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, W("criam") - 0.15);
+      tl.fromTo("#q3", { opacity: 0, scale: 0.4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.3, ease: "back.out(2.5)" }, W("novidade") - 0.05);
+      endCard(T_INK);
+===SFX===
+[
+ ("subhit", 0.0, -12, 0), ("whoosh", 0.02, -18, 2), ("pop", 0.1, -20, 3),
+ ("swish", T_P1, -14, 3), ("whoosh", T_P1 + 0.15, -18, 2), *[("ding", W("aplicativo") + i * 0.22, -16, 3 + i * 2) for i in range(4)], ("pop", W("amigas") - 0.1, -14, 5),
+ *[("pop", t - 0.08, -12, 2 + i * 2) for i, t in enumerate([W("arquiteta"), W("nail designer"), W("dentista"), W("loja")])],
+ ("whoosh", T_M1 - 0.08, -12, 0), ("flashw", T_M1, -16, 0),
+ ("ding", W("perguntavam") - 0.1, -13, 2), ("ding", W("deixava") - 0.1, -14, 4), ("ding", W("estética") - 0.15, -14, 7), ("sparkles", W("estética"), -16, 0),
+ ("whoosh", T_A2 - 0.1, -15, -2), ("whoosh", T_A2 + 0.05, -20, -2),
+ ("bloom", T_M2, -13, 0), ("shimmer", T_M2 + 0.1, -19, 0),
+ ("pop", W("24") - 0.15, -13, 0), *[("tick", W("24") + j * 0.1, -19, 3 + j, 0.12) for j in range(8)], ("coin", W("24") + 0.8, -15, 2),
+ ("tick", T_SEP - 0.1, -15, 5, 0.12), *[("pop", (W("temas") if i < 3 else W("profissões")) - 0.1 + (i % 3) * 0.1, -15, 2 + i, 0) for i in range(6)],
+ ("swish", T_A3 - 0.12, -13, 2), ("tick", W("encontrar") + 0.1, -15, 5, 0.12), ("tick", W("copiar") - 0.05, -15, 6, 0.12), ("ding", W("copiar"), -13, 7),
+ ("whoosh", T_PASTE, -15, 4), ("pop", W("Story") - 0.05, -12, 3),
+ ("whoosh", T_A4 - 0.1, -15, -2),
+ ("swish", T_P3, -14, 3), ("pop", W("pede") - 0.15, -14, 5), ("ding", W("criam") - 0.15, -13, 3), ("sparkles", W("novidade"), -16, 0),
+ ("swish", T_A5, -16, -3), ("subhit", W("atenção") - 0.05, -15, 0),
+ ("whoosh", T_INK - 0.1, -15, 0), ("sting", T_INK + 0.05, -12, 0), ("pop", T_INK + 0.55, -13, 2),
+]

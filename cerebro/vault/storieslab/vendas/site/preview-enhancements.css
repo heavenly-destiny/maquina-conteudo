@@ -1,0 +1,19 @@
+/* Incremental changes, preserving the existing sticker-offer identity. */
+.entry-price{font-size:14px;margin:0 0 10px;color:var(--muted)}
+.entry-price b{color:var(--ink);font-size:18px;white-space:nowrap}
+.watch-demo{display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:44px;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:4px;color:var(--ink)}
+.hero-motion{grid-column:1/-1;justify-self:center;position:relative;margin-top:-10px;background:transparent;border:1px solid var(--line);border-radius:30px;min-height:36px;padding:7px 14px;font:500 12px var(--sans);color:var(--muted);cursor:pointer}
+.fan .card.app{background:#FDF7F3}
+.fan .card.app video{object-fit:contain}
+.demo .scr .sb,.demo .scr .isl{display:none}
+.demo video{aspect-ratio:636/1338;object-fit:contain;background:#FBF5F1}
+.demo figcaption{position:static;display:grid;gap:4px;margin-top:18px;font-size:17px;color:var(--ink);background:transparent;transform:none;box-shadow:none;padding:0;text-align:center;white-space:normal;line-height:1.4}
+.demo figcaption span{font:400 12px/1.5 var(--sans);color:var(--muted)}
+.video-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.video-controls button{border:1px solid var(--line);background:white;color:var(--ink);padding:10px 14px;min-height:44px;border-radius:30px;font:600 13px var(--sans);cursor:pointer}
+.video-controls button:hover{border-color:var(--pink);background:var(--pink-soft)}
+#como-usar,#planos{scroll-margin-top:85px}
+.value-next{margin-top:18px;align-self:flex-start;font-size:15px}
+@media(max-width:699px){.h-cta{text-align:center}.hero .fan{height:324px}.hero-motion{margin-top:0}.entry-price{font-size:12px}.entry-price b{font-size:16px}.demo{max-width:330px}}
+@media(min-width:700px){.hero-motion{grid-column:2;grid-row:5}.watch-demo{margin-left:2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fan *{animation:none!important}}

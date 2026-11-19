@@ -1,0 +1,21 @@
+{
+  "total": 26.5,
+  "push_1": 1.38,
+  "zoom_through": 4.95,
+  "cut_mascot": 5.05,
+  "xfade_payoff": 7.1,
+  "push_2": 9.72,
+  "xfade_allinone": 15.55,
+  "cut_human": 18.2,
+  "cut_frame": 19.95,
+  "push_3": 22.42,
+  "notif": [3.55, 3.8, 4.05, 4.3],
+  "counter_start": 7.65,
+  "counter_dur": 1.25,
+  "check": 8.95,
+  "features": [10.82, 11.93, 13.65, 14.48],
+  "fox_hop_land": 21.35,
+  "logo": 22.65,
+  "tagline": 24.01,
+  "dropout": [5.0, 7.05]
+}

@@ -1,0 +1,398 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "3 tl.fromTo() calls target \"proxy (unresolved DOM association)\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "proxy (unresolved DOM association)",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/motion-reel-demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 2.75s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "gsap_non_transform_motion",
+        "severity": "error",
+        "message": "GSAP tween on \"#knob\" uses motion that snaps to integer device pixels: left. Layout and text-reflow properties snap during browser layout; roundProps rounds the tween value. Slow motion or an ease-out tail then stutters under the seek-by-frame capture engine. Animate transforms (x/y/scale/opacity) instead.",
+        "selector": "#knob",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/motion-reel-demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "replace left with the transform equivalent (x), e.g. tl.fromTo(\"#knob\", { x: -1300 }, { x: 0, ...yourAnimation }). Transforms interpolate sub-pixel and stay smooth at any speed."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s1\"> is a timeline element that contains nested <div id=\"s1-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/motion-reel-demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s2\"> is a timeline element that contains nested <div id=\"s2-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/motion-reel-demo/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 8,
+    "samples": [
+      0.444,
+      1.333,
+      2.222,
+      3.111,
+      4,
+      4.889,
+      5.778,
+      6.667,
+      7.556
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": false,
+    "errorCount": 4,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.24:1; WCAG AA requires 3:1.",
+        "text": "Sexta",
+        "fg": "rgb(255,246,230)",
+        "bg": "rgb(253,136,42)",
+        "ratio": 2.24,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(89,86,80)",
+        "large": true,
+        "selector": "#w1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 779.76171875,
+          "y": 407.3807373046875,
+          "width": 529.9921875,
+          "height": 265.238525390625
+        },
+        "time": 0.444,
+        "times": [
+          0.444,
+          2.222
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.32:1; WCAG AA requires 4.5:1.",
+        "text": "COMERCIAL NÃO OFICIAL",
+        "fg": "rgb(253,207,160)",
+        "bg": "rgb(244,90,2)",
+        "ratio": 2.32,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(46,37,29)",
+        "large": false,
+        "selector": "#s1-credit",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 935,
+          "width": 1920,
+          "height": 25
+        },
+        "time": 0.444,
+        "times": [
+          0.444,
+          2.222
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.08:1; WCAG AA requires 3:1.",
+        "text": "à",
+        "fg": "rgb(255,246,230)",
+        "bg": "rgb(253,147,57)",
+        "ratio": 2.08,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(94,91,85)",
+        "large": true,
+        "selector": "#w2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 713.515625,
+          "y": 407.5,
+          "width": 120.75,
+          "height": 265
+        },
+        "time": 2.222,
+        "times": [
+          2.222
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.18:1; WCAG AA requires 3:1.",
+        "text": "noite",
+        "fg": "rgb(255,246,230)",
+        "bg": "rgb(253,140,47)",
+        "ratio": 2.18,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(91,88,82)",
+        "large": true,
+        "selector": "#w3",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 868.265625,
+          "y": 407.5,
+          "width": 471.453125,
+          "height": 265
+        },
+        "time": 2.222,
+        "times": [
+          2.222
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.83:1; WCAG AA requires 3:1.",
+        "text": "←",
+        "fg": "rgb(255,106,0)",
+        "bg": "rgb(255,253,249)",
+        "ratio": 2.83,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(246,102,0)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 670,
+          "y": 381.9653015136719,
+          "width": 22.375,
+          "height": 43
+        },
+        "time": 4,
+        "times": [
+          4,
+          5.778,
+          7.556
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "error",
+        "message": "Contrast is 2.83:1; WCAG AA requires 3:1.",
+        "text": "R$ 2.750,00",
+        "fg": "rgb(255,106,0)",
+        "bg": "rgb(255,253,249)",
+        "ratio": 2.83,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(246,102,0)",
+        "large": true,
+        "selector": "#amount",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 670,
+          "y": 458.9653015136719,
+          "width": 580,
+          "height": 121.00003051757812
+        },
+        "time": 4,
+        "times": [
+          4,
+          5.778,
+          7.556
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      0.444,
+      2.222,
+      4,
+      5.778,
+      7.556
+    ],
+    "checked": 35,
+    "passed": 23
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "first_frame_empty",
+        "severity": "warning",
+        "message": "Frame 0 shows only the background, and the first frame is the thumbnail on social players: have the title or key image already on screen at 0 s instead of entering from nothing; see references/review.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 3 text elements stay under it for 0.5 s or more, the smallest \"COMERCIAL NÃO OFICIAL\" at 20 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "COMERCIAL NÃO OFICIAL",
+        "selector": "#s1-credit",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 801.63,
+          "y": 935,
+          "width": 316.75,
+          "height": 25
+        },
+        "time": 0.5,
+        "times": [
+          0.5,
+          3.375,
+          3.375
+        ],
+        "fontPx": 20,
+        "floorPx": 28,
+        "seconds": 2.625,
+        "elements": [
+          {
+            "selector": "#s1-credit",
+            "text": "COMERCIAL NÃO OFICIAL",
+            "fontPx": 20,
+            "time": 0.5,
+            "seconds": 2.625
+          },
+          {
+            "selector": "#legend > span:nth-of-type(1)",
+            "text": "Utilizado",
+            "fontPx": 23.68,
+            "time": 3.375,
+            "seconds": 4.625
+          },
+          {
+            "selector": "#legend > span:nth-of-type(2)",
+            "text": "Máximo",
+            "fontPx": 23.68,
+            "time": 3.375,
+            "seconds": 4.625
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 64
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

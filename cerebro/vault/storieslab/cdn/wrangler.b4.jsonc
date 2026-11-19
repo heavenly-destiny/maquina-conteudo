@@ -1,0 +1,10 @@
+{
+  "name": "storieslab-cdn-4",
+  "main": "gate.js",
+  "account_id": "18374d1d24c8719460c31d9eed22762d",
+  "compatibility_date": "2026-10-01",
+  // materials, bonus videos and PDFs need the app pass (gate.js); tutorials (/tut/) stay public
+  "assets": { "directory": "./b4", "binding": "ASSETS", "run_worker_first": ["/mat/*", "/v/*", "/roteiros.pdf", "/paleta.pdf"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "storieslab", "database_id": "7b9d6983-2d1e-496c-99a4-1a1ec874ab78" }],
+  "vars": { "ENFORCE_FROM": "2026-11-04T13:59:00Z" }
+}

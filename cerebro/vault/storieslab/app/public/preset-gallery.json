@@ -1,0 +1,2934 @@
+{
+  "photos": [
+    "ref-dark-cinema",
+    "ref-dark-cinema-02",
+    "ref-ocean",
+    "ref-ocean-02",
+    "ref-editorial",
+    "ref-editorial-02",
+    "ref-soft-film",
+    "ref-soft-film-02",
+    "ref-steel",
+    "ref-steel-02",
+    "ref-soft-clean",
+    "ref-soft-clean-02",
+    "ref-moody",
+    "ref-moody-02",
+    "ref-bronze",
+    "ref-bronze-02",
+    "ref-summer-pop",
+    "ref-summer-pop-02",
+    "ref-amazonia",
+    "ref-amazonia-02",
+    "ref-anos-70",
+    "ref-anos-70-02",
+    "ref-black",
+    "ref-black-02",
+    "ref-bora-viajar",
+    "ref-bora-viajar-02",
+    "ref-cores-vivas",
+    "ref-cores-vivas-02",
+    "ref-film",
+    "ref-film-02",
+    "ref-house",
+    "ref-house-02",
+    "ref-insta",
+    "ref-insta-02",
+    "ref-natureza",
+    "ref-natureza-02",
+    "ref-pe-na-estrada",
+    "ref-pe-na-estrada-02",
+    "ref-tons-leves",
+    "ref-tons-leves-02"
+  ],
+  "looks": [
+    {
+      "id": "17-dark-cinema",
+      "name": "Dark Cinema",
+      "group": "Academia",
+      "groups": [
+        "Academia",
+        "Dark"
+      ],
+      "photo": "ref-dark-cinema",
+      "defaultAmount": 70,
+      "desc": "Sombras profundas e um clima cinematográfico para seu treino.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 70%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Dark Cinema",
+      "photos": [
+        "ref-dark-cinema",
+        "ref-dark-cinema-02"
+      ]
+    },
+    {
+      "id": "19-ocean",
+      "name": "Ocean",
+      "group": "Praia",
+      "groups": [
+        "Praia"
+      ],
+      "photo": "ref-ocean",
+      "defaultAmount": 75,
+      "desc": "Azul do mar e cores frescas para os dias ao ar livre.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 75%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Ocean",
+      "photos": [
+        "ref-ocean",
+        "ref-ocean-02"
+      ]
+    },
+    {
+      "id": "14-editorial",
+      "name": "Editorial",
+      "group": "Aesthetic",
+      "groups": [
+        "Aesthetic"
+      ],
+      "photo": "ref-editorial",
+      "defaultAmount": 70,
+      "desc": "Sombras frias e cores contidas para um visual editorial.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 70%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Editorial",
+      "photos": [
+        "ref-editorial",
+        "ref-editorial-02"
+      ]
+    },
+    {
+      "id": "13-soft-film",
+      "name": "Soft Film",
+      "group": "Aesthetic",
+      "groups": [
+        "Aesthetic"
+      ],
+      "photo": "ref-soft-film",
+      "defaultAmount": 65,
+      "desc": "Tons suaves e quentes, com acabamento de filme.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 65%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Soft Film",
+      "photos": [
+        "ref-soft-film",
+        "ref-soft-film-02"
+      ]
+    },
+    {
+      "id": "18-steel",
+      "name": "Steel",
+      "group": "Aesthetic",
+      "groups": [
+        "Aesthetic",
+        "Dark"
+      ],
+      "photo": "ref-steel",
+      "defaultAmount": 55,
+      "desc": "Contraste firme, azuis frios e luz quente.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 55%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Steel",
+      "photos": [
+        "ref-steel",
+        "ref-steel-02"
+      ]
+    },
+    {
+      "id": "16-soft-clean",
+      "name": "Soft Clean",
+      "group": "Aesthetic",
+      "groups": [
+        "Aesthetic"
+      ],
+      "photo": "ref-soft-clean",
+      "defaultAmount": 65,
+      "desc": "Cores suaves e contraste leve para as fotos da rotina.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 65%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Soft Clean",
+      "photos": [
+        "ref-soft-clean",
+        "ref-soft-clean-02"
+      ]
+    },
+    {
+      "id": "21-moody",
+      "name": "Moody",
+      "group": "Dark",
+      "groups": [
+        "Dark",
+        "Aesthetic"
+      ],
+      "photo": "ref-moody",
+      "defaultAmount": 65,
+      "desc": "Contraste de filme e sombras levemente esverdeadas.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 65%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Moody",
+      "photos": [
+        "ref-moody",
+        "ref-moody-02"
+      ]
+    },
+    {
+      "id": "15-bronze",
+      "name": "Bronze",
+      "group": "Praia",
+      "groups": [
+        "Praia"
+      ],
+      "photo": "ref-bronze",
+      "defaultAmount": 40,
+      "desc": "Azuis intensos e dourado marcante. Comece suave e ajuste ao seu gosto.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 40%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Bronze",
+      "photos": [
+        "ref-bronze",
+        "ref-bronze-02"
+      ]
+    },
+    {
+      "id": "20-summer-pop",
+      "name": "Summer Pop",
+      "group": "Praia",
+      "groups": [
+        "Praia"
+      ],
+      "photo": "ref-summer-pop",
+      "defaultAmount": 45,
+      "desc": "Verão vibrante, com cores e luz mais marcantes.",
+      "formats": [
+        "cube"
+      ],
+      "ficha": [
+        "Intensidade sugerida: 45%. Ajuste de acordo com a luz da sua foto.",
+        "O look altera as cores. Luz, contraste, temperatura e saturação podem ser ajustados no Estúdio.",
+        "Para usar no Lightroom, salve a foto editada no Stories Lab e importe o JPG."
+      ],
+      "collection": "Cinema",
+      "variant": "Summer Pop",
+      "photos": [
+        "ref-summer-pop",
+        "ref-summer-pop-02"
+      ]
+    },
+    {
+      "id": "22-amazonia-01",
+      "name": "Amazônia · 01",
+      "variant": "01",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "23-amazonia-02",
+      "name": "Amazônia · 02",
+      "variant": "02",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "24-amazonia-03",
+      "name": "Amazônia · 03",
+      "variant": "03",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "25-amazonia-04",
+      "name": "Amazônia · 04",
+      "variant": "04",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "26-amazonia-05",
+      "name": "Amazônia · 05",
+      "variant": "05",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "27-amazonia-06",
+      "name": "Amazônia · 06",
+      "variant": "06",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "28-amazonia-07",
+      "name": "Amazônia · 07",
+      "variant": "07",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "29-amazonia-08",
+      "name": "Amazônia · 08",
+      "variant": "08",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "30-amazonia-09",
+      "name": "Amazônia · 09",
+      "variant": "09",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "31-amazonia-10",
+      "name": "Amazônia · 10",
+      "variant": "10",
+      "collection": "Amazônia",
+      "group": "Amazônia",
+      "groups": [
+        "Amazônia"
+      ],
+      "photo": "ref-amazonia",
+      "defaultAmount": 80,
+      "desc": "Variação 10 da coleção Amazônia. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-amazonia",
+        "ref-amazonia-02"
+      ]
+    },
+    {
+      "id": "32-anos-70-01",
+      "name": "Anos 70 · 01",
+      "variant": "01",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "33-anos-70-02",
+      "name": "Anos 70 · 02",
+      "variant": "02",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "34-anos-70-03",
+      "name": "Anos 70 · 03",
+      "variant": "03",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "35-anos-70-04",
+      "name": "Anos 70 · 04",
+      "variant": "04",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "36-anos-70-05",
+      "name": "Anos 70 · 05",
+      "variant": "05",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "37-anos-70-06",
+      "name": "Anos 70 · 06",
+      "variant": "06",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "38-anos-70-07",
+      "name": "Anos 70 · 07",
+      "variant": "07",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "39-anos-70-08",
+      "name": "Anos 70 · 08",
+      "variant": "08",
+      "collection": "Anos 70",
+      "group": "Anos 70",
+      "groups": [
+        "Anos 70"
+      ],
+      "photo": "ref-anos-70",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Anos 70. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-anos-70",
+        "ref-anos-70-02"
+      ]
+    },
+    {
+      "id": "40-black-01",
+      "name": "Black · 01",
+      "variant": "01",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "41-black-02",
+      "name": "Black · 02",
+      "variant": "02",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "42-black-03",
+      "name": "Black · 03",
+      "variant": "03",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "43-black-04",
+      "name": "Black · 04",
+      "variant": "04",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "44-black-05",
+      "name": "Black · 05",
+      "variant": "05",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "45-black-06",
+      "name": "Black · 06",
+      "variant": "06",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "46-black-07",
+      "name": "Black · 07",
+      "variant": "07",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "47-black-08",
+      "name": "Black · 08",
+      "variant": "08",
+      "collection": "Black",
+      "group": "Black",
+      "groups": [
+        "Black"
+      ],
+      "photo": "ref-black",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Black. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-black",
+        "ref-black-02"
+      ]
+    },
+    {
+      "id": "49-bora-viajar-01",
+      "name": "Bora Viajar · 01",
+      "variant": "01",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "50-bora-viajar-02",
+      "name": "Bora Viajar · 02",
+      "variant": "02",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "51-bora-viajar-03",
+      "name": "Bora Viajar · 03",
+      "variant": "03",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "52-bora-viajar-04",
+      "name": "Bora Viajar · 04",
+      "variant": "04",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "53-bora-viajar-05",
+      "name": "Bora Viajar · 05",
+      "variant": "05",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "54-bora-viajar-06",
+      "name": "Bora Viajar · 06",
+      "variant": "06",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "55-bora-viajar-07",
+      "name": "Bora Viajar · 07",
+      "variant": "07",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "56-bora-viajar-08",
+      "name": "Bora Viajar · 08",
+      "variant": "08",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "57-bora-viajar-09",
+      "name": "Bora Viajar · 09",
+      "variant": "09",
+      "collection": "Bora Viajar",
+      "group": "Bora Viajar",
+      "groups": [
+        "Bora Viajar"
+      ],
+      "photo": "ref-bora-viajar",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Bora Viajar. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-bora-viajar",
+        "ref-bora-viajar-02"
+      ]
+    },
+    {
+      "id": "59-cores-vivas-01",
+      "name": "Cores vivas · 01",
+      "variant": "01",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "60-cores-vivas-02",
+      "name": "Cores vivas · 02",
+      "variant": "02",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "61-cores-vivas-03",
+      "name": "Cores vivas · 03",
+      "variant": "03",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "62-cores-vivas-04",
+      "name": "Cores vivas · 04",
+      "variant": "04",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "63-cores-vivas-05",
+      "name": "Cores vivas · 05",
+      "variant": "05",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "64-cores-vivas-06",
+      "name": "Cores vivas · 06",
+      "variant": "06",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "65-cores-vivas-07",
+      "name": "Cores vivas · 07",
+      "variant": "07",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "66-cores-vivas-08",
+      "name": "Cores vivas · 08",
+      "variant": "08",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "67-cores-vivas-09",
+      "name": "Cores vivas · 09",
+      "variant": "09",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "68-cores-vivas-10",
+      "name": "Cores vivas · 10",
+      "variant": "10",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 10 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "69-cores-vivas-11",
+      "name": "Cores vivas · 11",
+      "variant": "11",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 11 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "70-cores-vivas-12",
+      "name": "Cores vivas · 12",
+      "variant": "12",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 12 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "71-cores-vivas-13",
+      "name": "Cores vivas · 13",
+      "variant": "13",
+      "collection": "Cores vivas",
+      "group": "Cores vivas",
+      "groups": [
+        "Cores vivas"
+      ],
+      "photo": "ref-cores-vivas",
+      "defaultAmount": 80,
+      "desc": "Variação 13 da coleção Cores vivas. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-cores-vivas",
+        "ref-cores-vivas-02"
+      ]
+    },
+    {
+      "id": "72-film-01",
+      "name": "Film · 01",
+      "variant": "01",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "73-film-02",
+      "name": "Film · 02",
+      "variant": "02",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "74-film-03",
+      "name": "Film · 03",
+      "variant": "03",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "75-film-04",
+      "name": "Film · 04",
+      "variant": "04",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "76-film-05",
+      "name": "Film · 05",
+      "variant": "05",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "77-film-06",
+      "name": "Film · 06",
+      "variant": "06",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "78-film-07",
+      "name": "Film · 07",
+      "variant": "07",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "79-film-08",
+      "name": "Film · 08",
+      "variant": "08",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "80-film-09",
+      "name": "Film · 09",
+      "variant": "09",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "81-film-10",
+      "name": "Film · 10",
+      "variant": "10",
+      "collection": "Film",
+      "group": "Film",
+      "groups": [
+        "Film"
+      ],
+      "photo": "ref-film",
+      "defaultAmount": 80,
+      "desc": "Variação 10 da coleção Film. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-film",
+        "ref-film-02"
+      ]
+    },
+    {
+      "id": "82-house-01",
+      "name": "House · 01",
+      "variant": "01",
+      "collection": "House",
+      "group": "House",
+      "groups": [
+        "House"
+      ],
+      "photo": "ref-house",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção House. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-house",
+        "ref-house-02"
+      ]
+    },
+    {
+      "id": "83-house-02",
+      "name": "House · 02",
+      "variant": "02",
+      "collection": "House",
+      "group": "House",
+      "groups": [
+        "House"
+      ],
+      "photo": "ref-house",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção House. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-house",
+        "ref-house-02"
+      ]
+    },
+    {
+      "id": "84-house-03",
+      "name": "House · 03",
+      "variant": "03",
+      "collection": "House",
+      "group": "House",
+      "groups": [
+        "House"
+      ],
+      "photo": "ref-house",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção House. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-house",
+        "ref-house-02"
+      ]
+    },
+    {
+      "id": "85-house-04",
+      "name": "House · 04",
+      "variant": "04",
+      "collection": "House",
+      "group": "House",
+      "groups": [
+        "House"
+      ],
+      "photo": "ref-house",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção House. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-house",
+        "ref-house-02"
+      ]
+    },
+    {
+      "id": "86-insta-01",
+      "name": "Insta · 01",
+      "variant": "01",
+      "collection": "Insta",
+      "group": "Insta",
+      "groups": [
+        "Insta"
+      ],
+      "photo": "ref-insta",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Insta. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-insta",
+        "ref-insta-02"
+      ]
+    },
+    {
+      "id": "87-insta-02",
+      "name": "Insta · 02",
+      "variant": "02",
+      "collection": "Insta",
+      "group": "Insta",
+      "groups": [
+        "Insta"
+      ],
+      "photo": "ref-insta",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Insta. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-insta",
+        "ref-insta-02"
+      ]
+    },
+    {
+      "id": "88-insta-03",
+      "name": "Insta · 03",
+      "variant": "03",
+      "collection": "Insta",
+      "group": "Insta",
+      "groups": [
+        "Insta"
+      ],
+      "photo": "ref-insta",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Insta. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-insta",
+        "ref-insta-02"
+      ]
+    },
+    {
+      "id": "89-insta-04",
+      "name": "Insta · 04",
+      "variant": "04",
+      "collection": "Insta",
+      "group": "Insta",
+      "groups": [
+        "Insta"
+      ],
+      "photo": "ref-insta",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Insta. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-insta",
+        "ref-insta-02"
+      ]
+    },
+    {
+      "id": "90-insta-05",
+      "name": "Insta · 05",
+      "variant": "05",
+      "collection": "Insta",
+      "group": "Insta",
+      "groups": [
+        "Insta"
+      ],
+      "photo": "ref-insta",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Insta. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-insta",
+        "ref-insta-02"
+      ]
+    },
+    {
+      "id": "91-natureza-01",
+      "name": "Natureza · 01",
+      "variant": "01",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "92-natureza-02",
+      "name": "Natureza · 02",
+      "variant": "02",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "93-natureza-03",
+      "name": "Natureza · 03",
+      "variant": "03",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "94-natureza-04",
+      "name": "Natureza · 04",
+      "variant": "04",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "95-natureza-05",
+      "name": "Natureza · 05",
+      "variant": "05",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "96-natureza-06",
+      "name": "Natureza · 06",
+      "variant": "06",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "97-natureza-07",
+      "name": "Natureza · 07",
+      "variant": "07",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "98-natureza-08",
+      "name": "Natureza · 08",
+      "variant": "08",
+      "collection": "Natureza",
+      "group": "Natureza",
+      "groups": [
+        "Natureza"
+      ],
+      "photo": "ref-natureza",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Natureza. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-natureza",
+        "ref-natureza-02"
+      ]
+    },
+    {
+      "id": "99-pe-na-estrada-01",
+      "name": "Pé na Estrada · 01",
+      "variant": "01",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "100-pe-na-estrada-02",
+      "name": "Pé na Estrada · 02",
+      "variant": "02",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "101-pe-na-estrada-03",
+      "name": "Pé na Estrada · 03",
+      "variant": "03",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "102-pe-na-estrada-04",
+      "name": "Pé na Estrada · 04",
+      "variant": "04",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "103-pe-na-estrada-05",
+      "name": "Pé na Estrada · 05",
+      "variant": "05",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "104-pe-na-estrada-06",
+      "name": "Pé na Estrada · 06",
+      "variant": "06",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "105-pe-na-estrada-07",
+      "name": "Pé na Estrada · 07",
+      "variant": "07",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "106-pe-na-estrada-08",
+      "name": "Pé na Estrada · 08",
+      "variant": "08",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "107-pe-na-estrada-09",
+      "name": "Pé na Estrada · 09",
+      "variant": "09",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "108-pe-na-estrada-10",
+      "name": "Pé na Estrada · 10",
+      "variant": "10",
+      "collection": "Pé na Estrada",
+      "group": "Pé na Estrada",
+      "groups": [
+        "Pé na Estrada"
+      ],
+      "photo": "ref-pe-na-estrada",
+      "defaultAmount": 80,
+      "desc": "Variação 10 da coleção Pé na Estrada. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-pe-na-estrada",
+        "ref-pe-na-estrada-02"
+      ]
+    },
+    {
+      "id": "109-tons-leves-01",
+      "name": "Tons Leves · 01",
+      "variant": "01",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 01 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "110-tons-leves-02",
+      "name": "Tons Leves · 02",
+      "variant": "02",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 02 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "111-tons-leves-03",
+      "name": "Tons Leves · 03",
+      "variant": "03",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 03 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "112-tons-leves-04",
+      "name": "Tons Leves · 04",
+      "variant": "04",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 04 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "113-tons-leves-05",
+      "name": "Tons Leves · 05",
+      "variant": "05",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 05 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "114-tons-leves-06",
+      "name": "Tons Leves · 06",
+      "variant": "06",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 06 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "115-tons-leves-07",
+      "name": "Tons Leves · 07",
+      "variant": "07",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 07 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "116-tons-leves-08",
+      "name": "Tons Leves · 08",
+      "variant": "08",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 08 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "117-tons-leves-09",
+      "name": "Tons Leves · 09",
+      "variant": "09",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 09 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "118-tons-leves-10",
+      "name": "Tons Leves · 10",
+      "variant": "10",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 10 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "119-tons-leves-11",
+      "name": "Tons Leves · 11",
+      "variant": "11",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 11 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "120-tons-leves-12",
+      "name": "Tons Leves · 12",
+      "variant": "12",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 12 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "121-tons-leves-13",
+      "name": "Tons Leves · 13",
+      "variant": "13",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 13 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "122-tons-leves-14",
+      "name": "Tons Leves · 14",
+      "variant": "14",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 14 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    },
+    {
+      "id": "123-tons-leves-15",
+      "name": "Tons Leves · 15",
+      "variant": "15",
+      "collection": "Tons Leves",
+      "group": "Tons Leves",
+      "groups": [
+        "Tons Leves"
+      ],
+      "photo": "ref-tons-leves",
+      "defaultAmount": 80,
+      "desc": "Variação 15 da coleção Tons Leves. Encontre o tom que combina com a sua foto.",
+      "formats": [
+        "cube"
+      ],
+      "sourceKind": "dng-color-adaptation",
+      "ficha": [
+        "Adaptação de cor para o Stories Lab a partir de um preset DNG. O resultado pode diferir do Lightroom.",
+        "Textura, nitidez, redução de ruído, grão, máscaras e efeitos de lente do arquivo original não fazem parte deste look de cor.",
+        "Ajuste a intensidade para combinar com a iluminação da sua foto."
+      ],
+      "photos": [
+        "ref-tons-leves",
+        "ref-tons-leves-02"
+      ]
+    }
+  ],
+  "photoLabels": {
+    "ref-dark-cinema": "Dark Cinema",
+    "ref-dark-cinema-02": "Treino",
+    "ref-ocean": "Ocean",
+    "ref-ocean-02": "Beira-mar",
+    "ref-editorial": "Editorial",
+    "ref-editorial-02": "Moda urbana",
+    "ref-soft-film": "Soft Film",
+    "ref-soft-film-02": "Café vintage",
+    "ref-steel": "Steel",
+    "ref-steel-02": "Urbano",
+    "ref-soft-clean": "Soft Clean",
+    "ref-soft-clean-02": "Luz natural",
+    "ref-moody": "Moody",
+    "ref-moody-02": "Noite",
+    "ref-bronze": "Bronze",
+    "ref-bronze-02": "Hora dourada",
+    "ref-summer-pop": "Summer Pop",
+    "ref-summer-pop-02": "Verão",
+    "ref-amazonia": "Amazônia",
+    "ref-amazonia-02": "Floresta",
+    "ref-anos-70": "Anos 70",
+    "ref-anos-70-02": "Retrô",
+    "ref-black": "Black",
+    "ref-black-02": "All black",
+    "ref-bora-viajar": "Bora Viajar",
+    "ref-bora-viajar-02": "Costa",
+    "ref-cores-vivas": "Cores vivas",
+    "ref-cores-vivas-02": "Tropical",
+    "ref-film": "Film",
+    "ref-film-02": "Luz de filme",
+    "ref-house": "House",
+    "ref-house-02": "Em casa",
+    "ref-insta": "Insta",
+    "ref-insta-02": "Rotina",
+    "ref-natureza": "Natureza",
+    "ref-natureza-02": "Campo",
+    "ref-pe-na-estrada": "Pé na Estrada",
+    "ref-pe-na-estrada-02": "Viagem",
+    "ref-tons-leves": "Tons Leves",
+    "ref-tons-leves-02": "Neutros"
+  },
+  "groups": [
+    "Academia",
+    "Praia",
+    "Aesthetic",
+    "Dark",
+    "Amazônia",
+    "Anos 70",
+    "Black",
+    "Bora Viajar",
+    "Cores vivas",
+    "Film",
+    "House",
+    "Insta",
+    "Natureza",
+    "Pé na Estrada",
+    "Tons Leves"
+  ],
+  "version": "studio-pro-preview-20261103"
+}

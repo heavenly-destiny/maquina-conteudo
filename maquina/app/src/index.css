@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0204;
+  --color-vinho: #210207;
+  --color-vinho-2: #480415;
+  --color-vinho-3: #730c1e;
+  --color-ink: #f6f0f0;
+  --color-mute: rgb(246 240 240 / 0.52);
+  --color-faint: rgb(246 240 240 / 0.28);
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-red: #e11d2a;
+  --color-red-soft: rgb(225 29 42 / 0.16);
+  --color-ok: #34d399;
+  --color-foreground: #f6f0f0;
+  --font-sans: Inter, -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, Menlo, monospace;
+  --ease-spring: cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+
+:root { color-scheme: dark; }
+html, body { background: var(--color-bg); color: var(--color-ink); }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
+  font-feature-settings: "cv11", "ss01";
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+button { font: inherit; color: inherit; }
+::selection { background: rgb(225 29 42 / 0.4); }
+
+/* fundo vivo: uma luz vinho que respira devagar atrás de tudo */
+.fundo {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  background: #0b0204;
+}
+/* manchas de luz desfocadas que flutuam devagar (referência: Prompt Composer, 21st.dev, nov/2026). Só vinho e vermelho. */
+.fundo::before, .fundo::after {
+  content: ""; position: absolute; border-radius: 50%; filter: blur(90px);
+}
+.fundo::before {
+  width: 70vmax; height: 70vmax; left: -20vmax; top: -38vmax;
+  background: radial-gradient(circle, rgb(150 18 38 / 0.55), transparent 65%);
+  animation: deriva1 26s ease-in-out infinite alternate;
+}
+.fundo::after {
+  width: 55vmax; height: 55vmax; right: -22vmax; bottom: -30vmax;
+  background: radial-gradient(circle, rgb(115 12 30 / 0.45), transparent 65%);
+  animation: deriva2 32s ease-in-out infinite alternate;
+}
+@keyframes deriva1 { to { transform: translate(14vmax, 8vmax) scale(1.12); } }
+@keyframes deriva2 { to { transform: translate(-12vmax, -10vmax) scale(0.92); } }
+.grao { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* borda com um rastro de luz que corre (referência: Halo Dropzone, cult-ui/21st.dev). Liga com data-halo="on". */
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.halo { position: relative; isolation: isolate; }
+.halo::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.2px; pointer-events: none; z-index: 2;
+  background: conic-gradient(from var(--ang), transparent 0 62%, rgb(225 29 42 / 0.15) 72%, rgb(255 90 98 / 0.95) 86%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .5s; animation: girar 3.2s linear infinite;
+}
+.halo[data-halo="on"]::before { opacity: 1; }
+@keyframes girar { to { --ang: 360deg; } }
+
+/* botão de enviar que respira */
+.respira { animation: respira 2.4s ease-in-out infinite; }
+@keyframes respira { 0%,100% { box-shadow: 0 0 0 0 rgb(225 29 42 / 0.55), 0 8px 24px -6px rgb(225 29 42 / 0.8); } 50% { box-shadow: 0 0 0 7px rgb(225 29 42 / 0), 0 8px 30px -4px rgb(225 29 42 / 0.95); } }
+
+/* texto que brilha enquanto a máquina trabalha */
+.brilha-texto { background: linear-gradient(90deg, rgb(246 240 240/.45) 0%, #fff 50%, rgb(246 240 240/.45) 100%); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: brilhatx 1.8s linear infinite; }
+@keyframes brilhatx { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+
+kbd { font: 500 11px/1 var(--font-sans); padding: 3px 6px; border-radius: 6px; background: rgb(255 255 255/.07); box-shadow: inset 0 0 0 1px rgb(255 255 255/.08); color: var(--color-mute); }
+
+@layer components {
+/* vidro barato para listas longas (o vidro líquido de verdade fica no dock e nos botões principais) */
+.vidro {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.075), rgb(255 255 255 / 0.035));
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), inset 0 0 0 1px rgb(255 255 255 / 0.06), 0 20px 50px -20px rgb(0 0 0 / 0.6);
+}
+.vidro-hover { transition: transform .35s var(--ease-spring), box-shadow .35s; }
+@media (hover: hover) {
+  .vidro-hover:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.16), inset 0 0 0 1px rgb(255 255 255 / 0.1), 0 30px 60px -24px rgb(0 0 0 / 0.75); }
+}
+
+/* brilho passando no botão principal */
+.brilho { position: relative; overflow: hidden; }
+.brilho::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / 0.28) 50%, transparent 70%);
+  animation: brilho 3.6s ease-in-out infinite 1.2s;
+}
+@keyframes brilho { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+
+}
+
+.scroll-x { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+.scroll-x::-webkit-scrollbar { display: none; }
+.scroll-x[data-transborda="1"] { mask-image: linear-gradient(90deg, #000 82%, transparent); }
+.tnum { font-variant-numeric: tabular-nums; }
+
+input, textarea { font: inherit; color: inherit; }
+textarea::placeholder, input::placeholder { color: var(--color-faint); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* card em geração */
+@keyframes busy-push { to { transform: scale(1.22); } }
+@keyframes busy-drift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(14%, 10%) scale(1.15); } }
+@keyframes busy-sweep { from { transform: translateX(0) skewX(-14deg); } to { transform: translateX(420%) skewX(-14deg); } }
+@keyframes busy-slide { from { left: -40%; } to { left: 100%; } }
+.busy-push { animation: busy-push 18s ease-in-out infinite alternate; }
+.busy-blob { animation: busy-drift 14s ease-in-out infinite; }
+.busy-shimmer { animation: busy-sweep 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+.busy-bar { animation: busy-slide 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+@media (prefers-reduced-motion: reduce) { .busy-push, .busy-blob, .busy-shimmer, .busy-bar { animation: none !important; } .busy-bar { left: 0; width: 50%; } }

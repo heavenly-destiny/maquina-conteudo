@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+"""voz "texto" saida.mp3 [voice_id|apelido]  -> ElevenLabs (eleven_v4, cai pro v3). Chave em ELEVENLABS_API_KEY ou maquina/.env
+Apelidos: sofia (Stories Lab, feminina pt-BR, aceita tags [excited] [laughs] [whispers]...), padrao (narrador)."""
+import json, os, sys, urllib.request, urllib.error
+from pathlib import Path
+
+def env(k):
+    if os.environ.get(k):
+        return os.environ[k]
+    f = Path(__file__).resolve().parent.parent / ".env"
+    if f.exists():
+        for l in f.read_text().splitlines():
+            if l.startswith(k + "="):
+                return l.split("=", 1)[1].strip().strip('"\'')
+    return ""
+
+if len(sys.argv) < 3:
+    sys.exit('uso: voz "texto" saida.mp3 [voice_id]')
+chave = env("ELEVENLABS_API_KEY")
+if not chave:
+    print("FALTA_CHAVE_ELEVENLABS", file=sys.stderr)
+    sys.exit(3)
+APELIDOS = {"sofia": "n2a9VtkZLl8j1FSXHsL7", "padrao": env("VOZ_PADRAO") or "WrT2M515LQuE5m5EYh0W"}
+voz = sys.argv[3] if len(sys.argv) > 3 else "padrao"
+try:  # regra do tanpz: Stories Lab é sempre a Sofia, mesmo se o agente esquecer
+    if voz == "padrao" and "stories lab" in Path("pedido.json").read_text().lower():
+        voz = "sofia"
+except OSError:
+    pass
+voz = APELIDOS.get(voz.lower(), voz)
+def falar(modelo):
+    req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{voz}?output_format=mp3_44100_128",
+        data=json.dumps({"text": sys.argv[1], "model_id": modelo}).encode(),
+        headers={"xi-api-key": chave, "Content-Type": "application/json", "Accept": "audio/mpeg"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        Path(sys.argv[2]).write_bytes(r.read())
+
+erro = ""
+for modelo in dict.fromkeys([env("VOZ_MODELO") or "eleven_v4", "eleven_v3"]):
+    try:
+        falar(modelo)
+        sys.exit(0)
+    except urllib.error.HTTPError as e:
+        erro = f"ElevenLabs HTTP {e.code} ({modelo}): {e.read()[:300].decode(errors='replace')}"
+        if e.code in (401, 402, 429):
+            break
+print(erro, file=sys.stderr)
+sys.exit(1)

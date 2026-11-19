@@ -1,0 +1,1910 @@
+{
+  "version": 1,
+  "historyId": "f2eac506-428b-406e-bbfc-8efbe48279af",
+  "currentRevision": "ef4c7f22-48d9-4808-b68f-152f590d6c55",
+  "pendingChanges": false,
+  "files": {
+    "hyperframes.json": {
+      "hash": "ad5dadeef78a520800a9e5cdd27a92ff5ac37f11b6a07f611b6b52b9f8c79a17",
+      "content": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/ad/ad5dadeef78a520800a9e5cdd27a92ff5ac37f11b6a07f611b6b52b9f8c79a17"
+    },
+    "index.html": {
+      "hash": "fee6ae01e558b9cccb0a7316d6dcb0ba03217290beca395e476fc0c8d5e1dbda",
+      "content": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/fe/fee6ae01e558b9cccb0a7316d6dcb0ba03217290beca395e476fc0c8d5e1dbda"
+    },
+    "meta.json": {
+      "hash": "a2aba45180ec9b93555d67b26b87fbffb8d2d6dbc2d74f477471c84ede8b5257",
+      "content": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/a2/a2aba45180ec9b93555d67b26b87fbffb8d2d6dbc2d74f477471c84ede8b5257"
+    },
+    "package.json": {
+      "hash": "5f04add821cde599578e51c2374b47d7c32d87759cbede37ae2bedfc0ccec0e4",
+      "content": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/5f/5f04add821cde599578e51c2374b47d7c32d87759cbede37ae2bedfc0ccec0e4"
+    }
+  },
+  "revisions": {
+    "b57ce5b5-e5e6-4f91-a587-a433823228d6": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794856493761,
+      "endedAt": 1794856493762,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/f4/f4651b3f0dc67c91292f15ca0a9f511d9daf5b29474b2c12f5a2d063f2b0d410",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/e1/e1f3343269a6ee60fec3e541be3a9a2ff5d7b8b333eb14506425c49cb579de47"
+        }
+      }
+    },
+    "80894c37-4afc-4e7d-851f-94b6bcb65706": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794856570433,
+      "endedAt": 1794856570434,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/e1/e1f3343269a6ee60fec3e541be3a9a2ff5d7b8b333eb14506425c49cb579de47",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/1a/1aa1139dce477d5903241d5a807607af40a59caf76e4fd908d5d293e791ab56d"
+        }
+      }
+    },
+    "f3510771-9273-4024-ad0d-95e760432118": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794856589044,
+      "endedAt": 1794856589045,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/1a/1aa1139dce477d5903241d5a807607af40a59caf76e4fd908d5d293e791ab56d",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/53/53bf018575a9294ffb92dad9b2b9460dfbeb0c2504aafea504da73148febe447"
+        }
+      }
+    },
+    "c349e884-90d5-4215-8aad-5c7a29738452": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794862301255,
+      "endedAt": 1794862301256,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/53/53bf018575a9294ffb92dad9b2b9460dfbeb0c2504aafea504da73148febe447",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/f3/f3a053a714b1e55ad81085d07fe9494317dcd42ce35c1dac5effda0dfae0ee2c"
+        }
+      }
+    },
+    "04309b08-f029-4734-afe3-ca4fc4eb60b8": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794862548084,
+      "endedAt": 1794862548085,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/f3/f3a053a714b1e55ad81085d07fe9494317dcd42ce35c1dac5effda0dfae0ee2c",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/06/0626948f3aa6bc23502342a64f00d6cc176fb5126a4ffe76bcf3e026cea39a8b"
+        }
+      }
+    },
+    "b3288495-d56b-4a91-8a0d-4d21a880ffa3": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794866067687,
+      "endedAt": 1794866067688,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/06/0626948f3aa6bc23502342a64f00d6cc176fb5126a4ffe76bcf3e026cea39a8b",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/b3/b34cfe403022e9475a414d8f5a5f75e0331d138dd03b02bd329cbd675c65323f"
+        }
+      }
+    },
+    "7eb82e03-99db-49c4-b32e-b29620b594ae": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794872200271,
+      "endedAt": 1794872200272,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/b3/b34cfe403022e9475a414d8f5a5f75e0331d138dd03b02bd329cbd675c65323f",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/c4/c46b3618b2001cc4dabfe1550e4f3d0c3021fc430e857b0a367d26efc14c02f8"
+        }
+      }
+    },
+    "ef4c7f22-48d9-4808-b68f-152f590d6c55": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794872601720,
+      "endedAt": 1794872601721,
+      "files": {
+        "index.html": {
+          "before": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/c4/c46b3618b2001cc4dabfe1550e4f3d0c3021fc430e857b0a367d26efc14c02f8",
+          "after": "/Users/tanpz/.cache/hyperframes/history/f2eac506-428b-406e-bbfc-8efbe48279af/blobs/fe/fee6ae01e558b9cccb0a7316d6dcb0ba03217290beca395e476fc0c8d5e1dbda"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": null,
+    "revisions": {
+      "b57ce5b5-e5e6-4f91-a587-a433823228d6": [
+        {
+          "id": "ee2aa152-07f6-404d-96da-8de5b998b410",
+          "scope": "project",
+          "metadata": {
+            "ok": false,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794856501055,
+          "contentHash": "e8e91427237134487bba5999b20f9cf00e92c7125b8b9527075c5a479c446329",
+          "revision": "b57ce5b5-e5e6-4f91-a587-a433823228d6",
+          "inputFingerprint": "58869422e2f4319f5d2ce02758f1c77e581c0cc9046c64adc770384548b6b253",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "7e4da38b-a1af-4989-95c6-32a05da3e3df"
+        }
+      ],
+      "80894c37-4afc-4e7d-851f-94b6bcb65706": [
+        {
+          "id": "0d9c1b4c-da5e-488a-9779-9de7a4c94154",
+          "scope": "project",
+          "metadata": {
+            "ok": false,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794856578248,
+          "contentHash": "d3ae129b94efcd87138805bd3e703e3a23e21593b5c90095c4e62aaba6fbd845",
+          "revision": "80894c37-4afc-4e7d-851f-94b6bcb65706",
+          "inputFingerprint": "5ce5fb3a5d25b5d944ff2eb87c0161096bdc4f1df39d0d5441b15059f0554d07",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "7e4da38b-a1af-4989-95c6-32a05da3e3df"
+        }
+      ],
+      "f3510771-9273-4024-ad0d-95e760432118": [
+        {
+          "id": "cfa00cd4-1bd2-41de-a9aa-e2f14d9a3064",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794856597447,
+          "contentHash": "11f9319534b3f96da31e8aa452c3ef7f893df7928019e24a08407f6d3f2e12ff",
+          "revision": "f3510771-9273-4024-ad0d-95e760432118",
+          "inputFingerprint": "dccd4ef73074ad73d469b5d22f7ed89100e1d18ef9719002cac6e934c58ce742",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f430ae8c-fc27-43c9-aae8-fa9ebbf3fecf"
+        }
+      ],
+      "c349e884-90d5-4215-8aad-5c7a29738452": [
+        {
+          "id": "0609d030-08bb-437c-a03c-eaff1e9b43ae",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794862336030,
+          "contentHash": "42b076d47e346d553d64b5795a85214788f0f9fb8d951bb5c6ead5a19e31f79d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        }
+      ],
+      "04309b08-f029-4734-afe3-ca4fc4eb60b8": [
+        {
+          "id": "4eb5581a-de70-47b5-8b96-45cb50f278ec",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794863257849,
+          "contentHash": "1ffdf6c7d9f96457e6f47177c39851357d5caaf1c1da5acd123a23ee60ae0b30",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        }
+      ],
+      "7eb82e03-99db-49c4-b32e-b29620b594ae": [
+        {
+          "id": "a2f139fc-2788-4199-8ca0-0eae9a49099e",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "cache": true,
+              "contrast": true,
+              "craft": true,
+              "strict": false,
+              "snapshots": false,
+              "safeZones": [
+                "tiktok",
+                "reels",
+                "shorts"
+              ],
+              "browserGpuMode": "auto",
+              "includeUnmounted": false
+            }
+          },
+          "createdAt": 1794872220601,
+          "contentHash": "419cb45e7595347473dfb72f0e545730719c7bed5b75b3fe16440b4cf7ddf6a6",
+          "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+          "inputFingerprint": "c7ef9d2b82b2b595de219332327d29157c3cffb34fafe603b9100e61048214d5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "snapshots": {
+    "latest": {
+      "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+      "id": "ae6ef2b3-2e40-4131-a47d-125d19ecb77e-3"
+    },
+    "revisions": {
+      "c349e884-90d5-4215-8aad-5c7a29738452": [
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-0",
+          "time": 0.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473101,
+          "contentHash": "405885795fc752eface3e21cebbaf60463c52be9908179758c6842ba81c901ec",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-1",
+          "time": 2.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473103,
+          "contentHash": "59e1ce25db42b5043bed0ac1c2da2cfbd1fd8701d5bd50db85bf0c8f39331774",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-2",
+          "time": 4.6,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473103,
+          "contentHash": "a1ba52d2339c19fd338fb972b1e6d66c0e19ed55d06babbc8b0670a98821785b",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-3",
+          "time": 6.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473103,
+          "contentHash": "226d61953c6c2815d1977b70e7bce4869645f1305e3b38292d7239e7249b4bdc",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-4",
+          "time": 8.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473104,
+          "contentHash": "2ff27c0110cccf7fa8eeb715a73725cffc06040c2a08e457443563e8720d4994",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-5",
+          "time": 11.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473104,
+          "contentHash": "11d66a4e850d0c2a4a71739613799eca3465de2474fea3d4b8b9bc77dfd07383",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-6",
+          "time": 13.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473104,
+          "contentHash": "87a650482bd655878f219e87239921e2540cdf812eb187cb17af27ba6cf5b4db",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-7",
+          "time": 15.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473104,
+          "contentHash": "e334eb18366fa8755c420ebe7b27d0bfdf71915a492aae19dca72a40949e8368",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-8",
+          "time": 17.3,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473104,
+          "contentHash": "51144fc8270a4260f0a8c3fbc025e2c5d126403d5f7046eef1a50722b24483ca",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-9",
+          "time": 18.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473105,
+          "contentHash": "2014d092e6318bf2fea57103078bd73dfea24fd12b3705246279ebf21780d07c",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-10",
+          "time": 21,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473105,
+          "contentHash": "e033aef8932f0128707f2c522d0a95c88e582b21a5d136872af6628c2d372357",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-11",
+          "time": 23.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473105,
+          "contentHash": "c9259616ecbd4a9514d78133731fddaaaea8712e4a47688b4ae559d2c54a570d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-12",
+          "time": 25.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473105,
+          "contentHash": "c219431a39b5702fb526a7809080ca2c4615f3305daf841d1d157764cfb2367d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-13",
+          "time": 28,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473106,
+          "contentHash": "145c7482f9847b1875a573f00590267bfc7009a283de03f6b4f374f9da5cf80d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "9dd178c4-497e-4beb-9f21-c06712658ee3-14",
+          "time": 28.83,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7ce100c180] [dec:libvpx-vp9 @ 0x7ce0c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862473106,
+          "contentHash": "616f728aaf35669db6a10e7f439c351575a461512f89be5aeb8257dda899e660",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-0",
+          "time": 0.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506081,
+          "contentHash": "405885795fc752eface3e21cebbaf60463c52be9908179758c6842ba81c901ec",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-1",
+          "time": 2.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506081,
+          "contentHash": "59e1ce25db42b5043bed0ac1c2da2cfbd1fd8701d5bd50db85bf0c8f39331774",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-2",
+          "time": 4.6,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "a1ba52d2339c19fd338fb972b1e6d66c0e19ed55d06babbc8b0670a98821785b",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-3",
+          "time": 6.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "226d61953c6c2815d1977b70e7bce4869645f1305e3b38292d7239e7249b4bdc",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-4",
+          "time": 8.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "6f51b9769592d4b812dafc199d934dd2a6104f593259d1c148e69b00564958b2",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-5",
+          "time": 11.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "11d66a4e850d0c2a4a71739613799eca3465de2474fea3d4b8b9bc77dfd07383",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-6",
+          "time": 13.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "87a650482bd655878f219e87239921e2540cdf812eb187cb17af27ba6cf5b4db",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-7",
+          "time": 15.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506082,
+          "contentHash": "e334eb18366fa8755c420ebe7b27d0bfdf71915a492aae19dca72a40949e8368",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-8",
+          "time": 17.3,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506083,
+          "contentHash": "51144fc8270a4260f0a8c3fbc025e2c5d126403d5f7046eef1a50722b24483ca",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-9",
+          "time": 18.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506083,
+          "contentHash": "2014d092e6318bf2fea57103078bd73dfea24fd12b3705246279ebf21780d07c",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-10",
+          "time": 21,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506083,
+          "contentHash": "e033aef8932f0128707f2c522d0a95c88e582b21a5d136872af6628c2d372357",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-11",
+          "time": 23.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506083,
+          "contentHash": "c9259616ecbd4a9514d78133731fddaaaea8712e4a47688b4ae559d2c54a570d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-12",
+          "time": 25.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506083,
+          "contentHash": "5978c31eea446037b9731e6f5bc6b04850be2752fe5e73a10c5b224be43204fe",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-13",
+          "time": 28,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506084,
+          "contentHash": "145c7482f9847b1875a573f00590267bfc7009a283de03f6b4f374f9da5cf80d",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        },
+        {
+          "scope": "full",
+          "id": "ed398ae6-f490-41a1-97c7-42e3eb059599-14",
+          "time": 28.83,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x79b700c180] [dec:libvpx-vp9 @ 0x79b6c14500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862506084,
+          "contentHash": "616f728aaf35669db6a10e7f439c351575a461512f89be5aeb8257dda899e660",
+          "revision": "c349e884-90d5-4215-8aad-5c7a29738452",
+          "inputFingerprint": "beb8603a07bc0da0c597acaa9e0ce9164bec18db690ef63772ad3c28604ac7c9",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "f1fdda10-6c74-49de-995b-14f790e5fc3b"
+        }
+      ],
+      "04309b08-f029-4734-afe3-ca4fc4eb60b8": [
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-0",
+          "time": 0.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574967,
+          "contentHash": "405885795fc752eface3e21cebbaf60463c52be9908179758c6842ba81c901ec",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-1",
+          "time": 2.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574967,
+          "contentHash": "e740f29349313cd748eba20dce32a9f767c83b86400c55f547ea32f2f25f7ac6",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-2",
+          "time": 4.6,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574967,
+          "contentHash": "3ab62efb8f1e65bb4cdff7b8f5c055f8babbb1affef095a7748a71a27620b4a8",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-3",
+          "time": 6.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574967,
+          "contentHash": "ef85c455cb5f09688fd89ee5ff89df8ef6f41afe156e664327607a7bdd3624e0",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-4",
+          "time": 8.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574968,
+          "contentHash": "c1e383cb5613b69da23a7baed52e909f88a41238eadbf74b593c9152934e1ac1",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-5",
+          "time": 11.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574968,
+          "contentHash": "5273e8331259fd76225fe3950b5bdebd81a50883d3c42fe86b4048bb32906b48",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-6",
+          "time": 13.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574968,
+          "contentHash": "b13e1efe48f87e790ced620ef8283f9db705351950dbaea976bc034c4fdf9571",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-7",
+          "time": 15.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574968,
+          "contentHash": "961175f319b777c62eb1920b4acce27df2b1a0e62d80dd17b5a17312201b531e",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-8",
+          "time": 17.3,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574968,
+          "contentHash": "584aff9db8ed09191ed8bfec77d467dfdd42d73ce6f17f2da780a08d65d040bf",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-9",
+          "time": 18.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574969,
+          "contentHash": "ef38094a08edc255e35c541499530f30d2c0446b6f487678086af545550c0a62",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-10",
+          "time": 21,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574969,
+          "contentHash": "f0545afabc6a88db43060880b1e1ae9d739259b1ce0d64ee512d19ac3c1fd39e",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-11",
+          "time": 23.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574969,
+          "contentHash": "920a0b992056c421c22bbe30080d17804b8304dcd62e6ba745bb5ee86db8a34e",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-12",
+          "time": 25.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574969,
+          "contentHash": "f741dde33978d4b750ee3f9cf32452ffe5b3b32889d8eea16ebe09e6561d69da",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-13",
+          "time": 28,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574969,
+          "contentHash": "262e23f1685bf8eb704507a4e071a2c76fe61e2974cec2f702900a0b74f63253",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        },
+        {
+          "scope": "full",
+          "id": "7fa4618f-e79a-493c-9776-b993024009e3-14",
+          "time": 28.83,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [
+              "FFmpeg could not extract the frame of /Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/assets/u5-cut.webm at 11.20s: [vist#0:0/vp9 @ 0x7c3f00c180] [dec:libvpx-vp9 @ 0x7c3ec10500] Terminating thread with return code -1145393733 (Error number -1145393733 occurred)",
+              "1 video frames missing at 11.2s"
+            ],
+            "partial": true
+          },
+          "createdAt": 1794862574970,
+          "contentHash": "df2f789a0e2d90314fef2774788305d008631f6cc38551d6ae0a332241f6e3cb",
+          "revision": "04309b08-f029-4734-afe3-ca4fc4eb60b8",
+          "inputFingerprint": "bf279082c86acef635b1e61c441343ac0b6e1058433488016131ec574a484cf5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "dd643ab1-122d-4dac-a58d-29802bf0f0a4"
+        }
+      ],
+      "7eb82e03-99db-49c4-b32e-b29620b594ae": [
+        {
+          "scope": "full",
+          "id": "ae6ef2b3-2e40-4131-a47d-125d19ecb77e-0",
+          "image": "/private/tmp/claude-501/-Users-tanpz-Documents-PROJETOS-TANPZ--tanpz-tanpz-machine/316620ff-5b28-4aa1-8d82-28058e82c7e6/scratchpad/hs/u5/frame-00-at-3s.png",
+          "time": 3,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1794872287436,
+          "contentHash": "bb0f8971187c364a84e501f8cc21295a6b15815a495bc9c4aea8ea8005b224dd",
+          "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+          "inputFingerprint": "c7ef9d2b82b2b595de219332327d29157c3cffb34fafe603b9100e61048214d5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "ae6ef2b3-2e40-4131-a47d-125d19ecb77e-1",
+          "image": "/private/tmp/claude-501/-Users-tanpz-Documents-PROJETOS-TANPZ--tanpz-tanpz-machine/316620ff-5b28-4aa1-8d82-28058e82c7e6/scratchpad/hs/u5/frame-01-at-8.5s.png",
+          "time": 8.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1794872287440,
+          "contentHash": "1892b0dc8051728e6978e0a837de09ef68a64c064c20a67b8b3348045cdd185a",
+          "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+          "inputFingerprint": "c7ef9d2b82b2b595de219332327d29157c3cffb34fafe603b9100e61048214d5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "ae6ef2b3-2e40-4131-a47d-125d19ecb77e-2",
+          "image": "/private/tmp/claude-501/-Users-tanpz-Documents-PROJETOS-TANPZ--tanpz-tanpz-machine/316620ff-5b28-4aa1-8d82-28058e82c7e6/scratchpad/hs/u5/frame-02-at-14.4s.png",
+          "time": 14.4,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1794872287441,
+          "contentHash": "02be7316d46bb94e402c1b15d34bc0a78174aac7ea67217b94ce426ce84d579f",
+          "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+          "inputFingerprint": "c7ef9d2b82b2b595de219332327d29157c3cffb34fafe603b9100e61048214d5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "ae6ef2b3-2e40-4131-a47d-125d19ecb77e-3",
+          "image": "/private/tmp/claude-501/-Users-tanpz-Documents-PROJETOS-TANPZ--tanpz-tanpz-machine/316620ff-5b28-4aa1-8d82-28058e82c7e6/scratchpad/hs/u5/frame-03-at-16.8s.png",
+          "time": 16.8,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1794872287444,
+          "contentHash": "a455f3c4c2068e4596e70569736c813e9516013bea44911aaf6579a1cd6e36c2",
+          "revision": "7eb82e03-99db-49c4-b32e-b29620b594ae",
+          "inputFingerprint": "c7ef9d2b82b2b595de219332327d29157c3cffb34fafe603b9100e61048214d5",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-0",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-00-at-0.4s.png",
+        "time": 0.4,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "b70ca86b38a22c7740aece6bb7771a1832ca055ee86d5a90c9da461ff151019d",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-1",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-01-at-2s.png",
+        "time": 2,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "df597288d6ec35a2912e07e4b87bed06e93ae71c8158963869e0610fd4d4637d",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-2",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-02-at-4s.png",
+        "time": 4,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "1da6c07bf470883ab9b0f7ccc49fc9509e276064784b6c8bbc2c425d531b5651",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-3",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-03-at-5.5s.png",
+        "time": 5.5,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "4de1fcfb769f837ffa520054988976eafe387ebf67ea90c968807c20169f8c8d",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-4",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-04-at-7s.png",
+        "time": 7,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "f6930ad12f56a3298963dd710515c69ca155f0f5c7a744cb682ff6f3095b7dea",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-5",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-05-at-9s.png",
+        "time": 9,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "1250cd0e393454e790a7ad0c879b4fe687cf9fd1d58bd81ced871606e45b2dc7",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-6",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-06-at-11s.png",
+        "time": 11,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "18097e182837f5892bd36341d2ff5ad72a965c8ce549cb37cc9b7847f5795414",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-7",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-07-at-13s.png",
+        "time": 13,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "7949b45a89687cbe031b98ab997f2f4061eba242dd820442b5f0a9855cae2343",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-8",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-08-at-15s.png",
+        "time": 15,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "cf45a7963529d61bcb6663f27eb594367a58ceecb9cfd4703a1a8512f02342b6",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-9",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-09-at-17s.png",
+        "time": 17,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "4962e68c688f44274d48a2ec593dc8226a1b204c3af3ec73e71f858b86ae6836",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-10",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-10-at-18.5s.png",
+        "time": 18.5,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "17d78ef7810d7ffd283c810eeac131d675ad474329cc7bc15fe52a2622bb87df",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-11",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-11-at-20s.png",
+        "time": 20,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "14db89de1e9142dbfb0f28fa6e4d191bd5d5bffe58052ba59cb71d238519a8ed",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-12",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-12-at-22s.png",
+        "time": 22,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389149,
+        "contentHash": "ca31e9011ff3214b7fbce728da18426f943f1f952bbce504d74dc78250c3b7c2",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-13",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-13-at-24.5s.png",
+        "time": 24.5,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389150,
+        "contentHash": "22f4819395843893ea36229aefd4b741214702f1741b00b3fa98bbe768d9870f",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-14",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-14-at-26s.png",
+        "time": 26,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389150,
+        "contentHash": "0927aeb8ea45ceb69ee7a4d51e7d482e93412a78aac0fd9a3026c18ac037dff4",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-15",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-15-at-28s.png",
+        "time": 28,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389150,
+        "contentHash": "5715bdad5941f506a25101255e2e7f8ba23ef9188a40e7d126f991f91693f503",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "f0bc8ba2-4e81-4f54-ade9-88dc2da8fb87-16",
+        "image": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u5/.hyperframes/artifacts/snapshots/5d488b71-03a9-4100-9499-c960900d96d1/frame-16-at-28.67s.png",
+        "time": 28.67,
+        "metadata": {
+          "width": 1080,
+          "height": 1920,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1794856389150,
+        "contentHash": "51341de14bcc594380bc931c89f4af67595fa057cdc6bf3eec3457b5d23591ff",
+        "revision": null,
+        "inputFingerprint": "d08b10fe2899dc90a20440b4e1f1ba2e6f3b6011bbae7a4adcd935fe974e6292",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "renders": {
+    "latest": {
+      "id": "dd643ab1-122d-4dac-a58d-29802bf0f0a4",
+      "completedAt": 1794872663440,
+      "output": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/renders/u5-v8.mp4",
+      "status": "completed",
+      "revision": "ef4c7f22-48d9-4808-b68f-152f590d6c55"
+    },
+    "retainedRevisions": [
+      "ef4c7f22-48d9-4808-b68f-152f590d6c55",
+      "b3288495-d56b-4a91-8a0d-4d21a880ffa3"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

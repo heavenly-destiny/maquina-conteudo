@@ -1,0 +1,24 @@
+watch@claude-video
+claude-mem@thedotmack
+superwhisper@superwhisper
+superpowers@claude-plugins-official
+hyperframes@claude-plugins-official
+skill-creator@claude-plugins-official
+caveman@caveman
+ponytail@ponytail
+codex@openai-codex
+i-have-adhd@i-have-adhd
+taste-skill@taste-skill
+gsap-skills@gsap-skills
+last30days@last30days-skill
+claude-hud@claude-hud
+marketing-skills@marketingskills
+social-media-skills@social-media-skills
+swift-lsp@claude-plugins-official
+vercel@claude-plugins-official
+supabase@claude-plugins-official
+typescript-lsp@claude-plugins-official
+pyright-lsp@claude-plugins-official
+php-lsp@claude-plugins-official
+context7@claude-plugins-official
+semgrep@claude-plugins-official disabled

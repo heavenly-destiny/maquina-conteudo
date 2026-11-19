@@ -1,0 +1,85 @@
+      .mscene .inner { perspective: 1600px; }
+      .pchip { position: absolute; padding: 14px 26px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 38px; font-weight: 800; white-space: nowrap; opacity: 0;
+        box-shadow: 0 10px 24px rgba(80,20,40,0.14), 0 30px 70px rgba(80,20,40,0.2); z-index: 16; }
+      .tile { position: absolute; width: 230px; height: 230px; border-radius: 56px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 54px; font-weight: 900; font-style: italic;
+        background: linear-gradient(135deg, #00c4cc, #7d2ae8); box-shadow: 0 20px 50px rgba(60,20,90,0.35); }
+      .cvx { position: absolute; left: 110px; top: 1250px; width: 860px; height: 470px; border-radius: 34px; overflow: hidden; background: #fff; opacity: 0;
+        box-shadow: 0 20px 60px rgba(60,20,90,0.3); }
+      .cvbar { height: 84px; display: flex; align-items: center; gap: 22px; padding: 0 30px; background: linear-gradient(90deg, #00c4cc, #7d2ae8); color: #fff; }
+      .cvbar b { font-size: 44px; font-weight: 900; font-style: italic; } .cvbar span { font-size: 26px; opacity: 0.85; }
+      .cvbody { display: flex; height: 386px; background: #ebecf0; }
+      .cvside { width: 110px; background: #18191b; display: flex; flex-direction: column; gap: 22px; padding: 26px 30px; }
+      .cvside i { display: block; width: 50px; height: 50px; border-radius: 12px; background: #3a3b3f; }
+      .cvpage { margin: 30px auto; width: 190px; height: 326px; background: #fff; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+      .cvpage small { font-size: 18px; color: #888; text-align: center; padding: 0 10px; }
+      .spin { width: 64px; height: 64px; border-radius: 50%; border: 8px solid #e3d9f7; border-top-color: #7d2ae8; }
+      .pinwrap { position: absolute; inset: 0; background: #fff; }
+      #m4-in { background: #fbf5f1; }
+      .endcard { position: absolute; left: 70px; top: 360px; width: 940px; height: 1160px; border-radius: 60px; background: rgba(251,245,241,0.93); box-shadow: 0 30px 90px rgba(80,20,40,0.25); }
+      .wall { position: absolute; left: -400px; top: -330px; width: 1900px; transform: rotate(-9deg); display: flex; flex-direction: column; gap: 26px; }
+      .wrow { display: flex; gap: 26px; width: max-content; }
+      .wrow img { width: 300px; height: 533px; object-fit: cover; border-radius: 28px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); display: block; }
+      .pinwrap .pinhead { position: absolute; left: 30px; right: 30px; top: 70px; display: flex; align-items: center; gap: 18px; }
+      .pinlogo { flex: none; width: 70px; height: 70px; border-radius: 50%; background: #e60023; color: #fff; font: 900 46px/70px Georgia, serif; text-align: center; }
+      .sbarq { flex: 1; height: 90px; border-radius: 45px; background: #f1edee; display: flex; align-items: center; padding: 0 34px; font-size: 36px; color: #4a3d43; }
+      .feedwin { position: absolute; left: 24px; right: 24px; top: 190px; bottom: 0; overflow: hidden; }
+      .feed { columns: 3; column-gap: 16px; }
+      .feed img { display: block; width: 100%; height: 420px; object-fit: cover; margin-bottom: 16px; border-radius: 22px; break-inside: avoid; }
+      .feed img:nth-child(3n+2) { height: 540px; }
+      .xmark { position: absolute; width: 300px; height: 300px; opacity: 0; }
+      .xmark::before, .xmark::after { content: ""; position: absolute; left: 130px; top: -10px; width: 40px; height: 320px; border-radius: 20px; background: #ef2b4b; box-shadow: 0 6px 20px rgba(239,43,75,0.4); }
+      .xmark::before { transform: rotate(45deg); } .xmark::after { transform: rotate(-45deg); }
+      .mini { position: absolute; width: 230px; height: 410px; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 40px rgba(60,10,30,0.3); border: 5px solid #fff; opacity: 0; }
+      .mini .photo { inset: 0; }
+      .mini.big { width: 300px; height: 530px; }
+      .mini.big img { left: 25px; top: 90px; width: 250px; }
+      .mini img { position: absolute; left: 20px; top: 60px; width: 190px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+      /* ---- shared extras for u2–u5 ---- */
+      .mlist { position: absolute; left: 90px; width: 900px; top: 1240px; display: flex; flex-direction: column; gap: 16px; }
+      .mrow { display: flex; align-items: center; gap: 20px; padding: 20px 26px; border-radius: 30px; background: #fff; box-shadow: 0 14px 34px rgba(80,20,40,0.14); opacity: 0; color: var(--ink); }
+      .mrow .ic { flex: none; width: 70px; height: 70px; border-radius: 18px; display: grid; place-items: center; font-size: 40px; background: #f4eef0; }
+      .mrow b { font-size: 36px; font-weight: 800; flex: 1; } .mrow small { font-size: 26px; color: #8a7a80; font-weight: 600; }
+      .mrow .bar { position: relative; width: 180px; height: 14px; border-radius: 7px; background: #eee; overflow: hidden; }
+      .mrow .bar i { position: absolute; inset: 0; background: linear-gradient(90deg, #1fa463, #4285f4); transform-origin: 0 50%; transform: scaleX(0); display: block; }
+      .store { position: absolute; left: 90px; width: 900px; top: 1250px; padding: 34px; border-radius: 40px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.18); opacity: 0; color: var(--ink); }
+      .store h5 { font-size: 40px; font-weight: 800; display: flex; justify-content: space-between; } .store h5 span { color: #e11d48; }
+      .store .sbar2 { margin-top: 24px; height: 44px; border-radius: 14px; background: #eee; overflow: hidden; display: flex; }
+      .store .sbar2 i { display: block; height: 100%; transform-origin: 0 50%; }
+      .store p { margin-top: 18px; font-size: 28px; color: #8a7a80; font-weight: 600; }
+      .logoburst { position: absolute; left: 0; width: 1080px; top: 700px; display: flex; justify-content: center; }
+      .logoburst img { width: 860px; display: block; }
+      .fcard { position: absolute; left: 190px; top: 420px; width: 700px; height: 1150px; border-radius: 48px; overflow: hidden; box-shadow: 0 30px 80px rgba(60,10,30,0.35); }
+      .fcard .photo { inset: 0; }
+      .fcard .plain { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(0.4) contrast(0.85) brightness(1.08); }
+      .fcard .graded { position: absolute; inset: 0; background-size: cover; background-position: center; filter: contrast(1.15) saturate(1.3) sepia(0.15) brightness(0.95); clip-path: inset(0 0 0 100%); }
+      .fcard .dv { position: absolute; top: 0; bottom: 0; width: 8px; margin-left: -4px; background: #fff; left: 100%; box-shadow: 0 0 14px rgba(0,0,0,0.35); }
+      .fcard .lb { position: absolute; top: 30px; padding: 10px 20px; border-radius: 20px; font-size: 28px; font-weight: 800; color: #fff; background: rgba(0,0,0,0.45); }
+      .invoice { position: absolute; left: 140px; top: 1250px; width: 800px; padding: 36px 40px; border-radius: 36px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.2); opacity: 0; color: var(--ink); }
+      .invoice small { font-size: 26px; color: #8a7a80; font-weight: 700; letter-spacing: 0.08em; }
+      .invoice b { display: block; font-size: 40px; font-weight: 800; margin: 8px 0 18px; }
+      .invoice .amt { font-size: 92px; font-weight: 900; color: #e11d48; letter-spacing: -0.03em; }
+      .invoice .amt em { font-style: normal; font-size: 40px; color: #8a7a80; }
+      .checks { position: absolute; left: 120px; width: 840px; top: 1240px; display: flex; flex-direction: column; gap: 18px; }
+      .checks div { display: flex; align-items: center; gap: 22px; padding: 22px 30px; border-radius: 32px; background: #fff; box-shadow: 0 14px 34px rgba(80,20,40,0.14); font-size: 42px; font-weight: 800; color: var(--ink); opacity: 0; }
+      .checks i { flex: none; width: 58px; height: 58px; border-radius: 50%; background: #22c55e; position: relative; display: block; }
+      .checks i::after { content: ""; position: absolute; left: 20px; top: 10px; width: 13px; height: 26px; border: solid #fff; border-width: 0 7px 7px 0; transform: rotate(45deg); }
+      .agcard { position: absolute; left: 150px; top: 1240px; width: 780px; padding: 30px; border-radius: 38px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.18); opacity: 0; color: var(--ink); }
+      .agcard h5 { font-size: 34px; font-weight: 800; margin-bottom: 18px; }
+      .agcard div { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-top: 1px solid #f0e8eb; font-size: 36px; font-weight: 700; opacity: 0; }
+      .agcard div span { font-size: 28px; color: #8a7a80; width: 90px; }
+      .share2 { position: absolute; left: 140px; width: 800px; top: 1260px; padding: 30px 30px 34px; border-radius: 48px; background: #fff; box-shadow: 0 20px 60px rgba(80,20,40,0.2); color: var(--ink); opacity: 0; }
+      .share2 h4 { font-size: 38px; font-weight: 800; text-align: center; margin-bottom: 22px; }
+      .share2 .avs { display: flex; justify-content: space-around; }
+      .share2 .av { position: relative; width: 150px; text-align: center; font-size: 28px; font-weight: 700; }
+      .share2 .av i { display: flex; width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 50%; align-items: center; justify-content: center; font-size: 60px; font-style: normal; }
+      .share2 .av em { position: absolute; right: 8px; top: 80px; width: 48px; height: 48px; border-radius: 50%; background: #22c55e; border: 4px solid #fff; opacity: 0; }
+      .share2 .av em::after { content: ""; position: absolute; left: 13px; top: 5px; width: 10px; height: 20px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .dmq2 { position: absolute; left: 60px; width: 960px; top: 1240px; }
+      .dmq2 p { max-width: 800px; padding: 24px 34px; border-radius: 40px; font-size: 44px; font-weight: 700; line-height: 1.2; box-shadow: 0 14px 40px rgba(80,20,40,0.2); opacity: 0; margin-bottom: 18px; }
+      .dmq2 p.me { background: linear-gradient(135deg, #a347e6, #6a38f5); color: #fff; margin-left: auto; border-bottom-right-radius: 10px; }
+      .dmq2 p.they { background: #fff; color: var(--ink); border-bottom-left-radius: 10px; }
+      .newb { position: absolute; top: 14px; right: 14px; padding: 6px 14px; border-radius: 14px; background: #e8417a; color: #fff; font-size: 24px; font-weight: 800; opacity: 0; }
+      .emo { position: absolute; inset: 0; display: grid; place-items: center; font-size: 150px; }
+      .bigclock { position: absolute; left: 0; width: 1080px; top: 1290px; display: flex; justify-content: center; }
+      .bigclock div { display: flex; align-items: center; gap: 22px; padding: 26px 56px; border-radius: 90px; background: #fff; color: var(--ink); font-size: 96px; font-weight: 900; font-variant-numeric: tabular-nums; box-shadow: 0 20px 60px rgba(80,20,40,0.22); opacity: 0; }
+      .bigclock.bad div { color: #e11d48; } .bigclock.good div { color: #16a34a; }

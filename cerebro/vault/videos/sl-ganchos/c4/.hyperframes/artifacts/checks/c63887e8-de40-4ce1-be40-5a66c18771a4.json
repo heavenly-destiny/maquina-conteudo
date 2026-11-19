@@ -1,0 +1,3522 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 10,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.39s and 15.49s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.53s and 15.63s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.69s and 15.77s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 414 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "This HTML file has 5 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sA\"> is a timeline element that contains nested <div id=\"sA-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sA",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sA\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sB\"> is a timeline element that contains nested <div id=\"sB-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sB",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sB\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sC\"> is a timeline element that contains nested <div id=\"sC-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sC",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sC\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sD\"> is a timeline element that contains nested <div id=\"sD-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sD",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sD\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"fx\"> is a timeline element that contains nested <div id=\"flash\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#fx",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"fx\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 24,
+    "warningCount": 23,
+    "infoCount": 20,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.318,
+        "selector": "#sq1",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 410.89,
+          "top": 646.84,
+          "right": 454.76,
+          "bottom": 730.88,
+          "width": 43.87,
+          "height": 84.04
+        },
+        "containerSelector": "#sq2",
+        "text": "DIA 2",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 410.89,
+          "y": 646.84,
+          "width": 43.87,
+          "height": 84.04
+        },
+        "firstSeen": 5.318,
+        "lastSeen": 7.268,
+        "occurrences": 12,
+        "heldMs": 1950.0000000000002,
+        "times": [
+          5.318,
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq0",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 529.15,
+          "top": 600.14,
+          "right": 565.51,
+          "bottom": 686.94,
+          "width": 36.36,
+          "height": 86.8
+        },
+        "containerSelector": "#sq1",
+        "text": "DIA 1",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 529.15,
+          "y": 600.14,
+          "width": 36.36,
+          "height": 86.8
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 7.268,
+        "occurrences": 13,
+        "heldMs": 1979.9999999999995,
+        "times": [
+          5.288,
+          5.318,
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq0 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 517.24,
+          "top": 570.48,
+          "right": 565.57,
+          "bottom": 603.97,
+          "width": 48.33,
+          "height": 33.49
+        },
+        "containerSelector": "#sq1 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 517.24,
+          "y": 570.48,
+          "width": 48.33,
+          "height": 33.49
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq1 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 511.02,
+          "top": 567.85,
+          "right": 558.45,
+          "bottom": 599.82,
+          "width": 47.43,
+          "height": 31.97
+        },
+        "containerSelector": "#sq2 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 511.02,
+          "y": 567.85,
+          "width": 47.43,
+          "height": 31.97
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq2",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 507.79,
+          "top": 596.31,
+          "right": 551.62,
+          "bottom": 681.85,
+          "width": 43.83,
+          "height": 85.54
+        },
+        "containerSelector": "#sq3",
+        "text": "DIA 3",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 507.79,
+          "y": 596.31,
+          "width": 43.83,
+          "height": 85.54
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq2 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 504.52,
+          "top": 567.42,
+          "right": 550.95,
+          "bottom": 597.81,
+          "width": 46.43,
+          "height": 30.39
+        },
+        "containerSelector": "#sq3 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 504.52,
+          "y": 567.42,
+          "width": 46.43,
+          "height": 30.39
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq3",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 504.31,
+          "top": 600,
+          "right": 548.42,
+          "bottom": 683.83,
+          "width": 44.11,
+          "height": 83.83
+        },
+        "containerSelector": "#sq4",
+        "text": "DIA 4",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 504.31,
+          "y": 600,
+          "width": 44.11,
+          "height": 83.83
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.495,
+        "selector": "#sq3 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 503.72,
+          "top": 571.29,
+          "right": 548.99,
+          "bottom": 600,
+          "width": 45.27,
+          "height": 28.71
+        },
+        "containerSelector": "#sq4 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 503.72,
+          "y": 571.29,
+          "width": 45.27,
+          "height": 28.71
+        },
+        "firstSeen": 5.495,
+        "lastSeen": 7.268,
+        "occurrences": 11,
+        "heldMs": 1772.9999999999998,
+        "times": [
+          5.495,
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.672,
+        "selector": "#sq4",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 498.47,
+          "top": 583.14,
+          "right": 542.64,
+          "bottom": 669.04,
+          "width": 44.17,
+          "height": 85.9
+        },
+        "containerSelector": "#sq5",
+        "text": "DIA 5",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 498.47,
+          "y": 583.14,
+          "width": 44.17,
+          "height": 85.9
+        },
+        "firstSeen": 5.672,
+        "lastSeen": 7.268,
+        "occurrences": 10,
+        "heldMs": 1596,
+        "times": [
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.672,
+        "selector": "#sq4 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 499.21,
+          "top": 554.13,
+          "right": 545.83,
+          "bottom": 584.65,
+          "width": 46.62,
+          "height": 30.52
+        },
+        "containerSelector": "#sq5 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 499.21,
+          "y": 554.13,
+          "width": 46.62,
+          "height": 30.52
+        },
+        "firstSeen": 5.672,
+        "lastSeen": 7.268,
+        "occurrences": 10,
+        "heldMs": 1596,
+        "times": [
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.672,
+        "selector": "#sq5",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 490.84,
+          "top": 578.45,
+          "right": 537.2,
+          "bottom": 665.58,
+          "width": 46.36,
+          "height": 87.13
+        },
+        "containerSelector": "#sq6",
+        "text": "DIA 6",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 490.84,
+          "y": 578.45,
+          "width": 46.36,
+          "height": 87.13
+        },
+        "firstSeen": 5.672,
+        "lastSeen": 7.268,
+        "occurrences": 10,
+        "heldMs": 1596,
+        "times": [
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 5.672,
+        "selector": "#sq5 > small:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 494.2,
+          "top": 549.4,
+          "right": 541.75,
+          "bottom": 581.45,
+          "width": 47.55,
+          "height": 32.05
+        },
+        "containerSelector": "#sq6 > small:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 494.2,
+          "y": 549.4,
+          "width": 47.55,
+          "height": 32.05
+        },
+        "firstSeen": 5.672,
+        "lastSeen": 7.268,
+        "occurrences": 10,
+        "heldMs": 1596,
+        "times": [
+          5.672,
+          5.85,
+          6.027,
+          6.204,
+          6.381,
+          6.559,
+          6.736,
+          6.913,
+          7.091,
+          7.268
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg7 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg6 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.776,
+        "occurrences": 51,
+        "heldMs": 8508,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422,
+          15.599,
+          15.776
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg7 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 479.99,
+          "top": 609.53,
+          "right": 600.56,
+          "bottom": 900.47,
+          "width": 120.57,
+          "height": 290.94
+        },
+        "containerSelector": "#pg6 > b:nth-of-type(1)",
+        "text": "7",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 479.99,
+          "y": 609.53,
+          "width": 120.57,
+          "height": 290.94
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.865,
+        "occurrences": 52,
+        "heldMs": 8597.000000000002,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422,
+          15.599,
+          15.776,
+          15.865
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg6 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg5 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.599,
+        "occurrences": 50,
+        "heldMs": 8331,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422,
+          15.599
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg6 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 475.39,
+          "top": 609.49,
+          "right": 605.16,
+          "bottom": 900.51,
+          "width": 129.77,
+          "height": 291.02
+        },
+        "containerSelector": "#pg5 > b:nth-of-type(1)",
+        "text": "6",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 475.39,
+          "y": 609.49,
+          "width": 129.77,
+          "height": 291.02
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.599,
+        "occurrences": 50,
+        "heldMs": 8331,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422,
+          15.599
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg5 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg4 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.422,
+        "occurrences": 49,
+        "heldMs": 8154,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg5 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 474.24,
+          "top": 609.48,
+          "right": 606.31,
+          "bottom": 900.52,
+          "width": 132.07,
+          "height": 291.04
+        },
+        "containerSelector": "#pg4 > b:nth-of-type(1)",
+        "text": "5",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.24,
+          "y": 609.48,
+          "width": 132.07,
+          "height": 291.04
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.422,
+        "occurrences": 49,
+        "heldMs": 8154,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245,
+          15.422
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg4 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg3 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.245,
+        "occurrences": 48,
+        "heldMs": 7976.999999999999,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg4 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 468.72,
+          "top": 609.43,
+          "right": 611.83,
+          "bottom": 900.56,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "containerSelector": "#pg3 > b:nth-of-type(1)",
+        "text": "4",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 468.72,
+          "y": 609.43,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 15.245,
+        "occurrences": 48,
+        "heldMs": 7976.999999999999,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877,
+          12.054,
+          12.231,
+          12.339,
+          12.408,
+          12.586,
+          12.763,
+          12.94,
+          13.117,
+          13.295,
+          13.472,
+          13.649,
+          13.826,
+          14.004,
+          14.181,
+          14.358,
+          14.536,
+          14.713,
+          14.89,
+          15.067,
+          15.245
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg3 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg2 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 11.877,
+        "occurrences": 28,
+        "heldMs": 4609.000000000001,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg3 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 474.47,
+          "top": 609.48,
+          "right": 606.08,
+          "bottom": 900.52,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "containerSelector": "#pg2 > b:nth-of-type(1)",
+        "text": "3",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.47,
+          "y": 609.48,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 11.877,
+        "occurrences": 28,
+        "heldMs": 4609.000000000001,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699,
+          11.877
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg2 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.15,
+          "height": 51.69
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 11.522,
+        "occurrences": 26,
+        "heldMs": 4254,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 8.814,
+        "selector": "#pg2 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 476.32,
+          "top": 609.5,
+          "right": 604.25,
+          "bottom": 900.5,
+          "width": 127.93,
+          "height": 291
+        },
+        "containerSelector": "#pg1 > b:nth-of-type(1)",
+        "text": "2",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 476.32,
+          "y": 609.5,
+          "width": 127.93,
+          "height": 291
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 11.699,
+        "occurrences": 27,
+        "heldMs": 4431,
+        "times": [
+          7.268,
+          7.445,
+          7.622,
+          7.8,
+          7.977,
+          8.154,
+          8.331,
+          8.509,
+          8.686,
+          8.814,
+          8.863,
+          9.04,
+          9.218,
+          9.395,
+          9.572,
+          9.749,
+          9.927,
+          10.104,
+          10.281,
+          10.458,
+          10.636,
+          10.813,
+          10.99,
+          11.168,
+          11.345,
+          11.522,
+          11.699
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.268,
+        "selector": "#pg1 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 498.14,
+          "top": 538.07,
+          "right": 581.84,
+          "bottom": 588.44,
+          "width": 83.7,
+          "height": 50.37
+        },
+        "containerSelector": "#pgCOVER > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 498.14,
+          "y": 538.07,
+          "width": 83.7,
+          "height": 50.37
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 7.445,
+        "occurrences": 2,
+        "heldMs": 177.00000000000048,
+        "times": [
+          7.268,
+          7.445
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 7.268,
+        "selector": "#pg1 > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 498.76,
+          "top": 600.79,
+          "right": 581.24,
+          "bottom": 887.26,
+          "width": 82.48,
+          "height": 286.47
+        },
+        "containerSelector": "#pgCOVER > b:nth-of-type(1)",
+        "text": "1",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 498.76,
+          "y": 600.79,
+          "width": 82.48,
+          "height": 286.47
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 7.445,
+        "occurrences": 2,
+        "heldMs": 177.00000000000048,
+        "times": [
+          7.268,
+          7.445
+        ]
+      },
+      {
+        "selector": "#sq0",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 64.49,
+          "y": 752.78,
+          "width": 29.85,
+          "height": 75.24
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 64.49,
+          "top": 752.78,
+          "right": 94.34,
+          "bottom": 828.02,
+          "width": 29.85,
+          "height": 75.24
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "1",
+        "message": "<div> \"1\" is outside the safe area: TikTok (left edge), Instagram Reels (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#sq0 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 54.74,
+          "y": 727.06,
+          "width": 41.59,
+          "height": 28.23
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 54.74,
+          "top": 727.06,
+          "right": 96.33,
+          "bottom": 755.29,
+          "width": 41.59,
+          "height": 28.23
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "DIA",
+        "message": "<small> \"DIA\" is outside the safe area: TikTok (left edge), Instagram Reels (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#sq6",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 928.86,
+          "y": 746.81,
+          "width": 39.28,
+          "height": 80.69
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 928.86,
+          "top": 746.81,
+          "right": 968.14,
+          "bottom": 827.5,
+          "width": 39.28,
+          "height": 80.69
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "7",
+        "message": "<div> \"7\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "selector": "#sq6 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 929.12,
+          "y": 719.59,
+          "width": 43.97,
+          "height": 29.14
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 929.12,
+          "top": 719.59,
+          "right": 973.09,
+          "bottom": 748.73,
+          "width": 43.97,
+          "height": 29.14
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "DIA",
+        "message": "<small> \"DIA\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA1 > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 627.8,
+          "y": 318.16,
+          "width": 287.81,
+          "height": 78.61
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 627.8,
+          "top": 318.16,
+          "right": 915.61,
+          "bottom": 396.77,
+          "width": 287.81,
+          "height": 78.61
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "postando",
+        "message": "<span> \"postando\" is outside the safe area: YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 120.74,
+          "y": 279.33,
+          "width": 38.45,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 120.74,
+          "top": 279.33,
+          "right": 159.19,
+          "bottom": 361.14,
+          "width": 38.45,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "e",
+        "message": "<span> \"e\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 175.97,
+          "y": 279.33,
+          "width": 139.42,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 175.97,
+          "top": 279.33,
+          "right": 315.39,
+          "bottom": 361.14,
+          "width": 139.42,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "essa",
+        "message": "<span> \"essa\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 332.17,
+          "y": 279.33,
+          "width": 81.35,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 332.17,
+          "top": 279.33,
+          "right": 413.52,
+          "bottom": 361.14,
+          "width": 81.35,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "foi",
+        "message": "<span> \"foi\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 430.3,
+          "y": 280.54,
+          "width": 36.61,
+          "height": 81.8
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 430.3,
+          "top": 280.54,
+          "right": 466.91,
+          "bottom": 362.34,
+          "width": 36.61,
+          "height": 81.8
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "a",
+        "message": "<span> \"a\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#rb1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 720,
+          "y": 1028.01,
+          "width": 228.84,
+          "height": 47
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 720,
+          "top": 1028.01,
+          "right": 948.84,
+          "bottom": 1075.01,
+          "width": 228.84,
+          "height": 47
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "que lindo! 😍",
+        "message": "<div> \"que lindo! 😍\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#rb2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 780,
+          "y": 1170,
+          "width": 134.75,
+          "height": 47
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 780,
+          "top": 1170,
+          "right": 914.75,
+          "bottom": 1217,
+          "width": 134.75,
+          "height": 47
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "amei 💗",
+        "message": "<div> \"amei 💗\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#rb3",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 709.99,
+          "y": 1296.12,
+          "width": 244.62,
+          "height": 50.35
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 709.99,
+          "top": 1296.12,
+          "right": 954.61,
+          "bottom": 1346.47,
+          "width": 244.62,
+          "height": 50.35
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "onde é isso?",
+        "message": "<div> \"onde é isso?\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 112,
+          "y": 279.91,
+          "width": 94.6,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 112,
+          "top": 279.91,
+          "right": 206.6,
+          "bottom": 361.65,
+          "width": 94.6,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "dia",
+        "message": "<span> \"dia\" is outside the safe area: TikTok (left edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 223.37,
+          "y": 279.91,
+          "width": 60.57,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 223.37,
+          "top": 279.91,
+          "right": 283.94,
+          "bottom": 361.65,
+          "width": 60.57,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "7:",
+        "message": "<span> \"7:\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 300.7,
+          "y": 279.91,
+          "width": 76.02,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 300.7,
+          "top": 279.91,
+          "right": 376.72,
+          "bottom": 361.65,
+          "width": 76.02,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "eu",
+        "message": "<span> \"eu\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 393.49,
+          "y": 279.91,
+          "width": 52.18,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 393.49,
+          "top": 279.91,
+          "right": 445.67,
+          "bottom": 361.65,
+          "width": 52.18,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "já",
+        "message": "<span> \"já\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 462.44,
+          "y": 279.91,
+          "width": 135.08,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 462.44,
+          "top": 279.91,
+          "right": 597.52,
+          "bottom": 361.65,
+          "width": 135.08,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "nem",
+        "message": "<span> \"nem\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 614.29,
+          "y": 279.91,
+          "width": 258.32,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 614.29,
+          "top": 279.91,
+          "right": 872.61,
+          "bottom": 361.65,
+          "width": 258.32,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "pensava",
+        "message": "<span> \"pensava\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(7)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 889.38,
+          "y": 279.91,
+          "width": 78.62,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 889.38,
+          "top": 279.91,
+          "right": 968,
+          "bottom": 361.65,
+          "width": 78.62,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "no",
+        "message": "<span> \"no\" is outside the safe area: TikTok (right edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#ln1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 120.77,
+          "y": 654.07,
+          "width": 830.39,
+          "height": 130.87
+        },
+        "time": 22.916,
+        "rect": {
+          "left": 120.77,
+          "top": 654.07,
+          "right": 951.16,
+          "bottom": 784.94,
+          "width": 830.39,
+          "height": 130.87
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ninguém ignora você.",
+        "message": "<div> \"ninguém ignora você.\" is outside the safe area: YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      },
+      {
+        "selector": "#ln2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 55.06,
+          "y": 838.89,
+          "width": 974.89,
+          "height": 135.91
+        },
+        "time": 22.916,
+        "rect": {
+          "left": 55.06,
+          "top": 838.89,
+          "right": 1029.95,
+          "bottom": 974.8,
+          "width": 974.89,
+          "height": 135.91
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ignoram story sem graça.",
+        "message": "<div> \"ignoram story sem graça.\" is outside the safe area: TikTok (left and right edges), Instagram Reels (left and right edges), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.763,
+        "selector": "#sA-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -4.21,
+          "top": -7.49,
+          "right": 1084.21,
+          "bottom": 1927.49,
+          "width": 1088.42,
+          "height": 1934.98
+        },
+        "containerSelector": "#sA",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 4.21,
+          "right": 4.21,
+          "top": 7.49,
+          "bottom": 7.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -4.21,
+          "y": -7.49,
+          "width": 1088.42,
+          "height": 1934.98
+        },
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq0",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 385.84,
+          "top": 645.1,
+          "right": 420.56,
+          "bottom": 729.26,
+          "width": 34.71,
+          "height": 84.16
+        },
+        "containerSelector": "#sq2",
+        "text": "1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 385.84,
+          "y": 645.1,
+          "width": 34.71,
+          "height": 84.16
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq0 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 374.49,
+          "top": 616.33,
+          "right": 421.25,
+          "bottom": 648.54,
+          "width": 46.76,
+          "height": 32.21
+        },
+        "containerSelector": "#sq0 > img:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 374.49,
+          "y": 616.33,
+          "width": 46.76,
+          "height": 32.21
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq1",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 347.57,
+          "top": 676.77,
+          "right": 390.36,
+          "bottom": 759.15,
+          "width": 42.8,
+          "height": 82.38
+        },
+        "containerSelector": "#sq2",
+        "text": "2",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 347.57,
+          "y": 676.77,
+          "width": 42.8,
+          "height": 82.38
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq1 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 343.24,
+          "top": 649.18,
+          "right": 388.15,
+          "bottom": 679.24,
+          "width": 44.91,
+          "height": 30.05
+        },
+        "containerSelector": "#sq2",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.26,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 343.24,
+          "y": 649.18,
+          "width": 44.91,
+          "height": 30.05
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 7.268,
+        "selector": "#sq6",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 455.19,
+          "top": 514.79,
+          "right": 554.73,
+          "bottom": 703.16,
+          "width": 99.54,
+          "height": 188.37
+        },
+        "containerSelector": "#pg7 > div:nth-of-type(1)",
+        "text": "DIA 7",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 455.19,
+          "y": 514.79,
+          "width": 99.54,
+          "height": 188.37
+        },
+        "firstSeen": 7.268,
+        "lastSeen": 7.268,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.268
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg7 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg7 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 479.99,
+          "top": 609.53,
+          "right": 600.56,
+          "bottom": 900.47,
+          "width": 120.58,
+          "height": 290.95
+        },
+        "containerSelector": "#pg1",
+        "text": "7",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 479.99,
+          "y": 609.53,
+          "width": 120.58,
+          "height": 290.95
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg6 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg6 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 475.39,
+          "top": 609.49,
+          "right": 605.16,
+          "bottom": 900.51,
+          "width": 129.76,
+          "height": 291.02
+        },
+        "containerSelector": "#pg1",
+        "text": "6",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 475.39,
+          "y": 609.49,
+          "width": 129.76,
+          "height": 291.02
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg5 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg5 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 474.24,
+          "top": 609.48,
+          "right": 606.31,
+          "bottom": 900.52,
+          "width": 132.08,
+          "height": 291.04
+        },
+        "containerSelector": "#pg1",
+        "text": "5",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.24,
+          "y": 609.48,
+          "width": 132.08,
+          "height": 291.04
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg4 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg4 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 468.72,
+          "top": 609.43,
+          "right": 611.83,
+          "bottom": 900.56,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "containerSelector": "#pg1",
+        "text": "4",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 468.72,
+          "y": 609.43,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg3 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg3 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 474.47,
+          "top": 609.48,
+          "right": 606.08,
+          "bottom": 900.52,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "containerSelector": "#pg1",
+        "text": "3",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.47,
+          "y": 609.48,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg2 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 546.16,
+          "right": 581.37,
+          "bottom": 597.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 546.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg2 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 476.32,
+          "top": 609.5,
+          "right": 604.25,
+          "bottom": 900.5,
+          "width": 127.93,
+          "height": 291.01
+        },
+        "containerSelector": "#pg1",
+        "text": "2",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 476.32,
+          "y": 609.5,
+          "width": 127.93,
+          "height": 291.01
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.391,
+        "selector": "#sB-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -25.87,
+          "top": -45.98,
+          "right": 1105.87,
+          "bottom": 1965.98,
+          "width": 1131.73,
+          "height": 2011.97
+        },
+        "containerSelector": "#sB",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 25.87,
+          "right": 25.87,
+          "top": 45.98,
+          "bottom": 45.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -25.87,
+          "y": -45.98,
+          "width": 1131.73,
+          "height": 2011.97
+        },
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.916,
+        "selector": "#sC-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -22.36,
+          "top": -39.74,
+          "right": 1102.36,
+          "bottom": 1959.74,
+          "width": 1124.71,
+          "height": 1999.49
+        },
+        "containerSelector": "#sC",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 22.36,
+          "right": 22.36,
+          "top": 39.74,
+          "bottom": 39.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -22.36,
+          "y": -39.74,
+          "width": 1124.71,
+          "height": 1999.49
+        },
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      }
+    ],
+    "duration": 31.73,
+    "samples": [
+      1.763,
+      5.288,
+      8.814,
+      12.339,
+      15.865,
+      19.391,
+      22.916,
+      26.442,
+      29.967
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 67,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 7,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(1) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 54.741844177246094,
+          "y": 727.05712890625,
+          "width": 41.58367156982422,
+          "height": 28.23443603515625
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(2) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 201.12103271484375,
+          "y": 729.9420776367188,
+          "width": 40.9935302734375,
+          "height": 27.23980712890625
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(3) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 347.5155944824219,
+          "y": 732.4556274414062,
+          "width": 40.375274658203125,
+          "height": 26.22637939453125
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(4) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 493.9246520996094,
+          "y": 734.1091918945312,
+          "width": 39.729400634765625,
+          "height": 25.19500732421875
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(5) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 639.6812133789062,
+          "y": 733.7006225585938,
+          "width": 40.3865966796875,
+          "height": 26.23297119140625
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(6) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 784.2086181640625,
+          "y": 724.41259765625,
+          "width": 42.69842529296875,
+          "height": 28.06097412109375
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.89:1; WCAG AA requires 3:1.",
+        "text": "DIA",
+        "fg": "rgb(168,149,125)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.89,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(165,146,123)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(7) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 929.1226806640625,
+          "y": 719.5902099609375,
+          "width": 43.96771240234375,
+          "height": 29.1407470703125
+        },
+        "time": 1.763,
+        "times": [
+          1.763
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.763,
+      8.814,
+      15.865,
+      22.916,
+      29.967
+    ],
+    "checked": 51,
+    "passed": 44
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"DIA\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "DIA",
+        "selector": "#sq3 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 500.04,
+          "y": 790.09,
+          "width": 27.69,
+          "height": 17.56
+        },
+        "time": 1.249,
+        "times": [
+          0.999,
+          1.124,
+          1.249,
+          1.249,
+          1.374,
+          1.499,
+          1.624,
+          12.867
+        ],
+        "fontPx": 14.05,
+        "floorPx": 28,
+        "seconds": 5.997,
+        "elements": [
+          {
+            "selector": "#sq3 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 14.05,
+            "time": 1.249,
+            "seconds": 5.997
+          },
+          {
+            "selector": "#sq5 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 15.25,
+            "time": 1.499,
+            "seconds": 5.747
+          },
+          {
+            "selector": "#sq4 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 16.04,
+            "time": 1.374,
+            "seconds": 5.872
+          },
+          {
+            "selector": "#sq6 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 17.04,
+            "time": 1.624,
+            "seconds": 5.622
+          },
+          {
+            "selector": "#sq0 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 18.58,
+            "time": 0.999,
+            "seconds": 6.247
+          },
+          {
+            "selector": "#sq1 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 19.68,
+            "time": 1.124,
+            "seconds": 6.122
+          },
+          {
+            "selector": "#sq2 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 20.13,
+            "time": 1.249,
+            "seconds": 5.997
+          },
+          {
+            "selector": "#dmC > div:nth-of-type(2) > b:nth-of-type(1) > small:nth-of-type(1)",
+            "text": "agora",
+            "fontPx": 24.92,
+            "time": 12.867,
+            "seconds": 2.623
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"DIA\" (1 word) is on screen 0.16 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "DIA",
+        "selector": "#sq3 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 503.17,
+          "y": 552.23,
+          "width": 48.20999999999998,
+          "height": 30.57000000000005
+        },
+        "time": 7.105,
+        "words": 1,
+        "seconds": 0.163,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 6.746,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 6.871,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 6.996,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 7.121,
+            "opacity": 0.97,
+            "heightPx": 31
+          },
+          {
+            "time": 7.245,
+            "opacity": 0.55,
+            "heightPx": 50
+          },
+          {
+            "time": 7.37,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 7.495,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 7.62,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 254
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

@@ -1,0 +1,308 @@
+[
+  {
+    "text": "Sexta",
+    "start": 0,
+    "end": 0.52,
+    "id": "w0"
+  },
+  {
+    "text": "noite,",
+    "start": 0.52,
+    "end": 1.19,
+    "id": "w1"
+  },
+  {
+    "text": "rolê",
+    "start": 1.44,
+    "end": 1.69,
+    "id": "w2"
+  },
+  {
+    "text": "marcado.",
+    "start": 1.69,
+    "end": 2.6,
+    "id": "w3"
+  },
+  {
+    "text": "Cartão",
+    "start": 2.68,
+    "end": 3.15,
+    "id": "w4"
+  },
+  {
+    "text": "pra",
+    "start": 3.22,
+    "end": 3.46,
+    "id": "w5"
+  },
+  {
+    "text": "cá,",
+    "start": 3.46,
+    "end": 3.84,
+    "id": "w6"
+  },
+  {
+    "text": "Pix",
+    "start": 3.86,
+    "end": 4.13,
+    "id": "w7"
+  },
+  {
+    "text": "pra",
+    "start": 4.13,
+    "end": 4.37,
+    "id": "w8"
+  },
+  {
+    "text": "lá.",
+    "start": 4.37,
+    "end": 5,
+    "id": "w9"
+  },
+  {
+    "text": "Ena",
+    "start": 5,
+    "end": 5.45,
+    "id": "w10"
+  },
+  {
+    "text": "segunda?",
+    "start": 5.47,
+    "end": 7,
+    "id": "w11"
+  },
+  {
+    "text": "Zero",
+    "start": 7.37,
+    "end": 7.42,
+    "id": "w12"
+  },
+  {
+    "text": "susto",
+    "start": 7.48,
+    "end": 7.94,
+    "id": "w13"
+  },
+  {
+    "text": "no",
+    "start": 7.94,
+    "end": 8.15,
+    "id": "w14"
+  },
+  {
+    "text": "fim",
+    "start": 8.15,
+    "end": 8.46,
+    "id": "w15"
+  },
+  {
+    "text": "do",
+    "start": 8.46,
+    "end": 8.67,
+    "id": "w16"
+  },
+  {
+    "text": "mês.",
+    "start": 8.67,
+    "end": 9,
+    "id": "w17"
+  },
+  {
+    "text": "Com",
+    "start": 9,
+    "end": 9.21,
+    "id": "w18"
+  },
+  {
+    "text": "a",
+    "start": 9.21,
+    "end": 9.35,
+    "id": "w19"
+  },
+  {
+    "text": "Zupi",
+    "start": 9.35,
+    "end": 9.56,
+    "id": "w20"
+  },
+  {
+    "text": "você",
+    "start": 9.56,
+    "end": 9.84,
+    "id": "w21"
+  },
+  {
+    "text": "tem",
+    "start": 9.84,
+    "end": 10.01,
+    "id": "w22"
+  },
+  {
+    "text": "cartão",
+    "start": 10.05,
+    "end": 10.47,
+    "id": "w23"
+  },
+  {
+    "text": "virtual,",
+    "start": 10.47,
+    "end": 11.26,
+    "id": "w24"
+  },
+  {
+    "text": "alerta",
+    "start": 11.26,
+    "end": 12.01,
+    "id": "w25"
+  },
+  {
+    "text": "de",
+    "start": 12.05,
+    "end": 12.31,
+    "id": "w26"
+  },
+  {
+    "text": "gasto,",
+    "start": 12.31,
+    "end": 13.15,
+    "id": "w27"
+  },
+  {
+    "text": "Pix",
+    "start": 13.15,
+    "end": 13.37,
+    "id": "w28"
+  },
+  {
+    "text": "agendado",
+    "start": 13.37,
+    "end": 14,
+    "id": "w29"
+  },
+  {
+    "text": "e",
+    "start": 14,
+    "end": 14.06,
+    "id": "w30"
+  },
+  {
+    "text": "login",
+    "start": 14.06,
+    "end": 14.4,
+    "id": "w31"
+  },
+  {
+    "text": "pelo",
+    "start": 14.4,
+    "end": 14.65,
+    "id": "w32"
+  },
+  {
+    "text": "rosto.",
+    "start": 14.65,
+    "end": 15,
+    "id": "w33"
+  },
+  {
+    "text": "Tudo",
+    "start": 15.47,
+    "end": 15.79,
+    "id": "w34"
+  },
+  {
+    "text": "num",
+    "start": 15.79,
+    "end": 16.18,
+    "id": "w35"
+  },
+  {
+    "text": "app",
+    "start": 16.45,
+    "end": 16.99,
+    "id": "w36"
+  },
+  {
+    "text": "só.",
+    "start": 16.99,
+    "end": 18,
+    "id": "w37"
+  },
+  {
+    "text": "Você",
+    "start": 18.37,
+    "end": 18.42,
+    "id": "w38"
+  },
+  {
+    "text": "aproveita",
+    "start": 18.48,
+    "end": 19.19,
+    "id": "w39"
+  },
+  {
+    "text": "a",
+    "start": 19.44,
+    "end": 19.46,
+    "id": "w40"
+  },
+  {
+    "text": "noite.",
+    "start": 19.46,
+    "end": 20,
+    "id": "w41"
+  },
+  {
+    "text": "O",
+    "start": 20,
+    "end": 20.1,
+    "id": "w42"
+  },
+  {
+    "text": "Zupinho",
+    "start": 20.1,
+    "end": 20.78,
+    "id": "w43"
+  },
+  {
+    "text": "cuida",
+    "start": 20.78,
+    "end": 21.18,
+    "id": "w44"
+  },
+  {
+    "text": "do",
+    "start": 21.43,
+    "end": 21.47,
+    "id": "w45"
+  },
+  {
+    "text": "resto.",
+    "start": 21.47,
+    "end": 22,
+    "id": "w46"
+  },
+  {
+    "text": "Zupi,",
+    "start": 22.39,
+    "end": 24.15,
+    "id": "w47"
+  },
+  {
+    "text": "leve",
+    "start": 24.15,
+    "end": 24.34,
+    "id": "w48"
+  },
+  {
+    "text": "no",
+    "start": 24.34,
+    "end": 24.68,
+    "id": "w49"
+  },
+  {
+    "text": "bolso.",
+    "start": 24.68,
+    "end": 25,
+    "id": "w50"
+  }
+]

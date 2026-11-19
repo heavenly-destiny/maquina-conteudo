@@ -1,0 +1,4 @@
+- [Lançamento DZI 2026-07-21 + Clube Fundadoras](dzi-lancamento-clube-fundadoras.md) — turma única de upsell amarrada a esse lançamento, escassez real (não campanha)
+- [Vídeos do TikTok vão na pasta VIDEOS TIKTOK](videos-tiktok-pasta-swipe-file.md) — swipe file de criativo dentro do projeto, nunca solto no Downloads
+- [VSL oficial é vsl-oficial-gravada.md](vsl-oficial-fonte-de-verdade.md) — a seção 2 do copy-desafio está obsoleta; 8 alimentos, não 5
+- [Compliance do caso GLP-1](dzi-compliance-caso-glp1.md) — bloco anti-caneta já revisado e liberado; no Meta usar só o mecanismo

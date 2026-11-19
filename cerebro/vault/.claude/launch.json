@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vendas",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd storieslab/vendas && npx -y wrangler pages dev site --port 8788 --live-reload"],
+      "port": 8788
+    }
+  ]
+}

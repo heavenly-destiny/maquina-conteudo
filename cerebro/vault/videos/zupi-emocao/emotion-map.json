@@ -1,0 +1,10 @@
+[
+  { "line": 1, "text": "Todo mês era igual.", "mood": "melancholy", "intensity": 2, "voice": "[softly, a little sad]" },
+  { "line": 2, "text": "O salário entrava... e sumia.", "mood": "melancholy", "intensity": 2, "voice": "[sighs] [slowly, sadly]" },
+  { "line": 3, "text": "Até que um dia, o carro quebrou.", "mood": "suspense", "intensity": 3, "pause_before": 1.0, "voice": "[low, with tension]" },
+  { "line": 4, "text": "E não tinha nada guardado.", "mood": "suspense", "intensity": 4, "voice": "[almost whispering, tense]" },
+  { "line": 5, "text": "Foi aí que eu comecei pequeno. Dez reais por dia.", "mood": "hope", "intensity": 3, "pause_before": 1.1, "voice": "[hopeful, warm, a smile starting]" },
+  { "line": 6, "text": "Um mês... seis meses... um ano.", "mood": "triumph", "intensity": 4, "voice": "[building excitement]" },
+  { "line": 7, "text": "Hoje a reserva tá lá. E eu durmo tranquilo.", "mood": "relief", "intensity": 4, "voice": "[confident, smiling, relieved]" },
+  { "line": 8, "text": "Zupi. Leve no bolso.", "mood": "authority", "intensity": 3, "voice": "[warm, calm, confident]" }
+]

@@ -1,0 +1,99 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:IS;src:url(instrument-serif-italic.woff2);font-style:italic}
+@font-face{font-family:ISans;src:url(instrument-sans.woff2);font-weight:400 700}
+@font-face{font-family:Brico;src:url(bricolage-grotesque-v2.woff2);font-weight:600 800}
+@font-face{font-family:Pac;src:url(pacifico.woff2)}
+@font-face{font-family:GV;src:url(great-vibes.woff2)}
+@font-face{font-family:Beb;src:url(bebas-neue.woff2)}
+@font-face{font-family:Cav;src:url(caveat.woff2)}
+@font-face{font-family:Abr;src:url(abril-fatface.woff2)}
+:root{--bg:#FBF6F2;--ink:#2A1630;--muted:#6E5A6C;--rose:#D92B63;--rose-soft:#FBE4EB;--butter:#FFD84D}
+*{box-sizing:border-box;margin:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:radial-gradient(120% 90% at 85% 20%,#FFF1F5 0%,var(--bg) 55%,#F6ECE4 100%);font-family:ISans,sans-serif;color:var(--ink);position:relative}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;padding:0 72px}
+.txt{flex:0 0 46%;z-index:2}
+h1{font-family:Brico;font-weight:800;font-size:92px;line-height:.98;letter-spacing:-.035em}
+h1 em{font-family:IS;font-weight:400;font-style:italic;color:var(--rose);letter-spacing:-.01em;font-size:1.08em}
+.sub{margin-top:26px;font-size:28px;line-height:1.3;color:var(--muted);max-width:470px}
+.brand{position:absolute;left:72px;bottom:52px;font-family:Brico;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink);opacity:.75}
+.brand b{color:var(--rose)}
+.mock{flex:1;position:relative;height:100%}
+.shadow{box-shadow:0 2px 6px rgba(42,22,48,.10),0 30px 70px rgba(42,22,48,.20)}
+/* letras */
+.story{position:absolute;width:330px;height:586px;border-radius:34px;overflow:hidden;right:150px;top:50%;transform:translateY(-50%) rotate(3deg);background:#ddd}
+.story img{width:100%;height:100%;object-fit:cover}
+.bar{position:absolute;top:14px;left:14px;right:14px;height:3px;border-radius:2px;background:rgba(255,255,255,.45)}
+.bar:after{content:"";position:absolute;inset:0;width:62%;background:#fff;border-radius:2px}
+.st{position:absolute;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.s1{font-family:GV;font-size:64px;top:92px;left:34px;transform:rotate(-6deg)}
+.s2{font-family:Beb;font-size:44px;letter-spacing:.04em;background:#fff;color:var(--rose);text-shadow:none;padding:4px 18px 0;border-radius:12px;bottom:150px;left:40px;transform:rotate(-3deg)}
+.s3{font-family:Cav;font-size:42px;top:300px;right:24px;transform:rotate(5deg)}
+.fonts{position:absolute;left:0;bottom:70px;background:#fff;border-radius:22px;padding:16px 18px;display:flex;gap:12px;z-index:3}
+.fonts span{width:64px;height:64px;border-radius:16px;background:var(--rose-soft);display:grid;place-items:center;font-size:34px;color:var(--ink)}
+.fonts span.on{background:var(--rose);color:#fff}
+.chip{position:absolute;background:#fff;border-radius:999px;padding:14px 22px;font-weight:600;font-size:22px;display:flex;gap:10px;align-items:center;z-index:3}
+.chip i{width:12px;height:12px;border-radius:50%;background:var(--rose);display:block}
+/* reels */
+.reel{position:absolute;width:320px;height:568px;border-radius:34px;overflow:hidden;right:250px;top:50%;transform:translateY(-50%) rotate(-3deg)}
+.reel img{width:100%;height:100%;object-fit:cover}
+.hook{position:absolute;left:22px;right:22px;top:150px;text-align:center;font-family:Brico;font-weight:800;font-size:30px;line-height:1.15;color:var(--ink)}
+.hook span{background:#fff;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:2px 10px;border-radius:8px}
+.icons{position:absolute;right:16px;bottom:90px;display:flex;flex-direction:column;gap:20px}
+.icons i{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.88);display:block}
+.play{position:absolute;left:18px;bottom:24px;color:#fff;font-weight:700;font-size:18px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.paper{position:absolute;right:20px;top:50%;transform:translateY(-2%) rotate(3deg);width:340px;background:#fff;border-radius:26px;padding:26px 26px 22px;z-index:3}
+.paper .n{font-size:17px;font-weight:700;color:var(--rose);letter-spacing:.02em}
+.paper h3{font-family:Brico;font-weight:800;font-size:30px;letter-spacing:-.02em;margin:6px 0 16px;line-height:1.05}
+.sc{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid #F0E3E6;font-size:19px;line-height:1.25}
+.sc b{flex:0 0 28px;height:28px;border-radius:50%;background:var(--rose-soft);color:var(--rose);display:grid;place-items:center;font-size:15px}
+/* perfil */
+.prof{position:absolute;right:70px;top:50%;transform:translateY(-50%);width:470px;background:#fff;border-radius:34px;padding:30px 30px 26px}
+.ph{display:flex;align-items:center;gap:22px}
+.av{width:104px;height:104px;border-radius:50%;padding:4px;background:conic-gradient(var(--rose),var(--butter),var(--rose))}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid #fff}
+.nm{font-family:Brico;font-weight:800;font-size:26px;letter-spacing:-.02em}
+.handle{color:var(--muted);font-size:18px;margin-top:2px}
+.btn{margin-top:10px;display:inline-block;background:var(--rose);color:#fff;font-weight:700;font-size:17px;padding:8px 22px;border-radius:12px}
+.bio{margin:20px 0 18px;font-size:19px;line-height:1.42}
+.bio u{text-decoration:none;color:var(--rose);font-weight:600}
+.hl{display:flex;gap:16px}
+.hl div{text-align:center;font-size:14px;color:var(--muted)}
+.hl img{width:66px;height:66px;border-radius:50%;object-fit:cover;border:3px solid #fff;outline:2px solid #EBDDE1;display:block;margin-bottom:6px}
+.task{position:absolute;left:-10px;bottom:120px;background:var(--ink);color:#fff;border-radius:22px;padding:18px 22px;z-index:3;width:300px}
+.task small{display:block;font-size:15px;opacity:.7;margin-bottom:4px}
+.task b{font-family:Brico;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.task .ck{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;font-weight:800}
+/* square */
+body.sq .wrap{flex-direction:column;align-items:flex-start;padding:84px 76px 0}
+body.sq .txt{flex:none}
+body.sq h1{font-size:96px}
+body.sq .sub{font-size:30px;max-width:560px}
+body.sq .mock{width:100%;flex:1}
+body.sq .brand{left:auto;right:76px;bottom:auto;top:92px}
+body.sq .story{right:250px;top:auto;bottom:60px;transform:rotate(3deg)}
+body.sq .reel{right:420px;top:auto;bottom:60px;transform:rotate(-3deg)}
+body.sq .paper{right:60px;top:auto;bottom:130px;transform:rotate(3deg)}
+body.sq .prof{right:auto;left:300px;top:auto;bottom:110px;transform:scale(1.12);transform-origin:bottom left}
+body.sq .task{left:60px;bottom:70px}
+body.sq .fonts{left:110px;bottom:110px}
+</style></head><body>
+<div class="wrap"><div class="txt" id="t"></div><div class="mock" id="m"></div></div>
+<div class="brand">Stories <b>Lab</b></div>
+<script>
+const q=new URLSearchParams(location.search),k=q.get('k');if(q.get('sq'))document.body.classList.add('sq');
+const C={
+letras:[`Suas figurinhas,<br><em>suas fontes.</em>`,`Crie figurinhas com a sua frase, em 20 fontes exclusivas.`,
+`<div class="story shadow"><img src="look-espelho-02.jpg"><div class="bar"></div><span class="st s1">look do dia</span><span class="st s2">SEXTOU</span><span class="st s3">obrigada, Deus</span></div>
+<div class="fonts shadow"><span class="on" style="font-family:Pac">Aa</span><span style="font-family:GV">Aa</span><span style="font-family:Beb">AA</span><span style="font-family:Abr">Aa</span></div>`],
+reels:[`Reels com ideias<br><em>prontas.</em>`,`60 roteiros pra destravar, mesmo sem mostrar o rosto.`,
+`<div class="reel shadow"><img src="bolo-caseiro-05.jpg"><div class="hook"><span>Olha o que sai desse pote de farinha</span></div><div class="icons"><i></i><i></i><i></i></div><div class="play">▶ 12,4 mil</div></div>
+<div class="paper shadow"><div class="n">REEL 12 · BASTIDORES</div><h3>Do pote ao bolo</h3><div class="sc"><b>1</b>Close na farinha caindo</div><div class="sc"><b>2</b>Mão mexendo a massa</div><div class="sc"><b>3</b>Bolo saindo do forno</div></div>`],
+perfil:[`Aumente seus<br><em>seguidores.</em>`,`Método prático: uma tarefa por dia, por 21 dias.`,
+`<div class="prof shadow"><div class="ph"><div class="av"><img src="selfie-carro-02.jpg"></div><div><div class="nm">Bia Doces</div><div class="handle">@biadoces.caseiros</div><span class="btn">Seguir</span></div></div>
+<p class="bio">Bolos caseiros pra sua festa<br>Sabor de casa, entrega no dia certo<br>Mais de 300 festas em Goiânia<br><u>Peça seu orçamento no link</u></p>
+<div class="hl"><div><img src="cafe-manha-03.jpg">Café</div><div><img src="unhas-04.jpg">Eu</div><div><img src="salao-cabelo-01.jpg">Clientes</div><div><img src="pet-05.jpg">Bastidor</div><div><img src="praia-03.jpg">Férias</div></div></div>
+<div class="task shadow"><small>Dia 04 de 21</small><b>Bio em 4 linhas</b><span class="ck">✓</span></div>`]};
+const [h,s,m]=C[k];document.getElementById('t').innerHTML=`<h1>${h}</h1><p class="sub">${s}</p>`;document.getElementById('m').innerHTML=m;
+</script></body></html>

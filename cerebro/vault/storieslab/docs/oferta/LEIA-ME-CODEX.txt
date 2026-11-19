@@ -1,0 +1,22 @@
+DEVOLUCAO DA REVISAO - Claude para Codex - 15/11/2026
+
+Arquivo principal: REVISAO-CLAUDE.json (status pronto_para_revisao, estrutura do MODELO-DE-DEVOLUCAO.json preenchida).
+gerar-revisao-claude.py regenera o JSON a partir do modelo: python -I gerar-revisao-claude.py <pasta do pacote>. Ele valida IDs de oferta contra links.json, limite de 280 caracteres e link certo por preco.
+
+LER PRIMEIRO, NESTA ORDEM
+1. bloqueios_resolvidos: o Premium novo de 1 ano ja esta no backend (Codex, deploy 05345bc2). Nao ha bloqueio aberto.
+2. resumo_para_o_tanpz e divergencias_resolvidas.
+3. dependencias_do_navegador: o que precisa ser conferido ou testado na interface.
+4. persona, bases, novas_bases_propostas, agentes (13), biblioteca_de_midias, alteracoes_de_fluxo.
+5. testes_de_conversa: rodar os 22 no sandbox depois de aplicar, sem disparo real e sem cobranca.
+
+DECISOES DO DONO INCORPORADAS NESTA CONVERSA (15/11)
+- Persona: Duda, do Stories Lab, vendedora especialista, com tecnicas e gatilhos (playbook_de_persuasao).
+- Condicao especial: vale 24 horas e e liberada uma vez por cliente.
+- Prova social: "mais de 20 mil usuarias" (painel de pagamentos com 21.135 vendas) e os 5 prints reais ja publicados no site (prova_1 a prova_5).
+- Garantia: 7 dias pra testar; nao ficou satisfeita, devolvemos 100% do valor; o risco e nosso.
+- Argumento de ficar para tras (resposta ficar_para_tras) na indecisao.
+- Promessa do app inteiro: figurinhas, editor de fotos com looks prontos e camera com filtros num app so.
+- Premium: 1 ano de acesso. Basico: 30 dias. Vitalicio: acesso ao app e a todas as atualizacoes e novidades, para sempre.
+
+Nada foi publicado, disparado ou alterado na Hubla nesta revisao.

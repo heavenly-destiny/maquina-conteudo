@@ -1,0 +1,7 @@
+name = "storieslab"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[[r2_buckets]]
+binding = "BONUS"
+bucket_name = "storieslab-bonus"

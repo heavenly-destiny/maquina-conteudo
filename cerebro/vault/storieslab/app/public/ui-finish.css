@@ -1,0 +1,76 @@
+/* Shared finish: Stories Lab surfaces, controls and motion. */
+:root{--sl-fast:150ms;--sl-flow:320ms;--sl-ease:cubic-bezier(.22,.8,.2,1);--sl-surface:color-mix(in srgb,var(--paper) 88%,transparent);--sl-shadow:0 3px 8px -5px #30182b12,0 18px 40px -26px #30182b32}
+.sl-icon{width:24px;height:24px;flex:none;overflow:visible}
+button,a,input,select,summary{-webkit-tap-highlight-color:transparent}
+:is(button,a,summary):focus-visible{outline:2px solid var(--rose-ink);outline-offset:4px}
+.btn{letter-spacing:-.015em;box-shadow:0 5px 10px -7px var(--rose),0 16px 28px -20px var(--rose);background-image:linear-gradient(180deg,#ffffff09,transparent 65%)}
+.btn.ghost{background:color-mix(in srgb,var(--paper) 76%,transparent);box-shadow:var(--sl-shadow)}
+.iconbtn,.sheet .x{box-shadow:none;background:var(--sl-surface);border:0}
+.iconbtn,.sheet .x,.search .clr{border-radius:15px}
+.chip{box-shadow:none;background:var(--paper);font-size:13px;min-height:42px;padding-inline:17px}
+.chips{gap:9px;padding-top:5px;padding-bottom:5px}
+.chip[aria-pressed=true],.chip[aria-current=true]{box-shadow:0 7px 16px -12px var(--ink)}
+.search{box-shadow:var(--sl-shadow);border-radius:18px;background:var(--sl-surface)}
+.search:focus-within{box-shadow:0 0 0 2px color-mix(in srgb,var(--rose) 32%,transparent),var(--sl-shadow)}
+.top{border-bottom:0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(24px) saturate(1.25);-webkit-backdrop-filter:blur(24px) saturate(1.25)}
+.top.scrolled{box-shadow:0 6px 20px -18px #30182b60}
+.plan{box-shadow:none;border-radius:14px;font-size:12px;gap:7px}
+.list{border:0;border-radius:22px;box-shadow:var(--sl-shadow)}
+.blk{border:0;border-radius:24px;padding:18px;box-shadow:var(--sl-shadow)}
+.blk .btn.ghost,.ref-kit{border:0;background:var(--bg-2)}
+.stats div{background:color-mix(in srgb,var(--rose-soft) 40%,var(--bg));border-radius:16px}
+.list li+li{border-top-color:color-mix(in srgb,var(--line) 55%,transparent)}
+.list .li{background:color-mix(in srgb,var(--rose-soft) 65%,var(--paper));border-radius:12px;width:38px;height:38px}
+.list a,.list button{min-height:64px;padding-inline:18px;font-size:14px}
+.seg{background:color-mix(in srgb,var(--bg-2) 65%,transparent);padding:4px;border-radius:17px}
+.seg a{border-radius:13px;font-size:13px}.seg a[aria-current]{box-shadow:0 3px 9px #00000008}
+.card,.mcard,.look-card,.edit-card{box-shadow:var(--sl-shadow)}
+.mcard,.look-card{border-color:transparent}
+.sheet .in{padding-inline:22px}
+dialog.sheet,.feedback-panel,.studio-dialog{border:0;box-shadow:0 28px 80px -22px #1e102552;background:var(--paper)}
+dialog::backdrop{background:color-mix(in srgb,var(--scrim) 82%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.grab{width:32px;height:4px;margin-bottom:18px;opacity:.6}
+.feedback-kinds span{border:0;background:var(--bg-2)}
+.feedback-kinds input:checked+span{background:var(--rose-soft)}
+.photo-tool,.photo-more summary,.photo-zoom{border:0;box-shadow:none}
+.photo-mode{padding:5px;border-radius:16px;gap:5px}
+.photo-mode button{border-radius:12px}
+.photo-adjust{border:0;box-shadow:0 12px 36px -25px #0005}
+.photo-more-panel{border:0;border-radius:18px;box-shadow:0 18px 50px -18px #0009}
+.photo-more-panel button{min-height:46px}
+.photo-more-panel svg{width:19px;height:19px}
+.photo-slider-row input[type=range]{accent-color:var(--rose)}
+/* Navigation: five generous touch targets, accessible names kept in markup. */
+#tabbar{border:0;background:color-mix(in srgb,var(--bg) 90%,transparent);box-shadow:0 -10px 35px -25px #30182b30;backdrop-filter:blur(26px) saturate(1.2);-webkit-backdrop-filter:blur(26px) saturate(1.2)}
+#tabbar .in{position:relative;isolation:isolate;max-width:560px;grid-template-columns:repeat(5,1fr)}
+#tabbar a{min-width:44px;min-height:48px;gap:0;color:var(--muted)}
+#tabbar a>span{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#tabbar a::before{display:none}
+#tabbar a>svg{width:25px;height:25px;stroke-width:1.65;transform-origin:center;transition:color var(--sl-flow),transform var(--sl-flow) var(--sl-ease)}
+#tabbar a[aria-current=page]{color:var(--rose-ink)}
+#tabbar a[data-tab=camera] svg{width:29px;height:29px}
+#tabbar .sl-nav-indicator{position:absolute;pointer-events:none;z-index:-1;top:12px;left:0;width:46px;height:44px;border-radius:16px;background:var(--rose-soft);transform:translateX(var(--sl-nav-x,0px));opacity:0;transition:transform 400ms var(--sl-ease),background var(--sl-flow),opacity var(--sl-fast)}
+#tabbar.sl-nav-ready .sl-nav-indicator{opacity:1}
+body.camera-open #tabbar{background:#09090be8;box-shadow:none}
+body.camera-open #tabbar a{color:#85858d}body.camera-open #tabbar a[aria-current=page]{color:#fff}
+body.camera-open #tabbar .sl-nav-indicator{background:#ffffff10}
+/* Motion is feedback, never an idle loop across the app. */
+@media(prefers-reduced-motion:no-preference){
+ button,.btn,.chip,.iconbtn,.photo-tool,summary,.list a{transition:background-color var(--sl-fast),color var(--sl-fast),box-shadow var(--sl-flow),transform 180ms var(--sl-ease),opacity var(--sl-fast)}
+ :is(button,.btn,.chip,.iconbtn,summary):active:not(:disabled){transform:scale(.965)}
+ #tabbar a:active svg{transform:translateY(2px) scale(.9)}
+ :is(.btn,.list a):hover>svg:last-child{transform:translateX(2px)}
+ .btn>svg,.list a>svg{transition:transform var(--sl-flow) var(--sl-ease)}
+ .seg a,.photo-mode button{transition:background-color var(--sl-flow),color var(--sl-flow),box-shadow var(--sl-flow)}
+ dialog.sheet[open]:not(.closing),.feedback-panel[open],.studio-dialog[open],#camSheet[open]{animation:sl-sheet-enter 280ms var(--sl-ease) both}
+ dialog.sheet[open]::backdrop,#camSheet[open]::backdrop{animation:sl-backdrop-enter 240ms ease both}
+ .sl-selected-pop{animation:sl-selected-pop 260ms var(--sl-ease)}
+ details[open]>.photo-more-panel{animation:sl-menu-enter 200ms var(--sl-ease) both}
+}
+@keyframes sl-sheet-enter{from{opacity:0;transform:translateY(22px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes sl-backdrop-enter{from{opacity:0}to{opacity:1}}
+@keyframes sl-menu-enter{from{opacity:0;transform:translateY(-5px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes sl-selected-pop{0%{transform:scale(.9)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.iconbtn:hover,.sheet .x:hover{background:var(--rose-soft)}.btn:hover{box-shadow:0 10px 24px -15px var(--rose)}}
+@media(prefers-reduced-motion:reduce){#tabbar .sl-nav-indicator,#tabbar a>svg{transition:none!important}dialog[open]{animation:none!important}}
+@media(prefers-reduced-transparency:reduce){#tabbar,.top{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}body.camera-open #tabbar{background:#09090b}dialog::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}}

@@ -1,0 +1,2084 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 11,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 8 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.39s and 15.45s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.53s and 15.59s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#cal\" for rotation between 15.69s and 15.73s.",
+        "selector": "#cal",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 450 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "This HTML file has 5 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sA\"> is a timeline element that contains nested <div id=\"sA-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sA",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sA\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sB\"> is a timeline element that contains nested <div id=\"sB-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sB",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sB\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sC\"> is a timeline element that contains nested <div id=\"sC-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sC",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sC\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sD\"> is a timeline element that contains nested <div id=\"sD-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sD",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sD\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"fx\"> is a timeline element that contains nested <div id=\"flash\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#fx",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ganchos/c4/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"fx\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 21,
+    "infoCount": 20,
+    "findings": [
+      {
+        "selector": "#sq0",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 64.49,
+          "y": 752.78,
+          "width": 29.85,
+          "height": 75.24
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 64.49,
+          "top": 752.78,
+          "right": 94.34,
+          "bottom": 828.02,
+          "width": 29.85,
+          "height": 75.24
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "1",
+        "message": "<div> \"1\" is outside the safe area: TikTok (left edge), Instagram Reels (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#sq0 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 54.74,
+          "y": 727.06,
+          "width": 41.59,
+          "height": 28.23
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 54.74,
+          "top": 727.06,
+          "right": 96.33,
+          "bottom": 755.29,
+          "width": 41.59,
+          "height": 28.23
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "DIA",
+        "message": "<small> \"DIA\" is outside the safe area: TikTok (left edge), Instagram Reels (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#sq6",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 928.86,
+          "y": 746.81,
+          "width": 39.28,
+          "height": 80.69
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 928.86,
+          "top": 746.81,
+          "right": 968.14,
+          "bottom": 827.5,
+          "width": 39.28,
+          "height": 80.69
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "7",
+        "message": "<div> \"7\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "selector": "#sq6 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 929.12,
+          "y": 719.59,
+          "width": 43.97,
+          "height": 29.14
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 929.12,
+          "top": 719.59,
+          "right": 973.09,
+          "bottom": 748.73,
+          "width": 43.97,
+          "height": 29.14
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "DIA",
+        "message": "<small> \"DIA\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA1 > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 627.8,
+          "y": 318.16,
+          "width": 287.81,
+          "height": 78.61
+        },
+        "time": 1.763,
+        "rect": {
+          "left": 627.8,
+          "top": 318.16,
+          "right": 915.61,
+          "bottom": 396.77,
+          "width": 287.81,
+          "height": 78.61
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "postando",
+        "message": "<span> \"postando\" is outside the safe area: YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.763,
+        "lastSeen": 1.763,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.763
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 120.74,
+          "y": 279.33,
+          "width": 38.45,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 120.74,
+          "top": 279.33,
+          "right": 159.19,
+          "bottom": 361.14,
+          "width": 38.45,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "e",
+        "message": "<span> \"e\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 175.97,
+          "y": 279.33,
+          "width": 139.42,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 175.97,
+          "top": 279.33,
+          "right": 315.39,
+          "bottom": 361.14,
+          "width": 139.42,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "essa",
+        "message": "<span> \"essa\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 332.17,
+          "y": 279.33,
+          "width": 81.35,
+          "height": 81.81
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 332.17,
+          "top": 279.33,
+          "right": 413.52,
+          "bottom": 361.14,
+          "width": 81.35,
+          "height": 81.81
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "foi",
+        "message": "<span> \"foi\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#cA2 > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 430.3,
+          "y": 280.54,
+          "width": 36.61,
+          "height": 81.8
+        },
+        "time": 5.288,
+        "rect": {
+          "left": 430.3,
+          "top": 280.54,
+          "right": 466.91,
+          "bottom": 362.34,
+          "width": 36.61,
+          "height": 81.8
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "a",
+        "message": "<span> \"a\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "selector": "#rb1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 720,
+          "y": 1028.01,
+          "width": 228.84,
+          "height": 47
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 720,
+          "top": 1028.01,
+          "right": 948.84,
+          "bottom": 1075.01,
+          "width": 228.84,
+          "height": 47
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "que lindo! 😍",
+        "message": "<div> \"que lindo! 😍\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#rb2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 780,
+          "y": 1170,
+          "width": 134.75,
+          "height": 47
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 780,
+          "top": 1170,
+          "right": 914.75,
+          "bottom": 1217,
+          "width": 134.75,
+          "height": 47
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "amei 💗",
+        "message": "<div> \"amei 💗\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#rb3",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 709.99,
+          "y": 1296.12,
+          "width": 244.62,
+          "height": 50.35
+        },
+        "time": 8.814,
+        "rect": {
+          "left": 709.99,
+          "top": 1296.12,
+          "right": 954.61,
+          "bottom": 1346.47,
+          "width": 244.62,
+          "height": 50.35
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "onde é isso?",
+        "message": "<div> \"onde é isso?\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 112,
+          "y": 279.91,
+          "width": 94.6,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 112,
+          "top": 279.91,
+          "right": 206.6,
+          "bottom": 361.65,
+          "width": 94.6,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "dia",
+        "message": "<span> \"dia\" is outside the safe area: TikTok (left edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 223.37,
+          "y": 279.91,
+          "width": 60.57,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 223.37,
+          "top": 279.91,
+          "right": 283.94,
+          "bottom": 361.65,
+          "width": 60.57,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "7:",
+        "message": "<span> \"7:\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 300.7,
+          "y": 279.91,
+          "width": 76.02,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 300.7,
+          "top": 279.91,
+          "right": 376.72,
+          "bottom": 361.65,
+          "width": 76.02,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "eu",
+        "message": "<span> \"eu\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 393.49,
+          "y": 279.91,
+          "width": 52.18,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 393.49,
+          "top": 279.91,
+          "right": 445.67,
+          "bottom": 361.65,
+          "width": 52.18,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "já",
+        "message": "<span> \"já\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 462.44,
+          "y": 279.91,
+          "width": 135.08,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 462.44,
+          "top": 279.91,
+          "right": 597.52,
+          "bottom": 361.65,
+          "width": 135.08,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "nem",
+        "message": "<span> \"nem\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 614.29,
+          "y": 279.91,
+          "width": 258.32,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 614.29,
+          "top": 279.91,
+          "right": 872.61,
+          "bottom": 361.65,
+          "width": 258.32,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "pensava",
+        "message": "<span> \"pensava\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#cB4 > span:nth-of-type(7)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 889.38,
+          "y": 279.91,
+          "width": 78.62,
+          "height": 81.74
+        },
+        "time": 19.391,
+        "rect": {
+          "left": 889.38,
+          "top": 279.91,
+          "right": 968,
+          "bottom": 361.65,
+          "width": 78.62,
+          "height": 81.74
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "no",
+        "message": "<span> \"no\" is outside the safe area: TikTok (right edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "selector": "#ln1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 173.77,
+          "y": 655.92,
+          "width": 723.95,
+          "height": 114.68
+        },
+        "time": 22.916,
+        "rect": {
+          "left": 173.77,
+          "top": 655.92,
+          "right": 897.72,
+          "bottom": 770.6,
+          "width": 723.95,
+          "height": 114.68
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ninguém ignora você.",
+        "message": "<div> \"ninguém ignora você.\" is outside the safe area: YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      },
+      {
+        "selector": "#ln2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 117.31,
+          "y": 841.06,
+          "width": 849.94,
+          "height": 119.08
+        },
+        "time": 22.916,
+        "rect": {
+          "left": 117.31,
+          "top": 841.06,
+          "right": 967.25,
+          "bottom": 960.14,
+          "width": 849.94,
+          "height": 119.08
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "ignoram story sem graça.",
+        "message": "<div> \"ignoram story sem graça.\" is outside the safe area: TikTok (left and right edges), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.763,
+        "selector": "#sA-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -4.21,
+          "top": -7.49,
+          "right": 1084.21,
+          "bottom": 1927.49,
+          "width": 1088.42,
+          "height": 1934.98
+        },
+        "containerSelector": "#sA",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 4.21,
+          "right": 4.21,
+          "top": 7.49,
+          "bottom": 7.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -4.21,
+          "y": -7.49,
+          "width": 1088.42,
+          "height": 1934.98
+        },
+        "firstSeen": 1.763,
+        "lastSeen": 5.288,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.763,
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq0",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 385.84,
+          "top": 645.1,
+          "right": 420.56,
+          "bottom": 729.26,
+          "width": 34.71,
+          "height": 84.16
+        },
+        "containerSelector": "#sq2",
+        "text": "1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 385.84,
+          "y": 645.1,
+          "width": 34.71,
+          "height": 84.16
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq0 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 374.49,
+          "top": 616.33,
+          "right": 421.25,
+          "bottom": 648.54,
+          "width": 46.76,
+          "height": 32.21
+        },
+        "containerSelector": "#sq0 > img:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 374.49,
+          "y": 616.33,
+          "width": 46.76,
+          "height": 32.21
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq1",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 347.57,
+          "top": 676.77,
+          "right": 390.36,
+          "bottom": 759.15,
+          "width": 42.8,
+          "height": 82.38
+        },
+        "containerSelector": "#sq2",
+        "text": "2",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 347.57,
+          "y": 676.77,
+          "width": 42.8,
+          "height": 82.38
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 5.288,
+        "selector": "#sq1 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 343.24,
+          "top": 649.18,
+          "right": 388.15,
+          "bottom": 679.24,
+          "width": 44.91,
+          "height": 30.05
+        },
+        "containerSelector": "#sq2",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.26,
+        "lifetime": {
+          "start": 0,
+          "end": 7.6
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 343.24,
+          "y": 649.18,
+          "width": 44.91,
+          "height": 30.05
+        },
+        "firstSeen": 5.288,
+        "lastSeen": 5.288,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.288
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg7 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg7 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 479.99,
+          "top": 689.53,
+          "right": 600.56,
+          "bottom": 980.47,
+          "width": 120.58,
+          "height": 290.95
+        },
+        "containerSelector": "#pg1",
+        "text": "7",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 479.99,
+          "y": 689.53,
+          "width": 120.58,
+          "height": 290.95
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg6 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 15.865,
+        "occurrences": 3,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339,
+          15.865
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg6 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 475.39,
+          "top": 689.49,
+          "right": 605.16,
+          "bottom": 980.51,
+          "width": 129.76,
+          "height": 291.02
+        },
+        "containerSelector": "#pg1",
+        "text": "6",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 475.39,
+          "y": 689.49,
+          "width": 129.76,
+          "height": 291.02
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg5 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg5 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 474.24,
+          "top": 689.48,
+          "right": 606.31,
+          "bottom": 980.52,
+          "width": 132.08,
+          "height": 291.04
+        },
+        "containerSelector": "#pg1",
+        "text": "5",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.24,
+          "y": 689.48,
+          "width": 132.08,
+          "height": 291.04
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg4 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg4 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 468.72,
+          "top": 689.43,
+          "right": 611.83,
+          "bottom": 980.56,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "containerSelector": "#pg1",
+        "text": "4",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 468.72,
+          "y": 689.43,
+          "width": 143.11,
+          "height": 291.13
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 12.339,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.814,
+          12.339
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg3 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg3 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 474.47,
+          "top": 689.48,
+          "right": 606.08,
+          "bottom": 980.52,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "containerSelector": "#pg1",
+        "text": "3",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 474.47,
+          "y": 689.48,
+          "width": 131.61,
+          "height": 291.04
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg2 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 496.22,
+          "top": 626.16,
+          "right": 581.37,
+          "bottom": 677.85,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "containerSelector": "#pg1 > div:nth-of-type(1)",
+        "text": "DIA",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 496.22,
+          "y": 626.16,
+          "width": 85.14,
+          "height": 51.68
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#pg2 > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 476.32,
+          "top": 689.5,
+          "right": 604.25,
+          "bottom": 980.5,
+          "width": 127.93,
+          "height": 291.01
+        },
+        "containerSelector": "#pg1",
+        "text": "2",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 7,
+          "end": 19.9
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 476.32,
+          "y": 689.5,
+          "width": 127.93,
+          "height": 291.01
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 8.814,
+        "selector": "#k1",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 66.65,
+          "top": 1294.15,
+          "right": 302.2,
+          "bottom": 1493.6,
+          "width": 235.55,
+          "height": 199.45
+        },
+        "containerSelector": "#s1",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 29.25,
+          "top": 1041.5,
+          "right": 300.75,
+          "bottom": 1472.3,
+          "width": 271.49,
+          "height": 430.8
+        },
+        "overflow": {
+          "bottom": 21.3
+        },
+        "dataAttributes": {
+          "data-s": "d1",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 66.65,
+          "y": 1294.15,
+          "width": 235.55,
+          "height": 199.45
+        },
+        "firstSeen": 8.814,
+        "lastSeen": 8.814,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.814
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.391,
+        "selector": "#sB-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -25.87,
+          "top": -45.98,
+          "right": 1105.87,
+          "bottom": 1965.98,
+          "width": 1131.73,
+          "height": 2011.97
+        },
+        "containerSelector": "#sB",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 25.87,
+          "right": 25.87,
+          "top": 45.98,
+          "bottom": 45.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -25.87,
+          "y": -45.98,
+          "width": 1131.73,
+          "height": 2011.97
+        },
+        "firstSeen": 19.391,
+        "lastSeen": 19.391,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.391
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.916,
+        "selector": "#sC-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -22.36,
+          "top": -39.74,
+          "right": 1102.36,
+          "bottom": 1959.74,
+          "width": 1124.71,
+          "height": 1999.49
+        },
+        "containerSelector": "#sC",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 22.36,
+          "right": 22.36,
+          "top": 39.74,
+          "bottom": 39.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -22.36,
+          "y": -39.74,
+          "width": 1124.71,
+          "height": 1999.49
+        },
+        "firstSeen": 22.916,
+        "lastSeen": 22.916,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.916
+        ]
+      }
+    ],
+    "duration": 31.73,
+    "samples": [
+      1.763,
+      5.288,
+      8.814,
+      12.339,
+      15.865,
+      19.391,
+      22.916,
+      26.442,
+      29.967
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 41,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.763,
+      8.814,
+      15.865,
+      22.916,
+      29.967
+    ],
+    "checked": 53,
+    "passed": 53
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"DIA\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "DIA",
+        "selector": "#sq3 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 500.04,
+          "y": 790.09,
+          "width": 27.69,
+          "height": 17.56
+        },
+        "time": 1.249,
+        "times": [
+          0.999,
+          1.124,
+          1.249,
+          1.249,
+          1.374,
+          1.499,
+          1.624,
+          12.867
+        ],
+        "fontPx": 14.05,
+        "floorPx": 28,
+        "seconds": 5.997,
+        "elements": [
+          {
+            "selector": "#sq3 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 14.05,
+            "time": 1.249,
+            "seconds": 5.997
+          },
+          {
+            "selector": "#sq5 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 15.25,
+            "time": 1.499,
+            "seconds": 5.747
+          },
+          {
+            "selector": "#sq4 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 16.04,
+            "time": 1.374,
+            "seconds": 5.872
+          },
+          {
+            "selector": "#sq6 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 17.04,
+            "time": 1.624,
+            "seconds": 5.622
+          },
+          {
+            "selector": "#sq0 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 18.58,
+            "time": 0.999,
+            "seconds": 6.247
+          },
+          {
+            "selector": "#sq1 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 19.68,
+            "time": 1.124,
+            "seconds": 6.122
+          },
+          {
+            "selector": "#sq2 > small:nth-of-type(1)",
+            "text": "DIA",
+            "fontPx": 20.13,
+            "time": 1.249,
+            "seconds": 5.997
+          },
+          {
+            "selector": "#dmC > div:nth-of-type(2) > b:nth-of-type(1) > small:nth-of-type(1)",
+            "text": "agora",
+            "fontPx": 24.92,
+            "time": 12.867,
+            "seconds": 2.623
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"DIA\" (1 word) is on screen 0.16 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "DIA",
+        "selector": "#sq3 > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 503.17,
+          "y": 552.23,
+          "width": 48.20999999999998,
+          "height": 30.57000000000005
+        },
+        "time": 7.105,
+        "words": 1,
+        "seconds": 0.163,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 6.746,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 6.871,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 6.996,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 7.121,
+            "opacity": 0.97,
+            "heightPx": 31
+          },
+          {
+            "time": 7.245,
+            "opacity": 0.55,
+            "heightPx": 50
+          },
+          {
+            "time": 7.37,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 7.495,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 7.62,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"a\" (1 word) is on screen 1.40 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "a",
+        "selector": "#cC1 > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 425.84,
+          "y": 352.81,
+          "width": 34.95999999999998,
+          "height": 78.11000000000001
+        },
+        "time": 19.87,
+        "words": 1,
+        "seconds": 1.398,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 19.613,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 19.738,
+            "opacity": 0.2,
+            "heightPx": 79
+          },
+          {
+            "time": 19.862,
+            "opacity": 0.46,
+            "heightPx": 78
+          },
+          {
+            "time": 19.987,
+            "opacity": 0.81,
+            "heightPx": 78
+          },
+          {
+            "time": 20.112,
+            "opacity": 0.97,
+            "heightPx": 78
+          },
+          {
+            "time": 20.237,
+            "opacity": 1,
+            "heightPx": 78
+          },
+          {
+            "time": 20.362,
+            "opacity": 1,
+            "heightPx": 78
+          },
+          {
+            "time": 20.862,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 20.987,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 21.112,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 21.237,
+            "opacity": 0.72,
+            "heightPx": 78
+          },
+          {
+            "time": 21.362,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 21.486,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 21.611,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"lição?\" (1 word) is on screen 1.13 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "lição?",
+        "selector": "#cC1 > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 476.72,
+          "y": 353.2,
+          "width": 177.61,
+          "height": 78.24000000000001
+        },
+        "time": 20.135,
+        "words": 1,
+        "seconds": 1.133,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 19.862,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 19.987,
+            "opacity": 0.14,
+            "heightPx": 78
+          },
+          {
+            "time": 20.112,
+            "opacity": 0.48,
+            "heightPx": 78
+          },
+          {
+            "time": 20.237,
+            "opacity": 0.75,
+            "heightPx": 78
+          },
+          {
+            "time": 20.362,
+            "opacity": 0.89,
+            "heightPx": 78
+          },
+          {
+            "time": 20.487,
+            "opacity": 0.99,
+            "heightPx": 78
+          },
+          {
+            "time": 20.612,
+            "opacity": 1,
+            "heightPx": 78
+          },
+          {
+            "time": 20.862,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 20.987,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 21.112,
+            "opacity": 1,
+            "heightPx": 79
+          },
+          {
+            "time": 21.237,
+            "opacity": 0.72,
+            "heightPx": 78
+          },
+          {
+            "time": 21.362,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 21.486,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 21.611,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 254
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

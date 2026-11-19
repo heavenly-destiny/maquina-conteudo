@@ -1,0 +1,12 @@
+- [Máquina de Conteúdo](maquina-de-conteudo.md) — video-cut + auto-post system, free tools only (no paid SaaS), mentoria launch late Nov 2026
+- [Biblioteca de estilos](biblioteca-de-estilos.md) — edit style per category (ads / orgânico / motivacional) from user's reference videos
+- [Feedback edição de cortes](feedback-edicao-cortes.md) — split-screen, horizontal kept, one-color captions, complete sentences, music+SFX, skill = technique not look
+- [Acervo prompt-motion](acervo-prompt-motion.md) — 240 motions scraped + analyzed, local data.json + artifact catalog
+- [Radar de criativos](radar-criativos.md) — how to pull scaled ads/virais/HyperFrames for free + where data lives
+- [Máquina = mesmas regras](feedback-maquina-mesmas-regras.md) — every machine job loads the same rules as chat via prompts/_regras.md
+- [Painel minimalista](feedback-painel-minimalista.md) — Início só logo+chat; telas limpas; 21st só componentes novos/em alta
+- [Mostrar vídeo original](feedback-mostrar-video-original.md) — video playing on his monitor = keep his recording, swap ONLY the audio for the original file; spoken orders in raw are orders
+- [Não esquecer](feedback-nao-esquecer.md) — every correction goes into memory AND the brief/prompt the job reads AND a check
+- [Formato em pé](feedback-formato-em-pe.md) — vertical raw = full-screen talking head, DLw_JtTzhz0 caption style; horizontal stays split
+- [Máquina v2 produto](maquina-v2-produto.md) — Higgsfield/OpusClip-style: sidebar Criativos/Conteúdo(+longo)/Carrossel, link or file, profile, model picker
+- [Trilha obrigatória](feedback-trilha-obrigatoria.md) — every machine video has music + SFX baked in; only his own IG posts may also get a no-music version

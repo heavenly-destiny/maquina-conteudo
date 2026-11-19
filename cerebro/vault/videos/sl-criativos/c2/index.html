@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jak"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 900; }
+      :root { --brand: #d92e64; --brand-2: #f0548a; --ink: #2a1f24; --cream: #fbf5f1; --blush: #f7e6e9; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Jak", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1600px; }
+      .bg { position: absolute; inset: 0; background: var(--cream); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: 200px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.28), rgba(240, 84, 138, 0) 62%); }
+      .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; left: 300px; top: 1100px;
+        background: radial-gradient(circle, rgba(255, 196, 150, 0.35), rgba(255, 196, 150, 0) 62%); }
+      .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+      .shade { position: absolute; inset: 0; }
+
+      /* captions: typed like a real Story (white label, dark text, key word pink) */
+      .cap { position: absolute; left: 70px; width: 940px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+        padding: 26px 34px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 62px; font-weight: 800;
+        line-height: 1.12; letter-spacing: -0.02em; text-align: center; perspective: 900px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.18); }
+      .cap.dark { background: rgba(20, 12, 16, 0.78); color: #fff; }
+      .cap.clear { background: none; box-shadow: none; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); }
+      .cap span { display: block; }
+      .cap .k { color: var(--brand); }
+      .cap.dark .k, .cap.clear .k { color: #ff8db3; }
+
+      /* phone with the real app */
+      .phone { position: absolute; width: 714px; height: 1518px; padding: 12px; border-radius: 82px; background: linear-gradient(145deg, #2b2b30, #0b0b0d);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 14px 28px rgba(60, 10, 30, 0.22), 0 70px 140px rgba(60, 10, 30, 0.32), 0 0 0 2px #3a3a40;
+        transform-origin: 50% 50%; }
+      .screen { position: relative; width: 690px; height: 1494px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+      .screen > img, .screen > .layer { position: absolute; left: 0; top: 0; width: 690px; height: 1494px; display: block; }
+      .island { position: absolute; left: 50%; top: 22px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+      .tap { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; z-index: 8; opacity: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 30%, rgba(217, 46, 100, 0.35) 31% 60%, rgba(217, 46, 100, 0) 61%); }
+      .ring { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 5px solid rgba(217, 46, 100, 0.8); z-index: 8; opacity: 0; }
+      .toast { position: absolute; left: 70px; bottom: 150px; width: 550px; padding: 26px 30px; border-radius: 30px; z-index: 7; opacity: 0;
+        background: rgba(30, 20, 25, 0.92); color: #fff; font-size: 30px; font-weight: 700; display: flex; align-items: center; gap: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+      .toast i { display: block; flex: none; width: 52px; height: 52px; border-radius: 50%; background: #22c55e; position: relative; }
+      .toast i::after { content: ""; position: absolute; left: 18px; top: 10px; width: 13px; height: 25px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .toast small { display: block; font-size: 24px; font-weight: 500; opacity: 0.8; }
+
+      /* a Story frame */
+      .story { position: absolute; width: 860px; height: 1528px; border-radius: 44px; overflow: hidden; background: #222;
+        box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 80px 160px rgba(60, 10, 30, 0.35); }
+      .story .photo { inset: -2%; }
+      .sbar { position: absolute; left: 26px; right: 26px; top: 22px; height: 6px; display: flex; gap: 8px; z-index: 5; }
+      .sbar i { flex: 1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.4); overflow: hidden; }
+      .sbar i b { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+      .shead { position: absolute; left: 30px; top: 50px; display: flex; align-items: center; gap: 16px; z-index: 5; color: #fff; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+      .shead i { display: block; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #f7c1cf, #d92e64); border: 3px solid #fff; }
+      .shead small { font-weight: 500; opacity: 0.85; }
+      .stk { position: absolute; display: block; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
+      .views { position: absolute; left: 34px; bottom: 40px; z-index: 5; color: #fff; font-size: 30px; font-weight: 600; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+
+      /* DM / reply notification */
+      .dm { position: absolute; left: 90px; width: 900px; padding: 24px 28px; border-radius: 40px; display: flex; align-items: center; gap: 22px;
+        background: rgba(255, 255, 255, 0.94); color: var(--ink); z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.14), 0 40px 90px rgba(60, 10, 30, 0.24); }
+      .dm .av { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; }
+      .dm b { display: block; font-size: 32px; font-weight: 800; }
+      .dm b small { font-weight: 500; color: #6b5d63; font-size: 26px; margin-left: 8px; }
+      .dm p { font-size: 34px; font-weight: 500; line-height: 1.2; }
+
+      .chip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 40px; font-weight: 800; display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); white-space: nowrap; z-index: 15; }
+      .chip.pink { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chip em { font-style: normal; }
+      .ptbox { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 30; }
+      .pt { position: absolute; display: block; }
+      .heart { position: absolute; width: 60px; height: 54px; }
+      .heart::before, .heart::after { content: ""; position: absolute; top: 0; width: 32px; height: 50px; border-radius: 32px 32px 0 0; background: var(--brand); }
+      .heart::before { left: 30px; transform: rotate(-45deg); transform-origin: 0 100%; }
+      .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+      #fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+      .flash { position: absolute; inset: 0; opacity: 0; }
+      .rays { position: absolute; left: -960px; top: -540px; width: 3000px; height: 3000px; opacity: 0;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 220, 230, 0) 0deg 7deg, rgba(255, 220, 230, 0.55) 9deg, rgba(255, 220, 230, 0) 11deg 18deg);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); }
+      .leak { position: absolute; width: 2600px; height: 2600px; border-radius: 50%; opacity: 0; }
+      .endlogo { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 26px; }
+      .endlogo img { display: block; }
+      .url { position: absolute; left: 0; width: 100%; text-align: center; font-size: 44px; font-weight: 700; color: var(--ink); }
+      .cta { position: absolute; left: 190px; width: 700px; height: 140px; border-radius: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
+        background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; font-size: 52px; font-weight: 800; letter-spacing: -0.01em;
+        box-shadow: 0 16px 34px rgba(197, 31, 85, 0.35), 0 50px 110px rgba(197, 31, 85, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.35); overflow: hidden; }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+      .arrow { position: absolute; left: 50%; width: 0; height: 0; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-top: 44px solid var(--brand); }
+      .orb { position: absolute; width: 270px; }
+      .orb.far { filter: blur(5px); opacity: 0.75; }
+      .shot { position: absolute; left: 28px; top: 241px; width: 634px; height: 790px; border-radius: 40px 40px 0 0; overflow: hidden; }
+      .shot .photo { inset: 0; background-position: 50% 35%; }
+      .g-orig { filter: saturate(0.55) contrast(0.82) brightness(1.1); }
+      .g-grade { filter: contrast(1.2) saturate(1.2) sepia(0.14) brightness(0.92); }
+      .divider { position: absolute; top: 0; width: 6px; margin-left: -3px; height: 100%; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); }
+      .divider i { position: absolute; left: -33px; top: 390px; width: 72px; height: 72px; border-radius: 50%; background: #fff; display: block; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+      .lab { position: absolute; top: 22px; padding: 8px 18px; border-radius: 22px; font-size: 22px; font-weight: 700; color: #fff; }
+      .agenda { position: absolute; left: 190px; top: 760px; width: 700px; border-radius: 36px; overflow: hidden; z-index: 16; box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 60px 120px rgba(60, 10, 30, 0.3); }
+      .agenda img { display: block; width: 100%; }
+      .gif { position: absolute; left: 640px; top: 760px; width: 380px; z-index: 16; }
+      .gif img { width: 100%; display: block; filter: drop-shadow(0 16px 30px rgba(60, 10, 30, 0.35)); }
+      .gif b { position: absolute; right: 10px; top: -30px; padding: 6px 16px; border-radius: 14px; background: #fff; color: var(--brand); font-size: 28px; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+      .tag { position: absolute; left: 90px; width: 900px; text-align: center; font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+      .tag em { font-style: normal; color: var(--brand); }
+      .plain { position: absolute; left: 0; width: 100%; text-align: center; font-family: "Courier New", monospace; font-size: 46px; color: #fff; }
+      .clock { position: absolute; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 46px; font-weight: 800; font-variant-numeric: tabular-nums; z-index: 25;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); display: flex; gap: 12px; align-items: center; }
+
+      #stA .photo { filter: saturate(0.55) brightness(0.92); }
+      #stB .photo { filter: saturate(0.55) brightness(0.92); }
+      .chipLab { position: absolute; padding: 12px 26px; border-radius: 40px; font-size: 36px; font-weight: 800; z-index: 18; }
+
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="vb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="vbg" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.97" data-width="1080" data-height="1920">
+      <audio id="mix" src="assets/mix-c2.wav" data-start="0" data-duration="30.97" data-volume="1"></audio>
+
+      <!-- A: my sad story -->
+      <div id="sA" class="scene clip" data-start="0" data-duration="5.1" data-track-index="0">
+        <div class="inner" id="sA-in">
+          <div class="bg" style="background: #efe9e6"></div><div class="glow" id="gA" style="opacity: 0.5"></div>
+          <div class="story" id="stA" style="left: 110px; top: 336px">
+            <div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg)"></div>
+            <div class="sbar"><i><b id="barA"></b></i></div>
+            <div class="shead"><i></i>meu story <small>· 3 h</small></div>
+            <div class="plain" style="top: 420px">bom dia</div>
+            <div class="views" id="viewsA">👁 3 visualizações</div>
+          </div>
+          <div class="ptbox" data-layout-ignore id="ptA"></div>
+          <div class="cap" id="cA1" style="top: 290px"><span>esse</span><span>era</span><span>o</span><span>meu</span><span>story 🥲</span></div>
+          <div class="cap" id="cA2" style="top: 290px"><span>triste,</span><span>né?</span><span>kkkk</span></div>
+        </div>
+      </div>
+
+      <!-- B: give me 15 seconds — the app, fast, then the glow-up -->
+      <div id="sB" class="scene clip" data-start="4.6" data-duration="10.1" data-track-index="1">
+        <div class="inner" id="sB-in">
+          <div class="bg"></div><div class="glow" id="gB"></div><div class="glow2"></div>
+          <div class="phone" id="ph1" style="left: 183px; top: 391px">
+            <div class="screen" id="scr1">
+              <img id="b-home" src="assets/app/home.png" alt="" />
+              <img id="b-mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" />
+              <img id="b-cat" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" />
+              <img id="b-modal" src="assets/app/modal-boanoite.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+              <div class="toast" id="toast1"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div>
+              <div class="island"></div>
+            </div>
+          </div>
+          <div class="story" id="stOld" style="left: 110px; top: 386px; opacity: 0">
+            <div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg); filter: saturate(0.55) brightness(0.92)"></div>
+            <div class="plain" style="top: 420px">bom dia</div>
+          </div>
+          <div class="story" id="stB" style="left: 110px; top: 386px; opacity: 0">
+            <div class="photo" id="phB" style="background-image: url(assets/photos/plaincoffee.jpg)"></div>
+            <div class="sbar"><i><b id="barB"></b></i></div>
+            <div class="shead"><i></i>meu story <small>· agora</small></div>
+            <img class="stk" id="b-s1" src="assets/stk/bomdia-126.webp" style="left: 220px; top: 170px; width: 420px; opacity: 0" alt="" />
+            <img class="stk" id="b-s2" src="assets/stk/bom-dia-272.webp" style="left: 60px; top: 1060px; width: 360px; opacity: 0" alt="" />
+          </div>
+          <div class="chipLab" id="labOld" style="left: 70px; top: 560px; background: #fff; color: #6b5d63; opacity: 0">antes</div>
+          <div class="chipLab" id="labNew" style="left: 760px; top: 560px; background: var(--brand); color: #fff; opacity: 0">depois</div>
+          <div class="clock" id="clkBox" style="left: 690px; top: 470px; opacity: 0">⏱ <span id="clk">0:00</span></div>
+          <div class="ptbox" data-layout-ignore id="ptB"></div>
+          <div class="cap" id="cB1" style="top: 290px"><span>então</span><span>olha,</span><span>me</span><span>dá</span><span class="k">15</span><span class="k">segundos</span></div>
+          <div class="cap" id="cB2" style="top: 290px"><span>gente…</span><span>olha</span><span class="k">isso 😱</span></div>
+          <div class="cap" id="cB3" style="top: 290px"><span class="k">mesma foto!</span></div>
+        </div>
+      </div>
+
+      <!-- D: and there is more -->
+      <div id="sD" class="scene clip" data-start="14.0" data-duration="7.4" data-track-index="2">
+        <div class="inner" id="sD-in">
+          <div class="bg"></div><div class="glow" id="gD"></div><div class="glow2"></div>
+          <div class="phone" id="ph2" style="left: 183px; top: 391px">
+            <div class="screen" id="scr2">
+              <img id="d-ed" src="assets/app/editor.png" alt="" />
+              <div class="layer" id="d-shotwrap">
+                <div class="shot">
+                  <div class="photo g-orig" style="background-image: url(assets/photos/latte.jpg)"></div>
+                  <div class="photo g-grade" id="dGrade" style="background-image: url(assets/photos/latte.jpg); clip-path: inset(0 0 0 85%)"></div>
+                  <div class="divider" id="dDiv" style="left: 85%"><i></i></div>
+                  <div class="lab" style="left: 22px; background: rgba(40, 40, 40, 0.6)">Original</div>
+                  <div class="lab" style="right: 22px; background: var(--brand)">Dark Cinema</div>
+                </div>
+              </div>
+              <img id="d-panel" src="assets/app/editor.png" style="clip-path: inset(1028px 0 0 0)" alt="" />
+              <img id="d-mat" src="assets/app/materiais.png" style="opacity: 0" alt="" />
+              <div class="island"></div>
+            </div>
+          </div>
+          <div class="gif" id="gif"><img src="assets/stk/academia-e-treino-73.webp" alt="" /><b>GIF</b></div>
+          <div class="agenda" id="agenda"><img src="assets/app/agenda-crop.png" alt="" /></div>
+          <div class="chip" id="f1" style="left: 40px; top: 520px; opacity: 0">📸 filtros de foto</div>
+          <div class="chip" id="f2" style="left: 510px; top: 640px; opacity: 0">✨ figurinhas animadas</div>
+          <div class="chip" id="f3" style="left: 70px; top: 1440px; opacity: 0">🗓️ 30 dias de ideias</div>
+          <div class="ptbox" data-layout-ignore id="ptD"></div>
+          <div class="cap" id="cD1" style="top: 290px"><span>e</span><span>ainda</span><span>tem</span><span class="k">filtro</span><span>pra</span><span>foto</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span>figurinha</span><span class="k">animada</span></div>
+          <div class="cap" id="cD3" style="top: 290px"><span>ideia</span><span>de</span><span>post</span><span>pra</span><span class="k">30</span><span class="k">dias</span></div>
+          <div class="cap" id="cD4" style="top: 290px"><span>tudo</span><span>no</span><span class="k">mesmo</span><span class="k">app!</span></div>
+        </div>
+      </div>
+
+      <!-- E: confident promise -->
+      <div id="sE" class="scene clip" data-start="20.9" data-duration="6.9" data-track-index="3">
+        <div class="inner" id="sE-in">
+          <div class="bg"></div><div class="glow" id="gE"></div><div class="glow2"></div>
+          <div class="story" id="e1" style="left: 110px; top: 386px">
+            <div class="photo" style="background-image: url(assets/photos/gym.jpg)"></div>
+            <img class="stk" src="assets/stk/academia-e-treino-432.webp" style="left: 120px; top: 980px; width: 620px" alt="" />
+          </div>
+          <div class="story" id="e2" style="left: 110px; top: 386px">
+            <div class="photo" style="background-image: url(assets/photos/boutique.jpg)"></div>
+            <img class="stk" src="assets/stk/frases-40.webp" style="left: 90px; top: 260px; width: 680px" alt="" />
+          </div>
+          <div class="story" id="e3" style="left: 110px; top: 386px">
+            <div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg)"></div>
+            <img class="stk" src="assets/stk/bomdia-126.webp" style="left: 220px; top: 170px; width: 420px" alt="" />
+            <img class="stk" src="assets/stk/bom-dia-272.webp" style="left: 60px; top: 1060px; width: 360px" alt="" />
+          </div>
+          <div class="chip pink" id="eTimer" style="left: 250px; top: 1440px; opacity: 0">⏱ menos de 1 minuto</div>
+          <div class="ptbox" data-layout-ignore id="ptE"></div>
+          <div class="cap" id="cE1" style="top: 290px"><span>sério,</span><span>eu</span><span>não</span><span>sei</span><span class="k">nada</span><span>de</span><span>design 🙈</span></div>
+          <div class="cap" id="cE2" style="top: 290px"><span>qualquer</span><span>story</span><span>teu</span><span>fica</span><span class="k">lindo</span><span>assim</span></div>
+          <div class="cap" id="cE3" style="top: 290px"><span>em</span><span class="k">menos</span><span class="k">de</span><span class="k">1</span><span class="k">minuto</span></div>
+        </div>
+      </div>
+
+      <!-- F: CTA -->
+      <div id="sF" class="scene clip" data-start="26.9" data-duration="4.07" data-track-index="4">
+        <div class="inner" id="sF-in">
+          <div class="bg"></div><div class="glow" id="gF"></div><div class="glow2"></div>
+          <div class="endlogo" style="top: 470px"><img id="logo" src="assets/app/logo-t.png" style="width: 820px" alt="Stories Lab" /></div>
+          <div class="tag" id="tag" style="top: 720px">teu story <em>lindo</em> em menos de 1 minuto,<br />sem saber nada de design</div>
+          <div class="cta" id="cta" style="top: 1060px">Testa agora 👇<div class="gloss"><i id="ctaG"></i></div></div>
+          <div class="url" id="url" style="top: 1250px">storieslab.app</div>
+          <div class="arrow" id="arr" style="top: 1380px"></div>
+          <div class="ptbox" data-layout-ignore id="ptF"></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="30.97" data-track-index="9">
+        <div class="rays" id="rays"></div>
+        <div class="leak" id="leak1" style="left: -1700px; top: -600px; background: radial-gradient(circle, rgba(255, 190, 150, 0.85), rgba(255, 190, 150, 0) 60%)"></div>
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+
+    </div>
+    <script>
+      const VO = {"total": 30.97, "lines": [{"take": "c2l1a", "start": 0.3, "dur": 4.28, "words": [["Esse", 1.33, 1.95], ["era", 1.95, 2.13], ["o", 2.13, 2.23], ["meu", 2.23, 2.33], ["story.", 2.33, 2.75], ["Triste,", 3.23, 3.85], ["né?", 3.87, 4.07]]}, {"take": "c2l2a", "start": 4.93, "dur": 2.76, "words": [["Então,", 4.93, 5.21], ["olha,", 5.41, 5.61], ["me", 5.91, 6.07], ["dá", 6.07, 6.31], ["15", 6.31, 6.77], ["segundos.", 6.77, 7.21]]}, {"take": "c2l3a", "start": 10.29, "dur": 3.71, "words": [["Gente,", 10.24, 10.78], ["olha", 11.34, 11.68], ["isso!", 11.68, 12.2], ["Mesma", 12.58, 13.08], ["foto!", 13.08, 13.42]]}, {"take": "c2l4a", "start": 14.3, "dur": 6.68, "words": [["E", 14.3, 14.42], ["ainda", 14.42, 14.58], ["tem", 14.58, 14.8], ["filtro", 14.8, 15.3], ["pra", 15.3, 15.48], ["foto,", 15.48, 15.98], ["figurinha", 16.2, 16.58], ["animada,", 16.58, 17.22], ["ideia", 17.4, 17.62], ["de", 17.62, 17.8], ["post", 17.8, 18.0], ["pra", 18.0, 18.26], ["30", 18.26, 18.64], ["dias,", 18.64, 19.14], ["é", 19.44, 19.62], ["tudo", 19.62, 19.96], ["no", 19.96, 20.2], ["mesmo", 20.2, 20.52], ["app!", 20.52, 20.96]]}, {"take": "c2l5a", "start": 21.28, "dur": 7.49, "words": [["Sério,", 21.23, 21.83], ["eu", 22.07, 22.13], ["não", 22.13, 22.27], ["sei", 22.27, 22.47], ["nada", 22.47, 22.85], ["de", 22.85, 23.09], ["design.", 23.09, 23.49], ["Qualquer", 23.87, 24.35], ["story", 24.35, 24.77], ["teu", 24.77, 25.05], ["fica", 25.05, 25.29], ["lindo", 25.29, 25.77], ["assim", 25.77, 26.03], ["em", 26.03, 26.27], ["menos", 26.27, 26.57], ["de", 26.57, 26.77], ["um", 26.77, 26.85], ["minuto.", 26.85, 27.27], ["Testa,", 27.51, 27.93], ["você", 28.13, 28.27], ["vai", 28.27, 28.41], ["ver!", 28.41, 28.61]]}]};
+      const TOTAL = 30.97;
+      const tl = gsap.timeline({ paused: true });
+      const w = (ln, i) => VO.lines[ln].words[i][1];
+      const we = (ln, i) => VO.lines[ln].words[i][2];
+      const $ = (s) => document.querySelector(s);
+
+      // seeded PRNG: renders stay deterministic
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+      const ENERGY = {
+        curious: { d: 0.4, ease: "back.out(1.6)", blur: 10, y: 30, rx: 40 },
+        secret: { d: 0.6, ease: "sine.out", blur: 12, y: 16, rx: 0 },
+        melancholy: { d: 0.8, ease: "sine.out", blur: 12, y: 18, rx: 0 },
+        hope: { d: 0.5, ease: "power3.out", blur: 14, y: 26, rx: 40 },
+        excited: { d: 0.34, ease: "back.out(2)", blur: 12, y: 40, rx: 60 },
+        triumph: { d: 0.36, ease: "expo.out", blur: 16, y: 50, rx: 70 },
+        warm: { d: 0.55, ease: "power3.out", blur: 12, y: 24, rx: 30 },
+      };
+      // caption: words revealed across the VO words a..b of line ln
+      const caption = (id, ln, a, b, mood, delay = 0) => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        const t0 = w(ln, a) + delay, t1 = w(ln, b) + delay;
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "back.out(1.8)" }, t0 - 0.12);
+        spans.forEach((s, i) => {
+          const t = spans.length < 2 ? t0 : t0 + ((t1 - t0) * i) / (spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" },
+            { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.06);
+        });
+      };
+      const capOut = (id, t) => tl.to("#" + id, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, t);
+      const out = (sel, t, d = 0.3) => tl.to(sel, { opacity: 0, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const camera = (sel, t0, t1, s0, s1, ease = "none") => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: t1 - t0, ease }, t0);
+      const drift = (sel, t0, t1, amp = 10, rot = 3) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot }, { y: -amp, rotation: rot, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const sweep = (sel, t, d = 0.8) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: 420, duration: d, ease: "power2.inOut" }, t);
+      const pop = (sel, t, rot = 0, s = 1) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.2, rotation: rot - 18, filter: "blur(8px)" }, { opacity: 1, scale: s, rotation: rot, filter: "blur(0px)", duration: 0.5, ease: "back.out(2.2)" }, t);
+      // phone: tap at screen coords (690x1494 space)
+      const tap = (scr, x, y, t) => {
+        const box = document.querySelector(scr);
+        const a = document.createElement("div"); a.className = "tap"; a.style.left = x + "px"; a.style.top = y + "px"; box.appendChild(a);
+        const r = document.createElement("div"); r.className = "ring"; r.style.left = x + "px"; r.style.top = y + "px"; box.appendChild(r);
+        tl.fromTo(a, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 0.8, duration: 0.14, ease: "power2.out" }, t - 0.14);
+        tl.to(a, { opacity: 0, scale: 1, duration: 0.25, ease: "power2.in" }, t + 0.08);
+        tl.fromTo(r, { opacity: 0.9, scale: 0.6 }, { opacity: 0, scale: 2.2, duration: 0.5, ease: "power2.out" }, t);
+      };
+      // swap screens inside a phone: new one slides in from the right (push) or up (modal)
+      const push = (from, to, t, d = 0.42) => {
+        tl.fromTo(to, { x: 690, opacity: 1 }, { x: 0, opacity: 1, duration: d, ease: "power3.inOut" }, t);
+        tl.fromTo(from, { x: 0 }, { x: -230, duration: d, ease: "power3.inOut", immediateRender: false }, t);
+      };
+      const sheet = (to, t, d = 0.5) => tl.fromTo(to, { y: 1494, opacity: 1 }, { y: 0, opacity: 1, duration: d, ease: "expo.out" }, t);
+      const vblur = (from, to, t, d, ease) => {
+        const g = document.getElementById("vbg"), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", "0 " + p.v);
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t);
+      };
+      // particle systems per mood
+      const hearts = (box, t0, n, x0, y0, spread = 700) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const h = document.createElement("div"); h.className = "heart pt"; const s = 0.5 + rnd() * 0.9;
+          h.style.left = x0 + (rnd() - 0.5) * spread + "px"; h.style.top = y0 + "px"; b.appendChild(h);
+          const t = t0 + i * 0.09;
+          tl.fromTo(h, { opacity: 0, scale: 0, y: 0, x: 0, rotation: (rnd() - 0.5) * 40 },
+            { opacity: 1, scale: s, y: -260 - rnd() * 260, x: (rnd() - 0.5) * 160, duration: 0.6, ease: "back.out(2)" }, t);
+          tl.to(h, { opacity: 0, y: "-=320", duration: 1.0, ease: "sine.in" }, t + 0.6);
+        }
+      };
+      const confetti = (box, t, n, x0, y0) => {
+        const b = document.getElementById(box); const cols = ["#d92e64", "#f0548a", "#ffd166", "#ffffff", "#ff9fbf", "#8fd3ff"];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement("i"); c.className = "pt"; const s = 12 + rnd() * 16;
+          Object.assign(c.style, { left: x0 + "px", top: y0 + "px", width: s + "px", height: s * (0.4 + rnd() * 0.6) + "px", background: cols[i % cols.length], borderRadius: i % 3 ? "3px" : "50%" });
+          b.appendChild(c);
+          const a = rnd() * Math.PI * 2, r = 260 + rnd() * 520;
+          tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.4 }, { x: Math.cos(a) * r, y: Math.sin(a) * r * 0.8 - 120, rotation: rnd() * 540, scale: 1, duration: 0.7, ease: "expo.out" }, t);
+          tl.to(c, { y: "+=" + (420 + rnd() * 400), rotation: "+=" + rnd() * 360, opacity: 0, duration: 1.6, ease: "sine.in" }, t + 0.7);
+        }
+      };
+      const sparks = (box, t0, t1, n, color = "rgba(255,210,225,0.95)") => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 6 + rnd() * 12;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: 900 + rnd() * 1000 + "px",
+            background: `radial-gradient(circle, ${color}, rgba(255,255,255,0))`, boxShadow: `0 0 ${s * 2}px ${color}` });
+          b.appendChild(p);
+          const st = t0 + rnd() * (t1 - t0) * 0.6;
+          tl.fromTo(p, { opacity: 0, y: 0 }, { opacity: 1, y: -200 - rnd() * 300, duration: 0.6, ease: "sine.out" }, st);
+          tl.to(p, { opacity: 0, y: "-=" + (200 + rnd() * 300), duration: 1.2, ease: "sine.in" }, st + 0.6);
+        }
+      };
+      const ash = (box, t0, t1, n) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 5 + rnd() * 9;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: -40 + rnd() * 900 + "px", background: "rgba(120,110,115,0.45)" });
+          b.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0, opacity: 0 }, { y: 500 + rnd() * 600, x: (rnd() - 0.5) * 120, opacity: 0.8, duration: t1 - t0, ease: "sine.inOut" }, t0 + rnd() * 0.5);
+        }
+      };
+      const dm = (sel, t, y, fromY = -260) => {
+        tl.fromTo(sel, { opacity: 0, y: fromY, scale: 0.9, rotationX: -40, filter: "blur(10px)" }, { opacity: 1, y, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.55, ease: "back.out(1.4)" }, t);
+      };
+      const storyBar = (sel, t0, t1) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: t1 - t0, ease: "none" }, t0);
+
+      // before/after slider inside the editor screen
+      const slider = (gradeSel, divSel, from, to, t, d) => {
+        const o = { p: from }, g = $(gradeSel), dv = $(divSel);
+        const set = () => { g.style.clipPath = `inset(0 0 0 ${o.p}%)`; dv.style.left = o.p + "%"; };
+        tl.fromTo(o, { p: from }, { p: to, duration: d, ease: "power2.inOut", onUpdate: set, immediateRender: false }, t);
+      };
+      const clock = (sel, from, to, t, d, fmt) => {
+        const o = { v: from }, n = $(sel), set = () => (n.textContent = fmt(o.v));
+        set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "none", onUpdate: set, immediateRender: false }, t);
+      };
+
+      // ---------- A: sad-comic (0 – 4.9) ----------
+      camera("#sA-in", 0, 5.0, 1, 1.05, "sine.inOut");
+      tl.fromTo("#stA", { scale: 0.86, rotation: -1 }, { scale: 0.87, rotation: 1, duration: 3.2, ease: "sine.inOut" }, 0);
+      storyBar("#barA", 0, 4.9);
+      ash("ptA", 0, 5, 14);
+      caption("cA1", 0, 0, 4, "melancholy");
+      tl.fromTo("#viewsA", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "sine.out" }, w(0, 4));
+      capOut("cA1", w(0, 5) - 0.2);
+      caption("cA2", 0, 5, 6, "curious");
+      // the laugh: the story sags
+      tl.to("#stA", { rotation: -4, y: 40, scale: 0.85, duration: 0.6, ease: "back.out(2)" }, w(0, 6) + 0.1);
+
+      // ---------- A -> B: vertical whip ----------
+      const T_W = w(1, 0) - 0.22;
+      tl.set(["#sA-in", "#sB-in"], { filter: "url(#vb)" }, T_W);
+      tl.to("#sA-in", { y: -1920, duration: 0.36, ease: "power3.inOut" }, T_W);
+      tl.fromTo("#sB-in", { y: 1920 }, { y: 0, duration: 0.36, ease: "power3.inOut" }, T_W);
+      vblur(0, 55, T_W, 0.18, "power2.in"); vblur(55, 0, T_W + 0.18, 0.18, "power2.out");
+      tl.set(["#sA-in", "#sB-in"], { filter: "none" }, T_W + 0.38);
+
+      // ---------- B: 15 seconds (4.6 – 14.4) ----------
+      camera("#sB-in", T_W, 14.6, 1.0, 1.05, "sine.inOut");
+      tl.fromTo("#gB", { x: 0 }, { x: 200, y: 300, duration: 10, ease: "sine.inOut" }, T_W);
+      tl.fromTo("#ph1", { y: 900, rotationX: 28, scale: 0.72, filter: "blur(10px)" }, { y: 0, rotationX: 0, scale: 0.8, filter: "blur(0px)", duration: 0.9, ease: "power3.out" }, T_W + 0.2);
+      caption("cB1", 1, 0, 5, "curious");
+      // stopwatch: 0:00 -> 0:14 (a timelapse of the real flow)
+      pop("#clkBox", w(1, 4), 4);
+      const T_GO = 7.6, T_STOP = w(2, 3) - 0.1;
+      clock("#clk", 0, 14, T_GO, T_STOP - T_GO, (v) => "0:" + String(Math.floor(v)).padStart(2, "0"));
+      tl.to("#clkBox", { scale: 1.08, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 9 }, T_GO);
+      capOut("cB1", T_GO + 0.1);
+      // the real flow, fast
+      tap("#scr1", 150, 268, 7.85); push("#b-home", "#b-mais", 7.95, 0.32);
+      tap("#scr1", 155, 386, 8.4); push("#b-mais", "#b-cat", 8.5, 0.32);
+      tap("#scr1", 178, 797, 8.95);
+      tl.fromTo("#b-cat", { filter: "brightness(1)" }, { filter: "brightness(0.55)", duration: 0.25, immediateRender: false }, 9.05);
+      sheet("#b-modal", 9.05, 0.4);
+      tap("#scr1", 345, 932, 9.45);
+      tl.fromTo("#toast1", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, 9.5);
+      // paste on the same photo
+      const T_P = 9.85;
+      tl.to("#ph1", { x: -980, rotationY: -40, scale: 0.7, filter: "blur(8px)", duration: 0.45, ease: "power3.in" }, T_P);
+      tl.fromTo("#stB", { opacity: 1, x: 1000, rotationY: 35, scale: 0.7 }, { opacity: 1, x: 0, rotationY: 0, scale: 0.8, duration: 0.55, ease: "expo.out" }, T_P + 0.1);
+      storyBar("#barB", T_P + 0.3, 14.5);
+      // the glow-up: grade sweeps in, stickers land
+      tl.fromTo("#phB", { filter: "saturate(0.55) brightness(0.92) contrast(1) sepia(0)" }, { filter: "saturate(1.25) brightness(1.04) contrast(1.12) sepia(0.22)", duration: 0.7, ease: "power2.inOut", immediateRender: false }, w(2, 0) - 0.1);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.6, duration: 0.15, immediateRender: false }, w(2, 0) - 0.1);
+      tl.to("#flash", { opacity: 0, duration: 0.45 }, w(2, 0) + 0.05);
+      pop("#b-s1", w(2, 0) + 0.25, -3);
+      pop("#b-s2", w(2, 1) - 0.1, 4);
+      caption("cB2", 2, 0, 2, "triumph");
+      confetti("ptB", w(2, 2), 30, 540, 900);
+      sparks("ptB", w(2, 1), 14.4, 18);
+      capOut("cB2", w(2, 3) - 0.2);
+      caption("cB3", 2, 3, 4, "triumph");
+      // "mesma foto": the old one slides in behind, labels, the clock stops
+      tl.to("#stB", { x: 120, rotation: 3, scale: 0.74, duration: 0.6, ease: "power3.inOut" }, w(2, 3) - 0.15);
+      tl.fromTo("#stOld", { opacity: 0, x: -300, rotation: -10, scale: 0.55 }, { opacity: 1, x: -230, rotation: -6, scale: 0.6, duration: 0.6, ease: "power3.out" }, w(2, 3) - 0.1);
+      tl.set("#stOld", { zIndex: 0 }, 0); tl.set("#stB", { zIndex: 2 }, 0);
+      pop("#labOld", w(2, 3) + 0.15, -6);
+      pop("#labNew", w(2, 4) - 0.05, 5);
+      tl.to("#clkBox", { backgroundColor: "#d92e64", color: "#ffffff", scale: 1.15, duration: 0.25, ease: "back.out(2)" }, T_STOP);
+      tl.to("#cB3 .k", { scale: 1.15, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, w(2, 4));
+
+      // ---------- B -> D: zoom through the story ----------
+      const T_Z = w(3, 0) - 0.3;
+      tl.to("#sB-in", { scale: 2.6, filter: "blur(14px)", opacity: 0, duration: 0.45, ease: "power2.in" }, T_Z);
+      tl.fromTo("#sD-in", { scale: 0.7, opacity: 0, filter: "blur(12px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, T_Z + 0.2);
+
+      // ---------- D: more than stickers (14.0 – 21.2) ----------
+      camera("#ph2", T_Z, 21.2, 0.8, 0.83, "sine.inOut");
+      tl.fromTo("#gD", { x: 0 }, { x: 260, y: 200, duration: 7, ease: "sine.inOut" }, T_Z);
+      caption("cD1", 3, 0, 5, "excited");
+      slider("#dGrade", "#dDiv", 85, 10, w(3, 3) - 0.1, 1.0);
+      slider("#dGrade", "#dDiv", 10, 45, w(3, 3) + 0.95, 0.6);
+      pop("#f1", w(3, 3), -4);
+      capOut("cD1", w(3, 6) - 0.18);
+      caption("cD2", 3, 6, 7, "excited");
+      push("#d-ed", "#d-mat", w(3, 6) - 0.3);
+      tl.set(["#d-shotwrap", "#d-panel"], { opacity: 0 }, w(3, 6) + 0.15);
+      tl.fromTo("#gif", { opacity: 0, scale: 0.3, rotation: -20, x: -200 }, { opacity: 1, scale: 1, rotation: 6, x: 0, duration: 0.45, ease: "back.out(2)" }, w(3, 6));
+      tl.to("#gif img", { rotation: -7, scale: 1.08, duration: 0.16, ease: "sine.inOut", yoyo: true, repeat: 7 }, w(3, 6) + 0.4);
+      pop("#f2", w(3, 7) - 0.05, 3);
+      capOut("cD2", w(3, 8) - 0.18);
+      caption("cD3", 3, 8, 13, "excited");
+      tl.fromTo("#agenda", { opacity: 0, y: 500, rotationX: 40, scale: 0.6, filter: "blur(10px)" }, { opacity: 1, y: 0, rotationX: 0, scale: 0.92, filter: "blur(0px)", rotation: -3, duration: 0.6, ease: "expo.out" }, w(3, 8) - 0.15);
+      tl.to("#gif", { x: 60, y: -180, scale: 0.8, duration: 0.6, ease: "power2.inOut" }, w(3, 8) - 0.15);
+      pop("#f3", w(3, 12), -3);
+      capOut("cD3", w(3, 14) - 0.18);
+      caption("cD4", 3, 14, 18, "triumph");
+      tl.to("#agenda", { y: 260, scale: 0.5, opacity: 0, duration: 0.45, ease: "power3.in" }, w(3, 14));
+      tl.to("#gif", { x: -220, y: 260, scale: 0.4, opacity: 0, duration: 0.45, ease: "power3.in" }, w(3, 14));
+      tl.to(["#f1", "#f2", "#f3"], { scale: 1.12, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.08 }, w(3, 17));
+      sparks("ptD", w(3, 15), 21.2, 18);
+
+      // ---------- D -> E: light leak ----------
+      const T_L = w(4, 0) - 0.3;
+      tl.fromTo("#leak1", { opacity: 0, x: 0 }, { opacity: 1, x: 1400, duration: 0.9, ease: "sine.inOut" }, T_L - 0.2);
+      tl.to("#leak1", { opacity: 0, duration: 0.4 }, T_L + 0.7);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.2, ease: "power2.out", immediateRender: false }, T_L);
+      tl.to("#flash", { opacity: 0, duration: 0.5, ease: "power2.in" }, T_L + 0.2);
+      tl.fromTo("#sE-in", { opacity: 0 }, { opacity: 1, duration: 0.01 }, T_L + 0.2);
+
+      // ---------- E: confident (20.9 – 27.4) ----------
+      camera("#sE-in", T_L, 27.8, 1.0, 1.05, "sine.inOut");
+      tl.fromTo("#gE", { x: 0 }, { x: -200, y: -200, duration: 7, ease: "sine.inOut" }, T_L);
+      tl.set(["#e1", "#e2"], { opacity: 0, scale: 0.8 }, 0);
+      tl.fromTo("#e3", { scale: 0.8, rotation: 0 }, { scale: 0.82, rotation: 1.5, duration: 3, ease: "sine.inOut" }, T_L);
+      caption("cE1", 4, 0, 6, "warm");
+      capOut("cE1", w(4, 7) - 0.18);
+      caption("cE2", 4, 7, 12, "warm");
+      // "qualquer story teu": a fan of stories opens
+      tl.to("#e3", { x: 0, rotation: 0, scale: 0.7, duration: 0.6, ease: "power3.inOut" }, w(4, 7));
+      tl.fromTo("#e1", { opacity: 0, x: 0, rotation: 0, scale: 0.6 }, { opacity: 1, x: -260, rotation: -10, scale: 0.62, duration: 0.6, ease: "back.out(1.4)" }, w(4, 8));
+      tl.fromTo("#e2", { opacity: 0, x: 0, rotation: 0, scale: 0.6 }, { opacity: 1, x: 260, rotation: 10, scale: 0.62, duration: 0.6, ease: "back.out(1.4)" }, w(4, 9));
+      tl.set("#e3", { zIndex: 3 }, w(4, 7));
+      tl.to(["#e1", "#e2", "#e3"], { y: -20, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.15 }, w(4, 10));
+      sparks("ptE", w(4, 11), 27.5, 16);
+      capOut("cE2", w(4, 13) - 0.18);
+      caption("cE3", 4, 13, 17, "triumph");
+      pop("#eTimer", w(4, 14), -2);
+
+      // ---------- E -> F: ink ----------
+      const T_INK = w(4, 18) - 0.45;
+      tl.fromTo("#sF-in", { clipPath: "circle(0% at 50% 55%)" }, { clipPath: "circle(130% at 50% 55%)", duration: 0.7, ease: "expo.inOut" }, T_INK);
+      tl.to("#sE-in", { scale: 1.2, filter: "blur(6px)", duration: 0.7, ease: "power2.in" }, T_INK);
+
+      // ---------- F: CTA ----------
+      tl.fromTo("#gF", { x: -200 }, { x: 200, y: -300, duration: 4, ease: "sine.inOut" }, T_INK);
+      tl.fromTo("#logo", { opacity: 0, scale: 0.8, y: 40, filter: "blur(14px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, T_INK + 0.3);
+      tl.fromTo("#tag", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, T_INK + 0.55);
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, w(4, 18));
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, w(4, 18) + 0.6);
+      sweep("#ctaG", w(4, 18) + 0.5, 0.8);
+      tl.fromTo("#url", { opacity: 0 }, { opacity: 1, duration: 0.4 }, w(4, 18) + 0.3);
+      tl.fromTo("#arr", { opacity: 0, y: -20 }, { opacity: 1, y: 30, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 4 }, w(4, 18) + 0.4);
+      sparks("ptF", T_INK + 0.3, TOTAL, 14);
+
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

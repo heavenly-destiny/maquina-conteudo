@@ -1,0 +1,2062 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video data-start=\"11.700\" data-track-index=\"6\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<video data-start=\"13.360\" data-track-index=\"8\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "media_missing_id",
+        "severity": "error",
+        "message": "<video> has data-start but no id attribute. The renderer requires id to discover media elements, so this video will be FROZEN in renders.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-ugc/u1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a unique id attribute: <video id=\"my-video\" ...>"
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 12,
+    "infoCount": 32,
+    "findings": [
+      {
+        "selector": "#hook",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 266.89,
+          "y": 259,
+          "width": 546.22,
+          "height": 187.27
+        },
+        "time": 1.138,
+        "rect": {
+          "left": 266.89,
+          "top": 259,
+          "right": 813.11,
+          "bottom": 446.27,
+          "width": 546.22,
+          "height": 187.27
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "como ela deixa os stories assim? 👀",
+        "message": "<div> \"como ela deixa os stories assim? 👀\" is outside the safe area: Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.138,
+        "lastSeen": 1.138,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.138
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 289.52,
+          "y": 1171,
+          "width": 500.96,
+          "height": 101
+        },
+        "time": 1.138,
+        "rect": {
+          "left": 289.52,
+          "top": 1171,
+          "right": 790.48,
+          "bottom": 1272,
+          "width": 500.96,
+          "height": 101
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "seus Stories?",
+        "message": "<div> \"seus Stories?\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.138,
+        "lastSeen": 1.138,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.138
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 192.7,
+          "y": 1166.54,
+          "width": 686.27,
+          "height": 109.84
+        },
+        "time": 3.415,
+        "rect": {
+          "left": 192.7,
+          "top": 1166.54,
+          "right": 878.97,
+          "bottom": 1276.38,
+          "width": 686.27,
+          "height": 109.84
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Todo mundo acha",
+        "message": "<div> \"Todo mundo acha\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 3.415,
+        "lastSeen": 3.415,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.415
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(10)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 222.66,
+          "y": 1162.79,
+          "width": 615.69,
+          "height": 113.61
+        },
+        "time": 5.692,
+        "rect": {
+          "left": 222.66,
+          "top": 1162.79,
+          "right": 838.35,
+          "bottom": 1276.4,
+          "width": 615.69,
+          "height": 113.61
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "aplicativo aqui,",
+        "message": "<div> \"aplicativo aqui,\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.692,
+        "lastSeen": 5.692,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          5.692
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(12)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 232.16,
+          "y": 1170.39,
+          "width": 617.92,
+          "height": 102.21
+        },
+        "time": 7.968,
+        "rect": {
+          "left": 232.16,
+          "top": 1170.39,
+          "right": 850.08,
+          "bottom": 1272.6,
+          "width": 617.92,
+          "height": 102.21
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "24 mil figurinhas",
+        "message": "<div> \"24 mil figurinhas\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 7.968,
+        "lastSeen": 7.968,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.968
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(15)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 414.55,
+          "y": 1171,
+          "width": 250.89,
+          "height": 101
+        },
+        "time": 10.245,
+        "rect": {
+          "left": 414.55,
+          "top": 1171,
+          "right": 665.44,
+          "bottom": 1272,
+          "width": 250.89,
+          "height": 101
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "rotina,",
+        "message": "<div> \"rotina,\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 10.245,
+        "lastSeen": 10.245,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          10.245
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(19)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 304.5,
+          "y": 1171,
+          "width": 470.98,
+          "height": 101
+        },
+        "time": 12.522,
+        "rect": {
+          "left": 304.5,
+          "top": 1171,
+          "right": 775.48,
+          "bottom": 1272,
+          "width": 470.98,
+          "height": 101
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "na figurinha,",
+        "message": "<div> \"na figurinha,\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 12.522,
+        "lastSeen": 12.522,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.522
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(23)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 400.02,
+          "y": 1236.01,
+          "width": 279.95,
+          "height": 82.4
+        },
+        "time": 14.798,
+        "rect": {
+          "left": 400.02,
+          "top": 1236.01,
+          "right": 679.97,
+          "bottom": 1318.41,
+          "width": 279.95,
+          "height": 82.4
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "mas é só",
+        "message": "<div> \"mas é só\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 14.798,
+        "lastSeen": 14.798,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          14.798
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(28)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 245.22,
+          "y": 1165.9,
+          "width": 589.55,
+          "height": 111.1
+        },
+        "time": 17.075,
+        "rect": {
+          "left": 245.22,
+          "top": 1165.9,
+          "right": 834.77,
+          "bottom": 1277,
+          "width": 589.55,
+          "height": 111.1
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "os meus stories",
+        "message": "<div> \"os meus stories\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 17.075,
+        "lastSeen": 17.075,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          17.075
+        ]
+      },
+      {
+        "selector": "#caps > div:nth-of-type(30)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 145.75,
+          "y": 781,
+          "width": 788.5,
+          "height": 101
+        },
+        "time": 19.352,
+        "rect": {
+          "left": 145.75,
+          "top": 781,
+          "right": 934.25,
+          "bottom": 882,
+          "width": 788.5,
+          "height": 101
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "carinha de Pinterest.",
+        "message": "<div> \"carinha de Pinterest.\" is outside the safe area: TikTok (right edge), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "selector": "#ctaC > p:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 222.02,
+          "y": 1180,
+          "width": 635.95,
+          "height": 94.5
+        },
+        "time": 19.352,
+        "rect": {
+          "left": 222.02,
+          "top": 1180,
+          "right": 857.97,
+          "bottom": 1274.5,
+          "width": 635.95,
+          "height": 94.5
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "+24 mil figurinhas, filtros e roteiros.Copia, co",
+        "message": "<p> \"+24 mil figurinhas, filtros e roteiros.Copia, co\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "selector": "div.bt",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 250.76,
+          "y": 1334.34,
+          "width": 578.48,
+          "height": 69.13
+        },
+        "time": 19.352,
+        "rect": {
+          "left": 250.76,
+          "top": 1334.34,
+          "right": 829.24,
+          "bottom": 1403.47,
+          "width": 578.48,
+          "height": 69.13
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Toca em Saiba mais 👇",
+        "message": "<div> \"Toca em Saiba mais 👇\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 2.249,
+        "selector": "#caps > div:nth-of-type(3) > b:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 293.88,
+          "top": 1171,
+          "right": 642.69,
+          "bottom": 1272,
+          "width": 348.81,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(4) > b:nth-of-type(1)",
+        "text": "pergunta",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 293.88,
+          "y": 1171,
+          "width": 348.81,
+          "height": 101
+        },
+        "firstSeen": 2.249,
+        "lastSeen": 2.249,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          2.249
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.248,
+        "selector": "#caps > div:nth-of-type(5) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 373.67,
+          "top": 1171,
+          "right": 706.31,
+          "bottom": 1272,
+          "width": 332.64,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(6) > b:nth-of-type(1)",
+        "text": "edições,",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 373.67,
+          "y": 1171,
+          "width": 332.64,
+          "height": 101
+        },
+        "firstSeen": 3.248,
+        "lastSeen": 3.248,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.248
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.998,
+        "selector": "#caps > div:nth-of-type(6) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 201.02,
+          "top": 1171,
+          "right": 391.19,
+          "bottom": 1272,
+          "width": 190.17,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(7) > b:nth-of-type(1)",
+        "text": "Todo",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 201.02,
+          "y": 1171,
+          "width": 190.17,
+          "height": 101
+        },
+        "firstSeen": 3.998,
+        "lastSeen": 3.998,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.998
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.998,
+        "selector": "#caps > div:nth-of-type(6) > b:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 409.19,
+          "top": 1171,
+          "right": 677.28,
+          "bottom": 1272,
+          "width": 268.09,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(7) > b:nth-of-type(2)",
+        "text": "mundo",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 409.19,
+          "y": 1171,
+          "width": 268.09,
+          "height": 101
+        },
+        "firstSeen": 3.998,
+        "lastSeen": 3.998,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.998
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 3.998,
+        "selector": "#caps > div:nth-of-type(6) > b:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 695.28,
+          "top": 1171,
+          "right": 878.97,
+          "bottom": 1272,
+          "width": 183.69,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(7) > b:nth-of-type(3)",
+        "text": "acha",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 695.28,
+          "y": 1171,
+          "width": 183.69,
+          "height": 101
+        },
+        "firstSeen": 3.998,
+        "lastSeen": 3.998,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.998
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.968,
+        "selector": "span.n",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 254.55,
+          "top": 414,
+          "right": 825.45,
+          "bottom": 603,
+          "width": 570.91,
+          "height": 189
+        },
+        "containerSelector": "div.screen > img:nth-of-type(1)",
+        "text": "+23.189",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 254.55,
+          "y": 414,
+          "width": 570.91,
+          "height": 189
+        },
+        "firstSeen": 7.968,
+        "lastSeen": 7.968,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.968
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 7.968,
+        "selector": "span.l",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 400.02,
+          "top": 618,
+          "right": 679.98,
+          "bottom": 691,
+          "width": 279.97,
+          "height": 73
+        },
+        "containerSelector": "div.screen > img:nth-of-type(1)",
+        "text": "figurinhas",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 400.02,
+          "y": 618,
+          "width": 279.97,
+          "height": 73
+        },
+        "firstSeen": 7.968,
+        "lastSeen": 7.968,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          7.968
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 8.871,
+        "selector": "#caps > div:nth-of-type(13) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 314.73,
+          "top": 1171,
+          "right": 414.27,
+          "bottom": 1272,
+          "width": 99.54,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(14) > b:nth-of-type(1)",
+        "text": "de",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 314.73,
+          "y": 1171,
+          "width": 99.54,
+          "height": 101
+        },
+        "firstSeen": 8.871,
+        "lastSeen": 8.871,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.871
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 8.871,
+        "selector": "#caps > div:nth-of-type(13) > b:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 432.27,
+          "top": 1171,
+          "right": 657.16,
+          "bottom": 1272,
+          "width": 224.89,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(14) > b:nth-of-type(1)",
+        "text": "todos",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 432.27,
+          "y": 1171,
+          "width": 224.89,
+          "height": 101
+        },
+        "firstSeen": 8.871,
+        "lastSeen": 8.871,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.871
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 8.871,
+        "selector": "#caps > div:nth-of-type(13) > b:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 672.25,
+          "top": 1167.71,
+          "right": 768.16,
+          "bottom": 1275.22,
+          "width": 95.91,
+          "height": 107.51
+        },
+        "containerSelector": "#caps > div:nth-of-type(14) > b:nth-of-type(2)",
+        "text": "os",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 672.25,
+          "y": 1167.71,
+          "width": 95.91,
+          "height": 107.51
+        },
+        "firstSeen": 8.871,
+        "lastSeen": 8.871,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.871
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 14.743,
+        "selector": "#caps > div:nth-of-type(22) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 482.25,
+          "top": 1202,
+          "right": 607.75,
+          "bottom": 1240,
+          "width": 125.5,
+          "height": 38
+        },
+        "containerSelector": "#caps > div:nth-of-type(23) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "amiga 💬",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 482.25,
+          "y": 1202,
+          "width": 125.5,
+          "height": 38
+        },
+        "firstSeen": 14.743,
+        "lastSeen": 14.743,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          14.743
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 14.743,
+        "selector": "#caps > div:nth-of-type(22) > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 486.97,
+          "top": 1239,
+          "right": 593.03,
+          "bottom": 1319,
+          "width": 106.06,
+          "height": 80
+        },
+        "containerSelector": "#caps > div:nth-of-type(23) > div:nth-of-type(1) > b:nth-of-type(1)",
+        "text": "Ah,",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 486.97,
+          "y": 1239,
+          "width": 106.06,
+          "height": 80
+        },
+        "firstSeen": 14.743,
+        "lastSeen": 14.743,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          14.743
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 15.118,
+        "selector": "#caps > div:nth-of-type(23) > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 404.09,
+          "top": 1239,
+          "right": 529.98,
+          "bottom": 1319,
+          "width": 125.89,
+          "height": 80
+        },
+        "containerSelector": "#caps > div:nth-of-type(24) > div:nth-of-type(1) > b:nth-of-type(1)",
+        "text": "mas",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 404.09,
+          "y": 1239,
+          "width": 125.89,
+          "height": 80
+        },
+        "firstSeen": 15.118,
+        "lastSeen": 15.118,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          15.118
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 15.118,
+        "selector": "div.bub > b:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 547.98,
+          "top": 1239,
+          "right": 585.81,
+          "bottom": 1319,
+          "width": 37.83,
+          "height": 80
+        },
+        "containerSelector": "#caps > div:nth-of-type(24) > div:nth-of-type(1) > b:nth-of-type(1)",
+        "text": "é",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 547.98,
+          "y": 1239,
+          "width": 37.83,
+          "height": 80
+        },
+        "firstSeen": 15.118,
+        "lastSeen": 15.118,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          15.118
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 18.116,
+        "selector": "#caps > div:nth-of-type(29) > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 243.67,
+          "top": 1171,
+          "right": 458.31,
+          "bottom": 1272,
+          "width": 214.64,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(30) > b:nth-of-type(1)",
+        "text": "ficam",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 243.67,
+          "y": 1171,
+          "width": 214.64,
+          "height": 101
+        },
+        "firstSeen": 18.116,
+        "lastSeen": 18.116,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.116
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 18.116,
+        "selector": "#caps > div:nth-of-type(29) > b:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 476.31,
+          "top": 1171,
+          "right": 646.8,
+          "bottom": 1272,
+          "width": 170.49,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(30) > b:nth-of-type(2)",
+        "text": "com",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 476.31,
+          "y": 1171,
+          "width": 170.49,
+          "height": 101
+        },
+        "firstSeen": 18.116,
+        "lastSeen": 18.116,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.116
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 18.116,
+        "selector": "#caps > div:nth-of-type(29) > b:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 664.8,
+          "top": 1171,
+          "right": 836.33,
+          "bottom": 1272,
+          "width": 171.53,
+          "height": 101
+        },
+        "containerSelector": "#caps > div:nth-of-type(30) > b:nth-of-type(3)",
+        "text": "essa",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 664.8,
+          "y": 1171,
+          "width": 171.53,
+          "height": 101
+        },
+        "firstSeen": 18.116,
+        "lastSeen": 18.116,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          18.116
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#caps > div:nth-of-type(30) > b:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 442.23,
+          "top": 781,
+          "right": 541.77,
+          "bottom": 882,
+          "width": 99.53,
+          "height": 101
+        },
+        "containerSelector": "#fx > i:nth-of-type(18)",
+        "text": "de",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.04,
+        "lifetime": {
+          "start": 0,
+          "end": 20.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 442.23,
+          "y": 781,
+          "width": 99.53,
+          "height": 101
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#caps > div:nth-of-type(30) > b:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 559.77,
+          "top": 781,
+          "right": 934.25,
+          "bottom": 882,
+          "width": 374.48,
+          "height": 101
+        },
+        "containerSelector": "#fx > i:nth-of-type(11)",
+        "text": "Pinterest.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.07,
+        "lifetime": {
+          "start": 0,
+          "end": 20.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 559.77,
+          "y": 781,
+          "width": 374.48,
+          "height": 101
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "clipped_text",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "div.bt",
+        "message": "Text content is clipped by its own box.",
+        "rect": {
+          "left": 110.52,
+          "top": 1299.77,
+          "right": 969.47,
+          "bottom": 1442.23,
+          "width": 858.95,
+          "height": 142.46
+        },
+        "text": "Toca em Saiba mais 👇",
+        "fixHint": "Text is 859px x 142px inside 859px x 142px and overflows by up to 41px; increase the text box height to at least ~183px, or allow wrapping with max-width/fitTextFontSize.",
+        "overflow": {
+          "bottom": 41
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 110.52,
+          "y": 1299.77,
+          "width": 858.95,
+          "height": 142.46
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "div.bt > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 453.09,
+          "top": 1257.04,
+          "right": 745.13,
+          "bottom": 1484.96,
+          "width": 292.04,
+          "height": 227.93
+        },
+        "containerSelector": "div.bt",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 110.52,
+          "top": 1299.77,
+          "right": 969.47,
+          "bottom": 1442.23,
+          "width": 858.95,
+          "height": 142.46
+        },
+        "overflow": {
+          "top": 42.73,
+          "bottom": 42.73
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 453.09,
+          "y": 1257.04,
+          "width": 292.04,
+          "height": 227.93
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1143.71,
+          "top": 1095.86,
+          "right": 1166.73,
+          "bottom": 1118.27,
+          "width": 23.02,
+          "height": 22.41
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 86.73
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1143.71,
+          "y": 1095.86,
+          "width": 23.02,
+          "height": 22.41
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(6)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1199.56,
+          "top": 1070.75,
+          "right": 1218.33,
+          "bottom": 1089.56,
+          "width": 18.77,
+          "height": 18.81
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 138.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1199.56,
+          "y": 1070.75,
+          "width": 18.77,
+          "height": 18.81
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(10)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1086.37,
+          "top": 1404.94,
+          "right": 1103.87,
+          "bottom": 1427.65,
+          "width": 17.5,
+          "height": 22.72
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 23.87
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1086.37,
+          "y": 1404.94,
+          "width": 17.5,
+          "height": 22.72
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(14)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -42.95,
+          "top": 1096.43,
+          "right": -28.75,
+          "bottom": 1114.5,
+          "width": 14.2,
+          "height": 18.06
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 42.95
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -42.95,
+          "y": 1096.43,
+          "width": 14.2,
+          "height": 18.06
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(17)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -198.51,
+          "top": 1043.6,
+          "right": -178.13,
+          "bottom": 1061.34,
+          "width": 20.38,
+          "height": 17.74
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 198.51
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -198.51,
+          "y": 1043.6,
+          "width": 20.38,
+          "height": 17.74
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(20)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1203.18,
+          "top": 1132.51,
+          "right": 1226.35,
+          "bottom": 1156.91,
+          "width": 23.18,
+          "height": 24.4
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 146.35
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1203.18,
+          "y": 1132.51,
+          "width": 23.18,
+          "height": 24.4
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(24)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -196.41,
+          "top": 1218.16,
+          "right": -188.62,
+          "bottom": 1235.23,
+          "width": 7.78,
+          "height": 17.07
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 196.41
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -196.41,
+          "y": 1218.16,
+          "width": 7.78,
+          "height": 17.07
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(27)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -115.63,
+          "top": 872.32,
+          "right": -99.31,
+          "bottom": 899.55,
+          "width": 16.33,
+          "height": 27.22
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 115.63
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -115.63,
+          "y": 872.32,
+          "width": 16.33,
+          "height": 27.22
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(30)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1070.49,
+          "top": 1050.08,
+          "right": 1096.49,
+          "bottom": 1074.83,
+          "width": 26,
+          "height": 24.75
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 16.49
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1070.49,
+          "y": 1050.08,
+          "width": 26,
+          "height": 24.75
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(31)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -57.22,
+          "top": 1176.92,
+          "right": -35.3,
+          "bottom": 1198.16,
+          "width": 21.92,
+          "height": 21.24
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 57.22
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -57.22,
+          "y": 1176.92,
+          "width": 21.92,
+          "height": 21.24
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 19.352,
+        "selector": "#fx > i:nth-of-type(35)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1243.7,
+          "top": 1236.98,
+          "right": 1270.35,
+          "bottom": 1261.43,
+          "width": 26.65,
+          "height": 24.45
+        },
+        "containerSelector": "#fx",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 190.35
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1243.7,
+          "y": 1236.98,
+          "width": 26.65,
+          "height": 24.45
+        },
+        "firstSeen": 19.352,
+        "lastSeen": 19.352,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.352
+        ]
+      }
+    ],
+    "duration": 20.49,
+    "samples": [
+      1.138,
+      3.415,
+      5.692,
+      7.968,
+      10.245,
+      12.522,
+      14.798,
+      17.075,
+      19.352
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 44,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.138,
+      5.692,
+      10.245,
+      14.798,
+      19.352
+    ],
+    "checked": 17,
+    "passed": 17
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 5,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"maséesse\" (1 word) is on screen 0.30 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "maséesse",
+        "selector": "#caps > div:nth-of-type(9)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 319.98,
+          "y": 1162.79,
+          "width": 432.01,
+          "height": 113.6099999999999
+        },
+        "time": 5.27,
+        "words": 1,
+        "seconds": 0.297,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 4.998,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.123,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.247,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.372,
+            "opacity": 1,
+            "heightPx": 114
+          },
+          {
+            "time": 5.497,
+            "opacity": 1,
+            "heightPx": 101
+          },
+          {
+            "time": 5.622,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.747,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.872,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"dodiaa\" (1 word) is on screen 0.30 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "dodiaa",
+        "selector": "#caps > div:nth-of-type(16)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 378.21,
+          "y": 1160.24,
+          "width": 318.58,
+          "height": 115.26999999999998
+        },
+        "time": 10.808,
+        "words": 1,
+        "seconds": 0.297,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 10.495,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.62,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.745,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.87,
+            "opacity": 1,
+            "heightPx": 115
+          },
+          {
+            "time": 10.995,
+            "opacity": 1,
+            "heightPx": 111
+          },
+          {
+            "time": 11.12,
+            "opacity": 0.11,
+            "heightPx": 101
+          },
+          {
+            "time": 11.245,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.369,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"dia,\" (1 word) is on screen 0.33 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "dia,",
+        "selector": "#caps > div:nth-of-type(17)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 468.65,
+          "y": 1173.76,
+          "width": 142.68999999999994,
+          "height": 98.87000000000012
+        },
+        "time": 11.104,
+        "words": 1,
+        "seconds": 0.335,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 10.745,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.87,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.995,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.12,
+            "opacity": 0.93,
+            "heightPx": 99
+          },
+          {
+            "time": 11.245,
+            "opacity": 1,
+            "heightPx": 110
+          },
+          {
+            "time": 11.369,
+            "opacity": 1,
+            "heightPx": 101
+          },
+          {
+            "time": 11.494,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.619,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.744,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Sim,\" (1 word) is on screen 0.33 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Sim,",
+        "selector": "#caps > div:nth-of-type(25)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 443.93,
+          "y": 1163.27,
+          "width": 192.13999999999993,
+          "height": 113.23000000000002
+        },
+        "time": 15.508,
+        "words": 1,
+        "seconds": 0.328,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 15.243,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15.367,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15.492,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15.617,
+            "opacity": 1,
+            "heightPx": 113
+          },
+          {
+            "time": 15.742,
+            "opacity": 1,
+            "heightPx": 101
+          },
+          {
+            "time": 15.867,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15.992,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 16.117,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"+24 mil figurinhas, filtros e roteiros. Copia, cola e pro...\" (10 words) is on screen 2.12 s (±0.01 s), under the 2.63 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "+24 mil figurinhas, filtros e roteiros. Copia, cola e pronto.",
+        "selector": "#ctaC > p:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 224.91,
+          "y": 1218.78,
+          "width": 630.17,
+          "height": 93.6400000000001
+        },
+        "time": 18.374,
+        "words": 10,
+        "seconds": 2.12,
+        "floorSeconds": 2.625,
+        "measured": [
+          {
+            "time": 18.116,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 18.241,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 18.366,
+            "opacity": 0.32,
+            "heightPx": 88
+          },
+          {
+            "time": 18.491,
+            "opacity": 0.91,
+            "heightPx": 94
+          },
+          {
+            "time": 18.616,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 18.741,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 18.866,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 19.99,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 20.115,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 20.24,
+            "opacity": 1,
+            "heightPx": 95
+          },
+          {
+            "time": 20.365,
+            "opacity": 1,
+            "heightPx": 95
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 164
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": {
+      "triggeringAsset": "assets/u1-talk.mp4",
+      "output": {
+        "colorSpace": "BT.2020",
+        "codec": "HEVC Main10"
+      }
+    },
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

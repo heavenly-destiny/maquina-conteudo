@@ -1,0 +1,2478 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 12,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "overlapping_gsap_tweens",
+        "severity": "warning",
+        "message": "GSAP tweens overlap on \"#s1-line\" for x between 0.71s and 0.87s.",
+        "selector": "#s1-line",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Shorten the earlier tween, move the later tween, or add `overwrite: \"auto\"`."
+      },
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "7 tl.fromTo() calls target \"proxy (unresolved DOM association)\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "proxy (unresolved DOM association)",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 1.38s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "This HTML file has 9 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s1\"> is a timeline element that contains nested <div id=\"s1-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s2\"> is a timeline element that contains nested <div id=\"s2-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s3o\"> is a timeline element that contains nested <div id=\"h3\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s3o",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s3o\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s4\"> is a timeline element that contains nested <div id=\"s4-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s4",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s5\"> is a timeline element that contains nested <div id=\"s5-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s5",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s6\"> is a timeline element that contains nested <div id=\"s6-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s6",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s6\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s7o\"> is a timeline element that contains nested <div id=\"h7\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s7o",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s7o\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s8\"> is a timeline element that contains nested <div id=\"s8-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s8",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s8\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"s9\"> is a timeline element that contains nested <div id=\"s9-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s9",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/zupi-reel/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"s9\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "multiple_root_compositions",
+        "severity": "error",
+        "message": "Multiple root-level HTML files with data-composition-id: index.html, index.template.html. The runtime may discover both as entry points, causing duplicate audio playback.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "A project should have exactly one root index.html with data-composition-id. Remove or rename extra files."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 16,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 4.417,
+        "selector": "#token",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1213.57,
+          "top": 503.9,
+          "right": 1316.41,
+          "bottom": 585.27,
+          "width": 102.84,
+          "height": 81.37
+        },
+        "containerSelector": "#n4 > em:nth-of-type(1)",
+        "text": "PIX",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1213.57,
+          "y": 503.9,
+          "width": 102.84,
+          "height": 81.37
+        },
+        "firstSeen": 4.417,
+        "lastSeen": 4.885,
+        "occurrences": 3,
+        "heldMs": 468,
+        "times": [
+          4.417,
+          4.441,
+          4.885
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 14.508,
+        "selector": "#fc3 > h4:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 314.43,
+          "right": 1413.31,
+          "bottom": 357.43,
+          "width": 213.31,
+          "height": 43
+        },
+        "containerSelector": "#fc4 > h4:nth-of-type(1)",
+        "text": "Pix agendado",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 314.43,
+          "width": 213.31,
+          "height": 43
+        },
+        "firstSeen": 14.508,
+        "lastSeen": 14.656,
+        "occurrences": 2,
+        "heldMs": 148.00000000000148,
+        "times": [
+          14.508,
+          14.656
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 14.508,
+        "selector": "#fc3 > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 369.43,
+          "right": 1509.73,
+          "bottom": 404.43,
+          "width": 309.73,
+          "height": 35
+        },
+        "containerSelector": "#fc4 > p:nth-of-type(1)",
+        "text": "Conta paga sem lembrar",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 369.43,
+          "width": 309.73,
+          "height": 35
+        },
+        "firstSeen": 14.508,
+        "lastSeen": 14.656,
+        "occurrences": 2,
+        "heldMs": 148.00000000000148,
+        "times": [
+          14.508,
+          14.656
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.472,
+        "selector": "#w1d",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2475.25,
+          "top": 126.54,
+          "right": 2640.05,
+          "bottom": 247.54,
+          "width": 164.8,
+          "height": 121
+        },
+        "containerSelector": "#root",
+        "text": "rolê",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 720.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 2475.25,
+          "y": 126.54,
+          "width": 164.8,
+          "height": 121
+        },
+        "firstSeen": 1.472,
+        "lastSeen": 1.472,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.472
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.472,
+        "selector": "#s1-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -106.98,
+          "top": 0,
+          "right": 1813.02,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "containerSelector": "#s1",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 106.98
+        },
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"style\",\"localName\":\"style\",\"namespaceURI\":null,\"before\":\"filter: url(#hb1)\",\"after\":\"filter: url(#hb1)\"}]"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -106.98,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "firstSeen": 1.472,
+        "lastSeen": 1.472,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.472
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.472,
+        "selector": "#s2-in",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1813.02,
+          "top": 0,
+          "right": 3733.02,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "containerSelector": "#s2",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1813.02
+        },
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"style\",\"localName\":\"style\",\"namespaceURI\":null,\"before\":\"filter: url(#hb2)\",\"after\":\"filter: url(#hb2)\"}]"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1813.02,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "firstSeen": 1.472,
+        "lastSeen": 1.472,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.472
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 1.472,
+        "selector": "#s2-in",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1813.02,
+          "top": 0,
+          "right": 3733.02,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "containerSelector": "#s2",
+        "text": "rolê marcado. Cartão pra cá, Pix pra lá. Saldo disponível R$ 3.482,90 zupi •••• 4821 PIX Compra aprovada R$ 89,90 · Bar da Esquina agora Pix enviado R$ 40,00 para Júlia agora Compra aprovada R$ 32,50 · Corrida agora Compra aprovada R$ 58,00 · Lanche agora",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "dataAttributes": {
+          "data-hf-svg-reference-aliases": "[{\"name\":\"style\",\"localName\":\"style\",\"namespaceURI\":null,\"before\":\"filter: url(#hb2)\",\"after\":\"filter: url(#hb2)\"}]"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1813.02,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "firstSeen": 1.472,
+        "lastSeen": 1.472,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.472
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 4.417,
+        "selector": "#ccard > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 643.47,
+          "top": 611.99,
+          "right": 770.97,
+          "bottom": 646.83,
+          "width": 127.5,
+          "height": 34.85
+        },
+        "containerSelector": "#n4",
+        "text": "•••• 4821",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 1.38,
+          "end": 5.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 643.47,
+          "y": 611.99,
+          "width": 127.5,
+          "height": 34.85
+        },
+        "firstSeen": 4.417,
+        "lastSeen": 4.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.417
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 4.417,
+        "selector": "#token",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1213.57,
+          "top": 503.9,
+          "right": 1316.41,
+          "bottom": 585.27,
+          "width": 102.84,
+          "height": 81.37
+        },
+        "containerSelector": "#n4",
+        "text": "PIX",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 1.38,
+          "end": 5.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1213.57,
+          "y": 503.9,
+          "width": 102.84,
+          "height": 81.37
+        },
+        "firstSeen": 4.417,
+        "lastSeen": 4.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.417
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 4.417,
+        "selector": "#n2 > em:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1622.7,
+          "top": 782,
+          "right": 1682,
+          "bottom": 810,
+          "width": 59.3,
+          "height": 28
+        },
+        "containerSelector": "#t-near",
+        "text": "agora",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 1.38,
+          "end": 5.05
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1622.7,
+          "y": 782,
+          "width": 59.3,
+          "height": 28
+        },
+        "firstSeen": 4.417,
+        "lastSeen": 4.417,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.417
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 4.885,
+        "selector": "#ccard > div:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 633.75,
+          "top": 611.47,
+          "right": 769.43,
+          "bottom": 649.08,
+          "width": 135.68,
+          "height": 37.61
+        },
+        "containerSelector": "#n4 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "•••• 4821",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 633.75,
+          "y": 611.47,
+          "width": 135.68,
+          "height": 37.61
+        },
+        "firstSeen": 4.885,
+        "lastSeen": 4.885,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          4.885
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 11.992,
+        "selector": "#fc1 > h4:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 313.67,
+          "right": 1420.22,
+          "bottom": 356.67,
+          "width": 220.22,
+          "height": 43
+        },
+        "containerSelector": "#fc2 > h4:nth-of-type(1)",
+        "text": "Cartão virtual",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 313.67,
+          "width": 220.22,
+          "height": 43
+        },
+        "firstSeen": 11.992,
+        "lastSeen": 11.992,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          11.992
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 11.992,
+        "selector": "#fc1 > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 368.67,
+          "right": 1474.56,
+          "bottom": 403.67,
+          "width": 274.56,
+          "height": 35
+        },
+        "containerSelector": "#fc2 > p:nth-of-type(1)",
+        "text": "Só pra compras online",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 368.67,
+          "width": 274.56,
+          "height": 35
+        },
+        "firstSeen": 11.992,
+        "lastSeen": 11.992,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          11.992
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 11.992,
+        "selector": "div.mini-card > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1230,
+          "top": 473.67,
+          "right": 1291.52,
+          "bottom": 513.67,
+          "width": 61.52,
+          "height": 40
+        },
+        "containerSelector": "div.alert > b:nth-of-type(1)",
+        "text": "zupi",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1230,
+          "y": 473.67,
+          "width": 61.52,
+          "height": 40
+        },
+        "firstSeen": 11.992,
+        "lastSeen": 11.992,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          11.992
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.62,
+        "selector": "#b2",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1742.6,
+          "top": 785.31,
+          "right": 1753.4,
+          "bottom": 830.69,
+          "width": 10.8,
+          "height": 45.38
+        },
+        "containerSelector": "#b3",
+        "text": "!",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1742.6,
+          "y": 785.31,
+          "width": 10.8,
+          "height": 45.38
+        },
+        "firstSeen": 13.62,
+        "lastSeen": 13.62,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.62
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.768,
+        "selector": "#fc2 > h4:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 306.73,
+          "right": 1440.58,
+          "bottom": 349.73,
+          "width": 240.58,
+          "height": 43
+        },
+        "containerSelector": "#fc3 > h4:nth-of-type(1)",
+        "text": "Alerta de gasto",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 306.73,
+          "width": 240.58,
+          "height": 43
+        },
+        "firstSeen": 13.768,
+        "lastSeen": 13.768,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.768
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.768,
+        "selector": "#fc2 > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1200,
+          "top": 361.73,
+          "right": 1545.2,
+          "bottom": 396.73,
+          "width": 345.2,
+          "height": 35
+        },
+        "containerSelector": "#fc3 > p:nth-of-type(1)",
+        "text": "Você define o limite da noite",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 361.73,
+          "width": 345.2,
+          "height": 35
+        },
+        "firstSeen": 13.768,
+        "lastSeen": 13.768,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.768
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.768,
+        "selector": "div.alert > b:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1230,
+          "top": 466.73,
+          "right": 1475.66,
+          "bottom": 506.73,
+          "width": 245.66,
+          "height": 40
+        },
+        "containerSelector": "div.sched > div:nth-of-type(1) > span:nth-of-type(1)",
+        "text": "Você já usou 80%",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1230,
+          "y": 466.73,
+          "width": 245.66,
+          "height": 40
+        },
+        "firstSeen": 13.768,
+        "lastSeen": 13.768,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.768
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 15.841,
+        "selector": "#f3",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 252,
+          "top": 502.63,
+          "right": 710.55,
+          "bottom": 598.63,
+          "width": 458.55,
+          "height": 96
+        },
+        "containerSelector": "#w6a",
+        "text": "Pix agendado",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 252,
+          "y": 502.63,
+          "width": 458.55,
+          "height": 96
+        },
+        "firstSeen": 15.841,
+        "lastSeen": 15.841,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          15.841
+        ]
+      }
+    ],
+    "duration": 26.5,
+    "samples": [
+      1.472,
+      4.417,
+      7.361,
+      10.306,
+      13.25,
+      16.194,
+      19.139,
+      22.083,
+      25.028
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 19,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.48:1; WCAG AA requires 3:1.",
+        "text": "Cartão virtual",
+        "fg": "rgb(201,187,165)",
+        "bg": "rgb(241,226,197)",
+        "ratio": 1.48,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(138,128,113)",
+        "large": true,
+        "selector": "#f1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 200,
+          "y": 300,
+          "width": 583.546875,
+          "height": 100.3125
+        },
+        "time": 13.25,
+        "times": [
+          13.25
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.48:1; WCAG AA requires 3:1.",
+        "text": "Pix agendado",
+        "fg": "rgb(201,187,165)",
+        "bg": "rgb(241,226,197)",
+        "ratio": 1.48,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(138,128,113)",
+        "large": true,
+        "selector": "#f3",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 200,
+          "y": 500.625,
+          "width": 583.546875,
+          "height": 100.3125
+        },
+        "time": 13.25,
+        "times": [
+          13.25
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.48:1; WCAG AA requires 3:1.",
+        "text": "Login pelo rosto",
+        "fg": "rgb(201,187,165)",
+        "bg": "rgb(241,226,197)",
+        "ratio": 1.48,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(138,128,113)",
+        "large": true,
+        "selector": "#f4",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 200,
+          "y": 600.9375,
+          "width": 583.546875,
+          "height": 100.3125
+        },
+        "time": 13.25,
+        "times": [
+          13.25
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.15:1; WCAG AA requires 3:1.",
+        "text": "!",
+        "fg": "rgb(255,255,255)",
+        "bg": "rgb(245,158,11)",
+        "ratio": 2.15,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(94,94,94)",
+        "large": true,
+        "selector": "#b2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1700,
+          "y": 760,
+          "width": 96,
+          "height": 96
+        },
+        "time": 13.25,
+        "times": [
+          13.25
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.472,
+      7.361,
+      13.25,
+      19.139,
+      25.028
+    ],
+    "checked": 26,
+    "passed": 22
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 17,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"R$ 3.482,90\" (4 words) is on screen 1.06 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "R$ 3.482,90",
+        "selector": "div.bal",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 810,
+          "y": 509.85,
+          "width": 224.3800000000001,
+          "height": 146
+        },
+        "time": 1.641,
+        "words": 4,
+        "seconds": 1.063,
+        "floorSeconds": 1.275,
+        "measured": [
+          {
+            "time": 1.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 1.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 1.625,
+            "opacity": 0.48,
+            "heightPx": 146
+          },
+          {
+            "time": 1.75,
+            "opacity": 0.78,
+            "heightPx": 146
+          },
+          {
+            "time": 1.875,
+            "opacity": 0.93,
+            "heightPx": 146
+          },
+          {
+            "time": 2,
+            "opacity": 0.99,
+            "heightPx": 146
+          },
+          {
+            "time": 2.125,
+            "opacity": 1,
+            "heightPx": 146
+          },
+          {
+            "time": 2.25,
+            "opacity": 1,
+            "heightPx": 146
+          },
+          {
+            "time": 2.375,
+            "opacity": 1,
+            "heightPx": 146
+          },
+          {
+            "time": 2.5,
+            "opacity": 0.99,
+            "heightPx": 146
+          },
+          {
+            "time": 2.625,
+            "opacity": 0.86,
+            "heightPx": 146
+          },
+          {
+            "time": 2.75,
+            "opacity": 0.28,
+            "heightPx": 146
+          },
+          {
+            "time": 2.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"R$ 89,90 · Bar da Esquina\" (6 words) is on screen 1.33 s (±0.01 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "R$ 89,90 · Bar da Esquina",
+        "selector": "#n1 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 323.76,
+          "y": 358.63,
+          "width": 306.79999999999995,
+          "height": 35.04000000000002
+        },
+        "time": 3.641,
+        "words": 6,
+        "seconds": 1.328,
+        "floorSeconds": 1.725,
+        "measured": [
+          {
+            "time": 3.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.625,
+            "opacity": 0.46,
+            "heightPx": 54
+          },
+          {
+            "time": 3.75,
+            "opacity": 0.95,
+            "heightPx": 35
+          },
+          {
+            "time": 3.875,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.125,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.5,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.75,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.875,
+            "opacity": 0.86,
+            "heightPx": 36
+          },
+          {
+            "time": 5,
+            "opacity": 0.18,
+            "heightPx": 49
+          },
+          {
+            "time": 5.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"R$ 40,00 para Júlia\" (5 words) is on screen 1.10 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "R$ 40,00 para Júlia",
+        "selector": "#n2 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1178.46,
+          "y": 797.54,
+          "width": 345.51,
+          "height": 50
+        },
+        "time": 3.867,
+        "words": 5,
+        "seconds": 1.102,
+        "floorSeconds": 1.5,
+        "measured": [
+          {
+            "time": 3.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.625,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.875,
+            "opacity": 0.57,
+            "heightPx": 50
+          },
+          {
+            "time": 4,
+            "opacity": 0.97,
+            "heightPx": 34
+          },
+          {
+            "time": 4.125,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.25,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.5,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.75,
+            "opacity": 1,
+            "heightPx": 33
+          },
+          {
+            "time": 4.875,
+            "opacity": 0.86,
+            "heightPx": 36
+          },
+          {
+            "time": 5,
+            "opacity": 0.18,
+            "heightPx": 49
+          },
+          {
+            "time": 5.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"agora\" (1 word) is on screen 0.13 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "agora",
+        "selector": "#n2 > em:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1722,
+          "y": 737.68,
+          "width": 89.8599999999999,
+          "height": 42.42999999999995
+        },
+        "time": 3.867,
+        "words": 1,
+        "seconds": 0.133,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 3.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.625,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 3.875,
+            "opacity": 0.57,
+            "heightPx": 42
+          },
+          {
+            "time": 4,
+            "opacity": 0.97,
+            "heightPx": 29
+          },
+          {
+            "time": 4.125,
+            "opacity": 1,
+            "heightPx": 28
+          },
+          {
+            "time": 4.25,
+            "opacity": 1,
+            "heightPx": 28
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"R$ 32,50 · Corrida\" (4 words) is on screen 0.16 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "R$ 32,50 · Corrida",
+        "selector": "#n3 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1349.51,
+          "y": 388.3,
+          "width": 199.83999999999992,
+          "height": 31.899999999999977
+        },
+        "time": 4.141,
+        "words": 4,
+        "seconds": 0.164,
+        "floorSeconds": 1.275,
+        "measured": [
+          {
+            "time": 3.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.125,
+            "opacity": 0.46,
+            "heightPx": 53
+          },
+          {
+            "time": 4.25,
+            "opacity": 0.95,
+            "heightPx": 32
+          },
+          {
+            "time": 4.375,
+            "opacity": 1,
+            "heightPx": 30
+          },
+          {
+            "time": 4.5,
+            "opacity": 1,
+            "heightPx": 30
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 30
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"agora\" at 20 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "agora",
+        "selector": "#n3 > em:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1696.31,
+          "y": 350.11,
+          "width": 57.32,
+          "height": 27.07
+        },
+        "time": 4.25,
+        "times": [
+          1.75,
+          3.75,
+          3.875,
+          4,
+          4,
+          4.25,
+          4.25,
+          4.375
+        ],
+        "fontPx": 19.8,
+        "floorPx": 28,
+        "seconds": 0.75,
+        "elements": [
+          {
+            "selector": "#n3 > em:nth-of-type(1)",
+            "text": "agora",
+            "fontPx": 19.8,
+            "time": 4.25,
+            "seconds": 0.75
+          },
+          {
+            "selector": "#n1 > em:nth-of-type(1)",
+            "text": "agora",
+            "fontPx": 22,
+            "time": 3.75,
+            "seconds": 1.25
+          },
+          {
+            "selector": "#n2 > em:nth-of-type(1)",
+            "text": "agora",
+            "fontPx": 22,
+            "time": 4,
+            "seconds": 1
+          },
+          {
+            "selector": "#n3 > div:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "R$ 32,50 · Corrida",
+            "fontPx": 23.4,
+            "time": 4.25,
+            "seconds": 0.75
+          },
+          {
+            "selector": "div.lbl",
+            "text": "Saldo disponível",
+            "fontPx": 26,
+            "time": 1.75,
+            "seconds": 1
+          },
+          {
+            "selector": "#n1 > div:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "R$ 89,90 · Bar da Esquina",
+            "fontPx": 26,
+            "time": 3.875,
+            "seconds": 1
+          },
+          {
+            "selector": "#n2 > div:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "R$ 40,00 para Júlia",
+            "fontPx": 26,
+            "time": 4,
+            "seconds": 0.875
+          },
+          {
+            "selector": "#n3 > div:nth-of-type(1) > b:nth-of-type(1)",
+            "text": "Compra aprovada",
+            "fontPx": 27,
+            "time": 4.375,
+            "seconds": 0.5
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"R$ 58,00 · Lanche\" (4 words) is on screen 0.60 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "R$ 58,00 · Lanche",
+        "selector": "#n4 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 703.71,
+          "y": 557.64,
+          "width": 315.3399999999999,
+          "height": 50.950000000000045
+        },
+        "time": 4.367,
+        "words": 4,
+        "seconds": 0.602,
+        "floorSeconds": 1.275,
+        "measured": [
+          {
+            "time": 4,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.375,
+            "opacity": 0.57,
+            "heightPx": 51
+          },
+          {
+            "time": 4.5,
+            "opacity": 0.97,
+            "heightPx": 36
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 4.75,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 4.875,
+            "opacity": 0.86,
+            "heightPx": 58
+          },
+          {
+            "time": 5,
+            "opacity": 0.18,
+            "heightPx": 169
+          },
+          {
+            "time": 5.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"agora\" (1 word) is on screen 0.17 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "agora",
+        "selector": "#n4 > em:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1257.51,
+          "y": 496.65,
+          "width": 91.54999999999995,
+          "height": 43.23000000000002
+        },
+        "time": 4.367,
+        "words": 1,
+        "seconds": 0.172,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 4,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 4.375,
+            "opacity": 0.57,
+            "heightPx": 43
+          },
+          {
+            "time": 4.5,
+            "opacity": 0.97,
+            "heightPx": 30
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 29
+          },
+          {
+            "time": 4.75,
+            "opacity": 1,
+            "heightPx": 30
+          },
+          {
+            "time": 4.875,
+            "opacity": 0.86,
+            "heightPx": 49
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"agora\" (1 word) is on screen 0.10 s (±0.01 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "agora",
+        "selector": "#n1 > em:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 709.04,
+          "y": 318.95,
+          "width": 64.33000000000004,
+          "height": 30.370000000000005
+        },
+        "time": 4.867,
+        "words": 1,
+        "seconds": 0.102,
+        "floorSeconds": 0.4,
+        "measured": [
+          {
+            "time": 4.5,
+            "opacity": 1,
+            "heightPx": 28
+          },
+          {
+            "time": 4.625,
+            "opacity": 1,
+            "heightPx": 28
+          },
+          {
+            "time": 4.75,
+            "opacity": 1,
+            "heightPx": 28
+          },
+          {
+            "time": 4.875,
+            "opacity": 0.86,
+            "heightPx": 30
+          },
+          {
+            "time": 5,
+            "opacity": 0.18,
+            "heightPx": 42
+          },
+          {
+            "time": 5.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 5.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Tudo sob controle\" (3 words) is on screen 0.63 s (±0.01 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Tudo sob controle",
+        "selector": "#pill4 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 854.61,
+          "y": 868.32,
+          "width": 238.7800000000001,
+          "height": 38
+        },
+        "time": 9.273,
+        "words": 3,
+        "seconds": 0.633,
+        "floorSeconds": 1.05,
+        "measured": [
+          {
+            "time": 9,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 9.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 9.25,
+            "opacity": 0.29,
+            "heightPx": 38
+          },
+          {
+            "time": 9.375,
+            "opacity": 0.88,
+            "heightPx": 38
+          },
+          {
+            "time": 9.5,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 9.625,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 9.75,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 9.875,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 10,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Só pra compras online\" (4 words) is on screen 1.23 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Só pra compras online",
+        "selector": "#fc1 > p:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 376.93,
+          "width": 274.55999999999995,
+          "height": 35
+        },
+        "time": 10.836,
+        "words": 4,
+        "seconds": 1.234,
+        "floorSeconds": 1.275,
+        "measured": [
+          {
+            "time": 10.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.625,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 10.875,
+            "opacity": 0.8,
+            "heightPx": 35
+          },
+          {
+            "time": 11,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 11.125,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 11.25,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 11.625,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 11.75,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 11.875,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 12,
+            "opacity": 0.78,
+            "heightPx": 35
+          },
+          {
+            "time": 12.125,
+            "opacity": 0.1,
+            "heightPx": 35
+          },
+          {
+            "time": 12.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 12.375,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"do limite de R$ 200,00 pra hoje\" (8 words) is on screen 1.87 s (±0.01 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "do limite de R$ 200,00 pra hoje",
+        "selector": "div.alert > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1230,
+          "y": 527.73,
+          "width": 390.77,
+          "height": 35
+        },
+        "time": 11.938,
+        "words": 8,
+        "seconds": 1.867,
+        "floorSeconds": 2.175,
+        "measured": [
+          {
+            "time": 11.625,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 11.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 12,
+            "opacity": 0.88,
+            "heightPx": 35
+          },
+          {
+            "time": 12.125,
+            "opacity": 0.99,
+            "heightPx": 35
+          },
+          {
+            "time": 12.25,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 12.375,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 13.375,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 13.5,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 13.625,
+            "opacity": 0.99,
+            "heightPx": 35
+          },
+          {
+            "time": 13.75,
+            "opacity": 0.72,
+            "heightPx": 35
+          },
+          {
+            "time": 13.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.125,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Conta paga sem lembrar\" (4 words) is on screen 0.97 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Conta paga sem lembrar",
+        "selector": "#fc3 > p:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 373.79,
+          "width": 309.73,
+          "height": 35
+        },
+        "time": 13.672,
+        "words": 4,
+        "seconds": 0.969,
+        "floorSeconds": 1.275,
+        "measured": [
+          {
+            "time": 13.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.625,
+            "opacity": 0.12,
+            "heightPx": 35
+          },
+          {
+            "time": 13.75,
+            "opacity": 0.91,
+            "heightPx": 35
+          },
+          {
+            "time": 13.875,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14.125,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14.25,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14.375,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14.5,
+            "opacity": 0.92,
+            "heightPx": 35
+          },
+          {
+            "time": 14.625,
+            "opacity": 0.51,
+            "heightPx": 35
+          },
+          {
+            "time": 14.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Aluguel · dia 05\" (3 words) is on screen 0.97 s (±0.01 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Aluguel · dia 05",
+        "selector": "div.sched > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 464.79,
+          "width": 198.69000000000005,
+          "height": 38
+        },
+        "time": 13.672,
+        "words": 3,
+        "seconds": 0.969,
+        "floorSeconds": 1.05,
+        "measured": [
+          {
+            "time": 13.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.625,
+            "opacity": 0.12,
+            "heightPx": 38
+          },
+          {
+            "time": 13.75,
+            "opacity": 0.91,
+            "heightPx": 38
+          },
+          {
+            "time": 13.875,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.125,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.25,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.375,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.5,
+            "opacity": 0.92,
+            "heightPx": 38
+          },
+          {
+            "time": 14.625,
+            "opacity": 0.51,
+            "heightPx": 38
+          },
+          {
+            "time": 14.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Internet · dia 12\" (3 words) is on screen 0.97 s (±0.01 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Internet · dia 12",
+        "selector": "div.sched > div:nth-of-type(2) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 548.79,
+          "width": 196.6300000000001,
+          "height": 38
+        },
+        "time": 13.672,
+        "words": 3,
+        "seconds": 0.969,
+        "floorSeconds": 1.05,
+        "measured": [
+          {
+            "time": 13.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.625,
+            "opacity": 0.12,
+            "heightPx": 38
+          },
+          {
+            "time": 13.75,
+            "opacity": 0.91,
+            "heightPx": 38
+          },
+          {
+            "time": 13.875,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.125,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.25,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.375,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.5,
+            "opacity": 0.92,
+            "heightPx": 38
+          },
+          {
+            "time": 14.625,
+            "opacity": 0.51,
+            "heightPx": 38
+          },
+          {
+            "time": 14.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Academia · dia 15\" (3 words) is on screen 0.97 s (±0.01 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Academia · dia 15",
+        "selector": "div.sched > div:nth-of-type(3) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 632.79,
+          "width": 226.04999999999995,
+          "height": 38
+        },
+        "time": 13.672,
+        "words": 3,
+        "seconds": 0.969,
+        "floorSeconds": 1.05,
+        "measured": [
+          {
+            "time": 13.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.5,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 13.625,
+            "opacity": 0.12,
+            "heightPx": 38
+          },
+          {
+            "time": 13.75,
+            "opacity": 0.91,
+            "heightPx": 38
+          },
+          {
+            "time": 13.875,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.125,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.25,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.375,
+            "opacity": 1,
+            "heightPx": 38
+          },
+          {
+            "time": 14.5,
+            "opacity": 0.92,
+            "heightPx": 38
+          },
+          {
+            "time": 14.625,
+            "opacity": 0.51,
+            "heightPx": 38
+          },
+          {
+            "time": 14.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 15,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Bem-vinda de volta, Ana\" (5 words) is on screen 1.41 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Bem-vinda de volta, Ana",
+        "selector": "#fc4 > p:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1200,
+          "y": 380.49,
+          "width": 305.8600000000001,
+          "height": 35
+        },
+        "time": 14.5,
+        "words": 5,
+        "seconds": 1.406,
+        "floorSeconds": 1.5,
+        "measured": [
+          {
+            "time": 14.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.375,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 14.5,
+            "opacity": 0.68,
+            "heightPx": 35
+          },
+          {
+            "time": 14.625,
+            "opacity": 0.96,
+            "heightPx": 35
+          },
+          {
+            "time": 14.75,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 14.875,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 15.5,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 15.625,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 15.75,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 15.875,
+            "opacity": 1,
+            "heightPx": 35
+          },
+          {
+            "time": 16,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 16.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 16.25,
+            "opacity": null,
+            "heightPx": null
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 212
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+# uso: render-corte PASTA NOME PASTA_SAIDA
+OUT="$3" exec /Users/tanpz/Movies/maquina-conteudo/tools/organico/render.sh "$1" "$2"

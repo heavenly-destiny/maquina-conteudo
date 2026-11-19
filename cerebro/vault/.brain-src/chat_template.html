@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanpz Brain · Chat</title>
+<style>
+  :root{
+    --void:#0a0c12;
+    --void-2:#12151f;
+    --void-3:#1b202e;
+    --hairline: rgba(255,255,255,0.09);
+    --text:#eef1f7;
+    --text-dim:#8b93a8;
+    --text-faint:#565e72;
+    --accent:#5eead4;
+    --accent-dim: rgba(94,234,212,0.14);
+    --danger:#f2777a;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; height:100%; width:100%;
+    background:var(--void); color:var(--text);
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  }
+  #app{
+    display:flex; flex-direction:column; height:100vh; max-width: 760px; margin:0 auto;
+  }
+
+  header{
+    flex:0 0 auto; padding: 20px 24px 16px;
+    display:flex; align-items:center; gap:12px;
+    border-bottom:1px solid var(--hairline);
+  }
+  header h1{
+    margin:0; flex:1;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    font-style:italic; font-weight:400; font-size:20px; color:var(--text);
+  }
+  header .sub{
+    font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em;
+    margin-top:3px; display:block;
+  }
+  .titlewrap{ flex:1; }
+  select#model-select{
+    background: rgba(0,0,0,0.25); border:1px solid var(--hairline); color:var(--text-dim);
+    font-family:inherit; font-size:11px; border-radius:7px; padding:7px 8px; outline:none;
+  }
+  button.icon-btn{
+    background:none; border:1px solid var(--hairline); color:var(--text-dim);
+    width:34px; height:34px; border-radius:9px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition: color .15s ease, background .15s ease, border-color .15s ease;
+  }
+  button.icon-btn:hover{ color:var(--text); background:rgba(255,255,255,0.06); }
+
+  #messages{
+    flex:1 1 auto; overflow-y:auto; padding: 22px 24px 10px;
+    display:flex; flex-direction:column; gap:22px;
+  }
+  .msg{ max-width:100%; }
+  .msg .role{
+    font-size:10px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--text-faint); margin-bottom:6px;
+  }
+  .msg.user .role{ color: var(--accent); }
+  .msg .bubble{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    font-size:15px; line-height:1.62; color:var(--text-dim);
+  }
+  .msg.user .bubble{ color:var(--text); }
+  .msg .bubble p{ margin:0 0 0.9em; }
+  .msg .bubble p:last-child{ margin-bottom:0; }
+  .msg .bubble strong{ color:var(--text); }
+  .msg .bubble code{
+    background:rgba(255,255,255,0.08); padding:1px 5px; border-radius:4px;
+    font-family: ui-monospace, monospace; font-size:0.87em; color:var(--accent);
+  }
+  .msg .bubble ul, .msg .bubble ol{ margin:0 0 0.9em; padding-left:1.3em; }
+  .msg .bubble li{ margin:0.25em 0; }
+
+  .sources{
+    margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .source-chip{
+    font-size:10px; letter-spacing:0.02em; color:var(--text-faint);
+    background: rgba(255,255,255,0.04); border:1px solid var(--hairline);
+    border-radius:6px; padding:4px 8px; cursor:pointer;
+    max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .source-chip:hover{ color:var(--accent); border-color: rgba(94,234,212,0.35); }
+  .source-snippet{
+    display:none; margin-top:8px; padding:12px 14px; border-radius:8px;
+    background: rgba(0,0,0,0.25); border:1px solid var(--hairline);
+    font-size:12.5px; line-height:1.55; color:var(--text-dim); white-space:pre-wrap;
+    max-height:220px; overflow-y:auto;
+  }
+  .source-snippet.open{ display:block; }
+
+  .typing{ display:inline-flex; gap:4px; align-items:center; }
+  .typing span{
+    width:5px; height:5px; border-radius:50%; background:var(--text-faint);
+    animation: blink 1.2s infinite ease-in-out;
+  }
+  .typing span:nth-child(2){ animation-delay:0.15s; }
+  .typing span:nth-child(3){ animation-delay:0.3s; }
+  @keyframes blink{ 0%,80%,100%{ opacity:0.25; } 40%{ opacity:1; } }
+
+  .empty-state{
+    margin:auto; text-align:center; color:var(--text-faint); max-width:360px;
+    font-family: Georgia, serif; font-style:italic; font-size:14px; line-height:1.6;
+  }
+
+  .error-banner{
+    background: rgba(242,119,122,0.1); border:1px solid rgba(242,119,122,0.35);
+    color:#f2999b; border-radius:8px; padding:10px 14px; font-size:12px;
+    display:none; margin: 0 24px 12px;
+  }
+  .error-banner.show{ display:block; }
+
+  footer{
+    flex:0 0 auto; padding: 14px 24px 20px;
+    border-top:1px solid var(--hairline);
+  }
+  #composer{
+    display:flex; align-items:flex-end; gap:8px;
+    background: rgba(0,0,0,0.25); border:1px solid var(--hairline);
+    border-radius:14px; padding:8px 8px 8px 14px;
+  }
+  #composer.recording{ border-color: rgba(242,119,122,0.5); }
+  #text-input{
+    flex:1; background:none; border:none; outline:none; resize:none;
+    color:var(--text); font-family: Georgia, serif; font-size:14.5px; line-height:1.5;
+    max-height:160px; padding:6px 0;
+  }
+  #text-input::placeholder{ color:var(--text-faint); font-style:italic; }
+  #mic-btn, #send-btn{
+    flex:0 0 auto; width:36px; height:36px; border-radius:10px;
+    background:none; border:none; color:var(--text-dim); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition: color .15s ease, background .15s ease;
+  }
+  #mic-btn:hover, #send-btn:hover{ color:var(--text); background:rgba(255,255,255,0.07); }
+  #mic-btn.recording{ color:var(--danger); }
+  #mic-btn.recording svg{ animation: pulse 1s infinite ease-in-out; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
+  #send-btn{ background:var(--accent-dim); color:var(--accent); }
+  #send-btn:disabled{ opacity:0.4; cursor:default; }
+  .hint{
+    margin-top:8px; font-size:10px; color:var(--text-faint); text-align:center;
+    letter-spacing:0.03em;
+  }
+
+  /* settings modal */
+  #settings-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    display:none; align-items:center; justify-content:center; z-index:30;
+  }
+  #settings-overlay.show{ display:flex; }
+  #settings-panel{
+    width:min(420px, 92vw); background:var(--void-2); border:1px solid var(--hairline);
+    border-radius:14px; padding:24px; box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  #settings-panel h2{
+    margin:0 0 4px; font-family: Georgia, serif; font-style:italic; font-weight:400;
+    font-size:18px; color:var(--text);
+  }
+  #settings-panel .desc{ font-size:11.5px; color:var(--text-faint); line-height:1.6; margin-bottom:18px; }
+  #settings-panel label{
+    display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--text-dim); margin-bottom:6px;
+  }
+  .key-row{ display:flex; gap:6px; margin-bottom:16px; }
+  #api-key-input{
+    flex:1; background: rgba(0,0,0,0.3); border:1px solid var(--hairline);
+    border-radius:8px; color:var(--text); font-family:inherit; font-size:12.5px;
+    padding:9px 10px; outline:none;
+  }
+  #api-key-input:focus{ border-color: rgba(94,234,212,0.45); }
+  #settings-panel .row-actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:20px; }
+  .btn{
+    font-family:inherit; font-size:12px; padding:9px 16px; border-radius:8px;
+    cursor:pointer; border:1px solid var(--hairline); background:none; color:var(--text-dim);
+  }
+  .btn:hover{ color:var(--text); background:rgba(255,255,255,0.06); }
+  .btn.primary{ background:var(--accent); color:#04231d; border-color:var(--accent); font-weight:600; }
+  .btn.primary:hover{ filter:brightness(1.08); }
+  #settings-panel a{ color:var(--accent); }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <div class="titlewrap">
+      <h1>Tanpz Brain</h1>
+      <span class="sub" id="corpus-stat">654 notas carregadas</span>
+    </div>
+    <select id="model-select">
+      <option value="llama-3.3-70b-versatile">Llama 3.3 70B</option>
+      <option value="llama-3.1-8b-instant">Llama 3.1 8B (rápido)</option>
+    </select>
+    <button class="icon-btn" id="settings-btn" aria-label="Configurar chave de API">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    </button>
+  </header>
+
+  <div class="error-banner" id="error-banner"></div>
+
+  <div id="messages">
+    <div class="empty-state" id="empty-state">
+      pergunte qualquer coisa sobre suas notas —<br>marketing, funis, livros, podcasts.<br>eu leio o vault inteiro antes de responder.
+    </div>
+  </div>
+
+  <footer>
+    <div id="composer">
+      <textarea id="text-input" placeholder="Pergunte algo sobre o vault…" rows="1"></textarea>
+      <button id="mic-btn" aria-label="Falar">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+      </button>
+      <button id="send-btn" aria-label="Enviar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+    <div class="hint">as respostas citam as notas usadas · sua chave fica só no seu navegador</div>
+  </footer>
+</div>
+
+<div id="settings-overlay">
+  <div id="settings-panel">
+    <h2>Chave da API Groq</h2>
+    <div class="desc">
+      Já vem configurado com uma chave gratuita da Groq — não precisa fazer nada. Se quiser usar a sua própria chave, cole abaixo (fica salva só neste navegador). Crie uma em <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">console.groq.com/keys</a>.
+    </div>
+    <label for="api-key-input">Chave (gsk_…)</label>
+    <div class="key-row">
+      <input type="password" id="api-key-input" placeholder="gsk_…" autocomplete="off" />
+      <button class="icon-btn" id="toggle-key-visibility" aria-label="Mostrar chave">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      </button>
+    </div>
+    <div class="row-actions">
+      <button class="btn" id="settings-close">Cancelar</button>
+      <button class="btn primary" id="settings-save">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script id="corpus-data" type="application/json">
+__CORPUS_JSON__
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  const CORPUS = JSON.parse(document.getElementById("corpus-data").textContent);
+  document.getElementById("corpus-stat").textContent = CORPUS.length + " notas carregadas";
+
+  const FOLDER_LABEL = {
+    podcasts: "Podcasts", marketing: "Marketing", livros: "Livros",
+    paginas: "Páginas", ecossistemas: "Ecossistemas", raiz: "Raiz"
+  };
+
+  // ---------- retrieval ----------
+  function stripAccents(s){
+    return s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+  function tokenize(s){
+    return (stripAccents(s.toLowerCase()).match(/[a-z0-9]+/g) || []).filter(t => t.length >= 3);
+  }
+  const STOPWORDS = new Set(["que","com","para","uma","dos","das","por","como","mais","sao","tem","ser","seu","sua","isso","esse","essa","este","esta","voce","qual","quais","quando","onde","porque"]);
+
+  function retrieve(query, k){
+    const tokens = tokenize(query).filter(t => !STOPWORDS.has(t));
+    if (!tokens.length) return [];
+    const scored = CORPUS.map(note => {
+      const titleTokens = tokenize(note.title);
+      const bodyLower = stripAccents(note.body.toLowerCase());
+      let score = 0;
+      tokens.forEach(t => {
+        if (titleTokens.includes(t)) score += 6;
+        const count = bodyLower.split(t).length - 1;
+        score += Math.min(count, 6);
+      });
+      return { note, score };
+    });
+    return scored.filter(s => s.score > 0).sort((a, b) => b.score - a.score).slice(0, k).map(s => s.note);
+  }
+
+  // ---------- lightweight markdown ----------
+  function escapeHtml(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function inlineMd(t){
+    t = t.replace(/`([^`]+?)`/g, (m,c)=>"<code>"+c+"</code>");
+    t = t.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
+    t = t.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, "$1<em>$2</em>");
+    return t;
+  }
+  function renderMd(md){
+    const lines = md.replace(/\r\n/g,"\n").split("\n");
+    const html = []; let para = []; let list = null;
+    function flushPara(){ if(para.length){ html.push("<p>"+inlineMd(escapeHtml(para.join(" ")))+"</p>"); para=[]; } }
+    function flushList(){ if(list){ html.push("<"+list.type+">"+list.items.map(i=>"<li>"+i+"</li>").join("")+"</"+list.type+">"); list=null; } }
+    for (const line of lines){
+      if (/^\s*$/.test(line)){ flushPara(); flushList(); continue; }
+      let m;
+      if ((m = line.match(/^\s*[-*]\s+(.*)$/))){
+        flushPara(); if(!list||list.type!=="ul"){flushList(); list={type:"ul",items:[]};}
+        list.items.push(inlineMd(escapeHtml(m[1]))); continue;
+      }
+      if ((m = line.match(/^\s*\d+\.\s+(.*)$/))){
+        flushPara(); if(!list||list.type!=="ol"){flushList(); list={type:"ol",items:[]};}
+        list.items.push(inlineMd(escapeHtml(m[1]))); continue;
+      }
+      flushList(); para.push(line.trim());
+    }
+    flushPara(); flushList();
+    return html.join("\n");
+  }
+
+  // ---------- state ----------
+  let apiKey = localStorage.getItem("tanpz_brain_api_key") || "__GROQ_API_KEY__";
+  let model = localStorage.getItem("tanpz_brain_model") || "llama-3.3-70b-versatile";
+  const history = []; // {role, content} sent to API
+  let sending = false;
+
+  const modelSelect = document.getElementById("model-select");
+  modelSelect.value = model;
+  if (modelSelect.value !== model){
+    model = modelSelect.options[0].value;
+    modelSelect.value = model;
+    localStorage.setItem("tanpz_brain_model", model);
+  }
+  modelSelect.addEventListener("change", () => {
+    model = modelSelect.value;
+    localStorage.setItem("tanpz_brain_model", model);
+  });
+
+  // ---------- settings modal ----------
+  const overlay = document.getElementById("settings-overlay");
+  const keyInput = document.getElementById("api-key-input");
+  const settingsBtn = document.getElementById("settings-btn");
+  const settingsClose = document.getElementById("settings-close");
+  const settingsSave = document.getElementById("settings-save");
+  const toggleVis = document.getElementById("toggle-key-visibility");
+
+  function openSettings(){ keyInput.value = apiKey; overlay.classList.add("show"); keyInput.focus(); }
+  function closeSettings(){ overlay.classList.remove("show"); }
+  settingsBtn.addEventListener("click", openSettings);
+  settingsClose.addEventListener("click", closeSettings);
+  overlay.addEventListener("click", (ev) => { if (ev.target === overlay) closeSettings(); });
+  toggleVis.addEventListener("click", () => {
+    keyInput.type = keyInput.type === "password" ? "text" : "password";
+  });
+  settingsSave.addEventListener("click", () => {
+    apiKey = keyInput.value.trim();
+    localStorage.setItem("tanpz_brain_api_key", apiKey);
+    closeSettings();
+  });
+  if (!apiKey) openSettings();
+
+  // ---------- messages UI ----------
+  const messagesEl = document.getElementById("messages");
+  const emptyState = document.getElementById("empty-state");
+  const errorBanner = document.getElementById("error-banner");
+
+  function showError(msg){
+    errorBanner.textContent = msg;
+    errorBanner.classList.add("show");
+  }
+  function clearError(){ errorBanner.classList.remove("show"); }
+
+  function buildSourcesEl(sources){
+    const src = document.createElement("div");
+    src.className = "sources";
+    sources.forEach(note => {
+      const chip = document.createElement("span");
+      chip.className = "source-chip";
+      chip.textContent = (FOLDER_LABEL[note.folder] || note.folder) + " · " + note.title;
+      const snippet = document.createElement("div");
+      snippet.className = "source-snippet";
+      snippet.textContent = note.body.slice(0, 1200);
+      chip.addEventListener("click", () => snippet.classList.toggle("open"));
+      const wrap = document.createElement("div");
+      wrap.appendChild(chip);
+      wrap.appendChild(snippet);
+      src.appendChild(wrap);
+    });
+    return src;
+  }
+
+  function addMessage(role){
+    if (emptyState) emptyState.remove();
+    const el = document.createElement("div");
+    el.className = "msg " + role;
+    const roleLabel = document.createElement("div");
+    roleLabel.className = "role";
+    roleLabel.textContent = role === "user" ? "você" : "tanpz brain";
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    el.appendChild(roleLabel);
+    el.appendChild(bubble);
+    messagesEl.appendChild(el);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return bubble;
+  }
+
+  // ---------- API call ----------
+  const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+  const SYSTEM_PROMPT = [
+    "Você é o Tanpz Brain, um assistente que responde EXCLUSIVAMENTE com base nas notas do vault fornecidas como contexto em cada mensagem.",
+    "Regras:",
+    "- Baseie a resposta apenas no CONTEXTO fornecido. Não use conhecimento geral para preencher lacunas.",
+    "- Se o contexto não cobrir a pergunta, diga isso explicitamente em vez de inventar.",
+    "- Cite os títulos das notas relevantes ao longo da resposta entre colchetes, ex: [nome-da-nota].",
+    "- Responda em português, de forma direta e específica, sem enrolação.",
+    "- Se fizer sentido, estruture com listas ou negrito, mas não exagere na formatação."
+  ].join("\n");
+
+  async function sendMessage(question){
+    if (!apiKey){ openSettings(); return; }
+    clearError();
+    sending = true;
+    updateSendState();
+
+    const userBubble = addMessage("user");
+    userBubble.innerHTML = "<p>" + escapeHtml(question) + "</p>";
+
+    const relevant = retrieve(question, 6);
+
+    const contextBlock = relevant.length
+      ? "CONTEXTO (notas do vault):\n\n" + relevant.map(n =>
+          "### " + n.title + " (" + (FOLDER_LABEL[n.folder] || n.folder) + ")\n" + n.body.slice(0, 1200)
+        ).join("\n\n---\n\n") + "\n\n---\n\nPERGUNTA: " + question
+      : "CONTEXTO: nenhuma nota do vault bateu com essa pergunta por palavra-chave.\n\nPERGUNTA: " + question;
+
+    // history keeps only plain questions/answers (lean) so token usage doesn't
+    // balloon turn over turn; the retrieved context is injected fresh below,
+    // only for the current turn, and not persisted into history.
+    history.push({ role: "user", content: question });
+    while (history.length > 8) history.shift(); // cap: last ~4 exchanges
+
+    const apiMessages = [
+      { role: "system", content: SYSTEM_PROMPT },
+      ...history.slice(0, -1),
+      { role: "user", content: contextBlock }
+    ];
+
+    const bubble = addMessage("assistant");
+    bubble.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+
+    let fullText = "";
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "authorization": "Bearer " + apiKey
+        },
+        body: JSON.stringify({
+          model: model,
+          max_tokens: 1400,
+          messages: apiMessages,
+          stream: true
+        })
+      });
+
+      if (!res.ok){
+        const errBody = await res.text();
+        let msg = "Erro " + res.status;
+        try { msg = JSON.parse(errBody).error.message || msg; } catch(e){}
+        throw new Error(msg);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let first = true;
+      while (true){
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const chunks = buffer.split("\n\n");
+        buffer = chunks.pop();
+        for (const chunk of chunks){
+          const dataLine = chunk.split("\n").find(l => l.startsWith("data: "));
+          if (!dataLine) continue;
+          const raw = dataLine.slice(6).trim();
+          if (raw === "[DONE]") continue;
+          let data;
+          try { data = JSON.parse(raw); } catch(e){ continue; }
+          if (data.error){
+            throw new Error((data.error && data.error.message) || "erro no stream");
+          }
+          const delta = data.choices && data.choices[0] && data.choices[0].delta;
+          if (delta && delta.content){
+            if (first){ bubble.innerHTML = ""; first = false; }
+            fullText += delta.content;
+            bubble.innerHTML = renderMd(fullText);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+          }
+        }
+      }
+
+      if (!fullText){ bubble.innerHTML = "<p><em>(sem resposta)</em></p>"; }
+      history.push({ role: "assistant", content: fullText });
+
+      if (relevant.length){
+        bubble.parentElement.appendChild(buildSourcesEl(relevant));
+      }
+    } catch (err){
+      bubble.innerHTML = "";
+      bubble.parentElement.remove();
+      history.pop();
+      showError(err.message || "Falha ao chamar a API.");
+    } finally {
+      sending = false;
+      updateSendState();
+    }
+  }
+
+  // ---------- composer ----------
+  const textInput = document.getElementById("text-input");
+  const sendBtn = document.getElementById("send-btn");
+  const composer = document.getElementById("composer");
+
+  function updateSendState(){
+    sendBtn.disabled = sending || !textInput.value.trim();
+  }
+  textInput.addEventListener("input", () => {
+    textInput.style.height = "auto";
+    textInput.style.height = Math.min(textInput.scrollHeight, 160) + "px";
+    updateSendState();
+  });
+  textInput.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter" && !ev.shiftKey){
+      ev.preventDefault();
+      trySend();
+    }
+  });
+  sendBtn.addEventListener("click", trySend);
+
+  function trySend(){
+    const q = textInput.value.trim();
+    if (!q || sending) return;
+    if (!apiKey){ openSettings(); return; }
+    textInput.value = "";
+    textInput.style.height = "auto";
+    updateSendState();
+    sendMessage(q);
+  }
+
+  // ---------- voice input ----------
+  const micBtn = document.getElementById("mic-btn");
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognizer = null;
+  let recording = false;
+
+  if (SpeechRecognition){
+    recognizer = new SpeechRecognition();
+    recognizer.lang = "pt-BR";
+    recognizer.continuous = true;
+    recognizer.interimResults = true;
+
+    let baseText = "";
+    recognizer.addEventListener("start", () => {
+      recording = true;
+      baseText = textInput.value ? textInput.value + " " : "";
+      micBtn.classList.add("recording");
+      composer.classList.add("recording");
+    });
+    recognizer.addEventListener("result", (ev) => {
+      let interim = "", finalText = "";
+      for (let i = ev.resultIndex; i < ev.results.length; i++){
+        const t = ev.results[i][0].transcript;
+        if (ev.results[i].isFinal) finalText += t;
+        else interim += t;
+      }
+      if (finalText) baseText += finalText + " ";
+      textInput.value = baseText + interim;
+      textInput.style.height = "auto";
+      textInput.style.height = Math.min(textInput.scrollHeight, 160) + "px";
+      updateSendState();
+    });
+    recognizer.addEventListener("end", () => {
+      recording = false;
+      micBtn.classList.remove("recording");
+      composer.classList.remove("recording");
+    });
+    recognizer.addEventListener("error", (ev) => {
+      recording = false;
+      micBtn.classList.remove("recording");
+      composer.classList.remove("recording");
+      if (ev.error !== "no-speech" && ev.error !== "aborted"){
+        showError("Reconhecimento de voz: " + ev.error);
+      }
+    });
+    micBtn.addEventListener("click", () => {
+      if (recording) recognizer.stop();
+      else recognizer.start();
+    });
+  } else {
+    micBtn.style.display = "none";
+  }
+
+  updateSendState();
+})();
+</script>
+</body>
+</html>

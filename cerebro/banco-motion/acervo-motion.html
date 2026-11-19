@@ -1,0 +1,160 @@
+<title>Acervo de Motion</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: ferramenta de triagem. Barra de filtros fixa no topo, grade de cards com miniatura, ficha completa em modal. */
+:root{
+  --bg:#f2f3f7; --surface:#ffffff; --sunk:#e8e9f0; --fg:#14151b; --muted:#5d6070; --line:#d9dbe5;
+  --accent:#5543f0; --accent-ink:#ffffff; --accent-soft:#e6e3ff; --hot:#d9480f; --good:#13795b;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e0f14; --surface:#171922; --sunk:#1f2230; --fg:#ecedf3; --muted:#9a9db0; --line:#2b2e3d;
+  --accent:#9187ff; --accent-ink:#0e0f14; --accent-soft:#25234a; --hot:#ff8a4c; --good:#4fd1a1; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e0f14; --surface:#171922; --sunk:#1f2230; --fg:#ecedf3; --muted:#9a9db0; --line:#2b2e3d;
+  --accent:#9187ff; --accent-ink:#0e0f14; --accent-soft:#25234a; --hot:#ff8a4c; --good:#4fd1a1; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+header.top{padding-block:36px 18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lede{color:var(--muted);max-width:68ch;margin:12px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-size:13px;color:var(--muted)}
+.stats b{color:var(--fg);font-variant-numeric:tabular-nums;font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row+.row{margin-top:8px}
+.lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px;min-width:72px}
+input[type=search]{flex:1 1 240px;min-width:0;font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+select{font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.chip{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip:focus-visible,button:focus-visible,a:focus-visible,.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count{margin-left:auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+section.picks{padding-block:22px 4px}
+h2{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;padding-block:18px 60px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;min-width:0}
+.card:hover{border-color:var(--accent)}
+.thumb{position:relative;aspect-ratio:16/9;background:var(--sunk);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.fmt{position:absolute;left:8px;top:8px;font:500 11px var(--mono);background:rgba(10,10,14,.72);color:#fff;padding:2px 6px;border-radius:6px}
+.rel{position:absolute;right:8px;top:8px;font:600 11px var(--body);background:var(--accent);color:var(--accent-ink);padding:2px 7px;border-radius:6px}
+.kind.gen{background:rgba(10,10,14,.72)}
+.kind{position:absolute;left:8px;bottom:8px;font:600 10px var(--body);letter-spacing:.06em;text-transform:uppercase;background:var(--hot);color:#fff;padding:2px 6px;border-radius:5px}
+.cb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.ct{font-weight:600;font-size:15px;line-height:1.25}
+.cd{font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.uses{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:4px}
+.use{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
+.eff{font-size:11px;color:var(--muted)}
+dialog{border:none;padding:0;border-radius:16px;max-width:min(980px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 24px);background:var(--surface);color:var(--fg)}
+dialog::backdrop{background:rgba(8,8,12,.6)}
+.dl{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0}
+@media (max-width:760px){.dl{grid-template-columns:1fr}}
+.dimg{background:var(--sunk);display:flex;align-items:center;justify-content:center}
+.dimg img{width:100%;height:auto;display:block}
+.dside{padding:20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.dside h3{font-family:var(--display);font-size:24px;line-height:1.1;margin:0;letter-spacing:-.01em}
+.orig{font-size:12px;color:var(--muted)}
+.kv{display:grid;gap:10px}
+.kv div{min-width:0}
+.kv dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kv dd{margin:2px 0 0}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:inherit;font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;cursor:pointer}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pbox{grid-column:1/-1;border-top:1px solid var(--line);padding:16px 22px 22px}
+.phead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.phead h4{margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+pre{font:12.5px/1.55 var(--mono);white-space:pre-wrap;word-break:break-word;background:var(--sunk);padding:14px;border-radius:10px;margin:0;max-height:46vh;overflow:auto}
+.x{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:999px;border:none;background:rgba(10,10,14,.7);color:#fff;font-size:18px;cursor:pointer;z-index:2}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+.foot{color:var(--muted);font-size:12px;padding-block:0 40px}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s,transform .15s}.card:hover{transform:translateY(-2px)}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <h1>Acervo de Motion</h1>
+  <p class="lede">Os 240 motions do prompt-motion.com, cada um com o que faz, a técnica que vale copiar, onde encaixa nos seus cortes 9:16 e uma nota de 1 a 5 de utilidade pra você. Clique num card pra ver o prompt original completo. Atenção: 207 deles têm prompt de uma linha ("faça um showreel, go all out"), então a nota desses foi estimada pelo título e o valor está no vídeo, não no texto. Use o botão "Só prompts detalhados" pra ver os 33 que ensinam a técnica por escrito.</p>
+  <div class="stats" id="stats"></div>
+</header>
+</div>
+
+<div class="bar"><div class="wrap">
+  <div class="row">
+    <input type="search" id="q" placeholder="Buscar: mão escrevendo, gráfico, iPhone, partículas…" aria-label="Buscar">
+    <select id="sort" aria-label="Ordenar"><option value="rel">Mais úteis primeiro</option><option value="new">Mais recentes</option><option value="eff">Menor esforço</option></select>
+    <button class="chip" id="det" aria-pressed="false">Só prompts detalhados</button>
+    <select id="minrel" aria-label="Nota mínima"><option value="1">Qualquer nota</option><option value="3">Nota 3+</option><option value="4" selected>Nota 4+</option><option value="5">Só nota 5</option></select>
+  </div>
+  <div class="row" id="uses"><span class="lbl">Serve pra</span></div>
+  <div class="row" id="tags"><span class="lbl">Visual</span></div>
+  <div class="row" id="fmts"><span class="lbl">Formato</span><span class="count" id="count"></span></div>
+</div></div>
+
+<div class="wrap">
+  <main class="grid" id="grid"><div class="empty">Carregando o acervo…</div></main>
+  <p class="foot">Fonte: prompt-motion.com (prompts pertencem aos criadores, cada um com link para o post original no X). Análise e notas feitas para o uso em cortes de tráfego direto, IA e motivacional. Levantado em 17/11/2026.</p>
+</div>
+
+<dialog id="dlg" aria-label="Ficha do motion"></dialog>
+
+<script>
+const USE_PT={hook:"Hook",explicacao:"Explicação",dados:"Dados",prova:"Prova",cta:"CTA",transicao:"Transição","criativo-ads":"Criativo ads",organico:"Orgânico",motivacional:"Motivacional","produto-app":"Produto / app",branding:"Branding"};
+const TAG_PT={"product-ui":"Interface","kinetic-type":"Texto cinético",music:"Música",shapes:"Formas",particles:"Partículas",charts:"Gráficos",diagrams:"Diagramas",characters:"Personagens",phone:"Celular",photos:"Fotos",code:"Código"};
+const EFF={baixo:0,medio:1,alto:2};
+const fmtOf=o=>o.w>o.h*1.2?"16:9":o.h>o.w*1.2?"9:16":"1:1";
+const st={q:"",uses:new Set(),tags:new Set(),fmt:new Set(),minrel:4,sort:"rel"};
+try{const s=JSON.parse(localStorage.getItem("acervo-f")||"null");if(s){st.minrel=s.minrel??4;st.sort=s.sort||"rel"}}catch(e){}
+let D=[];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function chips(el,map,set){for(const [k,v] of Object.entries(map)){const b=document.createElement("button");b.className="chip";b.textContent=v;b.setAttribute("aria-pressed","false");b.onclick=()=>{set.has(k)?set.delete(k):set.add(k);b.setAttribute("aria-pressed",set.has(k));render()};el.appendChild(b)}}
+function card(o){return `<button class="card" data-i="${o._i}"><div class="thumb"><img loading="lazy" src="${o.img}" alt=""><span class="fmt">${fmtOf(o)}</span><span class="rel" title="Utilidade pra você">${o.relevancia}/5</span>${o.kind==="skill"?'<span class="kind">Skill</span>':o.generico?'<span class="kind gen">Prompt curto</span>':""}</div><div class="cb"><div class="ct">${esc(o.titulo_pt||o.title)}</div><div class="cd">${esc(o.o_que_faz)}</div><div class="uses">${(o.melhor_para||[]).map(u=>`<span class="use">${USE_PT[u]||u}</span>`).join("")}<span class="eff">· esforço ${esc(o.esforco)}</span></div></div></button>`}
+function render(){
+  const q=st.q.toLowerCase();
+  let r=D.filter(o=>o.relevancia>=st.minrel
+    &&(!st.uses.size||(o.melhor_para||[]).some(u=>st.uses.has(u)))
+    &&(!st.tags.size||o.tags.some(t=>st.tags.has(t)))
+    &&(!st.fmt.size||st.fmt.has(fmtOf(o)))
+    &&(!st.det||!o.generico)&&(!q||o._s.includes(q)));
+  r.sort(st.sort==="new"?(a,b)=>b.posted.localeCompare(a.posted):st.sort==="eff"?(a,b)=>EFF[a.esforco]-EFF[b.esforco]||b.relevancia-a.relevancia:(a,b)=>b.relevancia-a.relevancia||EFF[a.esforco]-EFF[b.esforco]);
+  $("#grid").innerHTML=r.length?r.map(card).join(""):'<div class="empty">Nada com esses filtros. Baixe a nota mínima ou limpe um filtro.</div>';
+  $("#count").textContent=`${r.length} de ${D.length}`;
+  try{localStorage.setItem("acervo-f",JSON.stringify({minrel:st.minrel,sort:st.sort}))}catch(e){}
+}
+function openCard(o){
+  const d=$("#dlg");
+  d.innerHTML=`<button class="x" aria-label="Fechar">×</button><div class="dl"><div class="dimg"><img src="${o.img}" alt="${esc(o.title)}"></div><div class="dside">
+  <div><h3>${esc(o.titulo_pt||o.title)}</h3><div class="orig">${esc(o.title)} · @${esc(o.handle)} · ${fmtOf(o)} (${o.w}×${o.h}) · ${o.tags.map(t=>TAG_PT[t]||t).join(", ")}</div></div>
+  <dl class="kv"><div><dt>O que faz</dt><dd>${esc(o.o_que_faz)}</dd></div><div><dt>Técnica pra copiar</dt><dd>${esc(o.tecnica)}</dd></div><div><dt>Onde encaixa nos seus cortes</dt><dd>${esc(o.encaixe)}</dd></div><div><dt>Por que prende</dt><dd>${esc(o.retencao)}</dd></div><div><dt>Nota · esforço</dt><dd>${o.relevancia}/5${o.generico?" (estimada pelo título)":""} · ${esc(o.esforco)} · serve pra ${(o.melhor_para||[]).map(u=>USE_PT[u]||u).join(", ")}</dd></div></dl>
+  <div class="links"><a class="btn pri" href="${o.url}" target="_blank" rel="noopener">Ver vídeo no site</a>${o.xpost?`<a class="btn" href="${o.xpost}" target="_blank" rel="noopener">Post original no X</a>`:""}${o.repo?`<a class="btn" href="${o.repo}" target="_blank" rel="noopener">Repositório da skill</a>`:""}</div>
+  </div><div class="pbox"><div class="phead"><h4>${o.kind==="skill"?"Skill / instalação":"Prompt original"}</h4><button class="btn" id="cp">Copiar</button></div>${o.generico?'<p class="sub">Prompt de uma linha: o resultado veio do modelo, não do texto. O que vale aqui é assistir o vídeo e copiar a técnica.</p>':""}<pre id="pt">${esc(o.prompt)}</pre></div></div>`;
+  d.querySelector(".x").onclick=()=>d.close();
+  d.querySelector("#cp").onclick=e=>{const b=e.target;navigator.clipboard.writeText(o.prompt).then(()=>{b.textContent="Copiado"},()=>{const s=getSelection(),g=document.createRange();g.selectNodeContents(d.querySelector("#pt"));s.removeAllRanges();s.addRange(g);b.textContent="Selecionado, use Cmd+C"})};
+  d.showModal();d.scrollTop=0;
+}
+$("#dlg").addEventListener("click",e=>{if(e.target.id==="dlg")e.target.close()});
+$("#grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openCard(D[+c.dataset.i])});
+$("#det").onclick=e=>{st.det=!st.det;e.target.setAttribute("aria-pressed",st.det);render()};
+$("#q").oninput=e=>{st.q=e.target.value;render()};
+$("#sort").value=st.sort;$("#minrel").value=String(st.minrel);
+$("#sort").onchange=e=>{st.sort=e.target.value;render()};
+$("#minrel").onchange=e=>{st.minrel=+e.target.value;render()};
+chips($("#uses"),USE_PT,st.uses);chips($("#tags"),TAG_PT,st.tags);chips($("#fmts"),{"16:9":"Horizontal 16:9","9:16":"Vertical 9:16","1:1":"Quadrado"},st.fmt);
+$("#fmts").appendChild($("#count"));
+fetch("data.json").then(r=>r.json()).then(j=>{
+  D=j.map((o,i)=>({...o,_i:i,_s:[o.title,o.titulo_pt,o.o_que_faz,o.tecnica,o.encaixe,o.prompt,o.handle].join(" ").toLowerCase()}));
+  const n5=D.filter(o=>o.relevancia===5).length,n4=D.filter(o=>o.relevancia===4).length;
+  $("#stats").innerHTML=`<span><b>${D.length}</b> motions</span><span><b>${n5}</b> nota 5</span><span><b>${n4}</b> nota 4</span><span><b>${D.filter(o=>!o.generico).length}</b> com prompt detalhado</span><span><b>${D.filter(o=>o.kind==="skill").length}</b> skills instaláveis</span><span><b>${D.filter(o=>fmtOf(o)==="9:16").length}</b> já em vertical</span>`;
+  render();
+}).catch(()=>{$("#grid").innerHTML='<div class="empty">Não consegui carregar os dados. Recarregue a página.</div>'});
+</script>

@@ -1,0 +1,7 @@
+- [Ready-made first](feedback-ready-made-first.md) — KONCORD: download free assets + look up references before building anything
+- [Detail & delight](feedback-detail-delight.md) — game-feel: real sources, soft sounds with falloff, minimal popups
+- [Loop no wait](feedback-loop-no-wait.md) — backlog loop runs continuously, min 60 s wakeups
+- [Phone = real device](feedback-phone-real-device.md) — in-game phone like an iPhone: apps, live camera viewfinder, TV remote
+- [Deploy production only](feedback-deploy-production-only.md) — publish only to koncord.pro, no test Worker
+- [Web = leve e estilizado](decision-web-stylized-light.md) — 29/09: web refeita em 3D estilizado ultra-leve (~1000 fps); realismo só no Unreal
+- [Bone names lose dots](gotcha-threejs-bone-names.md) — GLTFLoader: "Foot.L" → "FootL"; and never `optimize` (resample) animated characters — use `meshopt`

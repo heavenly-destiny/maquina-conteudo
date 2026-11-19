@@ -1,0 +1,24 @@
+{
+  "name": "storieslab-app",
+  "main": "src/worker.js",
+  // owner 16/11: app.storieslab.app served straight from Cloudflare (app.storieslab.shop still comes through the Vercel rewrite)
+  // 16/11: app.storieslab.shop moved off Vercel; served straight from the zone (old customers keep their login there)
+  "routes": [{ "pattern": "app.storieslab.app", "custom_domain": true }, { "pattern": "app.storieslab.shop", "custom_domain": true }],
+  "workers_dev": true,   // the Vercel rewrite of app.storieslab.shop points at the workers.dev host: never turn this off
+  "preview_urls": false,
+  "services": [{ "binding": "CDN4", "service": "storieslab-cdn-4" }],
+  // Cloudflare Email Service; src/mail.js falls back to Resend when this refuses a message
+  "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["oi@storieslab.app"] }],
+  "compatibility_date": "2026-10-01",
+  "account_id": "18374d1d24c8719460c31d9eed22762d",
+  "assets": { "binding": "ASSETS", "directory": "./public", "run_worker_first": ["/api/*", "/m/*", "/l/*", "/bio", "/stories", "/creator", "/suporte", "/oferta-suporte", "/recuperar"], "not_found_handling": "single-page-application" },
+  "triggers": { "crons": ["0 12 * * MON,WED,FRI", "*/10 * * * *", "* * * * *"] },
+  // brute-force limits (src/worker.js login, src/admin.js adminOk)
+  "ratelimits": [
+    { "name": "RL_LOGIN", "namespace_id": "1001", "simple": { "limit": 30, "period": 60 } },
+    { "name": "RL_ADMIN", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }
+  ],
+  "d1_databases": [{ "binding": "DB", "database_name": "storieslab", "database_id": "7b9d6983-2d1e-496c-99a4-1a1ec874ab78" }],
+  // HEAVY 01, 02, 03 = Stories Lab ad accounts (the Meta token also sees "CA 03 - BL", which is not Stories Lab)
+  "vars": { "META_ACCOUNTS": "1552820609931875,1009615152169319,1655764169260077" }
+}

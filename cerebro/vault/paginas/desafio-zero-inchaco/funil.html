@@ -1,0 +1,768 @@
+<title>Desafio Zero Inchaço — Protocolo 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --paper:#F3EFE4;
+    --ink:#1C1815;
+    --ink-soft:#4A433C;
+    --teal:#2F6E63;
+    --teal-ink:#1E4740;
+    --coral:#E8623D;
+    --coral-ink:#B94225;
+    --gold:#B98328;
+    --line:#DCD3C0;
+    --card:#FBF9F3;
+    --card-shadow: 0 1px 0 rgba(28,24,21,.05), 0 8px 24px -12px rgba(28,24,21,.18);
+    --radius-s:6px;
+    --radius-m:12px;
+    --radius-l:20px;
+    --display: "Superclarendon","Roboto Slab","Zilla Slab", Georgia, serif;
+    --body: Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+    --mono: ui-monospace,"SF Mono",Menlo,"Roboto Mono",monospace;
+    --maxw:760px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#161310;
+      --ink:#F1EAE0;
+      --ink-soft:#C6BCAE;
+      --teal:#5FB3A3;
+      --teal-ink:#8FD2C4;
+      --coral:#FF8A63;
+      --coral-ink:#FFA482;
+      --gold:#E3B15C;
+      --line:#332B21;
+      --card:#1E1A15;
+      --card-shadow: 0 1px 0 rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#161310; --ink:#F1EAE0; --ink-soft:#C6BCAE; --teal:#5FB3A3; --teal-ink:#8FD2C4;
+    --coral:#FF8A63; --coral-ink:#FFA482; --gold:#E3B15C; --line:#332B21; --card:#1E1A15;
+    --card-shadow: 0 1px 0 rgba(0,0,0,.4), 0 12px 30px -14px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --paper:#F3EFE4; --ink:#1C1815; --ink-soft:#4A433C; --teal:#2F6E63; --teal-ink:#1E4740;
+    --coral:#E8623D; --coral-ink:#B94225; --gold:#B98328; --line:#DCD3C0; --card:#FBF9F3;
+    --card-shadow: 0 1px 0 rgba(28,24,21,.05), 0 8px 24px -12px rgba(28,24,21,.18);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.disp{font-family:var(--display); text-wrap:balance; letter-spacing:.01em;}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums;}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--teal-ink); font-weight:600;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ THEME TOGGLE (demo aid) ============ */
+  #theme-toggle{
+    position:fixed; top:14px; right:14px; z-index:80;
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--line); background:var(--card);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:15px; color:var(--ink-soft);
+  }
+
+  /* ============ QUIZ VIEW ============ */
+  #view-quiz{
+    position:relative; min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:32px 20px;
+  }
+  #ripple-canvas{position:fixed; inset:0; width:100%; height:100%; opacity:.5; pointer-events:none;}
+  .quiz-shell{position:relative; z-index:2; width:100%; max-width:480px;}
+  .quiz-lock{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--teal-ink); margin-bottom:14px;
+  }
+  .dots{display:flex; gap:8px; justify-content:center; margin-bottom:26px;}
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .3s, transform .3s;}
+  .dot.done{background:var(--teal);}
+  .dot.active{background:var(--coral); transform:scale(1.3);}
+
+  .q-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius-l);
+    padding:34px 28px; box-shadow:var(--card-shadow);
+    opacity:0; transform:translateY(14px); transition:opacity .45s ease, transform .45s ease;
+  }
+  .q-card.show{opacity:1; transform:translateY(0);}
+  .q-card h2{font-size:1.45rem; line-height:1.28; margin:0 0 22px; color:var(--ink);}
+  .q-options{display:flex; flex-direction:column; gap:10px;}
+  .q-opt{
+    text-align:left; padding:15px 18px; border-radius:var(--radius-m);
+    border:1.5px solid var(--line); background:transparent; color:var(--ink);
+    font-family:var(--body); font-size:1rem; cursor:pointer; transition:border-color .2s, background .2s, transform .1s;
+  }
+  .q-opt:hover{border-color:var(--teal); background:color-mix(in srgb, var(--teal) 8%, transparent);}
+  .q-opt:active{transform:scale(.99);}
+  .q-opt.primary{
+    background:var(--coral); border-color:var(--coral); color:#FFF7F2; font-weight:600;
+    text-align:center; padding:17px 18px;
+  }
+  .q-opt.primary:hover{background:var(--coral-ink); border-color:var(--coral-ink);}
+  .q-scarcity{
+    margin-top:18px; text-align:center; font-family:var(--mono); font-size:.72rem;
+    color:var(--ink-soft); letter-spacing:.03em;
+  }
+  .q-social{margin-top:22px; display:flex; flex-direction:column; gap:10px;}
+  .q-comment{
+    display:flex; gap:10px; padding:10px 12px; border:1px solid var(--line);
+    border-radius:var(--radius-s); background:color-mix(in srgb, var(--card) 60%, transparent);
+    font-size:.82rem; color:var(--ink-soft);
+  }
+  .q-comment b{color:var(--ink); font-family:var(--body); font-weight:700;}
+  .avatar{
+    flex:0 0 26px; width:26px; height:26px; border-radius:50%;
+    background:linear-gradient(135deg, var(--teal), var(--gold)); font-size:.68rem;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--mono); font-weight:700;
+  }
+  .example-tag{
+    display:inline-block; margin-bottom:8px; font-family:var(--mono); font-size:.6rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold);
+    border-radius:3px; padding:2px 6px;
+  }
+
+  /* ============ VSL VIEW ============ */
+  #view-vsl{display:none;}
+  #view-vsl.active{display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  .wrap-wide{max-width:920px; margin:0 auto; padding:0 22px;}
+
+  .hero{padding:56px 0 30px; text-align:left;}
+  .hero .eyebrow{margin-bottom:14px;}
+  .hero h1{font-size:clamp(1.9rem, 5vw, 2.7rem); line-height:1.12; margin:0 0 14px; color:var(--ink);}
+  .hero .sub{font-size:1.08rem; color:var(--ink-soft); margin:0 0 28px; max-width:56ch;}
+
+  .player{
+    position:relative; border-radius:var(--radius-l); overflow:hidden;
+    aspect-ratio:16/9; background:linear-gradient(160deg, var(--teal-ink), var(--ink) 70%);
+    box-shadow:var(--card-shadow); border:1px solid var(--line);
+  }
+  #wave-canvas{position:absolute; inset:0; width:100%; height:100%;}
+  .player-overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; background:rgba(20,16,12,.18);
+  }
+  .play-btn{
+    width:74px; height:74px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(251,249,243,.94); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.35); transition:transform .15s;
+  }
+  .play-btn:hover{transform:scale(1.06);}
+  .play-btn svg{margin-left:4px;}
+  .player-caption{color:#FBF9F3; font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; opacity:.9;}
+  .player-progress{
+    position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.18);
+  }
+  .player-progress i{display:block; height:100%; width:0%; background:var(--coral); transition:width .3s linear;}
+  .in-video-cta{
+    position:absolute; left:50%; bottom:34px; transform:translate(-50%, 16px);
+    opacity:0; pointer-events:none; transition:opacity .4s, transform .4s;
+    padding:12px 22px; border-radius:999px; background:var(--coral); color:#FFF7F2;
+    font-weight:700; font-size:.92rem; white-space:nowrap; border:none; cursor:pointer;
+  }
+  .in-video-cta.show{opacity:1; transform:translate(-50%,0); pointer-events:auto;}
+  .in-video-cta.discount{background:var(--gold);}
+
+  section.block{padding:52px 0; border-top:1px solid var(--line);}
+  section.block:first-of-type{border-top:none;}
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .lede{font-size:1.18rem; line-height:1.55; color:var(--ink);}
+  .lede em{font-style:normal; background:linear-gradient(transparent 62%, color-mix(in srgb, var(--coral) 32%, transparent) 62%);}
+  p.body-text{font-size:1.02rem; line-height:1.68; color:var(--ink-soft);}
+
+  .villain-card{
+    margin-top:22px; padding:20px 22px; border-left:3px solid var(--coral);
+    background:color-mix(in srgb, var(--coral) 7%, var(--card)); border-radius:0 var(--radius-m) var(--radius-m) 0;
+  }
+  .villain-card b{font-family:var(--display); font-size:1.05rem;}
+
+  /* belief chain */
+  .chain{margin-top:24px; display:flex; flex-direction:column; gap:0;}
+  .chain-step{display:flex; gap:16px; padding:14px 0; border-bottom:1px dashed var(--line);}
+  .chain-step:last-child{border-bottom:none;}
+  .chain-n{flex:0 0 30px; font-family:var(--mono); color:var(--teal); font-weight:700;}
+  .chain-t{color:var(--ink-soft); line-height:1.55;}
+
+  .belief-box{
+    margin-top:26px; padding:26px; border-radius:var(--radius-l); background:var(--teal);
+    color:#F2FBF8;
+  }
+  .belief-box .eyebrow{color:#CFEFE7;}
+  .belief-box p{font-family:var(--display); font-size:1.2rem; line-height:1.45; margin:8px 0 0;}
+
+  /* gauge / protocol timeline */
+  .gauge-wrap{margin-top:30px; display:grid; grid-template-columns:1fr; gap:0;}
+  .gauge-track{position:relative; height:10px; border-radius:999px; background:var(--line); overflow:hidden; margin-bottom:26px;}
+  .gauge-fill{position:absolute; inset:0; width:0%; background:linear-gradient(90deg, var(--coral), var(--gold), var(--teal)); transition:width 1.4s cubic-bezier(.2,.7,.2,1);}
+  .phases{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .phase{padding:18px 16px; border:1px solid var(--line); border-radius:var(--radius-m); background:var(--card);}
+  .phase .num{font-size:.72rem; color:var(--ink-soft);}
+  .phase h3{margin:6px 0 4px; font-size:1.1rem;}
+  .phase p{margin:0; font-size:.86rem; color:var(--ink-soft); line-height:1.5;}
+  @media (max-width:640px){.phases{grid-template-columns:1fr;}}
+
+  /* story */
+  .story{
+    margin-top:24px; padding:28px; border-radius:var(--radius-l); background:var(--card);
+    border:1px solid var(--line); position:relative;
+  }
+  .story::before{content:"“"; font-family:var(--display); font-size:3.4rem; color:var(--teal); position:absolute; top:6px; left:18px; line-height:1; opacity:.5;}
+  .story blockquote{margin:0 0 0 24px; font-family:var(--body); font-style:normal; font-size:1.08rem; line-height:1.62; color:var(--ink);}
+  .story .measure{
+    margin-top:16px; margin-left:24px; display:flex; gap:22px; font-family:var(--mono); font-size:.82rem; color:var(--ink-soft);
+  }
+  .story .measure b{color:var(--coral); font-size:1rem;}
+
+  /* stack / receipt */
+  .receipt{margin-top:26px; border:1px solid var(--line); border-radius:var(--radius-l); overflow:hidden; background:var(--card);}
+  .receipt-row{display:flex; justify-content:space-between; gap:14px; padding:16px 22px; border-bottom:1px dashed var(--line);}
+  .receipt-row:last-child{border-bottom:none;}
+  .receipt-row.main{background:color-mix(in srgb, var(--teal) 10%, transparent);}
+  .r-name{font-weight:600;}
+  .r-desc{display:block; font-size:.82rem; color:var(--ink-soft); font-weight:400; margin-top:2px;}
+  .r-val{font-family:var(--mono); white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .receipt-total{display:flex; justify-content:space-between; padding:18px 22px; background:var(--ink); color:var(--paper);}
+  .receipt-total .r-val{font-size:1.2rem; color:var(--gold); font-weight:700;}
+
+  .price-card{
+    margin-top:22px; padding:30px; border-radius:var(--radius-l); text-align:center;
+    background:var(--coral); color:#FFF7F2; box-shadow:var(--card-shadow);
+  }
+  .price-card .was{font-family:var(--mono); text-decoration:line-through; opacity:.8; font-size:1rem;}
+  .price-card .now{font-family:var(--display); font-size:2.6rem; margin:6px 0 4px;}
+  .price-card .terms{font-family:var(--mono); font-size:.82rem; opacity:.95;}
+  .cta-btn{
+    margin-top:20px; display:inline-block; padding:16px 34px; border-radius:999px;
+    background:var(--ink); color:var(--paper); font-weight:700; font-size:1.05rem;
+    border:none; cursor:pointer; transition:transform .15s, background .2s;
+  }
+  .cta-btn:hover{transform:translateY(-2px); background:var(--teal-ink);}
+
+  .guarantee{
+    margin-top:24px; display:flex; gap:18px; align-items:flex-start; padding:22px;
+    border:1.5px solid var(--teal); border-radius:var(--radius-l); background:color-mix(in srgb, var(--teal) 8%, var(--card));
+  }
+  .g-badge{
+    flex:0 0 58px; width:58px; height:58px; border-radius:50%; background:var(--teal); color:#F2FBF8;
+    display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700; font-size:.78rem; text-align:center; line-height:1.1;
+  }
+
+  .testi-grid{margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:640px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{padding:18px; border:1px solid var(--line); border-radius:var(--radius-m); background:var(--card);}
+  .testi-stars{color:var(--gold); letter-spacing:2px; font-size:.9rem;}
+  .testi-card p{font-size:.92rem; color:var(--ink-soft); margin:8px 0 10px; line-height:1.5;}
+  .testi-name{font-family:var(--mono); font-size:.74rem; color:var(--ink-soft);}
+
+  .neg-list{margin-top:20px; display:flex; flex-direction:column; gap:10px;}
+  .neg-item{display:flex; gap:12px; padding:12px 16px; border-radius:var(--radius-m); background:color-mix(in srgb, var(--ink) 4%, var(--card)); border:1px solid var(--line);}
+  .neg-item span.x{color:var(--coral); font-weight:700; font-family:var(--mono);}
+
+  .paths{margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:700px){.paths{grid-template-columns:1fr;}}
+  .path{padding:20px; border-radius:var(--radius-m); border:1px solid var(--line); background:var(--card);}
+  .path.win{border-color:var(--teal); background:color-mix(in srgb, var(--teal) 10%, var(--card));}
+  .path h3{font-size:1rem; margin:0 0 8px;}
+  .path p{font-size:.86rem; color:var(--ink-soft); margin:0; line-height:1.5;}
+
+  .faq{margin-top:20px; display:flex; flex-direction:column; gap:10px;}
+  .faq-item{border:1px solid var(--line); border-radius:var(--radius-m); background:var(--card); overflow:hidden;}
+  .faq-q{
+    width:100%; text-align:left; padding:16px 20px; background:none; border:none; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--ink); font-size:.98rem; font-weight:600;
+  }
+  .faq-q .plus{font-family:var(--mono); color:var(--teal); transition:transform .25s;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-a p{padding:0 20px 18px; margin:0; color:var(--ink-soft); font-size:.9rem; line-height:1.6;}
+
+  footer.final{padding:60px 0 120px; text-align:center;}
+  footer.final h2{font-size:1.7rem; margin:0 0 10px;}
+
+  .sticky-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:12px 20px; background:var(--ink); color:var(--paper);
+    transform:translateY(120%); transition:transform .35s ease;
+    box-shadow:0 -8px 24px rgba(0,0,0,.25);
+  }
+  .sticky-bar.show{transform:translateY(0);}
+  .sticky-bar .sb-price{font-family:var(--mono); font-size:.9rem;}
+  .sticky-bar .sb-price b{color:var(--gold); font-size:1.05rem;}
+  .sticky-bar button{
+    padding:10px 20px; border-radius:999px; border:none; background:var(--coral); color:#fff; font-weight:700; cursor:pointer;
+  }
+
+  /* order summary panel (replaces fake checkout form) */
+  .order-panel{
+    position:fixed; inset:0; z-index:100; background:rgba(20,16,12,.55);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .order-panel.show{opacity:1; pointer-events:auto;}
+  .order-box{
+    max-width:420px; width:100%; background:var(--card); border-radius:var(--radius-l);
+    padding:30px; border:1px solid var(--line); box-shadow:0 30px 60px rgba(0,0,0,.35);
+  }
+  .order-box h3{margin:0 0 4px;}
+  .order-box .eyebrow{margin-bottom:10px; display:block;}
+  .order-line{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+  .order-line.total{border-bottom:none; padding-top:12px; font-weight:700;}
+  .order-close{
+    margin-top:20px; width:100%; padding:13px; border-radius:999px; border:1px solid var(--line);
+    background:transparent; color:var(--ink); cursor:pointer; font-family:inherit;
+  }
+  .order-note{margin-top:14px; font-size:.78rem; color:var(--ink-soft); line-height:1.5;}
+</style>
+
+<button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">◐</button>
+
+<div id="app">
+
+  <!-- ============ QUIZ ============ -->
+  <section id="view-quiz">
+    <canvas id="ripple-canvas"></canvas>
+    <div class="quiz-shell">
+      <div class="quiz-lock">🔒 diagnóstico privado</div>
+      <div class="dots" id="dots"></div>
+
+      <div class="q-card" data-step="1">
+        <h2>Essa aula é exclusiva para mulheres que sentem a barriga inchada todos os dias. É o seu caso?</h2>
+        <div class="q-options">
+          <button class="q-opt primary" data-next="2">Sim, quero desinchar</button>
+          <button class="q-opt" data-next="2">Não é o meu caso</button>
+        </div>
+        <div class="q-scarcity">vagas da turma desta semana: <span class="num">37</span> restantes</div>
+        <div class="q-social">
+          <span class="example-tag">exemplo — trocar por prova real</span>
+          <div class="q-comment"><div class="avatar">JM</div><div><b>Juliana M.</b> · 12h<br/>fiz em 5 dias e já desinchou demais</div></div>
+          <div class="q-comment"><div class="avatar">RC</div><div><b>Rita C.</b> · 1d<br/>achei que era só eu que sentia isso</div></div>
+        </div>
+      </div>
+
+      <div class="q-card" data-step="2">
+        <h2>Você já fez dieta, comeu "certinho" por dias, e mesmo assim a balança não desceu?</h2>
+        <div class="q-options">
+          <button class="q-opt primary" data-next="3">Sim, isso já aconteceu comigo várias vezes</button>
+          <button class="q-opt" data-next="3">Não, sempre que faço dieta eu emagreço</button>
+        </div>
+      </div>
+
+      <div class="q-card" data-step="3">
+        <h2>Você sabia que, na maioria dos casos, o que trava a balança não é gordura — é inchaço?</h2>
+        <div class="q-options">
+          <button class="q-opt primary" data-next="4">Nunca tinha pensado nisso</button>
+          <button class="q-opt" data-next="4">Já suspeitava disso</button>
+        </div>
+      </div>
+
+      <div class="q-card" data-step="4">
+        <h2>Você se compromete a assistir a aula completa e aplicar o Protocolo 3D pelos próximos 12 dias?</h2>
+        <div class="q-options">
+          <button class="q-opt primary" id="go-vsl">Sim, me comprometo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VSL / SALES PAGE ============ -->
+  <section id="view-vsl">
+    <div class="wrap">
+
+      <div class="hero reveal in">
+        <div class="eyebrow">aula liberada · protocolo 3D</div>
+        <h1>Ela descobriu o "Protocolo 3D" pra desinchar até 6kg em 12 dias</h1>
+        <p class="sub">Sem cortar carboidrato. Sem dieta restritiva. Sem suplemento caro. Assista até o final — o mecanismo é revelado nos primeiros minutos.</p>
+      </div>
+
+      <div class="player reveal in">
+        <canvas id="wave-canvas"></canvas>
+        <div class="player-overlay" id="player-overlay">
+          <button class="play-btn" id="play-btn" aria-label="Assistir aula">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#1C1815"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="player-caption">assistir aula — 12:40</div>
+        </div>
+        <button class="in-video-cta" id="cta-mid">Quero acesso imediato</button>
+        <button class="in-video-cta discount" id="cta-late">Liberar com 91% de desconto</button>
+        <div class="player-progress"><i id="player-fill"></i></div>
+      </div>
+    </div>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <p class="lede">Se você já fez dieta, cortou até o arroz, e mesmo assim a calça continua apertada no fim do dia — <em>o problema não é a sua força de vontade.</em></p>
+        <p class="body-text">Existe uma causa que quase ninguém trata, e ela sabota sua balança todos os dias — mesmo quando você está "comendo certo".</p>
+        <div class="villain-card">
+          <b>O Inchaço Invisível</b>
+          <p class="body-text" style="margin-top:6px;">Ele não aparece no exame de sangue nem na foto — só na régua e na roupa apertada. É a causa real por trás de boa parte do peso "parado" em mulheres que já fazem tudo certo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">por que a balança trava</div>
+        <div class="chain">
+          <div class="chain-step"><div class="chain-n num">01</div><div class="chain-t">Você já fez dieta e não funcionou.</div></div>
+          <div class="chain-step"><div class="chain-n num">02</div><div class="chain-t">Isso não é falta de força de vontade.</div></div>
+          <div class="chain-step"><div class="chain-n num">03</div><div class="chain-t">Boa parte do peso "parado" em quem já come certo é retenção de líquido e inflamação — não gordura.</div></div>
+          <div class="chain-step"><div class="chain-n num">04</div><div class="chain-t">Dieta tradicional ataca caloria. Não ataca isso.</div></div>
+          <div class="chain-step"><div class="chain-n num">05</div><div class="chain-t">Por isso a balança trava, mesmo comendo pouco.</div></div>
+          <div class="chain-step"><div class="chain-n num">06</div><div class="chain-t">Quando você ataca a causa certa, o corpo desincha rápido — muitas vezes em dias, não semanas.</div></div>
+        </div>
+        <div class="belief-box">
+          <div class="eyebrow">a crença única</div>
+          <p>Desinchar é a chave pra sua balança finalmente descer — e isso é possível através do Protocolo 3D.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="gauge-section">
+      <div class="wrap reveal">
+        <div class="eyebrow">o protocolo — 12 dias</div>
+        <h2 style="font-size:1.5rem; margin:8px 0 6px;">Desincha → Destrava → Define</h2>
+        <div class="gauge-wrap">
+          <div class="gauge-track"><i class="gauge-fill" id="gauge-fill"></i></div>
+          <div class="phases">
+            <div class="phase"><div class="num">DIAS 01–04</div><h3>Desincha</h3><p>Reduz a retenção de líquido que trava a balança logo na primeira semana.</p></div>
+            <div class="phase"><div class="num">DIAS 05–08</div><h3>Destrava</h3><p>Ativa o metabolismo parado sem cortar tudo que você gosta.</p></div>
+            <div class="phase"><div class="num">DIAS 09–12</div><h3>Define</h3><p>Consolida o resultado — a diferença já aparece na roupa.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">como eu descobri isso</div>
+        <div class="story">
+          <blockquote>Eu queria emagrecer pro casamento da minha irmã. Fazia tudo "certo" e a balança não descia — achava que era genética. Até uma nutricionista pedir pra eu medir minha barriga de manhã e à noite, no mesmo dia.</blockquote>
+          <div class="measure">manhã <b>78cm</b> → noite <b>82cm</b></div>
+          <p class="body-text" style="margin-left:24px; margin-top:14px;">4cm de diferença, no mesmo dia, comendo a mesma coisa. Não era gordura acumulando — era inchaço diário. Criei um protocolo de 12 dias focado nisso antes de qualquer dieta. Resultado: <b style="color:var(--coral)">5,8kg em 12 dias</b>, e a calça que não fechava, fechou.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">o que outras mulheres sentiram</div>
+        <div class="testi-grid">
+          <div class="testi-card">
+            <span class="example-tag">exemplo — trocar por depoimento real</span>
+            <div class="testi-stars">★★★★★</div>
+            <p>"Em 4 dias já senti a roupa mais solta. Nunca imaginei que fosse inchaço."</p>
+            <div class="testi-name">— cliente verificada</div>
+          </div>
+          <div class="testi-card">
+            <span class="example-tag">exemplo — trocar por depoimento real</span>
+            <div class="testi-stars">★★★★★</div>
+            <p>"Já tinha tentado tudo. Foi a primeira vez que a balança se moveu de verdade."</p>
+            <div class="testi-name">— cliente verificada</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">o desafio completo</div>
+        <h2 style="font-size:1.5rem; margin:8px 0 20px;">Tudo que você recebe hoje</h2>
+        <div class="receipt" id="receipt">
+          <div class="receipt-row main"><div><span class="r-name">Desafio Zero Inchaço</span><span class="r-desc">Protocolo completo de 12 dias</span></div><div class="r-val">R$ 197</div></div>
+          <div class="receipt-row"><div><span class="r-name">Cardápio Anti-Inchaço</span><span class="r-desc">12 dias, pronto — sem precisar planejar nada</span></div><div class="r-val">R$ 97</div></div>
+          <div class="receipt-row"><div><span class="r-name">Receitas do Elixir do Desincha</span><span class="r-desc">bebidas naturais pro efeito visual mais rápido</span></div><div class="r-val">R$ 47</div></div>
+          <div class="receipt-row"><div><span class="r-name">Guia de Substituições Inteligentes</span><span class="r-desc">troque aos poucos, sem virar sua rotina de cabeça pra baixo</span></div><div class="r-val">R$ 67</div></div>
+          <div class="receipt-row"><div><span class="r-name">Checklist Diário</span><span class="r-desc">5 minutos por dia pra não perder o fio</span></div><div class="r-val">R$ 37</div></div>
+          <div class="receipt-row"><div><span class="r-name">Grupo de Apoio 12 dias</span><span class="r-desc">pra não fazer sozinha — vagas da turma atual</span></div><div class="r-val">R$ 97</div></div>
+          <div class="receipt-total"><span>valor total</span><span class="r-val">R$ 542</span></div>
+        </div>
+
+        <div class="price-card">
+          <div class="was">de R$ 542</div>
+          <div class="now num">R$ 47</div>
+          <div class="terms">à vista no pix/cartão · ou 2x de R$ 28,50</div>
+          <button class="cta-btn" id="cta-price">Garantir meu Desafio Zero Inchaço</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="guarantee">
+          <div class="g-badge">30<br/>DIAS</div>
+          <div>
+            <b style="font-family:var(--display); font-size:1.05rem;">Garantia estendida</b>
+            <p class="body-text" style="margin-top:6px;">Por lei você tem 7 dias. Eu vou além: são 30 dias completos. Se você não notar diferença nenhuma, devolvo 100% do seu dinheiro — sem perguntas, sem pedir print.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">esse desafio não é pra você se</div>
+        <div class="neg-list">
+          <div class="neg-item"><span class="x">×</span> você espera perder 15–20kg em 12 dias — isso não existe, e eu não vou te mentir</div>
+          <div class="neg-item"><span class="x">×</span> você não vai separar 10 minutos por dia pros próximos 12 dias</div>
+          <div class="neg-item"><span class="x">×</span> você fez cirurgia bariátrica recentemente</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">a partir de agora, três caminhos</div>
+        <div class="paths">
+          <div class="path"><h3>Continuar como está</h3><p>Daqui 12 dias essa barriga vai estar exatamente igual.</p></div>
+          <div class="path"><h3>Tentar sozinha</h3><p>Testar por conta própria o que levou anos pra eu descobrir.</p></div>
+          <div class="path win"><h3>Seguir o protocolo</h3><p>Pronto, testado, por R$47 — hoje.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap reveal">
+        <div class="eyebrow">perguntas antes de começar</div>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q">Já tentei de tudo, será que funciona comigo? <span class="plus">+</span></button>
+            <div class="faq-a"><p>O protocolo não depende de "força de vontade extra" — ele ataca a causa (inchaço) que a maioria das dietas ignora. Por isso costuma funcionar mesmo em quem já tentou outras coisas.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Vou ter que passar fome? <span class="plus">+</span></button>
+            <div class="faq-a"><p>Não. Não é dieta restritiva — é um cardápio pronto com substituições, sem cortar tudo que você gosta.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">E se eu não gostar? <span class="plus">+</span></button>
+            <div class="faq-a"><p>Você tem 30 dias de garantia incondicional. Se não sentir diferença, devolvemos 100% do valor.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="final reveal">
+      <div class="wrap">
+        <h2>Comece seu Desafio Zero Inchaço hoje</h2>
+        <p class="body-text">R$47 à vista · garantia de 30 dias</p>
+        <button class="cta-btn" id="cta-final">Quero começar agora</button>
+      </div>
+    </footer>
+  </section>
+</div>
+
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sb-price">Desafio Zero Inchaço — <b class="num">R$47</b></div>
+  <button id="cta-sticky">Garantir vaga</button>
+</div>
+
+<div class="order-panel" id="order-panel">
+  <div class="order-box">
+    <span class="eyebrow">resumo do pedido</span>
+    <h3>Desafio Zero Inchaço</h3>
+    <div class="order-line"><span>Protocolo 12 dias + 5 bônus</span><span class="r-val">R$542</span></div>
+    <div class="order-line"><span>Desconto de lançamento</span><span class="r-val">− R$495</span></div>
+    <div class="order-line total"><span>Total hoje</span><span class="r-val num">R$47</span></div>
+    <button class="order-close" id="order-close">Fechar (mock de checkout)</button>
+    <p class="order-note">Página de demonstração — este botão simula a chamada pro checkout real (ex.: Hotmart/PerfectPay). Nenhum dado é coletado aqui.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---------- theme toggle ----------
+  var root = document.documentElement;
+  document.getElementById('theme-toggle').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme');
+    var mql = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = cur === 'dark' ? 'light' : (cur === 'light' ? 'dark' : (mql ? 'light':'dark'));
+    root.setAttribute('data-theme', next);
+  });
+
+  // ---------- ripple ambient canvas (quiz bg) ----------
+  var rc = document.getElementById('ripple-canvas');
+  var rctx = rc.getContext('2d');
+  var W,H,rings=[];
+  function sizeCanvas(){ W = rc.width = window.innerWidth; H = rc.height = window.innerHeight; }
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function spawnRing(){
+    rings.push({x:W*0.5+(Math.random()-0.5)*W*0.4, y:H*0.5+(Math.random()-0.5)*H*0.3, r:0, a:0.35});
+    if(rings.length>6) rings.shift();
+  }
+  var t0 = performance.now();
+  function drawRipple(now){
+    rctx.clearRect(0,0,W,H);
+    var teal = getComputedStyle(root).getPropertyValue('--teal').trim() || '#2F6E63';
+    rings.forEach(function(rg){
+      rg.r += 0.55; rg.a -= 0.0016;
+      if(rg.a>0){
+        rctx.beginPath();
+        rctx.strokeStyle = teal;
+        rctx.globalAlpha = Math.max(rg.a,0);
+        rctx.lineWidth = 1.4;
+        rctx.arc(rg.x, rg.y, rg.r, 0, Math.PI*2);
+        rctx.stroke();
+      }
+    });
+    rctx.globalAlpha = 1;
+    rings = rings.filter(function(rg){return rg.a>0;});
+    if(!reduced){
+      if(now - t0 > 1400){ spawnRing(); t0 = now; }
+      requestAnimationFrame(drawRipple);
+    }
+  }
+  spawnRing();
+  requestAnimationFrame(drawRipple);
+
+  // ---------- quiz state machine ----------
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.q-card'));
+  var dotsWrap = document.getElementById('dots');
+  var total = cards.length;
+  for(var i=1;i<=total;i++){
+    var d = document.createElement('div'); d.className='dot'; d.dataset.i=i; dotsWrap.appendChild(d);
+  }
+  function renderDots(step){
+    Array.prototype.forEach.call(dotsWrap.children, function(d){
+      var i = +d.dataset.i;
+      d.classList.toggle('done', i<step);
+      d.classList.toggle('active', i===step);
+    });
+  }
+  function showStep(step){
+    cards.forEach(function(c){
+      var s = +c.dataset.step;
+      c.classList.toggle('show', s===step);
+      c.style.display = s===step ? 'block':'none';
+    });
+    renderDots(step);
+  }
+  showStep(1);
+  cards.forEach(function(card){
+    card.querySelectorAll('[data-next]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        showStep(+btn.dataset.next);
+      });
+    });
+  });
+
+  document.getElementById('go-vsl').addEventListener('click', function(){
+    document.getElementById('view-quiz').style.display='none';
+    var vsl = document.getElementById('view-vsl');
+    vsl.classList.add('active');
+    window.scrollTo(0,0);
+    initVSL();
+  });
+
+  // ---------- VSL view ----------
+  var vslInited = false;
+  function initVSL(){
+    if(vslInited) return; vslInited = true;
+
+    // wave canvas behind play button
+    var wc = document.getElementById('wave-canvas');
+    var wctx = wc.getContext('2d');
+    function sizeWave(){ wc.width = wc.clientWidth; wc.height = wc.clientHeight; }
+    sizeWave(); window.addEventListener('resize', sizeWave);
+    var phase=0;
+    function drawWave(){
+      var teal = getComputedStyle(root).getPropertyValue('--teal').trim() || '#2F6E63';
+      wctx.clearRect(0,0,wc.width,wc.height);
+      for(var layer=0; layer<3; layer++){
+        wctx.beginPath();
+        var amp = 10+layer*6, freq=0.012+layer*0.004, yoff = wc.height*0.55+layer*22;
+        wctx.moveTo(0,yoff);
+        for(var x=0;x<=wc.width;x+=8){
+          wctx.lineTo(x, yoff + Math.sin(x*freq + phase + layer)*amp);
+        }
+        wctx.lineTo(wc.width, wc.height); wctx.lineTo(0, wc.height); wctx.closePath();
+        wctx.globalAlpha = 0.16 - layer*0.03;
+        wctx.fillStyle = teal;
+        wctx.fill();
+      }
+      wctx.globalAlpha = 1;
+      if(!reduced){ phase += 0.012; requestAnimationFrame(drawWave); }
+    }
+    requestAnimationFrame(drawWave);
+
+    // fake player: click play -> progress + timed CTAs
+    var playBtn = document.getElementById('play-btn');
+    var overlay = document.getElementById('player-overlay');
+    var fill = document.getElementById('player-fill');
+    var ctaMid = document.getElementById('cta-mid');
+    var ctaLate = document.getElementById('cta-late');
+    var playing=false, pct=0;
+    playBtn.addEventListener('click', function(){
+      if(playing) return; playing=true;
+      overlay.style.opacity='0'; overlay.style.pointerEvents='none';
+      var iv = setInterval(function(){
+        pct += 0.6; fill.style.width = Math.min(pct,100)+'%';
+        if(pct>28) ctaMid.classList.add('show');
+        if(pct>55){ ctaMid.classList.remove('show'); ctaLate.classList.add('show'); }
+        if(pct>=100) clearInterval(iv);
+      }, 180);
+    });
+    [ctaMid, ctaLate].forEach(function(b){ b.addEventListener('click', openOrder); });
+
+    // scroll reveal
+    var revealEls = document.querySelectorAll('#view-vsl .reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold:.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+
+    // gauge fill on scroll into view
+    var gaugeSection = document.getElementById('gauge-section');
+    var gaugeFill = document.getElementById('gauge-fill');
+    var gio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ gaugeFill.style.width='100%'; gio.disconnect(); } });
+    }, {threshold:.4});
+    gio.observe(gaugeSection);
+
+    // faq accordion
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+      q.addEventListener('click', function(){
+        var open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight=null; });
+        if(!open){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight+'px'; }
+      });
+    });
+
+    // sticky bar
+    var sticky = document.getElementById('sticky-bar');
+    var priceCard = document.querySelector('.price-card');
+    var sio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ sticky.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0); });
+    }, {threshold:0});
+    sio.observe(priceCard);
+
+    // CTAs -> order panel
+    ['cta-price','cta-final','cta-sticky'].forEach(function(id){
+      var b = document.getElementById(id);
+      if(b) b.addEventListener('click', openOrder);
+    });
+  }
+
+  function openOrder(){ document.getElementById('order-panel').classList.add('show'); }
+  document.getElementById('order-close').addEventListener('click', function(){
+    document.getElementById('order-panel').classList.remove('show');
+  });
+})();
+</script>

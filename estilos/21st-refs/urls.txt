@@ -1,0 +1,6 @@
+chat https://cdn.21st.dev/21st/mg-pr-split-proof/default/video.1791518896040-7f66659c-2f1f-4d90-93f8-00b49c76643c.mp4
+quiz https://cdn.21st.dev/21st/mg-edu-reels-quiz/default/video.1791530173470-30c367c8-cf16-4ff0-a841-5936f40a4610.mp4
+cert https://cdn.21st.dev/21st/mg-edu-certificate/default/video.1791530192836-83a34af4-c2c9-43bd-b0df-2597a6bdc91d.mp4
+job https://cdn.21st.dev/21st/mg-hire-jobcard/default/video.1791532944345-70601c8e-90b0-432a-989e-2e6db3612d3b.mp4
+cart https://cdn.21st.dev/21st/mg-shop-add-to-cart/default/video.1791529951960-aad3dcba-f072-4733-bba9-cca5fb7c2406.mp4
+flash https://cdn.21st.dev/21st/mg-edu-flashcards/default/video.1791530211524-a4ef2693-939c-4090-ae7b-7c88cb826cdb.mp4

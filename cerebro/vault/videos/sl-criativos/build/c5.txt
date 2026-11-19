@@ -1,0 +1,227 @@
+C5 "1 ANO vs 7 DIAS": awkward confession > slow sad (left) > race build + overtake (right) > fast app > triumphant drop > bold CTA
+===CSS===
+      .panel { position: absolute; top: 0; width: 540px; height: 1920px; overflow: hidden; }
+      #left { left: 0; background: #e6e2e1; }
+      #right { left: 540px; background: linear-gradient(180deg, #fde7ee, #f7c9d8); }
+      .plab { position: absolute; left: 0; width: 540px; top: 470px; text-align: center; z-index: 6; }
+      .plab b { display: inline-block; padding: 14px 34px; border-radius: 50px; font-size: 54px; font-weight: 800; letter-spacing: -0.01em; }
+      #left .plab b { background: #fff; color: #6b5d63; }
+      #right .plab b { background: var(--brand); color: #fff; box-shadow: 0 16px 40px rgba(217, 46, 100, 0.35); }
+      .ms { position: absolute; left: -160px; top: 222px; transform: scale(0.5); }
+      .cnt { position: absolute; left: 0; width: 540px; top: 1420px; text-align: center; z-index: 6; }
+      .cnt b { display: block; font-size: 120px; font-weight: 800; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1; }
+      .cnt small { font-size: 34px; font-weight: 600; }
+      #left .cnt b { color: #6b5d63; } #left .cnt small { color: #6b5d63; }
+      #right .cnt b { color: var(--brand); } #right .cnt small { color: #7a2944; }
+      .emo { position: absolute; font-size: 110px; z-index: 7; opacity: 0; }
+      #crackL { position: absolute; left: 0; top: 0; width: 540px; height: 1920px; z-index: 8; pointer-events: none; }
+      #crackL path { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(0,0,0,0.45)); }
+      #divline { position: absolute; left: 537px; top: 0; width: 6px; height: 1920px; background: #fff; z-index: 9; box-shadow: 0 0 20px rgba(0,0,0,0.15); }
+      #sE .bg { background: radial-gradient(110% 80% at 50% 45%, #e8417a 0%, #c51f55 60%, #9e1543 100%); }
+      #big { position: absolute; left: 0; width: 100%; top: 560px; text-align: center; color: #fff; z-index: 9; }
+      #big b { display: block; font-size: 230px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; text-shadow: 0 20px 60px rgba(80, 0, 30, 0.35); }
+      #big small { display: block; font-size: 56px; font-weight: 700; margin-top: 10px; }
+      .fol { position: absolute; left: 70px; width: 940px; padding: 22px 26px; border-radius: 34px; background: rgba(255, 255, 255, 0.97); display: flex; align-items: center; gap: 20px; z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.18), 0 30px 70px rgba(60, 10, 30, 0.25); font-size: 32px; color: var(--ink); }
+      .fol .av { flex: none; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 36px; }
+      .fol p { flex: 1; line-height: 1.2; }
+      .fol em { font-style: normal; flex: none; padding: 14px 22px; border-radius: 18px; background: var(--brand); color: #fff; font-size: 26px; font-weight: 800; }
+===HTML===
+      <!-- S: split screen race -->
+      <div id="sS" class="scene clip" data-start="0" data-duration="12.6" data-track-index="0">
+        <div class="inner" id="sS-in">
+          <div class="panel" id="left">
+            <div class="plab"><b>1 ANO</b></div>
+            <div id="msL" data-layout-ignore></div>
+            <div class="cnt"><b id="cL">290</b><small>seguidores</small></div>
+            <div class="emo" id="turtle" style="left: 370px; top: 1300px">🐢</div>
+            <svg id="crackL" viewBox="0 0 540 1920"><path id="kl1" d="M540 980 L420 900 L380 700 L250 560 L230 300" /><path id="kl2" d="M540 980 L380 1060 L260 1020 L90 1150 L0 1120" /><path id="kl3" d="M540 980 L460 1200 L300 1380 L240 1700 L180 1920" /><path id="kl4" d="M420 900 L200 820 L0 860" /></svg>
+          </div>
+          <div class="panel" id="right">
+            <div class="plab"><b>7 DIAS</b></div>
+            <div id="msR" data-layout-ignore></div>
+            <div class="cnt"><b id="cR">290</b><small>seguidores</small></div>
+            <div class="emo" id="rocket" style="left: 380px; top: 1290px">🚀</div>
+          </div>
+          <div id="divline"></div>
+          <div class="ptbox" data-layout-ignore id="ptS"></div>
+          <div class="cap" id="cS1" style="top: 290px"><span>isso</span><span>me</span><span>deu</span><span class="k">vergonha 😳</span></div>
+          <div class="cap" id="cS2" style="top: 290px"><span>1</span><span>ano</span><span>postando</span><span>do</span><span>meu</span><span>jeito…</span><span class="k">+20 🐢</span></div>
+          <div class="cap" id="cS3" style="top: 290px"><span class="k">7</span><span class="k">dias</span><span>usando</span><span>esse</span><span>app</span><span>🚀</span></div>
+        </div>
+      </div>
+
+      <!-- D: the app, fast -->
+      <div id="sD" class="scene clip" data-start="11.8" data-duration="6.7" data-track-index="1">
+        <div class="inner" id="sD-in">
+          <div class="bg"></div><div class="glow" id="gD"></div><div class="glow2"></div>
+          <div class="phone" id="ph1" style="left: 183px; top: 391px">
+            <div class="screen" id="scr1">
+              <img id="d-cat" src="assets/app/cat-bomdia.png" alt="" />
+              <img id="d-ed" src="assets/app/editor.png" style="opacity: 0" alt="" />
+              <div class="layer" id="d-shotwrap" style="opacity: 0"><div class="shot">
+                <div class="photo g-orig" style="background-image: url(assets/photos/latte.jpg)"></div>
+                <div class="photo g-grade" id="dGrade" style="background-image: url(assets/photos/latte.jpg); clip-path: inset(0 0 0 85%)"></div>
+                <div class="divider" id="dDiv" style="left: 85%"><i></i></div>
+                <div class="lab" style="left: 22px; background: rgba(40, 40, 40, 0.6)">Original</div><div class="lab" style="right: 22px; background: var(--brand)">Dark Cinema</div>
+              </div></div>
+              <img id="d-panel" src="assets/app/editor.png" style="clip-path: inset(1028px 0 0 0); opacity: 0" alt="" />
+              <img id="d-cat2" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" />
+              <img id="d-modal" src="assets/app/modal-boanoite.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+              <div class="toast" id="toast1"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div>
+              <div class="island"></div>
+            </div>
+          </div>
+          <img class="orb" id="o1" src="assets/stk/bomdia-10.webp" style="left: 30px; top: 560px; width: 280px" alt="" />
+          <img class="orb" id="o2" src="assets/stk/bom-dia-9.webp" style="left: 740px; top: 600px; width: 300px" alt="" />
+          <img class="orb" id="o3" src="assets/stk/frases-22.webp" style="left: 10px; top: 1000px; width: 320px" alt="" />
+          <img class="orb" id="o4" src="assets/stk/academia-e-treino-190.webp" style="left: 760px; top: 1040px; width: 300px" alt="" />
+          <div class="agenda" id="agenda"><img src="assets/app/agenda-crop.png" alt="" /></div>
+          <div class="story" id="stD" style="left: 110px; top: 386px; opacity: 0">
+            <div class="photo" style="background-image: url(assets/photos/night.jpg)"></div>
+            <div class="sbar"><i><b></b></i></div>
+            <div class="shead"><i></i>teu story <small>· agora</small></div>
+            <img class="stk" id="d-s1" src="assets/stk/bomdia-51.webp" style="left: 150px; top: 300px; width: 560px; opacity: 0" alt="" />
+          </div>
+          <div class="ptbox" data-layout-ignore id="ptD"></div>
+          <div class="cap" id="cD1" style="top: 290px"><span class="k">figurinha</span><span>pronta,</span><span class="k">filtro,</span><span class="k">roteiro</span><span>do</span><span>que</span><span>postar…</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span>eu</span><span>só</span><span class="k">copio</span><span>e</span><span class="k">colo ✌️</span></div>
+        </div>
+      </div>
+
+      <!-- E: the drop -->
+      <div id="sE" class="scene clip" data-start="17.9" data-duration="5.8" data-track-index="2">
+        <div class="inner" id="sE-in">
+          <div class="bg"></div>
+          <div id="big"><b id="bigN">+0</b><small>seguidores em 7 dias</small></div>
+          <div id="fols"></div>
+          <div class="ptbox" data-layout-ignore id="ptE"></div>
+          <div class="cap" id="cE" style="top: 290px"><span>gente,</span><span>ganhei</span><span>mais</span><span>seguidor</span><span>em</span><span class="k">1</span><span class="k">semana</span><span>do</span><span>que</span><span>em</span><span>1</span><span>ano 💗</span></div>
+        </div>
+      </div>
+
+      <!-- F: bold CTA -->
+      <div id="sF" class="scene clip" data-start="23.0" data-duration="__REST_23.0__" data-track-index="3">
+        <div class="inner" id="sF-in">
+          <div class="bg"></div><div class="glow" id="gF"></div><div class="glow2"></div>
+          <div class="endlogo" style="top: 600px"><img id="logo" src="assets/app/logo-t.png" style="width: 820px" alt="Stories Lab" /></div>
+          <div class="cta" id="cta" style="top: 1000px">Toca aqui 👇<div class="gloss"><i id="ctaG"></i></div></div>
+          <div class="url" id="url" style="top: 1190px">storieslab.app</div>
+          <div class="arrow" id="arr" style="top: 1320px"></div>
+          <div class="ptbox" data-layout-ignore id="ptF"></div>
+          <div class="cap" id="cF1" style="top: 290px"><span>teu</span><span>perfil</span><span>pode</span><span>ser</span><span>o</span><span class="k">próximo</span></div>
+          <div class="cap" id="cF2" style="top: 290px"><span>toca</span><span>aqui</span><span class="k">antes</span><span class="k">de</span><span class="k">todo</span><span class="k">mundo 👇</span></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="__TOTAL__" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+        <div class="flash" id="flashR" style="background: #e0243a"></div>
+      </div>
+===JS===
+      const fmtF = (v) => (v < 1000 ? String(Math.round(v)) : (v / 1000).toFixed(1).replace(".", ",") + " mil");
+      const counter = (sel, from, to, t, d, ease, pre = "") => { const o = { v: from }, n = $(sel), set = () => (n.textContent = pre + fmtF(o.v)); set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t); };
+      const ms = (box, id, photo, stk, plain) => { const d = document.createElement("div"); d.className = "story ms"; d.id = id; d.style.opacity = 0;
+        d.innerHTML = `<div class="photo" style="background-image:url(assets/photos/${photo}.jpg);${plain ? "filter:saturate(0.45) brightness(0.9)" : ""}"></div>` +
+          (plain ? '<div class="plain" style="top: 420px">' + plain + "</div>" : `<img class="stk" src="assets/stk/${stk[0]}.webp" style="left:${stk[1]}px;top:${stk[2]}px;width:${stk[3]}px" alt="" />`);
+        $(box).appendChild(d); return "#" + id; };
+      const L = [ms("#msL", "l1", "plaincoffee", null, "bom dia"), ms("#msL", "l2", "latte", null, "partiu"), ms("#msL", "l3", "night", null, "boa noite")];
+      const R = [ms("#msR", "r1", "breakfast", ["bomdia-126", 230, 200, 420]), ms("#msR", "r2", "gym", ["academia-e-treino-432", 110, 1050, 640]),
+        ms("#msR", "r3", "night", ["bomdia-51", 150, 300, 560]), ms("#msR", "r4", "boutique", ["frases-40", 90, 260, 680])];
+
+      // ---------- S: split screen (0 – 12.2) ----------
+      tl.fromTo("#left", { x: -540 }, { x: 0, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#right", { x: 540 }, { x: 0, duration: 0.5, ease: "expo.out" }, 0.08);
+      tl.fromTo(".plab b", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2.2)", stagger: 0.12 }, 0.35);
+      tl.set([L[0], R[0]], { opacity: 1 }, 0);
+      caption("cS1", 0, 0, 8, "secret");
+      // left lights up: plain stories drag by, counter crawls
+      const T_L = w(1, 0) - 0.2;
+      tl.to("#right", { opacity: 0.35, filter: "blur(6px)", duration: 0.4 }, T_L);
+      capOut("cS1", T_L);
+      caption("cS2", 1, 0, 8, "melancholy");
+      L.forEach((s, i) => { if (i) { tl.fromTo(s, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: "sine.out" }, T_L + 0.3 + i * 1.3); tl.to(L[i - 1], { opacity: 0, duration: 0.3 }, T_L + 0.6 + i * 1.3); } });
+      counter("#cL", 290, 310, T_L + 0.2, 4.0, "none");
+      tl.fromTo("#turtle", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.6, ease: "sine.out" }, w(1, 3));
+      tl.to("#turtle", { x: -40, duration: 3, ease: "none" }, w(1, 3) + 0.6);
+      // right lights up: pretty stories fly by, counter takes off and overtakes
+      const T_R = w(2, 0) - 0.2;
+      tl.to("#right", { opacity: 1, filter: "blur(0px)", duration: 0.35 }, T_R);
+      tl.to("#left", { opacity: 0.45, filter: "saturate(0.3)", duration: 0.4 }, T_R);
+      capOut("cS2", T_R);
+      caption("cS3", 2, 0, 6, "excited");
+      R.forEach((s, i) => { if (i) tl.fromTo(s, { opacity: 0, scale: 0.35, rotation: i % 2 ? 6 : -6 }, { opacity: 1, scale: 0.5, rotation: 0, duration: 0.35, ease: "back.out(1.8)" }, T_R + 0.3 + i * 0.75); if (i) tl.to(R[i - 1], { opacity: 0, duration: 0.2 }, T_R + 0.55 + i * 0.75); });
+      counter("#cR", 290, 3412, T_R + 0.3, 3.2, "power3.in");
+      tl.fromTo("#rocket", { opacity: 0, y: 80 }, { opacity: 1, y: -60, duration: 0.8, ease: "power2.out" }, w(2, 3));
+      tl.to("#rocket", { y: -900, x: 80, rotation: 20, duration: 1.0, ease: "power2.in" }, w(2, 5));
+      // overtake: the left panel cracks
+      const T_HIT = w(2, 3);
+      ["#kl1", "#kl2", "#kl3", "#kl4"].forEach((s, i) => { const p = $(s), Lh = p.getTotalLength(); p.style.strokeDasharray = Lh;
+        tl.fromTo(s, { strokeDashoffset: Lh }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out", immediateRender: true }, T_HIT + i * 0.03); });
+      tl.fromTo("#sS-in", { x: 0 }, { x: 16, duration: 0.04, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T_HIT);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.5, duration: 0.06, immediateRender: false }, T_HIT);
+      tl.to("#flash", { opacity: 0, duration: 0.35 }, T_HIT + 0.06);
+      tl.fromTo("#cR", { scale: 1 }, { scale: 1.25, duration: 0.25, ease: "back.out(3)", yoyo: true, repeat: 1, immediateRender: false }, T_HIT);
+      sparks("ptS", T_HIT, 12.2, 18);
+
+      // ---------- D: the app (11.8 – 18.3) ----------
+      const T_D = w(3, 0) - 0.35;
+      tl.to("#sS-in", { scale: 2.2, opacity: 0, filter: "blur(14px)", duration: 0.45, ease: "power2.in", transformOrigin: "75% 50%" }, T_D - 0.1);
+      tl.fromTo("#sD-in", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }, T_D + 0.15);
+      tl.set("#ph1", { scale: 0.8 }, 0);
+      tl.fromTo("#ph1", { rotationY: -6 }, { rotationY: 6, rotationX: 3, duration: 6, ease: "sine.inOut", immediateRender: false }, T_D);
+      caption("cD1", 3, 0, 7, "excited");
+      ["#o1", "#o2", "#o3", "#o4"].forEach((s, i) => { const el = $(s), t = w(3, 1) + i * 0.07;
+        const dx = 540 - (parseFloat(el.style.left) + parseFloat(el.style.width) / 2), dy = 1150 - (parseFloat(el.style.top) + 120);
+        tl.fromTo(s, { x: dx, y: dy, scale: 0.15, opacity: 0, rotation: i % 2 ? 30 : -30 }, { x: 0, y: 0, scale: 1, opacity: 1, rotation: i % 2 ? 7 : -7, duration: 0.45, ease: "back.out(1.5)" }, t);
+        tl.to(s, { x: dx, y: dy, scale: 0.1, opacity: 0, duration: 0.3, ease: "power3.in" }, w(3, 3) - 0.3 + i * 0.03); });
+      push("#d-cat", "#d-ed", w(3, 3) - 0.15, 0.3);
+      tl.set(["#d-shotwrap", "#d-panel"], { opacity: 1 }, w(3, 3) + 0.15);
+      slider("#dGrade", "#dDiv", 85, 12, w(3, 3), 0.7);
+      tl.fromTo("#agenda", { opacity: 0, y: 500, rotationX: 40, scale: 0.6 }, { opacity: 1, y: 0, rotationX: 0, scale: 0.92, rotation: -3, duration: 0.5, ease: "expo.out" }, w(3, 4) - 0.1);
+      capOut("cD1", w(3, 8) - 0.15);
+      caption("cD2", 3, 8, 12, "triumph");
+      tl.to("#agenda", { y: 260, scale: 0.5, opacity: 0, duration: 0.3, ease: "power3.in" }, w(3, 8) - 0.3);
+      push("#d-ed", "#d-cat2", w(3, 8) - 0.3, 0.25);
+      tl.set(["#d-shotwrap", "#d-panel"], { opacity: 0 }, w(3, 8) - 0.05);
+      sheet("#d-modal", w(3, 9), 0.3);
+      tap("#scr1", 345, 932, w(3, 10) + 0.05);
+      tl.fromTo("#toast1", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(1.8)" }, w(3, 10) + 0.1);
+      tl.to("#ph1", { x: -980, rotationY: -40, scale: 0.7, duration: 0.3, ease: "power3.in" }, w(3, 11) - 0.15);
+      tl.fromTo("#stD", { opacity: 1, x: 1000, rotationY: 35, scale: 0.7 }, { opacity: 1, x: 0, rotationY: 0, scale: 0.8, duration: 0.4, ease: "expo.out" }, w(3, 11) - 0.05);
+      pop("#d-s1", w(3, 12), -4);
+
+      // ---------- E: the drop (17.9 – 23.4) ----------
+      const T_E = w(4, 0) - 0.15;
+      tl.fromTo("#sE-in", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(140% at 50% 50%)", duration: 0.45, ease: "expo.out" }, T_E);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.8, duration: 0.08, immediateRender: false }, T_E + 0.1);
+      tl.to("#flash", { opacity: 0, duration: 0.5 }, T_E + 0.18);
+      caption("cE", 4, 0, 11, "triumph");
+      counter("#bigN", 0, 3412, T_E + 0.2, 2.4, "power2.out", "+");
+      tl.fromTo("#big", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, T_E + 0.15);
+      tl.to("#big b", { scale: 1.12, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, T_E + 2.6);
+      camera("#sE-in", T_E, 23.6, 1, 1.06, "sine.out");
+      const NAMES = [["bia.costa", "#d92e64"], ["carol.m", "#f08a4b"], ["ju.lima", "#7a5cf0"], ["nanda_", "#3b82f6"], ["lu.alves", "#22c55e"], ["mari.r", "#e0243a"], ["dani.s", "#f0548a"], ["gabi.f", "#0ea5e9"], ["rafa.b", "#a855f7"], ["isa.m", "#14b8a6"]];
+      NAMES.forEach(([n, c], i) => { const d = document.createElement("div"); d.className = "fol";
+        d.innerHTML = `<div class="av" style="background:${c}">${n[0].toUpperCase()}</div><p><b>${n}</b> começou a seguir você.</p><em>Seguir de volta</em>`; $("#fols").appendChild(d);
+        const t = w(4, 1) + i * 0.3, y = 1060 + (i % 4) * 150;
+        tl.fromTo(d, { opacity: 0, y: -300, scale: 0.9 }, { opacity: 1, y, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, t);
+        tl.to(d, { opacity: 0, y: y + 200, duration: 0.35, ease: "power2.in" }, t + 1.2); });
+      confetti("ptE", T_E + 0.15, 60, 540, 760);
+      hearts("ptE", w(4, 5), 16, 540, 1560, 900);
+
+      // ---------- F: CTA ----------
+      const T_INK = w(5, 0) - 0.4;
+      tl.fromTo("#sF-in", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(130% at 50% 40%)", duration: 0.7, ease: "expo.inOut" }, T_INK);
+      tl.fromTo("#gF", { x: -200 }, { x: 200, y: -300, duration: 6, ease: "sine.inOut" }, T_INK);
+      caption("cF1", 5, 0, 5, "warm");
+      tl.fromTo("#logo", { opacity: 0, scale: 0.8, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, T_INK + 0.3);
+      capOut("cF1", w(5, 6) - 0.2);
+      caption("cF2", 5, 6, 11, "triumph");
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, w(5, 6) - 0.05);
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 5 }, w(5, 6) + 0.6);
+      sweep("#ctaG", w(5, 6) + 0.5, 0.8);
+      tl.fromTo("#url", { opacity: 0 }, { opacity: 1, duration: 0.4 }, w(5, 6) + 0.3);
+      tl.fromTo("#arr", { opacity: 0, y: -20 }, { opacity: 1, y: 30, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 5 }, w(5, 6) + 0.4);
+      sparks("ptF", T_INK + 0.3, TOTAL, 14);

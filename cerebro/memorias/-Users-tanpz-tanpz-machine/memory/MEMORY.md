@@ -1,0 +1,1 @@
+- [Answer from cérebro](feedback_answer_from_cerebro.md) — in this project, ground answers in the vault's own notes (grep/cite), not general knowledge alone

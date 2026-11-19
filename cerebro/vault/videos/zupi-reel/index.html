@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Outfit"; src: url("assets/fonts/Outfit.ttf") format("truetype"); font-weight: 100 900; }
+      :root { --brand: #ff6a00; --brand-2: #ff9a1f; --brand-ink: #c94300; --cream: #f1e2c5; --card: #fffaf2; --ink: #1e1e1e; --dim: #857a6b; --ok: #22c55e; --pix: #17b897; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Outfit", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1400px; }
+      .cream { background: var(--cream); }
+      .brandfield { background: radial-gradient(120% 90% at 50% 50%, #ea5a00 0%, #d44600 55%, #b33200 100%); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: 210px; top: -420px;
+        background: radial-gradient(circle, rgba(255, 140, 30, 0.4), rgba(255, 140, 30, 0) 62%); }
+      .brandfield .glow { background: radial-gradient(circle, rgba(255, 170, 90, 0.3), rgba(255, 170, 90, 0) 65%); }
+      .dustbox { position: absolute; inset: 0; pointer-events: none; }
+      .dust { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 170, 80, 0.55), rgba(255, 170, 80, 0)); }
+      .brandfield .dust { background: radial-gradient(circle, rgba(255, 220, 170, 0.45), rgba(255, 220, 170, 0)); }
+      .head { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; gap: 0 22px; white-space: nowrap;
+        font-weight: 700; letter-spacing: -0.02em; color: var(--ink); perspective: 900px; }
+      .head span { display: block; }
+      .key { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      /* real 3D renders: layered shadow lives on the img, motion and blur on the wrapper */
+      .obj { position: absolute; }
+      .obj img { display: block; width: 100%; height: auto;
+        filter: drop-shadow(0 10px 14px rgba(90, 45, 0, 0.22)) drop-shadow(0 40px 60px rgba(120, 60, 10, 0.22)); }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+
+      #s1-line { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; gap: 34px; white-space: nowrap;
+        font-size: 196px; font-weight: 700; letter-spacing: -0.02em; color: #fff; perspective: 900px; }
+      #s1-line span { display: block; }
+      .credit { position: absolute; bottom: 110px; left: 0; width: 100%; text-align: center; font-size: 20px; letter-spacing: 0.2em; color: #fff; font-weight: 600; }
+
+      #s2-headA, #s2-headB { top: 104px; font-size: 96px; }
+      #phone { position: absolute; left: 760px; top: 290px; width: 400px; height: 820px; border-radius: 64px; background: linear-gradient(145deg, #2b2b2b, #0c0c0c); padding: 16px;
+        box-shadow: 0 10px 20px rgba(60, 30, 0, 0.25), 0 70px 130px rgba(120, 60, 10, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+      #phone .screen { position: relative; width: 100%; height: 100%; border-radius: 50px; background: var(--card); padding: 70px 34px; overflow: hidden; }
+      #phone .lbl { font-size: 26px; color: #6b645a; font-weight: 500; }
+      #phone .bal { font-size: 58px; font-weight: 700; color: var(--ink); margin-top: 8px; letter-spacing: -0.02em; }
+      #phone .row { display: flex; gap: 18px; margin-top: 40px; }
+      #phone .row i { display: block; width: 74px; height: 74px; border-radius: 22px; background: #ffe8d3; }
+      #phone .row i:first-child { background: linear-gradient(145deg, #ffb35c, var(--brand)); }
+      #phone .bar { margin-top: 44px; height: 16px; border-radius: 8px; background: #efe5d6; }
+      #phone .bar div { width: 62%; height: 100%; border-radius: 8px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); }
+      .notif { position: absolute; width: 560px; height: 116px; border-radius: 30px; background: rgba(255, 250, 242, 0.97);
+        box-shadow: 0 8px 14px rgba(90, 45, 0, 0.1), 0 30px 60px rgba(120, 70, 20, 0.18), inset 0 1px 0 #fff; display: flex; align-items: center; gap: 22px; padding: 0 28px; }
+      .notif i { display: block; width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(145deg, #ffb35c, var(--brand)); flex: none; box-shadow: inset 0 2px 0 rgba(255,255,255,0.4); }
+      .notif.pix i { background: linear-gradient(145deg, #4fe0c0, var(--pix)); }
+      .notif b { display: block; font-size: 30px; color: var(--ink); }
+      .notif span { display: block; font-size: 26px; color: #6b645a; margin-top: 2px; }
+      .notif em { margin-left: auto; align-self: flex-start; margin-top: 22px; font-style: normal; font-size: 22px; color: #6b645a; }
+
+      #h3 { top: 34px; font-size: 100px; text-shadow: 0 0 40px rgba(241, 226, 197, 0.95), 0 0 12px rgba(241, 226, 197, 0.9); }
+      #vignette { position: absolute; inset: 0; background: radial-gradient(75% 75% at 50% 55%, rgba(60, 25, 0, 0) 45%, rgba(60, 25, 0, 0.42) 100%); }
+
+      #s4-head { top: 104px; font-size: 92px; }
+      .ui { position: absolute; border-radius: 40px; background: var(--card);
+        box-shadow: 0 10px 20px rgba(90, 45, 0, 0.08), 0 50px 120px rgba(120, 70, 20, 0.2), inset 0 1px 0 #fff; }
+      #bill { left: 610px; top: 320px; width: 700px; height: 470px; padding: 50px 60px; }
+      .ui .top { display: flex; justify-content: space-between; font-size: 28px; color: #6b645a; font-weight: 500; }
+      #amount { margin-top: 30px; text-align: center; font-size: 100px; font-weight: 700; letter-spacing: -0.02em; color: var(--brand-ink); }
+      .track { position: relative; margin-top: 40px; height: 18px; border-radius: 9px; background: #efe5d6; }
+      .fill { position: absolute; left: 0; top: 0; height: 100%; width: 100%; transform-origin: 0 50%; border-radius: 9px; background: linear-gradient(90deg, #e3260f, var(--brand), var(--brand-2)); }
+      .knob { position: absolute; top: -13px; left: 0; width: 44px; height: 44px; margin-left: -22px; border-radius: 50%; background: #fff; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); }
+      .legend { margin-top: 30px; display: flex; justify-content: space-between; font-size: 28px; color: #6b645a; font-weight: 500; }
+      .legend b { display: block; color: var(--ink); }
+      #check { position: absolute; left: 1238px; top: 718px; width: 104px; height: 104px; border-radius: 50%; background: var(--ok);
+        box-shadow: 0 16px 40px rgba(34, 197, 94, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.35); display: flex; align-items: center; justify-content: center; }
+      #ring { position: absolute; left: 1238px; top: 718px; width: 104px; height: 104px; border-radius: 50%; border: 6px solid var(--ok); }
+      .spark { position: absolute; left: 1282px; top: 762px; width: 16px; height: 16px; border-radius: 50%; }
+      .pill { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
+      .pill div { padding: 16px 30px; border-radius: 999px; background: var(--card); font-size: 30px; font-weight: 600; color: var(--ink);
+        box-shadow: 0 12px 30px rgba(120, 70, 20, 0.14), inset 0 1px 0 #fff; display: flex; align-items: center; gap: 14px; }
+      .pill i { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); display: block; }
+
+      #s5-head { position: absolute; left: 290px; top: 150px; display: flex; gap: 16px; font-size: 50px; font-weight: 600; color: var(--ink); perspective: 900px; }
+      #s5-head span { display: block; }
+      #flist { position: absolute; left: 290px; top: 296px; }
+      #fpill { position: absolute; left: -26px; top: 0; width: 700px; height: 100px; border-radius: 30px; background: var(--card);
+        box-shadow: 0 10px 18px rgba(90, 45, 0, 0.08), 0 30px 60px rgba(120, 70, 20, 0.14), inset 0 1px 0 #fff; }
+      #flist .it { position: relative; height: 100px; display: flex; align-items: center; font-size: 72px; font-weight: 700; letter-spacing: -0.02em; color: var(--dim); padding-left: 52px; }
+      #flist .it i { position: absolute; left: 14px; top: 41px; width: 20px; height: 20px; border-radius: 50%; background: var(--brand); display: block; }
+      .fcard { left: 1080px; top: 270px; width: 600px; height: 540px; padding: 46px 50px; overflow: hidden; }
+      .fcard h4 { font-size: 34px; color: var(--ink); font-weight: 700; }
+      .fcard p { font-size: 28px; color: #6b645a; margin-top: 12px; }
+      .fcard .hero { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; }
+      .alert { margin-top: 40px; border-radius: 24px; background: #fff1e4; padding: 30px; }
+      .alert b { display: block; font-size: 32px; color: var(--brand-ink); }
+      .alert span { display: block; font-size: 28px; color: #6b645a; margin-top: 8px; }
+      .sched { margin-top: 34px; }
+      .sched div { display: flex; justify-content: space-between; padding: 22px 0; border-bottom: 2px solid #f0e6d6; font-size: 30px; color: var(--ink); }
+      .sched div span:last-child { color: #0f8a70; font-weight: 700; }
+
+      #s6-head { top: 470px; font-size: 130px; }
+
+      #h7 { position: absolute; left: 290px; top: 120px; display: flex; gap: 22px; font-size: 96px; font-weight: 700; color: #fff; letter-spacing: -0.02em;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4); perspective: 900px; }
+      #h7 span { display: block; }
+
+      #s8-head { top: 90px; font-size: 92px; }
+      #v-hop { position: absolute; left: 520px; top: 270px; width: 880px; height: 495px; object-fit: cover; border-radius: 44px; border: 12px solid #fffaf2;
+        box-shadow: 0 12px 24px rgba(90, 45, 0, 0.12), 0 50px 110px rgba(120, 70, 20, 0.28); }
+
+      #logo { position: absolute; left: 0; top: 330px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 30px; }
+      #logo-icon { display: block; width: 150px; height: 150px; border-radius: 44px; background: #fff; position: relative; box-shadow: 0 20px 50px rgba(80, 20, 0, 0.35); }
+      #logo-icon::after { content: ""; position: absolute; left: 38px; top: 38px; width: 74px; height: 74px; border-radius: 50%; background: var(--brand); }
+      #logo-word { display: flex; font-size: 210px; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; perspective: 900px; position: relative; }
+      #logo-word span { display: block; }
+      #logo-sweep { position: absolute; left: 640px; top: 320px; width: 640px; height: 190px; overflow: hidden; }
+      #logo-sweep i { position: absolute; top: -40%; left: 0; width: 22%; height: 180%; display: block; mix-blend-mode: overlay;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); }
+      #tagline { position: absolute; left: 0; top: 600px; width: 100%; display: flex; justify-content: center; font-size: 72px; font-weight: 600; color: #fff; white-space: pre; }
+      #tagline span { display: block; }
+      video.full { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="hb1" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb1g" stdDeviation="0 0" /></filter>
+      <filter id="hb2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb2g" stdDeviation="0 0" /></filter>
+      <filter id="hb4" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb4g" stdDeviation="0 0" /></filter>
+      <filter id="hb5" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb5g" stdDeviation="0 0" /></filter>
+      <filter id="hb8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb8g" stdDeviation="0 0" /></filter>
+      <filter id="hb9" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb9g" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26.500" data-width="1920" data-height="1080">
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="26.500" data-volume="1"></audio>
+
+      <div id="s1" class="scene clip" data-start="0" data-duration="1.680" data-track-index="0">
+        <div class="inner brandfield" id="s1-in" style="filter: url(#hb1)">
+          <div class="glow" id="s1-glow"></div>
+          <div class="dustbox" id="s1-dust"></div>
+          <div id="s1-line"><span id="w1a">Sexta</span><span id="w1b">à</span><span id="w1c">noite,</span></div>
+          <div class="credit" data-layout-ignore>MARCA FICTÍCIA · TESTE</div>
+        </div>
+      </div>
+
+      <div id="s2" class="scene clip" data-start="1.380" data-duration="3.670" data-track-index="1">
+        <div class="inner cream" id="s2-in" style="filter: url(#hb2)">
+          <div class="glow" id="s2-glow"></div>
+          <div class="dustbox" id="s2-dust"></div>
+          <div class="obj" id="o2-coin" style="left: 200px; top: 600px; width: 190px"><img src="assets/3d/coin.png" alt="" /></div>
+          <div class="obj" id="o2-chart" style="left: 1560px; top: 210px; width: 210px"><img src="assets/3d/chart.png" alt="" /></div>
+          <div class="head" id="s2-headA"><span id="w1d">rolê</span><span id="w1e" class="key">marcado.</span></div>
+          <div class="head" id="s2-headB"><span id="w2a">Cartão</span><span id="w2b">pra</span><span id="w2c" class="key">cá,</span><span id="w2d">Pix</span><span id="w2e">pra</span><span id="w2f" class="key">lá.</span></div>
+          <div id="phone"><div class="screen"><div class="lbl">Saldo disponível</div><div class="bal">R$ 3.482,90</div><div class="row"><i></i><i></i><i></i><i></i></div><div class="bar"><div></div></div><div class="gloss"><i id="g-phone"></i></div></div></div>
+          <div class="obj" id="ccard" style="left: 560px; top: 330px; width: 560px"><img src="assets/3d/card.png" alt="" /></div>
+          <div class="obj" id="token" style="left: 1130px; top: 380px; width: 300px"><img src="assets/3d/swap.png" alt="" /></div>
+          <div class="notif" id="n1" style="left: 330px; top: 300px"><i></i><div><b>Compra aprovada</b><span>R$ 89,90 · Bar da Esquina</span></div><em>agora</em></div>
+          <div class="notif pix" id="n2" style="left: 1080px; top: 760px"><i></i><div><b>Pix enviado</b><span>R$ 40,00 para Júlia</span></div><em>agora</em></div>
+          <div class="notif" id="n3" style="left: 1110px; top: 300px"><i></i><div><b>Compra aprovada</b><span>R$ 32,50 · Corrida</span></div><em>agora</em></div>
+          <div class="notif" id="n4" style="left: 680px; top: 540px"><i></i><div><b>Compra aprovada</b><span>R$ 58,00 · Lanche</span></div><em>agora</em></div>
+          <div class="obj" id="o2-bell" style="left: 1500px; top: 690px; width: 330px"><img src="assets/3d/bell.png" alt="" /></div>
+        </div>
+      </div>
+
+      <video id="v-worried" class="clip full" src="assets/video/fox-worried.mp4" muted data-start="5.050" data-duration="2.400" data-media-start="2.2" data-track-index="2"></video>
+      <div id="s3o" class="scene clip" data-start="5.050" data-duration="2.150" data-track-index="3">
+        <div id="vignette"></div>
+        <div class="head" id="h3"><span id="w3a">E na</span><span id="w3b" class="key">segunda?</span></div>
+      </div>
+
+      <div id="s4" class="scene clip" data-start="7.100" data-duration="3.040" data-track-index="4">
+        <div class="inner cream" id="s4-in" style="filter: url(#hb4)">
+          <div class="glow" id="s4-glow"></div>
+          <div class="dustbox" id="s4-dust"></div>
+          <div class="obj" id="o4-coin" style="left: 230px; top: 620px; width: 170px"><img src="assets/3d/coin.png" alt="" /></div>
+          <div class="head" id="s4-head"><span id="w4a" class="key">Zero</span><span id="w4b">susto</span><span id="w4c">no</span><span id="w4d">fim</span><span id="w4e">do</span><span id="w4f">mês.</span></div>
+          <div class="ui" id="bill">
+            <div class="top"><span>Fatura de novembro</span><span>Zupi</span></div>
+            <div id="amount">R$ 1.890,00</div>
+            <div class="track"><div class="fill" id="bfill"></div><div class="knob" id="bknob"></div></div>
+            <div class="legend"><span><b>Vence dia 10</b>Prevista</span><span style="text-align: right"><b>R$ 3.000,00</b>Limite</span></div>
+            <div class="gloss"><i id="g-bill"></i></div>
+          </div>
+          <div id="ring"></div>
+          <div id="sparks"></div>
+          <div id="check"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+          <div class="pill" id="pill4" style="top: 850px"><div><i></i>Tudo sob controle</div></div>
+          <div class="obj" id="o4-shield" style="left: 1530px; top: 640px; width: 290px"><img src="assets/3d/shield.png" alt="" /></div>
+        </div>
+      </div>
+
+      <div id="s5" class="scene clip" data-start="9.720" data-duration="6.180" data-track-index="5">
+        <div class="inner cream" id="s5-in" style="filter: url(#hb5)">
+          <div class="glow" id="s5-glow" style="left: 700px"></div>
+          <div class="dustbox" id="s5-dust"></div>
+          <div id="s5-head"><span id="w5a">Com a</span><span id="w5b" class="key">Zupi</span><span id="w5c">você tem</span></div>
+          <div id="flist">
+            <div id="fpill"></div>
+            <div class="it" id="f1"><i id="d1"></i>Cartão virtual</div>
+            <div class="it" id="f2"><i id="d2"></i>Alerta de gasto</div>
+            <div class="it" id="f3"><i id="d3"></i>Pix agendado</div>
+            <div class="it" id="f4"><i id="d4"></i>Login pelo rosto</div>
+          </div>
+          <div class="ui fcard" id="fc1"><h4>Cartão virtual</h4><p>Só pra compras online</p><div class="hero" style="top: 200px"><div class="obj" id="fo1" style="position: relative; width: 430px"><img src="assets/3d/card.png" alt="" /></div></div><div class="gloss"><i id="g1"></i></div></div>
+          <div class="ui fcard" id="fc2"><h4>Alerta de gasto</h4><p>Você define o limite da noite</p><div class="alert"><b>Você já usou 80%</b><span>do limite de R$ 200,00 pra hoje</span></div><div class="track" style="margin-top: 40px"><div class="fill" id="f2fill"></div></div><div class="gloss"><i id="g2"></i></div></div>
+          <div class="ui fcard" id="fc3"><h4>Pix agendado</h4><p>Conta paga sem lembrar</p><div class="sched"><div id="r1"><span>Aluguel · dia 05</span><span>Agendado</span></div><div id="r2"><span>Internet · dia 12</span><span>Agendado</span></div><div id="r3"><span>Academia · dia 15</span><span>Agendado</span></div></div><div class="gloss"><i id="g3"></i></div></div>
+          <div class="ui fcard" id="fc4"><h4>Login pelo rosto</h4><p>Bem-vinda de volta, Ana</p><div class="hero" style="top: 190px"><div class="obj" id="fo4" style="position: relative; width: 250px"><img src="assets/3d/shield.png" alt="" /></div></div><div class="gloss"><i id="g4"></i></div></div>
+          <div class="obj" id="b1" style="left: 1580px; top: 700px; width: 150px"><img src="assets/3d/card.png" alt="" /></div>
+          <div class="obj" id="b2" style="left: 1590px; top: 690px; width: 130px"><img src="assets/3d/bell.png" alt="" /></div>
+          <div class="obj" id="b3" style="left: 1590px; top: 700px; width: 140px"><img src="assets/3d/swap.png" alt="" /></div>
+          <div class="obj" id="b4" style="left: 1595px; top: 690px; width: 125px"><img src="assets/3d/shield.png" alt="" /></div>
+        </div>
+      </div>
+
+      <div id="s6" class="scene clip" data-start="15.550" data-duration="2.650" data-track-index="6">
+        <div class="inner cream" id="s6-in">
+          <div class="glow" id="s6-glow"></div>
+          <div class="dustbox" id="s6-dust"></div>
+          <div class="obj orb6" id="k1" style="left: 0; top: 0; width: 230px"><img src="assets/3d/swap.png" alt="" /></div>
+          <div class="obj orb6" id="k2" style="left: 0; top: 0; width: 300px"><img src="assets/3d/card.png" alt="" /></div>
+          <div class="obj orb6" id="k3" style="left: 0; top: 0; width: 220px"><img src="assets/3d/chart.png" alt="" /></div>
+          <div class="obj orb6" id="k4" style="left: 0; top: 0; width: 190px"><img src="assets/3d/coin.png" alt="" /></div>
+          <div class="head" id="s6-head"><span id="w6a">Tudo</span><span id="w6b" class="key">num</span><span id="w6c" class="key">app</span><span id="w6d" class="key">só.</span></div>
+        </div>
+      </div>
+
+      <video id="v-night" class="clip full" src="assets/video/night.mp4" muted data-start="18.200" data-duration="1.750" data-media-start="0.6" data-track-index="7"></video>
+      <div id="s7o" class="scene clip" data-start="18.200" data-duration="1.750" data-track-index="8">
+        <div id="h7"><span id="w7a">Você</span><span id="w7b">aproveita</span><span id="w7c">a</span><span id="w7d">noite.</span></div>
+      </div>
+
+      <div id="s8" class="scene clip" data-start="19.950" data-duration="2.890" data-track-index="9">
+        <div class="inner cream" id="s8-in" style="filter: url(#hb8)">
+          <div class="glow" id="s8-glow"></div>
+          <div class="dustbox" id="s8-dust"></div>
+          <div class="obj" id="o8-coin" style="left: 300px; top: 700px; width: 160px"><img src="assets/3d/coin.png" alt="" /></div>
+          <div class="obj" id="o8-chart" style="left: 1480px; top: 640px; width: 230px"><img src="assets/3d/chart.png" alt="" /></div>
+          <div class="head" id="s8-head"><span id="w8a">O</span><span id="w8b" class="key">Zupinho</span><span id="w8c">cuida</span><span id="w8d">do</span><span id="w8e">resto.</span></div>
+        </div>
+      </div>
+      <video id="v-hop" class="clip" src="assets/video/fox-hop.mp4" muted data-start="19.950" data-duration="2.890" data-media-start="0" data-track-index="10"></video>
+
+      <div id="s9" class="scene clip" data-start="22.420" data-duration="4.080" data-track-index="11">
+        <div class="inner brandfield" id="s9-in" style="filter: url(#hb9)">
+          <div class="glow" id="s9-glow"></div>
+          <div class="dustbox" id="s9-dust"></div>
+          <div id="logo"><div id="logo-icon"></div><div id="logo-word"><span>z</span><span>u</span><span>p</span><span>i</span></div></div>
+          <div id="logo-sweep"><i id="g-logo"></i></div>
+          <div id="tagline"></div>
+          <div class="credit" data-layout-ignore>MARCA FICTÍCIA · TESTE</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const T = {"total": 26.5, "push_1": 1.38, "zoom_through": 4.95, "cut_mascot": 5.05, "xfade_payoff": 7.1, "push_2": 9.72, "xfade_allinone": 15.55, "cut_human": 18.2, "cut_frame": 19.95, "push_3": 22.42, "notif": [3.55, 3.8, 4.05, 4.3], "counter_start": 7.65, "counter_dur": 1.25, "check": 8.95, "features": [10.82, 11.93, 13.65, 14.48], "fox_hop_land": 21.35, "logo": 22.65, "tagline": 24.01, "dropout": [5.0, 7.05]};
+      const W = {"1": [["Sexta", 0.35], ["noite,", 0.76], ["rolê", 1.5], ["marcado.", 1.7]], "2": [["Cartão", 2.67], ["pra", 3.09], ["cá,", 3.28], ["Pix", 3.59], ["pra", 3.8], ["lá.", 3.98]], "3": [["Ena", 5.37], ["segunda?", 5.68]], "4": [["Zero", 7.25], ["susto", 7.39], ["no", 8.0], ["fim", 8.28], ["do", 8.69], ["mês.", 8.97]], "5": [["Com", 9.86], ["a", 10.05], ["Zupi", 10.18], ["você", 10.37], ["tem", 10.63], ["cartão", 10.82], ["virtual,", 11.2], ["alerta", 11.93], ["de", 12.65], ["gasto,", 12.88], ["Pix", 13.65], ["agendado", 13.85], ["e", 14.43], ["login", 14.48], ["pelo", 14.79], ["rosto.", 15.02]], "6": [["Tudo", 15.79], ["num", 16.04], ["app", 16.56], ["só.", 16.99]], "7": [["Você", 18.29], ["aproveita", 18.39], ["a", 19.24], ["noite.", 19.26]], "8": [["O", 20.09], ["Zupinho", 20.19], ["cuida", 20.87], ["do", 21.52], ["resto.", 21.56]], "9": [["Zupi,", 22.65], ["leve", 24.01], ["no", 24.16], ["bolso.", 24.43]]};
+      const tl = gsap.timeline({ paused: true });
+
+      // ---------- helpers ----------
+      // word entrance: 3D flip-up + rise + blur (3 properties minimum)
+      const wordIn = (sel, t, from = {}) =>
+        tl.fromTo(sel, { opacity: 0, rotationX: 70, y: 34, filter: "blur(16px)", transformOrigin: "50% 100%", ...from },
+          { opacity: 1, rotationX: 0, rotationY: 0, y: 0, x: 0, filter: "blur(0px)", duration: 0.42, ease: "expo.out" }, t - 0.07);
+      const out = (sel, t, d = 0.24) => tl.to(sel, { opacity: 0, y: -18, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const drift = (sel, t0, t1, dx, dy) => tl.fromTo(sel, { x: 0, y: 0 }, { x: dx, y: dy, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      // the camera never stops: slow push on every scene's inner wrapper
+      const camera = (sel, t0, t1, s = 1.055) => tl.fromTo(sel, { scale: 1 }, { scale: s, duration: t1 - t0, ease: "none" }, t0);
+      // 3D object: drifts, tilts and spins slowly for the whole scene, depth blur constant
+      const float3d = (sel, t0, t1, amp, rot, blur) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot, rotationY: -12, filter: `blur(${blur}px)` },
+          { y: -amp, rotation: rot, rotationY: 12, filter: `blur(${blur}px)`, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const enter3d = (sel, t, blurEnd = 0) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.5, rotationX: 35, rotationY: -40, filter: "blur(18px)" },
+          { opacity: 1, scale: 1, rotationX: 0, rotationY: 0, filter: `blur(${blurEnd}px)`, duration: 0.7, ease: "expo.out" }, t);
+      const sweep = (sel, t, d = 0.75, end = 420) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: end, duration: d, ease: "power2.inOut" }, t);
+      const hblur = (id, from, to, t, d, ease) => {
+        const g = document.getElementById(id), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", p.v + " 0");
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set }, t);
+      };
+      const push = (outIn, outBlur, inIn, inBlur, t, extraOut = []) => {
+        tl.fromTo(outIn, { x: 0 }, { x: -1920, duration: 0.3, ease: "power3.inOut" }, t);
+        extraOut.forEach((s) => tl.fromTo(s, { x: 0 }, { x: -1920, duration: 0.3, ease: "power3.inOut" }, t));
+        hblur(outBlur, 0, 60, t, 0.3, "power3.inOut");
+        tl.fromTo(inIn, { x: 1920 }, { x: 0, duration: 0.3, ease: "power3.inOut" }, t);
+        hblur(inBlur, 60, 0, t, 0.42, "power3.out");
+      };
+      const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: "back.out(2.2)" }, t);
+      // floating light dust: deterministic positions, slow drift, gives depth to every canvas
+      const dust = (id, t0, t1) => {
+        const box = document.getElementById(id);
+        for (let i = 0; i < 9; i++) {
+          const d = document.createElement("div");
+          d.className = "dust";
+          const s = 14 + ((i * 37) % 40);
+          Object.assign(d.style, { width: s + "px", height: s + "px", left: ((i * 211) % 1800) + 60 + "px", top: ((i * 131) % 900) + 80 + "px" });
+          box.appendChild(d);
+          tl.fromTo(d, { y: 0, x: 0, opacity: 0.25 + (i % 3) * 0.2 }, { y: -60 - (i % 4) * 30, x: (i % 2 ? 1 : -1) * 40, opacity: 0.1, duration: t1 - t0, ease: "sine.inOut" }, t0);
+        }
+      };
+
+      // ---------- S1 hook (excitement 4) ----------
+      const line = document.getElementById("s1-line");
+      dust("s1-dust", 0, T.push_1 + 0.3);
+      camera("#s1-in", 0, T.push_1 + 0.3, 1.04);
+      drift("#s1-glow", 0, T.push_1 + 0.3, 140, 60);
+      tl.fromTo("#w1a", { opacity: 0.75, filter: "blur(10px)", scale: 1.08 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo(line, { x: 740 }, { x: 470, duration: 0.42, ease: "expo.inOut" }, W[1][0][1] + 0.12);
+      wordIn("#w1b", W[1][0][1] + 0.2, { x: 90 });
+      tl.to(line, { x: 300, duration: 0.42, ease: "expo.inOut" }, W[1][1][1] - 0.05);
+      wordIn("#w1c", W[1][1][1], { x: 120 });
+
+      // ---------- push 1 -> S2 (fun 4) ----------
+      push("#s1-in", "hb1g", "#s2-in", "hb2g", T.push_1);
+      dust("s2-dust", T.push_1, T.zoom_through);
+      camera("#s2-in", T.push_1 + 0.3, T.zoom_through, 1.06);
+      drift("#s2-glow", T.push_1, T.zoom_through, -110, 60);
+      float3d("#o2-coin", T.push_1, T.zoom_through, 16, 10, 8);
+      float3d("#o2-chart", T.push_1, T.zoom_through, 12, -8, 6);
+      float3d("#o2-bell", T.push_1, T.zoom_through, 20, 12, 13);
+      wordIn("#w1d", W[1][2][1]);
+      wordIn("#w1e", W[1][3][1]);
+      tl.fromTo("#phone", { y: 420, rotationX: 30, opacity: 0, filter: "blur(10px)" }, { y: 0, rotationX: 0, opacity: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out" }, T.push_1 + 0.08);
+      tl.to("#phone", { rotationY: -10, rotation: 2, duration: 1.0, ease: "sine.inOut" }, T.push_1 + 0.9);
+      sweep("#g-phone", T.push_1 + 0.7);
+      out("#s2-headA", W[2][0][1] - 0.25);
+      tl.to("#phone", { y: 460, rotationX: -25, opacity: 0, filter: "blur(14px)", duration: 0.38, ease: "power2.in" }, W[2][0][1] - 0.28);
+      ["#w2a", "#w2b", "#w2c", "#w2d", "#w2e", "#w2f"].forEach((s, i) => wordIn(s, W[2][i][1]));
+      enter3d("#ccard", W[2][0][1] - 0.05);
+      tl.to("#ccard", { rotationY: 22, rotationX: 10, rotation: -6, y: -26, duration: 1.7, ease: "sine.inOut" }, W[2][0][1] + 0.65);
+      enter3d("#token", W[2][3][1] - 0.05);
+      tl.to("#token", { rotation: 14, rotationY: -18, y: -24, duration: 1.2, ease: "sine.inOut" }, W[2][3][1] + 0.65);
+      // notifications fly in from behind the camera; older ones get nudged by the newcomer
+      const nd = [["#n1", 0, 1, -4], ["#n2", 0, 1, 3], ["#n3", 3, 0.9, -3], ["#n4", 0, 1.06, 2]];
+      T.notif.forEach((t, i) => {
+        const [s, b, sc, r] = nd[i];
+        tl.fromTo(s, { opacity: 0, scale: 2.3, rotationX: -40, rotation: r * 3, filter: "blur(20px)", y: -80 },
+          { opacity: 1, scale: sc, rotationX: 0, rotation: r, filter: `blur(${b}px)`, y: 0, duration: 0.42, ease: "expo.out" }, t);
+        for (let j = 0; j < i; j++) tl.to(nd[j][0], { y: "+=14", duration: 0.25, ease: "power2.out" }, t + 0.12);
+      });
+      // the last notification zooms through the camera: that is the cut
+      tl.to("#n4", { scale: 7, opacity: 0, filter: "blur(34px)", duration: 0.32, ease: "power2.in" }, T.zoom_through - 0.25);
+      tl.to(["#n1", "#n2", "#n3", "#ccard", "#token", "#o2-bell", "#o2-coin", "#o2-chart"], { scale: 1.7, opacity: 0, filter: "blur(26px)", duration: 0.32, ease: "power2.in" }, T.zoom_through - 0.25);
+
+      // ---------- S3 turn (suspense 3): mascot, slow push-in, warm vignette closes in ----------
+      tl.fromTo("#v-worried", { scale: 0.86, transformOrigin: "50% 100%" }, { scale: 0.94, transformOrigin: "50% 100%", duration: T.xfade_payoff - T.cut_mascot + 0.3, ease: "sine.inOut" }, T.cut_mascot);
+      tl.fromTo("#vignette", { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "sine.inOut" }, T.cut_mascot + 0.2);
+      wordIn("#w3a", W[3][0][1]);
+      wordIn("#w3b", W[3][1][1]);
+
+      // ---------- S4 payoff (relief 4): glow blooms, counter, check burst ----------
+      tl.fromTo("#s4-in", { opacity: 0, filter: "blur(22px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.36, ease: "power2.out" }, T.xfade_payoff);
+      dust("s4-dust", T.xfade_payoff, T.push_2);
+      tl.fromTo("#s4-glow", { scale: 0.7, opacity: 0.6 }, { scale: 1.25, opacity: 1, duration: T.push_2 - T.xfade_payoff, ease: "sine.out" }, T.xfade_payoff);
+      float3d("#o4-coin", T.xfade_payoff, T.push_2, 16, 10, 8);
+      float3d("#o4-shield", T.xfade_payoff, T.push_2, 20, -8, 12);
+      ["#w4a", "#w4b", "#w4c", "#w4d", "#w4e", "#w4f"].forEach((s, i) => wordIn(s, Math.max(W[4][i][1], T.xfade_payoff + 0.12)));
+      tl.fromTo("#bill", { opacity: 0, scale: 0.9, y: 70, rotationX: 28, filter: "blur(12px)" }, { opacity: 1, scale: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.75, ease: "expo.out" }, T.xfade_payoff + 0.12);
+      tl.to("#bill", { y: -12, rotationY: 5, rotationX: -3, duration: T.push_2 - T.xfade_payoff - 0.9, ease: "sine.inOut" }, T.xfade_payoff + 0.87);
+      sweep("#g-bill", T.xfade_payoff + 0.6);
+      const amt = document.getElementById("amount"), money = { v: 1890 };
+      const fmt = () => (amt.textContent = "R$ " + money.v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+      fmt();
+      tl.fromTo(money, { v: 1890 }, { v: 642.3, duration: T.counter_dur, ease: "power2.inOut", onUpdate: fmt }, T.counter_start);
+      tl.fromTo("#bfill", { scaleX: 0.63 }, { scaleX: 0.21, duration: T.counter_dur, ease: "power2.inOut" }, T.counter_start);
+      tl.fromTo("#bknob", { x: 365 }, { x: 122, duration: T.counter_dur, ease: "power2.inOut" }, T.counter_start);
+      tl.fromTo("#amount", { scale: 1 }, { scale: 1.08, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1 }, T.counter_start + T.counter_dur - 0.05);
+      // check: pop + ring ripple + spark burst
+      pop("#check", T.check);
+      tl.fromTo("#ring", { scale: 0.7, opacity: 0.8 }, { scale: 2.4, opacity: 0, duration: 0.7, ease: "power2.out" }, T.check + 0.08);
+      tl.set("#ring", { opacity: 0 }, 0);
+      const sparks = document.getElementById("sparks");
+      for (let i = 0; i < 12; i++) {
+        const s = document.createElement("div");
+        s.className = "spark";
+        s.style.background = i % 3 === 0 ? "#ff9a1f" : i % 3 === 1 ? "#22c55e" : "#ffd27a";
+        sparks.appendChild(s);
+        const a = (i / 12) * Math.PI * 2, r = 120 + (i % 3) * 30;
+        tl.fromTo(s, { x: 0, y: 0, scale: 1.2, opacity: 1 }, { x: Math.cos(a) * r, y: Math.sin(a) * r, scale: 0.2, opacity: 0, duration: 0.75, ease: "expo.out" }, T.check + 0.06);
+        tl.set(s, { opacity: 0 }, 0);
+      }
+      tl.fromTo("#pill4 div", { opacity: 0, y: 26, scale: 0.9, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.8)" }, T.check + 0.25);
+
+      // ---------- push 2 -> S5 feature cycle (excitement 4) ----------
+      push("#s4-in", "hb4g", "#s5-in", "hb5g", T.push_2);
+      dust("s5-dust", T.push_2, T.xfade_allinone);
+      camera("#s5-in", T.push_2 + 0.3, T.xfade_allinone + 0.35, 1.035);
+      drift("#s5-glow", T.push_2, T.xfade_allinone, -80, 50);
+      ["#w5a", "#w5b", "#w5c"].forEach((s, i) => wordIn(s, [W[5][0][1], W[5][2][1], W[5][3][1]][i] + 0.05));
+      tl.fromTo("#flist .it", { opacity: 0, x: -40, rotationY: 30, filter: "blur(10px)" }, { opacity: 1, x: 0, rotationY: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", stagger: 0.07 }, T.push_2 + 0.25);
+      tl.fromTo("#fpill", { opacity: 0, scaleX: 0.6, y: 0 }, { opacity: 0, scaleX: 0.6, y: 0, duration: 0.01 }, T.push_2);
+      tl.fromTo("#flist i", { scale: 0 }, { scale: 0, duration: 0.01 }, T.push_2);
+      const ft = T.features;
+      ft.forEach((t, i) => {
+        const n = i + 1, end = i < 3 ? ft[i + 1] : T.xfade_allinone;
+        // sliding pill behind the active item; the list itself never moves
+        if (i === 0) tl.to("#fpill", { opacity: 1, scaleX: 1, duration: 0.45, ease: "expo.out" }, t - 0.08);
+        else tl.to("#fpill", { y: i * 100, duration: 0.45, ease: "expo.inOut" }, t - 0.12);
+        tl.to(`#f${n}`, { color: "#1e1e1e", scale: 1.04, duration: 0.3, ease: "power2.out", transformOrigin: "0% 50%" }, t - 0.06);
+        tl.to(`#d${n}`, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, t - 0.04);
+        if (i < 3) {
+          tl.to(`#f${n}`, { color: "#857a6b", scale: 1, duration: 0.25, ease: "power2.in" }, end - 0.1);
+          tl.to(`#d${n}`, { scale: 0, duration: 0.2, ease: "power2.in" }, end - 0.1);
+        }
+        tl.fromTo(`#fc${n}`, { opacity: 0, y: 40, rotationY: -22, filter: "blur(14px)" }, { opacity: 1, y: 0, rotationY: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, t - 0.06);
+        tl.to(`#fc${n}`, { rotationY: 6, y: -8, duration: Math.max(0.4, end - t - 0.3), ease: "sine.inOut" }, t + 0.39);
+        sweep(`#g${n}`, t + 0.25, 0.7);
+        if (i < 3) tl.to(`#fc${n}`, { opacity: 0, y: -24, rotationY: 18, filter: "blur(14px)", duration: 0.28, ease: "power2.in" }, end - 0.12);
+        enter3d(`#b${n}`, t - 0.1);
+        tl.to(`#b${n}`, { rotation: 10, y: -14, duration: Math.max(0.4, end - t - 0.2), ease: "sine.inOut" }, t + 0.6);
+        if (i < 3) tl.to(`#b${n}`, { opacity: 0, scale: 0.5, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, end - 0.12);
+      });
+      enter3d("#fo1", ft[0] + 0.1);
+      tl.to("#fo1", { rotationY: 20, rotation: -6, duration: 1.0, ease: "sine.inOut" }, ft[0] + 0.8);
+      tl.fromTo("#f2fill", { scaleX: 0 }, { scaleX: 0.8, duration: 0.9, ease: "expo.out" }, ft[1] + 0.2);
+      tl.fromTo(["#r1", "#r2", "#r3"], { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out", stagger: 0.1 }, ft[2] + 0.1);
+      enter3d("#fo4", ft[3] + 0.1);
+
+      // ---------- S6 all-in-one (triumph 5): 3D icons orbit the headline ----------
+      tl.fromTo("#s6-in", { opacity: 0, filter: "blur(22px)", scale: 1.08 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.36, ease: "power2.out" }, T.xfade_allinone);
+      dust("s6-dust", T.xfade_allinone, T.cut_human);
+      drift("#s6-glow", T.xfade_allinone, T.cut_human, 100, 40);
+      const orb = { a: 0 }, ids = ["#k1", "#k2", "#k3", "#k4"], els = ids.map((s) => document.querySelector(s));
+      const placeOrbit = () => {
+        els.forEach((el, i) => {
+          const a = orb.a + (i / 4) * Math.PI * 2, depth = (Math.sin(a) + 1) / 2; // 0 back .. 1 front
+          const w = el.offsetWidth || 220, h = el.offsetHeight || 200;
+          gsap.set(el, { x: 960 + Math.cos(a) * 700 - w / 2, y: 540 + Math.sin(a) * 280 - h / 2, scale: 0.65 + depth * 0.55,
+            zIndex: depth > 0.5 ? 5 : 1, filter: `blur(${(1 - depth) * 7}px)`, rotation: Math.cos(a) * 14 });
+        });
+      };
+      placeOrbit();
+      tl.fromTo(orb, { a: -0.6 }, { a: 1.5, duration: T.cut_human - T.xfade_allinone, ease: "sine.inOut", onUpdate: placeOrbit }, T.xfade_allinone);
+      tl.fromTo(".orb6 img", { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.07 }, T.xfade_allinone + 0.05);
+      wordIn("#w6a", W[6][0][1]);
+      ["#w6b", "#w6c", "#w6d"].forEach((s, i) => wordIn(s, W[6][i + 1][1], { x: 90, rotationX: 0, rotationY: -50 }));
+      tl.fromTo("#s6-head", { scale: 1 }, { scale: 1.07, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, W[6][3][1] + 0.1);
+
+      // ---------- S7 human beat (intimacy 2): slow, soft ----------
+      tl.fromTo("#v-night", { scale: 1.08 }, { scale: 1.0, duration: T.cut_frame - T.cut_human, ease: "sine.out" }, T.cut_human);
+      ["#w7a", "#w7b", "#w7c", "#w7d"].forEach((s, i) =>
+        tl.fromTo(s, { opacity: 0, y: 16, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "sine.out" }, W[7][i][1] - 0.07));
+
+      // ---------- S8 mascot (humor 3): mask reveal frame ----------
+      dust("s8-dust", T.cut_frame, T.push_3);
+      camera("#s8-in", T.cut_frame, T.push_3 + 0.3, 1.04);
+      drift("#s8-glow", T.cut_frame, T.push_3, -90, 50);
+      float3d("#o8-coin", T.cut_frame, T.push_3, 14, 10, 7);
+      float3d("#o8-chart", T.cut_frame, T.push_3, 18, -8, 11);
+      tl.fromTo("#v-hop", { clipPath: "inset(48% 48% 48% 48% round 44px)", scale: 0.9, rotationX: 15 },
+        { clipPath: "inset(0% 0% 0% 0% round 44px)", scale: 1, rotationX: 0, duration: 0.65, ease: "expo.out" }, T.cut_frame);
+      tl.to("#v-hop", { y: -12, rotation: -1.2, duration: T.push_3 - T.cut_frame - 0.6, ease: "sine.inOut" }, T.cut_frame + 0.65);
+      ["#w8a", "#w8b", "#w8c", "#w8d", "#w8e"].forEach((s, i) => wordIn(s, Math.max(W[8][i][1], T.cut_frame + 0.1)));
+
+      // ---------- push 3 -> S9 lockup (authority 3): logo assembles, light sweep, tagline letters ----------
+      push("#s8-in", "hb8g", "#s9-in", "hb9g", T.push_3, ["#v-hop"]);
+      dust("s9-dust", T.push_3, T.total);
+      camera("#s9-in", T.push_3 + 0.3, T.total, 1.035);
+      drift("#s9-glow", T.push_3, T.total, 120, 40);
+      tl.fromTo("#logo-icon", { opacity: 0, scale: 0.2, rotation: -200, filter: "blur(16px)" }, { opacity: 1, scale: 1, rotation: 0, filter: "blur(0px)", duration: 0.75, ease: "expo.out" }, T.logo - 0.12);
+      tl.fromTo("#logo-word span", { opacity: 0, y: 90, rotationX: 80, filter: "blur(14px)", transformOrigin: "50% 100%" },
+        { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out", stagger: 0.06 }, T.logo);
+      sweep("#g-logo", T.logo + 0.75, 0.9, 560);
+      const tg = document.getElementById("tagline");
+      "Leve no bolso.".split("").forEach((c) => { const s = document.createElement("span"); s.textContent = c; tg.appendChild(s); });
+      tl.fromTo("#tagline span", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out", stagger: 0.025 }, T.tagline - 0.08);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

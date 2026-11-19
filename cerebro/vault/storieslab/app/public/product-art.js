@@ -1,0 +1,16 @@
+// Product previews use the actual library, looks and excerpts included in each material.
+(() => {
+ const image=(src,cls='')=>`<img class="${cls}" src="${src}" alt="" loading="lazy" decoding="async">`;
+ const photo=name=>'img/presets/antes/'+name+'.webp';
+ const looks=[['17-dark-cinema','ref-dark-cinema','Dark Cinema'],['19-ocean','ref-ocean','Ocean'],['14-editorial','ref-editorial','Editorial']];
+ const views={
+  presets:()=>`<span class="pa-look-strip">${looks.map(([id,p,name])=>`<span class="pa-look">${image('img/presets/depois/'+id+'/'+p+'.webp')}<span>${name}</span></span>`).join('')}</span><span class="pa-glass pa-count">109 looks</span>`,
+  animadas:()=>`<span class="pa-story pa-story-back">${image(photo('ref-soft-film'))}${image('anim-2.webp','pa-sticker')}</span><span class="pa-story pa-story-front">${image(photo('ref-editorial'))}${image('anim-3.webp','pa-sticker')}</span><span class="pa-glass pa-count">Em movimento</span>`,
+  agenda:()=>`<span class="pa-agenda-photo">${image('img/material-scenes/agenda.webp')}</span><span class="pa-page"><span class="pa-eyebrow">SUA AGENDA DE CONTEÚDO</span><span class="pa-calendar">${['01','02','03','04','05'].map((d,i)=>`<span class="${i?'':'active'}">${d}</span>`).join('')}</span><span class="pa-page-title">Prazer, sou eu<br><em>(de novo).</em></span><span class="pa-page-sub">Dia 01 · Conexão</span><span class="pa-task"><i>1</i>Apresente-se</span><span class="pa-task"><i>2</i>Mostre seu trabalho</span><span class="pa-task"><i>3</i>Conte sua história</span></span>`,
+  magneticos:()=>`<span class="pa-script-story">${image(photo('ref-soft-film'))}<span class="pa-story-lines"><i></i><i></i><i></i><i></i></span><span class="pa-story-quote">Bom dia!<br>Vem comigo?</span></span><span class="pa-script-page"><span class="pa-eyebrow">ROTEIRO 01</span><span class="pa-page-title">Bom dia<br>com plano.</span><span class="pa-script-step"><i>01</i><span>Crie presença<small>Mostre o começo do dia</small></span></span><span class="pa-script-step"><i>02</i><span>Divida sua rotina<small>Primeiro o café…</small></span></span><span class="pa-script-step"><i>03</i><span>Abra a conversa<small>Puxe uma resposta</small></span></span></span>`,
+  kit:()=>`<span class="pa-kit-grid">${[['presets','Estúdio de Fotos'],['animadas','Animadas'],['agenda','Agenda'],['magneticos','Stories Magnéticos']].map(([id,name])=>`<span>${image('img/material-covers/'+id+'-preview.webp')}<span>${name}</span></span>`).join('')}</span>`
+ };
+ for(const k of ['letras','perfil','reels'])views[k]=()=>image('img/material-covers/'+k+'-preview.webp');
+ const descriptions={letras:'Figurinhas com a sua frase em 20 fontes',perfil:'Método prático para aumentar seus seguidores',reels:'60 roteiros de Reels prontos',presets:'Prévias dos filtros Dark Cinema, Ocean e Editorial',animadas:'Figurinhas animadas aplicadas em Stories',agenda:'Prévia do primeiro dia da Agenda de Conteúdo',magneticos:'Prévia do roteiro Bom dia com plano',kit:'Estúdio de Fotos, Figurinhas Animadas, Agenda e Stories Magnéticos'};
+ window.StoriesProducts={art(key){return views[key]?`<span class="product-art product-art-${key}" role="img" aria-label="${descriptions[key]}"><span class="pa-content" aria-hidden="true">${views[key]()}</span></span>`:'';}};
+})();

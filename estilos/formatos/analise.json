@@ -1,0 +1,1240 @@
+[
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "UPPhwIMrkSg",
+  "subestilo": "pixel art · objeto com rosto (sem fala)",
+  "nicho": "curiosidades/emocional (o excluído vira herói)",
+  "gancho_3s": "Caixa de giz de cera, mão pega todos, o giz branco fica sozinho com cara triste.",
+  "estrutura": {
+   "comeco": "Mão escolhe gizes coloridos para desenhar casa e sol; o branco nunca é escolhido.",
+   "tensao": "O branco fica sozinho na caixa, olhar triste, papel branco onde ele não aparece.",
+   "virada": "Papel preto: só o branco brilha, desenha estrelas e um boneco de neve; os outros aplaudem com corações."
+  },
+  "estilo_visual": {
+   "personagem": "gizes de cera com olhinhos e boca de 2 pixels, mão humana com manga listrada",
+   "paleta": "madeira quente + papel creme, depois virada para fundo azul-marinho escuro; cores primárias saturadas",
+   "fonte_legenda": "sem legenda (história 100% visual, título no post)"
+  },
+  "som": {
+   "voz": "nenhuma",
+   "musica": "chiptune fofo, sobe na virada",
+   "sfx": "pop de pixel ao pegar giz, brilho na virada"
+  },
+  "por_que_prende": "Underdog em 15 s, entendido sem som e sem idioma; virada de cenário (claro para escuro) entrega a recompensa visual. Loop curto gera replay.",
+  "como_adaptar": [
+   "Escolha o \"excluído\" do nicho (ex.: a figurinha que ninguém usa, o aluno que trava, a dieta que ninguém segue).",
+   "Gere 6 a 8 cenas em pixel art 9:16 com o mesmo personagem (mesmo prompt-base + seed/referência de personagem).",
+   "Cena 1-2: o grupo escolhido, o excluído sozinho. Cena 3-4: tentativa e frustração. Cena 5-6: contexto muda e só ele resolve. Cena 7: celebração.",
+   "No HyperFrames: cada cena 1,5 a 2,5 s, movimento em steps (sem easing suave, 8-12 fps) para parecer pixel, mão/objeto entrando de fora do quadro.",
+   "Trilha chiptune + SFX 8-bit; sem voz. Título curto no post com a frase do excluído."
+  ],
+  "url": "https://www.youtube.com/watch?v=UPPhwIMrkSg",
+  "titulo": "The White Crayon Nobody Ever Picks",
+  "canal": "PIXEL LAB",
+  "views": 23826516,
+  "duracao_s": 15,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "SrMiqBGpsjU",
+  "subestilo": "pixel art · objeto com rosto (sem fala)",
+  "nicho": "curiosidades/emocional",
+  "gancho_3s": "Fileira de gizes coloridos sorrindo; o branco olha de lado, sem graça.",
+  "estrutura": {
+   "comeco": "O branco tenta desenhar no papel branco e não aparece nada.",
+   "tensao": "Noite: ele sozinho, rejeitado no quarto escuro.",
+   "virada": "Mão leva o branco para o papel preto, ele desenha lua e estrelas e volta orgulhoso para a fila."
+  },
+  "estilo_visual": {
+   "personagem": "gizes de cera com olhos de pixel, mão com manga listrada vermelha",
+   "paleta": "creme/amarelo de dia, azul-noite na virada",
+   "fonte_legenda": "sem legenda"
+  },
+  "som": {
+   "voz": "nenhuma",
+   "musica": "chiptune melancólico que vira alegre",
+   "sfx": "BANG/pop na virada"
+  },
+  "por_que_prende": "Mesma ideia do PIXEL LAB com outro canal = prova de que o FORMATO viraliza (21M e 24M). Rejeição + redenção, 15 s.",
+  "como_adaptar": [
+   "Mesma receita do item UPPhwIMrkSg; varie o objeto e o \"fundo que revela o valor\".",
+   "Ex. app de figurinhas: a figurinha branca minimalista ninguém usa no story claro, mas no story escuro ela é a única que aparece."
+  ],
+  "url": "https://www.youtube.com/watch?v=SrMiqBGpsjU",
+  "titulo": "The Last Crayon in the Box Is Always White | Pixel Art #Shorts",
+  "canal": "Insert Prompt",
+  "views": 21181585,
+  "duracao_s": 15,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "KL25VlV9U28",
+  "subestilo": "pixel art · narrado com legenda palavra a palavra",
+  "nicho": "saúde (caso médico bizarro real)",
+  "gancho_3s": "Close do homem mordendo uma pera com o adesivo \"POSIT\" e legenda \"He accidentally...\".",
+  "estrutura": {
+   "comeco": "Ele engole o adesivo da fruta, que sobe para o nariz (corte anatômico em pixel).",
+   "tensao": "7 anos de sintomas: inflamação, falta de ar, bombinha de asma achando que era outra coisa.",
+   "virada": "O médico olha o nariz e tira o adesivo com pinça; alívio."
+  },
+  "estilo_visual": {
+   "personagem": "gente realista em pixel art detalhado, cortes anatômicos",
+   "paleta": "pele rosada + vermelhos de anatomia, fundos lisos azul/verde",
+   "fonte_legenda": "sans branca bold com sombra, 2-3 palavras por vez no centro da tela"
+  },
+  "som": {
+   "voz": "voz narradora masculina neutra (tipo IA/locutor), ritmo rápido",
+   "musica": "cama leve de tensão",
+   "sfx": "whoosh na troca de cena"
+  },
+  "por_que_prende": "Caso real absurdo + \"anos sem saber\" = curiosidade aberta até o fim; anatomia em pixel é visual raro. 31 s, sem respiro.",
+  "como_adaptar": [
+   "Pegue um caso real absurdo do nicho (ex.: emagrecimento: a pessoa que cortou X e descobriu Y).",
+   "Roteiro de 70-90 palavras: acidente, sintoma, anos de erro, descoberta, solução. Primeira frase já é a ação.",
+   "Gere uma imagem pixel art por frase (8-12 imagens), mesmo personagem com referência fixa; inclua 1-2 cortes \"por dentro\" (corpo, celular, conta bancária).",
+   "Voz ElevenLabs narrador neutro rápido; legenda HyperFrames palavra a palavra, centro, branca com sombra; Ken Burns leve em cada imagem.",
+   "Fecha na solução + logo pequeno do canal."
+  ],
+  "url": "https://www.youtube.com/watch?v=KL25VlV9U28",
+  "titulo": "Produce Sticker Stuck in Nose for 7 Years 🥺",
+  "canal": "Posit Pixel",
+  "views": 28809984,
+  "duracao_s": 31,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "gQp-2HUy_EI",
+  "subestilo": "stick figure (palitinho) · ação sem fala",
+  "nicho": "entretenimento/amizade",
+  "gancho_3s": "Palitinho verde e laranja no sofá; Bob (desenho branco) surge atrás.",
+  "estrutura": {
+   "comeco": "Bob aparece em toda situação do dia, atrapalhando e ajudando.",
+   "tensao": "Os palitinhos tentam se livrar dele.",
+   "virada": "Final no sofá: Bob sempre está lá (piada de repetição)."
+  },
+  "estilo_visual": {
+   "personagem": "stick figures coloridos (verde, laranja) + personagem rabiscado",
+   "paleta": "fundo azul gradiente e cenas escuras; vídeo horizontal com tarja preta",
+   "fonte_legenda": "sem legenda"
+  },
+  "som": {
+   "voz": "sem voz",
+   "musica": "trilha de comédia",
+   "sfx": "impactos, tiro, pancadas"
+  },
+  "por_que_prende": "Personagem recorrente de um canal grande (66M); o palitinho lê rápido em tela pequena e a animação fluida segura.",
+  "como_adaptar": [
+   "Palitinho = mais barato de produzir: 2 cores de personagem, fundo liso.",
+   "Crie um personagem fixo do nicho (ex.: \"a dúvida\" que aparece em todo story que você posta) e repita a piada em 4-6 situações de 3 s.",
+   "No HyperFrames: SVG de palitinho com poses por cena (6-8 poses), transições por corte seco no beat.",
+   "Sem voz; SFX de impacto em cada gag. Formate 9:16 de verdade, sem tarja (o original perde área útil)."
+  ],
+  "url": "https://www.youtube.com/watch?v=gQp-2HUy_EI",
+  "titulo": "Bob Is Always There - An Actual Short",
+  "canal": "Alan Becker",
+  "views": 66467613,
+  "duracao_s": 57,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "2elDoIE5Zj8",
+  "subestilo": "2D cartoon flat · storytime narrado em 1ª pessoa",
+  "nicho": "saúde/comportamento (primeiro cigarro) · humor",
+  "gancho_3s": "Ele dormindo na cama, legenda grande \"WALE\" e voz contando \"um dia à tarde todo mundo dormia...\".",
+  "estrutura": {
+   "comeco": "Criança decide experimentar tabaco escondido.",
+   "tensao": "Vai à loja, se esconde no banheiro, tudo dá errado.",
+   "virada": "Consequência cômica no telhado/família descobre."
+  },
+  "estilo_visual": {
+   "personagem": "menino cartoon flat de camiseta azul com logo, olhos grandes",
+   "paleta": "cinzas claros e azul forte, céu azul",
+   "fonte_legenda": "fonte display branca com contorno preto, 1-2 palavras por vez, caixa alta"
+  },
+  "som": {
+   "voz": "voz humana em hindi, tom de causo",
+   "musica": "leve",
+   "sfx": "efeitos de comédia"
+  },
+  "por_que_prende": "86M: storytime pessoal (\"eu tentei X pela primeira vez\") com desenho simples. Identificação + vergonha alheia.",
+  "como_adaptar": [
+   "Roteiro \"A primeira vez que eu tentei X\" no nicho (ex.: comunidade de IA: \"a primeira vez que pedi pro ChatGPT fazer meu trabalho\").",
+   "Um personagem 2D fixo (gerado com referência de personagem), 10-14 cenas simples com fundo de cômodo.",
+   "Voz ElevenLabs em 1ª pessoa, coloquial, com pausas de comédia; legenda caixa alta com contorno, 1-2 palavras.",
+   "Inserir 1 \"print de celular\" no meio (cena com tela de app) para quebrar padrão."
+  ],
+  "url": "https://www.youtube.com/watch?v=2elDoIE5Zj8",
+  "titulo": "I Tried Tobacco For The First Time  #animation #funny",
+  "canal": "M  A  A  N    KD",
+  "views": 85959372,
+  "duracao_s": 58,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "VYhUa3WC4nU",
+  "subestilo": "2D flat vetorial (Kurzgesagt) · explicativo narrado",
+  "nicho": "finanças (armadilha da pobreza)",
+  "gancho_3s": "Homem caindo num redemoinho + \"Being poor is expensive. Here's how the trap works.\"",
+  "estrutura": {
+   "comeco": "Contas chegam antes do salário: barras de orçamento esvaziando, cobra (dívida) cuspindo \"credit boost\".",
+   "tensao": "Cada solução piora: vender carro, ficar doente, estresse; corte para o mesmo efeito no mundo (seca, preços).",
+   "virada": "Rede de proteção (saúde pública, seguro-desemprego) quebra a espiral; ícones de saúde, casa e dinheiro."
+  },
+  "estilo_visual": {
+   "personagem": "personagens flat sem contorno, metáfora visual (cobra = dívida)",
+   "paleta": "roxos e verdes profundos, laranja quente nos contrastes; gradientes suaves",
+   "fonte_legenda": "legenda pequena branca embaixo (discreta)"
+  },
+  "som": {
+   "voz": "voz humana masculina calma (narrador de documentário)",
+   "musica": "trilha ambiente eletrônica",
+   "sfx": "swooshes suaves"
+  },
+  "por_que_prende": "Tese na 1ª frase + metáfora visual forte (cobra) + HUD de barras de dinheiro = conceito abstrato fica concreto.",
+  "como_adaptar": [
+   "Escreva a tese em 1 frase polêmica do nicho (ex.: \"Fazer dieta da moda engorda. Veja a armadilha.\").",
+   "Escolha UMA metáfora visual que volta no vídeo (cobra, buraco, escada).",
+   "Gere cenas flat vetoriais, paleta de 3 cores fortes; adicione HUD animado em HyperFrames (barras, contadores) por cima.",
+   "Voz ElevenLabs narrador calmo; legenda pequena; 60-75 s."
+  ],
+  "url": "https://www.youtube.com/watch?v=VYhUa3WC4nU",
+  "titulo": "Why Being Poor Is Expensive",
+  "canal": "Kurzgesagt – In a Nutshell",
+  "views": 3857614,
+  "duracao_s": 72,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "qm5xRjWcJ4c",
+  "subestilo": "2D fofo (mascote) · explicativo com dado",
+  "nicho": "relacionamento",
+  "gancho_3s": "Gráfico de pizza \"Under 30: 60% SINGLE\" e a pergunta \"Did you know over 60% of men under 30 are single?\"",
+  "estrutura": {
+   "comeco": "Mascote azul triste, apps de namoro, comparação com o mascote laranja popular.",
+   "tensao": "\"Attractiveness gap\": 80% avaliados abaixo da média.",
+   "virada": "Explica as causas e devolve para o espectador refletir."
+  },
+  "estilo_visual": {
+   "personagem": "mascote redondo com folhinha na cabeça (marca do canal), traço grosso",
+   "paleta": "pastéis (lilás, verde, rosa, amarelo) chapados",
+   "fonte_legenda": "texto desenhado à mão dentro da cena (cartazes)"
+  },
+  "som": {
+   "voz": "voz feminina humana suave",
+   "musica": "piano leve",
+   "sfx": "poucos"
+  },
+  "por_que_prende": "Dado chocante + personagem vulnerável e fofo para tema sensível; mascote = marca reconhecível.",
+  "como_adaptar": [
+   "Crie um mascote simples da marca (forma redonda + 1 detalhe), sempre igual (folha de personagem).",
+   "Abra com dado em gráfico grande desenhado.",
+   "Cenas: mascote vivendo o problema, comparação, dado 2, saída. 60-70 s com voz suave ElevenLabs."
+  ],
+  "url": "https://www.youtube.com/watch?v=qm5xRjWcJ4c",
+  "titulo": "Why so many men are giving up on dating",
+  "canal": "Psych2Go",
+  "views": 120382,
+  "duracao_s": 69,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "ob4_mDwWkM0",
+  "subestilo": "3D CGI (Zack D. Films) · \"e se\" narrado",
+  "nicho": "saúde/curiosidades",
+  "gancho_3s": "Pinça tirando um coração minúsculo de beija-flor; legenda \"heart is removed\".",
+  "estrutura": {
+   "comeco": "Coração implantado bate 20 vezes por segundo; corredor ganha superpoder?",
+   "tensao": "O cérebro começa a desligar: o coraçãozinho não dá conta.",
+   "virada": "Precisaria de milhares de corações; mostra o peito aberto cheio deles."
+  },
+  "estilo_visual": {
+   "personagem": "homem 3D careca camiseta amarela com logo (mesmo personagem em todos os vídeos), órgãos em raio-x",
+   "paleta": "ciano/turquesa de fundo + vermelho de órgão + amarelo da camiseta",
+   "fonte_legenda": "sans branca bold com sombra, 2-3 palavras, centro-baixo"
+  },
+  "som": {
+   "voz": "voz masculina narradora rápida",
+   "musica": "cama de tensão curta",
+   "sfx": "batimento, whoosh"
+  },
+  "por_que_prende": "Pergunta \"e se?\" impossível + resposta visual científica; personagem fixo vira marca. 37 s, 30M.",
+  "como_adaptar": [
+   "Formule \"E se [coisa do nicho] fosse [extremo]?\" (ex.: \"E se você comesse só proteína por 30 dias?\").",
+   "Personagem 3D fixo com roupa da marca (gerar folha de personagem e usar como referência em todas as cenas).",
+   "Cenas alternando corpo por fora e \"raio-x por dentro\" (órgão, conta bancária, celular).",
+   "Voz ElevenLabs rápida, legenda curta centralizada; corte a cada 2-3 s."
+  ],
+  "url": "https://www.youtube.com/watch?v=ob4_mDwWkM0",
+  "titulo": "What If Humans Had Hummingbird Hearts 🤔",
+  "canal": "Zack D. Films",
+  "views": 30209941,
+  "duracao_s": 37,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "MLMZK82lXqc",
+  "subestilo": "3D estilo Pixar gerado por IA · drama de família com bichos",
+  "nicho": "relacionamento/maternidade (humor)",
+  "gancho_3s": "Gatinho bebê cuspindo papinha na mãe gata exausta.",
+  "estrutura": {
+   "comeco": "Bagunça na cozinha, noite, bebê chorando, mãe virada.",
+   "tensao": "A mãe desmaia de cansaço no chão.",
+   "virada": "Porta abre: festa dos gatinhos (\"Party at my place!\")."
+  },
+  "estilo_visual": {
+   "personagem": "gatos antropomórficos estilo Pixar (olhos enormes, pelo detalhado), mãe de pijama",
+   "paleta": "quentes e saturados, iluminação cinematográfica, bordas com blur (imagem 1:1 sobre fundo desfocado)",
+   "fonte_legenda": "texto branco simples centralizado (\"At night\", \"Here you go!\") e balão de fala com desenho"
+  },
+  "som": {
+   "voz": "vozes curtas dubladas",
+   "musica": "trilha cômica",
+   "sfx": "choro, impacto"
+  },
+  "por_que_prende": "82M: identificação (\"mãe exausta\") com bichos fofos em vez de gente; cartela \"At night\" cria capítulo. Produção 100% IA, barata e escalável.",
+  "como_adaptar": [
+   "Escolha a dor do público e conte com animais 3D fofos (ex.: emagrecimento: gata tentando dieta enquanto a família come pizza).",
+   "Gere 8-12 imagens Pixar-like com o MESMO personagem (referência de personagem fixa), anime com image-to-video curto ou Ken Burns.",
+   "Cartelas pretas de tempo (\"À noite\", \"3 dias depois\") para dar ritmo de série.",
+   "Balões de fala com ícone em vez de texto; trilha cômica + SFX; 30 s."
+  ],
+  "url": "https://www.youtube.com/watch?v=MLMZK82lXqc",
+  "titulo": "Kitten Party After Exhausted Mother Cat Meltdown #funny #catlover #cuteanimals #cartoon",
+  "canal": "Super Emotional Stories",
+  "views": 82319909,
+  "duracao_s": 31,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "historinha-bonequinhos",
+  "id": "S0afUuALZVg",
+  "subestilo": "massinha/clay stop motion · resultado + bastidor em tela dividida",
+  "nicho": "entretenimento/processo criativo",
+  "gancho_3s": "Em cima: boneco de massinha no skate; embaixo: mão real movendo o boneco.",
+  "estrutura": {
+   "comeco": "Manobras cada vez maiores, nuvem brava aparece.",
+   "tensao": "Ele cai, mão \"conserta\" o boneco.",
+   "virada": "Dragão de massinha resgata e voa."
+  },
+  "estilo_visual": {
+   "personagem": "boneco clay com capuz azul, olhos grandes, dragão verde",
+   "paleta": "azul-claro chapado, rosa como divisória",
+   "fonte_legenda": "sem legenda"
+  },
+  "som": {
+   "voz": "sem voz",
+   "musica": "vinheta musical",
+   "sfx": "whoosh, impacto, risada"
+  },
+  "por_que_prende": "173M: o bastidor embaixo prova que é feito à mão (curiosidade de processo) e a história em cima entretém. Duas camadas de atenção.",
+  "como_adaptar": [
+   "Em cima o \"resultado\" (personagem clay gerado por IA estilo massinha), embaixo o \"como foi feito\" (gravação de tela do editor, mão no celular).",
+   "Para infoproduto: em cima o story pronto, embaixo o passo a passo no app.",
+   "Divisória fina colorida da marca; sem voz, SFX em cada ação."
+  ],
+  "url": "https://www.youtube.com/watch?v=S0afUuALZVg",
+  "titulo": "STOP MOTION: Boy Goes Skating (Animation Meme) #boyanddragon #shorts",
+  "canal": "Boy & Dragon - WildBrain",
+  "views": 173551079,
+  "duracao_s": 29,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "eF2V0YvJ95w",
+  "subestilo": "print da caixinha sobre pessoa falando (selfie)",
+  "nicho": "saúde/nutrição (humor)",
+  "gancho_3s": "Caixinha \"Uma rapidinha já conta como cardio?\" + resposta seca da nutri.",
+  "estrutura": {
+   "comeco": "Perguntas absurdas em sequência.",
+   "tensao": "Cada resposta é uma tiragem curta e ácida.",
+   "virada": "Termina com a próxima pergunta, sem CTA longo."
+  },
+  "estilo_visual": {
+   "personagem": "pessoa real, selfie de óculos em casa, luz natural",
+   "paleta": "neutro de apartamento; caixinha preta/branca do Instagram no topo",
+   "fonte_legenda": "legenda palavra a palavra amarela/branca com contorno, embaixo do queixo"
+  },
+  "som": {
+   "voz": "humana, seca e rápida",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Pergunta absurda = gancho grátis; humor ácido de especialista gera compartilhamento. Formato barato: gravação direta no story.",
+  "como_adaptar": [
+   "Reúna 6-8 perguntas reais (ou do FAQ/comentários) do nicho, as mais absurdas primeiro.",
+   "Monte a caixinha do Instagram em HTML (cabeçalho escuro com nome, corpo branco, cantos 16 px) e posicione no terço superior.",
+   "Grave a resposta em selfie ou gere avatar; legenda palavra a palavra. 1 pergunta a cada 4-6 s.",
+   "Para marca sem rosto: pessoa real do time ou UGC."
+  ],
+  "url": "https://www.youtube.com/watch?v=eF2V0YvJ95w",
+  "titulo": "Caixinha de perguntas",
+  "canal": "Isabella Lacerda ",
+  "views": 4665,
+  "duracao_s": 37,
+  "formato_tela": "360x640"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "MJ52B_lagHo",
+  "subestilo": "print da caixinha sobre pessoa falando (série semanal \"Quintas\")",
+  "nicho": "saúde/nutrição",
+  "gancho_3s": "Caixinha \"Não sou fã de refrigerante sem açúcar...\" + \"Sim, tem: água.\"",
+  "estrutura": {
+   "comeco": "8 perguntas, respostas de 1 frase.",
+   "tensao": "Pergunta mais absurda no meio (urina x suco de laranja).",
+   "virada": "Fecha rindo."
+  },
+  "estilo_visual": {
+   "personagem": "mesma criadora, cenário de sala",
+   "paleta": "neutros quentes; caixinha preta com cabeçalho \"Quintas\"",
+   "fonte_legenda": "legenda colorida (amarelo/rosa) palavra a palavra"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Série fixa (\"toda quinta\") vira hábito; a caixinha com título da série é a assinatura.",
+  "como_adaptar": [
+   "Dê nome à série na caixinha (\"Quinta da dúvida\").",
+   "Mesmo enquadramento toda semana; troque só perguntas.",
+   "Corte seco entre perguntas, sem respiro."
+  ],
+  "url": "https://www.youtube.com/watch?v=MJ52B_lagHo",
+  "titulo": "Caixinha de perguntas #nutrição #humor #shorts",
+  "canal": "Isabella Lacerda ",
+  "views": 2006,
+  "duracao_s": 39,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "u_kppQ4c0yA",
+  "subestilo": "balão \"responder comentário\" + reação/teste",
+  "nicho": "DIY/slime",
+  "gancho_3s": "Balão de comentário \"reage ao vídeo da menina fazendo water slime\" no canto, ela já despejando água.",
+  "estrutura": {
+   "comeco": "Conta que o vídeo original tem 2M de views e ninguém sabe se é real.",
+   "tensao": "Testa ao vivo, slime se desfaz/estica.",
+   "virada": "Revela o resultado e pede palpite nos comentários."
+  },
+  "estilo_visual": {
+   "personagem": "pessoa real em mesa de gravação, logo neon da marca atrás",
+   "paleta": "lilás/roxo da marca",
+   "fonte_legenda": "sem legenda"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "leve",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "3,8M: o comentário do seguidor é o gancho e a justificativa (\"vocês pediram\"); teste ao vivo com resultado no fim.",
+  "como_adaptar": [
+   "Escolha um comentário real com pedido ou dúvida que dá para TESTAR.",
+   "Cole o balão de comentário (TikTok/Instagram) no 1º segundo.",
+   "Teste na frente da câmera; peça palpite antes do resultado (\"comenta se vai dar certo\")."
+  ],
+  "url": "https://www.youtube.com/watch?v=u_kppQ4c0yA",
+  "titulo": "reagindo a water slime viralizada 😳 #slime",
+  "canal": "Melissa Seabra",
+  "views": 3810925,
+  "duracao_s": 71,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "6-2uRomCbwg",
+  "subestilo": "anúncio de marca no formato \"respondendo seguidores\"",
+  "nicho": "casa/limpeza (publi com celebridade)",
+  "gancho_3s": "\"Oi gente, tô aqui respondendo perguntas\" com celular na mão.",
+  "estrutura": {
+   "comeco": "Cada pergunta de seguidor (nome + cidade) é uma deixa para mostrar um produto.",
+   "tensao": "Notificação de pergunta aparece na tela.",
+   "virada": "Fecha com logos."
+  },
+  "estilo_visual": {
+   "personagem": "celebridade no quarto, celular na mão",
+   "paleta": "cores da marca, cenário clean",
+   "fonte_legenda": "notificação/caixinha branca com foto do seguidor"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "leve",
+   "sfx": "pop de notificação"
+  },
+  "por_que_prende": "Disfarça anúncio de conversa: cada pergunta é uma objeção ou benefício. Funciona para direct response.",
+  "como_adaptar": [
+   "Liste 4 objeções do produto e escreva como perguntas de seguidor (nome + cidade).",
+   "Gere a caixinha/notificação em HTML entrando com mola a cada pergunta.",
+   "Resposta = benefício + demonstração; CTA no fim."
+  ],
+  "url": "https://www.youtube.com/watch?v=6-2uRomCbwg",
+  "titulo": "Juliette responde perguntas dos seguidores 💜",
+  "canal": "Zulu Perfumes",
+  "views": 40701,
+  "duracao_s": 90,
+  "formato_tela": "1920x1080"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "i7EBz_QOCmo",
+  "subestilo": "caixinha respondida com print da tela do celular",
+  "nicho": "celebridade/curiosidade",
+  "gancho_3s": "Story com caixinha \"Enquanto espera a transformação, o que quer ver?\" e foto.",
+  "estrutura": {
+   "comeco": "Respostas com prints: galeria, contatos, apps, última selfie.",
+   "tensao": "Fotos antigas e intimidades.",
+   "virada": "Sequência de prints curtos."
+  },
+  "estilo_visual": {
+   "personagem": "pessoa + prints reais do celular",
+   "paleta": "stories empilhados sobre fundo rosa com marca d'água do canal",
+   "fonte_legenda": "texto pequeno nativo do Instagram"
+  },
+  "som": {
+   "voz": "nenhuma (música)",
+   "musica": "música do story",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Responder com PROVA visual (print) em vez de falar; bisbilhotice.",
+  "como_adaptar": [
+   "Para app/produto: perguntas \"mostra sua tela inicial\", \"mostra o que você usa\" respondidas com gravação de tela.",
+   "Cada resposta 3-4 s; caixinha no topo; trilha leve."
+  ],
+  "url": "https://www.youtube.com/watch?v=i7EBz_QOCmo",
+  "titulo": "LARISSA MANOELA RESPONDE CAIXINHA DE PERGUNTAS NOS STORIES",
+  "canal": "Só Fifi",
+  "views": 249,
+  "duracao_s": 71,
+  "formato_tela": "1920x1080"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "JRjtlH2fa2g",
+  "subestilo": "caixinha respondida com vídeos (álbum)",
+  "nicho": "maternidade/família",
+  "gancho_3s": "Caixinha \"Respondendo com fatos e vídeos que vcs amam\" + bebê.",
+  "estrutura": {
+   "comeco": "Cada pergunta (\"vídeo favorito da Pietra\", \"dentinhos\") vira um clipe.",
+   "tensao": "Momentos fofos e engraçados (choro, cantando).",
+   "virada": "Foto do nascimento \"3,3kg\"."
+  },
+  "estilo_visual": {
+   "personagem": "mãe e bebê reais",
+   "paleta": "cores de casa, luz natural",
+   "fonte_legenda": "caixinha nativa + texto branco nativo do Instagram"
+  },
+  "som": {
+   "voz": "humana ambiente",
+   "musica": "música",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Caixinha como \"índice\" que justifica uma compilação.",
+  "como_adaptar": [
+   "Use caixinha para costurar depoimentos/resultados de clientes (\"mostra um antes e depois\").",
+   "Uma pergunta por clipe, 4-6 clipes."
+  ],
+  "url": "https://www.youtube.com/watch?v=JRjtlH2fa2g",
+  "titulo": "Tays Reis responde caixinha com vídeos de Pietra 🩷",
+  "canal": "O Diário dos Stories",
+  "views": 2665,
+  "duracao_s": 66,
+  "formato_tela": "720x1162"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "_iFFsfWxjY0",
+  "subestilo": "caixinha sobre pessoa respondendo com humor",
+  "nicho": "beleza/humor",
+  "gancho_3s": "Caixinha \"O que você usa pra pele ficar bonita assim?\"",
+  "estrutura": {
+   "comeco": "Pausa e cara de deboche.",
+   "tensao": "Resposta: \"filtro\".",
+   "virada": "Piada final sobre espinhas."
+  },
+  "estilo_visual": {
+   "personagem": "duas pessoas na rua, selfie",
+   "paleta": "verde natural",
+   "fonte_legenda": "caixinha nativa fixa no topo, sem legenda"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Uma pergunta só, resposta inesperada: 14 s.",
+  "como_adaptar": [
+   "Uma pergunta, uma resposta que quebra expectativa. Ótimo para teste rápido de gancho."
+  ],
+  "url": "https://www.youtube.com/watch?v=_iFFsfWxjY0",
+  "titulo": "Duda responde caixinha de pergunta#kauanluck",
+  "canal": "Viih e vocês ",
+  "views": 6346,
+  "duracao_s": 14,
+  "formato_tela": "608x1080"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "_1NZOTO3Vc4",
+  "subestilo": "tutorial: como fazer o vídeo de caixinha",
+  "nicho": "marketing/redes sociais",
+  "gancho_3s": "Ele com a caixinha \"Como criar reels respondendo caixinha de perguntas?\"",
+  "estrutura": {
+   "comeco": "Gravação de tela: criar story com sticker, responder a própria caixinha.",
+   "tensao": "Mostra que dá pra perguntar e responder você mesmo.",
+   "virada": "Grava a resposta no story e salva."
+  },
+  "estilo_visual": {
+   "personagem": "pessoa + gravação de tela do iPhone",
+   "paleta": "UI do Instagram",
+   "fonte_legenda": "nenhuma"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Revela o \"truque\" do formato: a pergunta pode ser escrita por você. Referência técnica do fluxo nativo.",
+  "como_adaptar": [
+   "Fluxo nativo: story > sticker Pergunta > publicar > responder a própria caixinha > compartilhar resposta > gravar.",
+   "Na máquina: gerar a caixinha em HTML idêntica à nativa (mais rápido e editável)."
+  ],
+  "url": "https://www.youtube.com/watch?v=_1NZOTO3Vc4",
+  "titulo": "Como criar vídeo respondendo caixinha de perguntas e respostas?",
+  "canal": "Kelil Marcilio",
+  "views": 3064,
+  "duracao_s": 66,
+  "formato_tela": "592x1280"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "f0Zl6c4wppg",
+  "subestilo": "versão animada: \"Você perguntou, ele respondeu\" com cartelas tipográficas",
+  "nicho": "entretenimento/bastidores",
+  "gancho_3s": "Cartela \"You asked? Jace answered.\" + quadros de webcam.",
+  "estrutura": {
+   "comeco": "Pergunta em tipografia gigante colorida sobre parede de tijolos.",
+   "tensao": "Resposta com B-roll.",
+   "virada": "Cartela final \"Have a question? Leave a comment below!\""
+  },
+  "estilo_visual": {
+   "personagem": "pessoa real + cartelas",
+   "paleta": "amarelo, laranja, roxo, ciano saturados",
+   "fonte_legenda": "display condensada pesada, caixa alta, entra deslizando"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "trilha pop",
+   "sfx": "whoosh nas cartelas"
+  },
+  "por_que_prende": "Cartela tipográfica de pergunta = versão animada da caixinha; pede a próxima pergunta nos comentários (loop de engajamento).",
+  "como_adaptar": [
+   "Pergunta em cartela cheia de 1,5 s (fonte condensada, cor da marca, entrada com mola).",
+   "Resposta em corte; cartela CTA \"manda sua pergunta\" no fim."
+  ],
+  "url": "https://www.youtube.com/watch?v=f0Zl6c4wppg",
+  "titulo": "You Asked! Jace Answered! | Henry Danger | Henry Danger",
+  "canal": "Nickelodeon",
+  "views": 371588,
+  "duracao_s": 97,
+  "formato_tela": "1920x1080"
+ },
+ {
+  "formato": "caixinha-pergunta",
+  "id": "m6IIbNLD76o",
+  "subestilo": "versão animada: personagens respondem pergunta (StoryBots)",
+  "nicho": "educação infantil",
+  "gancho_3s": "Personagens robôs recebem pergunta e saem em missão.",
+  "estrutura": {
+   "comeco": "Viagem por mundos para achar a resposta.",
+   "tensao": "Respostas em cenas rápidas.",
+   "virada": "Logo \"Answer Time\"."
+  },
+  "estilo_visual": {
+   "personagem": "robôs 2D/3D coloridos",
+   "paleta": "ultra saturado",
+   "fonte_legenda": "logo"
+  },
+  "som": {
+   "voz": "vozes de personagens",
+   "musica": "trilha animada",
+   "sfx": "muito SFX"
+  },
+  "por_que_prende": "Pergunta da criança vira aventura: a resposta é a jornada. (Trailer horizontal; referência de conceito, não de corte.)",
+  "como_adaptar": [
+   "Mascote recebe a pergunta (caixinha animada voando até ele), \"vai buscar\" a resposta em 3 cenas e volta com ela.",
+   "Bom para comunidade/infoproduto com mascote."
+  ],
+  "url": "https://www.youtube.com/watch?v=m6IIbNLD76o",
+  "titulo": "StoryBots Answer Time NEW Series Trailer | Netflix Jr",
+  "canal": "Netflix Jr.",
+  "views": 1563956,
+  "duracao_s": 67,
+  "formato_tela": "1280x720"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "REjNdfv7mUw",
+  "subestilo": "reação em cima / vídeo antigo embaixo",
+  "nicho": "entretenimento infantil/família",
+  "gancho_3s": "Ela adulta em cima tapando a boca; embaixo ela criança no vídeo antigo.",
+  "estrutura": {
+   "comeco": "Reage ao vídeo de 8 anos atrás que virou trend.",
+   "tensao": "Parte que viralizou (\"faz dodói no coração\").",
+   "virada": "Ela pede curtida reagindo."
+  },
+  "estilo_visual": {
+   "personagem": "criadora real em cima (estúdio), vídeo antigo em chroma verde embaixo",
+   "paleta": "P&B no início, depois cor",
+   "fonte_legenda": "legenda pequena branca centralizada entre as metades"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "áudio original do vídeo embaixo",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "46M: nostalgia + reação; duas faces na tela dobram a leitura emocional.",
+  "como_adaptar": [
+   "Em cima: rosto reagindo (50%). Embaixo: o conteúdo (50%). Legenda na linha da divisão.",
+   "Para produto: reagir ao próprio antes (primeiro story feio x hoje), ao vídeo de cliente ou a um viral do nicho."
+  ],
+  "url": "https://www.youtube.com/watch?v=REjNdfv7mUw",
+  "titulo": "reagindo faz tum tum 2025 😅❤️ #yasminverissimo",
+  "canal": "Brincando com Yasmin Verissimo",
+  "views": 46155130,
+  "duracao_s": 58,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "nCAD6fyutJ0",
+  "subestilo": "meme em cima / tela (tutorial) embaixo · iniciante x expert",
+  "nicho": "produtividade (Excel)",
+  "gancho_3s": "Em cima \"Noob\" + meme do cara cansado; embaixo planilha preenchida à mão.",
+  "estrutura": {
+   "comeco": "Noob numera 1 por 1.",
+   "tensao": "Troca para \"Pro\" + meme digitando rápido.",
+   "virada": "Pro faz com atalho em 2 s."
+  },
+  "estilo_visual": {
+   "personagem": "memes de filme em cima, gravação de tela embaixo",
+   "paleta": "branco da planilha + roxo dos cabeçalhos",
+   "fonte_legenda": "rótulo \"Noob/Pro\" com emoji no canto do meme; teclas desenhadas"
+  },
+  "som": {
+   "voz": "nenhuma",
+   "musica": "trilha de tensão curta",
+   "sfx": "cliques de teclado"
+  },
+  "por_que_prende": "12M: contraste noob x pro é universal; meme dá emoção à tela seca.",
+  "como_adaptar": [
+   "Em cima (30%): meme/reação; embaixo (70%): gravação da tela do app do nicho.",
+   "Ato 1 iniciante sofrendo, ato 2 pro com o atalho/recurso do seu produto.",
+   "Sem voz; teclas/cliques destacados com caixa animada."
+  ],
+  "url": "https://www.youtube.com/watch?v=nCAD6fyutJ0",
+  "titulo": "Beginner vs Expert Excel 💯 #excel #formula #shortcut",
+  "canal": "Time to Office",
+  "views": 12227923,
+  "duracao_s": 28,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "BNJmUDhF0mo",
+  "subestilo": "tela em cima / meme embaixo · iniciante x PRO (PT-BR)",
+  "nicho": "produtividade (Excel)",
+  "gancho_3s": "\"Iniciante\" sob a planilha colando bandeira manualmente.",
+  "estrutura": {
+   "comeco": "Iniciante sofre.",
+   "tensao": "\"PRO\": recurso Dados > Geografia > Imagem.",
+   "virada": "Bandeiras aparecem sozinhas."
+  },
+  "estilo_visual": {
+   "personagem": "gravação de tela + meme de animação",
+   "paleta": "verde Excel + branco",
+   "fonte_legenda": "texto grande branco \"Iniciante\"/\"PRO\" na divisória"
+  },
+  "som": {
+   "voz": "nenhuma",
+   "musica": "trilha",
+   "sfx": "cliques"
+  },
+  "por_que_prende": "20,8M: a mesma fórmula invertida; prova de alcance do formato no Brasil.",
+  "como_adaptar": [
+   "Igual ao nCAD6fyutJ0. Ex. Stories Lab: iniciante caçando figurinha no Drive x PRO colando a figurinha pronta em 2 toques."
+  ],
+  "url": "https://www.youtube.com/watch?v=BNJmUDhF0mo",
+  "titulo": "Produtividade Elevada: Opção que Transformam Seu Uso do Excel!",
+  "canal": "Meu Professor De Excel ",
+  "views": 20886569,
+  "duracao_s": 18,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "C-XJM_Vvf_0",
+  "subestilo": "clipe em cima / podcast embaixo",
+  "nicho": "podcast/entretenimento",
+  "gancho_3s": "Em cima a criança no palco; embaixo o apresentador comentando \"E o Pedro?\".",
+  "estrutura": {
+   "comeco": "Conta o contexto enquanto o vídeo roda.",
+   "tensao": "O mortal que quase deu errado.",
+   "virada": "Vídeo final do mortal certo + reação."
+  },
+  "estilo_visual": {
+   "personagem": "apresentador no microfone embaixo, clipe viral em cima",
+   "paleta": "escuros de palco e estúdio",
+   "fonte_legenda": "legenda branca itálica pequena com sombra, no centro de cada metade"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "áudio do clipe",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Podcast fica visual: o assunto aparece em cima enquanto o host comenta (resolve \"cabeça falante parada\").",
+  "como_adaptar": [
+   "Em cima (55%): o que está sendo falado (vídeo, print, motion). Embaixo (45%): pessoa falando.",
+   "Troque o de cima a cada 3-5 s; legenda pequena. Serve para cortes de live/podcast do nicho."
+  ],
+  "url": "https://www.youtube.com/watch?v=C-XJM_Vvf_0",
+  "titulo": "O PEDRO MORTAL CONSEGUIU! 🤸‍♂️ #pedromortal #flow #viral #fyp",
+  "canal": "Flow Podcast",
+  "views": 971339,
+  "duracao_s": 48,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "9HDfau6he8c",
+  "subestilo": "clipe em cima / gameplay embaixo (brain rot)",
+  "nicho": "entretenimento (série animada)",
+  "gancho_3s": "Family Guy em cima, corrida de Halo embaixo, legenda amarela.",
+  "estrutura": {
+   "comeco": "Cena do episódio segue.",
+   "tensao": "Piada.",
+   "virada": "Corte no meio da piada (loop)."
+  },
+  "estilo_visual": {
+   "personagem": "cena de desenho + gameplay",
+   "paleta": "saturado em cima, branco/azul gelo embaixo",
+   "fonte_legenda": "amarela caixa alta com contorno preto, na divisória"
+  },
+  "som": {
+   "voz": "áudio original",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "8,7M: gameplay embaixo segura quem não quer só ouvir; o clássico \"Subway Surfers embaixo\".",
+  "como_adaptar": [
+   "Em cima (50%): o conteúdo falado (corte de aula, depoimento, motion). Embaixo (50%): vídeo satisfatório sem som (jogo, slime, sabão cortado, receita).",
+   "Legenda na divisória. Funciona para conteúdo longo de áudio (história, explicação)."
+  ],
+  "url": "https://www.youtube.com/watch?v=9HDfau6he8c",
+  "titulo": "Halo racing as a viable replacement for Subway Surfers & GTAV clips #gaming #halo #familyguy #racing",
+  "canal": "HaloTracks",
+  "views": 8761836,
+  "duracao_s": 60,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "Kif27maJd0M",
+  "subestilo": "comparação lado a lado (empilhado) · antes/depois de versão",
+  "nicho": "entretenimento/nostalgia",
+  "gancho_3s": "2020 em cima, 1969 embaixo, mesma cena sincronizada.",
+  "estrutura": {
+   "comeco": "Cada plano refeito igual.",
+   "tensao": "Diferenças de qualidade.",
+   "virada": "Créditos."
+  },
+  "estilo_visual": {
+   "personagem": "mesmas cenas em duas versões",
+   "paleta": "escuros",
+   "fonte_legenda": "rótulo de ano no canto de cada metade"
+  },
+  "som": {
+   "voz": "nenhuma (música tema)",
+   "musica": "tema original",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "7,5M: comparação sincronizada é hipnótica; o olho vai e volta.",
+  "como_adaptar": [
+   "Antes/depois sincronizado: em cima a versão nova (com o produto), embaixo a antiga, mesmo enquadramento e tempo.",
+   "Rótulos \"Antes\"/\"Depois\" pequenos no canto; música só."
+  ],
+  "url": "https://www.youtube.com/watch?v=Kif27maJd0M",
+  "titulo": "Scooby-Doo (1969/2020) side-by-side comparison",
+  "canal": "Matt Skuta",
+  "views": 7489996,
+  "duracao_s": 67,
+  "formato_tela": "1280x720"
+ },
+ {
+  "formato": "tela-dividida",
+  "id": "tKaCeMPW6ro",
+  "subestilo": "minha versão x original (lado a lado)",
+  "nicho": "games/fan animation",
+  "gancho_3s": "Cena da recriação 3D.",
+  "estrutura": {
+   "comeco": "\"MY VERSION:\" tela cheia.",
+   "tensao": "Lado a lado \"MY VERSION\" x \"THE ORIGINAL\".",
+   "virada": "Fecha na comparação."
+  },
+  "estilo_visual": {
+   "personagem": "animação 3D de fã",
+   "paleta": "escuro com neon",
+   "fonte_legenda": "pixel font branca"
+  },
+  "som": {
+   "voz": "voz do original",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "15,8M: desafio \"fiz igual?\" convida o julgamento nos comentários.",
+  "como_adaptar": [
+   "\"Fiz igual\" do nicho: refazer um story/peça famosa com o produto e mostrar lado a lado com a original."
+  ],
+  "url": "https://www.youtube.com/watch?v=tKaCeMPW6ro",
+  "titulo": "Sun And Moon Trailer Voiceline Remake Vs Original Comparison Side by Side [FNAF SB/ FNAF SFM ]",
+  "canal": "KayOw",
+  "views": 15814472,
+  "duracao_s": 31,
+  "formato_tela": "1280x720"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "mMi2MZ_ZwiM",
+  "subestilo": "POV (câmera em 1ª pessoa)",
+  "nicho": "entretenimento/datas",
+  "gancho_3s": "\"POV: You're Santa\" + descendo pela chaminé com mãos de Papai Noel.",
+  "estrutura": {
+   "comeco": "Entra na sala, vê as crianças.",
+   "tensao": "Anota lista de malcriados e dá presentes.",
+   "virada": "Toma o leite, \"Merry Christmas to me\"."
+  },
+  "estilo_visual": {
+   "personagem": "câmera no peito com mãos fantasiadas",
+   "paleta": "quentes de natal",
+   "fonte_legenda": "texto nativo pequeno \"POV: ...\""
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "leve",
+   "sfx": "ambiente"
+  },
+  "por_que_prende": "48M: o espectador vira o personagem; imersão total em 1ª pessoa.",
+  "como_adaptar": [
+   "\"POV: você é [cliente/produto do nicho]\" gravado do ponto de vista (celular no peito).",
+   "Gancho é só o texto POV; ação contínua com cortes de salto."
+  ],
+  "url": "https://www.youtube.com/watch?v=mMi2MZ_ZwiM",
+  "titulo": "POV: You’re Santa...",
+  "canal": "Brandon B",
+  "views": 48465599,
+  "duracao_s": 51,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "VKtLawjHbAU",
+  "subestilo": "green screen / notícia com B-roll em cima",
+  "nicho": "notícias/curiosidade",
+  "gancho_3s": "Vídeo do navio em cima + \"Ship Crashes Into NYC Bridge!\", ele embaixo falando.",
+  "estrutura": {
+   "comeco": "Detalhes chocantes (277 a bordo, marinheiros nos mastros).",
+   "tensao": "Mais ângulos.",
+   "virada": "Consequências e opinião."
+  },
+  "estilo_visual": {
+   "personagem": "apresentador embaixo em estúdio neon com boné",
+   "paleta": "neon roxo/azul + logo \"News Daddy\"",
+   "fonte_legenda": "título em pílula branca na divisória"
+  },
+  "som": {
+   "voz": "humana, rápida",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "\"Here's what you need to know\": notícia em 45 s com prova visual em cima. Marca pessoal forte.",
+  "como_adaptar": [
+   "Em cima: print/vídeo da notícia do nicho; embaixo: você explicando.",
+   "Primeira frase = o fato; depois \"e o pior é que...\"."
+  ],
+  "url": "https://www.youtube.com/watch?v=VKtLawjHbAU",
+  "titulo": "A Ship Just Crashed Into The Brooklyn Bridge!!￼",
+  "canal": "Dylan Page",
+  "views": 5974632,
+  "duracao_s": 45,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "jy8J7LrD1uA",
+  "subestilo": "explicador andando + dados animados",
+  "nicho": "curiosidades/viagem/segurança",
+  "gancho_3s": "Ele na frente da loja: \"Se você estiver sendo seguido no Japão, faça isso\".",
+  "estrutura": {
+   "comeco": "História: aumento de crimes nos anos 2000.",
+   "tensao": "Lojas viram \"estações de segurança\".",
+   "virada": "Números verdes animados (13.000+ mulheres) e ele dentro da loja."
+  },
+  "estilo_visual": {
+   "personagem": "criador real andando com câmera",
+   "paleta": "cores da cidade + verde neon dos números",
+   "fonte_legenda": "palavra-chave em caixa preta pequena"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "leve",
+   "sfx": "pop nos números"
+  },
+  "por_que_prende": "Conselho prático com promessa de segurança + dado animado = credibilidade.",
+  "como_adaptar": [
+   "Promessa útil no gancho (\"se X, faça Y\"). Gravar no lugar real.",
+   "Números grandes animados em HyperFrames por cima."
+  ],
+  "url": "https://www.youtube.com/watch?v=jy8J7LrD1uA",
+  "titulo": "If You’re Being Followed In Japan.. DO THIS!",
+  "canal": "Dylan Page",
+  "views": 2911023,
+  "duracao_s": 79,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "BdeCOOCJAdk",
+  "subestilo": "clipe curado com legenda única (repost)",
+  "nicho": "humor/cotidiano",
+  "gancho_3s": "Garçonete servindo vinho; legenda \"She got exactly\".",
+  "estrutura": {
+   "comeco": "Ela pede \"só um pouquinho\".",
+   "tensao": "Garçonete serve gota por gota.",
+   "virada": "Exatamente a quantidade certa."
+  },
+  "estilo_visual": {
+   "personagem": "vídeo real de terceiro",
+   "paleta": "natural",
+   "fonte_legenda": "caixa preta com texto branco, 1 frase"
+  },
+  "som": {
+   "voz": "humana original",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "7,3M em 16 s: curadoria + 1 frase de legenda; zero produção.",
+  "como_adaptar": [
+   "Curar momentos reais do nicho (com permissão) e pôr UMA frase em caixa preta."
+  ],
+  "url": "https://www.youtube.com/watch?v=BdeCOOCJAdk",
+  "titulo": "Exactly the Right Amount",
+  "canal": "Daily Dose Of Internet",
+  "views": 7307231,
+  "duracao_s": 16,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "KfHuvB2qssI",
+  "subestilo": "lista numerada falada (\"5 coisas que você não sabia que precisava\")",
+  "nicho": "família/viagem",
+  "gancho_3s": "Menino: \"coisas pra levar numa viagem de carro\".",
+  "estrutura": {
+   "comeco": "Itens 1, 2, 3 com B-roll de cada um.",
+   "tensao": "Item absurdo/cômico (cronograma da irmã).",
+   "virada": "Último item."
+  },
+  "estilo_visual": {
+   "personagem": "criança falando para a câmera + B-roll caseiro",
+   "paleta": "caseiro",
+   "fonte_legenda": "caixa alta branca gigante palavra a palavra no centro"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "leve",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "12M: lista dá barra de progresso mental; B-roll real e engraçado.",
+  "como_adaptar": [
+   "\"N coisas que você não sabia que precisava para [dor]\": cada item 6-10 s com B-roll real.",
+   "Último item = o produto."
+  ],
+  "url": "https://www.youtube.com/watch?v=KfHuvB2qssI",
+  "titulo": "ROADTRIP! 5 Things You Didn't Know You Needed.... 🙌🏼🚘 #shorts",
+  "canal": "Ford Walker",
+  "views": 11945925,
+  "duracao_s": 55,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "OZAGgEOA00s",
+  "subestilo": "ranking/escala com grid de imagens + apresentador",
+  "nicho": "cotidiano (limpeza)",
+  "gancho_3s": "Grid 4 imagens (quarto sujo -> limpo) em cima, ele embaixo: \"When do you consider it clean?\"",
+  "estrutura": {
+   "comeco": "Escolhe o nível em cada cômodo (destaque verde).",
+   "tensao": "Polêmica: \"vai ser tudo 3\".",
+   "virada": "Último cômodo e opinião."
+  },
+  "estilo_visual": {
+   "personagem": "apresentador fixo embaixo, grid de fotos em cima",
+   "paleta": "branco + verde de seleção",
+   "fonte_legenda": "amarela palavra a palavra na divisória"
+  },
+  "som": {
+   "voz": "humana",
+   "musica": "nenhuma",
+   "sfx": "pop na seleção"
+  },
+  "por_que_prende": "3,5M: o espectador escolhe junto e discorda nos comentários.",
+  "como_adaptar": [
+   "Grid 2x2 de níveis (fotos geradas) do nicho: \"Quando você considera um story bonito?\".",
+   "Destaque verde animado na escolha; você comentando embaixo."
+  ],
+  "url": "https://www.youtube.com/watch?v=OZAGgEOA00s",
+  "titulo": "When Do You Consider It Clean?",
+  "canal": "Sambucha",
+  "views": 3555059,
+  "duracao_s": 58,
+  "formato_tela": "720x1280"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "fLeJJPxua3E",
+  "subestilo": "discurso motivacional sobre B-roll de cinema",
+  "nicho": "motivacional",
+  "gancho_3s": "\"Se você só tem 24 horas por dia...\" sobre imagens noturnas.",
+  "estrutura": {
+   "comeco": "Oprah x pessoa quebrada: mesmo tempo.",
+   "tensao": "Repetição \"Listen to me\".",
+   "virada": "Conclusão: o uso das 24 h."
+  },
+  "estilo_visual": {
+   "personagem": "B-roll de filmes e vídeos reais, sem rosto do narrador",
+   "paleta": "escuro, cinematográfico",
+   "fonte_legenda": "sem legenda (horizontal)"
+  },
+  "som": {
+   "voz": "humana (discurso)",
+   "musica": "trilha épica",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "5,5M: discurso forte + imagens que ilustram a frase.",
+  "como_adaptar": [
+   "Voz ElevenLabs grave ou discurso próprio; B-roll de banco por frase; legenda grande central se for 9:16."
+  ],
+  "url": "https://www.youtube.com/watch?v=fLeJJPxua3E",
+  "titulo": "Best Short Motivational Speech Video - 24 HOURS - 1-Minute Motivation #2",
+  "canal": "Motiversity",
+  "views": 5573796,
+  "duracao_s": 68,
+  "formato_tela": "1920x1080"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "3ankXKxthnQ",
+  "subestilo": "faceless: história do Reddit com voz de IA sobre gameplay",
+  "nicho": "relacionamento/drama",
+  "gancho_3s": "\"I slept with my stepbrother...\" sobre parkour de Minecraft.",
+  "estrutura": {
+   "comeco": "Contexto da família.",
+   "tensao": "Conflito.",
+   "virada": "Pede opinião (\"ele está errado?\")."
+  },
+  "estilo_visual": {
+   "personagem": "sem personagem; gameplay de parkour",
+   "paleta": "cores saturadas do jogo",
+   "fonte_legenda": "branca bold com sombra, 1-2 palavras no centro"
+  },
+  "som": {
+   "voz": "voz IA (TTS)",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Confissão polêmica na 1ª frase + gameplay hipnótico; 100% automatizável.",
+  "como_adaptar": [
+   "Escreva confissão/dilema do nicho em 1ª pessoa (120-180 palavras).",
+   "Voz ElevenLabs; legenda palavra a palavra; fundo satisfatório sem direitos."
+  ],
+  "url": "https://www.youtube.com/watch?v=3ankXKxthnQ",
+  "titulo": "Craziest Reddit Story Time: Minecraft Parkour Edition #redditstories #minecraft #minecraftparkour",
+  "canal": "Reddit Daily Videos",
+  "views": 810917,
+  "duracao_s": 71,
+  "formato_tela": "576x1024"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "tXChyYGZ_Cc",
+  "subestilo": "faceless: história com voz de IA sobre gameplay (variação)",
+  "nicho": "drama",
+  "gancho_3s": "\"My uncle is obsessed with my cat.\"",
+  "estrutura": {
+   "comeco": "Narrativa em 1ª pessoa.",
+   "tensao": "Suspense.",
+   "virada": "Corte para parte 2."
+  },
+  "estilo_visual": {
+   "personagem": "gameplay Minecraft shader",
+   "paleta": "vermelho/laranja quente",
+   "fonte_legenda": "caixa alta branca 1 palavra por vez"
+  },
+  "som": {
+   "voz": "voz IA",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "Partes 1/2/3 forçam seguir o perfil.",
+  "como_adaptar": [
+   "Mesma receita; termine no ápice com \"parte 2\"."
+  ],
+  "url": "https://www.youtube.com/watch?v=tXChyYGZ_Cc",
+  "titulo": "My uncle is obsessed with my cat. #redditstoriestts #minecraftparkour #redditreadings",
+  "canal": "RedditStorySaga2024",
+  "views": 139030,
+  "duracao_s": 88,
+  "formato_tela": "576x1024"
+ },
+ {
+  "formato": "outros-virais",
+  "id": "B_7Iyi8zPj8",
+  "subestilo": "clipe horizontal com título fixo em cima (tarja preta)",
+  "nicho": "entretenimento",
+  "gancho_3s": "Título \"Jake betrays Guard 😞💔\" fixo em cima, clipe horizontal no meio.",
+  "estrutura": {
+   "comeco": "Diálogo curto.",
+   "tensao": "Traição.",
+   "virada": "Botões de inscrever animados."
+  },
+  "estilo_visual": {
+   "personagem": "personagens do jogo",
+   "paleta": "azul noturno",
+   "fonte_legenda": "título branco fixo com emoji"
+  },
+  "som": {
+   "voz": "voz original",
+   "musica": "nenhuma",
+   "sfx": "nenhum"
+  },
+  "por_que_prende": "8,6M: título-resumo emocional + clipe curto; formato de repost de horizontal.",
+  "como_adaptar": [
+   "Para vídeo horizontal: título de 4-6 palavras com emoji na tarja de cima, legenda embaixo. Sem esticar."
+  ],
+  "url": "https://www.youtube.com/watch?v=B_7Iyi8zPj8",
+  "titulo": "Jake Betrays Guard 😞💔 #subwaysurfers #shorts",
+  "canal": "Subsurf Pro | Subway Surfers Adventure ",
+  "views": 8597676,
+  "duracao_s": 22,
+  "formato_tela": "544x960"
+ }
+]

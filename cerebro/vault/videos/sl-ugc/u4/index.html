@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jak"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 900; }
+      :root { --brand: #d92e64; --brand-2: #f0548a; --ink: #2a1f24; --cream: #fbf5f1; --blush: #f7e6e9; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Jak", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1600px; }
+      .bg { position: absolute; inset: 0; background: var(--cream); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: 200px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.28), rgba(240, 84, 138, 0) 62%); }
+      .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; left: 300px; top: 1100px;
+        background: radial-gradient(circle, rgba(255, 196, 150, 0.35), rgba(255, 196, 150, 0) 62%); }
+      .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+      .shade { position: absolute; inset: 0; }
+
+      /* captions: typed like a real Story (white label, dark text, key word pink) */
+      .cap { position: absolute; left: 70px; width: 940px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+        padding: 26px 34px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 62px; font-weight: 800;
+        line-height: 1.12; letter-spacing: -0.02em; text-align: center; perspective: 900px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.18); }
+      .cap.dark { background: rgba(20, 12, 16, 0.78); color: #fff; }
+      .cap.clear { background: none; box-shadow: none; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); }
+      .cap span { display: block; }
+      .cap .k { color: var(--brand); }
+      .cap.dark .k, .cap.clear .k { color: #ff8db3; }
+
+      /* phone with the real app */
+      .phone { position: absolute; width: 714px; height: 1518px; padding: 12px; border-radius: 82px; background: linear-gradient(145deg, #2b2b30, #0b0b0d);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 14px 28px rgba(60, 10, 30, 0.22), 0 70px 140px rgba(60, 10, 30, 0.32), 0 0 0 2px #3a3a40;
+        transform-origin: 50% 50%; }
+      .screen { position: relative; width: 690px; height: 1494px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+      .screen > img, .screen > .layer { position: absolute; left: 0; top: 0; width: 690px; height: 1494px; display: block; }
+      .island { position: absolute; left: 50%; top: 22px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+      .tap { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; z-index: 8; opacity: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 30%, rgba(217, 46, 100, 0.35) 31% 60%, rgba(217, 46, 100, 0) 61%); }
+      .ring { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 5px solid rgba(217, 46, 100, 0.8); z-index: 8; opacity: 0; }
+      .toast { position: absolute; left: 70px; bottom: 150px; width: 550px; padding: 26px 30px; border-radius: 30px; z-index: 7; opacity: 0;
+        background: rgba(30, 20, 25, 0.92); color: #fff; font-size: 30px; font-weight: 700; display: flex; align-items: center; gap: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+      .toast i { display: block; flex: none; width: 52px; height: 52px; border-radius: 50%; background: #22c55e; position: relative; }
+      .toast i::after { content: ""; position: absolute; left: 18px; top: 10px; width: 13px; height: 25px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .toast small { display: block; font-size: 24px; font-weight: 500; opacity: 0.8; }
+
+      /* a Story frame */
+      .story { position: absolute; width: 860px; height: 1528px; border-radius: 44px; overflow: hidden; background: #222;
+        box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 80px 160px rgba(60, 10, 30, 0.35); }
+      .story .photo { inset: -2%; }
+      .sbar { position: absolute; left: 26px; right: 26px; top: 22px; height: 6px; display: flex; gap: 8px; z-index: 5; }
+      .sbar i { flex: 1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.4); overflow: hidden; }
+      .sbar i b { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+      .shead { position: absolute; left: 30px; top: 50px; display: flex; align-items: center; gap: 16px; z-index: 5; color: #fff; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+      .shead i { display: block; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #f7c1cf, #d92e64); border: 3px solid #fff; }
+      .shead small { font-weight: 500; opacity: 0.85; }
+      .stk { position: absolute; display: block; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
+      .views { position: absolute; left: 34px; bottom: 40px; z-index: 5; color: #fff; font-size: 30px; font-weight: 600; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+
+      /* DM / reply notification */
+      .dm { position: absolute; left: 90px; width: 900px; padding: 24px 28px; border-radius: 40px; display: flex; align-items: center; gap: 22px;
+        background: rgba(255, 255, 255, 0.94); color: var(--ink); z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.14), 0 40px 90px rgba(60, 10, 30, 0.24); }
+      .dm .av { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; }
+      .dm b { display: block; font-size: 32px; font-weight: 800; }
+      .dm b small { font-weight: 500; color: #6b5d63; font-size: 26px; margin-left: 8px; }
+      .dm p { font-size: 34px; font-weight: 500; line-height: 1.2; }
+
+      .chip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 40px; font-weight: 800; display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); white-space: nowrap; z-index: 15; }
+      .chip.pink { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chip em { font-style: normal; }
+      .ptbox { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 30; }
+      .pt { position: absolute; display: block; }
+      .heart { position: absolute; width: 60px; height: 54px; }
+      .heart::before, .heart::after { content: ""; position: absolute; top: 0; width: 32px; height: 50px; border-radius: 32px 32px 0 0; background: var(--brand); }
+      .heart::before { left: 30px; transform: rotate(-45deg); transform-origin: 0 100%; }
+      .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+      #fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+      .flash { position: absolute; inset: 0; opacity: 0; }
+      .rays { position: absolute; left: -960px; top: -540px; width: 3000px; height: 3000px; opacity: 0;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 220, 230, 0) 0deg 7deg, rgba(255, 220, 230, 0.55) 9deg, rgba(255, 220, 230, 0) 11deg 18deg);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); }
+      .leak { position: absolute; width: 2600px; height: 2600px; border-radius: 50%; opacity: 0; }
+      .endlogo { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 26px; }
+      .endlogo img { display: block; }
+      .url { position: absolute; left: 0; width: 100%; text-align: center; font-size: 44px; font-weight: 700; color: var(--ink); }
+      .cta { position: absolute; left: 190px; width: 700px; height: 140px; border-radius: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
+        background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; font-size: 52px; font-weight: 800; letter-spacing: -0.01em;
+        box-shadow: 0 16px 34px rgba(197, 31, 85, 0.35), 0 50px 110px rgba(197, 31, 85, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.35); overflow: hidden; }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+      .arrow { position: absolute; left: 50%; width: 0; height: 0; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-top: 44px solid var(--brand); }
+      .orb { position: absolute; width: 270px; }
+      .orb.far { filter: blur(5px); opacity: 0.75; }
+      .shot { position: absolute; left: 28px; top: 241px; width: 634px; height: 790px; border-radius: 40px 40px 0 0; overflow: hidden; }
+      .shot .photo { inset: 0; background-position: 50% 35%; }
+      .g-orig { filter: saturate(0.55) contrast(0.82) brightness(1.1); }
+      .g-grade { filter: contrast(1.2) saturate(1.2) sepia(0.14) brightness(0.92); }
+      .divider { position: absolute; top: 0; width: 6px; margin-left: -3px; height: 100%; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); }
+      .divider i { position: absolute; left: -33px; top: 390px; width: 72px; height: 72px; border-radius: 50%; background: #fff; display: block; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+      .lab { position: absolute; top: 22px; padding: 8px 18px; border-radius: 22px; font-size: 22px; font-weight: 700; color: #fff; }
+      .agenda { position: absolute; left: 190px; top: 760px; width: 700px; border-radius: 36px; overflow: hidden; z-index: 16; box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 60px 120px rgba(60, 10, 30, 0.3); }
+      .agenda img { display: block; width: 100%; }
+      .gif { position: absolute; left: 640px; top: 760px; width: 380px; z-index: 16; }
+      .gif img { width: 100%; display: block; filter: drop-shadow(0 16px 30px rgba(60, 10, 30, 0.35)); }
+      .gif b { position: absolute; right: 10px; top: -30px; padding: 6px 16px; border-radius: 14px; background: #fff; color: var(--brand); font-size: 28px; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+      .tag { position: absolute; left: 90px; width: 900px; text-align: center; font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+      .tag em { font-style: normal; color: var(--brand); }
+      .plain { position: absolute; left: 0; width: 100%; text-align: center; font-family: "Courier New", monospace; font-size: 46px; color: #fff; }
+      .clock { position: absolute; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 46px; font-weight: 800; font-variant-numeric: tabular-nums; z-index: 25;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); display: flex; gap: 12px; align-items: center; }
+
+      /* ---- UGC layer ---- */
+      #cam { position: absolute; inset: 0; transform-origin: 50% 50%; overflow: hidden; z-index: 2; }
+      /* cut-out mode: brand background with floating 3D stories behind her */
+      .ubg { position: absolute; inset: -6%; overflow: hidden; perspective: 1400px;
+        background: radial-gradient(120% 80% at 50% 30%, #fff7f3 0%, #fbe9ee 45%, #f4cbd8 100%); }
+      .ubg .g1 { position: absolute; width: 1400px; height: 1400px; left: -300px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(240,84,138,0.35), rgba(240,84,138,0) 62%); }
+      .ubg .g2 { position: absolute; width: 1200px; height: 1200px; left: 300px; top: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(255,196,150,0.45), rgba(255,196,150,0) 62%); }
+      .ubg .fc { position: absolute; width: 300px; height: 533px; border-radius: 30px; background-size: cover; background-position: center; box-shadow: 0 24px 60px rgba(120,30,60,0.28); border: 5px solid #fff; }
+      .ubg .fc.far { filter: blur(3px); opacity: 0.8; }
+      .ubg .bk { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0)); }
+      #talk.cut { filter: contrast(1.06) saturate(1.1) brightness(1.04) sepia(0.05) drop-shadow(0 30px 50px rgba(110,30,60,0.28)); }
+      .pipbg { position: absolute; inset: 0; z-index: 1; opacity: 0; overflow: hidden; }
+      .pipfx { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+      .chunk.pip { top: 1100px; }
+      .chunk.pip b { font-size: 64px; }
+      #cam video, .broll video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .broll { position: absolute; inset: 0; opacity: 0; z-index: 5; overflow: hidden; }
+      .mscene { position: absolute; inset: 0; z-index: 10; opacity: 0; overflow: hidden; }
+      /* cut-backs: her real footage jumps in over a long app/PiP stretch */
+      #her { position: absolute; inset: 0; z-index: 26; opacity: 0; overflow: hidden; transform-origin: 50% 40%; }
+      #her video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #uhook { position: absolute; left: 60px; width: 960px; top: 96px; text-align: center; z-index: 40; perspective: 900px; }
+      #uhook span { display: inline-block; padding: 8px 22px; margin: 4px 0; border-radius: 18px; background: #fff; color: var(--ink);
+        font-size: 50px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.08; box-shadow: 0 10px 30px rgba(0,0,0,0.22); }
+      #uhook span.k { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chunk { position: absolute; left: 40px; width: 1000px; top: 1480px; text-align: center; opacity: 0; z-index: 30; }
+      .chunk b { display: inline-block; margin: 0 4px; padding: 4px 16px 8px; border-radius: 18px; font-size: 74px; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.08;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.35), 0 8px 30px rgba(0,0,0,0.45); -webkit-text-stroke: 2px rgba(0,0,0,0.18); paint-order: stroke fill; opacity: 0; }
+      .chunk b.on { background: linear-gradient(135deg, #ff3d7f, #d92e64); color: #fff; text-shadow: none; -webkit-text-stroke: 0; box-shadow: 0 10px 30px rgba(217,46,100,0.45); }
+      .chunk.pip { top: 1095px; }
+      .chunk.pip b { font-size: 64px; color: var(--ink); text-shadow: none; -webkit-text-stroke: 0; }
+      .chunk.pip b.on { color: #fff; }
+      .chunk.amiga .bub { display: inline-block; padding: 16px 26px 20px; border-radius: 40px 40px 40px 10px; background: rgba(255,255,255,0.97); box-shadow: 0 12px 34px rgba(0,0,0,0.3); }
+      .chunk.amiga b { color: var(--ink); text-shadow: none; -webkit-text-stroke: 0; font-size: 58px; }
+      .chunk.amiga .who { display: block; text-align: left; font-size: 28px; font-weight: 800; color: #8a7a80; margin: 0 0 2px 12px; }
+      .count { position: absolute; left: 0; width: 1080px; text-align: center; z-index: 20; }
+      .count .n { display: inline-block; padding: 14px 44px 18px; border-radius: 40px; background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff;
+        font-size: 140px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; box-shadow: 0 20px 60px rgba(197,31,85,0.45); }
+      .count .l { display: block; margin-top: 12px; font-size: 52px; font-weight: 900; color: var(--ink); }
+      .mscene .inner { perspective: 1600px; }
+      .pchip { position: absolute; padding: 14px 26px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 38px; font-weight: 800; white-space: nowrap; opacity: 0;
+        box-shadow: 0 10px 24px rgba(80,20,40,0.14), 0 30px 70px rgba(80,20,40,0.2); z-index: 16; }
+      .tile { position: absolute; width: 230px; height: 230px; border-radius: 56px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 54px; font-weight: 900; font-style: italic;
+        background: linear-gradient(135deg, #00c4cc, #7d2ae8); box-shadow: 0 20px 50px rgba(60,20,90,0.35); }
+      .cvx { position: absolute; left: 110px; top: 1250px; width: 860px; height: 470px; border-radius: 34px; overflow: hidden; background: #fff; opacity: 0;
+        box-shadow: 0 20px 60px rgba(60,20,90,0.3); }
+      .cvbar { height: 84px; display: flex; align-items: center; gap: 22px; padding: 0 30px; background: linear-gradient(90deg, #00c4cc, #7d2ae8); color: #fff; }
+      .cvbar b { font-size: 44px; font-weight: 900; font-style: italic; } .cvbar span { font-size: 26px; opacity: 0.85; }
+      .cvbody { display: flex; height: 386px; background: #ebecf0; }
+      .cvside { width: 110px; background: #18191b; display: flex; flex-direction: column; gap: 22px; padding: 26px 30px; }
+      .cvside i { display: block; width: 50px; height: 50px; border-radius: 12px; background: #3a3b3f; }
+      .cvpage { margin: 30px auto; width: 190px; height: 326px; background: #fff; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+      .cvpage small { font-size: 18px; color: #888; text-align: center; padding: 0 10px; }
+      .spin { width: 64px; height: 64px; border-radius: 50%; border: 8px solid #e3d9f7; border-top-color: #7d2ae8; }
+      .pinwrap { position: absolute; inset: 0; background: #fff; }
+      #m4-in { background: #fbf5f1; }
+      .endcard { position: absolute; left: 70px; top: 360px; width: 940px; height: 1160px; border-radius: 60px; background: rgba(251,245,241,0.93); box-shadow: 0 30px 90px rgba(80,20,40,0.25); }
+      .wall { position: absolute; left: -400px; top: -330px; width: 1900px; transform: rotate(-9deg); display: flex; flex-direction: column; gap: 26px; }
+      .wrow { display: flex; gap: 26px; width: max-content; }
+      .wrow img { width: 300px; height: 533px; object-fit: cover; border-radius: 28px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); display: block; }
+      .pinwrap .pinhead { position: absolute; left: 30px; right: 30px; top: 70px; display: flex; align-items: center; gap: 18px; }
+      .pinlogo { flex: none; width: 70px; height: 70px; border-radius: 50%; background: #e60023; color: #fff; font: 900 46px/70px Georgia, serif; text-align: center; }
+      .sbarq { flex: 1; height: 90px; border-radius: 45px; background: #f1edee; display: flex; align-items: center; padding: 0 34px; font-size: 36px; color: #4a3d43; }
+      .feedwin { position: absolute; left: 24px; right: 24px; top: 190px; bottom: 0; overflow: hidden; }
+      .feed { columns: 3; column-gap: 16px; }
+      .feed img { display: block; width: 100%; height: 420px; object-fit: cover; margin-bottom: 16px; border-radius: 22px; break-inside: avoid; }
+      .feed img:nth-child(3n+2) { height: 540px; }
+      .xmark { position: absolute; width: 300px; height: 300px; opacity: 0; }
+      .xmark::before, .xmark::after { content: ""; position: absolute; left: 130px; top: -10px; width: 40px; height: 320px; border-radius: 20px; background: #ef2b4b; box-shadow: 0 6px 20px rgba(239,43,75,0.4); }
+      .xmark::before { transform: rotate(45deg); } .xmark::after { transform: rotate(-45deg); }
+      .mini { position: absolute; width: 230px; height: 410px; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 40px rgba(60,10,30,0.3); border: 5px solid #fff; opacity: 0; }
+      .mini .photo { inset: 0; }
+      .mini.big { width: 300px; height: 530px; }
+      .mini.big img { left: 25px; top: 90px; width: 250px; }
+      .mini img { position: absolute; left: 20px; top: 60px; width: 190px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+      /* ---- shared extras for u2–u5 ---- */
+      .mlist { position: absolute; left: 90px; width: 900px; top: 1240px; display: flex; flex-direction: column; gap: 16px; }
+      .mrow { display: flex; align-items: center; gap: 20px; padding: 20px 26px; border-radius: 30px; background: #fff; box-shadow: 0 14px 34px rgba(80,20,40,0.14); opacity: 0; color: var(--ink); }
+      .mrow .ic { flex: none; width: 70px; height: 70px; border-radius: 18px; display: grid; place-items: center; font-size: 40px; background: #f4eef0; }
+      .mrow b { font-size: 36px; font-weight: 800; flex: 1; } .mrow small { font-size: 26px; color: #8a7a80; font-weight: 600; }
+      .mrow .bar { position: relative; width: 180px; height: 14px; border-radius: 7px; background: #eee; overflow: hidden; }
+      .mrow .bar i { position: absolute; inset: 0; background: linear-gradient(90deg, #1fa463, #4285f4); transform-origin: 0 50%; transform: scaleX(0); display: block; }
+      .store { position: absolute; left: 90px; width: 900px; top: 1250px; padding: 34px; border-radius: 40px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.18); opacity: 0; color: var(--ink); }
+      .store h5 { font-size: 40px; font-weight: 800; display: flex; justify-content: space-between; } .store h5 span { color: #e11d48; }
+      .store .sbar2 { margin-top: 24px; height: 44px; border-radius: 14px; background: #eee; overflow: hidden; display: flex; }
+      .store .sbar2 i { display: block; height: 100%; transform-origin: 0 50%; }
+      .store p { margin-top: 18px; font-size: 28px; color: #8a7a80; font-weight: 600; }
+      .logoburst { position: absolute; left: 0; width: 1080px; top: 700px; display: flex; justify-content: center; }
+      .logoburst img { width: 860px; display: block; }
+      .fcard { position: absolute; left: 190px; top: 420px; width: 700px; height: 1150px; border-radius: 48px; overflow: hidden; box-shadow: 0 30px 80px rgba(60,10,30,0.35); }
+      .fcard .photo { inset: 0; }
+      .fcard .plain { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(0.4) contrast(0.85) brightness(1.08); }
+      .fcard .graded { position: absolute; inset: 0; background-size: cover; background-position: center; filter: contrast(1.15) saturate(1.3) sepia(0.15) brightness(0.95); clip-path: inset(0 0 0 100%); }
+      .fcard .dv { position: absolute; top: 0; bottom: 0; width: 8px; margin-left: -4px; background: #fff; left: 100%; box-shadow: 0 0 14px rgba(0,0,0,0.35); }
+      .fcard .lb { position: absolute; top: 30px; padding: 10px 20px; border-radius: 20px; font-size: 28px; font-weight: 800; color: #fff; background: rgba(0,0,0,0.45); }
+      .invoice { position: absolute; left: 140px; top: 1250px; width: 800px; padding: 36px 40px; border-radius: 36px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.2); opacity: 0; color: var(--ink); }
+      .invoice small { font-size: 26px; color: #8a7a80; font-weight: 700; letter-spacing: 0.08em; }
+      .invoice b { display: block; font-size: 40px; font-weight: 800; margin: 8px 0 18px; }
+      .invoice .amt { font-size: 92px; font-weight: 900; color: #e11d48; letter-spacing: -0.03em; }
+      .invoice .amt em { font-style: normal; font-size: 40px; color: #8a7a80; }
+      .checks { position: absolute; left: 120px; width: 840px; top: 1240px; display: flex; flex-direction: column; gap: 18px; }
+      .checks div { display: flex; align-items: center; gap: 22px; padding: 22px 30px; border-radius: 32px; background: #fff; box-shadow: 0 14px 34px rgba(80,20,40,0.14); font-size: 42px; font-weight: 800; color: var(--ink); opacity: 0; }
+      .checks i { flex: none; width: 58px; height: 58px; border-radius: 50%; background: #22c55e; position: relative; display: block; }
+      .checks i::after { content: ""; position: absolute; left: 20px; top: 10px; width: 13px; height: 26px; border: solid #fff; border-width: 0 7px 7px 0; transform: rotate(45deg); }
+      .agcard { position: absolute; left: 150px; top: 1240px; width: 780px; padding: 30px; border-radius: 38px; background: #fff; box-shadow: 0 20px 50px rgba(80,20,40,0.18); opacity: 0; color: var(--ink); }
+      .agcard h5 { font-size: 34px; font-weight: 800; margin-bottom: 18px; }
+      .agcard div { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-top: 1px solid #f0e8eb; font-size: 36px; font-weight: 700; opacity: 0; }
+      .agcard div span { font-size: 28px; color: #8a7a80; width: 90px; }
+      .share2 { position: absolute; left: 140px; width: 800px; top: 1260px; padding: 30px 30px 34px; border-radius: 48px; background: #fff; box-shadow: 0 20px 60px rgba(80,20,40,0.2); color: var(--ink); opacity: 0; }
+      .share2 h4 { font-size: 38px; font-weight: 800; text-align: center; margin-bottom: 22px; }
+      .share2 .avs { display: flex; justify-content: space-around; }
+      .share2 .av { position: relative; width: 150px; text-align: center; font-size: 28px; font-weight: 700; }
+      .share2 .av i { display: flex; width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 50%; align-items: center; justify-content: center; font-size: 60px; font-style: normal; }
+      .share2 .av em { position: absolute; right: 8px; top: 80px; width: 48px; height: 48px; border-radius: 50%; background: #22c55e; border: 4px solid #fff; opacity: 0; }
+      .share2 .av em::after { content: ""; position: absolute; left: 13px; top: 5px; width: 10px; height: 20px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .dmq2 { position: absolute; left: 60px; width: 960px; top: 1240px; }
+      .dmq2 p { max-width: 800px; padding: 24px 34px; border-radius: 40px; font-size: 44px; font-weight: 700; line-height: 1.2; box-shadow: 0 14px 40px rgba(80,20,40,0.2); opacity: 0; margin-bottom: 18px; }
+      .dmq2 p.me { background: linear-gradient(135deg, #a347e6, #6a38f5); color: #fff; margin-left: auto; border-bottom-right-radius: 10px; }
+      .dmq2 p.they { background: #fff; color: var(--ink); border-bottom-left-radius: 10px; }
+      .newb { position: absolute; top: 14px; right: 14px; padding: 6px 14px; border-radius: 14px; background: #e8417a; color: #fff; font-size: 24px; font-weight: 800; opacity: 0; }
+      .emo { position: absolute; inset: 0; display: grid; place-items: center; font-size: 150px; }
+      .bigclock { position: absolute; left: 0; width: 1080px; top: 1290px; display: flex; justify-content: center; }
+      .bigclock div { display: flex; align-items: center; gap: 22px; padding: 26px 56px; border-radius: 90px; background: #fff; color: var(--ink); font-size: 96px; font-weight: 900; font-variant-numeric: tabular-nums; box-shadow: 0 20px 60px rgba(80,20,40,0.22); opacity: 0; }
+      .bigclock.bad div { color: #e11d48; } .bigclock.good div { color: #16a34a; }
+
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="vb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="vbg" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="32.64" data-width="1080" data-height="1920">
+      <audio id="mix" src="assets/u4-mix.wav" data-start="0" data-duration="32.64" data-volume="1"></audio>
+      <div id="cam"><video id="orig" class="clip" src="assets/u4-talk.mp4" muted playsinline data-start="0" data-duration="32.64" data-track-index="9"></video><div class="ubg" id="ubg"><div class="g1"></div><div class="g2"></div><div class="fc" style="left:-40px;top:120px;transform:scale(1.0);background-image:url(assets/site/comida-2.webp)"></div><div class="fc" style="left:790px;top:160px;transform:scale(1.0);background-image:url(assets/site/treino-3.webp)"></div><div class="fc far" style="left:-90px;top:760px;transform:scale(0.85);background-image:url(assets/site/rotina-2.webp)"></div><div class="fc far" style="left:860px;top:820px;transform:scale(0.85);background-image:url(assets/site/beleza-1.webp)"></div><div class="fc far" style="left:330px;top:-60px;transform:scale(0.7);background-image:url(assets/site/fe-2.webp)"></div><div class="fc far" style="left:560px;top:-120px;transform:scale(0.6);background-image:url(assets/site/rotina-5.webp)"></div><div class="bk" style="left:0px;top:900px;width:20px;height:20px"></div><div class="bk" style="left:137px;top:1111px;width:27px;height:27px"></div><div class="bk" style="left:274px;top:1322px;width:34px;height:34px"></div><div class="bk" style="left:411px;top:1533px;width:41px;height:41px"></div><div class="bk" style="left:548px;top:1744px;width:48px;height:48px"></div><div class="bk" style="left:685px;top:1955px;width:25px;height:25px"></div><div class="bk" style="left:822px;top:1066px;width:32px;height:32px"></div><div class="bk" style="left:959px;top:1277px;width:39px;height:39px"></div><div class="bk" style="left:16px;top:1488px;width:46px;height:46px"></div><div class="bk" style="left:153px;top:1699px;width:23px;height:23px"></div><div class="bk" style="left:290px;top:1910px;width:30px;height:30px"></div><div class="bk" style="left:427px;top:1021px;width:37px;height:37px"></div></div><video id="talk" class="clip cut" data-layout-allow-occlusion src="assets/u4-cut.webm" muted playsinline data-start="0" data-duration="32.64" data-track-index="0"></video></div>
+      <!-- PiP 1: Canva -->
+      <div class="pipfx" id="p1fx">
+        <div class="cvx" id="p1canva"><div class="cvbar"><b>Canva</b><span>Story sem título · 1080 × 1920</span></div>
+          <div class="cvbody"><div class="cvside"><i></i><i></i><i></i><i></i><i></i></div><div class="cvpage"><div class="spin" id="p1spin"></div><small>carregando elementos…</small></div></div></div>
+        <div class="xmark" id="p1x" style="left: 390px; top: 1300px"></div>
+      </div>
+      <!-- PiP 2: her day -->
+      <div class="pipfx" id="p2fx">
+        <div class="agcard" id="p2a"><h5>📐 Agenda da arquiteta · hoje</h5>
+          <div id="p2r1"><span>08:00</span>visita de obra 🏗️</div><div id="p2r2"><span>10:30</span>reunião com cliente 🤝</div><div id="p2r3"><span>14:00</span>obra 2 · acabamento 🔨</div><div id="p2r4"><span>17:00</span>reunião de projeto 📋</div></div>
+      </div>
+      <!-- PiP 3: half an hour on a backstage story -->
+      <div class="pipfx" id="p3fx">
+        <div class="bigclock bad" id="p3c" style="top: 1230px"><div>⏳ <span id="p3n">0 min</span></div></div>
+        <div class="mini big" id="p3s" style="left: 390px; top: 1420px; height: 420px; width: 300px"><div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg); filter: saturate(0.5)"></div><div class="lb" style="position:absolute;left:20px;bottom:20px;font-size:26px;font-weight:800;color:#fff;background:rgba(0,0,0,.45);padding:6px 14px;border-radius:14px">bastidor…</div></div>
+        <div class="xmark" id="p3x" style="left: 390px; top: 1480px"></div>
+      </div>
+      <!-- M2: the app, 24 mil -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="phone" id="m2ph" style="left: 183px; top: 391px"><div class="screen" id="m2scr"><img id="m2home" src="assets/app/home.png" alt="" /><img id="m2mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" /><img id="m2cat" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" /><div class="island"></div></div></div>
+        <div class="count" id="m2n" style="top: 150px; opacity: 0"><span class="n" id="m2nn">+0</span><span class="l">figurinhas</span></div>
+        <div class="cap" id="m2c" style="top: 170px"><span>é</span><span>um</span><span class="k">app</span><span>👇</span></div>
+      </div></div>
+      <!-- PiP 4: any profession -->
+      <div class="pipfx" id="p4fx">
+        <div class="mini" id="q1" style="left: 40px; top: 1260px"><div class="photo" style="background-image: url(assets/site/beleza-1.webp)"></div></div>
+        <div class="mini" id="q2" style="left: 295px; top: 1260px"><div class="photo" style="background-image: url(assets/site/comida-4.webp)"></div></div>
+        <div class="mini" id="q3" style="left: 550px; top: 1260px"><div class="photo" style="background-image: url(assets/site/treino-2.webp)"></div></div>
+        <div class="mini" id="q4" style="left: 805px; top: 1260px"><div class="photo" style="background-image: url(assets/site/rotina-3.webp)"></div></div>
+        <div class="pchip" id="qc1" style="left: 60px; top: 1700px">estética 💆‍♀️</div>
+        <div class="pchip" id="qc2" style="left: 300px; top: 1700px">gastronomia 🍔</div>
+        <div class="pchip" id="qc3" style="left: 580px; top: 1700px">personal 💪</div>
+        <div class="pchip" id="qc4" style="left: 830px; top: 1700px">lojas 🛍️</div>
+      </div>
+      <!-- M3: filters -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="fcard" id="m3f"><div class="plain" style="background-image: url(assets/photos/boutique.jpg)"></div><div class="graded" id="m3g" style="background-image: url(assets/photos/boutique.jpg)"></div><div class="dv" id="m3d"></div>
+          <div class="lb" style="left: 30px">antes</div><div class="lb" style="right: 30px; background: rgba(217,46,100,0.85)">com filtro</div></div>
+        <div class="cap" id="m3c" style="top: 170px"><span class="k">+100</span><span>filtros</span><span>🎨</span></div>
+      </div></div>
+      <!-- M4: scripts -->
+      <div class="mscene" id="m4"><div class="inner" id="m4-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="agcard" id="m4a" style="top: 520px"><h5>📝 Roteiro de Stories</h5>
+          <div><span>SEG</span>bastidor da obra 🏗️</div><div><span>TER</span>antes e depois ✨</div><div><span>QUA</span>dica rápida 💡</div><div><span>QUI</span>depoimento de cliente 💬</div><div><span>SEX</span>caixinha de perguntas 🎉</div></div>
+        <div class="cap" id="m4c" style="top: 170px"><span>e</span><span>até</span><span class="k">roteiros</span><span>📝</span></div>
+      </div></div>
+      <!-- M5: click, copy, paste -->
+      <div class="mscene" id="m5"><div class="inner" id="m5-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="phone" id="m5ph" style="left: 183px; top: 391px"><div class="screen" id="m5scr"><img id="m5cat" src="assets/app/cat-bomdia.png" alt="" /><img id="m5mod" src="assets/app/modal-boanoite.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+          <div class="toast" id="m5t"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div><div class="island"></div></div></div>
+        <div class="story" id="m5st" style="left: 110px; top: 386px; opacity: 0"><div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg)"></div><div class="sbar"><i><b id="m5bar"></b></i></div><div class="shead"><i></i>meu story <small>· agora</small></div>
+          <img class="stk" id="m5s" src="assets/stk/bomdia-126.webp" style="left: 160px; top: 300px; width: 540px; opacity: 0" alt="" /></div>
+        <div class="cap" id="m5c" style="top: 170px"><span>clica,</span><span class="k">copia</span><span>e</span><span class="k">cola</span></div>
+      </div></div>
+      <!-- shared: PiP background, the end scene over the story wall, fx -->
+      <div class="pipbg" id="pb"><div class="bg"></div><div class="glow" id="gpb"></div><div class="glow2"></div></div>
+      <div class="mscene" id="mEnd"><div class="inner" id="mEnd-in" style="background: #fbf5f1">
+        <div class="wall" id="wallE" style="filter: blur(2px); opacity: 0.85"></div>
+        <div class="endcard"></div>
+        <div class="endlogo" style="top: 470px"><img id="eLogo" src="assets/app/logo-t.png" style="width: 820px" alt="Stories Lab" /></div>
+        <div class="tag" id="eTag" style="top: 720px">+24 mil figurinhas, filtros e roteiros<br /><em>copia, cola e pronto</em></div>
+        <div class="cta" id="eCta" style="top: 1060px">Toca em Saiba mais 👇<div class="gloss"><i id="eG"></i></div></div>
+        <div class="url" id="eUrl" style="top: 1250px">storieslab.app</div>
+        <div class="arrow" id="eArr" style="top: 1380px"></div>
+        <div class="ptbox" data-layout-ignore id="ePt"></div>
+      </div></div>
+      <div id="fx" style="z-index: 60">
+        <div class="rays" id="rays"></div>
+        <div class="leak" id="leak1" style="left: -1700px; top: -600px; background: radial-gradient(circle, rgba(255, 190, 150, 0.85), rgba(255, 190, 150, 0) 60%)"></div>
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+
+      <div id="her"><video id="herv" class="clip" src="assets/u4-talk.mp4" muted playsinline data-start="0" data-duration="32.64" data-track-index="29"></video></div>
+      <div id="uhook"></div>
+      <div id="caps"></div>
+    </div>
+    <script>
+      const VO = {"lines": []};
+      const TOTAL = 32.64;
+      const tl = gsap.timeline({ paused: true });
+      const w = (ln, i) => VO.lines[ln].words[i][1];
+      const we = (ln, i) => VO.lines[ln].words[i][2];
+      const $ = (s) => document.querySelector(s);
+
+      // seeded PRNG: renders stay deterministic
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+      const ENERGY = {
+        curious: { d: 0.4, ease: "back.out(1.6)", blur: 10, y: 30, rx: 40 },
+        secret: { d: 0.6, ease: "sine.out", blur: 12, y: 16, rx: 0 },
+        melancholy: { d: 0.8, ease: "sine.out", blur: 12, y: 18, rx: 0 },
+        hope: { d: 0.5, ease: "power3.out", blur: 14, y: 26, rx: 40 },
+        excited: { d: 0.34, ease: "back.out(2)", blur: 12, y: 40, rx: 60 },
+        triumph: { d: 0.36, ease: "expo.out", blur: 16, y: 50, rx: 70 },
+        warm: { d: 0.55, ease: "power3.out", blur: 12, y: 24, rx: 30 },
+      };
+      // caption: words revealed across the VO words a..b of line ln
+      const caption = (id, ln, a, b, mood, delay = 0) => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        const t0 = w(ln, a) + delay, t1 = w(ln, b) + delay;
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "back.out(1.8)" }, t0 - 0.12);
+        spans.forEach((s, i) => {
+          const t = spans.length < 2 ? t0 : t0 + ((t1 - t0) * i) / (spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" },
+            { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.06);
+        });
+      };
+      const capOut = (id, t) => tl.to("#" + id, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, t);
+      const out = (sel, t, d = 0.3) => tl.to(sel, { opacity: 0, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const camera = (sel, t0, t1, s0, s1, ease = "none") => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: t1 - t0, ease }, t0);
+      const drift = (sel, t0, t1, amp = 10, rot = 3) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot }, { y: -amp, rotation: rot, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const sweep = (sel, t, d = 0.8) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: 420, duration: d, ease: "power2.inOut" }, t);
+      const pop = (sel, t, rot = 0, s = 1) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.2, rotation: rot - 18, filter: "blur(8px)" }, { opacity: 1, scale: s, rotation: rot, filter: "blur(0px)", duration: 0.5, ease: "back.out(2.2)" }, t);
+      // phone: tap at screen coords (690x1494 space)
+      const tap = (scr, x, y, t) => {
+        const box = document.querySelector(scr);
+        const a = document.createElement("div"); a.className = "tap"; a.style.left = x + "px"; a.style.top = y + "px"; box.appendChild(a);
+        const r = document.createElement("div"); r.className = "ring"; r.style.left = x + "px"; r.style.top = y + "px"; box.appendChild(r);
+        tl.fromTo(a, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 0.8, duration: 0.14, ease: "power2.out" }, t - 0.14);
+        tl.to(a, { opacity: 0, scale: 1, duration: 0.25, ease: "power2.in" }, t + 0.08);
+        tl.fromTo(r, { opacity: 0.9, scale: 0.6 }, { opacity: 0, scale: 2.2, duration: 0.5, ease: "power2.out" }, t);
+      };
+      // swap screens inside a phone: new one slides in from the right (push) or up (modal)
+      const push = (from, to, t, d = 0.42) => {
+        tl.fromTo(to, { x: 690, opacity: 1 }, { x: 0, opacity: 1, duration: d, ease: "power3.inOut" }, t);
+        tl.fromTo(from, { x: 0 }, { x: -230, duration: d, ease: "power3.inOut", immediateRender: false }, t);
+      };
+      const sheet = (to, t, d = 0.5) => tl.fromTo(to, { y: 1494, opacity: 1 }, { y: 0, opacity: 1, duration: d, ease: "expo.out" }, t);
+      const vblur = (from, to, t, d, ease) => {
+        const g = document.getElementById("vbg"), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", "0 " + p.v);
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t);
+      };
+      // particle systems per mood
+      const hearts = (box, t0, n, x0, y0, spread = 700) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const h = document.createElement("div"); h.className = "heart pt"; const s = 0.5 + rnd() * 0.9;
+          h.style.left = x0 + (rnd() - 0.5) * spread + "px"; h.style.top = y0 + "px"; b.appendChild(h);
+          const t = t0 + i * 0.09;
+          tl.fromTo(h, { opacity: 0, scale: 0, y: 0, x: 0, rotation: (rnd() - 0.5) * 40 },
+            { opacity: 1, scale: s, y: -260 - rnd() * 260, x: (rnd() - 0.5) * 160, duration: 0.6, ease: "back.out(2)" }, t);
+          tl.to(h, { opacity: 0, y: "-=320", duration: 1.0, ease: "sine.in" }, t + 0.6);
+        }
+      };
+      const confetti = (box, t, n, x0, y0) => {
+        const b = document.getElementById(box); const cols = ["#d92e64", "#f0548a", "#ffd166", "#ffffff", "#ff9fbf", "#8fd3ff"];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement("i"); c.className = "pt"; const s = 12 + rnd() * 16;
+          Object.assign(c.style, { left: x0 + "px", top: y0 + "px", width: s + "px", height: s * (0.4 + rnd() * 0.6) + "px", background: cols[i % cols.length], borderRadius: i % 3 ? "3px" : "50%" });
+          b.appendChild(c);
+          const a = rnd() * Math.PI * 2, r = 260 + rnd() * 520;
+          tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.4 }, { x: Math.cos(a) * r, y: Math.sin(a) * r * 0.8 - 120, rotation: rnd() * 540, scale: 1, duration: 0.7, ease: "expo.out" }, t);
+          tl.to(c, { y: "+=" + (420 + rnd() * 400), rotation: "+=" + rnd() * 360, opacity: 0, duration: 1.6, ease: "sine.in" }, t + 0.7);
+        }
+      };
+      const sparks = (box, t0, t1, n, color = "rgba(255,210,225,0.95)") => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 6 + rnd() * 12;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: 900 + rnd() * 1000 + "px",
+            background: `radial-gradient(circle, ${color}, rgba(255,255,255,0))`, boxShadow: `0 0 ${s * 2}px ${color}` });
+          b.appendChild(p);
+          const st = t0 + rnd() * (t1 - t0) * 0.6;
+          tl.fromTo(p, { opacity: 0, y: 0 }, { opacity: 1, y: -200 - rnd() * 300, duration: 0.6, ease: "sine.out" }, st);
+          tl.to(p, { opacity: 0, y: "-=" + (200 + rnd() * 300), duration: 1.2, ease: "sine.in" }, st + 0.6);
+        }
+      };
+      const ash = (box, t0, t1, n) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 5 + rnd() * 9;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: -40 + rnd() * 900 + "px", background: "rgba(120,110,115,0.45)" });
+          b.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0, opacity: 0 }, { y: 500 + rnd() * 600, x: (rnd() - 0.5) * 120, opacity: 0.8, duration: t1 - t0, ease: "sine.inOut" }, t0 + rnd() * 0.5);
+        }
+      };
+      const dm = (sel, t, y, fromY = -260) => {
+        tl.fromTo(sel, { opacity: 0, y: fromY, scale: 0.9, rotationX: -40, filter: "blur(10px)" }, { opacity: 1, y, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.55, ease: "back.out(1.4)" }, t);
+      };
+      const storyBar = (sel, t0, t1) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: t1 - t0, ease: "none" }, t0);
+
+      // before/after slider inside the editor screen
+      const slider = (gradeSel, divSel, from, to, t, d) => {
+        const o = { p: from }, g = $(gradeSel), dv = $(divSel);
+        const set = () => { g.style.clipPath = `inset(0 0 0 ${o.p}%)`; dv.style.left = o.p + "%"; };
+        tl.fromTo(o, { p: from }, { p: to, duration: d, ease: "power2.inOut", onUpdate: set, immediateRender: false }, t);
+      };
+      const clock = (sel, from, to, t, d, fmt) => {
+        const o = { v: from }, n = $(sel), set = () => (n.textContent = fmt(o.v));
+        set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "none", onUpdate: set, immediateRender: false }, t);
+      };
+      const D = {"u": "u4", "total": 32.64, "talk_end": 31.24, "cta_at": 30.31, "words": [["Se", 0.02, 0.2, 0, "ela"], ["você", 0.2, 0.46, 0, "ela"], ["é", 0.46, 0.7, 0, "ela"], ["profissional", 0.7, 1.3, 0, "ela"], ["e", 1.3, 1.5, 0, "ela"], ["não", 1.5, 1.72, 0, "ela"], ["tem", 1.72, 1.86, 0, "ela"], ["tempo", 1.86, 2.18, 0, "ela"], ["de", 2.18, 2.38, 0, "ela"], ["ficar", 2.38, 2.6, 0, "ela"], ["no", 2.6, 2.84, 0, "ela"], ["Canva,", 2.84, 3.22, 0, "ela"], ["esse", 3.58, 3.62, 0, "ela"], ["vídeo", 3.62, 3.94, 0, "ela"], ["é", 3.94, 4.22, 0, "ela"], ["para", 4.22, 4.34, 0, "ela"], ["você.", 4.34, 4.6, 0, "ela"], ["Eu", 4.66, 4.84, 1, "ela"], ["sou", 4.84, 4.98, 1, "ela"], ["arquiteta", 4.98, 5.52, 1, "ela"], ["e", 5.52, 5.84, 1, "ela"], ["passo", 5.84, 6.12, 1, "ela"], ["o", 6.12, 6.38, 1, "ela"], ["dia", 6.38, 6.6, 1, "ela"], ["entre", 6.6, 6.94, 1, "ela"], ["obras", 6.94, 7.36, 1, "ela"], ["e", 7.36, 7.68, 1, "ela"], ["reuniões.", 7.68, 8.06, 1, "ela"], ["Eu", 8.18, 8.26, 1, "ela"], ["não", 8.26, 8.44, 1, "ela"], ["posso", 8.44, 8.64, 1, "ela"], ["perder", 8.64, 8.98, 1, "ela"], ["meia", 8.98, 9.28, 1, "ela"], ["hora", 9.28, 9.4, 1, "ela"], ["do", 9.4, 9.56, 1, "ela"], ["meu", 9.56, 9.78, 1, "ela"], ["dia", 9.78, 10.06, 1, "ela"], ["editando", 10.06, 10.58, 1, "ela"], ["uma", 10.58, 10.74, 1, "ela"], ["história", 10.74, 10.98, 1, "ela"], ["de", 10.98, 11.14, 1, "ela"], ["bastidor.", 11.14, 11.5, 1, "ela"], ["Olha", 11.61, 12.13, 2, "ela"], ["aqui", 12.13, 12.49, 2, "ela"], ["esse", 12.49, 12.71, 2, "ela"], ["Story", 12.71, 12.95, 2, "ela"], ["que", 12.95, 13.09, 2, "ela"], ["eu", 13.09, 13.19, 2, "ela"], ["acabei", 13.19, 13.45, 2, "ela"], ["de", 13.45, 13.63, 2, "ela"], ["fazer.", 13.63, 13.95, 2, "ela"], ["É", 14.05, 14.15, 3, "ela"], ["um", 14.15, 14.29, 3, "ela"], ["aplicativo", 14.29, 14.97, 3, "ela"], ["que", 14.97, 15.25, 3, "ela"], ["tem", 15.25, 15.61, 3, "ela"], ["mais", 15.61, 15.87, 3, "ela"], ["de", 15.87, 16.23, 3, "ela"], ["24", 16.23, 16.37, 3, "ela"], ["mil", 16.37, 16.81, 3, "ela"], ["figurinhas", 16.81, 17.37, 3, "ela"], ["de", 17.37, 17.83, 3, "ela"], ["todos", 17.83, 18.17, 3, "ela"], ["os", 18.17, 18.43, 3, "ela"], ["estilos", 18.43, 18.77, 3, "ela"], ["e", 18.77, 19.11, 3, "ela"], ["para", 19.11, 19.25, 3, "ela"], ["qualquer", 19.25, 19.53, 3, "ela"], ["profissão.", 19.53, 20.25, 3, "ela"], ["Mais", 20.35, 20.57, 4, "ela"], ["de", 20.57, 20.77, 4, "ela"], ["100", 20.77, 20.97, 4, "ela"], ["filtros", 20.97, 21.37, 4, "ela"], ["e", 21.37, 21.61, 4, "ela"], ["até", 21.61, 21.79, 4, "ela"], ["roteiros", 21.79, 22.21, 4, "ela"], ["para", 22.21, 22.43, 4, "ela"], ["Stories.", 22.43, 22.73, 4, "ela"], ["Você", 22.83, 22.89, 5, "ela"], ["só", 22.89, 23.11, 5, "ela"], ["clica", 23.11, 23.35, 5, "ela"], ["na", 23.35, 23.59, 5, "ela"], ["figurinha,", 23.59, 24.09, 5, "ela"], ["copia,", 24.41, 24.95, 5, "ela"], ["vai", 25.13, 25.33, 5, "ela"], ["no", 25.33, 25.53, 5, "ela"], ["seu", 25.53, 25.73, 5, "ela"], ["Story", 25.73, 26.09, 5, "ela"], ["e", 26.09, 26.41, 5, "ela"], ["cola.", 26.41, 26.61, 5, "ela"], ["Eu", 26.75, 27.19, 6, "ela"], ["tenho", 27.19, 27.43, 6, "ela"], ["certeza", 27.43, 28.03, 6, "ela"], ["que", 28.03, 28.23, 6, "ela"], ["esse", 28.23, 28.33, 6, "ela"], ["aplicativo", 28.33, 28.81, 6, "ela"], ["também", 28.81, 29.21, 6, "ela"], ["será", 29.21, 29.41, 6, "ela"], ["útil", 29.41, 29.63, 6, "ela"], ["para", 29.63, 29.85, 6, "ela"], ["você.", 29.85, 30.15, 6, "ela"], ["Clique", 30.31, 30.47, 6, "ela"], ["aqui", 30.47, 30.63, 6, "ela"], ["e", 30.63, 30.75, 6, "ela"], ["saiba", 30.75, 30.95, 6, "ela"], ["mais.", 30.95, 31.19, 6, "ela"]], "cuts": [{"t": 0.0, "seg": 0, "new_seg": true, "new_clip": false, "spk": "ela"}, {"t": 4.64, "seg": 1, "new_seg": true, "new_clip": true, "spk": "ela"}, {"t": 11.54, "seg": 2, "new_seg": true, "new_clip": true, "spk": "ela"}, {"t": 13.99, "seg": 3, "new_seg": true, "new_clip": false, "spk": "ela"}, {"t": 20.29, "seg": 4, "new_seg": true, "new_clip": false, "spk": "ela"}, {"t": 22.77, "seg": 5, "new_seg": true, "new_clip": false, "spk": "ela"}, {"t": 24.27, "seg": 5, "new_seg": false, "new_clip": false, "spk": "ela"}, {"t": 26.67, "seg": 6, "new_seg": true, "new_clip": true, "spk": "ela"}], "events": [{"type": "x", "t": 2.84, "dur": 1.4, "text": "Canva"}, {"type": "chip", "t": 4.98, "dur": 1.6, "text": "arquiteta 📐", "x": 110, "y": 560, "rot": -4}, {"type": "clock", "t": 8.98, "dur": 1.9, "to": 30}, {"type": "app", "t": 12.71, "dur": 2.2, "img": "home.png"}, {"type": "count", "t": 16.37, "dur": 1.6, "to": 24000, "label": "figurinhas", "y": 380}, {"type": "prof", "t": 19.53, "dur": 1.4}, {"type": "chip", "t": 20.97, "dur": 1.4, "text": "+100 filtros 🎨", "x": 110, "y": 640, "rot": -4}, {"type": "chip", "t": 21.79, "dur": 1.3, "text": "roteiros prontos 📝", "x": 460, "y": 800, "rot": 4}, {"type": "app", "t": 23.11, "dur": 3.6, "img": "modal-boanoite.png", "taps": [[345, 1250, 0.5]], "toast": "Copiada!"}, {"type": "arrow", "t": 30.31, "dur": 1.6}], "hook": ["sem tempo pra", "*montar story?* ⏳"], "cta": "Toca em Saiba mais 👇", "music": "m1", "title": "PROFISSIONAL-SEM-TEMPO"};
+      const norm = (x) => x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      const W = (k, o = 0) => { let n = 0; for (const x of D.words) if (norm(x[0]) === norm(k)) { if (n === o) return x[1]; n++; } throw new Error("word " + k); };
+      const WE = (k, o = 0) => { let n = 0; for (const x of D.words) if (norm(x[0]) === norm(k)) { if (n === o) return x[2]; n++; } throw new Error("word " + k); };
+      // mcap: a motion-style label caption shown from t0 to t1
+      const mcap = (id, t0, t1, mood = "excited") => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "back.out(1.8)" }, t0 - 0.1);
+        spans.forEach((s, i) => { const t = t0 + (Math.min(0.9, (t1 - t0) * 0.6) * i) / Math.max(1, spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" }, { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.05); });
+        tl.to(box, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, t1);
+      };
+      const counter = (sel, from, to, t, d) => { const o = { v: from }, n = $(sel), set = () => (n.textContent = "+" + Math.round(o.v).toLocaleString("pt-BR")); set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: set, immediateRender: false }, t); };
+      const T_P1 = 2.26;
+      const T_A1 = 3.48;
+      const T_P2 = 4.86;
+      const T_A2 = 8.08;
+      const T_P3 = 8.88;
+      const T_A3 = 11.51;
+      const T_M2 = 13.97;
+      const T_P4 = 17.63;
+      const T_M3 = 20.23;
+      const T_R = 21.51;
+      const T_C = 22.73;
+      const T_PASTE = 25.03;
+      const T_A4 = 26.65;
+      const T_END = 31.24;
+      const T_INK = 30.01;
+      // ===== shared helpers for the UGC + motion creatives =====
+      const showScene = (id, t) => tl.set(id, { opacity: 1 }, t);
+      const hideScene = (id, t) => tl.set(id, { opacity: 0 }, t);
+      const flashAt = (t, o = 0.6) => { tl.fromTo("#flash", { opacity: 0 }, { opacity: o, duration: 0.05, immediateRender: false }, t); tl.to("#flash", { opacity: 0, duration: 0.3 }, t + 0.05); };
+      tl.fromTo("#flash", { opacity: 0.7 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0);
+      const SITE = ["comida-1","comida-2","comida-3","comida-4","comida-5","comida-6","comida-7","comida-8","treino-1","treino-2","treino-3","treino-4","treino-5","treino-6","treino-7","rotina-1","rotina-2","rotina-3","rotina-4","rotina-5","rotina-6","rotina-7","beleza-1","beleza-2","beleza-3","beleza-4","beleza-5","fe-1","fe-2","fe-3","fe-4","fe-5"];
+      const buildWall = (id, off = 0) => { const w = document.getElementById(id); const rows = [];
+        for (let r = 0; r < 4; r++) { const row = document.createElement("div"); row.className = "wrow";
+          for (let i = 0; i < 22; i++) { const im = document.createElement("img"); im.src = "assets/site/" + SITE[(r * 9 + i + off) % SITE.length] + ".webp"; im.alt = ""; row.appendChild(im); }
+          w.appendChild(row); rows.push(row); }
+        return rows; };
+      const rollWall = (rows, t, d) => rows.forEach((r, i) => tl.fromTo(r, { x: i % 2 ? 0 : -1700 }, { x: i % 2 ? -1700 : 0, duration: d, ease: "none" }, t));
+      // her video as a rounded card on top; motion plays underneath
+      const pip = (t0, t1, inFrom, exit = "expand", fxSel = null) => {
+        tl.set("#pb", { opacity: 1, y: 0 }, t0 - 0.1);
+        if (fxSel) tl.set(fxSel, { y: 0, opacity: 1 }, t0 - 0.1);
+        tl.fromTo("#cam", { scale: 0.5, x: 0, y: inFrom, transformOrigin: "50% 50%", clipPath: "inset(0% round 90px)" },
+          { scale: 0.5, y: -370, duration: 0.4, ease: "expo.out", immediateRender: false }, t0);
+        tl.fromTo("#cam", { scale: 0.5 }, { scale: 0.52, y: -360, duration: Math.max(0.1, t1 - t0 - 0.4), ease: "none", immediateRender: false }, t0 + 0.4);
+        tl.fromTo("#gpb", { x: -100 }, { x: 200, y: 200, duration: t1 - t0, ease: "sine.inOut" }, t0);
+        if (exit === "expand") { tl.to("#cam", { scale: 1, y: 0, clipPath: "inset(0% round 0px)", duration: 0.32, ease: "power3.inOut" }, t1);
+          tl.set("#pb", { opacity: 0 }, t1 + 0.32); if (fxSel) tl.to(fxSel, { opacity: 0, y: 200, duration: 0.2, ease: "power2.in" }, t1 - 0.1); }
+        else if (exit === "up") { tl.to(["#pb", fxSel].filter(Boolean), { y: -1920, duration: 0.32, ease: "power3.in" }, t1 - 0.12);
+          tl.to("#cam", { y: -2400, duration: 0.32, ease: "power3.in" }, t1 - 0.12);
+          tl.set(["#pb"], { opacity: 0, y: 0 }, t1 + 0.3); tl.set("#cam", { clipPath: "inset(0% round 0px)", scale: 1, y: 0 }, t1 + 0.3); }
+        else { tl.set("#pb", { opacity: 0 }, t1 + 0.3); tl.set("#cam", { clipPath: "inset(0% round 0px)", scale: 1, y: 0 }, t1 + 0.3); }
+      };
+      // scene in/out transitions
+      const zoomIn = (sel, inner, t) => { showScene(sel, t); tl.fromTo(inner, { scale: 1.35, filter: "blur(18px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "expo.out" }, t); flashAt(t); };
+      const irisIn = (sel, t, at = "50% 49%") => { showScene(sel, t); tl.fromTo(sel, { clipPath: `circle(0% at ${at})` }, { clipPath: `circle(140% at ${at})`, duration: 0.55, ease: "expo.inOut" }, t);
+        tl.fromTo("#rays", { opacity: 0, rotation: 0, scale: 0.6 }, { opacity: 0.8, rotation: 25, scale: 1.1, duration: 0.4, ease: "power2.out" }, t); tl.to("#rays", { opacity: 0, rotation: 40, duration: 0.5, ease: "power2.in" }, t + 0.4); };
+      const whipUpTo = (outSel, inSel, t) => { tl.to(outSel, { y: -1920, duration: 0.32, ease: "power3.in" }, t - 0.12); showScene(inSel, t - 0.02);
+        tl.fromTo(inSel, { y: 1920 }, { y: 0, duration: 0.32, ease: "power3.out", immediateRender: false }, t - 0.02); hideScene(outSel, t + 0.3); tl.set(outSel, { y: 0 }, t + 0.32); };
+      const whipLeftTo = (outSel, inSel, t) => { tl.to(outSel, { x: -1080, filter: "blur(10px)", duration: 0.3, ease: "power3.in" }, t - 0.1); showScene(inSel, t);
+        tl.fromTo(inSel, { x: 1080, filter: "blur(10px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out", immediateRender: false }, t); hideScene(outSel, t + 0.3); tl.set(outSel, { x: 0, filter: "none" }, t + 0.32); };
+      const backToHer = (outSel, t) => { tl.to(outSel, { y: -1920, duration: 0.32, ease: "power3.in" }, t - 0.14); hideScene(outSel, t + 0.2); tl.set(outSel, { y: 0 }, t + 0.25);
+        tl.fromTo("#cam", { y: 1920 }, { y: 0, duration: 0.32, ease: "power3.out", immediateRender: false }, t - 0.06); };
+      const fadeOutScene = (outSel, t) => { tl.to(outSel, { opacity: 0, scale: 1.12, filter: "blur(12px)", duration: 0.25, ease: "power2.in" }, t - 0.1); tl.set(outSel, { scale: 1, filter: "none" }, t + 0.2); };
+      // red X stamp + shake + grey on a target ("nunca mais")
+      const xErr = (x, target, t) => { tl.fromTo(x, { opacity: 0, scale: 2.4, rotation: -20 }, { opacity: 1, scale: 1.25, rotation: 0, duration: 0.22, ease: "expo.out" }, t);
+        tl.fromTo(target, { x: -26 }, { x: 0, duration: 0.45, ease: "elastic.out(1,0.25)", immediateRender: false }, t + 0.03);
+        tl.fromTo(target, { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.8)", duration: 0.25, immediateRender: false }, t + 0.03); flashAt(t, 0.25); };
+      const rise = (sel, t, rot = 0) => tl.fromTo(sel, { opacity: 0, y: 260, scale: 0.55, rotation: rot - 14, rotationY: rot >= 0 ? 55 : -55, rotationX: 30, transformPerspective: 1200 }, { opacity: 1, y: 0, scale: 1, rotation: rot, rotationY: 0, rotationX: 0, duration: 0.55, ease: "back.out(1.5)" }, t);
+      // the CTA: pink ink opens the end card over the moving wall of real stories
+      const endCard = (T) => { (window.MW = window.MW || []).push([T + 0.15, TOTAL + 1]); const rows = buildWall("wallE", 5); showScene("#mEnd", T);
+        tl.fromTo("#mEnd", { clipPath: "circle(0% at 50% 55%)" }, { clipPath: "circle(130% at 50% 55%)", duration: 0.6, ease: "expo.inOut" }, T);
+        rollWall(rows, T, TOTAL - T + 0.5);
+        tl.fromTo("#mEnd .endcard", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, T + 0.1);
+        tl.fromTo("#eLogo", { opacity: 0, scale: 0.8, y: 40, filter: "blur(14px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, T + 0.2);
+        tl.fromTo("#eTag", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T + 0.4);
+        tl.fromTo("#eCta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, T + 0.55);
+        tl.to("#eCta", { scale: 1.06, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, T + 1.1);
+        sweep("#eG", T + 1.0, 0.8);
+        tl.fromTo("#eUrl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T + 0.7);
+        tl.fromTo("#eArr", { opacity: 0, y: -20 }, { opacity: 1, y: 30, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, T + 0.8);
+        sparks("ePt", T + 0.3, TOTAL, 14); };
+      window.ORIG = [[W("aqui") - 0.1, T_M2 + 0.1]];
+      window.MW = [[T_M2, T_P4], [T_M3, T_A4]];
+      window.HER = [[5.48, 6.56], [9.3, 9.98], [14.95, 15.85], [22.73, 23.5], [25.03, 25.6]];
+      window.PIP = [[T_P1, T_A1], [T_P2, T_A2], [T_P3, T_A3], [T_P4, T_M3]];
+      window.HOOK_END = T_P1 - 0.15;
+      window.CAM = [
+        [0, 0.3, 1.3, 1.0, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [0.3, T_P1, 1.0, 1.06, 540, 600],
+        [T_A1, W("você", 1) - 0.05, 1.08, 1.12, 540, 600],
+        [W("você", 1) - 0.05, T_P2, 1.3, 1.12, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [T_A2, T_P3, 1.1, 1.14, 540, 600],
+        [T_A3, W("aqui") + 0.05, 1.04, 1.08, 540, 600],
+        [W("aqui") + 0.05, W("aqui") + 0.5, 1.0, 1.5, 880, 1050, 0, 0, -60, -150, "power2.inOut"],
+        [W("aqui") + 0.5, T_M2, 1.5, 1.56, 880, 1050, -60, -150, -60, -150],
+        [T_A4, W("certeza") - 0.05, 1.05, 1.08, 540, 600],
+        [W("certeza") - 0.05, W("útil") - 0.05, 1.28, 1.12, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [W("útil") - 0.05, T_INK, 1.3, 1.15, 540, 600, 0, 0, 0, 0, "expo.out"],
+      ];
+      // PiP 1: Canva -> X + error
+      pip(T_P1, T_A1, 1500, "expand", "#p1fx");
+      tl.fromTo("#p1canva", { opacity: 0, y: 300, rotationX: 35, rotationY: -20, transformPerspective: 1200 }, { opacity: 1, y: 0, rotationX: 0, rotationY: 0, duration: 0.45, ease: "expo.out" }, T_P1 + 0.05);
+      tl.fromTo("#p1spin", { rotation: 0 }, { rotation: 1080, duration: 1.4, ease: "none" }, T_P1);
+      xErr("#p1x", "#p1canva", W("Canva") + 0.02);
+      // PiP 2: the architect's day fills up
+      pip(T_P2, T_A2, 1500, "expand", "#p2fx");
+      rise("#p2a", T_P2 + 0.1, -2);
+      [["#p2r1", W("passo")], ["#p2r2", W("obras") - 0.2], ["#p2r3", W("obras") + 0.25], ["#p2r4", W("reuniões")]].forEach(([r, t]) => tl.fromTo(r, { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.28, ease: "back.out(1.8)" }, t - 0.05));
+      // PiP 3: half an hour on a backstage story -> X
+      pip(T_P3, T_A3, 1500, "expand", "#p3fx");
+      tl.fromTo("#p3c div", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, T_P3 + 0.05);
+      clock("#p3n", 0, 30, W("meia"), W("bastidor") - W("meia"), (v) => Math.round(v) + " min");
+      rise("#p3s", W("editando") - 0.1, 3);
+      xErr("#p3x", "#p3s", W("bastidor") + 0.02);
+      // M2: iris out of her phone into the app
+      irisIn("#m2", T_M2, "62% 47%");
+      tl.fromTo("#m2ph", { y: 140, scale: 1.25 }, { y: 0, scale: 0.78, duration: 0.8, ease: "power3.out" }, T_M2);
+      tl.fromTo("#m2ph", { rotationY: 0 }, { rotationY: 8, rotationX: -4, duration: T_P4 - T_M2 - 0.8, ease: "sine.inOut", immediateRender: false }, T_M2 + 0.8);
+      mcap("m2c", T_M2 + 0.1, W("24") - 0.4, "excited");
+      tap("#m2scr", 150, 268, W("aplicativo") + 0.3); push("#m2home", "#m2mais", W("aplicativo") + 0.45);
+      tl.fromTo("#m2n", { opacity: 0, scale: 0.5, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, W("24") - 0.15);
+      counter("#m2nn", 0, 24000, W("24"), 0.8); tl.to("#m2nn", { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, W("24") + 0.8);
+      tap("#m2scr", 155, 386, W("figurinhas") + 0.3); push("#m2mais", "#m2cat", W("figurinhas") + 0.45);
+      tl.to("#m2ph", { y: -1500, rotationX: 35, scale: 0.6, filter: "blur(8px)", duration: 0.32, ease: "power3.in" }, T_P4 - 0.12);
+      tl.to("#m2n", { y: -500, opacity: 0, duration: 0.28, ease: "power3.in" }, T_P4 - 0.12);
+      tl.to("#m2", { opacity: 0, duration: 0.2 }, T_P4 + 0.08); hideScene("#m2", T_P4 + 0.3);
+      // PiP 4: any profession
+      pip(T_P4, T_M3, -1500, "none", "#p4fx");
+      [["#q1", "#qc1", W("todos")], ["#q2", "#qc2", W("estilos")], ["#q3", "#qc3", W("qualquer")], ["#q4", "#qc4", W("profissão")]].forEach(([m, c, t], i) => { rise(m, t - 0.08, i % 2 ? 4 : -4); pop(c, t + 0.05, i % 2 ? 3 : -3); });
+      // M3 filters, M4 scripts, M5 copy/paste
+      zoomIn("#m3", "#m3-in", T_M3); tl.set("#p4fx", { opacity: 0 }, T_M3 + 0.3);
+      mcap("m3c", T_M3 + 0.1, T_R - 0.2, "excited");
+      const sl3 = { p: 100 }; const set3 = () => { $("#m3g").style.clipPath = `inset(0 0 0 ${sl3.p}%)`; $("#m3d").style.left = sl3.p + "%"; }; set3();
+      tl.fromTo(sl3, { p: 100 }, { p: 8, duration: 0.8, ease: "power2.inOut", onUpdate: set3, immediateRender: false }, W("filtros") - 0.3);
+      tl.to(sl3, { p: 50, duration: 0.3, ease: "power2.inOut", onUpdate: set3 }, W("filtros") + 0.5);
+      tl.fromTo("#m3f", { scale: 0.9, rotationY: -14, transformPerspective: 1400 }, { scale: 1, rotationY: 8, duration: T_R - T_M3, ease: "sine.inOut" }, T_M3);
+      whipLeftTo("#m3", "#m4", T_R); mcap("m4c", T_R + 0.1, T_C - 0.2, "excited"); rise("#m4a", T_R + 0.05, -2);
+      $("#m4a").querySelectorAll("div").forEach((r, i) => tl.fromTo(r, { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, T_R + 0.2 + i * 0.1));
+      whipUpTo("#m4", "#m5", T_C); mcap("m5c", T_C + 0.1, T_A4 - 0.2, "excited");
+      tl.fromTo("#m5ph", { y: 200, scale: 0.7, rotationY: -25, transformPerspective: 1400 }, { y: 0, scale: 0.8, rotationY: 0, duration: 0.5, ease: "expo.out" }, T_C);
+      tap("#m5scr", 178, 797, W("clica") + 0.05);
+      tl.fromTo("#m5cat", { filter: "brightness(1)" }, { filter: "brightness(0.55)", duration: 0.3, immediateRender: false }, W("clica") + 0.15);
+      sheet("#m5mod", W("clica") + 0.15);
+      tap("#m5scr", 345, 932, W("copia") - 0.05);
+      tl.fromTo("#m5t", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copia"));
+      tl.to("#m5ph", { x: -980, rotationY: -40, scale: 0.7, filter: "blur(8px)", duration: 0.45, ease: "power3.in" }, T_PASTE);
+      tl.fromTo("#m5st", { opacity: 1, x: 1000, rotationY: 35, scale: 0.7, filter: "blur(8px)" }, { opacity: 1, x: 0, rotationY: 0, scale: 0.8, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, T_PASTE + 0.15);
+      storyBar("#m5bar", T_PASTE + 0.3, T_A4); pop("#m5s", W("cola") - 0.05, -4);
+      backToHer("#m5", T_A4);
+      endCard(T_INK);
+
+
+      // ===== UGC core: A-roll camera, captions outside motion windows, hook =====
+      (function () {
+        const HER = window.HER || [];
+        const HWin = (t) => HER.some(([a, b]) => t >= a - 0.02 && t < b);
+        const MWin = (t) => !HWin(t) && (window.MW || []).some(([a, b]) => t >= a - 0.02 && t < b);
+        const PWin = (t) => !HWin(t) && (window.PIP || []).some(([a, b]) => t >= a - 0.02 && t < b);
+        // cut back to her over long app stretches; the transition rotates zoom-punch / whip-left / swipe-up
+        HER.forEach(([a, b], i) => {
+          const k = i % 3, s = i % 2 ? 1.1 : 1.0;
+          tl.set("#her", { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, a);
+          if (k === 0) tl.fromTo("#her", { scale: s + 0.22, filter: "blur(14px)" }, { scale: s, filter: "blur(0px)", duration: 0.26, ease: "expo.out", immediateRender: false }, a);
+          else if (k === 1) tl.fromTo("#her", { x: 1080, scale: s }, { x: 0, duration: 0.24, ease: "expo.out", immediateRender: false }, a);
+          else tl.fromTo("#her", { y: 1920, scale: s }, { y: 0, duration: 0.26, ease: "expo.out", immediateRender: false }, a);
+          tl.fromTo("#her", { scale: s }, { scale: s + 0.04, duration: Math.max(0.1, b - a - 0.4), ease: "none", immediateRender: false }, a + 0.27);
+          tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.4, duration: 0.05, immediateRender: false }, a);
+          tl.to("#flash", { opacity: 0, duration: 0.25 }, a + 0.05);
+          if (k === 0) tl.to("#her", { scale: s + 0.3, opacity: 0, filter: "blur(16px)", duration: 0.16, ease: "power2.in" }, b - 0.12);
+          else if (k === 1) tl.to("#her", { x: -1080, duration: 0.2, ease: "power3.in" }, b - 0.14);
+          else tl.to("#her", { y: -1920, duration: 0.2, ease: "power3.in" }, b - 0.14);
+          tl.set("#her", { opacity: 0, x: 0, y: 0 }, b + 0.08);
+        });
+        // cut-out background: floating stories drift and turn in 3D for the whole piece
+        document.querySelectorAll("#ubg .fc").forEach((c, i) => {
+          const d = i % 2 ? 1 : -1;
+          tl.fromTo(c, { rotationY: -22 * d, rotationX: 8, rotation: -8 * d, y: 40 }, { rotationY: 22 * d, rotationX: -6, rotation: 6 * d, y: -60, duration: TOTAL, ease: "sine.inOut" }, 0);
+        });
+        document.querySelectorAll("#ubg .bk").forEach((b, i) => tl.fromTo(b, { y: 0, opacity: 0.2 }, { y: -300 - i * 40, opacity: 0.9, duration: TOTAL, ease: "none" }, 0));
+        tl.fromTo("#ubg .g1", { x: 0 }, { x: 250, y: 200, duration: TOTAL, ease: "sine.inOut" }, 0);
+        // mix the looks: real footage by default; the cut-out on alternate talking-head shots
+        if (document.getElementById("ubg")) {
+          tl.set(["#ubg", "#talk"], { opacity: 0 }, 0);
+          const busy = [...(window.MW || []), ...(window.PIP || []), ...(window.ORIG || []), ...(window.BROLL || [])].sort((a, b) => a[0] - b[0]);
+          const free = []; let c = 0;
+          busy.forEach(([a, b]) => { if (a > c) free.push([c, a]); c = Math.max(c, b); });
+          if (c < D.talk_end) free.push([c, D.talk_end]);
+          const wins = window.CUTWIN || free.filter(([a, b]) => b - a >= 1.0 && a > 0.05);
+          wins.forEach(([a, b]) => {
+            tl.set(["#ubg", "#talk"], { opacity: 1 }, a);
+            tl.fromTo("#ubg", { clipPath: "circle(0% at 50% 35%)" }, { clipPath: "circle(150% at 50% 35%)", duration: 0.45, ease: "expo.out", immediateRender: false }, a);
+            tl.fromTo("#ubg .fc", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)", stagger: 0.05, immediateRender: false }, a + 0.05);
+            tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.35, duration: 0.05, immediateRender: false }, a);
+            tl.to("#flash", { opacity: 0, duration: 0.25 }, a + 0.05);
+            tl.set(["#ubg", "#talk"], { opacity: 0 }, b);
+          });
+          window.__cutwins = wins;
+        }
+        // camera moves on the talking head: [t0, t1, s0, s1, originX, originY, x1, y1]
+        (window.CAM || []).forEach(([t0, t1, s0, s1, ox, oy, x0 = 0, y0 = 0, x1 = x0, y1 = y0, ease = "none"], i) => {
+          tl.fromTo("#cam", { scale: s0, x: x0, y: y0, transformOrigin: ox + "px " + oy + "px" },
+            { scale: s1, x: x1, y: y1, duration: t1 - t0, ease, immediateRender: i === 0 }, t0);
+        });
+        const hk = document.getElementById("uhook");
+        (D.hook || []).forEach((ln) => { const s = document.createElement("span"); if (ln.startsWith("*")) s.className = "k"; s.textContent = ln.replace(/\*/g, ""); hk.appendChild(s); hk.appendChild(document.createElement("br")); });
+        hk.querySelectorAll("span").forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 40, rotationX: -60, scale: 0.8 }, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.05 + i * 0.14));
+        tl.to("#uhook", { y: -30, opacity: 0, filter: "blur(8px)", duration: 0.25, ease: "power2.in" }, window.HOOK_END || 1.3);
+        const Wd = D.words, chunks = []; let cur = [];
+        Wd.forEach((w, i) => { cur.push(w); const len = cur.map((x) => x[0]).join(" ").length, nx = Wd[i + 1];
+          if (cur.length >= 3 || len > 15 || /[,.?!]$/.test(w[0]) || !nx || nx[4] !== w[4] || nx[1] - w[2] > 0.5 || MWin(nx[1]) !== MWin(w[1]) || PWin(nx[1]) !== PWin(w[1])) { chunks.push(cur); cur = []; } });
+        chunks.forEach((ch, ci) => {
+          if (MWin(ch[0][1])) return;
+          const amiga = ch[0][4] === "amiga", box = document.createElement("div"); box.className = "chunk" + (amiga ? " amiga" : "") + (PWin(ch[0][1]) ? " pip" : ""); document.getElementById("caps").appendChild(box);
+          let host = box; if (amiga) { host = document.createElement("div"); host.className = "bub"; host.innerHTML = '<span class="who">amiga 💬</span>'; box.appendChild(host); }
+          const bs = ch.map((w) => { const b = document.createElement("b"); b.textContent = w[0]; host.appendChild(b); return b; });
+          let t0 = Math.max(0, ch[0][1] - 0.06); const nx = chunks[ci + 1];
+          (window.PIP || []).forEach(([a]) => { if (t0 >= a - 0.02 && t0 < a + 0.3) t0 = a + 0.3; });
+          let t1 = Math.min(nx ? nx[0][1] - 0.06 : ch[ch.length - 1][2] + 0.5, ch[ch.length - 1][2] + 0.7);
+          (window.MW || []).forEach(([a]) => { if (a > t0 && a < t1) t1 = a; });
+          HER.forEach(([a, b]) => { if (t0 < a && ch[0][1] >= a - 0.02) t0 = a; if (a > t0 && a < t1) t1 = a; if (b > t0 && b < t1) t1 = b; });
+          tl.set(box, { opacity: 1 }, t0);
+          bs.forEach((b, i) => { const ws = Math.max(t0, ch[i][1] - 0.04);
+            tl.fromTo(b, { opacity: 0, y: 26, scale: 0.85, filter: "blur(6px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.18, ease: "back.out(2.4)" }, ws);
+            tl.set(b, { attr: { class: "on" } }, ws);
+            if (i + 1 < ch.length) tl.set(b, { attr: { class: "" } }, ch[i + 1][1] - 0.02); });
+          tl.set(box, { opacity: 0 }, t1);
+        });
+      })();
+
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,844 @@
+[
+  {
+    "slug": "rossaxbt-94583b",
+    "titulo_pt": "Bolinha branca guia a UI",
+    "o_que_faz": "Uma bola branca sai de um toggle, empurra um slider até 100, passa por três notificações e digita 'retry' num teclado, tudo num único plano com câmera que segue.",
+    "tecnica": "um único objeto condutor que costura todas as transições num mundo contínuo com câmera de zoom em escala log",
+    "melhor_para": [
+      "transicao",
+      "produto-app",
+      "organico"
+    ],
+    "encaixe": "painel de baixo quando ele explica um passo a passo: a bola pula de etapa em etapa (campanha, público, criativo) sem corte.",
+    "retencao": "O olho segue a bola sem parar, então nunca há um momento de respiro para sair.",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "roundtablespace-d3a1be",
+    "titulo_pt": "Showreel de easing e morph",
+    "o_que_faz": "Showreel livre de 15s com formas e tipografia que morfam entre si usando curvas de easing variadas.",
+    "tecnica": "morph de shapes com easing expressivo e tipografia cinética no beat",
+    "melhor_para": [
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "vinheta de abertura ou transição de 1s entre blocos do corte.",
+    "retencao": "Formas que viram outras formas geram curiosidade contínua.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "ryan-morr-ccc796",
+    "titulo_pt": "Lançamento cloud handoff",
+    "o_que_faz": "Vídeo de feature mostrando um laptop fechando e os agentes migrando para a nuvem, com UI do app e celular.",
+    "tecnica": "handoff visual de um dispositivo para outro com UI real do produto",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "painel de B-roll quando ele fala de automação com Claude: tela do Mac fecha e o trabalho continua na nuvem.",
+    "retencao": "A metáfora física de fechar o laptop e o trabalho seguir é instantaneamente entendida.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "ryzoft-4f85bd",
+    "titulo_pt": "Desenho espacial anos 80",
+    "o_que_faz": "Episódio de cartoon espacial estilo anos 80/90 feito em three.js, com personagens e narrativa.",
+    "tecnica": "cena 3D estilizada em three.js com estética retrô",
+    "melhor_para": [
+      "organico"
+    ],
+    "encaixe": "pouco encaixe; no máximo um B-roll retrô para piada pontual.",
+    "retencao": "Nostalgia visual e narrativa de personagem.",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "sab8a-364a5a",
+    "titulo_pt": "Edição de talking head",
+    "o_que_faz": "Corte bruto de alguém falando transformado em edição rápida com legendas, gráficos e música.",
+    "tecnica": "pipeline de recorte de talking head com legenda, overlays e trilha",
+    "melhor_para": [
+      "organico",
+      "hook",
+      "explicacao"
+    ],
+    "encaixe": "é literalmente o formato dele: usar como referência de ritmo para legenda + overlay sobre a metade do rosto.",
+    "retencao": "Cortes secos, legenda animada e gráficos pontuais mantêm o ritmo alto.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sachaarbonel-8f14f4",
+    "titulo_pt": "Lançamento Norilu",
+    "o_que_faz": "Vídeo de lançamento de produto montado a partir dos designs do app, com telas animadas.",
+    "tecnica": "animar telas reais do design do produto em vez de mockups genéricos",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "painel de cima mostrando a tela da ferramenta que ele ensina, entrando por camadas.",
+    "retencao": "Ver a interface real dá prova e concretude.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "safarkhanshuvo-ffd52d",
+    "titulo_pt": "Showreel de motion",
+    "o_que_faz": "Showreel de 15s com tipografia cinética, formas e partículas em sequência rápida.",
+    "tecnica": "sequência rápida de cenas curtas com tipo cinético e shapes",
+    "melhor_para": [
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "vinheta curta de abertura de série.",
+    "retencao": "Densidade de mudanças por segundo alta.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sahildesigner23-ee3155",
+    "titulo_pt": "Showreel 3D de motion",
+    "o_que_faz": "Showreel com tipografia e formas em 3D sincronizadas à música.",
+    "tecnica": "tipografia em 3D com cortes no beat",
+    "melhor_para": [
+      "branding",
+      "transicao"
+    ],
+    "encaixe": "intro de série ou bumper de canal.",
+    "retencao": "Profundidade 3D e sync com música prendem o olhar.",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "samaote-5e2fc2",
+    "titulo_pt": "Lyric video sincronizado",
+    "o_que_faz": "Lyric video em que cada palavra da letra entra sincronizada com a voz e o beat.",
+    "tecnica": "texto cinético sincronizado palavra a palavra à voz",
+    "melhor_para": [
+      "motivacional",
+      "organico",
+      "hook"
+    ],
+    "encaixe": "painel de baixo nos cortes motivacionais: a frase de impacto dele entra palavra por palavra no tempo da fala.",
+    "retencao": "Cada palavra cai no instante em que é dita, o cérebro lê e ouve junto.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "samuel-spitz-974923",
+    "titulo_pt": "Showreel de motion",
+    "o_que_faz": "Peça central de showreel com tipografia cinética e formas mostrando amplitude de técnicas.",
+    "tecnica": "variedade de técnicas de tipo e shape numa peça só",
+    "melhor_para": [
+      "branding",
+      "transicao"
+    ],
+    "encaixe": "referência para vinhetas, não para o corte em si.",
+    "retencao": "Variedade constante de estímulos.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "samuel-yostt-891f87",
+    "titulo_pt": "Promo ViralGrow",
+    "o_que_faz": "Promo de 15s com o mesmo estilo da landing page, mostrando o produto em telas, celular e fotos.",
+    "tecnica": "herdar o estilo visual da landing page para o vídeo",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "criativo de anúncio da mentoria usando as cores e fontes da página de vendas dele.",
+    "retencao": "Consistência entre anúncio e página reduz atrito e passa confiança.",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sarut0bisasuke-cefa43",
+    "titulo_pt": "Receita White Russian",
+    "o_que_faz": "Explicador de 30s em que o copo vazio vai sendo preenchido com cada ingrediente e sua medida aparecendo.",
+    "tecnica": "preenchimento progressivo de um recipiente com rótulos de quantidade",
+    "melhor_para": [
+      "explicacao",
+      "dados"
+    ],
+    "encaixe": "painel de cima explicando a 'receita' de uma campanha: orçamento, público e criativo enchendo um copo.",
+    "retencao": "Ver algo encher até ficar pronto cria expectativa de conclusão.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sayan-shanky-f850d8",
+    "titulo_pt": "Tour 3D de data center de IA",
+    "o_que_faz": "Tour 3D por dentro de um data center de IA mostrando racks, GPUs e fluxo de dados.",
+    "tecnica": "diagrama 3D navegável com câmera em tour",
+    "melhor_para": [
+      "explicacao"
+    ],
+    "encaixe": "B-roll quando ele fala de como a IA funciona por trás.",
+    "retencao": "Revelar o que é invisível desperta curiosidade.",
+    "relevancia": 2,
+    "esforco": "alto"
+  },
+  {
+    "slug": "shinskinakamoto-20190b",
+    "titulo_pt": "Showreel de formas cinéticas",
+    "o_que_faz": "Showreel com formas geométricas, partículas e tipo cinético em ritmo rápido.",
+    "tecnica": "shapes cinéticos em loop com partículas",
+    "melhor_para": [
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "transição entre blocos de ideia.",
+    "retencao": "Movimento constante e colorido.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "shneural-2abdfa",
+    "titulo_pt": "Showreel de tipo bold",
+    "o_que_faz": "Tipografia pesada e grande batendo na tela com formas e partículas.",
+    "tecnica": "tipografia bold em escala gigante batendo no beat",
+    "melhor_para": [
+      "hook",
+      "motivacional"
+    ],
+    "encaixe": "painel de baixo com a palavra-chave da frase dele em letra gigante batendo.",
+    "retencao": "Palavras enormes leem em meio segundo no scroll.",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "slvdev-64c45a",
+    "titulo_pt": "Promo do Claude",
+    "o_que_faz": "Autopromoção de 15s com UI, celular e tipografia cinética apresentando o Claude.",
+    "tecnica": "mistura de UI de chat e tipo cinético para vender uma ferramenta de IA",
+    "melhor_para": [
+      "produto-app",
+      "organico"
+    ],
+    "encaixe": "B-roll quando ele fala de Claude: chat digitando e respostas surgindo.",
+    "retencao": "Mostrar a ferramenta em uso gera identificação no nicho de IA.",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "souravbhar871-61f424",
+    "titulo_pt": "Autorretrato em tipo cinético",
+    "o_que_faz": "Vídeo de 10s só com tipografia cinética apresentando 'quem é' o modelo, evitando molduras e texto nos cantos.",
+    "tecnica": "tipografia como protagonista central, sem elementos de canto típicos de IA",
+    "melhor_para": [
+      "branding",
+      "hook"
+    ],
+    "encaixe": "abertura de vídeo de apresentação pessoal dele: 'quem sou eu' em palavras que se movem.",
+    "retencao": "Texto central e limpo é lido imediatamente.",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "spearwtf-3c1fd1",
+    "titulo_pt": "Pitch Chain.wtf",
+    "o_que_faz": "Pitch de 30s só com tipografia cinética explicando o produto.",
+    "tecnica": "pitch narrado só com texto cinético em sequência",
+    "melhor_para": [
+      "criativo-ads",
+      "explicacao"
+    ],
+    "encaixe": "criativo de ads sem rosto: a oferta dele em frases curtas que se sucedem.",
+    "retencao": "Uma ideia por tela no ritmo de leitura.",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "stephanlivera-df17a2",
+    "titulo_pt": "Showreel do Claude",
+    "o_que_faz": "Showreel de 15s com tipo cinético, formas e música.",
+    "tecnica": "tipo cinético e shapes no beat",
+    "melhor_para": [
+      "branding",
+      "transicao"
+    ],
+    "encaixe": "vinheta de série sobre IA.",
+    "retencao": "Sync com música e variedade visual.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "steventey-0d20e4",
+    "titulo_pt": "Promo Dub SaaS",
+    "o_que_faz": "Lançamento de SaaS com UI do produto e gráficos de cliques subindo.",
+    "tecnica": "UI de dashboard com gráficos animados de crescimento",
+    "melhor_para": [
+      "dados",
+      "prova",
+      "produto-app"
+    ],
+    "encaixe": "painel de cima mostrando dashboard de anúncios com cliques e conversões subindo enquanto ele fala de resultado.",
+    "retencao": "Números e linhas subindo são prova visual imediata.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sudeepsd-1a3485",
+    "titulo_pt": "Showreel Flexprice",
+    "o_que_faz": "Vídeo de 15s sobre pricing com gráficos e partículas.",
+    "tecnica": "gráficos de cobrança e uso animados com partículas",
+    "melhor_para": [
+      "dados",
+      "produto-app"
+    ],
+    "encaixe": "painel com gráfico de faturamento quando ele fala de escala.",
+    "retencao": "Gráficos em movimento dão sensação de crescimento.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sudiyasa-f48ac9",
+    "titulo_pt": "Agradecimento 100 usuários",
+    "o_que_faz": "Vídeo de agradecimento aos primeiros 100 usuários com tipo cinético, formas e música.",
+    "tecnica": "marco numérico celebrado com contagem e tipo cinético",
+    "melhor_para": [
+      "prova",
+      "organico",
+      "motivacional"
+    ],
+    "encaixe": "post de marco: '100 alunos na mentoria' com o número contando no painel.",
+    "retencao": "Celebração de marco gera prova social e emoção.",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "sudo-kiran-49176d",
+    "titulo_pt": "Showreel do Claude",
+    "o_que_faz": "Showreel livre com tipo cinético, formas e partículas.",
+    "tecnica": "variedade de técnicas sem briefing",
+    "melhor_para": [
+      "transicao"
+    ],
+    "encaixe": "vinheta curta de transição.",
+    "retencao": "Estímulo visual constante.",
+    "relevancia": 1,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sudo-kiran-4f8b59",
+    "titulo_pt": "Explicador DistilBook",
+    "o_que_faz": "Explicador de 30s do produto com telas de UI animadas.",
+    "tecnica": "explicador de produto guiado por telas da UI",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "B-roll explicando uma ferramenta passo a passo.",
+    "retencao": "Mostrar o fluxo de uso responde 'como funciona'.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sudo-kiran-6609ed",
+    "titulo_pt": "Explicador DistilBook com diagrama",
+    "o_que_faz": "Explicador de 30s com roteiro, diagramas e UI do produto e música.",
+    "tecnica": "combinar diagrama de conceito com tela do produto",
+    "melhor_para": [
+      "explicacao",
+      "produto-app"
+    ],
+    "encaixe": "painel de cima explicando o funil: diagrama vira tela real do gerenciador.",
+    "retencao": "Diagrama simplifica e a UI prova.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "sudo-kiran-b055de",
+    "titulo_pt": "Explicador DistilBook motion",
+    "o_que_faz": "Variação do explicador de 30s com UI e diagramas em motion.",
+    "tecnica": "explicador com UI e diagrama encadeados",
+    "melhor_para": [
+      "explicacao",
+      "produto-app"
+    ],
+    "encaixe": "mesmo uso do anterior: explicar ferramenta em etapas.",
+    "retencao": "Ritmo de explicador curto.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "tak3sh8-be5012",
+    "titulo_pt": "Lousa desenhada à mão",
+    "o_que_faz": "Animação de quadro branco com traços desenhados à mão explicando um conceito de física, com narração.",
+    "tecnica": "traço desenhado progressivamente (stroke reveal) estilo whiteboard",
+    "melhor_para": [
+      "explicacao",
+      "organico"
+    ],
+    "encaixe": "painel de baixo desenhando o esquema que ele explica (ex: funil ou estrutura de campanha) enquanto fala.",
+    "retencao": "Ver o desenho se formar prende até o fim do traço.",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "tankazunori0914-0fc886",
+    "titulo_pt": "Que dia é hoje",
+    "o_que_faz": "Vídeo de 30s com tipografia cinética e música respondendo que dia da semana é.",
+    "tecnica": "informação simples transformada em tipo cinético com trilha",
+    "melhor_para": [
+      "organico",
+      "hook"
+    ],
+    "encaixe": "post leve de rotina ('segunda é dia de subir campanha') com o dia batendo na tela.",
+    "retencao": "Pergunta banal com execução exagerada surpreende.",
+    "relevancia": 2,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "tdinh-me-815acb",
+    "titulo_pt": "Revelação do logo TypingMind",
+    "o_que_faz": "Transição lenta em que formas se montam até revelar o logo.",
+    "tecnica": "peças que se montam e convergem no logo",
+    "melhor_para": [
+      "branding",
+      "cta"
+    ],
+    "encaixe": "fim do corte: peças se montam e viram a marca/@ dele.",
+    "retencao": "Montagem gera antecipação de 'o que vai formar'.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "techhalla-90b8ec",
+    "titulo_pt": "Bumper tipo pôster TechHalla",
+    "o_que_faz": "Bumper de 20s quadrado com frases de impacto ('STOP SCROLLING', 'STEAL THE PROMPT') batendo em spring, com embaralhamento de letras, máscara e erro de impressão magenta/verde.",
+    "tecnica": "tipo cinético por glifo com spring no beat de 120 BPM, scramble de letras e misregistro de cor só nos impactos",
+    "melhor_para": [
+      "hook",
+      "criativo-ads",
+      "branding"
+    ],
+    "encaixe": "hook no painel de baixo: 'PARA DE ROLAR' / 'ANÚNCIO NÃO É CARO, CRIATIVO RUIM É' batendo frase por frase.",
+    "retencao": "Frases curtas e polêmicas em fonte gigante com impacto em cada beat travam o polegar.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "techyoutbe-945b56",
+    "titulo_pt": "Lançamento de biblioteca de guias",
+    "o_que_faz": "Vídeo de lançamento SaaS estilo Twitter com assets reais do produto, features e benefícios.",
+    "tecnica": "usar assets reais do produto em cortes de feature e benefício",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads"
+    ],
+    "encaixe": "criativo mostrando o que tem dentro da mentoria: módulos e materiais em sequência.",
+    "retencao": "Formato reconhecível de lançamento passa profissionalismo.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "tequilafunks-97f6c9",
+    "titulo_pt": "Reel de motion do Claude",
+    "o_que_faz": "Showreel com tipo, formas, partículas e música.",
+    "tecnica": "tipo e shapes no beat",
+    "melhor_para": [
+      "transicao"
+    ],
+    "encaixe": "vinheta.",
+    "retencao": "Variedade e música.",
+    "relevancia": 1,
+    "esforco": "medio"
+  },
+  {
+    "slug": "teslachartz-c58b32",
+    "titulo_pt": "Showreel com diagramas",
+    "o_que_faz": "Showreel com diagramas, tipo cinético e formas.",
+    "tecnica": "diagramas que se desenham junto do texto",
+    "melhor_para": [
+      "explicacao",
+      "transicao"
+    ],
+    "encaixe": "referência para diagramas animados no painel.",
+    "retencao": "Diagrama em movimento organiza a ideia.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "thayto-dev-44b911",
+    "titulo_pt": "Promo de preços AjustaCV",
+    "o_que_faz": "Promo de 15s mostrando os planos e preço do produto em UI.",
+    "tecnica": "card de preço animado com destaque do plano",
+    "melhor_para": [
+      "cta",
+      "criativo-ads"
+    ],
+    "encaixe": "final do criativo: card da oferta da mentoria com preço e bônus entrando.",
+    "retencao": "Preço claro e destacado empurra a decisão.",
+    "relevancia": 4,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "theviableedge-9065be",
+    "titulo_pt": "Promo segundo cérebro",
+    "o_que_faz": "Vídeo herói de 15s para landing de curso, com UI e código.",
+    "tecnica": "vídeo herói de curso mostrando o sistema por dentro",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "vídeo da página de vendas da mentoria mostrando o sistema de conteúdo dele.",
+    "retencao": "Mostrar o bastidor do método aumenta desejo.",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "thilina-a-891c09",
+    "titulo_pt": "Reel de update de app vertical",
+    "o_que_faz": "Reel vertical de 25s destacando novidades das versões, com telas, celular e personagens.",
+    "tecnica": "changelog transformado em reel vertical com telas de celular",
+    "melhor_para": [
+      "produto-app",
+      "organico"
+    ],
+    "encaixe": "post 'o que mudou' quando ele atualiza método ou ferramenta.",
+    "retencao": "Novidade numerada dá motivo para assistir até o fim.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "thismacapital-dfba20",
+    "titulo_pt": "Promo serviço de visto",
+    "o_que_faz": "Promo de 15s com UI, tipo cinético e fotos de viagem.",
+    "tecnica": "fotos reais combinadas com UI e texto cinético",
+    "melhor_para": [
+      "criativo-ads"
+    ],
+    "encaixe": "criativo de serviço com fotos de resultado e texto de benefício.",
+    "retencao": "Foto real com texto cria desejo concreto.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "tolgayhickiran-e90799",
+    "titulo_pt": "Princípios de motion",
+    "o_que_faz": "Reel mostrando princípios de animação (easing, timing) com tipo, formas, partículas e música.",
+    "tecnica": "demonstração didática de princípios de motion",
+    "melhor_para": [
+      "explicacao",
+      "transicao"
+    ],
+    "encaixe": "referência interna de ritmo, pouco uso direto.",
+    "retencao": "Cada princípio é uma mini surpresa visual.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "topi-003-9ca6b5",
+    "titulo_pt": "Showreel de tipo cinético",
+    "o_que_faz": "Showreel com tipografia cinética e partículas.",
+    "tecnica": "tipo cinético com partículas",
+    "melhor_para": [
+      "transicao",
+      "hook"
+    ],
+    "encaixe": "palavra-chave batendo no painel.",
+    "retencao": "Texto em movimento lê rápido.",
+    "relevancia": 2,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "topi-003-b0e12c",
+    "titulo_pt": "Dança anime",
+    "o_que_faz": "Personagem anime de uma imagem dançando com tipografia e música.",
+    "tecnica": "animar personagem a partir de uma imagem estática",
+    "melhor_para": [
+      "organico"
+    ],
+    "encaixe": "pouco encaixe no nicho dele.",
+    "retencao": "Personagem em movimento e música.",
+    "relevancia": 1,
+    "esforco": "alto"
+  },
+  {
+    "slug": "triglyceee-bd5b08",
+    "titulo_pt": "Linha do tempo política",
+    "o_que_faz": "Linha do tempo com datas e gráficos resumindo décadas de história política.",
+    "tecnica": "timeline horizontal com marcos e gráficos que entram em sequência",
+    "melhor_para": [
+      "explicacao",
+      "dados"
+    ],
+    "encaixe": "painel de cima com a linha do tempo da trajetória dele ou da evolução dos anúncios.",
+    "retencao": "Progressão cronológica cria narrativa fácil de seguir.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "tstfully-0aa6b4",
+    "titulo_pt": "Ad de transcrição do YouTube",
+    "o_que_faz": "Ad de 15s: cola um link do YouTube e cada palavra do vídeo aparece transcrita.",
+    "tecnica": "demo de input para output em uma ação (colar link, sair resultado)",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app"
+    ],
+    "encaixe": "criativo mostrando 'cola o link, o Claude corta o vídeo': input e resultado na mesma tela.",
+    "retencao": "Promessa demonstrada em 1 ação mata a objeção de complexidade.",
+    "relevancia": 4,
+    "esforco": "medio"
+  },
+  {
+    "slug": "twoclipping-221cab",
+    "titulo_pt": "Lançamento app de impressão",
+    "o_que_faz": "Filme quadrado estilo keynote em plano contínuo: wordmark vira pílula, íris abre em foto, vidro líquido, celular vira Mac, pedido morfa até entregue, tudo transformando a cena anterior.",
+    "tecnica": "nenhum corte nem fade, cada cena nasce da anterior (flood de forma preta que contrai na próxima cena, íris, vidro líquido)",
+    "melhor_para": [
+      "produto-app",
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "painel de baixo: um shape preto inunda o painel e contrai na próxima ideia, como transição padrão entre blocos.",
+    "retencao": "A continuidade total impede o olho de achar um ponto de saída.",
+    "relevancia": 3,
+    "esforco": "alto"
+  },
+  {
+    "slug": "twoclipping-5cba86",
+    "titulo_pt": "Um shape que morfa em UI",
+    "o_que_faz": "Um único elemento vira botão, loader, check, player, slider, toggle, abas, gráfico, comando e toast, guiado por cursor e springs no beat.",
+    "tecnica": "um único shape que morfa tamanho, raio e cor entre estados com springs somadas",
+    "melhor_para": [
+      "transicao",
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "painel de cima quando ele mostra um fluxo: botão 'publicar' vira loader, vira check, vira gráfico de resultado.",
+    "retencao": "Cada beat transforma o mesmo objeto, a curiosidade de 'no que vai virar' é contínua.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "twoclipping-6dd14e",
+    "titulo_pt": "Promo gerador de UGC",
+    "o_que_faz": "Promo minimalista: hook palavra por palavra, palavra vira UI, parede de clipes reais com scan e 3 vencedores, carrossel 3D, stats grandes e logo.",
+    "tecnica": "cortes em todo downbeat com match cuts e parede de vídeos reais com seleção dos vencedores",
+    "melhor_para": [
+      "criativo-ads",
+      "prova",
+      "hook"
+    ],
+    "encaixe": "criativo de ads: hook no beat, depois parede de criativos dele com scan destacando os 3 vencedores e ROAS em letra grande.",
+    "retencao": "Hook rítmico mais prova visual de 'escolher o vencedor' é exatamente a dor do gestor de tráfego.",
+    "relevancia": 5,
+    "esforco": "alto"
+  },
+  {
+    "slug": "twoclipping-d89be5",
+    "titulo_pt": "Voo 3D sobre landing page",
+    "o_que_faz": "Câmera 3D desliza sobre a landing page deitada no chão, com cards se erguendo e foco raso, sobe para ver a página inteira e mergulha no hero com título.",
+    "tecnica": "página real capturada em camadas e câmera 3D com velocidade única integrada e profundidade de campo",
+    "melhor_para": [
+      "criativo-ads",
+      "produto-app",
+      "cta"
+    ],
+    "encaixe": "B-roll da página de vendas da mentoria no painel quando ele chama para o link.",
+    "retencao": "Movimento contínuo e cinematográfico dá cara de produto premium.",
+    "relevancia": 3,
+    "esforco": "alto"
+  },
+  {
+    "slug": "ultimaxbt-2ddf1e",
+    "titulo_pt": "Filme de desejo por comida",
+    "o_que_faz": "Lançamento de 15s: usuário digita o pedido num campo com brilho iridescente, botão vira wok, flood lima revela cards de comida, chat responde e pedido é feito.",
+    "tecnica": "elemento compartilhado em cada passagem (flood carrega o texto, botão carrega o rótulo para a página)",
+    "melhor_para": [
+      "produto-app",
+      "criativo-ads",
+      "explicacao"
+    ],
+    "encaixe": "painel de cima mostrando prompt digitado no Claude com brilho, resposta virando cards de resultado.",
+    "retencao": "Pedido real digitado gera identificação e a resposta entrega recompensa rápida.",
+    "relevancia": 4,
+    "esforco": "alto"
+  },
+  {
+    "slug": "ultimaxbt-bbebf5",
+    "titulo_pt": "Sistema do ponto laranja",
+    "o_que_faz": "Um ponto laranja costura tudo: sai do toggle, vira pingo do 'i', desenha um gráfico de spring com '+22%', vira círculo que enche a tela, orbita palavras e vira halftone.",
+    "tecnica": "um único ponto condutor e gráfico desenhado pela mesma função de spring que move o ponto",
+    "melhor_para": [
+      "dados",
+      "transicao",
+      "branding"
+    ],
+    "encaixe": "painel de baixo quando ele fala de resultado: ponto pula num gráfico que sobe e para no '+37% ROAS'.",
+    "retencao": "O ponto vira âncora visual, o olho persegue ele de cena em cena.",
+    "relevancia": 5,
+    "esforco": "medio"
+  },
+  {
+    "slug": "utopyaszx-1b2f94",
+    "titulo_pt": "Promo SEO Bold Pilot",
+    "o_que_faz": "Promo de 15s com UI, gráficos de ranking e tipo cinético.",
+    "tecnica": "gráfico de ranking subindo com UI e texto",
+    "melhor_para": [
+      "dados",
+      "prova"
+    ],
+    "encaixe": "painel de cima com métricas subindo enquanto ele fala de resultado.",
+    "retencao": "Números subindo são prova visual.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "vanshwtfff-db0466",
+    "titulo_pt": "Showreel de motion",
+    "o_que_faz": "Showreel de 10s com tipo, formas e partículas.",
+    "tecnica": "tipo e shapes rápidos",
+    "melhor_para": [
+      "transicao"
+    ],
+    "encaixe": "vinheta.",
+    "retencao": "Movimento constante.",
+    "relevancia": 1,
+    "esforco": "medio"
+  },
+  {
+    "slug": "viktoroddy-98c1d8",
+    "titulo_pt": "Um milhão de visitantes",
+    "o_que_faz": "Vídeo de marco com UI, gráficos e contador chegando a 1 milhão de visitantes em 8 meses.",
+    "tecnica": "contador numérico grande com gráfico de crescimento",
+    "melhor_para": [
+      "prova",
+      "dados",
+      "organico"
+    ],
+    "encaixe": "painel de cima com contador indo até o faturamento ou número de alunos que ele cita.",
+    "retencao": "Número grande contando cria tensão até o final.",
+    "relevancia": 5,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "visheshbaghell-3aba37",
+    "titulo_pt": "Demo Tally",
+    "o_que_faz": "Demo de produto destacando todas as features com UI e tipo cinético.",
+    "tecnica": "tour de features com UI e títulos cinéticos",
+    "melhor_para": [
+      "produto-app",
+      "explicacao"
+    ],
+    "encaixe": "B-roll listando ferramentas gratuitas que ele usa, uma por vez.",
+    "retencao": "Lista de features em ritmo dá sensação de valor.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "wani-shola-16ca7a",
+    "titulo_pt": "Showreel de portfólio",
+    "o_que_faz": "Showreel de 90 a 100s com páginas reais do site em frames de navegador e celular, chat respondendo perguntas grandes e cortes no beat.",
+    "tecnica": "capturar o site real e animar dentro de frames de browser e celular, com perguntas e respostas grandes",
+    "melhor_para": [
+      "prova",
+      "branding"
+    ],
+    "encaixe": "B-roll do perfil ou página dele em frame de celular, com pergunta e resposta grandes.",
+    "retencao": "Perguntas grandes respondidas geram curiosidade e autoridade.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "web3wesley-7bb108",
+    "titulo_pt": "Showreel tipo, forma e espaço",
+    "o_que_faz": "Showreel explorando tipografia, formas e espaço negativo.",
+    "tecnica": "composição com espaço negativo e tipografia",
+    "melhor_para": [
+      "branding",
+      "transicao"
+    ],
+    "encaixe": "referência de composição para o painel.",
+    "retencao": "Contraste de escala e espaço.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "wozu-co-242285",
+    "titulo_pt": "Lançamento Supasito",
+    "o_que_faz": "Vídeo de lançamento curto com UI do produto.",
+    "tecnica": "lançamento curto centrado na UI",
+    "melhor_para": [
+      "produto-app"
+    ],
+    "encaixe": "B-roll rápido de ferramenta.",
+    "retencao": "Curto e direto.",
+    "relevancia": 2,
+    "esforco": "medio"
+  },
+  {
+    "slug": "x4b47x-9cc84f",
+    "titulo_pt": "Teatro de sombras sobre lar",
+    "o_que_faz": "Animação vertical 9:16 estilo recorte de papel e teatro de sombras, com áudio suave gerado em código, sobre o que faz um lugar parecer lar.",
+    "tecnica": "silhuetas de papel recortado em camadas com parallax e áudio gerado em código",
+    "melhor_para": [
+      "motivacional",
+      "organico"
+    ],
+    "encaixe": "painel de baixo nos cortes motivacionais com história de origem (lar, família, recomeço) em silhuetas.",
+    "retencao": "Estética artesanal e emocional destoa do feed e gera pausa.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "xelandre-363f00",
+    "titulo_pt": "Lançamento SaaS por código",
+    "o_que_faz": "Lançamento SaaS em que cada frame é calculado pelo tempo, capturado com Playwright e montado com ffmpeg com motion blur e som gerado em código.",
+    "tecnica": "pipeline determinístico seek(t) com subframes para motion blur",
+    "melhor_para": [
+      "produto-app"
+    ],
+    "encaixe": "referência de pipeline de render para o HyperFrames, não de visual.",
+    "retencao": "Motion blur real deixa o movimento fluido.",
+    "relevancia": 3,
+    "esforco": "baixo"
+  },
+  {
+    "slug": "yunn260414-60d996",
+    "titulo_pt": "O que é Git",
+    "o_que_faz": "Explicador narrado em chinês para iniciantes, com diagramas e comandos de código.",
+    "tecnica": "explicador para leigo com diagrama e comandos aparecendo",
+    "melhor_para": [
+      "explicacao"
+    ],
+    "encaixe": "painel de cima explicando um conceito técnico (pixel, API de conversões) em diagrama simples.",
+    "retencao": "Simplificar algo difícil dá sensação de aprendizado.",
+    "relevancia": 3,
+    "esforco": "medio"
+  },
+  {
+    "slug": "zaqailo-212ad3",
+    "titulo_pt": "Showreel de motion",
+    "o_que_faz": "Showreel com tipo, formas, partículas e música.",
+    "tecnica": "tipo e shapes no beat",
+    "melhor_para": [
+      "transicao"
+    ],
+    "encaixe": "vinheta.",
+    "retencao": "Variedade visual.",
+    "relevancia": 1,
+    "esforco": "medio"
+  },
+  {
+    "slug": "zheke-38deff",
+    "titulo_pt": "Showreel de tipo cinético quadrado",
+    "o_que_faz": "Showreel quadrado com tipografia cinética e formas.",
+    "tecnica": "tipo cinético em formato quadrado",
+    "melhor_para": [
+      "hook",
+      "transicao"
+    ],
+    "encaixe": "palavra-chave batendo no painel.",
+    "retencao": "Texto grande em movimento.",
+    "relevancia": 2,
+    "esforco": "baixo"
+  }
+]

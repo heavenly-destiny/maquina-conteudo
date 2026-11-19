@@ -1,0 +1,37 @@
+- [Chamar o usuário de tanpz](chamar-usuario-de-tanpz.md) — sempre "tanpz", mesmo que o e-mail da conta sugira outro nome.
+- [Clones APFS inflam estimativas de deduplicação](apfs-clones-inflate-dedup-estimates.md) — cópias do Finder não ocupam disco; `du` mente sobre quanto espaço uma limpeza vai render.
+- [CapCut referencia duplicatas pelo caminho](capcut-referencia-duplicatas-por-caminho.md) — os arquivos "(1)" são os que as timelines apontam; e nunca esvaziar a Lixeira na mesma sessão em que enchi ela.
+- [Tanpz Brain chat hospedado via LaunchAgent](tanpz-brain-chat-hosting.md) — DESATIVADO 2026-08-02 (usuário pediu pra parar de iniciar no login); arquivos-fonte intactos.
+- [Instalar skills sempre global](instalar-skills-sempre-global.md) — usar `--global`/`~/.claude` por padrão ao instalar skills/CLIs, não escopo por projeto.
+- [Diagnóstico e limpeza do Mac 2026-08](mac-diagnostico-2026-08.md) — baseline do M5 pós-limpeza, o que já foi varrido, e que não há Time Machine nesta máquina.
+- [Backdrop custa CPU e tanpz mantém assim](backdrop-wallpaper-custo-cpu.md) — decisão já tomada com o custo na mesa; não propor remoção de novo.
+- [screenshot-to-code local](screenshot-to-code-local.md) — em ~/Developer/screenshot-to-code, sobe com ./start.sh; uvicorn precisa de --ws-max-size maior senão o upload derruba o websocket.
+- [Ferramentas de UI](ferramentas-ui-tanpz.md) — nunca construir visual sem referência (Pinterest) antes; 21st.dev + v0 + ui-ux-pro-max.
+- [Cofre A Quebra Da Matrix](cofre-quebra-da-matrix.md) — cérebro do produto em ~/Documents/A Quebra Da Matrix; metodologia é do Iuri, time cuida só da experiência das features.
+- [TanpzWhisper compila sem Xcode](tanpzwhisper-build-sem-xcode.md) — app de ditado em ~/Developer/TanpzWhisper; só CLT, então `@State` do SwiftUI quebra o build.
+- [Ditado do TanpzWhisper morre sem Acessibilidade](tanpzwhisper-ditado-morre-sem-acessibilidade.md) — hotkey silencioso = grant de Acessibilidade caído; receita de reset e por que `CGGetEventTapList` engana.
+- [Pixel Meta do bolaodoneneu.com](pixel-meta-bolaodoneneu.md) — Purchase = depósito (não a aposta), sem editar PHP, CAPI desligada; falta testar o popup.
+- [Setup de plugins do Claude Code](setup-plugins-claude-2026-08.md) — 25 plugins medidos por token; marketing-skills fica apesar de custar 39% do orçamento.
+- [npm global instala no home](npm-global-prefix-home.md) — prefixo é ~/.npm-global; `npm i -g` funciona sem sudo.
+- [Uso do plugin Codex](codex-plugin-uso.md) — CLI logado, gpt-5.5/high, review gate desligado de propósito.
+- [Decisões da Apostila Divas Hair](apostila-divashair-decisoes.md) — sem marca de produto, sem live/curso online, "alisamento térmico" = aplicação de alisante.
+- [Koncord OS](koncord-os.md) — app único em koncord.pro; identidade visual, deploy, chave de DM (Chrome mascara segredo), wrangler dev quebrado.
+- [AFFiNE na VPS do Koncord](affine-board-vps.md) — quadro branco próprio no ar; Coolify foi descartado porque brigaria pelas portas 80/443 com o Caddy do Koncord.
+- [Projeto Concord](projeto-concord.md) — Discord próprio auto-hospedado em ~/Developer/concord, depois que a ANPD bloqueou vídeo/tela no Brasil; decisões e armadilhas já mapeadas.
+- [Dashboard de métricas do Bolão](dashboard-metricas-bolao.md) — ~/Developer/bolao-metrics, importa CSV do Meta; campo "valor por resultado" existe porque o export pode vir sem valor de conversão.
+- [Verificar antes de entregar](verificar-antes-de-entregar.md) — criticar e consertar o próprio trabalho sem pedir revisão; busca parcial não prova ausência.
+- [Cofre Darkgram + Caverna](cofre-darkgram-caverna.md) — cérebro em ~/Documents/PROJETOS TANPZ /darkgram + caverna (espaço no fim do nome); código do funil não está nesta máquina.
+- [Atalho "hora de fazer dinheiro"](hora-de-fazer-dinheiro.md) — hook global que toca Happy Nation + 30s de vendas Kiwify; permissão de notificação é passo manual e ad-hoc pode derrubar.
+- [TanpzLight, luz de tela](tanpzlight-luz-de-tela.md) — app de luz de rosto em ~/Developer/TanpzLight; brilho por API privada, borderless não pega teclado, restore precisa ser explícito.
+- [Cérebro INFLU LAB](influ-lab-cerebro.md) — ~/Documents/INFLU LAB; transcrição bruta entra, MIRO-BOARD.md é a fonte da verdade das decisões.
+- [Nunca entregar pela metade](nunca-entregar-pela-metade.md) — sempre caçar o que falta (imagem real, referência) antes de dar por pronto; placeholder calado não vale.
+- [Testar mobile via iframe](testar-mobile-via-iframe.md) — resize_window não funciona no Chrome do tanpz; usa iframe de largura fixa + scrollTo pra testar responsividade de verdade.
+- [Cofre InfluLab swipe](cofre-influlab-swipe.md) — ~/Documents/InfluLab, biblioteca de copy dissecada (swipe files), separado do cofre INFLU LAB webinário.
+- [Koncord 3D: projeto e armas](koncord-3d-armas.md) — pasta em ~/Documents/Codex/…/koncord-3d/prototipo, deploy --env production; testar tiro com WebSocket dummy + debug.slow.
+- [KONCORD leve = realismo com outro gráfico](koncord-leve-e-realismo-com-outro-grafico.md) — nunca reconstruir nem tirar coisas; realismo é a base validada, só troca gráficos.
+- [KONCORD documento-mestre v3](koncord-unreal-biblia.md) — bíblia de 111 págs em ~/Documents/KONCORD/documento-mestre; fonte editável em fonte/, rebuild com build_v3.py; portões G0–G5.
+- [Campanhas isoladas 21/10](campanhas-isoladas-bolao-2026-10-21.md) — CA 7D-02 travada por verificação de anunciante; CA 7D-03 publicou 2; link novo e armadilhas do editor.
+- [Jogo Roblox Revolver](jogo-roblox-revolver.md) — FPS no Roblox em ~/Developer/roblox-revolver; Studio controlado por MCP via tools/studio.py + look.sh; imagens vêm do Codex; nada de arte da Valve.
+- [Preferir biblioteca do Roblox](roblox-preferir-biblioteca-roblox.md) — no Revolver, buscar assets/efeitos/sons na Creator Store antes de montar com peças; cuidado com scripts e rojo build.
+- [Revolver mega satisfatório](revolver-mega-satisfatorio.md) — juice exagerado em tudo (som, pop, física, overshoot); mira sem recuo, hitbox generosa.
+- [Revolver: essência Roblox liso](revolver-essencia-roblox-liso.md) — braços do avatar, HUD/animações/efeitos/loja prontos do Roblox; mapas ficam no modo bonito.

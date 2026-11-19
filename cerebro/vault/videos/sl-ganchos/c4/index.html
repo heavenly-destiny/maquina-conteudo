@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jak"; src: url("assets/fonts/PlusJakartaSans-Variable.ttf") format("truetype"); font-weight: 200 900; }
+      :root { --brand: #d92e64; --brand-2: #f0548a; --ink: #2a1f24; --cream: #fbf5f1; --blush: #f7e6e9; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Jak", sans-serif; overflow: hidden; background: var(--cream); }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; perspective: 1600px; }
+      .bg { position: absolute; inset: 0; background: var(--cream); }
+      .glow { position: absolute; width: 1500px; height: 1500px; border-radius: 50%; left: -210px; top: 200px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.28), rgba(240, 84, 138, 0) 62%); }
+      .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; left: 300px; top: 1100px;
+        background: radial-gradient(circle, rgba(255, 196, 150, 0.35), rgba(255, 196, 150, 0) 62%); }
+      .photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+      .shade { position: absolute; inset: 0; }
+
+      /* captions: typed like a real Story (white label, dark text, key word pink) */
+      .cap { position: absolute; left: 70px; width: 940px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+        padding: 26px 34px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 62px; font-weight: 800;
+        line-height: 1.12; letter-spacing: -0.02em; text-align: center; perspective: 900px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.18); }
+      .cap.dark { background: rgba(20, 12, 16, 0.78); color: #fff; }
+      .cap.clear { background: none; box-shadow: none; color: #fff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); }
+      .cap span { display: block; }
+      .cap .k { color: var(--brand); }
+      .cap.dark .k, .cap.clear .k { color: #ff8db3; }
+
+      /* phone with the real app */
+      .phone { position: absolute; width: 714px; height: 1518px; padding: 12px; border-radius: 82px; background: linear-gradient(145deg, #2b2b30, #0b0b0d);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), 0 14px 28px rgba(60, 10, 30, 0.22), 0 70px 140px rgba(60, 10, 30, 0.32), 0 0 0 2px #3a3a40;
+        transform-origin: 50% 50%; }
+      .screen { position: relative; width: 690px; height: 1494px; border-radius: 70px; overflow: hidden; background: var(--cream); }
+      .screen > img, .screen > .layer { position: absolute; left: 0; top: 0; width: 690px; height: 1494px; display: block; }
+      .island { position: absolute; left: 50%; top: 22px; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+      .tap { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; z-index: 8; opacity: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 30%, rgba(217, 46, 100, 0.35) 31% 60%, rgba(217, 46, 100, 0) 61%); }
+      .ring { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 5px solid rgba(217, 46, 100, 0.8); z-index: 8; opacity: 0; }
+      .toast { position: absolute; left: 70px; bottom: 150px; width: 550px; padding: 26px 30px; border-radius: 30px; z-index: 7; opacity: 0;
+        background: rgba(30, 20, 25, 0.92); color: #fff; font-size: 30px; font-weight: 700; display: flex; align-items: center; gap: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+      .toast i { display: block; flex: none; width: 52px; height: 52px; border-radius: 50%; background: #22c55e; position: relative; }
+      .toast i::after { content: ""; position: absolute; left: 18px; top: 10px; width: 13px; height: 25px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .toast small { display: block; font-size: 24px; font-weight: 500; opacity: 0.8; }
+
+      /* a Story frame */
+      .story { position: absolute; width: 860px; height: 1528px; border-radius: 44px; overflow: hidden; background: #222;
+        box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 80px 160px rgba(60, 10, 30, 0.35); }
+      .story .photo { inset: -2%; }
+      .sbar { position: absolute; left: 26px; right: 26px; top: 22px; height: 6px; display: flex; gap: 8px; z-index: 5; }
+      .sbar i { flex: 1; display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.4); overflow: hidden; }
+      .sbar i b { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(0); }
+      .shead { position: absolute; left: 30px; top: 50px; display: flex; align-items: center; gap: 16px; z-index: 5; color: #fff; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+      .shead i { display: block; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, #f7c1cf, #d92e64); border: 3px solid #fff; }
+      .shead small { font-weight: 500; opacity: 0.85; }
+      .stk { position: absolute; display: block; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
+      .views { position: absolute; left: 34px; bottom: 40px; z-index: 5; color: #fff; font-size: 30px; font-weight: 600; display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+
+      /* DM / reply notification */
+      .dm { position: absolute; left: 90px; width: 900px; padding: 24px 28px; border-radius: 40px; display: flex; align-items: center; gap: 22px;
+        background: rgba(255, 255, 255, 0.94); color: var(--ink); z-index: 20;
+        box-shadow: 0 10px 22px rgba(60, 10, 30, 0.14), 0 40px 90px rgba(60, 10, 30, 0.24); }
+      .dm .av { flex: none; width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; }
+      .dm b { display: block; font-size: 32px; font-weight: 800; }
+      .dm b small { font-weight: 500; color: #6b5d63; font-size: 26px; margin-left: 8px; }
+      .dm p { font-size: 34px; font-weight: 500; line-height: 1.2; }
+
+      .chip { position: absolute; padding: 18px 30px; border-radius: 60px; background: #fff; color: var(--ink); font-size: 40px; font-weight: 800; display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); white-space: nowrap; z-index: 15; }
+      .chip.pink { background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; }
+      .chip em { font-style: normal; }
+      .ptbox { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 30; }
+      .pt { position: absolute; display: block; }
+      .heart { position: absolute; width: 60px; height: 54px; }
+      .heart::before, .heart::after { content: ""; position: absolute; top: 0; width: 32px; height: 50px; border-radius: 32px 32px 0 0; background: var(--brand); }
+      .heart::before { left: 30px; transform: rotate(-45deg); transform-origin: 0 100%; }
+      .heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+      #fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+      .flash { position: absolute; inset: 0; opacity: 0; }
+      .rays { position: absolute; left: -960px; top: -540px; width: 3000px; height: 3000px; opacity: 0;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 220, 230, 0) 0deg 7deg, rgba(255, 220, 230, 0.55) 9deg, rgba(255, 220, 230, 0) 11deg 18deg);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); mask-image: radial-gradient(circle at 50% 50%, #000 8%, transparent 46%); }
+      .leak { position: absolute; width: 2600px; height: 2600px; border-radius: 50%; opacity: 0; }
+      .endlogo { position: absolute; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 26px; }
+      .endlogo img { display: block; }
+      .url { position: absolute; left: 0; width: 100%; text-align: center; font-size: 44px; font-weight: 700; color: var(--ink); }
+      .cta { position: absolute; left: 190px; width: 700px; height: 140px; border-radius: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
+        background: linear-gradient(135deg, #e8417a, #c51f55); color: #fff; font-size: 52px; font-weight: 800; letter-spacing: -0.01em;
+        box-shadow: 0 16px 34px rgba(197, 31, 85, 0.35), 0 50px 110px rgba(197, 31, 85, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.35); overflow: hidden; }
+      .gloss { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+      .gloss i { position: absolute; top: -30%; left: 0; width: 34%; height: 160%; display: block;
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); }
+      .arrow { position: absolute; left: 50%; width: 0; height: 0; margin-left: -34px; border-left: 34px solid transparent; border-right: 34px solid transparent; border-top: 44px solid var(--brand); }
+      .orb { position: absolute; width: 270px; }
+      .orb.far { filter: blur(5px); opacity: 0.75; }
+      .shot { position: absolute; left: 28px; top: 241px; width: 634px; height: 790px; border-radius: 40px 40px 0 0; overflow: hidden; }
+      .shot .photo { inset: 0; background-position: 50% 35%; }
+      .g-orig { filter: saturate(0.55) contrast(0.82) brightness(1.1); }
+      .g-grade { filter: contrast(1.2) saturate(1.2) sepia(0.14) brightness(0.92); }
+      .divider { position: absolute; top: 0; width: 6px; margin-left: -3px; height: 100%; background: #fff; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); }
+      .divider i { position: absolute; left: -33px; top: 390px; width: 72px; height: 72px; border-radius: 50%; background: #fff; display: block; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+      .lab { position: absolute; top: 22px; padding: 8px 18px; border-radius: 22px; font-size: 22px; font-weight: 700; color: #fff; }
+      .agenda { position: absolute; left: 190px; top: 760px; width: 700px; border-radius: 36px; overflow: hidden; z-index: 16; box-shadow: 0 14px 30px rgba(60, 10, 30, 0.2), 0 60px 120px rgba(60, 10, 30, 0.3); }
+      .agenda img { display: block; width: 100%; }
+      .gif { position: absolute; left: 640px; top: 760px; width: 380px; z-index: 16; }
+      .gif img { width: 100%; display: block; filter: drop-shadow(0 16px 30px rgba(60, 10, 30, 0.35)); }
+      .gif b { position: absolute; right: 10px; top: -30px; padding: 6px 16px; border-radius: 14px; background: #fff; color: var(--brand); font-size: 28px; font-weight: 800; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+      .tag { position: absolute; left: 90px; width: 900px; text-align: center; font-size: 46px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+      .tag em { font-style: normal; color: var(--brand); }
+      .plain { position: absolute; left: 0; width: 100%; text-align: center; font-family: "Courier New", monospace; font-size: 46px; color: #fff; }
+      .clock { position: absolute; padding: 16px 28px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 46px; font-weight: 800; font-variant-numeric: tabular-nums; z-index: 25;
+        box-shadow: 0 10px 24px rgba(80, 20, 40, 0.14), 0 36px 80px rgba(80, 20, 40, 0.2); display: flex; gap: 12px; align-items: center; }
+      /* illustrated characters (Open Peeps, CC0) + cursor + typing caret */
+      .peep { position: absolute; z-index: 12; }
+      .peep .pb { position: absolute; inset: 0; transform-origin: 50% 100%; }
+      .peep img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+      .cur { position: absolute; left: 0; top: 0; width: 84px; height: 104px; z-index: 45; opacity: 0; transform-origin: 8px 6px; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25)); }
+      .cring { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid #fff; z-index: 44; opacity: 0; box-shadow: 0 0 0 3px rgba(42, 31, 36, 0.35); }
+      .caret { display: inline-block; width: 5px; height: 1em; margin-left: 4px; background: #e0a100; vertical-align: -0.12em; }
+
+      .paper { background: #f6ecdc; }
+      .grain { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 40%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%), repeating-linear-gradient(0deg, rgba(120, 80, 40, 0.035) 0 2px, rgba(0, 0, 0, 0) 2px 5px); }
+      .hand { position: absolute; left: 0; width: 100%; text-align: center; font-weight: 800; font-style: italic; color: var(--ink); letter-spacing: -0.02em; }
+      .hand em { font-style: italic; color: var(--brand); }
+      .nib { position: absolute; width: 70px; height: 150px; z-index: 30; opacity: 0; transform-origin: 6px 146px; }
+      .sq { position: absolute; top: 720px; width: 116px; height: 130px; border-radius: 22px; background: #fff; border: 4px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center;
+        font-size: 58px; font-weight: 800; color: var(--ink); box-shadow: 0 10px 24px rgba(90, 50, 20, 0.14); opacity: 0; }
+      .sq small { font-size: 20px; font-weight: 700; color: #85725c; letter-spacing: 0.08em; }
+      .sq.on { background: var(--brand); color: #fff; border-color: var(--brand); }
+      .sq img { position: absolute; width: 120px; left: -6px; top: -50px; opacity: 0; }
+      .cal { position: absolute; left: 330px; top: 600px; width: 420px; height: 400px; perspective: 1400px; z-index: 14; }
+      .cal .rings { position: absolute; left: 50px; right: 50px; top: -26px; height: 52px; display: flex; justify-content: space-between; z-index: 30; }
+      .cal .rings i { display: block; width: 22px; height: 52px; border-radius: 11px; background: linear-gradient(90deg, #6b5d63, #c9bfc3, #6b5d63); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25); }
+      .pg { position: absolute; inset: 0; border-radius: 30px; background: #fffdf8; border: 4px solid var(--ink); overflow: hidden; transform-origin: 50% 0; backface-visibility: hidden;
+        box-shadow: 0 14px 30px rgba(90, 50, 20, 0.16), 0 50px 110px rgba(90, 50, 20, 0.2); display: flex; flex-direction: column; align-items: center; }
+      .pg .hd { width: 100%; height: 96px; background: var(--brand); color: #fff; font-size: 40px; font-weight: 800; letter-spacing: 0.12em; display: flex; align-items: center; justify-content: center; }
+      .pg b { display: block; font-size: 230px; font-weight: 800; line-height: 1; color: var(--ink); margin-top: 20px; letter-spacing: -0.05em; }
+      .pg.cover .hd { background: var(--ink); }
+      .pg.cover b { font-size: 120px; margin-top: 70px; color: var(--brand); }
+      .rb { position: absolute; padding: 20px 28px; border-radius: 36px 36px 36px 8px; background: #fff; color: var(--ink); font-size: 38px; font-weight: 700; z-index: 16; opacity: 0;
+        box-shadow: 0 10px 24px rgba(90, 30, 40, 0.14), 0 30px 70px rgba(90, 30, 40, 0.18); white-space: nowrap; display: flex; align-items: center; gap: 12px; }
+      .rb i { display: block; width: 40px; height: 40px; border-radius: 50%; flex: none; }
+      .ghost { position: absolute; left: 60px; top: 990px; padding: 16px 26px; border-radius: 50px; background: rgba(255, 255, 255, 0.7); color: #8f8279; font-size: 36px; font-weight: 700; z-index: 15; opacity: 0; }
+      .ghost svg { position: absolute; left: 10px; top: 20px; width: 92%; height: 40px; overflow: visible; }
+      .ghost path, .link path { fill: none; stroke: var(--brand); stroke-width: 9; stroke-linecap: round; }
+      .sm { position: absolute; width: 230px; height: 409px; border-radius: 26px; overflow: hidden; border: 5px solid #fff; background: #333; z-index: 13; opacity: 0;
+        box-shadow: 0 10px 24px rgba(60, 10, 30, 0.2), 0 34px 80px rgba(60, 10, 30, 0.25); }
+      .sm .photo { inset: 0; }
+      .sm img { position: absolute; left: 10px; top: 120px; width: 210px; }
+      .link { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 12; pointer-events: none; }
+      #sC .bg { background: radial-gradient(90% 60% at 50% 42%, #3a2a31 0%, #1d1418 70%, #120c0f 100%); }
+      .note { position: absolute; left: 70px; top: 560px; width: 940px; height: 560px; border-radius: 28px; background: #f6ecdc; z-index: 10;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 160px rgba(240, 84, 138, 0.18); transform: rotate(-2deg); overflow: hidden; }
+      .note .ln { position: absolute; left: 0; width: 100%; text-align: center; font-size: 68px; font-weight: 800; font-style: italic; color: var(--ink); letter-spacing: -0.02em; white-space: nowrap; }
+      .note .ln em { font-style: italic; color: var(--brand); }
+      .note svg { position: absolute; left: 0; top: 0; width: 940px; height: 560px; overflow: visible; }
+      .note path { fill: none; stroke: var(--brand); stroke-width: 12; stroke-linecap: round; }
+      .plainst { position: absolute; left: 425px; top: 1140px; width: 230px; height: 409px; border-radius: 30px; overflow: hidden; border: 5px solid #fff; z-index: 11; opacity: 0; }
+      .plainst .photo { filter: saturate(0.3) brightness(0.85); }
+      #sD .bg { background: #f6ecdc; }
+      .pg .pgt { font-size: 34px; font-weight: 700; font-style: italic; color: #85725c; margin-top: 34px; }
+      #sD .sm { width: 250px; height: 444px; }
+      .tst { position: absolute; left: 0; width: 100%; text-align: center; color: #fff; font-size: 38px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 0, 0, 0.35); }
+      .tst em { font-style: italic; font-weight: 700; font-size: 44px; }
+
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="vb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="vbg" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="31.73" data-width="1080" data-height="1920">
+      <audio id="mix" src="assets/mix-c4.wav" data-start="0" data-duration="31.73" data-volume="1"></audio>
+
+      <!-- A: the confession, 7 days laid out -->
+      <div id="sA" class="scene clip" data-start="0" data-duration="7.6" data-track-index="0">
+        <div class="inner" id="sA-in">
+          <div class="bg paper"></div><div class="grain"></div><div class="glow" style="opacity: 0.45"></div>
+          <div id="sqs" data-layout-allow-overlap></div>
+          <div id="pAbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptA"></div>
+          <div class="cap" id="cA1" style="top: 290px"><span>eu</span><span>testei</span><span class="k">7</span><span class="k">dias</span><span>postando</span><span>story</span><span>com</span><span>figurinha</span><span>pronta</span></div>
+          <div class="cap" id="cA2" style="top: 290px"><span>e</span><span>essa</span><span>foi</span><span>a</span><span class="k">maior</span><span class="k">lição</span><span>que</span><span>eu</span><span>aprendi</span></div>
+        </div>
+      </div>
+
+      <!-- B: the tear-off calendar, day by day -->
+      <div id="sB" class="scene clip" data-start="7.0" data-duration="12.9" data-track-index="1">
+        <div class="inner" id="sB-in">
+          <div class="bg paper"></div><div class="grain"></div><div class="glow2" id="gB" style="opacity: 0.7"></div>
+          <div class="cal" id="cal"><div class="rings"><i></i><i></i><i></i><i></i></div><div id="pages" data-layout-allow-overlap></div></div>
+          <svg class="link" viewBox="0 0 1080 1920"><path id="lnk" d="M300 1400 C 420 1320, 520 1230, 600 1150" /></svg>
+          <div class="ghost" id="ghost">antes: 0 respostas<svg viewBox="0 0 300 40"><path id="gst" d="M0 20 C 80 10, 200 30, 300 16" /></svg></div>
+          <div class="rb" id="rb1" style="left: 640px; top: 1010px"><i style="background: #f08a4b"></i>que lindo! 😍</div>
+          <div class="rb" id="rb2" style="left: 700px; top: 1150px"><i style="background: #3b82f6"></i>amei 💗</div>
+          <div class="rb" id="rb3" style="left: 620px; top: 1290px"><i style="background: #22c55e"></i>onde é isso?</div>
+          <div class="dm" id="dmC" style="top: 0"><div class="av" style="background: #d92e64">M</div><div><b>marina · cliente <small>agora</small></b><p>oi! vi seu story, quero agendar 💅</p></div></div>
+          <div class="sm" id="s1" style="left: 50px; top: 1060px"><div class="photo" data-p="d1"></div><img id="k1" data-s="d1" style="top: 255px" alt="" /></div>
+          <div class="sm" id="smC" style="left: 60px; top: 1250px"><div class="photo" data-p="d3"></div><img data-s="d3" style="top: 20px; left: 4px; width: 222px" alt="" /></div>
+          <div class="sm" id="s7a" style="left: 30px; top: 1000px"><div class="photo" data-p="d7a"></div><img id="k7a" data-s="d7a" style="top: 250px" alt="" /></div>
+          <div class="sm" id="s7b" style="left: 820px; top: 960px"><div class="photo" data-p="d7b"></div><img id="k7b" data-s="d7b" style="top: 260px" alt="" /></div>
+          <div class="sm" id="s7c" style="left: 800px; top: 1420px"><div class="photo" data-p="d7c"></div><img id="k7c" data-s="d7c" style="top: 230px" alt="" /></div>
+          <div class="sm" id="s7d" style="left: 30px; top: 1440px"><div class="photo" data-p="d7d"></div><img id="k7d" data-s="d7d" style="top: 225px" alt="" /></div>
+          <div id="pBbox"></div><div id="pB2box"></div>
+          <div class="ptbox" data-layout-ignore id="ptB"></div>
+          <div class="cap" id="cB1" style="top: 290px"><span class="k">dia</span><span class="k">1:</span><span>3</span><span>respostas</span></div>
+          <div class="cap" id="cB2" style="top: 290px"><span>eu</span><span>nunca</span><span>tinha</span><span>recebido</span><span class="k">nenhuma</span></div>
+          <div class="cap" id="cB3" style="top: 290px"><span class="k">dia</span><span class="k">3:</span><span>uma</span><span class="k">cliente</span><span>me</span><span>chamou</span><span>só</span><span>por</span><span>causa</span><span>do</span><span>story</span></div>
+          <div class="cap" id="cB4" style="top: 290px"><span class="k">dia</span><span class="k">7:</span><span>eu</span><span>já</span><span>nem</span><span>pensava</span><span>no</span><span>que</span><span>postar</span></div>
+        </div>
+      </div>
+
+      <!-- C: the lesson, in the dark -->
+      <div id="sC" class="scene clip" data-start="19.3" data-duration="6.6" data-track-index="2">
+        <div class="inner" id="sC-in">
+          <div class="bg"></div>
+          <div class="note" id="note">
+            <div class="ln" id="ln1" style="top: 120px">ninguém ignora você.</div>
+            <div class="ln" id="ln2" style="top: 300px">ignoram story <em>sem graça.</em></div>
+            <svg viewBox="0 0 940 560"><path id="und" d="M520 410 C 600 400, 720 420, 860 404" /></svg>
+          </div>
+          <svg class="nib" id="nib" viewBox="0 0 70 150"><path d="M6 146 L18 104 L52 6 L66 12 L34 110 Z" fill="#2a1f24" /><path d="M6 146 L18 104 L28 108 Z" fill="#d92e64" /></svg>
+          <div class="plainst" id="plainst"><div class="photo" data-p="plain"></div></div>
+          <div id="crowd"></div>
+          <div class="ptbox" data-layout-ignore id="ptC"></div>
+          <div class="cap clear" id="cC1" style="top: 330px"><span>a</span><span class="k">lição?</span></div>
+        </div>
+      </div>
+
+      <!-- D: CTA -->
+      <div id="sD" class="scene clip" data-start="25.2" data-duration="6.53" data-track-index="3">
+        <div class="inner" id="sD-in">
+          <div class="bg"></div><div class="grain"></div><div class="glow" id="gD"></div><div class="glow2"></div>
+          <div class="cal" id="calD" data-layout-allow-overlap style="top: 560px"><div class="rings"><i></i><i></i><i></i><i></i></div>
+            <div class="pg" id="pgL"><div class="hd">DIA 8</div><img src="assets/app/logo-t.png" alt="Stories Lab" style="width: 360px; margin-top: 60px" /><p class="pgt">o seu começa hoje</p></div>
+            <div class="pg" id="pg8"><div class="hd">HOJE</div><b>8</b></div>
+          </div>
+          <div class="sm" id="e1" style="left: 40px; top: 620px"><div class="photo" data-p="e1"></div><div class="tst" id="ke1" style="top: 70px">saiu do forno<br><em>agora</em> 🍰</div></div>
+          <div class="sm" id="e2" style="left: 790px; top: 640px"><div class="photo" data-p="e2"></div><div class="tst" id="ke2" style="top: 300px">sextou<br><em>com pizza</em> 🍕</div></div>
+          <div class="cta" id="cta" style="top: 1130px">Saiba mais<div class="gloss"><i id="ctaG"></i></div></div>
+          <div id="pDbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptD"></div>
+          <div class="cap" id="cD1" style="top: 290px"><span>as</span><span class="k">figurinhas</span><span>são</span><span>do</span><span class="k">stories</span><span class="k">lab</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span>toca</span><span>em</span><span class="k">saiba</span><span class="k">mais</span><span>👇</span></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="31.73" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+
+    </div>
+    <script>
+      const VO = {"take": "4a", "total": 31.73, "lines": [{"text": "Eu testei sete dias postando story com figurinha pronta. E essa foi a maior lição que eu aprendi.", "mood": "secret", "start": 0.25, "dur": 6.48, "words": [["Eu", 0.25, 0.47], ["testei", 0.47, 0.85], ["sete", 0.85, 1.41], ["dias", 1.41, 1.75], ["postando", 1.75, 2.21], ["story", 2.35, 2.59], ["com", 2.59, 2.77], ["figurinha", 2.87, 3.15], ["pronta.", 3.15, 3.69], ["E", 4.07, 4.35], ["essa", 4.35, 4.67], ["foi", 4.67, 4.93], ["a", 4.93, 5.03], ["maior", 5.03, 5.43], ["lição", 5.43, 5.95], ["que", 5.95, 6.13], ["eu", 6.13, 6.21], ["aprendi.", 6.21, 6.73]]}, {"text": "Dia um. Três respostas. Eu nunca tinha recebido nenhuma.", "mood": "excited", "start": 7.41, "dur": 3.56, "words": [["Dia", 7.41, 7.57], ["um.", 7.725, 7.973], ["Três", 8.19, 8.49], ["respostas.", 8.49, 9.21], ["Eu", 9.43, 9.53], ["nunca", 9.53, 9.85], ["tinha", 9.85, 10.11], ["recebido", 10.11, 10.57], ["nenhuma.", 10.57, 10.97]]}, {"text": "Dia três. Uma cliente me chamou só por causa do story.", "mood": "excited", "start": 11.81, "dur": 3.36, "words": [["Dia", 11.81, 12.01], ["três.", 12.22, 12.556], ["Uma", 12.85, 13.01], ["cliente", 13.01, 13.37], ["me", 13.37, 13.49], ["chamou", 13.49, 13.79], ["só", 13.79, 14.13], ["por", 14.13, 14.35], ["causa", 14.35, 14.53], ["do", 14.53, 14.73], ["story.", 14.73, 15.17]]}, {"text": "Dia sete. Eu já nem pensava no que postar.", "mood": "hope", "start": 15.75, "dur": 2.92, "words": [["Dia", 15.75, 15.89], ["sete.", 16.11, 16.462], ["Eu", 16.77, 16.93], ["já", 16.93, 17.09], ["nem", 17.09, 17.35], ["pensava", 17.35, 17.93], ["no", 17.93, 18.11], ["que", 18.11, 18.21], ["postar.", 18.21, 18.67]]}, {"text": "A lição? Ninguém ignora você. Ignoram story sem graça.", "mood": "intimate", "start": 19.65, "dur": 5.24, "words": [["A", 19.65, 19.97], ["lição?", 19.97, 20.27], ["Ninguém", 21.39, 21.89], ["ignora", 21.89, 22.37], ["você.", 22.37, 22.81], ["Ignoram", 23.055, 23.447], ["story", 23.79, 24.17], ["sem", 24.17, 24.41], ["graça.", 24.41, 24.89]]}, {"text": "As figurinhas são do Stories Lab. Toca em saiba mais.", "mood": "warm", "start": 25.77, "dur": 2.92, "words": [["As", 25.77, 25.97], ["figurinhas", 25.97, 26.45], ["são", 26.45, 26.71], ["do", 26.71, 26.85], ["Stories", 26.85, 27.21], ["Lab.", 27.21, 27.59], ["Toca", 27.693, 27.859], ["em", 27.9, 28.065], ["saiba", 28.21, 28.49], ["mais.", 28.49, 28.69]]}]};
+      const TOTAL = 31.73;
+      const tl = gsap.timeline({ paused: true });
+      const w = (ln, i) => VO.lines[ln].words[i][1];
+      const we = (ln, i) => VO.lines[ln].words[i][2];
+      const $ = (s) => document.querySelector(s);
+
+      // seeded PRNG: renders stay deterministic
+      let seed = 7;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+      const ENERGY = {
+        curious: { d: 0.4, ease: "back.out(1.6)", blur: 10, y: 30, rx: 40 },
+        secret: { d: 0.6, ease: "sine.out", blur: 12, y: 16, rx: 0 },
+        melancholy: { d: 0.8, ease: "sine.out", blur: 12, y: 18, rx: 0 },
+        hope: { d: 0.5, ease: "power3.out", blur: 14, y: 26, rx: 40 },
+        excited: { d: 0.34, ease: "back.out(2)", blur: 12, y: 40, rx: 60 },
+        triumph: { d: 0.36, ease: "expo.out", blur: 16, y: 50, rx: 70 },
+        warm: { d: 0.55, ease: "power3.out", blur: 12, y: 24, rx: 30 },
+      };
+      // caption: words revealed across the VO words a..b of line ln
+      const caption = (id, ln, a, b, mood, delay = 0) => {
+        const box = document.getElementById(id), spans = box.querySelectorAll("span"), e = ENERGY[mood];
+        const t0 = w(ln, a) + delay, t1 = w(ln, b) + delay;
+        tl.fromTo(box, { opacity: 0, scale: 0.86, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "back.out(1.8)" }, t0 - 0.12);
+        spans.forEach((s, i) => {
+          const t = spans.length < 2 ? t0 : t0 + ((t1 - t0) * i) / (spans.length - 1);
+          tl.fromTo(s, { opacity: 0, y: e.y, rotationX: e.rx, filter: `blur(${e.blur}px)`, transformOrigin: "50% 100%" },
+            { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: e.d, ease: e.ease }, t - 0.06);
+        });
+      };
+      const capOut = (id, t) => tl.to("#" + id, { opacity: 0, scale: 0.94, y: -20, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, t);
+      const out = (sel, t, d = 0.3) => tl.to(sel, { opacity: 0, filter: "blur(12px)", duration: d, ease: "power2.in" }, t);
+      const camera = (sel, t0, t1, s0, s1, ease = "none") => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: t1 - t0, ease }, t0);
+      const drift = (sel, t0, t1, amp = 10, rot = 3) =>
+        tl.fromTo(sel, { y: amp, rotation: -rot }, { y: -amp, rotation: rot, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      const sweep = (sel, t, d = 0.8) => tl.fromTo(sel, { xPercent: -160 }, { xPercent: 420, duration: d, ease: "power2.inOut" }, t);
+      const pop = (sel, t, rot = 0, s = 1) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.2, rotation: rot - 18, filter: "blur(8px)" }, { opacity: 1, scale: s, rotation: rot, filter: "blur(0px)", duration: 0.5, ease: "back.out(2.2)" }, t);
+      // phone: tap at screen coords (690x1494 space)
+      const tap = (scr, x, y, t) => {
+        const box = document.querySelector(scr);
+        const a = document.createElement("div"); a.className = "tap"; a.style.left = x + "px"; a.style.top = y + "px"; box.appendChild(a);
+        const r = document.createElement("div"); r.className = "ring"; r.style.left = x + "px"; r.style.top = y + "px"; box.appendChild(r);
+        tl.fromTo(a, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 0.8, duration: 0.14, ease: "power2.out" }, t - 0.14);
+        tl.to(a, { opacity: 0, scale: 1, duration: 0.25, ease: "power2.in" }, t + 0.08);
+        tl.fromTo(r, { opacity: 0.9, scale: 0.6 }, { opacity: 0, scale: 2.2, duration: 0.5, ease: "power2.out" }, t);
+      };
+      // swap screens inside a phone: new one slides in from the right (push) or up (modal)
+      const push = (from, to, t, d = 0.42) => {
+        tl.fromTo(to, { x: 690, opacity: 1 }, { x: 0, opacity: 1, duration: d, ease: "power3.inOut" }, t);
+        tl.fromTo(from, { x: 0 }, { x: -230, duration: d, ease: "power3.inOut", immediateRender: false }, t);
+      };
+      const sheet = (to, t, d = 0.5) => tl.fromTo(to, { y: 1494, opacity: 1 }, { y: 0, opacity: 1, duration: d, ease: "expo.out" }, t);
+      const vblur = (from, to, t, d, ease) => {
+        const g = document.getElementById("vbg"), p = { v: from };
+        const set = () => g.setAttribute("stdDeviation", "0 " + p.v);
+        set();
+        tl.fromTo(p, { v: from }, { v: to, duration: d, ease, onUpdate: set, immediateRender: false }, t);
+      };
+      // particle systems per mood
+      const hearts = (box, t0, n, x0, y0, spread = 700) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const h = document.createElement("div"); h.className = "heart pt"; const s = 0.5 + rnd() * 0.9;
+          h.style.left = x0 + (rnd() - 0.5) * spread + "px"; h.style.top = y0 + "px"; b.appendChild(h);
+          const t = t0 + i * 0.09;
+          tl.fromTo(h, { opacity: 0, scale: 0, y: 0, x: 0, rotation: (rnd() - 0.5) * 40 },
+            { opacity: 1, scale: s, y: -260 - rnd() * 260, x: (rnd() - 0.5) * 160, duration: 0.6, ease: "back.out(2)" }, t);
+          tl.to(h, { opacity: 0, y: "-=320", duration: 1.0, ease: "sine.in" }, t + 0.6);
+        }
+      };
+      const confetti = (box, t, n, x0, y0) => {
+        const b = document.getElementById(box); const cols = ["#d92e64", "#f0548a", "#ffd166", "#ffffff", "#ff9fbf", "#8fd3ff"];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement("i"); c.className = "pt"; const s = 12 + rnd() * 16;
+          Object.assign(c.style, { left: x0 + "px", top: y0 + "px", width: s + "px", height: s * (0.4 + rnd() * 0.6) + "px", background: cols[i % cols.length], borderRadius: i % 3 ? "3px" : "50%" });
+          b.appendChild(c);
+          const a = rnd() * Math.PI * 2, r = 260 + rnd() * 520;
+          tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0, scale: 0.4 }, { x: Math.cos(a) * r, y: Math.sin(a) * r * 0.8 - 120, rotation: rnd() * 540, scale: 1, duration: 0.7, ease: "expo.out" }, t);
+          tl.to(c, { y: "+=" + (420 + rnd() * 400), rotation: "+=" + rnd() * 360, opacity: 0, duration: 1.6, ease: "sine.in" }, t + 0.7);
+        }
+      };
+      const sparks = (box, t0, t1, n, color = "rgba(255,210,225,0.95)") => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 6 + rnd() * 12;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: 900 + rnd() * 1000 + "px",
+            background: `radial-gradient(circle, ${color}, rgba(255,255,255,0))`, boxShadow: `0 0 ${s * 2}px ${color}` });
+          b.appendChild(p);
+          const st = t0 + rnd() * (t1 - t0) * 0.6;
+          tl.fromTo(p, { opacity: 0, y: 0 }, { opacity: 1, y: -200 - rnd() * 300, duration: 0.6, ease: "sine.out" }, st);
+          tl.to(p, { opacity: 0, y: "-=" + (200 + rnd() * 300), duration: 1.2, ease: "sine.in" }, st + 0.6);
+        }
+      };
+      const ash = (box, t0, t1, n) => {
+        const b = document.getElementById(box);
+        for (let i = 0; i < n; i++) {
+          const p = document.createElement("i"); p.className = "pt"; const s = 5 + rnd() * 9;
+          Object.assign(p.style, { width: s + "px", height: s + "px", borderRadius: "50%", left: rnd() * 1080 + "px", top: -40 + rnd() * 900 + "px", background: "rgba(120,110,115,0.45)" });
+          b.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0, opacity: 0 }, { y: 500 + rnd() * 600, x: (rnd() - 0.5) * 120, opacity: 0.8, duration: t1 - t0, ease: "sine.inOut" }, t0 + rnd() * 0.5);
+        }
+      };
+      const dm = (sel, t, y, fromY = -260) => {
+        tl.fromTo(sel, { opacity: 0, y: fromY, scale: 0.9, rotationX: -40, filter: "blur(10px)" }, { opacity: 1, y, scale: 1, rotationX: 0, filter: "blur(0px)", duration: 0.55, ease: "back.out(1.4)" }, t);
+      };
+      const storyBar = (sel, t0, t1) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: t1 - t0, ease: "none" }, t0);
+
+      // before/after slider inside the editor screen
+      const slider = (gradeSel, divSel, from, to, t, d) => {
+        const o = { p: from }, g = $(gradeSel), dv = $(divSel);
+        const set = () => { g.style.clipPath = `inset(0 0 0 ${o.p}%)`; dv.style.left = o.p + "%"; };
+        tl.fromTo(o, { p: from }, { p: to, duration: d, ease: "power2.inOut", onUpdate: set, immediateRender: false }, t);
+      };
+      const clock = (sel, from, to, t, d, fmt) => {
+        const o = { v: from }, n = $(sel), set = () => (n.textContent = fmt(o.v));
+        set();
+        tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "none", onUpdate: set, immediateRender: false }, t);
+      };
+      // ---- illustrated characters: stacked face SVGs, swap = emotion, EyesClosed = blink, .pb breathes ----
+      const peep = (box, id, base, faces, x, y, wd) => {
+        const d = document.createElement("div"); d.className = "peep"; d.id = id;
+        Object.assign(d.style, { left: x + "px", top: y + "px", width: wd + "px", height: (wd * 1200) / 850 + "px" });
+        const b = document.createElement("div"); b.className = "pb"; d.appendChild(b);
+        faces.forEach((f, i) => { const im = document.createElement("img"); im.src = `assets/peeps/${base}-${f}.svg`; im.dataset.f = f; im.style.opacity = i ? 0 : 1; b.appendChild(im); });
+        $(box).appendChild(d); return "#" + id;
+      };
+      const face = (id, f, t) => { tl.set(`#${id} img`, { opacity: 0 }, t); tl.set(`#${id} img[data-f="${f}"]`, { opacity: 1 }, t); };
+      const blinks = (id, times, back) => times.forEach((t) => { face(id, "EyesClosed", t); face(id, back, t + 0.13); });
+      const breathe = (id, t0, t1, amt = 0.018) => tl.fromTo(`#${id} .pb`, { scaleY: 1, scaleX: 1 },
+        { scaleY: 1 + amt, scaleX: 1 - amt / 3, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((t1 - t0) / 1.1)) }, t0);
+      // ---- illustrated cursor: glides, presses, ripple (tip = element top-left) ----
+      const CUR_SVG = '<svg viewBox="0 0 84 104" width="84" height="104"><path d="M8 6 L8 82 L28 64 L42 96 L56 90 L42 58 L70 58 Z" fill="#fff" stroke="#2a1f24" stroke-width="6" stroke-linejoin="round"/></svg>';
+      const cursor = (box, id, x, y) => { const c = document.createElement("div"); c.className = "cur"; c.id = id; c.innerHTML = CUR_SVG; $(box).appendChild(c); gsap.set(c, { x, y }); return "#" + id; };
+      const click = (box, sel, x, y, t, move = 0.5) => {
+        tl.to(sel, { x, y, duration: move, ease: "power3.inOut" }, t - move - 0.05);
+        tl.to(sel, { scale: 0.8, duration: 0.07, yoyo: true, repeat: 1, ease: "power2.out" }, t - 0.05);
+        const r = document.createElement("div"); r.className = "cring"; r.style.left = x + "px"; r.style.top = y + "px"; $(box).appendChild(r);
+        tl.fromTo(r, { opacity: 1, scale: 0.3 }, { opacity: 0, scale: 1.8, duration: 0.5, ease: "power2.out", immediateRender: false }, t);
+      };
+      // ---- typing: text grows char by char (emoji safe) ----
+      const typer = (sel, text, t0, t1) => {
+        const el = $(sel), ch = Array.from(text), o = { n: 0 }, set = () => (el.textContent = ch.slice(0, Math.round(o.n)).join(""));
+        set(); tl.fromTo(o, { n: 0 }, { n: ch.length, duration: t1 - t0, ease: "none", onUpdate: set, immediateRender: false }, t0);
+      };
+      const caretBlink = (sel, t0, t1) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "steps(1)", yoyo: true, repeat: Math.floor((t1 - t0) / 0.45) }, t0);
+      const draw = (sel, t, d = 0.35) => { const p = $(sel), L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+        tl.fromTo(sel, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease: "power2.out", immediateRender: false }, t); };
+const T = {"SQ": 0.85, "STK": 2.87, "LESSON": 5.03, "B": 7.06, "D1": 7.41, "R3": 8.19, "NEVER": 9.43, "NONE": 10.57, "D3": 11.81, "CLIENT": 12.85, "CAUSE": 13.79, "D7": 15.75, "RELAX": 16.77, "C": 19.4, "L1": 21.39, "L2": 23.055, "SEM": 24.17, "BACK": 24.32, "HIT": 24.92, "F": 25.37, "CTA": 27.693};
+
+      // every photo and sticker of G04, used exactly once (swap files here only)
+      const P = {
+        d1: "assets/org/cafe-manha-12.jpg",      // day 1: breakfast at home
+        d3: "assets/org/unhas-02.jpg",           // day 3: her manicure table
+        d7a: "assets/org/pet-02.jpg",            // day 7: dog on the sofa
+        d7b: "assets/org/aniversario-05.jpg",    // day 7: birthday cake
+        d7c: "assets/org/praia-02.jpg",          // day 7: beach chair
+        d7d: "assets/org/mae-filho-06.jpg",      // day 7: mom and son
+        plain: "assets/org/varanda-plantas-01.jpg", // the lesson: a plain, undesigned story
+        e1: "assets/org/bolo-caseiro-19.jpg",    // CTA: homemade cake (natal)
+        e2: "assets/org/pizza-caseira-11.jpg",   // CTA: homemade pizza night
+      };
+      const S = {
+        sq: "assets/stk/bom-dia-9.webp", d1: "assets/stk2/cafe-3.webp", d3: "assets/stk/frases-40.webp",
+        d7a: "assets/stk2/date-4.webp", d7b: "assets/stk2/niver-1.webp", d7c: "assets/stk2/praia-1.webp", d7d: "assets/stk2/date-5.webp",
+      };
+      document.querySelectorAll("[data-p]").forEach((e) => (e.style.backgroundImage = `url(${P[e.dataset.p]})`));
+      document.querySelectorAll("[data-s]").forEach((e) => (e.src = S[e.dataset.s]));
+      // dark-ink stickers get a soft white halo so they read on any photo
+      document.querySelectorAll('[data-s="d7a"], [data-s="d7b"], [data-s="d7d"]').forEach((e) => (e.style.filter = "drop-shadow(0 0 5px rgba(255,255,255,0.95)) drop-shadow(0 0 12px rgba(255,255,255,0.7))"));
+      // ---------- A: confession, the 7 days (0 – 7.1) ----------
+      camera("#sA-in", 0, T.B + 0.3, 1.0, 1.06, "sine.inOut");
+      const pA = peep("#pAbox", "pA", "hero4-device", ["Smile", "Solemn", "EyesClosed", "Driven", "Cute"], 230, 1010, 620);
+      tl.fromTo(pA, { y: 300 }, { y: 0, duration: 0.7, ease: "expo.out" }, 0);
+      breathe("pA", 0.7, T.B);
+      caption("cA1", 0, 0, 8, "secret");
+      const SQX = [40, 184, 328, 472, 616, 760, 904].map((x) => x - 16);
+      SQX.forEach((x, i) => {
+        const d = document.createElement("div"); d.className = "sq"; d.id = "sq" + i; d.style.left = x + "px";
+        d.innerHTML = `<small>DIA</small>${i + 1}` + (i === 0 ? `<img src="${S.sq}" alt="" />` : ""); $("#sqs").appendChild(d);
+        const t = T.SQ + i * 0.11;
+        tl.fromTo(d, { opacity: 0, y: 80, scale: 0.4, rotation: (i - 3) * 6 }, { opacity: 1, y: 0, scale: 1, rotation: (i - 3) * 1.5, duration: 0.45, ease: "back.out(2)" }, t);
+        tl.to(d, { y: -10, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, t + 0.5);
+      });
+      // day 1 gets the first sticker
+      tl.to("#sq0", { backgroundColor: "#d92e64", borderColor: "#d92e64", color: "#fff", duration: 0.2 }, T.STK + 0.1);
+      tl.fromTo("#sq0 img", { opacity: 0, scale: 2.2, rotation: 30, y: -200 }, { opacity: 1, scale: 1, rotation: -8, y: 0, duration: 0.4, ease: "back.out(1.8)" }, T.STK);
+      face("pA", "Cute", T.STK + 0.1);
+      tl.to(pA, { rotation: -2, y: -14, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.STK + 0.1);
+      capOut("cA1", w(0, 9) - 0.15);
+      caption("cA2", 0, 9, 17, "secret");
+      face("pA", "Solemn", w(0, 9));
+      // "the biggest lesson": the squares gather into one stack, she gets serious
+      SQX.forEach((x, i) => tl.to("#sq" + i, { x: 470 - x - (i - 3) * 6, y: -140 - i * 4, rotation: (i - 3) * 2, scale: 1.1, duration: 0.6, ease: "power3.inOut" }, T.LESSON - 0.1 + i * 0.04));
+      tl.to(".sq", { scale: 3.2, y: -200, opacity: 0, duration: 0.35, ease: "power3.in" }, T.B - 0.1);
+      face("pA", "Driven", T.LESSON + 0.3);
+      blinks("pA", [1.9, 4.0], "Smile"); blinks("pA", [6.4], "Driven");
+      sparks("ptA", T.LESSON, T.B, 10, "rgba(240,84,138,0.9)");
+
+      // A -> B: the stack becomes the calendar (blur crossfade with scale)
+      tl.to("#sA-in", { opacity: 0, filter: "blur(14px)", duration: 0.35, ease: "power2.in" }, T.B);
+      tl.fromTo("#sB-in", { opacity: 0, scale: 1.08, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, T.B + 0.05);
+
+      // ---------- B: calendar days (7.1 – 19.5) ----------
+      // pages: cover on top, then 1..7 below (built top-first so z-order is natural)
+      const LBL = ["COVER", 1, 2, 3, 4, 5, 6, 7];
+      LBL.slice().reverse().forEach((n) => {
+        const p = document.createElement("div"); p.className = "pg" + (n === "COVER" ? " cover" : ""); p.id = "pg" + n;
+        p.innerHTML = n === "COVER" ? '<div class="hd">MEU TESTE</div><b>7 dias</b>' : `<div class="hd">DIA</div><b>${n}</b>`;
+        $("#pages").appendChild(p);
+      });
+      const tear = (n, t, d = 0.34) => {
+        tl.to("#pg" + n, { rotationX: 105, y: -40, opacity: 0, duration: d, ease: "power2.in" }, t);
+        if (d >= 0.2) tl.fromTo("#cal", { rotation: 0 }, { rotation: n === "COVER" || n % 2 ? -2 : 2, duration: 0.1, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, t);
+      };
+      tl.fromTo("#cal", { y: -80, scale: 0.7, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, T.B + 0.05);
+      tl.fromTo("#cal", { rotationZ: -1 }, { rotationZ: 1, duration: 3, ease: "sine.inOut", immediateRender: false }, T.B + 0.7);
+      tear("COVER", T.D1 - 0.08);
+      const pB = peep("#pBbox", "pB", "hero4-device", ["Smile", "Awe", "SmileBig", "EyesClosed", "LoveGrin", "Concerned"], 220, 1010, 600);
+      const pB2 = peep("#pB2box", "pB2", "hero4-coffee", ["Calm", "EyesClosed", "Smile", "SmileBig"], 220, 1010, 600);
+      tl.set(pB2, { opacity: 0 }, 0);
+      tl.fromTo(pB, { y: 300 }, { y: 0, duration: 0.6, ease: "expo.out" }, T.B + 0.1);
+      breathe("pB", T.B + 0.7, T.D7);
+      caption("cB1", 1, 0, 3, "excited");
+      // day 1: three replies pop out of her phone
+      face("pB", "Awe", T.R3 - 0.05); face("pB", "SmileBig", T.R3 + 0.8);
+      ["#rb1", "#rb2", "#rb3"].forEach((s, i) => {
+        const t = T.R3 + i * 0.16;
+        tl.fromTo(s, { opacity: 0, x: -160, y: 120, scale: 0.3 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, t);
+        tl.to(s, { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, t + 0.45);
+        tl.to(s, { opacity: 0, x: 200, scale: 0.8, duration: 0.3, ease: "power2.in" }, T.D3 - 0.45 + i * 0.05);
+      });
+      tl.to(pB, { y: -30, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 3 }, T.R3 + 0.1);
+      // the day-1 story she posted: café photo, the sticker lands on it
+      tl.fromTo("#s1", { opacity: 0, scale: 0.4, rotation: -16, y: 200 }, { opacity: 1, scale: 1, rotation: -6, y: 0, duration: 0.5, ease: "back.out(1.6)" }, T.D1 + 0.05);
+      tl.fromTo("#k1", { opacity: 0, scale: 2.4, rotation: 30, y: -240 }, { opacity: 1, scale: 1, rotation: -4, y: 0, duration: 0.4, ease: "back.out(1.8)" }, T.D1 + 0.4);
+      tl.to("#s1", { y: -12, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.R3 + 0.2);
+      tl.to("#s1", { opacity: 0, x: -200, rotation: -14, duration: 0.3, ease: "power2.in" }, T.D3 - 0.45);
+      capOut("cB1", T.NEVER - 0.15);
+      caption("cB2", 1, 4, 8, "warm");
+      tl.fromTo("#ghost", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, T.NEVER);
+      draw("#gst", T.NONE, 0.3);
+      tl.to("#ghost", { opacity: 0, y: 40, duration: 0.3 }, T.D3 - 0.4);
+      blinks("pB", [9.9], "SmileBig");
+      // day 3: a client DM, linked to the story
+      tear(1, T.D3 - 0.3, 0.22); tear(2, T.D3 - 0.02, 0.26);
+      capOut("cB2", T.D3 - 0.15);
+      caption("cB3", 2, 0, 10, "excited");
+      face("pB", "Smile", T.D3);
+      tl.fromTo("#smC", { opacity: 0, scale: 0.4, rotation: -14, y: 200 }, { opacity: 1, scale: 1, rotation: -6, y: 0, duration: 0.5, ease: "back.out(1.6)" }, T.D3 + 0.25);
+      dm("#dmC", T.CLIENT - 0.1, 1640, 2100);
+      tl.to("#dmC", { y: 1030, duration: 0.5, ease: "back.out(1.3)" }, T.CLIENT + 0.6);
+      face("pB", "LoveGrin", T.CLIENT + 0.2);
+      tl.to(pB, { y: -40, rotation: 3, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3 }, T.CLIENT + 0.2);
+      draw("#lnk", T.CAUSE, 0.5);
+      tl.fromTo("#smC", { scale: 1 }, { scale: 1.1, duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, T.CAUSE + 0.4);
+      hearts("ptB", T.CLIENT + 0.3, 10, 760, 1300, 360);
+      tl.to(["#smC", "#dmC", ".link"], { opacity: 0, duration: 0.3 }, T.D7 - 0.5);
+      // day 7: pages fly, she just sips coffee while stories build themselves
+      tear(3, T.D7 - 0.5, 0.16); tear(4, T.D7 - 0.36, 0.16); tear(5, T.D7 - 0.22, 0.16); tear(6, T.D7 - 0.06, 0.2);
+      capOut("cB3", T.D7 - 0.15);
+      caption("cB4", 3, 0, 8, "warm");
+      tl.to(pB, { opacity: 0, duration: 0.25 }, T.D7 + 0.1);
+      tl.fromTo(pB2, { opacity: 0 }, { opacity: 1, duration: 0.25 }, T.D7 + 0.1);
+      breathe("pB2", T.D7 + 0.3, T.C + 0.4, 0.025);
+      face("pB2", "EyesClosed", T.RELAX + 0.4); face("pB2", "Calm", T.RELAX + 1.6); blinks("pB2", [18.6], "Calm");
+      tl.to(pB2, { rotation: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.RELAX + 0.3);
+      [["#s7a", "#k7a", 0], ["#s7b", "#k7b", 1], ["#s7c", "#k7c", 2], ["#s7d", "#k7d", 3]].forEach(([s, k, i]) => {
+        const t = T.RELAX + i * 0.34;
+        tl.fromTo(s, { opacity: 0, scale: 0.3, rotation: i % 2 ? 20 : -20, y: 120 }, { opacity: 1, scale: 1, rotation: i % 2 ? 5 : -5, y: 0, duration: 0.5, ease: "back.out(1.5)" }, t);
+        tl.fromTo(k, { opacity: 0, scale: 2.4, rotation: 40, y: -260 }, { opacity: 1, scale: 1, rotation: -4, y: 0, duration: 0.4, ease: "back.out(1.8)" }, t + 0.35);
+        tl.to(s, { y: -14, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 0.6);
+      });
+      sparks("ptB", T.RELAX, T.C, 12, "rgba(255,200,160,0.9)");
+      tl.fromTo("#gB", { x: -150 }, { x: 150, y: -200, duration: 12, ease: "sine.inOut" }, T.B);
+      camera("#sB-in", T.D7, T.C + 0.2, 1.0, 1.05, "sine.out");
+
+      // B -> C: the lights go out
+      tl.to("#sB-in", { opacity: 0, scale: 0.92, filter: "blur(12px) brightness(0.3)", duration: 0.5, ease: "power2.in" }, T.C - 0.15);
+      tl.fromTo("#sC-in", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, T.C + 0.15);
+
+      // ---------- C: the lesson (19.5 – 25.4) ----------
+      caption("cC1", 4, 0, 1, "secret");
+      tl.fromTo("#note", { opacity: 0, y: 80, rotation: -6, scale: 0.9 }, { opacity: 1, y: 0, rotation: -2, scale: 1, duration: 0.9, ease: "power3.out" }, T.C + 0.4);
+      camera("#sC-in", T.C, T.F + 0.3, 1.0, 1.07, "sine.inOut");
+      // handwriting: text revealed left to right, the nib rides the edge
+      const write = (ln, t0, d, y) => {
+        tl.fromTo(ln, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: d, ease: "none" }, t0);
+        tl.fromTo("#nib", { opacity: 1, x: 130, y }, { x: 920, y: y + 10, duration: d, ease: "none", immediateRender: false }, t0);
+      };
+      tl.set("#nib", { opacity: 0, x: 130, y: 650 }, 0);
+      write("#ln1", T.L1 - 0.05, 1.05, 650);
+      write("#ln2", T.L2 - 0.05, 1.45, 830);
+      tl.to("#nib", { opacity: 0, y: "+=60", duration: 0.25 }, T.L2 + 1.45);
+      draw("#und", T.SEM + 0.1, 0.4);
+      capOut("cC1", T.L1 - 0.3);
+      // the crowd: they look at you... then look away from the plain story
+      const CR = [[0, -30, 1270], [3, 160, 1330], [6, 680, 1330], [1, 870, 1270]];
+      CR.forEach(([k, x, y], i) => {
+        const id = "cr" + i; peep("#crowd", id, "crowd" + k, ["Blank", "SmileBig", "Awe", "Solemn", "EyesClosed"], x, y, 250);
+        tl.fromTo("#" + id, { opacity: 0, y: 140 }, { opacity: 0.95, y: 0, duration: 0.5, ease: "back.out(1.4)" }, T.L1 - 0.6 + i * 0.07);
+        face(id, i % 2 ? "Awe" : "SmileBig", T.L1 + 0.6 + i * 0.06);
+        face(id, i % 2 ? "Solemn" : "EyesClosed", T.SEM + 0.05 + i * 0.05);
+        tl.to("#" + id, { rotation: i < 2 ? -10 : 10, x: i < 2 ? -50 : 50, duration: 0.4, ease: "power2.out" }, T.SEM + 0.05 + i * 0.05);
+      });
+      tl.fromTo("#plainst", { opacity: 0, scale: 0.7, y: 80 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" }, T.L2 + 0.4);
+      tl.to("#plainst", { filter: "brightness(0.6)", duration: 0.4 }, T.SEM + 0.1);
+      ash("ptC", T.C + 0.3, T.F, 18);
+      // music slams back: punch
+      tl.fromTo("#sC-in", { x: 0 }, { x: 14, duration: 0.04, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.HIT);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.45, duration: 0.06, immediateRender: false }, T.HIT);
+      tl.to("#flash", { opacity: 0, duration: 0.35 }, T.HIT + 0.06);
+      tl.to("#note", { scale: 1.06, duration: 0.25, ease: "back.out(3)", yoyo: true, repeat: 1 }, T.HIT);
+
+      // C -> D: iris back into the warm paper
+      tl.fromTo("#sD-in", { clipPath: "circle(0% at 50% 45%)" }, { clipPath: "circle(140% at 50% 45%)", duration: 0.6, ease: "expo.inOut" }, T.F);
+
+      // ---------- D: CTA — the calendar reaches today ----------
+      tl.fromTo("#gD", { x: -200 }, { x: 200, y: -300, duration: 6, ease: "sine.inOut" }, T.F);
+      caption("cD1", 5, 0, 5, "warm");
+      tl.fromTo("#calD", { y: -120, scale: 0.7, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.6)" }, T.F + 0.2);
+      tl.fromTo("#calD", { rotationZ: -1.5 }, { rotationZ: 1.5, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, T.F + 0.8);
+      // "figurinhas": two finished stories swing out from behind the calendar
+      [["#e1", "#ke1", -8, 0], ["#e2", "#ke2", 7, 1]].forEach(([el, k, r, i]) => {
+        const t = w(5, 1) + i * 0.22;
+        tl.fromTo(el, { opacity: 0, x: i ? -300 : 300, scale: 0.5, rotation: 0 }, { opacity: 1, x: 0, scale: 1, rotation: r, duration: 0.55, ease: "back.out(1.5)" }, t);
+        tl.fromTo(k, { opacity: 0, scale: 2.2, rotation: 30, y: -200 }, { opacity: 1, scale: 1, rotation: -3, y: 0, duration: 0.4, ease: "back.out(1.8)" }, t + 0.35);
+        tl.to(el, { y: -16, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, t + 0.6);
+      });
+      // "Stories Lab": today's page tears off and the brand is underneath
+      tl.to("#pg8", { rotationX: 105, y: -40, opacity: 0, duration: 0.34, ease: "power2.in" }, w(5, 4) - 0.15);
+      tl.fromTo("#calD", { rotation: 0 }, { rotation: 2, duration: 0.1, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, w(5, 4) - 0.15);
+      tl.fromTo("#pgL img", { scale: 0.85, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, w(5, 4) + 0.05);
+      capOut("cD1", T.CTA - 0.15);
+      caption("cD2", 5, 6, 9, "triumph");
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, T.CTA - 0.1);
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 4 }, T.CTA + 0.5);
+      sweep("#ctaG", T.CTA + 0.4, 0.8); sweep("#ctaG", T.CTA + 2.2, 0.8);
+      // she is still on the couch with her coffee, now looking at you
+      const pD = peep("#pDbox", "pD", "hero4-coffee", ["Smile", "SmileBig", "EyesClosed", "Cheeky"], 260, 1300, 560);
+      tl.fromTo(pD, { y: 400 }, { y: 0, duration: 0.6, ease: "expo.out" }, T.F + 0.3);
+      breathe("pD", T.F + 1, TOTAL);
+      face("pD", "Cheeky", T.CTA + 0.1); face("pD", "Smile", T.CTA + 1.2);
+      blinks("pD", [26.2, 30.2], "Smile");
+      tl.to(pD, { rotation: -3, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.CTA + 0.2);
+      sparks("ptD", T.F + 0.3, TOTAL, 14);
+
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

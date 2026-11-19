@@ -1,0 +1,480 @@
+G05 CHAMADA DIRETA · film arc: feed racing + giant type "se você vende pelo instagram" > PARA TUDO (hard freeze, record stop) >
+roll call: four women pop on a dark wall (manicure, confeiteira, lojista, esteticista) > the story becomes a shop window: dim, empty, a sign swinging, one passerby ignores it (suspense) >
+click: lights ON with Stories Lab, stickers land, crowd stops > +24.000 / 60 temas giant type, marquee of themes, copy + paste > CTA, she points
+===TIMES===
+T = {}
+T["STOP"] = W(0, 5)
+T["B"] = W(1, 0) - 0.18
+T["P0"] = W(1, 0); T["P1"] = W(1, 1); T["P2"] = W(1, 2); T["P3"] = W(1, 3)
+T["WALL"] = W(1, 3) + 0.65
+T["C"] = W(2, 0) - 0.2
+T["STORY"] = W(2, 2)
+T["VIT"] = W(2, 6)
+T["DIM"] = W(2, 7)
+T["NAO"] = W(2, 11)
+T["ON"] = W(3, 2)
+T["LAB"] = W(3, 3)
+T["S1"] = W(3, 4); T["S2"] = W(3, 6); T["S3"] = W(3, 9)
+T["SEG"] = W(3, 11)
+T["E"] = W(4, 0) - 0.3
+T["NUM"] = W(4, 2)
+T["FIG"] = W(4, 6)
+T["TEMAS"] = W(4, 8)
+T["COPY"] = W(4, 12)
+T["PASTE"] = W(4, 14)
+T["F"] = W(5, 0) - 0.35
+T["CTA"] = W(5, 2)
+===CSS===
+      #sA .bg { background: radial-gradient(110% 80% at 50% 40%, #ec4a80 0%, #d92e64 55%, #b51d50 100%); }
+      .feedcol { position: absolute; top: 0; width: 200px; display: flex; flex-direction: column; gap: 26px; opacity: 0.32; filter: blur(2px); }
+      .feedcol i { display: block; width: 200px; height: 356px; border-radius: 22px; background-size: cover; background-position: center; border: 4px solid rgba(255,255,255,0.7); }
+      .bigw { position: absolute; left: 0; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 30px; color: #fff; font-size: 136px; font-weight: 800;
+        letter-spacing: -0.045em; line-height: 1.02; text-align: center; padding: 0 40px; text-shadow: 0 18px 50px rgba(90, 0, 30, 0.35); z-index: 14; }
+      .bigw span { display: block; }
+      .stamp { position: absolute; left: 110px; top: 860px; width: 860px; padding: 40px 0; border-radius: 40px; background: #fff; color: #1a1216; text-align: center;
+        font-size: 150px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; z-index: 20; opacity: 0; box-shadow: 0 30px 80px rgba(60, 0, 20, 0.45); }
+      .pause { position: absolute; left: 470px; top: 680px; width: 140px; height: 140px; border-radius: 50%; background: #1a1216; z-index: 21; opacity: 0; }
+      .pause::before, .pause::after { content: ""; position: absolute; top: 38px; width: 22px; height: 64px; border-radius: 6px; background: #fff; }
+      .pause::before { left: 42px; } .pause::after { right: 42px; }
+      #sB .bg { background: #1a1216; }
+      .pcard { position: absolute; width: 460px; height: 470px; border-radius: 40px; background: #fff6f8; overflow: hidden; opacity: 0;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), inset 0 -10px 0 rgba(217, 46, 100, 0.12); }
+      .pcard h3 { position: absolute; left: 0; width: 100%; top: 34px; text-align: center; font-size: 64px; font-weight: 800; color: #1a1216; letter-spacing: -0.03em; z-index: 3; }
+      .pcard h3 em { font-style: normal; display: block; height: 10px; width: 120px; margin: 8px auto 0; border-radius: 6px; background: var(--brand); transform-origin: 0 50%; }
+      .pcard .peep { z-index: 2; }
+      .prop { position: absolute; width: 150px; height: 150px; z-index: 4; }
+      .prop svg { width: 100%; height: 100%; overflow: visible; }
+      #sC .bg { background: radial-gradient(110% 80% at 50% 45%, #e8417a 0%, #c51f55 60%, #9e1543 100%); }
+      .floor { position: absolute; left: 0; top: 1440px; width: 100%; height: 480px; background: linear-gradient(180deg, #8f1240, #6d0d31); }
+      .glass { position: absolute; left: 148px; top: 688px; width: 784px; height: 744px; background: linear-gradient(160deg, #3b2a33, #1a1216); border-radius: 8px; overflow: hidden; }
+      .glass::after { content: ""; position: absolute; left: -200px; top: -100px; width: 180px; height: 1100px; background: rgba(255, 255, 255, 0.07); transform: rotate(25deg); }
+      .warm { position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 40%, #ffe9b8 0%, #ffd1dd 60%, #f7a8c2 100%); opacity: 0; }
+      #frame { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 9; pointer-events: none; }
+      #frame path { fill: none; stroke: #1a1216; stroke-width: 18; stroke-linejoin: round; }
+      .awn { position: absolute; left: 110px; top: 560px; width: 860px; height: 130px; border-radius: 18px 18px 0 0; z-index: 10; transform-origin: 50% 0;
+        background: repeating-linear-gradient(90deg, #fff 0 54px, #f0548a 54px 108px); box-shadow: 0 14px 30px rgba(60, 0, 20, 0.35); border: 8px solid #1a1216; }
+      .bulb { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #6b5d63; z-index: 11; border: 4px solid #1a1216; }
+      .sign { position: absolute; left: 380px; top: 760px; padding: 18px 34px; border-radius: 22px; background: #fff; color: #1a1216; font-size: 46px; font-weight: 800; z-index: 12;
+        transform-origin: 50% -70px; opacity: 0; border: 6px solid #1a1216; }
+      .sign::before, .sign::after { content: ""; position: absolute; top: -76px; width: 5px; height: 76px; background: #1a1216; }
+      .sign::before { left: 40px; } .sign::after { right: 40px; }
+      .dim { position: absolute; inset: 0; background: #12080c; opacity: 0; z-index: 30; pointer-events: none; }
+      #sC .cap { z-index: 40; }
+      .lsign { position: absolute; left: 330px; top: 470px; width: 420px; padding: 14px 20px; border-radius: 26px; background: #fff; z-index: 13; opacity: 0;
+        box-shadow: 0 0 0 6px #1a1216, 0 0 60px rgba(255, 220, 150, 0.9); }
+      .lsign img { width: 100%; display: block; }
+      #sE .bg { background: radial-gradient(110% 80% at 50% 40%, #ec4a80 0%, #d92e64 55%, #b51d50 100%); }
+      .gtxt { position: absolute; left: 0; width: 100%; text-align: center; color: #fff; font-weight: 800; letter-spacing: -0.05em; z-index: 14; text-shadow: 0 18px 50px rgba(90, 0, 30, 0.35); }
+      .mrow { position: absolute; left: 0; display: flex; gap: 22px; white-space: nowrap; z-index: 12; }
+      .mrow b { display: block; padding: 18px 34px; border-radius: 50px; background: #fff; color: #1a1216; font-size: 42px; font-weight: 800; box-shadow: 0 10px 26px rgba(90, 0, 30, 0.25); }
+      .mrow b.on { background: #1a1216; color: #fff; box-shadow: 0 0 0 6px #fff, 0 16px 40px rgba(60, 0, 20, 0.4); }
+      #sF .bg { background: var(--cream); }
+      .lay { position: absolute; inset: 0; z-index: 1; opacity: 0; overflow: hidden; }
+      .tstk { position: absolute; font-weight: 800; letter-spacing: -0.03em; line-height: 0.95; text-align: center; white-space: nowrap; z-index: 3; }
+      .tstk.t1 { color: #fff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 6px 24px rgba(0, 0, 0, 0.55); }
+      .tstk.t2 { padding: 0.32em 0.7em; border-radius: 999px; background: #fff; color: #1a1216; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+      .tstk.t3 { padding: 0.32em 0.7em; border-radius: 999px; background: var(--brand); color: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+      .tstk.t4 { padding: 0.32em 0.7em; border-radius: 0.4em; background: #1a1216; color: #fff; }
+      .trow { position: absolute; left: 0; display: flex; gap: 18px; z-index: 12; }
+      .tile { position: relative; flex: none; width: 200px; height: 270px; border-radius: 26px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 14px 34px rgba(90, 0, 30, 0.3); }
+      .tile b { position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 8px 0; border-radius: 30px; background: #fff; color: #1a1216; font-size: 25px; font-weight: 800; text-align: center; white-space: nowrap; }
+      .shopwin { position: absolute; left: 110px; top: 650px; width: 860px; height: 530px; border-radius: 0 0 22px 22px; background: radial-gradient(80% 70% at 50% 40%, #ffe9b8 0%, #ffd1dd 60%, #f7a8c2 100%);
+        border: 10px solid #1a1216; box-shadow: 0 0 110px 20px rgba(255, 200, 150, 0.5); overflow: hidden; }
+      .pane { position: absolute; top: 33px; width: 250px; height: 444px; border-radius: 22px; overflow: hidden; background: #222; box-shadow: 0 12px 30px rgba(60, 0, 20, 0.35); }
+      .pane .lay .tstk { font-size: 30px; }
+===HTML===
+      <!-- A: the feed races, giant type, PARA TUDO -->
+      <div id="sA" class="scene clip" data-start="0" data-duration="3.2" data-track-index="0">
+        <div class="inner" id="sA-in">
+          <div class="bg"></div>
+          <div id="feed"></div>
+          <div class="bigw" id="bwA" style="top: 470px"><span>se</span><span>você</span><span>vende</span><span>pelo</span><span>instagram,</span></div>
+          <div id="pAbox"></div>
+          <div class="pause" id="pause"></div>
+          <div class="stamp" id="stamp">para tudo.</div>
+          <div class="ptbox" data-layout-ignore id="ptA"></div>
+        </div>
+      </div>
+
+      <!-- B: the roll call -->
+      <div id="sB" class="scene clip" data-start="2.7" data-duration="4.7" data-track-index="1">
+        <div class="inner" id="sB-in">
+          <div class="bg"></div>
+          <div id="wall"></div>
+          <div class="ptbox" data-layout-ignore id="ptB"></div>
+        </div>
+      </div>
+
+      <!-- C: the shop window: dim, then lights ON -->
+      <div id="sC" class="scene clip" data-start="7.0" data-duration="9.7" data-track-index="2">
+        <div class="inner" id="sC-in">
+          <div class="bg"></div><div class="floor"></div>
+          <div class="glass" id="glass"><div class="warm" id="warm"></div></div>
+          <div class="story" id="stC" style="left: 110px; top: 196px; opacity: 0">
+            <div class="photo" id="stCp" style="filter: saturate(0.3) brightness(0.85)"></div>
+            <div class="lay" id="ly1"><div class="photo"></div><div class="tstk t2" id="c-s1" style="left: 46px; top: 1150px; font-size: 84px; opacity: 0">agenda aberta</div></div>
+            <div class="lay" id="ly2"><div class="photo"></div><div style="position: absolute; left: 0; right: 0; top: 0; height: 760px; z-index: 2; background: linear-gradient(180deg, rgba(20, 8, 12, 0.7), rgba(20, 8, 12, 0))"></div><div class="tstk t1" id="c-s2" style="left: 0; width: 860px; top: 260px; font-size: 128px; opacity: 0">saiu fornada<br />agora</div></div>
+            <div class="lay" id="ly3"><div class="photo"></div><img class="stk" id="c-s3" src="assets/stk2/treino-3.webp" style="left: 150px; top: 1080px; width: 560px; opacity: 0" alt="" /></div>
+            <div class="sbar"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+            <div class="shead"><i></i>seu perfil <small>· agora</small></div>
+          </div>
+          <svg id="frame" viewBox="0 0 1080 1920"><path id="frp" d="M140 690 H940 V1440 H140 Z" /></svg>
+          <div class="awn" id="awn"></div>
+          <div id="bulbs"></div>
+          <div class="lsign" id="lsign"><img src="assets/app/logo-t.png" alt="Stories Lab" /></div>
+          <div class="sign" id="sign">0 vendas</div>
+          <div id="crowdbox"></div>
+          <div class="chip" id="secs" style="left: 640px; top: 1180px; opacity: 0">⏱ <em id="secN">0</em></div>
+          <div class="dim" id="dim"></div>
+          <div class="ptbox" data-layout-ignore id="ptC"></div>
+          <div class="cap" id="cC1" style="top: 290px"><span>o</span><span>seu</span><span class="k">story</span><span>é</span><span>a</span><span>sua</span><span class="k">vitrine</span></div>
+          <div class="cap dark" id="cC2" style="top: 290px"><span>e</span><span>vitrine</span><span class="k">sem</span><span class="k">graça</span><span>não</span><span>vende</span></div>
+          <div class="cap" id="cD1" style="top: 290px"><span>com</span><span>o</span><span class="k">stories</span><span class="k">lab,</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span>cada</span><span>story</span><span>ganha</span><span>cara</span><span>de</span><span class="k">marca</span><span class="k">grande,</span><span>em</span><span>segundos</span></div>
+        </div>
+      </div>
+
+      <!-- E: the numbers -->
+      <div id="sE" class="scene clip" data-start="16.2" data-duration="5.3" data-track-index="3">
+        <div class="inner" id="sE-in">
+          <div class="bg"></div><div class="glow2" style="opacity: 0.5"></div>
+          <div id="orbsE"></div>
+          <div id="gnum">
+            <div class="gtxt" id="g1" style="top: 560px; font-size: 64px; letter-spacing: -0.02em">mais de</div>
+            <div class="gtxt" id="g2" style="top: 630px; font-size: 230px; line-height: 1; font-variant-numeric: tabular-nums">+<span id="gN">0</span></div>
+            <div class="gtxt" id="g3" style="top: 870px; font-size: 92px">figurinhas</div>
+          </div>
+          <div class="gtxt" id="g4" style="top: 1000px; font-size: 170px; line-height: 1; opacity: 0">60 temas</div>
+          <div id="rows"></div>
+          <div id="pEbox"></div>
+          <div class="mrow" style="top: 1340px; left: 360px; z-index: 20"><b class="on" id="cpd" style="opacity: 0">copiado ✓</b></div>
+          <div id="curEbox"></div>
+          <div id="e-st" style="position: absolute; left: 320px; top: 680px; width: 440px; height: 782px; border-radius: 40px; overflow: hidden; border: 6px solid #fff; z-index: 24; opacity: 0; box-shadow: 0 30px 80px rgba(60, 0, 20, 0.45)"><div class="photo" id="e-stp"></div></div>
+          <img class="stk" id="e-s1" src="assets/stk2/cafe-1.webp" style="left: 370px; top: 1130px; width: 340px; opacity: 0; z-index: 25" alt="" />
+          <div class="ptbox" data-layout-ignore id="ptE"></div>
+          <div class="cap" id="cE" style="top: 290px"><span>prontos</span><span>pra</span><span class="k">copiar</span><span>e</span><span class="k">colar</span></div>
+        </div>
+      </div>
+
+      <!-- F: CTA -->
+      <div id="sF" class="scene clip" data-start="21.0" data-duration="__REST_21.0__" data-track-index="4">
+        <div class="inner" id="sF-in">
+          <div class="bg"></div><div class="glow" id="gF"></div><div class="glow2"></div>
+          <div class="shopwin" id="winF"></div>
+          <div class="awn" id="awnF" style="top: 520px"></div>
+          <div class="lsign" id="logo" style="top: 418px"><img src="assets/app/logo-t.png" alt="Stories Lab" /></div>
+          <div class="cta" id="cta" style="top: 1250px">Saiba mais<div class="gloss"><i id="ctaG"></i></div></div>
+          <div class="arrow" id="arr" style="top: 1420px"></div>
+          <div id="pFbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptF"></div>
+          <div class="cap" id="cF1" style="top: 290px"><span>toca</span><span>em</span><span class="k">saiba</span><span class="k">mais</span></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="__TOTAL__" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+===JS===
+      // ---------- PHOTOS: every photo of this video lives here, each used exactly once ----------
+      const P = {
+        feed: ["academia-09.jpg", "aniversario-16.jpg", "bolo-caseiro-00.jpg", "cafe-manha-08.jpg", "costura-05.jpg", "escritorio-selfie-00.jpg", "feira-12.jpg", "lojinha-00.jpg",
+          "look-espelho-05.jpg", "mae-filho-02.jpg", "marmita-21.jpg", "mesa-trabalho-01.jpg", "pet-13.jpg", "pizza-caseira-07.jpg", "praia-03.jpg", "salao-cabelo-11.jpg",
+          "selfie-carro-03.jpg", "salao-cabelo-06.jpg", "unhas-03.jpg", "mae-filho-17.jpg", "praia-08.jpg", "feira-02.jpg", "mesa-trabalho-11.jpg", "pet-18.jpg"],
+        dull: "lojinha-05.jpg",          // the grey shop-window story (lojista)
+        c1: "sobrancelha-06.jpg",        // sobrancelha: agenda aberta
+        c2: "bolo-caseiro-05.jpg",       // confeitaria: saiu fornada
+        c3: "academia-04.jpg",           // treino
+        paste: "cafe-manha-03.jpg",      // the copy & paste story (café)
+        tiles: [["unhas-08.jpg", "unhas"], ["sobrancelha-01.jpg", "sobrancelha"], ["costura-00.jpg", "ateliê"], ["feira-07.jpg", "hortifruti"], ["pizza-caseira-12.jpg", "delivery"],
+          ["marmita-16.jpg", "marmitas"], ["pet-03.jpg", "pet shop"], ["loja-celular-00.jpg", "assistência"], ["mesa-trabalho-06.jpg", "home office"], ["salao-cabelo-01.jpg", "cabelo"],
+          ["aniversario-06.jpg", "festas"], ["mae-filho-07.jpg", "maternidade"], ["praia-13.jpg", "viagem"], ["bolo-caseiro-15.jpg", "bolos"], ["escritorio-selfie-05.jpg", "corporativo"], ["varanda-plantas-02.jpg", "plantas"]],
+        win: [["look-espelho-00.jpg", "look do dia", "t2"], ["pet-08.jpg", "sextou com ele", "t1"], ["marmita-06.jpg", "marmita fit", "t3"],
+          ["unhas-13.jpg", "unha nova", "t4"], ["pizza-caseira-17.jpg", "pede já", "t2"], ["selfie-carro-08.jpg", "bora trabalhar", "t1"]],
+      };
+      const U = (f) => `url(assets/org/${f})`;
+      $("#stCp").style.backgroundImage = U(P.dull);
+      [["c1", "#ly1 .photo"], ["c2", "#ly2 .photo"], ["c3", "#ly3 .photo"]].forEach(([k, sel]) => ($(sel).style.backgroundImage = U(P[k])));
+      $("#e-stp").style.backgroundImage = U(P.paste);
+
+      // ---------- A: feed racing, giant type, PARA TUDO (0 – 2.9) ----------
+      [40, 440, 840].forEach((x, c) => {
+        const col = document.createElement("div"); col.className = "feedcol"; col.style.left = x + "px";
+        for (let k = 0; k < 8; k++) { const i = document.createElement("i"); i.style.backgroundImage = U(P.feed[c * 8 + k]); col.appendChild(i); }
+        $("#feed").appendChild(col);
+        tl.fromTo(col, { y: c % 2 ? -1000 : 0 }, { y: c % 2 ? 0 : -1000, duration: T.STOP, ease: "none" }, 0);
+      });
+      document.querySelectorAll("#bwA span").forEach((s, i) => tl.fromTo(s, { opacity: 0, scale: 1.7, filter: "blur(16px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.26, ease: "back.out(1.6)" }, w(0, i) - 0.06));
+      camera("#sA-in", 0, T.STOP, 1.0, 1.05, "none");
+      const pA = peep("#pAbox", "pA", "hero5-device", ["Smile", "Awe", "EyesClosed"], 240, 1060, 600);
+      tl.fromTo(pA, { y: 300 }, { y: 0, duration: 0.5, ease: "expo.out" }, 0);
+      tl.to(pA, { rotation: -2, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.5);
+      blinks("pA", [1.0], "Smile");
+      // FREEZE
+      tl.to("#bwA", { opacity: 0.25, filter: "blur(4px)", duration: 0.15 }, T.STOP);
+      tl.to("#feed", { filter: "grayscale(1)", duration: 0.1 }, T.STOP);
+      tl.fromTo("#stamp", { opacity: 0, scale: 2.2, rotation: 8 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, T.STOP - 0.12);
+      tl.fromTo("#pause", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, T.STOP + 0.05);
+      tl.fromTo("#sA-in", { x: 0 }, { x: 18, duration: 0.04, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.STOP + 0.08);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.6, duration: 0.05, immediateRender: false }, T.STOP + 0.05);
+      tl.to("#flash", { opacity: 0, duration: 0.3 }, T.STOP + 0.1);
+      face("pA", "Awe", T.STOP);
+      tl.to(pA, { y: -30, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, T.STOP);
+      tl.to("#stamp", { scale: 1.04, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.STOP + 0.25);
+      // A -> B: iris to the dark wall
+      tl.fromTo("#sB-in", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(140% at 50% 40%)", duration: 0.4, ease: "expo.out" }, T.B);
+
+      // ---------- B: four women, one per word (2.75 – 7.2) ----------
+      const PROPS = {
+        manicure: '<svg viewBox="0 0 150 150"><rect x="48" y="62" width="54" height="74" rx="14" fill="#f0548a" stroke="#1a1216" stroke-width="7"/><rect x="58" y="14" width="34" height="50" rx="8" fill="#1a1216"/><rect x="62" y="82" width="10" height="34" rx="5" fill="#fff" opacity=".7"/></svg>',
+        confeiteira: '<svg viewBox="0 0 150 150"><path d="M30 78 L120 78 L106 140 L44 140 Z" fill="#f0548a" stroke="#1a1216" stroke-width="7" stroke-linejoin="round"/><path d="M60 80 L64 140 M90 80 L86 140" stroke="#1a1216" stroke-width="5"/><path d="M26 80 C 20 50, 50 40, 60 44 C 64 22, 100 22, 104 46 C 124 44, 132 70, 124 80 Z" fill="#fff" stroke="#1a1216" stroke-width="7" stroke-linejoin="round"/><circle cx="82" cy="22" r="12" fill="#d92e64" stroke="#1a1216" stroke-width="6"/></svg>',
+        lojista: '<svg viewBox="0 0 150 150"><path d="M50 56 C 50 20, 100 20, 100 56" fill="none" stroke="#1a1216" stroke-width="8"/><rect x="26" y="52" width="98" height="88" rx="12" fill="#f0548a" stroke="#1a1216" stroke-width="7"/><path d="M50 84 C 62 100, 88 100, 100 84" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/></svg>',
+        esteticista: '<svg viewBox="0 0 150 150"><rect x="28" y="58" width="94" height="78" rx="18" fill="#fff" stroke="#1a1216" stroke-width="7"/><rect x="22" y="36" width="106" height="30" rx="12" fill="#1a1216"/><rect x="40" y="82" width="70" height="26" rx="8" fill="#f0548a"/><path d="M120 20 l6 14 l14 6 l-14 6 l-6 14 l-6 -14 l-14 -6 l14 -6 z" fill="#ffd166" stroke="#1a1216" stroke-width="4"/></svg>',
+      };
+      const PROF = [["manicure", "manicure", 60, 500], ["confeiteira", "confeiteira", 560, 500], ["lojista", "lojista", 60, 1010], ["esteticista", "esteticista", 560, 1010]];
+      PROF.forEach(([key, label, x, y], i) => {
+        const c = document.createElement("div"); c.className = "pcard"; c.id = "pc" + i;
+        Object.assign(c.style, { left: x + "px", top: y + "px" });
+        c.innerHTML = `<h3>${label}<em></em></h3><div class="prop" style="left: 296px; top: 296px">${PROPS[key]}</div><div id="pk${i}"></div>`;
+        $("#wall").appendChild(c);
+        peep("#pk" + i, "pp" + i, key, ["SmileBig", "Calm", "EyesClosed"], 40, 128, 360);
+        const t = T["P" + i];
+        if (i === 0) {  // first card enters centred and big, then settles into the grid as the second arrives
+          tl.fromTo(c, { opacity: 0, scale: 0.4, x: 250, y: 255, rotation: -12 }, { opacity: 1, scale: 1.7, x: 250, y: 255, rotation: -2, duration: 0.5, ease: "back.out(2)" }, t - 0.08);
+          tl.to(c, { scale: 1, x: 0, y: 0, duration: 0.45, ease: "power3.inOut" }, T.P1 - 0.3);
+        } else tl.fromTo(c, { opacity: 0, scale: 0.3, rotation: i % 2 ? 12 : -12 }, { opacity: 1, scale: 1, rotation: i % 2 ? 2 : -2, duration: 0.5, ease: "back.out(2.6)" }, t - 0.08);
+        if (i > 1) tl.to(PROF.slice(0, i).map((_, j) => "#pc" + j), { scale: 0.96, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, t - 0.05);
+        tl.fromTo(`#pp${i}`, { y: 420 }, { y: 0, duration: 0.5, ease: "back.out(1.3)" }, t);
+        tl.fromTo(`#pc${i} h3`, { opacity: 0, y: 30, scale: 1.4 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, t - 0.04);
+        tl.fromTo(`#pc${i} h3 em`, { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, t + 0.15);
+        tl.fromTo(`#pc${i} .prop`, { opacity: 0, scale: 0, rotation: -40 }, { opacity: 1, scale: 1, rotation: 8, duration: 0.45, ease: "back.out(2.2)" }, t + 0.2);
+        tl.to(`#pc${i} .prop`, { y: -12, rotation: -6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor((T.C - t) / 0.5) - 1) }, t + 0.65);
+        breathe("pp" + i, t + 0.5, T.C);
+        blinks("pp" + i, [t + 0.9 + i * 0.1], "SmileBig");
+        face("pp" + i, "Calm", T.WALL + 0.2 + i * 0.05);
+      });
+      camera("#sB-in", T.B, T.C, 1.0, 1.07, "sine.inOut");
+      PROF.forEach((_, i) => tl.to("#pc" + i, { rotation: i % 2 ? -3 : 3, y: -14, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, T.WALL + 0.25 + i * 0.07));
+      sparks("ptB", T.WALL, T.C, 14);
+      // B -> C: the wall scatters
+      PROF.forEach((_, i) => tl.to("#pc" + i, { x: (i % 2 ? 1 : -1) * 900, rotation: (i % 2 ? 1 : -1) * 30, duration: 0.4, ease: "power3.in" }, T.C - 0.25 + i * 0.03));
+      tl.fromTo("#sC-in", { y: 1920 }, { y: 0, duration: 0.45, ease: "power3.out" }, T.C);
+
+      // ---------- C: the shop window (7.2 – 12.2): dim, empty ----------
+      tl.set("#stC", { scale: 0.42, y: 100 }, 0);
+      caption("cC1", 2, 0, 6, "curious");
+      tl.fromTo("#stC", { opacity: 0, scale: 0.1, rotation: -15 }, { opacity: 1, scale: 0.42, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, T.STORY - 0.05);
+      tl.fromTo("#glass", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, T.VIT - 0.15);
+      draw("#frp", T.VIT - 0.1, 0.45);
+      tl.fromTo("#awn", { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, T.VIT + 0.15);
+      for (let k = 0; k < 12; k++) {
+        const b = document.createElement("div"); b.className = "bulb"; b.id = "bu" + k;
+        Object.assign(b.style, { left: 140 + k * 70 + "px", top: "676px" }); $("#bulbs").appendChild(b);
+        tl.fromTo(b, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, T.VIT + 0.3 + k * 0.03);
+        tl.to(b, { background: "#ffd166", boxShadow: "0 0 26px 10px rgba(255, 209, 102, 0.85)", duration: 0.12 }, T.ON + 0.1 + k * 0.035);
+      }
+      camera("#sC-in", T.C + 0.4, T.ON, 1.0, 1.07, "sine.inOut");
+      // dim: nobody stops
+      capOut("cC1", T.DIM - 0.15);
+      caption("cC2", 2, 7, 12, "melancholy");
+      tl.to("#dim", { opacity: 0.5, duration: 0.6, ease: "sine.out" }, T.DIM - 0.1);
+      tl.fromTo("#sign", { opacity: 0, y: -200, rotation: 0 }, { opacity: 1, y: 0, rotation: 14, duration: 0.5, ease: "bounce.out" }, T.DIM + 0.1);
+      tl.to("#sign", { rotation: -12, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 2 }, T.DIM + 0.6);
+      const pw = peep("#crowdbox", "pw", "crowd2", ["Blank", "Solemn", "EyesClosed"], 0, 1250, 400);
+      tl.fromTo(pw, { x: -450 }, { x: 1150, duration: 2.6, ease: "none" }, T.DIM + 0.1);
+      tl.fromTo("#pw .pb", { y: 0 }, { y: -14, duration: 0.22, yoyo: true, repeat: 11, ease: "sine.inOut" }, T.DIM + 0.1);
+      face("pw", "Solemn", T.NAO);
+      ash("ptC", T.DIM, T.ON, 22);
+      tl.fromTo("#stC", { rotation: 0 }, { rotation: -1.5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, T.DIM + 0.5);
+
+      // ---------- D: lights ON (12.27 – 16.4) ----------
+      capOut("cC2", T.ON - 0.35);
+      caption("cD1", 3, 0, 3, "triumph");
+      tl.to("#dim", { opacity: 0, duration: 0.15 }, T.ON);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.05, immediateRender: false }, T.ON);
+      tl.to("#flash", { opacity: 0, duration: 0.45 }, T.ON + 0.05);
+      tl.to("#warm", { opacity: 1, duration: 0.3 }, T.ON + 0.02);
+      tl.to("#glass", { boxShadow: "0 0 120px 30px rgba(255, 200, 150, 0.55)", duration: 0.4 }, T.ON);
+      tl.to("#sign", { opacity: 0, y: -300, rotation: 40, duration: 0.35, ease: "power3.in" }, T.ON + 0.05);
+      tl.fromTo("#lsign", { opacity: 0, y: -260, rotation: -8 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.8)" }, T.LAB - 0.05);
+      tl.to("#lsign", { boxShadow: "0 0 0 6px #1a1216, 0 0 90px rgba(255, 220, 150, 1)", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 5 }, T.LAB + 0.5);
+      tl.to("#stCp", { filter: "saturate(1.15) brightness(1.02)", duration: 0.4 }, T.ON + 0.05);
+      camera("#sC-in", T.ON, T.E, 1.07, 1.12, "sine.inOut");
+      capOut("cD1", T.S1 - 0.15);
+      caption("cD2", 3, 4, 12, "excited");
+      ["S1", "S2", "S3"].forEach((k, i) => {  // each beat: a new business, a new designed story
+        tl.fromTo("#ly" + (i + 1), { opacity: 0, clipPath: "inset(100% 0% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.32, ease: "power3.out" }, T[k] - 0.1);
+        tl.fromTo(`#ly${i + 1} .photo`, { scale: 1.15 }, { scale: 1, duration: 0.6, ease: "power2.out" }, T[k] - 0.1);
+        tl.to(`#stC .sbar i:nth-child(${i + 1}) b`, { scaleX: 1, duration: i < 2 ? T[["S2", "S3"][i]] - T[k] : 1.2, ease: "none" }, T[k] - 0.1);
+        pop("#c-s" + (i + 1), T[k] + 0.12, [-4, 3, -3][i]);
+      });
+      [["crowd1", -380, 0, 1300], ["crowd5", 1100, 690, 1330], ["crowd3", -380, 340, 1380]].forEach(([b, x0, x, y], i) => {
+        const p = peep("#crowdbox", "pcw" + i, b, ["Blank", "Awe", "SmileBig", "EyesClosed"], x, y, 360);
+        const t = T.S1 + 0.1 + i * 0.25;
+        tl.fromTo(p, { x: x0 - x }, { x: 0, duration: 0.9, ease: "power2.out" }, t);
+        tl.fromTo(`#pcw${i} .pb`, { y: 0 }, { y: -12, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, t);
+        face("pcw" + i, "Awe", t + 0.8); face("pcw" + i, "SmileBig", T.S3 + i * 0.1);
+        blinks("pcw" + i, [T.S3 + 0.9 + i * 0.2], "SmileBig");
+      });
+      hearts("ptC", T.S3 + 0.1, 14, 540, 1350, 800);
+      sparks("ptC", T.ON, T.E, 16, "rgba(255,225,170,0.95)");
+      tl.fromTo("#secs", { opacity: 0, scale: 0.4, rotation: -10 }, { opacity: 1, scale: 1, rotation: 3, duration: 0.4, ease: "back.out(2)" }, T.SEG - 0.1);
+      clock("#secN", 0, 3, T.SEG, 0.6, (v) => Math.round(v) + " segundos");
+
+      // C -> E: zoom through the window
+      tl.to("#sC-in", { scale: 3.2, opacity: 0, filter: "blur(16px)", duration: 0.45, ease: "power2.in", transformOrigin: "50% 55%" }, T.E - 0.2);
+      tl.fromTo("#sE-in", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }, T.E + 0.1);
+
+      // ---------- E: +24.000, 60 temas, copy & paste (16.5 – 21.1) ----------
+      tl.fromTo("#g1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, w(4, 0) - 0.05);
+      tl.fromTo("#g2", { opacity: 0, scale: 0.5, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.8)" }, T.NUM - 0.1);
+      clock("#gN", 0, 24000, T.NUM, 0.85, (v) => Math.round(v).toLocaleString("pt-BR"));
+      tl.to("#g2", { scale: 1.1, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T.NUM + 0.85);
+      tl.fromTo("#g3", { opacity: 0, y: 40, rotationX: 60 }, { opacity: 1, y: 0, rotationX: 0, duration: 0.4, ease: "back.out(1.6)" }, T.FIG - 0.06);
+      ["stk/academia-e-treino-73", "stk2/cafe-4", "stk2/niver-3", "stk2/pet-4", "stk2/treino-4", "stk2/treino-5"].forEach((src, i) => {
+        const im = document.createElement("img"); im.className = "orb"; im.src = `assets/${src}.webp`; $("#orbsE").appendChild(im);
+        const x = [-30, 850, -40, 860, -20, 840][i], y = [430, 420, 690, 680, 950, 940][i];
+        Object.assign(im.style, { left: x + "px", top: y + "px", width: "240px" });
+        const t = T.FIG + i * 0.07;
+        tl.fromTo(im, { opacity: 0, scale: 0.1, x: 540 - x - 120, y: 800 - y, rotation: 0 }, { opacity: 1, scale: 1, x: 0, y: 0, rotation: (i % 2 ? 8 : -8), duration: 0.5, ease: "back.out(1.5)" }, t);
+        tl.to(im, { y: -16, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 2 }, t + 0.5);
+      });
+      tl.to("#gnum", { y: -120, scale: 0.78, transformOrigin: "50% 760px", duration: 0.45, ease: "power3.inOut" }, T.TEMAS - 0.25);
+      tl.fromTo("#g4", { opacity: 0, scale: 1.6, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "back.out(1.6)" }, T.TEMAS - 0.05);
+      [P.tiles.slice(0, 8), P.tiles.slice(8)].forEach((r, k) => {  // 60 temas: 16 real businesses, none repeated
+        const row = document.createElement("div"); row.className = "trow"; row.style.top = 1215 + k * 300 + "px";
+        row.innerHTML = r.map(([f, n]) => `<div class="tile"><div class="photo" style="background-image: ${U(f)}"></div><b>${n}</b></div>`).join(""); $("#rows").appendChild(row);
+        const x0 = k ? -560 : -60, x1 = k ? -120 : -560;
+        tl.fromTo(row, { opacity: 0, x: x0, y: 80 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }, T.TEMAS + 0.05 + k * 0.1);
+        tl.fromTo(row, { x: x0 }, { x: x1, duration: T.F - T.TEMAS + 0.4, ease: "none", immediateRender: false }, T.TEMAS + 0.05);
+      });
+      tl.fromTo("#cpd", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)" }, T.COPY + 0.03);
+      tl.to("#cpd", { opacity: 0, scale: 0.8, duration: 0.2 }, T.PASTE - 0.25);
+      tl.to(["#gnum", "#g4", "#rows", "#orbsE", "#pEbox"], { opacity: 0.18, filter: "blur(6px)", duration: 0.3, ease: "power2.out" }, T.PASTE - 0.3);
+      caption("cE", 4, 10, 14, "excited");
+      const curE = cursor("#curEbox", "curE", 1150, 1700);
+      tl.set(curE, { opacity: 1 }, T.COPY - 0.7);
+      click("#curEbox", curE, 520, 1380, T.COPY, 0.6);
+      tl.to(curE, { opacity: 0, duration: 0.2 }, T.PASTE - 0.25);
+      tl.fromTo("#e-st", { opacity: 0, scale: 0.5, y: 200, rotation: -6 }, { opacity: 1, scale: 1, y: 0, rotation: -2, duration: 0.4, ease: "back.out(1.6)" }, T.PASTE - 0.4);
+      tl.fromTo("#e-s1", { opacity: 0, scale: 0.2, rotation: 30, y: 600 }, { opacity: 1, scale: 1, rotation: -5, y: 0, duration: 0.4, ease: "back.out(1.7)" }, T.PASTE - 0.05);
+      confetti("ptE", T.PASTE + 0.2, 34, 540, 1000);
+
+      // E -> F: iris
+      tl.fromTo("#sF-in", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(140% at 50% 50%)", duration: 0.55, ease: "expo.inOut" }, T.F);
+
+      // ---------- F: CTA ----------
+      tl.fromTo("#gF", { x: -200 }, { x: 200, y: -300, duration: 5, ease: "sine.inOut" }, T.F);
+      caption("cF1", 5, 0, 3, "warm");
+      // the shop window again, now the brand's own: lit window, logo as the shop sign, every pane a different business
+      tl.fromTo("#winF", { opacity: 0, scaleY: 0.3, transformOrigin: "50% 0%" }, { opacity: 1, scaleY: 1, duration: 0.45, ease: "expo.out" }, T.F + 0.15);
+      tl.fromTo("#awnF", { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, T.F + 0.25);
+      tl.fromTo("#logo", { opacity: 0, y: -260, rotation: -8 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.8)" }, T.F + 0.4);
+      tl.to("#logo", { boxShadow: "0 0 0 6px #1a1216, 0 0 90px rgba(255, 220, 150, 1)", duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 4 }, T.F + 1.0);
+      [0, 1, 2].forEach((k) => {
+        const pn = document.createElement("div"); pn.className = "pane"; pn.style.left = 28 + k * 272 + "px"; $("#winF").appendChild(pn);
+        [P.win[k], P.win[k + 3]].forEach(([f, txt, st], j) => {
+          pn.insertAdjacentHTML("beforeend", `<div class="lay" id="wl${k}${j}"><div class="photo" style="background-image: ${U(f)}"></div><div class="tstk ${st}" style="left: 0; right: 0; margin: 0 auto; width: max-content; top: ${[300, 90, 330][k]}px">${txt}</div></div>`);
+        });
+        tl.fromTo(pn, { opacity: 0, scale: 0.4, y: 120 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, T.F + 0.45 + k * 0.12);
+        tl.set(`#wl${k}0`, { opacity: 1 }, T.F + 0.45 + k * 0.12);
+        tl.fromTo(`#wl${k}0 .tstk`, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, T.F + 0.8 + k * 0.12);
+        const ts = T.CTA + 0.7 + k * 0.3;  // each pane swaps to another business
+        tl.fromTo(`#wl${k}1`, { opacity: 1, clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power3.inOut", immediateRender: false }, ts);
+        tl.set(`#wl${k}1`, { opacity: 0 }, 0);
+        tl.fromTo(`#wl${k}1 .tstk`, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, ts + 0.25);
+      });
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, T.CTA - 0.1);
+      tl.to("#cta", { scale: 1.06, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.CTA + 0.5);
+      sweep("#ctaG", T.CTA + 0.4, 0.8); sweep("#ctaG", T.CTA + 2.0, 0.8);
+      tl.fromTo("#arr", { opacity: 0, y: -20 }, { opacity: 1, y: 30, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.CTA + 0.3);
+      const pF = peep("#pFbox", "pF", "hero5-point", ["SmileBig", "Smile", "EyesClosed"], 640, 1360, 420);
+      tl.fromTo(pF, { x: 500 }, { x: 0, duration: 0.6, ease: "back.out(1.3)" }, T.F + 0.35);
+      breathe("pF", T.F + 1, TOTAL);
+      tl.to(pF, { rotation: -3, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.CTA);
+      blinks("pF", [23.3], "SmileBig");
+      sparks("ptF", T.F + 0.3, TOTAL, 14);
+===SFX===
+s = [(K4 + "swish.mp3", 0.05, -12, {"trim": 0.8, "p0": -0.4, "p1": 0.4})]
+for i in range(5):  # giant words slam
+    s.append((K1 + "pop.mp3", W(0, i) + 0.05, -16 + i, {"trim": 0.4, "semis": -5 + i * 2, "p0": [-0.3, 0.3, -0.2, 0.2, 0][i]}))
+s += [
+    (KG + "click1.mp3", T["STOP"] - 0.04, 2, {"trim": 0.4}),
+    (KG + "g5-stop.mp3", T["STOP"] + 0.02, -2, {"trim": 1.2}),
+    (K4 + "impact.mp3", T["STOP"] + 0.05, -8, {"trim": 1.2}),
+    (K1 + "whoosh.mp3", T["B"] + 0.05, -10, {"semis": -2}),
+]
+for i in range(4):  # roll call: each woman pops on her word
+    t = T["P%d" % i]
+    s.append((K1 + "pop.mp3", t + 0.12, -5, {"trim": 0.5, "semis": i * 2, "p0": [-0.4, 0.4, -0.4, 0.4][i]}))
+    s.append((K1 + "ding.mp3", t + 0.2, -16, {"semis": [0, 3, 5, 8][i], "p0": [-0.4, 0.4, -0.4, 0.4][i]}))
+    if i: s.append((K4 + "swish.mp3", t - 0.35, -14, {"trim": 0.6, "semis": i, "p0": [0, 0.5, -0.5, 0.5][i]}))
+s += [
+    (K4 + "swish.mp3", T["WALL"] - 0.15, -10, {"trim": 0.9, "semis": -2}),
+    (K4 + "passby.mp3", T["C"] - 0.25, -12, {"trim": 0.9, "p0": -0.5, "p1": 0.5}),
+    (K1 + "pop.mp3", T["STORY"] + 0.2, -8, {"trim": 0.5}),
+    (K4 + "swish.mp3", T["VIT"] - 0.1, -8, {"trim": 0.8, "p0": 0.4, "p1": -0.4}),
+    (K4 + "land.mp3", T["VIT"] + 0.4, -2, {"trim": 0.6}),
+]
+for k in range(12):
+    s.append((K1 + "tick.mp3", T["VIT"] + 0.45 + k * 0.03, -22, {"trim": 0.08, "semis": k, "p0": -0.8 + k * 0.14}))
+s += [
+    (K1 + "dissolve.mp3", T["DIM"], -10, {"trim": 1.0, "wet": 0.4}),
+    (K4 + "land.mp3", T["DIM"] + 0.4, -8, {"trim": 0.5, "semis": -3}),
+    (KG + "g5-creak.mp3", T["DIM"] + 0.6, -10, {"wet": 0.35, "decay": 1.8, "p0": -0.2}),
+    (KG + "g5-creak.mp3", T["DIM"] + 2.0, -13, {"wet": 0.4, "decay": 2.0, "semis": -2, "p0": 0.2}),
+    (K1 + "heartbeat.mp3", T["NAO"] + 0.2, -12, {"trim": 1.3, "wet": 0.25}),
+    (KG + "g5-switch.mp3", T["ON"] - 0.03, 14),
+    (KG + "click2.mp3", T["ON"] - 0.04, 0, {"trim": 0.4}),
+    (K4 + "flashw.mp3", T["ON"] + 0.05, -6, {"p0": -0.5, "p1": 0.5}),
+    (K4 + "bloom.mp3", T["ON"] + 0.1, -6, {"wet": 0.2}),
+    (K4 + "land.mp3", T["LAB"] + 0.4, 0, {"trim": 0.6}),
+]
+for k in range(12):
+    s.append((K1 + "tick.mp3", T["ON"] + 0.12 + k * 0.035, -18, {"trim": 0.08, "semis": 8 + k, "p0": -0.8 + k * 0.14}))
+for i, k in enumerate(["S1", "S2", "S3"]):
+    s.append((K4 + "swish.mp3", T[k] - 0.12, -12, {"trim": 0.5, "semis": i * 2, "p0": [-0.4, 0.4, 0][i]}))
+    s.append((K1 + "pop.mp3", T[k] + 0.3, -5, {"trim": 0.5, "semis": i * 3, "p0": [-0.3, 0.3, 0][i]}))
+s += [
+    (K4 + "passby.mp3", T["S1"] + 0.1, -16, {"trim": 0.9, "p0": -0.6, "p1": 0.2}),
+    (K4 + "sparkles.mp3", T["S3"] + 0.1, -12, {"trim": 2.0, "p0": -0.5, "p1": 0.5}),
+    (K1 + "ding.mp3", T["SEG"] + 0.05, -10, {"semis": 7}),
+]
+for k in range(3):
+    s.append((K1 + "tick.mp3", T["SEG"] + k * 0.2, -14, {"trim": 0.1, "semis": 5}))
+s += [
+    (K1 + "whoosh.mp3", T["E"] - 0.05, -6, {"semis": 2}),
+    (K4 + "impact.mp3", T["NUM"] - 0.02, -12, {"trim": 0.8}),
+    (K1 + "coin.mp3", T["NUM"] + 0.85, -10, {"trim": 0.8}),
+]
+for k in range(8):
+    s.append((K1 + "tick.mp3", T["NUM"] + k * 0.1, -20, {"trim": 0.08, "semis": 7 + k, "p0": 0.3}))
+for i in range(6):
+    s.append((K1 + "pop.mp3", T["FIG"] + 0.2 + i * 0.07, -14 + i * 0.3, {"trim": 0.5, "semis": i, "p0": [-0.7, 0.7, -0.5, 0.5, -0.3, 0.3, -0.1, 0.1][i]}))
+s += [
+    (K4 + "sting.mp3", T["TEMAS"] - 0.02, -10),
+    (K4 + "swish.mp3", T["TEMAS"] + 0.1, -12, {"trim": 1.0, "p0": -0.6, "p1": 0.6}),
+    (KG + "click1.mp3", T["COPY"] - 0.03, 0, {"trim": 0.4}),
+    (K1 + "ding.mp3", T["COPY"] + 0.12, -10, {"semis": 5}),
+    (K1 + "pop.mp3", T["PASTE"] + 0.25, -4, {"trim": 0.5}),
+    (K4 + "land.mp3", T["PASTE"] + 0.3, 0, {"trim": 0.6}),
+    (K1 + "confetti.mp3", T["PASTE"] + 0.25, -8, {"p0": -0.3, "p1": 0.4}),
+    (K4 + "passby.mp3", T["F"] + 0.05, -10, {"trim": 1.0, "p0": 0.4, "p1": -0.2}),
+    (K4 + "sting.mp3", T["CTA"] - 0.05, -8),
+]
+s += [(K4 + "land.mp3", T["F"] + 0.75, -6, {"trim": 0.6})]
+for i in range(3):
+    s.append((K1 + "pop.mp3", T["F"] + 0.55 + i * 0.12, -12, {"trim": 0.5, "semis": 2 + i * 2, "p0": [-0.5, 0, 0.5][i]}))
+    s.append((K4 + "swish.mp3", T["CTA"] + 0.7 + i * 0.3, -16, {"trim": 0.5, "semis": i * 2, "p0": [-0.5, 0, 0.5][i]}))
+SEG3 = T["ON"] - (26.65 - 24.6)
+CFG = {
+    "music": [("m6", 0.0, 0.0, T["STOP"] + 0.02, 0.0, 0.03),
+              ("m6", 2.6, 2.75, SEG3 - 2.75 + 0.3, 0.25, 0.6, "lowpass=f=650"),
+              ("m6", 24.6, SEG3, TOTAL - SEG3, 0.0, 1.5)],
+    "curve": [(0, -4), (T["STOP"], -4), (2.75, 3), (T["DIM"] - 0.3, 3), (T["DIM"] + 0.3, -3), (SEG3, 6), (T["ON"] - 0.06, 6), (T["ON"], -5),
+              (T["E"], -5), (T["F"], -7), (TOTAL - 1.2, -8), (TOTAL, -40)],
+    "duck_depth": [(0, 1.0), (TOTAL, 1.0)],
+    "hit_duck": [(T["ON"] + 0.05, -3), (T["PASTE"] + 0.3, -3)],
+    "amb": [(K4 + "amb_room.mp3", T["DIM"] - 0.2, T["ON"] - T["DIM"] + 0.2, -16, 0.6, 0.15), (K4 + "amb_hope.mp3", T["ON"], TOTAL - T["ON"], -28, 1.0, 1.5)],
+    "sfx": s,
+}

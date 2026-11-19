@@ -1,0 +1,114 @@
+===SHARED===
+
+===TIMES===
+MUSIC_FROM = 25.5
+T_P1 = W("paga") - 0.12; T_A1 = W("é", 0) - 0.07
+T_LOGO = W("Stories") - 0.1; T_M2 = W("Tem") - 0.1; T_F = W("100") - 0.15; T_R = W("até") - 0.1; T_A2 = W("Você", 1) - 0.1
+T_P2 = W("E", 3) - 0.1; T_A3 = W("Isso", 1) - 0.1
+T_END = D["talk_end"]; T_INK = W("clica", 1) - 0.25
+===CSS===
+===HTML===
+      <!-- PiP 1: paying someone -->
+      <div class="pipfx" id="p1fx">
+        <div class="invoice" id="p1inv"><small>ORÇAMENTO · SOCIAL MEDIA</small><b>Edição de stories (30/mês)</b><div class="amt">R$ 800<em>/mês</em></div></div>
+        <div class="xmark" id="p1x" style="left: 390px; top: 1250px"></div>
+      </div>
+      <!-- logo -->
+      <div class="mscene" id="mL"><div class="inner" id="mL-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="logoburst"><img id="mLl" src="assets/app/logo-t.png" alt="Stories Lab" /></div>
+        <div class="ptbox" data-layout-ignore id="mLpt"></div>
+        <div class="cap" id="mLc" style="top: 1150px"><span>eu</span><span>uso</span><span>esse</span><span class="k">app</span><span>👇</span></div>
+      </div></div>
+      <!-- 24 mil -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="phone" id="m2ph" style="left: 183px; top: 391px"><div class="screen" id="m2scr"><img id="m2home" src="assets/app/home.png" alt="" /><img id="m2mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" /><div class="island"></div></div></div>
+        <div class="count" id="m2n" style="top: 150px; opacity: 0"><span class="n" id="m2nn">+0</span><span class="l">figurinhas</span></div>
+      </div></div>
+      <!-- 100 filtros -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="fcard" id="m3f"><div class="plain" style="background-image: url(assets/photos/breakfast.jpg)"></div><div class="graded" id="m3g" style="background-image: url(assets/photos/breakfast.jpg)"></div><div class="dv" id="m3d"></div>
+          <div class="lb" style="left: 30px">antes</div><div class="lb" style="right: 30px; background: rgba(217,46,100,0.85)">com filtro</div></div>
+        <div class="cap" id="m3c" style="top: 170px"><span class="k">+100</span><span>filtros</span><span>🎨</span></div>
+      </div></div>
+      <!-- roteiros -->
+      <div class="mscene" id="m4"><div class="inner" id="m4-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="agcard" id="m4a" style="top: 520px"><h5>📝 Roteiro da semana</h5>
+          <div><span>SEG</span>bom dia + enquete ☀️</div><div><span>TER</span>bastidor do trabalho 🎬</div><div><span>QUA</span>dica rápida 💡</div><div><span>QUI</span>antes e depois ✨</div><div><span>SEX</span>sextou com caixinha 🎉</div></div>
+        <div class="cap" id="m4c" style="top: 170px"><span>até</span><span class="k">roteiro</span><span>pronto</span><span>📝</span></div>
+      </div></div>
+      <div class="toast" id="tCop" style="left: 265px; top: 120px; bottom: auto; z-index: 40"><i></i><div>Figurinha copiada!<small>agora é só colar</small></div></div>
+      <!-- PiP 2: all of it in one app -->
+      <div class="pipfx" id="p2fx">
+        <div class="checks" style="top: 1300px"><div id="k1"><i></i>+24 mil figurinhas</div><div id="k2"><i></i>+100 filtros</div><div id="k3"><i></i>roteiros prontos</div></div>
+      </div>
+===JS===
+      window.ORIG = [[T_A1 - 0.05, T_LOGO + 0.1], [T_A2 - 0.05, T_P2 + 0.05]];
+      window.MW = [[T_LOGO, T_A2]];
+      window.HER = [];
+      window.PIP = [[T_P1, T_A1], [T_P2, T_A3]];
+      window.HOOK_END = T_P1 - 0.15;
+      window.CAM = [
+        [0, 0.3, 1.3, 1.0, 540, 700, 0, 0, 0, 0, "expo.out"],
+        [0.3, T_P1, 1.0, 1.05, 540, 700],
+        [T_A1, T_A1 + 0.4, 1.0, 1.25, 790, 1100, 0, 0, -120, -120, "power2.inOut"],
+        [T_A1 + 0.4, T_LOGO, 1.25, 1.3, 790, 1100, -120, -120, -120, -120],
+        [T_A2, T_A2 + 0.4, 1.0, 1.3, 790, 1100, 0, 0, -150, -180, "power2.inOut"],
+        [T_A2 + 0.4, T_P2, 1.3, 1.36, 790, 1100, -150, -180, -150, -180],
+        [T_A3, T_A3 + 0.3, 1.3, 1.05, 540, 700, 0, 0, 0, 0, "expo.out"],
+        [T_A3 + 0.3, T_INK, 1.05, 1.1, 540, 700],
+      ];
+      // PiP 1: the social-media invoice gets an X on "Não"
+      pip(T_P1, T_A1, 1500, "expand", "#p1fx");
+      rise("#p1inv", W("alguém") - 0.1, -2);
+      xErr("#p1x", "#p1inv", W("Não") + 0.02);
+      // logo
+      zoomIn("#mL", "#mL-in", T_LOGO);
+      tl.fromTo("#mLl", { opacity: 0, scale: 0.6, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.8)" }, T_LOGO + 0.05);
+      confetti("mLpt", T_LOGO + 0.1, 50, 540, 800); mcap("mLc", T_LOGO + 0.15, T_M2 - 0.2, "excited");
+      // 24 mil
+      whipLeftTo("#mL", "#m2", T_M2);
+      tl.fromTo("#m2ph", { y: 300, scale: 0.7, rotationX: 25 }, { y: 0, scale: 0.78, rotationX: 0, duration: 0.6, ease: "expo.out" }, T_M2);
+      tl.fromTo("#m2n", { opacity: 0, scale: 0.5, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, W("24") - 0.15);
+      counter("#m2nn", 0, 24000, W("24"), 0.8); tl.to("#m2nn", { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, W("24") + 0.8);
+      tap("#m2scr", 150, 268, W("figurinhas") - 0.1); push("#m2home", "#m2mais", W("figurinhas") + 0.05);
+      // 100 filtros: before/after slider
+      whipLeftTo("#m2", "#m3", T_F);
+      mcap("m3c", T_F + 0.1, T_R - 0.2, "excited");
+      const sl3 = { p: 100 }; const set3 = () => { $("#m3g").style.clipPath = `inset(0 0 0 ${sl3.p}%)`; $("#m3d").style.left = sl3.p + "%"; }; set3();
+      tl.fromTo(sl3, { p: 100 }, { p: 8, duration: 0.9, ease: "power2.inOut", onUpdate: set3, immediateRender: false }, W("filtros") - 0.3);
+      tl.to(sl3, { p: 50, duration: 0.5, ease: "power2.inOut", onUpdate: set3 }, W("filtros") + 0.6);
+      tl.fromTo("#m3f", { scale: 0.9, rotationY: -12 }, { scale: 1, rotationY: 6, duration: T_R - T_F, ease: "sine.inOut" }, T_F);
+      // roteiros
+      whipLeftTo("#m3", "#m4", T_R);
+      mcap("m4c", T_R + 0.1, T_A2 - 0.2, "excited");
+      rise("#m4a", T_R + 0.05, -2);
+      $("#m4a").querySelectorAll("div").forEach((r, i) => tl.fromTo(r, { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, T_R + 0.25 + i * 0.12));
+      // back to her: she is showing the app in her hand
+      backToHer("#m4", T_A2);
+      tl.fromTo("#tCop", { opacity: 0, y: -60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copia") - 0.05);
+      tl.to("#tCop", { opacity: 0, y: -40, duration: 0.25 }, W("copia") + 1.0);
+      // PiP 2: everything in one app
+      pip(T_P2, T_A3, -1500, "expand", "#p2fx");
+      [["#k1", W("tudo")], ["#k2", W("aplicativo", 1)], ["#k3", W("só", 1)]].forEach(([k, t], i) => tl.fromTo(k, { opacity: 0, x: 200 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, t - 0.05));
+      endCard(T_INK);
+===SFX===
+[
+ ("subhit", 0.0, -12, 0), ("whoosh", 0.02, -18, 2), ("pop", 0.1, -20, 3), ("pop", 0.24, -20, 6),
+ ("swish", T_P1, -14, 3), ("pop", W("alguém") - 0.1, -14, 0), ("coin", W("alguém") + 0.2, -17, -2),
+ ("error", W("Não") + 0.02, -9, 0), ("impact", W("Não") + 0.03, -19, 2),
+ ("swish", T_A1, -16, -3), ("whoosh", T_A1 + 0.05, -20, -2),
+ ("riser", T_LOGO - 1.0, -22, 0, 1.05), ("whoosh", T_LOGO - 0.08, -12, 0), ("sparkles", T_LOGO + 0.05, -14, 0), ("confetti", T_LOGO + 0.1, -16, 0),
+ ("swish", T_M2 - 0.1, -13, 2), ("pop", W("24") - 0.15, -13, 0), *[("tick", W("24") + j * 0.1, -19, 3 + j, 0.12) for j in range(8)], ("coin", W("24") + 0.8, -15, 2),
+ ("tick", W("figurinhas") - 0.1, -15, 5, 0.12),
+ ("swish", T_F - 0.1, -13, 4), ("whoosh", W("filtros") - 0.3, -17, 3), ("shimmer", W("filtros") + 0.2, -17, 0),
+ ("swish", T_R - 0.1, -13, 6), *[("pop", T_R + 0.25 + i * 0.12, -18, 2 + i * 2) for i in range(5)],
+ ("whoosh", T_A2 - 0.1, -15, -2),
+ ("tick", W("clica") + 0.05, -15, 5, 0.12), ("ding", W("copia"), -13, 7), ("pop", W("cola") + 0.05, -14, 3),
+ ("swish", T_P2, -15, 2), *[("ding", t, -15, 3 + i * 2) for i, t in enumerate([W("tudo"), W("aplicativo", 1), W("só", 1)])],
+ ("swish", T_A3, -16, -3), ("subhit", T_A3 + 0.05, -16, 0),
+ ("whoosh", T_INK - 0.1, -15, 0), ("sting", T_INK + 0.05, -12, 0), ("pop", T_INK + 0.55, -13, 2),
+]

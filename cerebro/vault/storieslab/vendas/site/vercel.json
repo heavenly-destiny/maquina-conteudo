@@ -1,0 +1,38 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Content-Security-Policy": "frame-ancestors 'self'",
+        "X-Frame-Options": "SAMEORIGIN"
+      },
+      "continue": true
+    },
+    {
+      "src": "/img/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "referer",
+          "value": "^(?!https?://((www\\.)?storieslab\\.(shop|app)|app\\.storieslab\\.shop|storieslab-figurinhas\\.vercel\\.app|stories-lab-sandy\\.vercel\\.app|stories-[a-z0-9]+-heavenly-destinys-projects\\.vercel\\.app|kit-storieslab\\.vercel\\.app|clarity\\.microsoft\\.com|[a-z0-9.-]*\\.clarity\\.ms|localhost|127\\.0\\.0\\.1)([:/]|$)).+"
+        }
+      ],
+      "dest": "/img/protegida.webp"
+    },
+    {
+      "src": "/(media/.*|hero2-[0-9]\\.png)",
+      "has": [
+        {
+          "type": "header",
+          "key": "referer",
+          "value": "^(?!https?://((www\\.)?storieslab\\.(shop|app)|app\\.storieslab\\.shop|storieslab-figurinhas\\.vercel\\.app|stories-lab-sandy\\.vercel\\.app|stories-[a-z0-9]+-heavenly-destinys-projects\\.vercel\\.app|kit-storieslab\\.vercel\\.app|clarity\\.microsoft\\.com|[a-z0-9.-]*\\.clarity\\.ms|localhost|127\\.0\\.0\\.1)([:/]|$)).+"
+        }
+      ],
+      "dest": "/img/protegida.webp"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "https://storieslab-app.tanpzdigital-183.workers.dev/api/$1"
+    }
+  ]
+}

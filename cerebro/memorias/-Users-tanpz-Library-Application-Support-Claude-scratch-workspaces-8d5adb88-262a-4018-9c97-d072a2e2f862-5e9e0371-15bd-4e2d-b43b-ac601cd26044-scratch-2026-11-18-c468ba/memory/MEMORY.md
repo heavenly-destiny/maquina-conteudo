@@ -1,0 +1,1 @@
+- [UTMify status de campanha](utmify-status-campanha.md) — "Ativo" sob a conta não é a campanha; filtrar status=ACTIVE

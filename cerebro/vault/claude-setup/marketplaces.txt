@@ -1,0 +1,15 @@
+anthropics/claude-plugins-official
+bradautomates/claude-video
+thedotmack/claude-mem
+superultrainc/superwhisper-claude-code
+JuliusBrussee/caveman
+DietrichGebert/ponytail
+openai/codex-plugin-cc
+ayghri/i-have-adhd
+leonxlnx/taste-skill
+greensock/gsap-skills
+mvanhorn/last30days-skill
+vercel-labs/agent-browser
+jarrodwatts/claude-hud
+coreyhaines31/marketingskills
+charlie947/social-media-skills

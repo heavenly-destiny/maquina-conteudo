@@ -1,0 +1,13 @@
+
+[00:00:00.000 --> 00:00:06.660]   Alguém publicou no GitHub um arquivo HTML grátis que coloca mais de 50 modelos de IA na mesma tela.
+[00:00:07.140 --> 00:00:10.820]   Claude, ChatGPT, Gemini, Grock e dezenas de outros.
+[00:00:11.200 --> 00:00:12.400]   Tudo numa interface só.
+[00:00:12.840 --> 00:00:15.200]   Chama Godmode e foi o Pliny quem criou.
+[00:00:15.640 --> 00:00:18.900]   Você baixa o arquivo, abre no navegador e não instala nada.
+[00:00:19.380 --> 00:00:22.560]   Cola a sua chave do Open Router e os modelos já aparecem na tela.
+[00:00:23.020 --> 00:00:26.000]   E tem o modo que eu mais gostei, o Godmode Classic.
+[00:00:26.000 --> 00:00:30.920]   Você digita uma pergunta e cinco modelos respondem juntos, cada um do seu jeito.
+[00:00:31.320 --> 00:00:32.840]   Ele mostra qual respondeu melhor.
+[00:00:33.380 --> 00:00:37.340]   Cola a sua proposta ou o seu anúncio e vê qual escreve melhor para o seu negócio.
+[00:00:37.880 --> 00:00:40.220]   Comenta Godmode que eu te mando o link no direct.
+[00:00:40.480 --> 00:00:41.000]   E me segue!

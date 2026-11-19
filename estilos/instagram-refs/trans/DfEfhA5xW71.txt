@@ -1,0 +1,15 @@
+
+[00:00:00.000 --> 00:00:02.440]   This entire reel was made with Claude.
+[00:00:03.040 --> 00:00:05.380]   No after-effects, no keyframes.
+[00:00:06.160 --> 00:00:07.240]   First, the rhythm.
+[00:00:07.900 --> 00:00:12.060]   Claude maps every cut and every word to the beat, frame by frame.
+[00:00:12.640 --> 00:00:13.900]   Then the 3D.
+[00:00:14.620 --> 00:00:16.420]   Claude writes the whole Blender scene.
+[00:00:16.840 --> 00:00:20.000]   The phone, the titanium, the light, the motion blur.
+[00:00:20.820 --> 00:00:22.280]   The screen isn't a picture.
+[00:00:22.760 --> 00:00:27.780]   It's real code, pinned to the four corners of the phone so it stays razor sharp.
+[00:00:28.200 --> 00:00:30.640]   And the type is driven by one file.
+[00:00:31.140 --> 00:00:33.960]   Change a word and the whole sequence re-renders.
+[00:00:35.600 --> 00:00:38.000]   Zero keyframes, just direction.
+[00:00:40.440 --> 00:00:41.700]   Want the full method?
+[00:00:42.360 --> 00:00:44.400]   Come on ogoki and we'll send you the link.

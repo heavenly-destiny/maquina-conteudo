@@ -1,0 +1,1 @@
+- [Revisão reel @tanpzr](revisao-tanpzr-licoes.md) — nome mal pronunciado ("Tampz" resolve), rosto tampado (não há cru de frente), FIXED falso, palavra fantasma, cards repetidos, quadro vazio no início da cena, cursor solto, CTA meio vazio

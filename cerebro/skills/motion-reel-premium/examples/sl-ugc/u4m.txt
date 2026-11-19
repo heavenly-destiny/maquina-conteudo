@@ -1,0 +1,158 @@
+===SHARED===
+
+===TIMES===
+MUSIC_FROM = 8.5
+T_P1 = W("ficar") - 0.12; T_A1 = W("esse") - 0.1
+T_P2 = W("arquiteta") - 0.12; T_A2 = W("Eu", 1) - 0.1
+T_P3 = W("meia") - 0.1; T_A3 = W("Olha") - 0.1
+T_M2 = W("É", 5) - 0.08; T_P4 = W("todos") - 0.2
+T_M3 = W("Mais", 1) - 0.12; T_R = W("até") - 0.1; T_C = W("você", 2) - 0.1; T_PASTE = W("vai") - 0.1; T_A4 = W("Eu", 3) - 0.1
+T_END = D["talk_end"]; T_INK = W("Clique") - 0.3
+===CSS===
+===HTML===
+      <!-- PiP 1: Canva -->
+      <div class="pipfx" id="p1fx">
+        <div class="cvx" id="p1canva"><div class="cvbar"><b>Canva</b><span>Story sem título · 1080 × 1920</span></div>
+          <div class="cvbody"><div class="cvside"><i></i><i></i><i></i><i></i><i></i></div><div class="cvpage"><div class="spin" id="p1spin"></div><small>carregando elementos…</small></div></div></div>
+        <div class="xmark" id="p1x" style="left: 390px; top: 1300px"></div>
+      </div>
+      <!-- PiP 2: her day -->
+      <div class="pipfx" id="p2fx">
+        <div class="agcard" id="p2a"><h5>📐 Agenda da arquiteta · hoje</h5>
+          <div id="p2r1"><span>08:00</span>visita de obra 🏗️</div><div id="p2r2"><span>10:30</span>reunião com cliente 🤝</div><div id="p2r3"><span>14:00</span>obra 2 · acabamento 🔨</div><div id="p2r4"><span>17:00</span>reunião de projeto 📋</div></div>
+      </div>
+      <!-- PiP 3: half an hour on a backstage story -->
+      <div class="pipfx" id="p3fx">
+        <div class="bigclock bad" id="p3c" style="top: 1230px"><div>⏳ <span id="p3n">0 min</span></div></div>
+        <div class="mini big" id="p3s" style="left: 390px; top: 1420px; height: 420px; width: 300px"><div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg); filter: saturate(0.5)"></div><div class="lb" style="position:absolute;left:20px;bottom:20px;font-size:26px;font-weight:800;color:#fff;background:rgba(0,0,0,.45);padding:6px 14px;border-radius:14px">bastidor…</div></div>
+        <div class="xmark" id="p3x" style="left: 390px; top: 1480px"></div>
+      </div>
+      <!-- M2: the app, 24 mil -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="phone" id="m2ph" style="left: 183px; top: 391px"><div class="screen" id="m2scr"><img id="m2home" src="assets/app/home.png" alt="" /><img id="m2mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" /><img id="m2cat" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" /><div class="island"></div></div></div>
+        <div class="count" id="m2n" style="top: 150px; opacity: 0"><span class="n" id="m2nn">+0</span><span class="l">figurinhas</span></div>
+        <div class="cap" id="m2c" style="top: 170px"><span>é</span><span>um</span><span class="k">app</span><span>👇</span></div>
+      </div></div>
+      <!-- PiP 4: any profession -->
+      <div class="pipfx" id="p4fx">
+        <div class="mini" id="q1" style="left: 40px; top: 1260px"><div class="photo" style="background-image: url(assets/site/beleza-1.webp)"></div></div>
+        <div class="mini" id="q2" style="left: 295px; top: 1260px"><div class="photo" style="background-image: url(assets/site/comida-4.webp)"></div></div>
+        <div class="mini" id="q3" style="left: 550px; top: 1260px"><div class="photo" style="background-image: url(assets/site/treino-2.webp)"></div></div>
+        <div class="mini" id="q4" style="left: 805px; top: 1260px"><div class="photo" style="background-image: url(assets/site/rotina-3.webp)"></div></div>
+        <div class="pchip" id="qc1" style="left: 60px; top: 1700px">estética 💆‍♀️</div>
+        <div class="pchip" id="qc2" style="left: 300px; top: 1700px">gastronomia 🍔</div>
+        <div class="pchip" id="qc3" style="left: 580px; top: 1700px">personal 💪</div>
+        <div class="pchip" id="qc4" style="left: 830px; top: 1700px">lojas 🛍️</div>
+      </div>
+      <!-- M3: filters -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="fcard" id="m3f"><div class="plain" style="background-image: url(assets/photos/boutique.jpg)"></div><div class="graded" id="m3g" style="background-image: url(assets/photos/boutique.jpg)"></div><div class="dv" id="m3d"></div>
+          <div class="lb" style="left: 30px">antes</div><div class="lb" style="right: 30px; background: rgba(217,46,100,0.85)">com filtro</div></div>
+        <div class="cap" id="m3c" style="top: 170px"><span class="k">+100</span><span>filtros</span><span>🎨</span></div>
+      </div></div>
+      <!-- M4: scripts -->
+      <div class="mscene" id="m4"><div class="inner" id="m4-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="agcard" id="m4a" style="top: 520px"><h5>📝 Roteiro de Stories</h5>
+          <div><span>SEG</span>bastidor da obra 🏗️</div><div><span>TER</span>antes e depois ✨</div><div><span>QUA</span>dica rápida 💡</div><div><span>QUI</span>depoimento de cliente 💬</div><div><span>SEX</span>caixinha de perguntas 🎉</div></div>
+        <div class="cap" id="m4c" style="top: 170px"><span>e</span><span>até</span><span class="k">roteiros</span><span>📝</span></div>
+      </div></div>
+      <!-- M5: click, copy, paste -->
+      <div class="mscene" id="m5"><div class="inner" id="m5-in">
+        <div class="bg"></div><div class="glow"></div><div class="glow2"></div>
+        <div class="phone" id="m5ph" style="left: 183px; top: 391px"><div class="screen" id="m5scr"><img id="m5cat" src="assets/app/cat-bomdia.png" alt="" /><img id="m5mod" src="assets/app/modal-boanoite.png" style="opacity: 0; clip-path: inset(80px 0 0 0)" alt="" />
+          <div class="toast" id="m5t"><i></i><div>Copiada!<small>agora é só colar no story</small></div></div><div class="island"></div></div></div>
+        <div class="story" id="m5st" style="left: 110px; top: 386px; opacity: 0"><div class="photo" style="background-image: url(assets/photos/plaincoffee.jpg)"></div><div class="sbar"><i><b id="m5bar"></b></i></div><div class="shead"><i></i>meu story <small>· agora</small></div>
+          <img class="stk" id="m5s" src="assets/stk/bomdia-126.webp" style="left: 160px; top: 300px; width: 540px; opacity: 0" alt="" /></div>
+        <div class="cap" id="m5c" style="top: 170px"><span>clica,</span><span class="k">copia</span><span>e</span><span class="k">cola</span></div>
+      </div></div>
+===JS===
+      window.ORIG = [[W("aqui") - 0.1, T_M2 + 0.1]];
+      window.MW = [[T_M2, T_P4], [T_M3, T_A4]];
+      window.HER = [[5.48, 6.56], [9.3, 9.98], [14.95, 15.85], [22.73, 23.5], [25.03, 25.6]];
+      window.PIP = [[T_P1, T_A1], [T_P2, T_A2], [T_P3, T_A3], [T_P4, T_M3]];
+      window.HOOK_END = T_P1 - 0.15;
+      window.CAM = [
+        [0, 0.3, 1.3, 1.0, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [0.3, T_P1, 1.0, 1.06, 540, 600],
+        [T_A1, W("você", 1) - 0.05, 1.08, 1.12, 540, 600],
+        [W("você", 1) - 0.05, T_P2, 1.3, 1.12, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [T_A2, T_P3, 1.1, 1.14, 540, 600],
+        [T_A3, W("aqui") + 0.05, 1.04, 1.08, 540, 600],
+        [W("aqui") + 0.05, W("aqui") + 0.5, 1.0, 1.5, 880, 1050, 0, 0, -60, -150, "power2.inOut"],
+        [W("aqui") + 0.5, T_M2, 1.5, 1.56, 880, 1050, -60, -150, -60, -150],
+        [T_A4, W("certeza") - 0.05, 1.05, 1.08, 540, 600],
+        [W("certeza") - 0.05, W("útil") - 0.05, 1.28, 1.12, 540, 600, 0, 0, 0, 0, "expo.out"],
+        [W("útil") - 0.05, T_INK, 1.3, 1.15, 540, 600, 0, 0, 0, 0, "expo.out"],
+      ];
+      // PiP 1: Canva -> X + error
+      pip(T_P1, T_A1, 1500, "expand", "#p1fx");
+      tl.fromTo("#p1canva", { opacity: 0, y: 300, rotationX: 35, rotationY: -20, transformPerspective: 1200 }, { opacity: 1, y: 0, rotationX: 0, rotationY: 0, duration: 0.45, ease: "expo.out" }, T_P1 + 0.05);
+      tl.fromTo("#p1spin", { rotation: 0 }, { rotation: 1080, duration: 1.4, ease: "none" }, T_P1);
+      xErr("#p1x", "#p1canva", W("Canva") + 0.02);
+      // PiP 2: the architect's day fills up
+      pip(T_P2, T_A2, 1500, "expand", "#p2fx");
+      rise("#p2a", T_P2 + 0.1, -2);
+      [["#p2r1", W("passo")], ["#p2r2", W("obras") - 0.2], ["#p2r3", W("obras") + 0.25], ["#p2r4", W("reuniões")]].forEach(([r, t]) => tl.fromTo(r, { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.28, ease: "back.out(1.8)" }, t - 0.05));
+      // PiP 3: half an hour on a backstage story -> X
+      pip(T_P3, T_A3, 1500, "expand", "#p3fx");
+      tl.fromTo("#p3c div", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, T_P3 + 0.05);
+      clock("#p3n", 0, 30, W("meia"), W("bastidor") - W("meia"), (v) => Math.round(v) + " min");
+      rise("#p3s", W("editando") - 0.1, 3);
+      xErr("#p3x", "#p3s", W("bastidor") + 0.02);
+      // M2: iris out of her phone into the app
+      irisIn("#m2", T_M2, "62% 47%");
+      tl.fromTo("#m2ph", { y: 140, scale: 1.25 }, { y: 0, scale: 0.78, duration: 0.8, ease: "power3.out" }, T_M2);
+      tl.fromTo("#m2ph", { rotationY: 0 }, { rotationY: 8, rotationX: -4, duration: T_P4 - T_M2 - 0.8, ease: "sine.inOut", immediateRender: false }, T_M2 + 0.8);
+      mcap("m2c", T_M2 + 0.1, W("24") - 0.4, "excited");
+      tap("#m2scr", 150, 268, W("aplicativo") + 0.3); push("#m2home", "#m2mais", W("aplicativo") + 0.45);
+      tl.fromTo("#m2n", { opacity: 0, scale: 0.5, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, W("24") - 0.15);
+      counter("#m2nn", 0, 24000, W("24"), 0.8); tl.to("#m2nn", { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, W("24") + 0.8);
+      tap("#m2scr", 155, 386, W("figurinhas") + 0.3); push("#m2mais", "#m2cat", W("figurinhas") + 0.45);
+      tl.to("#m2ph", { y: -1500, rotationX: 35, scale: 0.6, filter: "blur(8px)", duration: 0.32, ease: "power3.in" }, T_P4 - 0.12);
+      tl.to("#m2n", { y: -500, opacity: 0, duration: 0.28, ease: "power3.in" }, T_P4 - 0.12);
+      tl.to("#m2", { opacity: 0, duration: 0.2 }, T_P4 + 0.08); hideScene("#m2", T_P4 + 0.3);
+      // PiP 4: any profession
+      pip(T_P4, T_M3, -1500, "none", "#p4fx");
+      [["#q1", "#qc1", W("todos")], ["#q2", "#qc2", W("estilos")], ["#q3", "#qc3", W("qualquer")], ["#q4", "#qc4", W("profissão")]].forEach(([m, c, t], i) => { rise(m, t - 0.08, i % 2 ? 4 : -4); pop(c, t + 0.05, i % 2 ? 3 : -3); });
+      // M3 filters, M4 scripts, M5 copy/paste
+      zoomIn("#m3", "#m3-in", T_M3); tl.set("#p4fx", { opacity: 0 }, T_M3 + 0.3);
+      mcap("m3c", T_M3 + 0.1, T_R - 0.2, "excited");
+      const sl3 = { p: 100 }; const set3 = () => { $("#m3g").style.clipPath = `inset(0 0 0 ${sl3.p}%)`; $("#m3d").style.left = sl3.p + "%"; }; set3();
+      tl.fromTo(sl3, { p: 100 }, { p: 8, duration: 0.8, ease: "power2.inOut", onUpdate: set3, immediateRender: false }, W("filtros") - 0.3);
+      tl.to(sl3, { p: 50, duration: 0.3, ease: "power2.inOut", onUpdate: set3 }, W("filtros") + 0.5);
+      tl.fromTo("#m3f", { scale: 0.9, rotationY: -14, transformPerspective: 1400 }, { scale: 1, rotationY: 8, duration: T_R - T_M3, ease: "sine.inOut" }, T_M3);
+      whipLeftTo("#m3", "#m4", T_R); mcap("m4c", T_R + 0.1, T_C - 0.2, "excited"); rise("#m4a", T_R + 0.05, -2);
+      $("#m4a").querySelectorAll("div").forEach((r, i) => tl.fromTo(r, { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, T_R + 0.2 + i * 0.1));
+      whipUpTo("#m4", "#m5", T_C); mcap("m5c", T_C + 0.1, T_A4 - 0.2, "excited");
+      tl.fromTo("#m5ph", { y: 200, scale: 0.7, rotationY: -25, transformPerspective: 1400 }, { y: 0, scale: 0.8, rotationY: 0, duration: 0.5, ease: "expo.out" }, T_C);
+      tap("#m5scr", 178, 797, W("clica") + 0.05);
+      tl.fromTo("#m5cat", { filter: "brightness(1)" }, { filter: "brightness(0.55)", duration: 0.3, immediateRender: false }, W("clica") + 0.15);
+      sheet("#m5mod", W("clica") + 0.15);
+      tap("#m5scr", 345, 932, W("copia") - 0.05);
+      tl.fromTo("#m5t", { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copia"));
+      tl.to("#m5ph", { x: -980, rotationY: -40, scale: 0.7, filter: "blur(8px)", duration: 0.45, ease: "power3.in" }, T_PASTE);
+      tl.fromTo("#m5st", { opacity: 1, x: 1000, rotationY: 35, scale: 0.7, filter: "blur(8px)" }, { opacity: 1, x: 0, rotationY: 0, scale: 0.8, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, T_PASTE + 0.15);
+      storyBar("#m5bar", T_PASTE + 0.3, T_A4); pop("#m5s", W("cola") - 0.05, -4);
+      backToHer("#m5", T_A4);
+      endCard(T_INK);
+===SFX===
+[
+ ("subhit", 0.0, -12, 0), ("whoosh", 0.02, -18, 2), ("pop", 0.1, -20, 3), ("pop", 0.24, -20, 6),
+ ("swish", T_P1, -14, 3), ("error", W("Canva") + 0.02, -9, 0), ("impact", W("Canva") + 0.03, -19, 2), ("swish", T_A1, -16, -3),
+ ("subhit", W("você", 1) - 0.05, -16, 0),
+ ("swish", T_P2, -14, 3), *[("pop", t - 0.05, -14, 2 + i * 2) for i, t in enumerate([W("passo"), W("obras") - 0.2, W("obras") + 0.25, W("reuniões")])], ("swish", T_A2, -16, -3),
+ ("swish", T_P3, -14, 3), *[("tick", W("meia") + j * 0.15, -20, 2 + (j % 2) * 5, 0.12) for j in range(int((W("bastidor") - W("meia")) / 0.15))],
+ ("error", W("bastidor") + 0.02, -9, 0), ("impact", W("bastidor") + 0.03, -19, 2), ("swish", T_A3, -16, -3), ("whoosh", T_A3 + 0.05, -20, -2),
+ ("bloom", T_M2, -13, 0), ("shimmer", T_M2 + 0.1, -19, 0), ("tick", W("aplicativo") + 0.3, -15, 5, 0.12),
+ ("pop", W("24") - 0.15, -13, 0), *[("tick", W("24") + j * 0.1, -19, 3 + j, 0.12) for j in range(8)], ("coin", W("24") + 0.8, -15, 2), ("tick", W("figurinhas") + 0.3, -15, 5, 0.12),
+ ("swish", T_P4 - 0.12, -13, 5), *[("pop", t - 0.08, -12, 2 + i * 2) for i, t in enumerate([W("todos"), W("estilos"), W("qualquer"), W("profissão")])],
+ ("whoosh", T_M3 - 0.08, -12, 0), ("flashw", T_M3, -16, 0), ("whoosh", W("filtros") - 0.3, -17, 3), ("shimmer", W("filtros") + 0.2, -17, 0),
+ ("swish", T_R - 0.1, -13, 6), *[("pop", T_R + 0.2 + i * 0.1, -19, 2 + i * 2) for i in range(5)],
+ ("swish", T_C - 0.12, -13, 2), ("tick", W("clica") + 0.05, -15, 5, 0.12), ("tick", W("copia") - 0.05, -15, 6, 0.12), ("ding", W("copia"), -13, 7),
+ ("whoosh", T_PASTE, -15, 4), ("pop", W("cola") - 0.05, -12, 3),
+ ("whoosh", T_A4 - 0.1, -15, -2), ("subhit", W("certeza") - 0.05, -17, 0), ("subhit", W("útil") - 0.05, -17, 0),
+ ("whoosh", T_INK - 0.1, -15, 0), ("sting", T_INK + 0.05, -12, 0), ("pop", T_INK + 0.55, -13, 2),
+]

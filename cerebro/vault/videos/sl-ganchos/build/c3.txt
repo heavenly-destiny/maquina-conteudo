@@ -1,0 +1,488 @@
+G03 IDENTIFICACAO · film arc: night, she posts every day (7 different days) > opens the insights (shame) > everyone watching, nobody talks >
+spotlight: "não é você", a belt of many different women's bare stories, all with 0 replies > pink: sábado / treino / café, then pet, praia, date, natal land >
+insights again: the difference > CTA: +47 replies flip into the brand, a story link sticker gets tapped, carousel of designed niche stories
+===TIMES===
+T = {}
+T["DAYS"] = W(0, 4)
+T["SHAME"] = W(0, 10)
+T["OPEN"] = W(0, 13)
+T["B"] = W(0, 13) + 0.08
+T["CROWD"] = W(1, 2)
+T["SILENT"] = W(1, 6)
+T["NADA"] = W(1, 8)
+T["C"] = W(2, 0) - 0.3
+T["SEU"] = W(2, 6)
+T["IGUAL"] = W(2, 9)
+T["D"] = W(3, 0) - 0.3
+T["SL"] = W(3, 8)
+T["BOM"] = W(3, 10)
+T["TREINO"] = W(3, 12)
+T["CAFE"] = W(3, 13)
+T["PRONTO"] = W(3, 14)
+T["TUDO"] = W(3, 14)
+T["E"] = W(4, 1) - 0.2
+T["DIFF"] = W(4, 3) - 0.05
+T["AGORA"] = W(4, 0)
+T["F"] = W(5, 0) - 0.05
+T["CTA"] = W(5, 2)
+T["HOJE"] = W(5, 6)
+===CSS===
+      #sA .bg, #sB .bg { background: #17121a; }
+      .phglow { position: absolute; width: 900px; height: 900px; border-radius: 50%; left: 300px; top: 1060px;
+        background: radial-gradient(circle, rgba(240, 84, 138, 0.42), rgba(240, 84, 138, 0) 62%); }
+      .peep.lit img { filter: drop-shadow(0 0 40px rgba(240, 84, 138, 0.25)); }
+      .vig { position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 62%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%); opacity: 0; z-index: 11; }
+      .days { position: absolute; left: 60px; width: 960px; top: 560px; display: flex; justify-content: space-between; }
+      .day { width: 122px; text-align: center; color: #cbbfc6; font-size: 30px; font-weight: 700; }
+      .day .rg { position: relative; width: 122px; height: 122px; border-radius: 50%; padding: 6px; background: linear-gradient(135deg, #f0548a, #d92e64); margin-bottom: 12px; }
+      .day .rg i { display: block; width: 100%; height: 100%; border-radius: 50%; border: 5px solid #17121a; background-size: cover; background-position: center; filter: saturate(0.4) brightness(0.8); }
+      .day .ck { position: absolute; right: -6px; bottom: -6px; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--brand); font-size: 30px; font-weight: 900; line-height: 46px; opacity: 0; }
+      .ins { position: absolute; left: 70px; top: 520px; width: 940px; padding: 34px 40px; border-radius: 44px; background: #241c25; color: #fff; display: flex; gap: 34px; z-index: 14;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
+      .ins.light { background: #fff; color: var(--ink); box-shadow: 0 16px 34px rgba(80, 20, 40, 0.12), 0 40px 90px rgba(80, 20, 40, 0.2); }
+      .ins .th { flex: none; width: 170px; height: 302px; border-radius: 20px; background-size: cover; background-position: center; }
+      .ins .st { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+      .ins h4 { font-size: 34px; font-weight: 700; opacity: 0.6; }
+      .ins .row { display: flex; align-items: baseline; gap: 18px; font-size: 40px; font-weight: 600; }
+      .ins .row b { font-size: 92px; font-weight: 800; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1; }
+      .ins .row.rep b { color: #f0548a; }
+      .ins.light .row.rep b { color: var(--brand); }
+      .bub { position: absolute; padding: 18px 26px; border-radius: 34px; background: #fff; color: var(--ink); font-size: 44px; font-weight: 800; z-index: 16; opacity: 0;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22); white-space: nowrap; }
+      .bub::after { content: ""; position: absolute; left: 40px; bottom: -16px; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 18px solid #fff; }
+      .bub.gray { background: #3a2f38; color: #9b8f98; }
+      .bub.gray::after { border-top-color: #3a2f38; }
+      #sC .bg { background: #0b080c; }
+      .spot { position: absolute; left: -160px; top: -200px; width: 1400px; height: 2300px; opacity: 0; z-index: 2;
+        background: radial-gradient(38% 30% at 50% 66%, rgba(255, 236, 244, 0.32) 0%, rgba(255, 236, 244, 0.06) 60%, rgba(255, 236, 244, 0) 100%),
+          linear-gradient(180deg, rgba(255, 236, 244, 0.0) 0%, rgba(255, 236, 244, 0.10) 100%);
+        clip-path: polygon(46% 0, 54% 0, 82% 100%, 18% 100%); }
+      .ccard { position: absolute; top: 560px; width: 210px; height: 373px; border-radius: 22px; z-index: 10; opacity: 0; }
+      .ccard .in { position: absolute; inset: 0; border-radius: 22px; overflow: hidden; border: 4px solid #fff; background-size: cover; background-position: center; filter: saturate(0.3) brightness(0.8); }
+      .ccard .sb { position: absolute; left: 14px; right: 14px; top: 12px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.55); }
+      .ccard .ft { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
+        background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0)); color: #fff; font-size: 22px; font-weight: 700; border-radius: 0 0 22px 22px; }
+      .ccard .ft i { font-style: normal; opacity: 0.55; }
+      .ccard .av { position: absolute; left: -16px; top: -16px; width: 84px; height: 84px; border-radius: 50%; overflow: hidden; background: #fff; border: 4px solid #fff; z-index: 2; }
+      .ccard .av img { width: 150px; margin-left: -33px; margin-top: -6px; display: block; }
+      #sD .bg { background: linear-gradient(180deg, #ff86ae 0%, #e8417a 55%, #c51f55 100%); }
+      .tri { position: absolute; top: 196px; width: 860px; height: 1528px; border-radius: 52px; overflow: hidden; background: #222; z-index: 10;
+        box-shadow: 0 24px 60px rgba(90, 0, 30, 0.35), 0 0 0 10px rgba(255, 255, 255, 0.9); }
+      .tri .photo { inset: -2%; filter: saturate(0.35) brightness(0.85); }
+      .tri .stk { width: 640px; left: 110px; top: 460px; opacity: 0; }
+      .tri .ok { position: absolute; right: 40px; bottom: 50px; width: 150px; height: 150px; border-radius: 50%; background: #22c55e; z-index: 6; opacity: 0; }
+      .tri .ok::after { content: ""; position: absolute; left: 52px; top: 26px; width: 36px; height: 72px; border: solid #fff; border-width: 0 18px 18px 0; transform: rotate(45deg); }
+      .slchip { position: absolute; left: 330px; top: 1235px; width: 420px; padding: 22px 30px; border-radius: 60px; background: #fff; z-index: 20; opacity: 0; display: flex; justify-content: center;
+        box-shadow: 0 16px 40px rgba(90, 0, 30, 0.3); }
+      .slchip img { width: 320px; display: block; }
+      #sE .bg { background: radial-gradient(110% 80% at 50% 40%, #fff6f8 0%, #fbd6e2 100%); }
+      #sF .bg { background: var(--cream); }
+      #sA .cap { z-index: 20; }
+      .tri .stk.bd { width: 600px; left: 130px; top: 360px; }
+      .tri .stk.tr { width: 620px; left: 120px; top: 1080px; filter: drop-shadow(0 0 18px rgba(255,255,255,0.95)) drop-shadow(0 0 6px rgba(255,255,255,1)); }
+      .tri .stk.cf { width: 420px; left: 400px; top: 300px; }
+      .mini { position: absolute; top: 1110px; width: 200px; height: 356px; border-radius: 24px; overflow: hidden; z-index: 12; opacity: 0;
+        border: 5px solid #fff; box-shadow: 0 16px 34px rgba(90, 0, 30, 0.3); background: #222; }
+      .mini .photo { inset: 0; }
+      .mini .stk { position: absolute; }
+      .ins .th { position: relative; }
+      .ins .th img { position: absolute; width: 120px; right: -10px; top: 18px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25)); }
+      .notif { position: absolute; left: 190px; top: 470px; width: 700px; height: 150px; z-index: 18; transform-style: preserve-3d; }
+      .notif .fc { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 22px; border-radius: 80px; backface-visibility: hidden; }
+      .notif .f1 { background: #fff; color: var(--ink); font-size: 48px; font-weight: 800; box-shadow: 0 16px 40px rgba(80, 20, 40, 0.18); }
+      .notif .f1 b { color: var(--brand); font-size: 64px; letter-spacing: -0.03em; }
+      .notif .f2 { transform: rotateX(180deg); }
+      .notif .f2 img { width: 620px; }
+      .link { position: absolute; left: 230px; top: 700px; width: 620px; height: 132px; border-radius: 30px; background: #fff; z-index: 20; opacity: 0;
+        display: flex; align-items: center; justify-content: center; gap: 22px; color: var(--brand); font-size: 50px; font-weight: 800; letter-spacing: 0.02em;
+        box-shadow: 0 14px 34px rgba(80, 20, 40, 0.2); overflow: hidden; }
+      .link svg { width: 58px; height: 58px; }
+      .link .fill { position: absolute; inset: 0; background: var(--brand); opacity: 0; }
+      .link span, .link svg { position: relative; z-index: 2; }
+      #car { position: absolute; left: 0; top: 920px; height: 470px; z-index: 10; }
+      .cc { position: absolute; top: 0; width: 250px; height: 444px; border-radius: 26px; overflow: hidden; background: #222;
+        box-shadow: 0 16px 34px rgba(80, 20, 40, 0.22); }
+      .cc .photo { inset: 0; }
+      .cc .stk { position: absolute; }
+      .tp { position: absolute; left: 12px; right: 12px; text-align: center; color: #fff; text-shadow: 0 3px 14px rgba(0,0,0,0.35); line-height: 1.05; }
+===HTML===
+      <!-- A: every day, at night, the shame -->
+      <div id="sA" class="scene clip" data-start="0" data-duration="4.9" data-track-index="0">
+        <div class="inner" id="sA-in">
+          <div class="bg"></div><div class="phglow" id="glA"></div>
+          <div class="days" id="days"></div>
+          <div id="pAbox"></div>
+          <div class="vig" id="vigA"></div>
+          <div class="ptbox" data-layout-ignore id="ptA"></div>
+          <div class="cap" id="cA1" style="top: 290px"><span>se</span><span>você</span><span>posta</span><span>story</span><span class="k">todo</span><span class="k">dia</span></div>
+          <div class="cap" id="cA2" style="top: 290px"><span>e</span><span>tem</span><span>passado</span><span>pela</span><span class="k">vergonha</span><span>de</span><span>abrir</span><span>isso</span><span>aqui…</span></div>
+        </div>
+      </div>
+
+      <!-- B: the insights, everyone watching, nobody talking -->
+      <div id="sB" class="scene clip" data-start="4.2" data-duration="5.07" data-track-index="1">
+        <div class="inner" id="sB-in">
+          <div class="bg"></div>
+          <div class="ins" id="insB">
+            <div class="th" style="filter: saturate(0.4)"></div>
+            <div class="st"><h4>Atividade do story</h4>
+              <div class="row"><b id="bV">0</b>visualizações</div>
+              <div class="row rep"><b id="bR">0</b>respostas</div></div>
+          </div>
+          <div id="crowdB"></div>
+          <div id="bubsB"></div>
+          <div class="ptbox" data-layout-ignore id="ptB"></div>
+          <div class="cap" id="cB1" style="top: 290px"><span>e</span><span>ver</span><span class="k">todo</span><span class="k">mundo</span><span>olhando,</span></div>
+          <div class="cap" id="cB2" style="top: 290px"><span>e</span><span class="k">ninguém</span><span>falando</span><span>nada.</span></div>
+        </div>
+      </div>
+
+      <!-- C: lights off, spotlight -->
+      <div id="sC" class="scene clip" data-start="9.27" data-duration="4.4" data-track-index="2">
+        <div class="inner" id="sC-in">
+          <div class="bg"></div><div class="spot" id="spot"></div>
+          <div id="belt"></div>
+          <div id="pCbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptC"></div>
+          <div class="cap" id="cC1" style="top: 290px"><span>não</span><span>é</span><span class="k">você.</span></div>
+          <div class="cap" id="cC2" style="top: 290px"><span>é</span><span>que</span><span>o</span><span>seu</span><span>story</span><span>tá</span><span class="k">igual</span><span>ao</span><span>de</span><span class="k">todo</span><span class="k">mundo</span></div>
+        </div>
+      </div>
+
+      <!-- D: pink, the stickers -->
+      <div id="sD" class="scene clip" data-start="13.3" data-duration="8.1" data-track-index="3">
+        <div class="inner" id="sD-in">
+          <div class="bg"></div><div class="glow" id="gD" style="opacity: 0.5"></div>
+          <div class="slchip" id="slchip"><img src="assets/app/logo-t.png" alt="Stories Lab" /></div>
+          <div class="tri" id="tri0" style="left: -240px"><div class="photo"></div><img class="stk bd" alt="" /><div class="ok"></div></div>
+          <div class="tri" id="tri1" style="left: 110px"><div class="photo"></div><img class="stk tr" alt="" /><div class="ok"></div></div>
+          <div class="tri" id="tri2" style="left: 460px"><div class="photo"></div><img class="stk cf" alt="" /><div class="ok"></div></div>
+          <div id="minis"></div>
+          <div id="pDbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptD"></div>
+          <div class="cap" id="cD1" style="top: 290px"><span>eu</span><span>comecei</span><span>a</span><span>usar</span><span>as</span><span class="k">figurinhas</span><span class="k">prontas</span><span>do</span><span>stories</span><span>lab</span></div>
+          <div class="cap" id="cD2" style="top: 290px"><span class="k">bom dia,</span><span class="k">treino,</span><span class="k">café.</span><span>tudo</span><span>pronto ✨</span></div>
+          <div class="cap" id="cDa" style="top: 290px"><span>agora</span><span>olha</span></div>
+        </div>
+      </div>
+
+      <!-- E: the difference -->
+      <div id="sE" class="scene clip" data-start="20.9" data-duration="2.28" data-track-index="4">
+        <div class="inner" id="sE-in">
+          <div class="bg"></div><div class="glow2"></div>
+          <div class="ins light" id="insE">
+            <div class="th"><img alt="" /></div>
+            <div class="st"><h4>Atividade do story</h4>
+              <div class="row"><b id="eV">38</b>visualizações</div>
+              <div class="row rep"><b id="eR">0</b>respostas</div></div>
+          </div>
+          <div id="crowdE"></div>
+          <div id="bubsE"></div>
+          <div class="ptbox" data-layout-ignore id="ptE"></div>
+          <div class="cap" id="cE" style="top: 290px"><span>a</span><span class="k">diferença</span></div>
+        </div>
+      </div>
+
+      <!-- F: CTA -->
+      <div id="sF" class="scene clip" data-start="22.2" data-duration="__REST_22.2__" data-track-index="5">
+        <div class="inner" id="sF-in">
+          <div class="bg"></div><div class="glow" id="gF"></div><div class="glow2"></div>
+          <div class="notif" id="notif"><div class="fc f1"><b>+47</b>respostas</div><div class="fc f2"><img src="assets/app/logo-t.png" alt="Stories Lab" /></div></div>
+          <div class="link" id="link"><div class="fill" id="lfill"></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span>SAIBA MAIS</span><div class="gloss"><i id="ctaG"></i></div></div>
+          <div id="car"></div>
+          <div id="curF"></div>
+          <div id="pFbox"></div>
+          <div class="ptbox" data-layout-ignore id="ptF"></div>
+          <div class="cap" id="cF1" style="top: 290px"><span>toca</span><span>em</span><span class="k">saiba</span><span class="k">mais</span><span>e</span><span>testa</span><span class="k">hoje</span></div>
+        </div>
+      </div>
+
+      <div id="fx" class="clip" data-start="0" data-duration="__TOTAL__" data-track-index="9">
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+===JS===
+      // ---- every photo and sticker of G03 lives here (swap files without touching layout). Each path used ONCE. ----
+      const PP = (f) => `assets/org/${f}`, SK = (f) => `assets/${f}`;
+      const P = {
+        days: ["selfie-carro-01.jpg", "mesa-trabalho-04.jpg", "academia-07.jpg", "look-espelho-03.jpg", "marmita-14.jpg", "mae-filho-05.jpg", "pizza-caseira-15.jpg"].map(PP),
+        insB: PP("escritorio-selfie-03.jpg"),
+        belt: ["mesa-trabalho-09.jpg", "costura-08.jpg", "feira-10.jpg", "unhas-01.jpg", "lojinha-03.jpg", "salao-cabelo-04.jpg", "marmita-04.jpg", "varanda-plantas-00.jpg", "selfie-carro-16.jpg"].map(PP),
+        tri: [[PP("cafe-manha-01.jpg"), SK("stk/bom-dia-73.webp")], [PP("academia-12.jpg"), SK("stk/academia-e-treino-32.webp")], [PP("cafe-manha-11.jpg"), SK("stk2/cafe-2.webp")]],
+        minis: [[PP("pet-06.jpg"), SK("stk2/pet-3.webp")], [PP("praia-11.jpg"), SK("stk2/praia-4.webp")], [PP("mae-filho-15.jpg"), SK("stk2/date-2.webp")], [PP("mae-filho-10.jpg"), SK("stk2/natal-4.webp")]],
+        insE: [PP("aniversario-19.jpg"), SK("stk2/niver-4.webp")],
+        car: [PP("pizza-caseira-05.jpg"), PP("salao-cabelo-09.jpg"), PP("bolo-caseiro-13.jpg"), PP("mesa-trabalho-14.jpg"), PP("feira-00.jpg"), PP("loja-celular-03.jpg")],
+        carStk: [SK("stk2/date-3.webp"), null, SK("stk2/niver-2.webp"), null, null, null],
+      };
+      const CROWD = [[0, -40], [3, 170], [5, 380], [2, 590], [6, 800]];
+      const crowdRow = (box, pre, faces, t, y0) => CROWD.map(([k, x], i) => {
+        const id = `${pre}${i}`, s = peep(box, id, `crowd${k}`, faces, x, y0, 320);
+        tl.fromTo(s, { y: 500, rotation: (i - 2) * 3 }, { y: 0, rotation: 0, duration: 0.55, ease: "back.out(1.3)" }, t + i * 0.08);
+        breathe(id, t + 0.6, t + 4, 0.015);
+        return id; });
+      const bubble = (box, txt, x, y, t, gray, rot = 0) => {
+        const b = document.createElement("div"); b.className = "bub" + (gray ? " gray" : ""); b.textContent = txt;
+        Object.assign(b.style, { left: x + "px", top: y + "px" }); $(box).appendChild(b);
+        tl.fromTo(b, { opacity: 0, scale: 0.2, rotation: rot - 10, transformOrigin: "20% 100%" }, { opacity: 1, scale: 1, rotation: rot, duration: 0.35, ease: "back.out(2.2)" }, t);
+        return b; };
+
+      // ---------- A: every day, at night (0 – 4.3) ----------
+      camera("#sA-in", 0, T.B, 1.0, 1.05, "sine.inOut");
+      tl.fromTo("#glA", { opacity: 0.6, scale: 0.9 }, { opacity: 1, scale: 1.1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0);
+      const DAYS = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"];
+      DAYS.forEach((d, i) => {
+        const e = document.createElement("div"); e.className = "day";
+        e.innerHTML = `<div class="rg"><i style="background-image:url(${P.days[i]})"></i><div class="ck">✓</div></div>${d}`; $("#days").appendChild(e);
+        tl.fromTo(e, { opacity: 0, y: 40, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.15 + i * 0.07);
+        tl.fromTo(e.querySelector(".ck"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, T.DAYS + i * 0.07);
+        tl.to(e, { opacity: 0.35, filter: "grayscale(1)", duration: 0.5 }, T.SHAME + 0.1 + i * 0.03);
+      });
+      const pA = peep("#pAbox", "pA", "hero3-device", ["Smile", "Concerned", "Tired", "EyesClosed"], 230, 990, 620);
+      $(pA).classList.add("lit");
+      tl.fromTo(pA, { y: 300 }, { y: 0, duration: 0.7, ease: "expo.out" }, 0);
+      breathe("pA", 0.5, T.B);
+      caption("cA1", 0, 0, 5, "melancholy");
+      tl.to(pA, { rotation: -1.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8);
+      blinks("pA", [1.0], "Smile");
+      face("pA", "Concerned", w(0, 6));
+      capOut("cA1", w(0, 6) - 0.12);
+      caption("cA2", 0, 6, 14, "melancholy");
+      face("pA", "Tired", T.SHAME);
+      tl.to(pA, { y: 60, scale: 0.94, rotation: -3, duration: 0.9, ease: "sine.inOut" }, T.SHAME);
+      tl.to("#vigA", { opacity: 1, duration: 0.9, ease: "sine.inOut" }, T.SHAME);
+      tap("#sA-in", 745, 1480, T.OPEN);
+      tl.to("#sA-in", { scale: 4.5, opacity: 0, filter: "blur(14px)", duration: 0.42, ease: "power2.in", transformOrigin: "69% 77%" }, T.B - 0.05);
+      tl.fromTo("#sB-in", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, T.B + 0.15);
+
+      // ---------- B: insights, everyone watching ----------
+      $("#insB .th").style.backgroundImage = `url(${P.insB})`;
+      camera("#insB", T.B, T.C, 1.0, 1.03, "sine.inOut");
+      clock("#bV", 0, 38, T.B + 0.35, 0.9, (v) => String(Math.round(v)));
+      tl.fromTo("#bR", { scale: 1 }, { scale: 1.25, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, T.B + 1.35);
+      caption("cB1", 1, 0, 4, "melancholy");
+      const cB = crowdRow("#crowdB", "cb", ["Blank", "Solemn", "EyesClosed"], T.CROWD - 0.2, 1160);
+      cB.forEach((id, i) => { if (i % 2) face(id, "Solemn", T.CROWD + 0.6); });
+      blinks(cB[1], [7.0], "Solemn"); blinks(cB[3], [7.6], "Solemn"); blinks(cB[0], [8.4], "Blank"); blinks(cB[4], [6.7], "Blank");
+      capOut("cB1", T.SILENT - 0.6);
+      caption("cB2", 1, 5, 8, "secret");
+      const gb = [bubble("#bubsB", "…", 120, 1110, T.SILENT - 0.2, true), bubble("#bubsB", "…", 470, 1100, T.SILENT, true, 4), bubble("#bubsB", "…", 820, 1120, T.SILENT + 0.18, true, -4)];
+      gb.forEach((b, i) => tl.to(b, { opacity: 0, scale: 0.3, y: 30, duration: 0.25, ease: "power2.in" }, T.NADA + i * 0.08));
+      tl.fromTo("#insB .rep", { x: 0 }, { x: 14, duration: 0.05, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, T.NADA + 0.05);
+      tl.to("#bR", { scale: 1.35, duration: 0.25, ease: "back.out(3)" }, T.NADA);
+      ash("ptB", T.SILENT, T.C, 18);
+
+      // ---------- C: lights off, spotlight ----------
+      tl.fromTo("#spot", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "steps(3)" }, T.C + 0.25);
+      tl.to("#spot", { opacity: 0.8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 4 }, T.C + 0.5);
+      const pC = peep("#pCbox", "pC", "hero3-device", ["Tired", "Calm", "Concerned", "EyesClosed", "Solemn"], 230, 960, 620);
+      tl.fromTo(pC, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "steps(3)" }, T.C + 0.25);
+      breathe("pC", T.C + 0.3, T.D, 0.02);
+      camera("#sC-in", T.C, T.D, 1.0, 1.07, "sine.inOut");
+      caption("cC1", 2, 0, 2, "secret");
+      face("pC", "Calm", w(2, 1)); tl.to(pC, { y: -16, rotation: 1.5, duration: 0.6, ease: "sine.out" }, w(2, 1));
+      blinks("pC", [10.9], "Calm");
+      sparks("ptC", T.C + 0.4, T.D, 16, "rgba(255,235,242,0.6)");
+      capOut("cC1", w(2, 3) - 0.12);
+      caption("cC2", 2, 3, 13, "melancholy");
+      face("pC", "Concerned", T.IGUAL);
+      // hers first, then many different women's stories: different lives, the same bare story, the same 0 replies
+      const VIEWS = [38, 27, 54, 19, 41, 33, 22, 46, 30];
+      P.belt.forEach((src, k) => {
+        const c = document.createElement("div"); c.className = "ccard";
+        c.innerHTML = `<div class="in" style="background-image:url(${src})"></div><div class="sb"></div>` +
+          `<div class="ft"><span>👁 ${VIEWS[k]}</span><i>0 respostas</i></div>` +
+          (k ? `<div class="av"><img src="assets/peeps/crowd${(k + 2) % 8}-${["Blank", "Solemn", "Calm"][k % 3]}.svg" alt="" /></div>` : "");
+        c.style.left = 435 + "px"; $("#belt").appendChild(c);
+        if (k === 0) {
+          tl.fromTo(c, { opacity: 0, scale: 0.4, y: 300 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, T.SEU - 0.1);
+          tl.to(c, { x: -700, duration: 4.0, ease: "none" }, T.IGUAL);
+        } else {
+          const t = T.IGUAL + (k - 1) * 0.11;
+          tl.fromTo(c, { opacity: 0, x: 0, scale: 0.6 }, { opacity: 1, x: k * 240, scale: 1, duration: 0.4, ease: "back.out(1.2)" }, t);
+          tl.to(c, { x: k * 240 - 700, duration: 4.0, ease: "none" }, t + 0.4);
+        }
+      });
+      tl.fromTo("#sD-in", { clipPath: "circle(0% at 69% 78%)" }, { clipPath: "circle(150% at 69% 78%)", duration: 0.6, ease: "expo.inOut" }, T.D);
+
+      // ---------- D: the stickers ----------
+      P.tri.forEach(([ph, st], i) => { $(`#tri${i} .photo`).style.backgroundImage = `url(${ph})`; $(`#tri${i} .stk`).src = st; });
+      tl.fromTo("#gD", { x: -200 }, { x: 200, y: -300, duration: 7.8, ease: "sine.inOut" }, T.D);
+      caption("cD1", 3, 0, 9, "hope");
+      ["#tri0", "#tri1", "#tri2"].forEach((s, i) => {
+        tl.set(s, { scale: 0.34 }, 0);
+        tl.fromTo(s, { opacity: 0, rotationY: 80, y: 260 }, { opacity: 1, rotationY: 0, y: 0, duration: 0.6, ease: "back.out(1.3)" }, T.D + 0.35 + i * 0.12);
+        tl.fromTo(s, { rotation: i === 1 ? 0 : i ? 4 : -4 }, { rotation: i === 1 ? 0 : i ? 1 : -1, duration: 3, ease: "sine.inOut", immediateRender: false }, T.D + 1);
+      });
+      tl.fromTo("#slchip", { opacity: 0, scale: 0.4, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, T.SL - 0.05);
+      const pD = peep("#pDbox", "pD", "hero3-device", ["SmileBig", "Smile", "EyesClosed", "LoveGrin"], 300, 1360, 480);
+      tl.fromTo(pD, { y: 500 }, { y: 0, duration: 0.6, ease: "back.out(1.3)" }, T.D + 0.5);
+      breathe("pD", T.D + 1.1, T.TUDO);
+      blinks("pD", [15.4, 18.2], "SmileBig");
+      capOut("cD1", w(3, 10) - 0.15);
+      caption("cD2", 3, 10, 15, "excited");
+      tl.to("#slchip", { opacity: 0, y: -40, duration: 0.3 }, T.BOM - 0.2);
+      [T.BOM, T.TREINO, T.CAFE].forEach((t, i) => {
+        const s = `#tri${i}`;
+        tl.fromTo(`${s} .stk`, { opacity: 0, scale: 3, y: 900, rotation: 40 }, { opacity: 1, scale: 1, y: 0, rotation: [-5, 4, -3][i], duration: 0.42, ease: "back.out(1.5)" }, t - 0.1);
+        tl.to(`${s} .photo`, { filter: "saturate(1.1) brightness(1)", duration: 0.35 }, t + 0.2);
+        tl.fromTo(s, { scale: 0.34 }, { scale: 0.38, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, t + 0.25);
+        tl.to(pD, { y: -30, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, t - 0.15);
+      });
+      face("pD", "LoveGrin", T.TUDO - 0.1);
+      ["#tri0", "#tri1", "#tri2"].forEach((s, i) => {
+        tl.fromTo(`${s} .ok`, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(3)" }, T.TUDO + i * 0.08);
+        // make room: the 3 shrink up, the range of niches lands below
+        tl.to(s, { scale: 0.27, y: -110, duration: 0.45, ease: "power3.inOut" }, T.TUDO + 0.25);
+      });
+      tl.to(pD, { y: 700, duration: 0.45, ease: "power3.in" }, T.TUDO + 0.15);
+      // pet, praia, date, natal: every niche, ready
+      const MSTK = [{ width: "180px", left: "10px", top: "200px" }, { width: "170px", left: "15px", top: "30px" }, { width: "170px", left: "15px", top: "40px" }, { width: "180px", left: "10px", top: "230px" }];
+      P.minis.forEach(([ph, st], i) => {
+        const m = document.createElement("div"); m.className = "mini"; m.style.left = [50, 305, 575, 830][i] + "px";
+        m.innerHTML = `<div class="photo" style="background-image:url(${ph})"></div><img class="stk" src="${st}" alt="" />`;
+        Object.assign(m.querySelector(".stk").style, MSTK[i]); $("#minis").appendChild(m);
+        const t = T.TUDO + 0.35 + i * 0.1;
+        tl.fromTo(m, { opacity: 0, y: 320, rotation: [-12, 8, -8, 12][i], scale: 0.6 }, { opacity: 1, y: 0, rotation: [-4, 2, -2, 4][i], scale: 1, duration: 0.45, ease: "back.out(1.6)" }, t);
+        tl.fromTo(m.querySelector(".stk"), { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)" }, t + 0.22);
+        tl.to(m, { y: -12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, t + 0.45);
+      });
+      confetti("ptD", T.TUDO + 0.1, 40, 540, 900);
+      capOut("cD2", T.AGORA - 0.12);
+      caption("cDa", 4, 0, 1, "triumph");
+
+      // D -> E: vertical whip
+      tl.to("#sD-in", { y: -1920, filter: "blur(16px)", duration: 0.32, ease: "power3.in" }, T.E);
+      tl.fromTo("#sE-in", { y: 1920, filter: "blur(16px)" }, { y: 0, filter: "blur(0px)", duration: 0.36, ease: "power3.out" }, T.E + 0.1);
+
+      // ---------- E: the difference ----------
+      $("#insE .th").style.backgroundImage = `url(${P.insE[0]})`; $("#insE .th img").src = P.insE[1];
+      caption("cE", 4, 2, 3, "triumph");
+      const cE = crowdRow("#crowdE", "ce", ["Awe", "SmileBig", "EyesClosed"], T.E + 0.15, 1160);
+      clock("#eV", 38, 2140, T.DIFF - 0.4, 0.9, (v) => Math.round(v).toLocaleString("pt-BR"));
+      clock("#eR", 0, 47, T.DIFF - 0.1, 0.8, (v) => String(Math.round(v)));
+      tl.fromTo("#insE", { scale: 1 }, { scale: 1.05, duration: 0.2, ease: "back.out(3)", yoyo: true, repeat: 1, immediateRender: false }, T.DIFF);
+      cE.forEach((id, i) => face(id, "SmileBig", T.DIFF + i * 0.05));
+      [["😍", 60, 1080], ["que lindo!", 300, 1050], ["onde fez??", 560, 1090], ["❤️", 860, 1060]].forEach(([t, x, y], i) => bubble("#bubsE", t, x, y, T.DIFF + 0.05 + i * 0.12, false, (i % 2 ? 4 : -4)));
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.6, duration: 0.06, immediateRender: false }, T.DIFF);
+      tl.to("#flash", { opacity: 0, duration: 0.35 }, T.DIFF + 0.06);
+      hearts("ptE", T.DIFF, 14, 540, 1500, 900);
+      confetti("ptE", T.DIFF + 0.05, 40, 540, 700);
+      camera("#sE-in", T.E, T.F + 0.3, 1.0, 1.05, "sine.out");
+
+      // E -> F: the insights card rises out of the light into the end card
+      tl.fromTo("#sF-in", { clipPath: "circle(0% at 50% 40%)" }, { clipPath: "circle(140% at 50% 40%)", duration: 0.6, ease: "expo.inOut" }, T.F);
+
+      // ---------- F: CTA — the +47 replies flip into the brand, a story link sticker gets tapped ----------
+      tl.fromTo("#gF", { x: -200 }, { x: 200, y: -300, duration: 6, ease: "sine.inOut" }, T.F);
+      caption("cF1", 5, 0, 6, "warm");
+      tl.fromTo("#notif", { opacity: 0, scale: 0.6, y: 80 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, T.F + 0.15);
+      tl.fromTo("#notif", { rotationX: 0 }, { rotationX: 180, duration: 0.6, ease: "back.inOut(1.4)", immediateRender: false }, T.F + 0.95);
+      tl.to("#notif", { y: -12, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.F + 1.6);
+      tl.fromTo("#link", { opacity: 0, scale: 0.3, rotation: -8 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.5, ease: "back.out(2.2)" }, T.CTA - 0.15);
+      const cu = cursor("#curF", "cuF", 960, 1700);
+      tl.to(cu, { opacity: 1, duration: 0.2 }, T.CTA);
+      click("#curF", cu, 600, 790, T.CTA + 0.75, 0.55);
+      tl.to("#lfill", { opacity: 1, duration: 0.18 }, T.CTA + 0.78);
+      tl.to("#link", { color: "#fff", scale: 0.94, duration: 0.12, ease: "power2.out" }, T.CTA + 0.72);
+      tl.to("#link", { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.CTA + 0.9);
+      sweep("#ctaG", T.CTA + 1.1, 0.8); sweep("#ctaG", T.CTA + 2.6, 0.8);
+      tl.to(cu, { opacity: 0, y: 900, duration: 0.5, ease: "power2.in" }, T.CTA + 1.3);
+      // carousel of designed stories, every one a different niche
+      const TXT = [null, ["agenda aberta", "56px", "300px", 800, "-0.02em"], null, ["foco total", "60px", "120px", 800, "0"], ["chegou fresquinho", "38px", "150px", 800, "0"], ["vendi tudo hoje 🙌", "38px", "330px", 800, "0"]];
+      const CSTK = [{ width: "210px", left: "20px", top: "40px" }, null, { width: "220px", left: "15px", top: "120px" }];
+      P.car.forEach((ph, i) => {
+        const c = document.createElement("div"); c.className = "cc"; c.style.left = (40 + i * 285) + "px";
+        c.innerHTML = `<div class="photo" style="background-image:url(${ph})"></div>`;
+        if (P.carStk[i]) { const s = document.createElement("img"); s.className = "stk"; s.src = P.carStk[i]; Object.assign(s.style, CSTK[i]); c.appendChild(s); }
+        if (TXT[i]) { const [t, fs, top, fw, ls] = TXT[i]; const d = document.createElement("div"); d.className = "tp"; d.textContent = t;
+          Object.assign(d.style, { fontSize: fs, top, fontWeight: fw, letterSpacing: ls }); c.appendChild(d); }
+        $("#car").appendChild(c);
+        tl.fromTo(c, { opacity: 0, y: 200, rotation: (i % 2 ? 6 : -6) }, { opacity: 1, y: 0, rotation: (i % 2 ? 2 : -2), duration: 0.5, ease: "back.out(1.5)" }, T.F + 0.5 + i * 0.08);
+      });
+      tl.fromTo("#car", { x: 0 }, { x: -820, duration: TOTAL - T.F - 0.5, ease: "none" }, T.F + 0.5);
+      const pF = peep("#pFbox", "pF", "hero3-arms", ["SmileBig", "Smile", "EyesClosed", "LoveGrin"], 720, 1470, 360);
+      tl.fromTo(pF, { y: 600 }, { y: 0, duration: 0.6, ease: "back.out(1.3)" }, T.F + 0.6);
+      breathe("pF", T.F + 1.2, TOTAL);
+      face("pF", "LoveGrin", T.CTA + 0.8);
+      tl.to(pF, { y: -26, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T.CTA + 0.8);
+      blinks("pF", [24.4, 26.4], "SmileBig");
+      sparks("ptF", T.F + 0.3, TOTAL, 14);
+===SFX===
+s = []
+for i in range(7):  # every day ticked
+    s.append((K1 + "pop.mp3", T["DAYS"] + i * 0.07 + 0.12, -16 + i * 0.4, {"trim": 0.5, "semis": 2 + i, "p0": -0.7 + i * 0.23}))
+s += [
+    (K4 + "fall.mp3", T["SHAME"] + 0.1, -16, {"trim": 1.4, "semis": -3, "wet": 0.3}),
+    (KG + "click1.mp3", T["OPEN"] - 0.02, 2, {"trim": 0.4}),
+    (K1 + "whoosh.mp3", T["B"] - 0.05, -6, {"semis": -2}),
+]
+for k in range(9):
+    s.append((K1 + "tick.mp3", T["B"] + 0.35 + k * 0.1, -18, {"trim": 0.1, "semis": 3 + k, "p0": -0.3}))
+for i in range(5):  # crowd slides up
+    s.append((K4 + "swish.mp3", T["CROWD"] - 0.1 + i * 0.08, -18, {"trim": 0.5, "semis": i * 0.8, "p0": -0.8 + i * 0.4}))
+for i, dt in enumerate([-0.2, 0.0, 0.18]):  # empty speech bubbles
+    s.append((K1 + "pop.mp3", T["SILENT"] + dt + 0.1, -12, {"trim": 0.5, "semis": -2 - i, "p0": [-0.6, 0.0, 0.6][i]}))
+s += [
+    (K1 + "dissolve.mp3", T["NADA"] + 0.02, -8, {"trim": 1.0, "wet": 0.35}),
+    (K1 + "subhit.mp3", T["NADA"] + 0.05, -6, {"wet": 0.3, "decay": 1.8}),
+    (K4 + "impact.mp3", T["C"] + 0.25, -10, {"trim": 1.0, "semis": -4}),
+    (K1 + "heartbeat.mp3", T["C"] + 0.7, -8, {"trim": 1.4, "wet": 0.25}),
+    (K1 + "heartbeat.mp3", T["C"] + 2.2, -10, {"trim": 1.4, "wet": 0.25}),
+    (K1 + "pop.mp3", T["SEU"] + 0.2, -10, {"trim": 0.5, "semis": -2}),
+]
+for k in range(8):  # clones on the belt
+    s.append((K1 + "tick.mp3", T["IGUAL"] + 0.2 + k * 0.11, -15, {"trim": 0.1, "semis": 0 if k % 2 else 2, "p0": -0.2 + k * 0.1}))
+s += [
+    (K4 + "bloom.mp3", T["D"] + 0.1, -6, {"wet": 0.2}),
+    (K4 + "flashw.mp3", T["D"] + 0.15, -10, {"p0": 0.5, "p1": -0.5}),
+]
+for i in range(3):
+    s.append((K4 + "swish.mp3", T["D"] + 0.35 + i * 0.12, -12, {"trim": 0.6, "semis": i * 2, "p0": [-0.6, 0.0, 0.6][i]}))
+s.append((K1 + "pop.mp3", T["SL"] + 0.15, -6, {"trim": 0.5, "semis": 3}))
+s.append((K1 + "shimmer.mp3", T["SL"] + 0.3, -14, {"trim": 1.2}))
+for i, t in enumerate([T["BOM"], T["TREINO"], T["CAFE"]]):
+    s.append((K1 + "whoosh.mp3", t - 0.3, -14, {"semis": 3 + i, "p0": [-0.5, 0.0, 0.5][i]}))
+    s.append((K1 + "pop.mp3", t + 0.2, -4, {"trim": 0.5, "semis": i * 2, "p0": [-0.5, 0.0, 0.5][i]}))
+    s.append((K4 + "land.mp3", t + 0.25, -2, {"trim": 0.6}))
+s += [
+    (K1 + "ding.mp3", T["PRONTO"] + 0.15, -8, {"semis": 5}),
+    (K1 + "confetti.mp3", T["PRONTO"] + 0.15, -10, {"p0": -0.3, "p1": 0.4}),
+]
+for i in range(4):  # pet, praia, date, natal land
+    s.append((K1 + "pop.mp3", T["TUDO"] + 0.45 + i * 0.1, -9, {"trim": 0.5, "semis": 3 + i * 2, "p0": [-0.6, -0.2, 0.2, 0.6][i]}))
+s += [
+    (K1 + "whoosh.mp3", T["E"] + 0.15, -8, {"semis": 2}),
+]
+for k in range(8):
+    s.append((K1 + "tick.mp3", T["DIFF"] - 0.4 + k * 0.1, -18, {"trim": 0.1, "semis": 7 + k, "p0": 0.3}))
+s += [
+    (K4 + "impact.mp3", T["DIFF"] + 0.02, -6, {"trim": 1.0}),
+    (K1 + "coin.mp3", T["DIFF"] + 0.5, -10, {"trim": 0.8}),
+    (K1 + "confetti.mp3", T["DIFF"] + 0.1, -8),
+]
+for i in range(4):
+    s.append((K1 + "pop.mp3", T["DIFF"] + 0.2 + i * 0.12, -10, {"trim": 0.5, "semis": 4 + i * 2, "p0": [-0.6, -0.2, 0.2, 0.6][i]}))
+s += [
+    (K4 + "passby.mp3", T["F"] + 0.1, -10, {"trim": 1.0, "p0": 0.4, "p1": -0.2}),
+    (K4 + "swish.mp3", T["F"] + 0.45, -10, {"trim": 0.8}),
+    (K4 + "sting.mp3", T["CTA"] - 0.05, -8),
+]
+s += [
+    (K4 + "swish.mp3", T["F"] + 0.95, -10, {"trim": 0.6, "semis": 3}),   # +47 flips into the logo
+    (K1 + "shimmer.mp3", T["F"] + 1.3, -16, {"trim": 1.0}),
+    (K1 + "pop.mp3", T["CTA"] - 0.05, -8, {"trim": 0.5, "semis": 4}),     # link sticker lands
+    (KG + "click2.mp3", T["CTA"] + 0.75, 0, {"trim": 0.4}),              # tap on SAIBA MAIS
+    (K1 + "ding.mp3", T["CTA"] + 0.8, -12, {"semis": 7}),
+]
+for i in range(6):  # carousel cards arrive
+    s.append((K4 + "swish.mp3", T["F"] + 0.5 + i * 0.08, -20, {"trim": 0.4, "semis": i, "p0": -0.6 + i * 0.24}))
+SEG2 = 13.4
+LIFT = 27.4  # m3 source second where the full band comes in
+CFG = {
+    "music": [("m3", 8.0, 0.0, T["C"] + 0.02, 0.4, 0.05), ("m3", LIFT - (T["DIFF"] - SEG2), SEG2, TOTAL - SEG2, 1.2, 1.8)],
+    "curve": [(0, 4), (T["C"], 4), (SEG2, 6), (T["DIFF"] - 0.05, 7), (T["DIFF"], -5), (T["F"], -7), (TOTAL - 1.2, -8), (TOTAL, -40)],
+    "duck_depth": [(0, 1.0), (TOTAL, 1.0)],
+    "hit_duck": [(T["DIFF"], -3), (T["CTA"], -2)],
+    "amb": [(K4 + "amb_room.mp3", 0, T["C"], -20, 0.5, 0.05), (K4 + "amb_tense.mp3", T["C"] + 0.2, T["D"] - T["C"], -18, 0.4, 0.5),
+            (K4 + "amb_hope.mp3", T["D"], TOTAL - T["D"], -28, 1.0, 1.5)],
+    "sfx": s,
+}

@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS creators (
+ id TEXT PRIMARY KEY, name TEXT NOT NULL, token_hash TEXT NOT NULL UNIQUE,
+ created TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1,
+ fee_cents INTEGER NOT NULL DEFAULT 0, commission REAL NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS creator_clicks (
+ id TEXT PRIMARY KEY, creator TEXT NOT NULL, visitor TEXT NOT NULL, created TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS creator_clicks_owner ON creator_clicks(creator,created);
+CREATE TABLE IF NOT EXISTS creator_handoffs (
+ hash TEXT PRIMARY KEY, creator TEXT NOT NULL, expires INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS creator_limits (
+ bucket TEXT PRIMARY KEY, n INTEGER NOT NULL DEFAULT 1, expires INTEGER NOT NULL
+);

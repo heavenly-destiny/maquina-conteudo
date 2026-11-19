@@ -1,0 +1,302 @@
+===TIMES===
+T_M1 = W("Geral") - 0.1; T_M1E = W("Todo") - 0.12
+T_P1E = W("mas") + 0.08; T_P2 = W("Por") - 0.05
+T_PH = W("mas") + 0.42; T_M2 = W("tem") - 0.06; T_P3 = W("todos", 0) - 0.15
+T_B1 = W("você", 1) - 0.12; T_B2 = W("copia") + 0.05
+T_A = W("Ah") - 0.06
+MUSIC_FROM = 8.5
+T_M3 = W("carinha") - 0.18; T_END = D["talk_end"] - 0.1; T_INK = T_END + 0.35
+===CSS===
+      .mscene .inner { perspective: 1600px; }
+      .pchip { position: absolute; padding: 14px 26px; border-radius: 50px; background: #fff; color: var(--ink); font-size: 38px; font-weight: 800; white-space: nowrap; opacity: 0;
+        box-shadow: 0 10px 24px rgba(80,20,40,0.14), 0 30px 70px rgba(80,20,40,0.2); z-index: 16; }
+      .tile { position: absolute; width: 230px; height: 230px; border-radius: 56px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 54px; font-weight: 900; font-style: italic;
+        background: linear-gradient(135deg, #00c4cc, #7d2ae8); box-shadow: 0 20px 50px rgba(60,20,90,0.35); }
+      .cvx { position: absolute; left: 110px; top: 1250px; width: 860px; height: 470px; border-radius: 34px; overflow: hidden; background: #fff; opacity: 0;
+        box-shadow: 0 20px 60px rgba(60,20,90,0.3); }
+      .cvbar { height: 84px; display: flex; align-items: center; gap: 22px; padding: 0 30px; background: linear-gradient(90deg, #00c4cc, #7d2ae8); color: #fff; }
+      .cvbar b { font-size: 44px; font-weight: 900; font-style: italic; } .cvbar span { font-size: 26px; opacity: 0.85; }
+      .cvbody { display: flex; height: 386px; background: #ebecf0; }
+      .cvside { width: 110px; background: #18191b; display: flex; flex-direction: column; gap: 22px; padding: 26px 30px; }
+      .cvside i { display: block; width: 50px; height: 50px; border-radius: 12px; background: #3a3b3f; }
+      .cvpage { margin: 30px auto; width: 190px; height: 326px; background: #fff; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+      .cvpage small { font-size: 18px; color: #888; text-align: center; padding: 0 10px; }
+      .spin { width: 64px; height: 64px; border-radius: 50%; border: 8px solid #e3d9f7; border-top-color: #7d2ae8; }
+      .pinwrap { position: absolute; inset: 0; background: #fff; }
+      #m4-in { background: #fbf5f1; }
+      .endcard { position: absolute; left: 70px; top: 360px; width: 940px; height: 1160px; border-radius: 60px; background: rgba(251,245,241,0.93); box-shadow: 0 30px 90px rgba(80,20,40,0.25); }
+      .wall { position: absolute; left: -400px; top: -330px; width: 1900px; transform: rotate(-9deg); display: flex; flex-direction: column; gap: 26px; }
+      .wrow { display: flex; gap: 26px; width: max-content; }
+      .wrow img { width: 300px; height: 533px; object-fit: cover; border-radius: 28px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); display: block; }
+      .pinwrap .pinhead { position: absolute; left: 30px; right: 30px; top: 70px; display: flex; align-items: center; gap: 18px; }
+      .pinlogo { flex: none; width: 70px; height: 70px; border-radius: 50%; background: #e60023; color: #fff; font: 900 46px/70px Georgia, serif; text-align: center; }
+      .sbarq { flex: 1; height: 90px; border-radius: 45px; background: #f1edee; display: flex; align-items: center; padding: 0 34px; font-size: 36px; color: #4a3d43; }
+      .feedwin { position: absolute; left: 24px; right: 24px; top: 190px; bottom: 0; overflow: hidden; }
+      .feed { columns: 3; column-gap: 16px; }
+      .feed img { display: block; width: 100%; height: 420px; object-fit: cover; margin-bottom: 16px; border-radius: 22px; break-inside: avoid; }
+      .feed img:nth-child(3n+2) { height: 540px; }
+      .xmark { position: absolute; width: 300px; height: 300px; opacity: 0; }
+      .xmark::before, .xmark::after { content: ""; position: absolute; left: 130px; top: -10px; width: 40px; height: 320px; border-radius: 20px; background: #ef2b4b; box-shadow: 0 6px 20px rgba(239,43,75,0.4); }
+      .xmark::before { transform: rotate(45deg); } .xmark::after { transform: rotate(-45deg); }
+      .mini { position: absolute; width: 230px; height: 410px; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 40px rgba(60,10,30,0.3); border: 5px solid #fff; opacity: 0; }
+      .mini .photo { inset: 0; }
+      .mini.big { width: 300px; height: 530px; }
+      .mini.big img { left: 25px; top: 90px; width: 250px; }
+      .mini img { position: absolute; left: 20px; top: 60px; width: 190px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+===HTML===
+      <!-- PiP backgrounds: her video shrinks into a card, motion runs underneath -->
+      <div class="pipbg" id="pb"><div class="bg"></div><div class="glow" id="gpb"></div><div class="glow2"></div></div>
+      <div class="pipfx" id="p1fx">
+        <div class="cvx" id="p1canva">
+          <div class="cvbar"><b>Canva</b><span>Story sem título · 1080 × 1920</span></div>
+          <div class="cvbody">
+            <div class="cvside"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="cvpage"><div class="spin" id="p1spin"></div><small>carregando elementos…</small></div>
+          </div>
+        </div>
+        <div class="clock" id="p1clk" style="left: 620px; top: 1215px; opacity: 0">⏳ <span id="p1clkn">0h00</span></div>
+        <div class="xmark" id="p1x" style="left: 390px; top: 1300px"></div>
+        <div class="chip pink" id="p1nope" style="left: 300px; top: 1690px; opacity: 0">nunca mais 🙅‍♀️</div>
+      </div>
+      <div class="pipfx" id="p2fx">
+        <div class="mini" id="p2s1" style="left: 40px; top: 1280px"><div class="photo" style="background-image: url(assets/photos/breakfast.jpg)"></div><img src="assets/stk/bomdia-126.webp" alt="" /></div>
+        <div class="mini" id="p2s2" style="left: 295px; top: 1280px"><div class="photo" style="background-image: url(assets/photos/gym.jpg)"></div><img src="assets/stk/academia-e-treino-190.webp" alt="" /></div>
+        <div class="mini" id="p2s3" style="left: 550px; top: 1280px"><div class="photo" style="background-image: url(assets/site/rotina-2.webp)"></div><img src="assets/stk/frases-40.webp" alt="" /></div>
+        <div class="mini" id="p2s4" style="left: 805px; top: 1280px"><div class="photo" style="background-image: url(assets/photos/boutique.jpg)"></div><img src="assets/stk/bomdia-74.webp" alt="" /></div>
+      </div>
+      <!-- M1: everybody asks about her stories -->
+      <div class="mscene" id="m1"><div class="inner" id="m1-in">
+        <div class="bg"></div><div class="glow" id="g1"></div><div class="glow2"></div>
+        <div class="story" id="m1st" style="left: 110px; top: 336px">
+          <div class="photo" id="m1ph" style="background-image: url(assets/photos/breakfast.jpg)"></div>
+          <div class="sbar"><i><b id="m1bar"></b></i><i></i><i></i></div>
+          <div class="shead"><i></i>meu story <small>· 2 min</small></div>
+          <img class="stk" src="assets/stk/bomdia-126.webp" style="left: 230px; top: 200px; width: 420px" alt="" />
+          <img class="stk" src="assets/stk/bom-dia-272.webp" style="left: 470px; top: 1040px; width: 330px" alt="" />
+        </div>
+        <div class="dm" id="m1d1" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #f7a6c0, #d92e64)">J</div><div><b>Ju <small>respondeu ao seu story</small></b><p>como vc edita seus stories?? 😍</p></div></div>
+        <div class="dm" id="m1d2" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #ffd08a, #f08a4b)">C</div><div><b>Carol <small>respondeu ao seu story</small></b><p>onde vc acha essas figurinhas?</p></div></div>
+        <div class="dm" id="m1d3" style="top: 0"><div class="av" style="background: linear-gradient(135deg, #b9a6ff, #7a5cf0)">B</div><div><b>Bia <small>respondeu ao seu story</small></b><p>me ensina essas edições 🙏</p></div></div>
+        <div class="cap" id="m1c" style="top: 150px"><span>geral</span><span>pergunta</span><span>das</span><span class="k">figurinhas</span><span>e</span><span class="k">edições</span></div>
+      </div></div>
+
+      <!-- M2: the real app, 24 mil stickers, every theme -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="phone" id="m2ph" style="left: 183px; top: 391px">
+          <div class="screen" id="m2scr">
+            <img id="m2home" src="assets/app/home.png" alt="" />
+            <img id="m2mais" src="assets/app/maisusados.png" style="opacity: 0" alt="" />
+            <img id="m2cat" src="assets/app/cat-bomdia.png" style="opacity: 0" alt="" />
+            <div class="island"></div>
+          </div>
+        </div>
+        <div class="count" id="m2n" style="top: 150px; opacity: 0"><span class="n" id="m2nn">+0</span><span class="l">figurinhas</span></div>
+      </div></div>
+
+      <div class="pipfx" id="p3fx">
+        <div class="mini big" id="m2o1" style="left: 45px; top: 1225px"><div class="photo" style="background-image: url(assets/photos/gym.jpg)"></div><img src="assets/stk/academia-e-treino-190.webp" alt="" /></div>
+        <div class="mini big" id="m2o2" style="left: 390px; top: 1245px"><div class="photo" style="background-image: url(assets/site/rotina-2.webp)"></div><img src="assets/stk/frases-22.webp" alt="" /></div>
+        <div class="mini big" id="m2o3" style="left: 735px; top: 1225px"><div class="photo" style="background-image: url(assets/photos/breakfast.jpg)"></div><img src="assets/stk/bom-dia-272.webp" alt="" /></div>
+        <div class="pchip" id="m2p1" style="left: 75px; top: 1700px">treino 💪</div>
+        <div class="pchip" id="m2p2" style="left: 425px; top: 1720px">rotina ☕</div>
+        <div class="pchip" id="m2p3" style="left: 745px; top: 1700px">dia a dia ☀️</div>
+      </div>
+      <!-- real hands: click, copy, paste -->
+      <div class="broll" id="b1"><video id="b1v" class="clip" src="assets/IMG_4143.mp4" muted playsinline data-start="__T_B1__" data-duration="__B1D__" data-media-start="1.7" data-track-index="2"></video></div>
+      <div class="broll" id="b2"><video id="b2v" class="clip" src="assets/IMG_4143.mp4" muted playsinline data-start="__T_B2__" data-duration="__B2D__" data-media-start="9.15" data-track-index="3"></video></div>
+      <div class="toast" id="b1t" style="left: 265px; top: 120px; bottom: auto; z-index: 40"><i></i><div>Figurinha copiada!<small>agora é só colar</small></div></div>
+
+      <!-- M3: the Pinterest look, then the CTA -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in">
+        <div class="bg"></div>
+        <div class="wall" id="wall"><div class="wrow" id="wr0"><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/comida-2.webp" alt="" /><img src="assets/site/comida-3.webp" alt="" /><img src="assets/site/comida-4.webp" alt="" /><img src="assets/site/comida-5.webp" alt="" /><img src="assets/site/comida-6.webp" alt="" /><img src="assets/site/comida-7.webp" alt="" /><img src="assets/site/comida-8.webp" alt="" /><img src="assets/site/treino-1.webp" alt="" /><img src="assets/site/treino-2.webp" alt="" /><img src="assets/site/treino-3.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/comida-2.webp" alt="" /><img src="assets/site/comida-3.webp" alt="" /><img src="assets/site/comida-4.webp" alt="" /><img src="assets/site/comida-5.webp" alt="" /><img src="assets/site/comida-6.webp" alt="" /><img src="assets/site/comida-7.webp" alt="" /><img src="assets/site/comida-8.webp" alt="" /><img src="assets/site/treino-1.webp" alt="" /><img src="assets/site/treino-2.webp" alt="" /><img src="assets/site/treino-3.webp" alt="" /></div><div class="wrow" id="wr1"><img src="assets/site/treino-4.webp" alt="" /><img src="assets/site/treino-5.webp" alt="" /><img src="assets/site/treino-6.webp" alt="" /><img src="assets/site/treino-7.webp" alt="" /><img src="assets/site/rotina-1.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/treino-4.webp" alt="" /><img src="assets/site/treino-5.webp" alt="" /><img src="assets/site/treino-6.webp" alt="" /><img src="assets/site/treino-7.webp" alt="" /><img src="assets/site/rotina-1.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /></div><div class="wrow" id="wr2"><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/fe-1.webp" alt="" /><img src="assets/site/fe-2.webp" alt="" /><img src="assets/site/fe-3.webp" alt="" /><img src="assets/site/fe-4.webp" alt="" /><img src="assets/site/fe-5.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/fe-1.webp" alt="" /><img src="assets/site/fe-2.webp" alt="" /><img src="assets/site/fe-3.webp" alt="" /><img src="assets/site/fe-4.webp" alt="" /><img src="assets/site/fe-5.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /></div><div class="wrow" id="wr6"><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /></div></div>
+        <div class="pinwrap" id="m3pin0">
+          <div class="pinhead"><div class="pinlogo">P</div><div class="sbarq">🔍 story aesthetic</div></div>
+          <div class="feedwin"><div class="feed" id="m3feed">
+            <img src="assets/photos/plaincoffee.jpg" alt="" /><img src="assets/photos/unsplash-v2/night.jpg" alt="" /><img src="assets/photos/boutique.jpg" alt="" />
+            <img src="assets/photos/unsplash-v2/breakfast.jpg" alt="" /><img src="assets/photos/gym.jpg" alt="" /><img src="assets/photos/unsplash-v2/latte.jpg" alt="" />
+            <img src="assets/photos/influencer.jpg" alt="" /><img src="assets/photos/unsplash-v2/boutique.jpg" alt="" /><img src="assets/photos/plaincoffee.jpg" alt="" />
+            <img src="assets/photos/night.jpg" alt="" /><img src="assets/photos/unsplash-v2/gym.jpg" alt="" /><img src="assets/photos/breakfast.jpg" alt="" />
+          </div></div>
+        </div>
+        <div class="story" id="m3st" style="left: 110px; top: 336px">
+          <div class="photo" style="background-image: url(assets/site/rotina-2.webp)"></div>
+          <div class="sbar"><i><b id="m3bar"></b></i></div>
+          <div class="shead"><i></i>meu story <small>· agora</small></div>
+          
+          
+        </div>
+        <div class="chip pink" id="m3pin" style="left: 560px; top: 560px; opacity: 0">carinha de Pinterest ✨</div>
+        <div class="ptbox" data-layout-ignore id="m3pt"></div>
+        <div class="cap" id="m3c" style="top: 150px"><span>carinha</span><span>de</span><span class="k">Pinterest</span></div>
+      </div></div>
+      <div class="mscene" id="m4"><div class="inner" id="m4-in">
+        <div class="wall" id="wall2" style="filter: blur(2px); opacity: 0.85"><div class="wrow" id="wr3"><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/comida-2.webp" alt="" /><img src="assets/site/comida-3.webp" alt="" /><img src="assets/site/comida-4.webp" alt="" /><img src="assets/site/comida-5.webp" alt="" /><img src="assets/site/comida-6.webp" alt="" /><img src="assets/site/comida-7.webp" alt="" /><img src="assets/site/comida-8.webp" alt="" /><img src="assets/site/treino-1.webp" alt="" /><img src="assets/site/treino-2.webp" alt="" /><img src="assets/site/treino-3.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/comida-2.webp" alt="" /><img src="assets/site/comida-3.webp" alt="" /><img src="assets/site/comida-4.webp" alt="" /><img src="assets/site/comida-5.webp" alt="" /><img src="assets/site/comida-6.webp" alt="" /><img src="assets/site/comida-7.webp" alt="" /><img src="assets/site/comida-8.webp" alt="" /><img src="assets/site/treino-1.webp" alt="" /><img src="assets/site/treino-2.webp" alt="" /><img src="assets/site/treino-3.webp" alt="" /></div><div class="wrow" id="wr4"><img src="assets/site/treino-4.webp" alt="" /><img src="assets/site/treino-5.webp" alt="" /><img src="assets/site/treino-6.webp" alt="" /><img src="assets/site/treino-7.webp" alt="" /><img src="assets/site/rotina-1.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/treino-4.webp" alt="" /><img src="assets/site/treino-5.webp" alt="" /><img src="assets/site/treino-6.webp" alt="" /><img src="assets/site/treino-7.webp" alt="" /><img src="assets/site/rotina-1.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /></div><div class="wrow" id="wr5"><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/fe-1.webp" alt="" /><img src="assets/site/fe-2.webp" alt="" /><img src="assets/site/fe-3.webp" alt="" /><img src="assets/site/fe-4.webp" alt="" /><img src="assets/site/fe-5.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/fe-1.webp" alt="" /><img src="assets/site/fe-2.webp" alt="" /><img src="assets/site/fe-3.webp" alt="" /><img src="assets/site/fe-4.webp" alt="" /><img src="assets/site/fe-5.webp" alt="" /><img src="assets/site/comida-1.webp" alt="" /></div><div class="wrow" id="wr7"><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /><img src="assets/site/beleza-5.webp" alt="" /><img src="assets/site/beleza-4.webp" alt="" /><img src="assets/site/beleza-3.webp" alt="" /><img src="assets/site/beleza-2.webp" alt="" /><img src="assets/site/beleza-1.webp" alt="" /><img src="assets/site/rotina-7.webp" alt="" /><img src="assets/site/rotina-6.webp" alt="" /><img src="assets/site/rotina-5.webp" alt="" /><img src="assets/site/rotina-4.webp" alt="" /><img src="assets/site/rotina-3.webp" alt="" /><img src="assets/site/rotina-2.webp" alt="" /></div></div>
+        <div class="endcard"></div>
+        <div class="endlogo" style="top: 470px"><img id="m4logo" src="assets/app/logo-t.png" style="width: 820px" alt="Stories Lab" /></div>
+        <div class="tag" id="m4tag" style="top: 720px">+24 mil figurinhas, filtros e roteiros<br /><em>copia, cola e pronto</em></div>
+        <div class="cta" id="m4cta" style="top: 1060px">Toca em Saiba mais 👇<div class="gloss"><i id="m4g"></i></div></div>
+        <div class="url" id="m4url" style="top: 1250px">storieslab.app</div>
+        <div class="arrow" id="m4arr" style="top: 1380px"></div>
+        <div class="ptbox" data-layout-ignore id="m4pt"></div>
+      </div></div>
+
+      <div id="fx" style="z-index: 60">
+        <div class="rays" id="rays"></div>
+        <div class="leak" id="leak1" style="left: -1700px; top: -600px; background: radial-gradient(circle, rgba(255, 190, 150, 0.85), rgba(255, 190, 150, 0) 60%)"></div>
+        <div class="flash" id="flash" style="background: #fff"></div>
+      </div>
+===JS===
+      window.PIP = [[T_M1E, T_P1E], [T_P3, T_B1], [T_P2, T_M3]];
+      window.ORIG = [[T_PH - 0.05, T_M2 + 0.1]];
+      window.BROLL = [[T_B1, T_A]];
+      window.MW = [[T_M1, T_M1E], [T_M2, T_P3], [T_M3, TOTAL]];
+      window.HER = [[3.4, 4.4], [10.55, 11.86], [12.75, 13.6]];
+      window.HOOK_END = T_M1 - 0.2;
+      // talking-head camera: clean shots, punch-ins only, a push onto the phone when she shows it
+      window.CAM = [
+        [0, 0.32, 1.3, 1.0, 540, 640, 0, 0, 0, 0, "expo.out"],
+        [0.32, T_M1, 1.0, 1.05, 540, 640],
+        [T_PH, T_PH + 0.45, 1.0, 1.7, 790, 940, 0, 0, -215, -60, "power2.inOut"],
+        [T_PH + 0.45, T_M2, 1.7, 1.78, 790, 940, -215, -60, -215, -60],
+        [T_A, W("Sim") - 0.06, 1.15, 1.2, 540, 640, 0, 0, 0, 0],
+        [W("Sim") - 0.06, W("Sim") + 0.3, 1.35, 1.06, 540, 640, 0, 0, 0, 0, "expo.out"],
+        [W("Sim") + 0.3, T_P2, 1.06, 1.1, 540, 640],
+      ];
+      const showScene = (id, t) => tl.set(id, { opacity: 1 }, t);
+      tl.fromTo("#flash", { opacity: 0.7 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0);
+      const hideScene = (id, t) => tl.set(id, { opacity: 0 }, t);
+
+      // ---- M1: zoom-whip in, DMs land on her story, vertical whip back to her
+      showScene("#m1", T_M1);
+      tl.fromTo("#m1-in", { scale: 1.35, filter: "blur(18px)" }, { scale: 1, filter: "blur(0px)", duration: 0.32, ease: "expo.out" }, T_M1);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.6, duration: 0.06 }, T_M1);
+      tl.to("#flash", { opacity: 0, duration: 0.3 }, T_M1 + 0.06);
+      tl.fromTo("#m1st", { scale: 0.8, rotation: -2, rotationY: -8 }, { scale: 0.84, rotation: 1, rotationY: 6, duration: T_M1E - T_M1, ease: "sine.inOut" }, T_M1);
+      tl.fromTo("#g1", { x: 0 }, { x: 160, y: -120, duration: T_M1E - T_M1, ease: "sine.inOut" }, T_M1);
+      storyBar("#m1bar", T_M1, T_M1E);
+      mcap("m1c", W("Geral"), T_M1E - 0.22, "curious");
+      dm("#m1d1", W("Geral") + 0.05, 620);
+      dm("#m1d2", W("figurinhas") - 0.05, 800);
+      dm("#m1d3", W("edições") - 0.1, 980);
+      tl.to("#m1", { y: -1920, duration: 0.34, ease: "power3.in" }, T_M1E - 0.16);
+      // ---- PiP 1: "acha que fico horas no Canva" — her card on top, the Canva clock below
+      const pip = (t0, t1, inFrom, exit = "expand") => {
+        tl.set("#pb", { opacity: 1 }, t0 - 0.1);
+        tl.fromTo("#cam", { scale: 0.5, x: 0, y: inFrom, transformOrigin: "50% 50%", clipPath: "inset(0% round 90px)", boxShadow: "0 0 0 rgba(0,0,0,0)" },
+          { scale: 0.5, y: -370, duration: 0.4, ease: "expo.out", immediateRender: false }, t0);
+        tl.fromTo("#cam", { scale: 0.5 }, { scale: 0.52, y: -360, duration: t1 - t0 - 0.4, ease: "none", immediateRender: false }, t0 + 0.4);
+        if (exit === "expand") { tl.to("#cam", { scale: 1, y: 0, clipPath: "inset(0% round 0px)", duration: 0.32, ease: "power3.inOut" }, t1); tl.set("#pb", { opacity: 0 }, t1 + 0.32); }
+        else { tl.to(["#pb", exit], { y: -1920, duration: 0.32, ease: "power3.in" }, t1 - 0.12); tl.to("#cam", { y: -2400, duration: 0.32, ease: "power3.in" }, t1 - 0.12);
+          tl.set("#pb", { opacity: 0, y: 0 }, t1 + 0.3); tl.set("#cam", { clipPath: "inset(0% round 0px)" }, t1 + 0.3); }
+        tl.fromTo("#gpb", { x: -100 }, { x: 200, y: 200, duration: t1 - t0, ease: "sine.inOut" }, t0);
+      };
+      pip(T_M1E - 0.06, T_P1E, 1500);
+      tl.fromTo("#p1canva", { opacity: 0, y: 300, rotationX: 30, scale: 0.85 }, { opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 0.45, ease: "expo.out" }, W("acha") - 0.1);
+      tl.fromTo("#p1spin", { rotation: 0 }, { rotation: 1440, duration: 2.2, ease: "none" }, W("acha"));
+      pop("#p1clk", W("horas") - 0.15, 3);
+      clock("#p1clkn", 0, 167, W("horas") - 0.1, 0.9, (v) => Math.floor(v / 60) + "h" + String(Math.floor(v % 60)).padStart(2, "0"));
+      // "no Canva" -> big red X, error buzzer, the editor shakes and greys out
+      tl.fromTo("#p1x", { opacity: 0, scale: 2.4, rotation: -20 }, { opacity: 1, scale: 1.25, rotation: 0, duration: 0.22, ease: "expo.out" }, W("Canva") + 0.02);
+      tl.fromTo("#p1canva", { x: -26 }, { x: 0, duration: 0.45, ease: "elastic.out(1,0.25)", immediateRender: false }, W("Canva") + 0.05);
+      tl.fromTo("#p1canva", { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.8)", duration: 0.25, immediateRender: false }, W("Canva") + 0.05);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.25, duration: 0.05, immediateRender: false }, W("Canva") + 0.02);
+      tl.to("#flash", { opacity: 0, duration: 0.2 }, W("Canva") + 0.07);
+      tl.fromTo("#p1nope", { opacity: 0, scale: 0.4, rotation: -10 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.22, ease: "back.out(2.5)" }, W("Canva") + 0.08);
+      tl.to(["#p1canva", "#p1x", "#p1clk", "#p1nope"], { opacity: 0, y: 200, duration: 0.18, ease: "power2.in" }, T_P1E - 0.22);
+      hideScene("#m1", T_M1E + 0.2);
+
+      // ---- M2: iris out of her phone into the app
+      showScene("#m2", T_M2);
+      tl.fromTo("#m2", { clipPath: "circle(0% at 50% 49%)" }, { clipPath: "circle(140% at 50% 49%)", duration: 0.6, ease: "expo.inOut" }, T_M2);
+      tl.fromTo("#rays", { opacity: 0, rotation: 0, scale: 0.6 }, { opacity: 0.8, rotation: 25, scale: 1.1, duration: 0.4, ease: "power2.out" }, T_M2);
+      tl.to("#rays", { opacity: 0, rotation: 40, duration: 0.5, ease: "power2.in" }, T_M2 + 0.4);
+      tl.fromTo("#m2ph", { y: 140, scale: 1.25, rotationX: 0 }, { y: 0, scale: 0.78, duration: 0.8, ease: "power3.out" }, T_M2);
+      tl.fromTo("#m2ph", { rotationY: 0 }, { rotationY: 6, rotationX: -3, duration: T_P3 - T_M2 - 0.8, ease: "sine.inOut", immediateRender: false }, T_M2 + 0.8);
+      tl.fromTo("#g2", { x: -100 }, { x: 180, y: 260, duration: T_P3 - T_M2, ease: "sine.inOut" }, T_M2);
+      tl.fromTo("#m2n", { opacity: 0, scale: 0.5, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, W("24") - 0.15);
+      counter("#m2nn", 0, 24000, W("24"), 0.9);
+      tl.to("#m2nn", { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out" }, W("24") + 0.9);
+      tap("#m2scr", 150, 268, W("figurinhas", 1) - 0.1);
+      push("#m2home", "#m2mais", W("figurinhas", 1) + 0.05);
+      // phone flips away upward, her card drops in from the top
+      tl.to("#m2ph", { y: -1500, rotationX: 35, scale: 0.6, filter: "blur(8px)", duration: 0.32, ease: "power3.in" }, T_P3 - 0.12);
+      tl.to("#m2n", { y: -500, opacity: 0, duration: 0.28, ease: "power3.in" }, T_P3 - 0.12);
+      tl.to("#m2", { opacity: 0, duration: 0.2 }, T_P3 + 0.08);
+      hideScene("#m2", T_P3 + 0.3);
+
+      // ---- PiP 3: "de todos os tipos — treino, rotina, dia a dia": her card on top, the stickers land under it
+      pip(T_P3, T_B1, -1500, "#p3fx");
+      [["#m2o1", "#m2p1", W("treino")], ["#m2o2", "#m2p2", W("rotina")], ["#m2o3", "#m2p3", W("dia", 0)]].forEach(([o, p, t], i) => {
+        tl.fromTo(o, { y: 300, scale: 0.2, opacity: 0, rotation: i === 1 ? 30 : -30 }, { y: 0, scale: 1, opacity: 1, rotation: i === 1 ? 6 : -6, duration: 0.5, ease: "back.out(1.7)" }, t - 0.06);
+        tl.to(o, { y: i % 2 ? -14 : 14, duration: 1.2, ease: "sine.inOut" }, t + 0.45);
+        pop(p, t + 0.08, i === 1 ? 4 : -4);
+      });
+
+      // ---- real B-roll: vertical whip from the app to her hands
+      tl.fromTo("#b1", { opacity: 1, y: 1920 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, T_B1 - 0.02);
+      tl.fromTo("#b1", { scale: 1.0 }, { scale: 1.08, duration: T_B2 - T_B1, ease: "none", immediateRender: false }, T_B1 + 0.3);
+      tl.fromTo("#b1t", { opacity: 0, y: -60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copia") - 0.1);
+      tl.to("#b1t", { opacity: 0, y: -40, duration: 0.25 }, W("copia") + 0.9);
+      tl.set("#b1", { opacity: 0 }, T_B2);
+      tl.fromTo("#b2", { opacity: 1, scale: 1.2, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "expo.out" }, T_B2);
+      tl.to("#b2", { scale: 1.06, duration: T_A - T_B2, ease: "none" }, T_B2 + 0.25);
+      tl.to("#b2", { opacity: 0, scale: 1.15, filter: "blur(14px)", duration: 0.18, ease: "power2.in" }, T_A - 0.08);
+
+      // ---- PiP 2: "todos os meus stories" — a row of her pretty stories under her card
+      pip(T_P2, T_M3 + 0.3, 0);
+      ["#p2s1", "#p2s2", "#p2s3", "#p2s4"].forEach((m, i) => tl.fromTo(m, { opacity: 0, x: 400, rotation: 10, scale: 0.8 }, { opacity: 1, x: 0, rotation: (i % 2 ? 3 : -3), scale: 1, duration: 0.45, ease: "back.out(1.6)" }, W("todos", 1) - 0.1 + i * 0.12));
+      tl.to(["#p2s1", "#p2s2", "#p2s3", "#p2s4"], { y: -20, duration: 1, ease: "sine.inOut" }, W("todos", 1) + 0.5);
+
+      // ---- M3: light leak into the Pinterest-look story, then pink ink into the CTA
+      tl.fromTo("#leak1", { opacity: 0, x: 0 }, { opacity: 1, x: 1400, duration: 0.8, ease: "sine.inOut" }, T_M3 - 0.25);
+      tl.to("#leak1", { opacity: 0, duration: 0.3 }, T_M3 + 0.55);
+      showScene("#m3", T_M3);
+      tl.fromTo("#m3", { opacity: 0 }, { opacity: 1, duration: 0.1, immediateRender: false }, T_M3);
+      tl.fromTo("#m3feed", { y: 0 }, { y: -700, duration: 1.6, ease: "power2.out" }, T_M3);
+      tl.to("#m3pin0", { opacity: 0, scale: 1.15, filter: "blur(10px)", duration: 0.35, ease: "power2.in" }, T_M3 + 0.3);
+      [["#wr0", -1700, 0], ["#wr1", 0, -1700], ["#wr2", -1500, 0], ["#wr6", 0, -1600]].forEach(([r, a, b]) => tl.fromTo(r, { x: a }, { x: b, duration: 9, ease: "none" }, T_M3));
+      tl.fromTo("#wall", { filter: "brightness(1) blur(0px)" }, { filter: "brightness(0.75) blur(2px)", duration: 0.6, immediateRender: false }, T_M3 + 0.6);
+      tl.fromTo("#m3st", { scale: 0.3, y: 400, rotation: -8, opacity: 0 }, { scale: 0.82, y: 0, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.4)" }, T_M3 + 0.35);
+      storyBar("#m3bar", T_M3, T_END + 0.6);
+      mcap("m3c", W("carinha"), T_END + 0.3, "triumph");
+      pop("#m3pin", W("Pinterest") + 0.15, 5);
+      hearts("m3pt", W("Pinterest"), 10, 540, 1500, 700);
+      showScene("#m4", T_INK);
+      tl.fromTo("#m4", { clipPath: "circle(0% at 50% 55%)" }, { clipPath: "circle(130% at 50% 55%)", duration: 0.6, ease: "expo.inOut" }, T_INK);
+      tl.to("#m3-in", { scale: 1.2, filter: "blur(6px)", duration: 0.6, ease: "power2.in" }, T_INK);
+      tl.fromTo("#m4logo", { opacity: 0, scale: 0.8, y: 40, filter: "blur(14px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, T_INK + 0.2);
+      tl.fromTo("#m4tag", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T_INK + 0.4);
+      tl.fromTo("#m4cta", { opacity: 0, scale: 0.6, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, T_INK + 0.55);
+      tl.to("#m4cta", { scale: 1.06, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, T_INK + 1.1);
+      sweep("#m4g", T_INK + 1.0, 0.8);
+      tl.fromTo("#m4url", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T_INK + 0.7);
+      tl.fromTo("#m4arr", { opacity: 0, y: -20 }, { opacity: 1, y: 30, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, T_INK + 0.8);
+      sparks("m4pt", T_INK + 0.3, TOTAL, 14);
+      [["#wr3", -1700, -600], ["#wr4", -600, -1700], ["#wr5", -1500, -400], ["#wr7", -500, -1600]].forEach(([r, a, b]) => tl.fromTo(r, { x: a }, { x: b, duration: TOTAL - T_INK, ease: "none" }, T_INK));
+      tl.fromTo(".endcard", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, T_INK + 0.1);
+===SFX===
+[
+ ("subhit", 0.0, -12, 0), ("whoosh", 0.02, -18, 2), ("pop", 0.1, -20, 3), ("pop", 0.24, -20, 6),
+ ("riser", T_M1 - 1.2, -22, 0, 1.25),
+ ("whoosh", T_M1 - 0.08, -12, 0), ("flashw", T_M1, -16, 0),
+ ("ding", W("Geral") + 0.1, -13, 2), ("ding", W("figurinhas") + 0.0, -14, 4), ("ding", W("edições") - 0.05, -14, 7),
+ ("swish", T_M1E - 0.14, -13, 3),
+ ("pop", W("acha") - 0.1, -14, 0), *[("tick", W("horas") - 0.1 + j * 0.1, -20, 2 + (j % 2) * 5, 0.12) for j in range(9)],
+ ("error", W("Canva") + 0.02, -9, 0), ("impact", W("Canva") + 0.03, -19, 2), ("pop", W("Canva") + 0.2, -15, 4),
+ ("swish", T_P1E, -16, -3), ("whoosh", T_PH, -19, -2),
+ ("bloom", T_M2, -13, 0), ("shimmer", T_M2 + 0.1, -19, 0),
+ ("pop", W("24") - 0.15, -13, 0), *[("tick", W("24") + j * 0.11, -19, 3 + j, 0.12) for j in range(8)], ("coin", W("24") + 0.9, -15, 2),
+ ("tick", W("figurinhas", 1) - 0.1, -15, 5, 0.12),
+ ("swish", T_P3 - 0.12, -13, 5),
+ ("pop", W("treino") - 0.06, -12, 2), ("pop", W("rotina") - 0.06, -12, 5), ("pop", W("dia", 0) - 0.06, -12, 8),
+ ("swish", T_B1 - 0.12, -13, 2),
+ ("tick", W("clica") + 0.05, -15, 5, 0.12), ("ding", W("copia") - 0.05, -13, 7),
+ ("whoosh", T_B2 - 0.03, -16, 6), ("pop", W("cola") + 0.05, -13, 3),
+ ("whoosh", T_A - 0.1, -17, -2),
+ ("subhit", W("Sim") - 0.06, -15, 0),
+ ("swish", T_P2, -16, 2), *[("pop", W("todos", 1) - 0.1 + i * 0.12, -15, 2 + i * 2) for i in range(4)],
+ ("passby", T_M3 - 0.25, -16, 0), ("swish", T_M3 + 0.05, -18, 6), ("whoosh", T_M3 + 0.35, -16, 3), ("pop", W("de", 2) - 0.05, -13, 3), ("pop", W("Pinterest") - 0.05, -13, 6), ("sparkles", W("Pinterest"), -15, 0),
+ ("whoosh", T_INK - 0.1, -15, 0), ("sting", T_INK + 0.05, -12, 0), ("pop", T_INK + 0.55, -13, 2),
+]

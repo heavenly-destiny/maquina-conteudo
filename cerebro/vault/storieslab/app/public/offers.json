@@ -1,0 +1,116 @@
+[
+  {
+    "feature": "presets",
+    "title": "Estúdio de Fotos + Presets Pro",
+    "sub": "Edite sua própria foto: 12 coleções, 109 looks e variações, intensidade e ajustes de luz e cor. Salve a foto pronta em JPG.",
+    "img": "img/material-covers/presets-preview.webp",
+    "buy": "https://pay.hub.la/0a4F7lds0kppZCeIxiZh",
+    "cta": "Liberar por R$ 9,90",
+    "files": [
+      {
+        "label": "LUTs: Cinema",
+        "url": "/m/mat/presets/storieslab-cinema.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Amazônia",
+        "url": "/m/mat/presets/storieslab-amazonia.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Anos 70",
+        "url": "/m/mat/presets/storieslab-anos-70.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Black",
+        "url": "/m/mat/presets/storieslab-black.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Bora Viajar",
+        "url": "/m/mat/presets/storieslab-bora-viajar.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Cores vivas",
+        "url": "/m/mat/presets/storieslab-cores-vivas.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Film",
+        "url": "/m/mat/presets/storieslab-film.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: House",
+        "url": "/m/mat/presets/storieslab-house.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Insta",
+        "url": "/m/mat/presets/storieslab-insta.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Natureza",
+        "url": "/m/mat/presets/storieslab-natureza.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Pé na Estrada",
+        "url": "/m/mat/presets/storieslab-pe-na-estrada.zip?v=pro-1"
+      },
+      {
+        "label": "LUTs: Tons Leves",
+        "url": "/m/mat/presets/storieslab-tons-leves.zip?v=pro-1"
+      }
+    ]
+  },
+  {
+    "feature": "animadas",
+    "title": "Figurinhas Animadas",
+    "sub": "156 figurinhas em movimento: corações, brilhos, frases.",
+    "img": "img/material-covers/animadas-preview.webp",
+    "buy": "https://pay.hub.la/MapY395uA0KLoQMaEmw5",
+    "cta": "Liberar por R$ 12,90",
+    "files": [
+      {
+        "label": "Parte 1",
+        "url": "https://storieslab.shop/e/eabpuFvO266o/figurinhas-animadas-parte-1.zip"
+      },
+      {
+        "label": "Parte 2",
+        "url": "https://storieslab.shop/e/eabpuFvO266o/figurinhas-animadas-parte-2.zip"
+      }
+    ]
+  },
+  {
+    "feature": "agenda",
+    "title": "Agenda de Conteúdo",
+    "sub": "30 dias do que postar, sequência por sequência.",
+    "img": "img/material-covers/agenda-preview.webp",
+    "buy": "https://pay.hub.la/AkhU0WtAD1m4BvoIY55i",
+    "cta": "Liberar por R$ 9,90",
+    "files": [
+      {
+        "label": "Abrir PDF",
+        "url": "https://storieslab.shop/e/eabpuFvO266o/agenda-de-conteudo.pdf"
+      }
+    ]
+  },
+  {
+    "feature": "magneticos",
+    "title": "Stories Magnéticos",
+    "sub": "60 roteiros prontos que prendem quem assiste.",
+    "img": "img/material-covers/magneticos-preview.webp",
+    "buy": "https://pay.hub.la/FLRKhqAsLMJ915cv4IXy",
+    "cta": "Liberar por R$ 9,90",
+    "files": [
+      {
+        "label": "Abrir PDF",
+        "url": "https://storieslab.shop/e/eabpuFvO266o/stories-magneticos.pdf"
+      }
+    ]
+  },
+  {
+    "bundle": true,
+    "wide": true,
+    "tag": "Combo",
+    "title": "Kit Influencer Pro: os 4 juntos",
+    "sub": "Presets + Animadas + Agenda + Roteiros por R$ 12,90 (separados saem R$ 31,70).",
+    "img": "img/material-covers/kit-preview.webp",
+    "buy": "https://pay.hub.la/q5hPWomBXJF0zR8yATYS",
+    "cta": "Quero o kit por R$ 12,90"
+  }
+]

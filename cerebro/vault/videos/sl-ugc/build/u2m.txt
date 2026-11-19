@@ -1,0 +1,143 @@
+===SHARED===
+
+===TIMES===
+MUSIC_FROM = 6.0
+T_M1 = W("antes") - 0.1; T_P1 = W("e", 0) - 0.1; T_A1 = W("Agora") - 0.1
+T_LOGO = W("Stories") - 0.1; T_P2 = W("várias") - 0.25
+T_B1 = W("É", 2) - 0.08; T_B2 = W("colar") - 0.1; T_A2 = W("Eu", 2) - 0.08
+T_M3 = W("meus") - 0.15; T_END = D["talk_end"]; T_INK = T_END + 0.05
+===CSS===
+      .drvhead { position: absolute; left: 90px; top: 330px; display: flex; align-items: center; gap: 20px; font-size: 52px; font-weight: 800; color: var(--ink); }
+      .drvhead i { width: 90px; height: 80px; display: block; background: conic-gradient(from 210deg, #1fa463 0 120deg, #ffd04b 0 240deg, #4688f4 0); clip-path: polygon(50% 0, 100% 85%, 0 85%); }
+===HTML===
+      <!-- M1: the old way, packs from Drive -->
+      <div class="mscene" id="m1"><div class="inner" id="m1-in">
+        <div class="bg"></div><div class="glow" id="g1"></div><div class="glow2"></div>
+        <div class="drvhead" id="d0" style="opacity: 0"><i></i>Google Drive</div>
+        <div class="mlist" style="top: 500px">
+          <div class="mrow" id="d1"><div class="ic">🗂️</div><div><b>pack-figurinhas-bomdia.zip</b><br /><small>412 MB</small></div><div class="bar"><i id="d1b"></i></div></div>
+          <div class="mrow" id="d2"><div class="ic">🗂️</div><div><b>pack-natal-2026.zip</b><br /><small>638 MB</small></div><div class="bar"><i id="d2b"></i></div></div>
+          <div class="mrow" id="d3"><div class="ic">🗂️</div><div><b>stickers-treino-FINAL(2).zip</b><br /><small>1,2 GB</small></div><div class="bar"><i id="d3b"></i></div></div>
+          <div class="mrow" id="d4"><div class="ic">🗂️</div><div><b>pack-frases-v3-novo.zip</b><br /><small>890 MB</small></div><div class="bar"><i id="d4b"></i></div></div>
+        </div>
+        <div class="bigclock bad" id="m1gb" style="top: 1240px"><div>📦 <span id="m1gbn">0</span> GB</div></div>
+        <div class="chip" id="m1sub" style="left: 0; right: 0; margin: 0 auto; width: max-content; top: 1480px; opacity: 0">baixando uma por uma… 🐢</div>
+        <div class="cap" id="m1c" style="top: 150px"><span>antes:</span><span>baixava</span><span class="k">pack</span><span>do</span><span class="k">Drive</span><span>😩</span></div>
+      </div></div>
+      <!-- PiP 1: memory full -->
+      <div class="pipfx" id="p1fx">
+        <div class="store" id="p1s"><h5>Armazenamento <span id="p1pct">62%</span></h5>
+          <div class="sbar2"><i style="width: 38%; background: #8b5cf6"></i><i style="width: 24%; background: #f59e0b"></i><i id="p1fill" style="width: 38%; background: #e11d48; transform: scaleX(0)"></i></div>
+          <p>Fotos · Apps · <b style="color: #e11d48">Packs de figurinha</b></p></div>
+        <div class="xmark" id="p1x" style="left: 390px; top: 1240px"></div>
+        <div class="chip pink" id="p1warn" style="left: 210px; top: 1610px; opacity: 0">memória cheia ⚠️</div>
+      </div>
+      <!-- M2: the app -->
+      <div class="mscene" id="m2"><div class="inner" id="m2-in">
+        <div class="bg"></div><div class="glow" id="g2"></div><div class="glow2"></div>
+        <div class="logoburst" id="m2l"><img src="assets/app/logo-t.png" alt="Stories Lab" /></div>
+        <div class="ptbox" data-layout-ignore id="m2pt"></div>
+        <div class="cap" id="m2c" style="top: 1150px"><span>agora</span><span>eu</span><span>uso</span><span>esse</span><span class="k">app</span><span>👇</span></div>
+      </div></div>
+      <!-- PiP 2: every theme -->
+      <div class="pipfx" id="p2fx">
+        <div class="mini" id="n1" style="left: 40px; top: 1260px; background: linear-gradient(160deg, #0f5132, #b91c1c)"><div class="emo">🎄</div></div>
+        <div class="mini" id="n2" style="left: 295px; top: 1260px; background: linear-gradient(160deg, #111827, #a16207)"><div class="emo">🥂</div></div>
+        <div class="mini" id="n3" style="left: 550px; top: 1260px"><div class="photo" style="background-image: url(assets/site/rotina-2.webp)"></div></div>
+        <div class="mini" id="n4" style="left: 805px; top: 1260px"><div class="photo" style="background-image: url(assets/site/treino-1.webp)"></div></div>
+        <div class="pchip" id="c1" style="left: 50px; top: 1700px">Natal 🎄</div>
+        <div class="pchip" id="c2" style="left: 285px; top: 1700px">Ano Novo 🥂</div>
+        <div class="pchip" id="c3" style="left: 560px; top: 1700px">Bom dia ☀️</div>
+        <div class="pchip" id="c4" style="left: 820px; top: 1700px">Treino 💪</div>
+      </div>
+      <!-- real hands -->
+      <div class="broll" id="b1"><video id="b1v" class="clip" src="assets/IMG_4143.mp4" muted playsinline data-start="__T_B1__" data-duration="__B1D__" data-media-start="1.7" data-track-index="2"></video></div>
+      <div class="broll" id="b2"><video id="b2v" class="clip" src="assets/IMG_4143.mp4" muted playsinline data-start="__T_B2__" data-duration="__B2D__" data-media-start="9.15" data-track-index="3"></video></div>
+      <div class="toast" id="b1t" style="left: 265px; top: 120px; bottom: auto; z-index: 40"><i></i><div>Figurinha copiada!<small>agora é só colar</small></div></div>
+      <!-- PiP 3: no more lost time -->
+      <div class="pipfx" id="p3fx">
+        <div class="bigclock good" id="p3c"><div>⚡ <span>5 segundos</span></div></div>
+        <div class="chip" id="p3x" style="left: 250px; top: 1560px; opacity: 0">antes: <s style="color:#e11d48">2 horas</s> 😮‍💨</div>
+      </div>
+      <!-- M3: her stories wall -->
+      <div class="mscene" id="m3"><div class="inner" id="m3-in" style="background: #fbf5f1">
+        <div class="wall" id="wall3"></div>
+        <div class="cap" id="m3c" style="top: 820px"><span>os</span><span>meus</span><span class="k">stories</span><span>✨</span></div>
+      </div></div>
+===JS===
+      window.ORIG = [[0, T_M1 + 0.1]];
+      window.BROLL = [[T_B1, T_A2]];
+      window.MW = [[T_M1, T_P1], [T_LOGO, T_P2], [T_M3, TOTAL]];
+      window.HER = [[3.08, 4.28], [9.23, 10.45], [14.05, 14.95], [16.67, 17.9]];
+      window.PIP = [[T_P1, T_A1], [T_P2, T_B1], [T_A2, T_M3]];
+      window.HOOK_END = T_M1 - 0.2;
+      window.CAM = [
+        [0, 0.3, 1.3, 1.05, 740, 800, 0, 0, 0, 0, "expo.out"],
+        [0.3, T_M1, 1.05, 1.15, 740, 800],
+        [T_A1, T_LOGO, 1.0, 1.06, 540, 640],
+      ];
+      // M1: Drive packs downloading
+      zoomIn("#m1", "#m1-in", T_M1);
+      mcap("m1c", T_M1 + 0.1, T_P1 - 0.3, "curious");
+      tl.fromTo("#d0", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3 }, T_M1 + 0.1);
+      [["#d1", W("baixava")], ["#d2", W("drive")], ["#d3", W("packs")], ["#d4", W("figurinhas", 1)]].forEach(([r, t], i) => {
+        tl.fromTo(r, { opacity: 0, x: 200 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, t - 0.1);
+        tl.fromTo(r + "b", { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, t + 0.1); });
+      tl.fromTo("#m1gb div", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, W("packs") - 0.2);
+      clock("#m1gbn", 0, 3.1, W("packs") - 0.1, T_P1 - W("packs"), (v) => v.toFixed(1).replace(".", ","));
+      tl.fromTo("#m1sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3 }, W("packs") + 0.2);
+      tl.to("#m1-in", { scale: 1.04, duration: T_P1 - T_M1, ease: "none" }, T_M1 + 0.32);
+      // PiP 1: memory fills up -> error
+      tl.to("#m1", { y: -1920, duration: 0.32, ease: "power3.in" }, T_P1 - 0.12); hideScene("#m1", T_P1 + 0.3); tl.set("#m1", { y: 0 }, T_P1 + 0.35);
+      pip(T_P1, T_A1, 1500, "expand", "#p1fx");
+      rise("#p1s", W("acabava") - 0.1);
+      tl.fromTo("#p1fill", { scaleX: 0 }, { scaleX: 1, duration: W("memória") - W("acabava"), ease: "power1.in", transformOrigin: "0 50%" }, W("acabava"));
+      clock("#p1pct", 62, 99.9, W("acabava"), W("memória") - W("acabava"), (v) => v.toFixed(v > 99 ? 1 : 0).replace(".", ",") + "%");
+      xErr("#p1x", "#p1s", W("memória") + 0.02);
+      tl.fromTo("#p1warn", { opacity: 0, scale: 0.4, rotation: -10 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.22, ease: "back.out(2.5)" }, W("memória") + 0.1);
+      // M2: logo burst on "Stories Lab"
+      zoomIn("#m2", "#m2-in", T_LOGO);
+      tl.fromTo("#m2l", { opacity: 0, scale: 0.6, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.8)" }, T_LOGO + 0.05);
+      confetti("m2pt", T_LOGO + 0.1, 50, 540, 800);
+      mcap("m2c", T_LOGO + 0.2, T_P2 - 0.2, "excited");
+      tl.to("#m2", { y: -1920, duration: 0.32, ease: "power3.in" }, T_P2 - 0.12); hideScene("#m2", T_P2 + 0.3); tl.set("#m2", { y: 0 }, T_P2 + 0.35);
+      // PiP 2: themes land under her card (she is showing the app)
+      pip(T_P2, T_B1, -1500, "up", "#p2fx");
+      [["#n1", "#c1", W("Natal")], ["#n2", "#c2", W("Ano")], ["#n3", "#c3", W("Bom")], ["#n4", "#c4", W("Treino")]].forEach(([m, c, t], i) => {
+        rise(m, t - 0.08, i % 2 ? 3 : -3); pop(c, t + 0.05, i % 2 ? 3 : -3); });
+      // B-roll: click, copy, paste
+      tl.fromTo("#b1", { opacity: 1, y: 1920 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, T_B1 - 0.02);
+      tl.fromTo("#b1", { scale: 1.0 }, { scale: 1.08, duration: T_B2 - T_B1, ease: "none", immediateRender: false }, T_B1 + 0.3);
+      tl.fromTo("#b1t", { opacity: 0, y: -60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, W("copiar") - 0.1);
+      tl.to("#b1t", { opacity: 0, y: -40, duration: 0.25 }, W("copiar") + 0.8);
+      tl.set("#b1", { opacity: 0 }, T_B2);
+      tl.fromTo("#b2", { opacity: 1, scale: 1.2, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "expo.out" }, T_B2);
+      tl.to("#b2", { opacity: 0, scale: 1.15, filter: "blur(14px)", duration: 0.18, ease: "power2.in" }, T_A2 - 0.08);
+      // PiP 3: 5 seconds instead of hours
+      pip(T_A2, T_M3, -1500, "none", "#p3fx");
+      tl.fromTo("#p3c div", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.2)" }, W("perco") - 0.1);
+      tl.fromTo("#p3x", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, W("tempo") - 0.05);
+      // M3: wall of real stories, then the CTA
+      const r3 = buildWall("wall3"); tl.set("#m3", { opacity: 1 }, T_M3);
+      tl.fromTo("#m3", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.35, ease: "power3.out" }, T_M3);
+      rollWall(r3, T_M3, 6); mcap("m3c", T_M3 + 0.1, T_INK + 0.2, "triumph");
+      endCard(T_INK);
+===SFX===
+[
+ ("subhit", 0.0, -12, 0), ("whoosh", 0.02, -18, 2), ("pop", 0.1, -20, 3), ("pop", 0.24, -20, 6),
+ ("riser", T_M1 - 1.2, -22, 0, 1.25), ("whoosh", T_M1 - 0.08, -12, 0), ("flashw", T_M1, -16, 0),
+ *[("pop", t - 0.1, -14, 2 + i * 2) for i, t in enumerate([W("baixava"), W("drive"), W("packs"), W("figurinhas", 1)])],
+ ("ding", W("figurinhas", 1) + 1.2, -16, 4),
+ ("swish", T_P1 - 0.12, -13, 3),
+ *[("tick", W("acabava") + j * 0.12, -20, 2 + j % 5, 0.12) for j in range(int((W("memória") - W("acabava")) / 0.12))],
+ ("error", W("memória") + 0.02, -9, 0), ("impact", W("memória") + 0.03, -19, 2),
+ ("swish", T_A1, -16, -3),
+ ("whoosh", T_LOGO - 0.08, -12, 0), ("sparkles", T_LOGO + 0.05, -14, 0), ("confetti", T_LOGO + 0.1, -16, 0), ("pop", T_LOGO + 0.05, -12, 0),
+ ("swish", T_P2 - 0.12, -13, 5),
+ *[("pop", t - 0.08, -12, 2 + i * 2) for i, t in enumerate([W("Natal"), W("Ano"), W("Bom"), W("Treino")])],
+ ("swish", T_B1 - 0.12, -13, 2), ("tick", W("clicar") + 0.05, -15, 5, 0.12), ("ding", W("copiar") - 0.05, -13, 7),
+ ("whoosh", T_B2 - 0.03, -16, 6), ("pop", W("colar") + 0.1, -13, 3),
+ ("swish", T_A2, -16, 2), ("coin", W("perco"), -14, 3), ("pop", W("tempo") - 0.05, -15, 5),
+ ("passby", T_M3 - 0.15, -15, 0),
+ ("whoosh", T_INK - 0.1, -15, 0), ("sting", T_INK + 0.05, -12, 0), ("pop", T_INK + 0.55, -13, 2),
+]

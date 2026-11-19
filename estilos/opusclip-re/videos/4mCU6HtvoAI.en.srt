@@ -1,0 +1,4655 @@
+1
+00:00:00,080 --> 00:00:02,790
+
+in this complete 2025 tutorial of Ops
+
+2
+00:00:02,790 --> 00:00:02,800
+in this complete 2025 tutorial of Ops
+ 
+
+3
+00:00:02,800 --> 00:00:04,870
+in this complete 2025 tutorial of Ops
+clip I will show you how you can use all
+
+4
+00:00:04,870 --> 00:00:04,880
+clip I will show you how you can use all
+ 
+
+5
+00:00:04,880 --> 00:00:06,670
+clip I will show you how you can use all
+of their features to their fullest
+
+6
+00:00:06,670 --> 00:00:06,680
+of their features to their fullest
+ 
+
+7
+00:00:06,680 --> 00:00:08,470
+of their features to their fullest
+potential so by the end of this video
+
+8
+00:00:08,470 --> 00:00:08,480
+potential so by the end of this video
+ 
+
+9
+00:00:08,480 --> 00:00:10,870
+potential so by the end of this video
+you will go from a beginner to a Master
+
+10
+00:00:10,870 --> 00:00:10,880
+you will go from a beginner to a Master
+ 
+
+11
+00:00:10,880 --> 00:00:12,990
+you will go from a beginner to a Master
+when it comes to clipping content I will
+
+12
+00:00:12,990 --> 00:00:13,000
+when it comes to clipping content I will
+ 
+
+13
+00:00:13,000 --> 00:00:15,310
+when it comes to clipping content I will
+be covering how to edit your Clips how
+
+14
+00:00:15,310 --> 00:00:15,320
+be covering how to edit your Clips how
+ 
+
+15
+00:00:15,320 --> 00:00:17,230
+be covering how to edit your Clips how
+to edit them to make them even more
+
+16
+00:00:17,230 --> 00:00:17,240
+to edit them to make them even more
+ 
+
+17
+00:00:17,240 --> 00:00:20,349
+to edit them to make them even more
+advanced with AI Boll and more and I
+
+18
+00:00:20,349 --> 00:00:20,359
+advanced with AI Boll and more and I
+ 
+
+19
+00:00:20,359 --> 00:00:22,029
+advanced with AI Boll and more and I
+will show you how you can schedule your
+
+20
+00:00:22,029 --> 00:00:22,039
+will show you how you can schedule your
+ 
+
+21
+00:00:22,039 --> 00:00:24,269
+will show you how you can schedule your
+content and do more with their AI
+
+22
+00:00:24,269 --> 00:00:24,279
+content and do more with their AI
+ 
+
+23
+00:00:24,279 --> 00:00:27,070
+content and do more with their AI
+features so let's get started and Jump
+
+24
+00:00:27,070 --> 00:00:27,080
+features so let's get started and Jump
+ 
+
+25
+00:00:27,080 --> 00:00:29,189
+features so let's get started and Jump
+Right In now after logging in this is
+
+26
+00:00:29,189 --> 00:00:29,199
+Right In now after logging in this is
+ 
+
+27
+00:00:29,199 --> 00:00:31,550
+Right In now after logging in this is
+the page that you will see you have the
+
+28
+00:00:31,550 --> 00:00:31,560
+the page that you will see you have the
+ 
+
+29
+00:00:31,560 --> 00:00:34,229
+the page that you will see you have the
+option to do a few things here first of
+
+30
+00:00:34,229 --> 00:00:34,239
+option to do a few things here first of
+ 
+
+31
+00:00:34,239 --> 00:00:36,470
+option to do a few things here first of
+all you can drop in any type of link so
+
+32
+00:00:36,470 --> 00:00:36,480
+all you can drop in any type of link so
+ 
+
+33
+00:00:36,480 --> 00:00:38,470
+all you can drop in any type of link so
+that can be a Dropbox link a Google
+
+34
+00:00:38,470 --> 00:00:38,480
+that can be a Dropbox link a Google
+ 
+
+35
+00:00:38,480 --> 00:00:41,190
+that can be a Dropbox link a Google
+Drive Link a YouTube link twitch Rumble
+
+36
+00:00:41,190 --> 00:00:41,200
+Drive Link a YouTube link twitch Rumble
+ 
+
+37
+00:00:41,200 --> 00:00:43,430
+Drive Link a YouTube link twitch Rumble
+it doesn't really matter you can import
+
+38
+00:00:43,430 --> 00:00:43,440
+it doesn't really matter you can import
+ 
+
+39
+00:00:43,440 --> 00:00:45,630
+it doesn't really matter you can import
+all of those link into Ops clip so let
+
+40
+00:00:45,630 --> 00:00:45,640
+all of those link into Ops clip so let
+ 
+
+41
+00:00:45,640 --> 00:00:47,670
+all of those link into Ops clip so let
+me just take one of my own videos which
+
+42
+00:00:47,670 --> 00:00:47,680
+me just take one of my own videos which
+ 
+
+43
+00:00:47,680 --> 00:00:50,189
+me just take one of my own videos which
+is this one right here now I'm going to
+
+44
+00:00:50,189 --> 00:00:50,199
+is this one right here now I'm going to
+ 
+
+45
+00:00:50,199 --> 00:00:52,430
+is this one right here now I'm going to
+click on share copy and then I'm going
+
+46
+00:00:52,430 --> 00:00:52,440
+click on share copy and then I'm going
+ 
+
+47
+00:00:52,440 --> 00:00:55,189
+click on share copy and then I'm going
+to bring that to Ops clip now what this
+
+48
+00:00:55,189 --> 00:00:55,199
+to bring that to Ops clip now what this
+ 
+
+49
+00:00:55,199 --> 00:00:57,430
+to bring that to Ops clip now what this
+does it will upload that link and then
+
+50
+00:00:57,430 --> 00:00:57,440
+does it will upload that link and then
+ 
+
+51
+00:00:57,440 --> 00:01:00,349
+does it will upload that link and then
+we can choose between clip basic or clip
+
+52
+00:01:00,349 --> 00:01:00,359
+we can choose between clip basic or clip
+ 
+
+53
+00:01:00,359 --> 00:01:02,470
+we can choose between clip basic or clip
+anything clip basic essentially makes
+
+54
+00:01:02,470 --> 00:01:02,480
+anything clip basic essentially makes
+ 
+
+55
+00:01:02,480 --> 00:01:05,149
+anything clip basic essentially makes
+clips from your transcript which is good
+
+56
+00:01:05,149 --> 00:01:05,159
+clips from your transcript which is good
+ 
+
+57
+00:01:05,159 --> 00:01:07,350
+clips from your transcript which is good
+already but if you want to have more
+
+58
+00:01:07,350 --> 00:01:07,360
+already but if you want to have more
+ 
+
+59
+00:01:07,360 --> 00:01:09,670
+already but if you want to have more
+control of the outcome of your videos
+
+60
+00:01:09,670 --> 00:01:09,680
+control of the outcome of your videos
+ 
+
+61
+00:01:09,680 --> 00:01:11,789
+control of the outcome of your videos
+then you can go with clip anything with
+
+62
+00:01:11,789 --> 00:01:11,799
+then you can go with clip anything with
+ 
+
+63
+00:01:11,799 --> 00:01:13,670
+then you can go with clip anything with
+clip anything you can basically prompt
+
+64
+00:01:13,670 --> 00:01:13,680
+clip anything you can basically prompt
+ 
+
+65
+00:01:13,680 --> 00:01:16,149
+clip anything you can basically prompt
+it to find anything you want in your
+
+66
+00:01:16,149 --> 00:01:16,159
+it to find anything you want in your
+ 
+
+67
+00:01:16,159 --> 00:01:18,149
+it to find anything you want in your
+video let's say it is a visual for
+
+68
+00:01:18,149 --> 00:01:18,159
+video let's say it is a visual for
+ 
+
+69
+00:01:18,159 --> 00:01:20,230
+video let's say it is a visual for
+example I'm lifting up a glass and I
+
+70
+00:01:20,230 --> 00:01:20,240
+example I'm lifting up a glass and I
+ 
+
+71
+00:01:20,240 --> 00:01:22,230
+example I'm lifting up a glass and I
+wanted to find the moment where I talked
+
+72
+00:01:22,230 --> 00:01:22,240
+wanted to find the moment where I talked
+ 
+
+73
+00:01:22,240 --> 00:01:23,789
+wanted to find the moment where I talked
+about the glass and I showed the glass
+
+74
+00:01:23,789 --> 00:01:23,799
+about the glass and I showed the glass
+ 
+
+75
+00:01:23,799 --> 00:01:26,270
+about the glass and I showed the glass
+in the frame then it can do that for me
+
+76
+00:01:26,270 --> 00:01:26,280
+in the frame then it can do that for me
+ 
+
+77
+00:01:26,280 --> 00:01:28,590
+in the frame then it can do that for me
+or it can be any specific action for
+
+78
+00:01:28,590 --> 00:01:28,600
+or it can be any specific action for
+ 
+
+79
+00:01:28,600 --> 00:01:30,510
+or it can be any specific action for
+example someone that scored a goal or
+
+80
+00:01:30,510 --> 00:01:30,520
+example someone that scored a goal or
+ 
+
+81
+00:01:30,520 --> 00:01:33,389
+example someone that scored a goal or
+made a dunk in basketball any of these
+
+82
+00:01:33,389 --> 00:01:33,399
+made a dunk in basketball any of these
+ 
+
+83
+00:01:33,399 --> 00:01:35,670
+made a dunk in basketball any of these
+can be done with the clip anything
+
+84
+00:01:35,670 --> 00:01:35,680
+can be done with the clip anything
+ 
+
+85
+00:01:35,680 --> 00:01:37,670
+can be done with the clip anything
+feature so you can basically prompt it
+
+86
+00:01:37,670 --> 00:01:37,680
+feature so you can basically prompt it
+ 
+
+87
+00:01:37,680 --> 00:01:40,069
+feature so you can basically prompt it
+down right here to include a specific
+
+88
+00:01:40,069 --> 00:01:40,079
+down right here to include a specific
+ 
+
+89
+00:01:40,079 --> 00:01:41,870
+down right here to include a specific
+moment so for this video I'm just going
+
+90
+00:01:41,870 --> 00:01:41,880
+moment so for this video I'm just going
+ 
+
+91
+00:01:41,880 --> 00:01:43,670
+moment so for this video I'm just going
+to keep it simple and I'm just going to
+
+92
+00:01:43,670 --> 00:01:43,680
+to keep it simple and I'm just going to
+ 
+
+93
+00:01:43,680 --> 00:01:46,789
+to keep it simple and I'm just going to
+say find the viral moments now the next
+
+94
+00:01:46,789 --> 00:01:46,799
+say find the viral moments now the next
+ 
+
+95
+00:01:46,799 --> 00:01:48,510
+say find the viral moments now the next
+thing that you want to get into is the
+
+96
+00:01:48,510 --> 00:01:48,520
+thing that you want to get into is the
+ 
+
+97
+00:01:48,520 --> 00:01:50,630
+thing that you want to get into is the
+length of your clip you can choose
+
+98
+00:01:50,630 --> 00:01:50,640
+length of your clip you can choose
+ 
+
+99
+00:01:50,640 --> 00:01:52,550
+length of your clip you can choose
+between any of these lengths that are on
+
+100
+00:01:52,550 --> 00:01:52,560
+between any of these lengths that are on
+ 
+
+101
+00:01:52,560 --> 00:01:55,069
+between any of these lengths that are on
+the screen right here so for YouTube
+
+102
+00:01:55,069 --> 00:01:55,079
+the screen right here so for YouTube
+ 
+
+103
+00:01:55,079 --> 00:01:56,749
+the screen right here so for YouTube
+shorts for example you can now make
+
+104
+00:01:56,749 --> 00:01:56,759
+shorts for example you can now make
+ 
+
+105
+00:01:56,759 --> 00:01:58,749
+shorts for example you can now make
+clips that are up to 3 minutes long so
+
+106
+00:01:58,749 --> 00:01:58,759
+clips that are up to 3 minutes long so
+ 
+
+107
+00:01:58,759 --> 00:02:01,109
+clips that are up to 3 minutes long so
+you can select the seconds to 3 minutes
+
+108
+00:02:01,109 --> 00:02:01,119
+you can select the seconds to 3 minutes
+ 
+
+109
+00:02:01,119 --> 00:02:03,190
+you can select the seconds to 3 minutes
+or even the 3 minutes to 5 minutes and
+
+110
+00:02:03,190 --> 00:02:03,200
+or even the 3 minutes to 5 minutes and
+ 
+
+111
+00:02:03,200 --> 00:02:05,630
+or even the 3 minutes to 5 minutes and
+op clip will try its best to find these
+
+112
+00:02:05,630 --> 00:02:05,640
+op clip will try its best to find these
+ 
+
+113
+00:02:05,640 --> 00:02:08,029
+op clip will try its best to find these
+type of Clips in that length now for my
+
+114
+00:02:08,029 --> 00:02:08,039
+type of Clips in that length now for my
+ 
+
+115
+00:02:08,039 --> 00:02:09,669
+type of Clips in that length now for my
+video I know it's pretty short so I'm
+
+116
+00:02:09,669 --> 00:02:09,679
+video I know it's pretty short so I'm
+ 
+
+117
+00:02:09,679 --> 00:02:11,550
+video I know it's pretty short so I'm
+just going to keep it at 30 seconds to
+
+118
+00:02:11,550 --> 00:02:11,560
+just going to keep it at 30 seconds to
+ 
+
+119
+00:02:11,560 --> 00:02:13,710
+just going to keep it at 30 seconds to
+60 seconds and 60 seconds to 90 seconds
+
+120
+00:02:13,710 --> 00:02:13,720
+60 seconds and 60 seconds to 90 seconds
+ 
+
+121
+00:02:13,720 --> 00:02:15,790
+60 seconds and 60 seconds to 90 seconds
+and then 90 seconds to 3 minutes then
+
+122
+00:02:15,790 --> 00:02:15,800
+and then 90 seconds to 3 minutes then
+ 
+
+123
+00:02:15,800 --> 00:02:17,430
+and then 90 seconds to 3 minutes then
+you're going to select your genre of
+
+124
+00:02:17,430 --> 00:02:17,440
+you're going to select your genre of
+ 
+
+125
+00:02:17,440 --> 00:02:20,030
+you're going to select your genre of
+your video now for my video I'm using a
+
+126
+00:02:20,030 --> 00:02:20,040
+your video now for my video I'm using a
+ 
+
+127
+00:02:20,040 --> 00:02:22,589
+your video now for my video I'm using a
+talking head and the AI will try its
+
+128
+00:02:22,589 --> 00:02:22,599
+talking head and the AI will try its
+ 
+
+129
+00:02:22,599 --> 00:02:24,830
+talking head and the AI will try its
+best to Define what it is but sometimes
+
+130
+00:02:24,830 --> 00:02:24,840
+best to Define what it is but sometimes
+ 
+
+131
+00:02:24,840 --> 00:02:26,710
+best to Define what it is but sometimes
+you need to help it a little bit so I
+
+132
+00:02:26,710 --> 00:02:26,720
+you need to help it a little bit so I
+ 
+
+133
+00:02:26,720 --> 00:02:29,470
+you need to help it a little bit so I
+will use the talking head and I will use
+
+134
+00:02:29,470 --> 00:02:29,480
+will use the talking head and I will use
+ 
+
+135
+00:02:29,480 --> 00:02:32,790
+will use the talking head and I will use
+mark and webinar so now we can go to the
+
+136
+00:02:32,790 --> 00:02:32,800
+mark and webinar so now we can go to the
+ 
+
+137
+00:02:32,800 --> 00:02:34,990
+mark and webinar so now we can go to the
+next step which is your processing time
+
+138
+00:02:34,990 --> 00:02:35,000
+next step which is your processing time
+ 
+
+139
+00:02:35,000 --> 00:02:37,910
+next step which is your processing time
+frame now I want to process my entire
+
+140
+00:02:37,910 --> 00:02:37,920
+frame now I want to process my entire
+ 
+
+141
+00:02:37,920 --> 00:02:39,229
+frame now I want to process my entire
+time frame so I'm just going to keep it
+
+142
+00:02:39,229 --> 00:02:39,239
+time frame so I'm just going to keep it
+ 
+
+143
+00:02:39,239 --> 00:02:40,790
+time frame so I'm just going to keep it
+like this and then the next step is
+
+144
+00:02:40,790 --> 00:02:40,800
+like this and then the next step is
+ 
+
+145
+00:02:40,800 --> 00:02:43,309
+like this and then the next step is
+choosing a template we have a ton of
+
+146
+00:02:43,309 --> 00:02:43,319
+choosing a template we have a ton of
+ 
+
+147
+00:02:43,319 --> 00:02:44,990
+choosing a template we have a ton of
+different templates available to choose
+
+148
+00:02:44,990 --> 00:02:45,000
+different templates available to choose
+ 
+
+149
+00:02:45,000 --> 00:02:47,710
+different templates available to choose
+from so you can choose any that you like
+
+150
+00:02:47,710 --> 00:02:47,720
+from so you can choose any that you like
+ 
+
+151
+00:02:47,720 --> 00:02:49,350
+from so you can choose any that you like
+right here I'm going to go into my
+
+152
+00:02:49,350 --> 00:02:49,360
+right here I'm going to go into my
+ 
+
+153
+00:02:49,360 --> 00:02:50,910
+right here I'm going to go into my
+templates and I'm going to select this
+
+154
+00:02:50,910 --> 00:02:50,920
+templates and I'm going to select this
+ 
+
+155
+00:02:50,920 --> 00:02:52,949
+templates and I'm going to select this
+one as this is a custom one that I made
+
+156
+00:02:52,949 --> 00:02:52,959
+one as this is a custom one that I made
+ 
+
+157
+00:02:52,959 --> 00:02:55,110
+one as this is a custom one that I made
+myself and later in this video I will
+
+158
+00:02:55,110 --> 00:02:55,120
+myself and later in this video I will
+ 
+
+159
+00:02:55,120 --> 00:02:56,869
+myself and later in this video I will
+show you how you can make one yourself
+
+160
+00:02:56,869 --> 00:02:56,879
+show you how you can make one yourself
+ 
+
+161
+00:02:56,879 --> 00:02:58,630
+show you how you can make one yourself
+too then once you're ready you click on
+
+162
+00:02:58,630 --> 00:02:58,640
+too then once you're ready you click on
+ 
+
+163
+00:02:58,640 --> 00:03:00,670
+too then once you're ready you click on
+get Clips in one clip click and by
+
+164
+00:03:00,670 --> 00:03:00,680
+get Clips in one clip click and by
+ 
+
+165
+00:03:00,680 --> 00:03:01,910
+get Clips in one clip click and by
+clicking on this it will start
+
+166
+00:03:01,910 --> 00:03:01,920
+clicking on this it will start
+ 
+
+167
+00:03:01,920 --> 00:03:04,270
+clicking on this it will start
+generating your Clips this usually takes
+
+168
+00:03:04,270 --> 00:03:04,280
+generating your Clips this usually takes
+ 
+
+169
+00:03:04,280 --> 00:03:06,710
+generating your Clips this usually takes
+between 10 to 20 minutes as you can see
+
+170
+00:03:06,710 --> 00:03:06,720
+between 10 to 20 minutes as you can see
+ 
+
+171
+00:03:06,720 --> 00:03:09,030
+between 10 to 20 minutes as you can see
+right now we're already on 5% and that
+
+172
+00:03:09,030 --> 00:03:09,040
+right now we're already on 5% and that
+ 
+
+173
+00:03:09,040 --> 00:03:10,990
+right now we're already on 5% and that
+will go pretty fast I'm assuming it will
+
+174
+00:03:10,990 --> 00:03:11,000
+will go pretty fast I'm assuming it will
+ 
+
+175
+00:03:11,000 --> 00:03:13,110
+will go pretty fast I'm assuming it will
+go faster than the 24 minutes that are
+
+176
+00:03:13,110 --> 00:03:13,120
+go faster than the 24 minutes that are
+ 
+
+177
+00:03:13,120 --> 00:03:15,270
+go faster than the 24 minutes that are
+on the screen right now this all pretty
+
+178
+00:03:15,270 --> 00:03:15,280
+on the screen right now this all pretty
+ 
+
+179
+00:03:15,280 --> 00:03:17,869
+on the screen right now this all pretty
+much depends on how much demand there is
+
+180
+00:03:17,869 --> 00:03:17,879
+much depends on how much demand there is
+ 
+
+181
+00:03:17,879 --> 00:03:19,869
+much depends on how much demand there is
+on the website so if there's more then
+
+182
+00:03:19,869 --> 00:03:19,879
+on the website so if there's more then
+ 
+
+183
+00:03:19,879 --> 00:03:21,670
+on the website so if there's more then
+it might be a bit slower if there's less
+
+184
+00:03:21,670 --> 00:03:21,680
+it might be a bit slower if there's less
+ 
+
+185
+00:03:21,680 --> 00:03:23,430
+it might be a bit slower if there's less
+then it might be a bit quicker as you
+
+186
+00:03:23,430 --> 00:03:23,440
+then it might be a bit quicker as you
+ 
+
+187
+00:03:23,440 --> 00:03:25,390
+then it might be a bit quicker as you
+can see we're already going down to 23
+
+188
+00:03:25,390 --> 00:03:25,400
+can see we're already going down to 23
+ 
+
+189
+00:03:25,400 --> 00:03:27,270
+can see we're already going down to 23
+minutes so this will be done pretty
+
+190
+00:03:27,270 --> 00:03:27,280
+minutes so this will be done pretty
+ 
+
+191
+00:03:27,280 --> 00:03:29,190
+minutes so this will be done pretty
+quickly now I already have one done
+
+192
+00:03:29,190 --> 00:03:29,200
+quickly now I already have one done
+ 
+
+193
+00:03:29,200 --> 00:03:31,190
+quickly now I already have one done
+right here for this video so now the
+
+194
+00:03:31,190 --> 00:03:31,200
+right here for this video so now the
+ 
+
+195
+00:03:31,200 --> 00:03:34,149
+right here for this video so now the
+clips are done and we have from that 20
+
+196
+00:03:34,149 --> 00:03:34,159
+clips are done and we have from that 20
+ 
+
+197
+00:03:34,159 --> 00:03:37,350
+clips are done and we have from that 20
+minute video of me we got around 24
+
+198
+00:03:37,350 --> 00:03:37,360
+minute video of me we got around 24
+ 
+
+199
+00:03:37,360 --> 00:03:40,070
+minute video of me we got around 24
+Clips so that's quite a lot now not all
+
+200
+00:03:40,070 --> 00:03:40,080
+Clips so that's quite a lot now not all
+ 
+
+201
+00:03:40,080 --> 00:03:42,509
+Clips so that's quite a lot now not all
+of the clips are good enough to use so I
+
+202
+00:03:42,509 --> 00:03:42,519
+of the clips are good enough to use so I
+ 
+
+203
+00:03:42,519 --> 00:03:44,309
+of the clips are good enough to use so I
+would advise you to go through all of
+
+204
+00:03:44,309 --> 00:03:44,319
+would advise you to go through all of
+ 
+
+205
+00:03:44,319 --> 00:03:46,949
+would advise you to go through all of
+the clips and to see which one you like
+
+206
+00:03:46,949 --> 00:03:46,959
+the clips and to see which one you like
+ 
+
+207
+00:03:46,959 --> 00:03:49,750
+the clips and to see which one you like
+the most so for example let's see this
+
+208
+00:03:49,750 --> 00:03:49,760
+the most so for example let's see this
+ 
+
+209
+00:03:49,760 --> 00:03:52,470
+the most so for example let's see this
+one so first of all we go to gamma apppp
+
+210
+00:03:52,470 --> 00:03:52,480
+one so first of all we go to gamma apppp
+ 
+
+211
+00:03:52,480 --> 00:03:54,190
+one so first of all we go to gamma apppp
+and here we can create an entire
+
+212
+00:03:54,190 --> 00:03:54,200
+and here we can create an entire
+ 
+
+213
+00:03:54,200 --> 00:03:56,710
+and here we can create an entire
+PowerPoint with just one prom now this
+
+214
+00:03:56,710 --> 00:03:56,720
+PowerPoint with just one prom now this
+ 
+
+215
+00:03:56,720 --> 00:03:58,470
+PowerPoint with just one prom now this
+is pretty good it started off with the
+
+216
+00:03:58,470 --> 00:03:58,480
+is pretty good it started off with the
+ 
+
+217
+00:03:58,480 --> 00:04:00,509
+is pretty good it started off with the
+first sentence of that introduction of
+
+218
+00:04:00,509 --> 00:04:00,519
+first sentence of that introduction of
+ 
+
+219
+00:04:00,519 --> 00:04:02,350
+first sentence of that introduction of
+the app that I showed keep in mind this
+
+220
+00:04:02,350 --> 00:04:02,360
+the app that I showed keep in mind this
+ 
+
+221
+00:04:02,360 --> 00:04:04,309
+the app that I showed keep in mind this
+is not a podcast this is a regular
+
+222
+00:04:04,309 --> 00:04:04,319
+is not a podcast this is a regular
+ 
+
+223
+00:04:04,319 --> 00:04:06,789
+is not a podcast this is a regular
+YouTube video where I share like nine or
+
+224
+00:04:06,789 --> 00:04:06,799
+YouTube video where I share like nine or
+ 
+
+225
+00:04:06,799 --> 00:04:08,990
+YouTube video where I share like nine or
+10 different AI tools that I use what
+
+226
+00:04:08,990 --> 00:04:09,000
+10 different AI tools that I use what
+ 
+
+227
+00:04:09,000 --> 00:04:10,869
+10 different AI tools that I use what
+you can do next is you can go to edit
+
+228
+00:04:10,869 --> 00:04:10,879
+you can do next is you can go to edit
+ 
+
+229
+00:04:10,879 --> 00:04:13,789
+you can do next is you can go to edit
+clip and here we can edit the entire
+
+230
+00:04:13,789 --> 00:04:13,799
+clip and here we can edit the entire
+ 
+
+231
+00:04:13,799 --> 00:04:15,550
+clip and here we can edit the entire
+clip keep in mind this is a really
+
+232
+00:04:15,550 --> 00:04:15,560
+clip keep in mind this is a really
+ 
+
+233
+00:04:15,560 --> 00:04:18,349
+clip keep in mind this is a really
+powerful AI editor you can do anything
+
+234
+00:04:18,349 --> 00:04:18,359
+powerful AI editor you can do anything
+ 
+
+235
+00:04:18,359 --> 00:04:21,349
+powerful AI editor you can do anything
+in here first of all we can change the
+
+236
+00:04:21,349 --> 00:04:21,359
+in here first of all we can change the
+ 
+
+237
+00:04:21,359 --> 00:04:23,510
+in here first of all we can change the
+segment let's say for example I don't
+
+238
+00:04:23,510 --> 00:04:23,520
+segment let's say for example I don't
+ 
+
+239
+00:04:23,520 --> 00:04:25,990
+segment let's say for example I don't
+like this first sentence what I can do
+
+240
+00:04:25,990 --> 00:04:26,000
+like this first sentence what I can do
+ 
+
+241
+00:04:26,000 --> 00:04:29,070
+like this first sentence what I can do
+is I can click on ADD section and now it
+
+242
+00:04:29,070 --> 00:04:29,080
+is I can click on ADD section and now it
+ 
+
+243
+00:04:29,080 --> 00:04:31,270
+is I can click on ADD section and now it
+goes to the transcript and I can just
+
+244
+00:04:31,270 --> 00:04:31,280
+goes to the transcript and I can just
+ 
+
+245
+00:04:31,280 --> 00:04:34,230
+goes to the transcript and I can just
+select these kind of sentences and I can
+
+246
+00:04:34,230 --> 00:04:34,240
+select these kind of sentences and I can
+ 
+
+247
+00:04:34,240 --> 00:04:37,310
+select these kind of sentences and I can
+say add so by doing that it will add in
+
+248
+00:04:37,310 --> 00:04:37,320
+say add so by doing that it will add in
+ 
+
+249
+00:04:37,320 --> 00:04:39,790
+say add so by doing that it will add in
+a new segment so now we can see it
+
+250
+00:04:39,790 --> 00:04:39,800
+a new segment so now we can see it
+ 
+
+251
+00:04:39,800 --> 00:04:42,070
+a new segment so now we can see it
+rendering and this segment will be added
+
+252
+00:04:42,070 --> 00:04:42,080
+rendering and this segment will be added
+ 
+
+253
+00:04:42,080 --> 00:04:44,390
+rendering and this segment will be added
+to the timeline so if op sclip gets it
+
+254
+00:04:44,390 --> 00:04:44,400
+to the timeline so if op sclip gets it
+ 
+
+255
+00:04:44,400 --> 00:04:46,749
+to the timeline so if op sclip gets it
+wrong or you want to include or exclude
+
+256
+00:04:46,749 --> 00:04:46,759
+wrong or you want to include or exclude
+ 
+
+257
+00:04:46,759 --> 00:04:48,950
+wrong or you want to include or exclude
+anything you can simply do so within
+
+258
+00:04:48,950 --> 00:04:48,960
+anything you can simply do so within
+ 
+
+259
+00:04:48,960 --> 00:04:51,230
+anything you can simply do so within
+this text based editor now as you can
+
+260
+00:04:51,230 --> 00:04:51,240
+this text based editor now as you can
+ 
+
+261
+00:04:51,240 --> 00:04:53,110
+this text based editor now as you can
+see we have it on the timeline we can
+
+262
+00:04:53,110 --> 00:04:53,120
+see we have it on the timeline we can
+ 
+
+263
+00:04:53,120 --> 00:04:55,350
+see we have it on the timeline we can
+just select it like this and now we have
+
+264
+00:04:55,350 --> 00:04:55,360
+just select it like this and now we have
+ 
+
+265
+00:04:55,360 --> 00:04:57,870
+just select it like this and now we have
+that segment added now I actually didn't
+
+266
+00:04:57,870 --> 00:04:57,880
+that segment added now I actually didn't
+ 
+
+267
+00:04:57,880 --> 00:04:59,029
+that segment added now I actually didn't
+want to do that so I'm just going to
+
+268
+00:04:59,029 --> 00:04:59,039
+want to do that so I'm just going to
+ 
+
+269
+00:04:59,039 --> 00:05:00,189
+want to do that so I'm just going to
+delete it again
+
+270
+00:05:00,189 --> 00:05:00,199
+delete it again
+ 
+
+271
+00:05:00,199 --> 00:05:02,270
+delete it again
+and now we're back at the video so if I
+
+272
+00:05:02,270 --> 00:05:02,280
+and now we're back at the video so if I
+ 
+
+273
+00:05:02,280 --> 00:05:04,270
+and now we're back at the video so if I
+go over the video then you can see that
+
+274
+00:05:04,270 --> 00:05:04,280
+go over the video then you can see that
+ 
+
+275
+00:05:04,280 --> 00:05:06,629
+go over the video then you can see that
+at some of the words for example this
+
+276
+00:05:06,629 --> 00:05:06,639
+at some of the words for example this
+ 
+
+277
+00:05:06,639 --> 00:05:09,390
+at some of the words for example this
+one select what it has been highlighted
+
+278
+00:05:09,390 --> 00:05:09,400
+one select what it has been highlighted
+ 
+
+279
+00:05:09,400 --> 00:05:11,270
+one select what it has been highlighted
+now if you want to highlight a word then
+
+280
+00:05:11,270 --> 00:05:11,280
+now if you want to highlight a word then
+ 
+
+281
+00:05:11,280 --> 00:05:12,990
+now if you want to highlight a word then
+you can just simply click on it then you
+
+282
+00:05:12,990 --> 00:05:13,000
+you can just simply click on it then you
+ 
+
+283
+00:05:13,000 --> 00:05:14,710
+you can just simply click on it then you
+click on highlight and then you choose
+
+284
+00:05:14,710 --> 00:05:14,720
+click on highlight and then you choose
+ 
+
+285
+00:05:14,720 --> 00:05:16,749
+click on highlight and then you choose
+your color to change these type of
+
+286
+00:05:16,749 --> 00:05:16,759
+your color to change these type of
+ 
+
+287
+00:05:16,759 --> 00:05:19,150
+your color to change these type of
+colors we simply go to AI keyword
+
+288
+00:05:19,150 --> 00:05:19,160
+colors we simply go to AI keyword
+ 
+
+289
+00:05:19,160 --> 00:05:21,350
+colors we simply go to AI keyword
+highlighter and then here we can change
+
+290
+00:05:21,350 --> 00:05:21,360
+highlighter and then here we can change
+ 
+
+291
+00:05:21,360 --> 00:05:23,390
+highlighter and then here we can change
+the color of them so you can choose
+
+292
+00:05:23,390 --> 00:05:23,400
+the color of them so you can choose
+ 
+
+293
+00:05:23,400 --> 00:05:25,629
+the color of them so you can choose
+anything that you'd like and then you
+
+294
+00:05:25,629 --> 00:05:25,639
+anything that you'd like and then you
+ 
+
+295
+00:05:25,639 --> 00:05:27,870
+anything that you'd like and then you
+have totally different highlights the
+
+296
+00:05:27,870 --> 00:05:27,880
+have totally different highlights the
+ 
+
+297
+00:05:27,880 --> 00:05:29,749
+have totally different highlights the
+next thing that you can also customize
+
+298
+00:05:29,749 --> 00:05:29,759
+next thing that you can also customize
+ 
+
+299
+00:05:29,759 --> 00:05:31,990
+next thing that you can also customize
+is the captions now for the captions
+
+300
+00:05:31,990 --> 00:05:32,000
+is the captions now for the captions
+ 
+
+301
+00:05:32,000 --> 00:05:33,950
+is the captions now for the captions
+first of all you can select where you
+
+302
+00:05:33,950 --> 00:05:33,960
+first of all you can select where you
+ 
+
+303
+00:05:33,960 --> 00:05:36,309
+first of all you can select where you
+want it placed if we drag this around
+
+304
+00:05:36,309 --> 00:05:36,319
+want it placed if we drag this around
+ 
+
+305
+00:05:36,319 --> 00:05:38,029
+want it placed if we drag this around
+then you can see there is a safety
+
+306
+00:05:38,029 --> 00:05:38,039
+then you can see there is a safety
+ 
+
+307
+00:05:38,039 --> 00:05:40,510
+then you can see there is a safety
+barrier for which you need to stay in in
+
+308
+00:05:40,510 --> 00:05:40,520
+barrier for which you need to stay in in
+ 
+
+309
+00:05:40,520 --> 00:05:42,270
+barrier for which you need to stay in in
+order to avoid your captions being
+
+310
+00:05:42,270 --> 00:05:42,280
+order to avoid your captions being
+ 
+
+311
+00:05:42,280 --> 00:05:44,670
+order to avoid your captions being
+overlaid with share button or the like
+
+312
+00:05:44,670 --> 00:05:44,680
+overlaid with share button or the like
+ 
+
+313
+00:05:44,680 --> 00:05:46,990
+overlaid with share button or the like
+button on Tik Tok Instagram and YouTube
+
+314
+00:05:46,990 --> 00:05:47,000
+button on Tik Tok Instagram and YouTube
+ 
+
+315
+00:05:47,000 --> 00:05:48,909
+button on Tik Tok Instagram and YouTube
+shorts so for my video I like to keep it
+
+316
+00:05:48,909 --> 00:05:48,919
+shorts so for my video I like to keep it
+ 
+
+317
+00:05:48,919 --> 00:05:50,710
+shorts so for my video I like to keep it
+in the middle but this can depend
+
+318
+00:05:50,710 --> 00:05:50,720
+in the middle but this can depend
+ 
+
+319
+00:05:50,720 --> 00:05:52,309
+in the middle but this can depend
+depending on how your video is
+
+320
+00:05:52,309 --> 00:05:52,319
+depending on how your video is
+ 
+
+321
+00:05:52,319 --> 00:05:53,990
+depending on how your video is
+structured for example in this video it
+
+322
+00:05:53,990 --> 00:05:54,000
+structured for example in this video it
+ 
+
+323
+00:05:54,000 --> 00:05:56,189
+structured for example in this video it
+is a split screen so putting it in the
+
+324
+00:05:56,189 --> 00:05:56,199
+is a split screen so putting it in the
+ 
+
+325
+00:05:56,199 --> 00:05:58,390
+is a split screen so putting it in the
+middle is the best way for me now what
+
+326
+00:05:58,390 --> 00:05:58,400
+middle is the best way for me now what
+ 
+
+327
+00:05:58,400 --> 00:06:00,070
+middle is the best way for me now what
+you can do next is you can click on
+
+328
+00:06:00,070 --> 00:06:00,080
+you can do next is you can click on
+ 
+
+329
+00:06:00,080 --> 00:06:02,230
+you can do next is you can click on
+caption and then here you can change
+
+330
+00:06:02,230 --> 00:06:02,240
+caption and then here you can change
+ 
+
+331
+00:06:02,240 --> 00:06:04,270
+caption and then here you can change
+your preset to anything else so for
+
+332
+00:06:04,270 --> 00:06:04,280
+your preset to anything else so for
+ 
+
+333
+00:06:04,280 --> 00:06:05,909
+your preset to anything else so for
+example you you want to have this one
+
+334
+00:06:05,909 --> 00:06:05,919
+example you you want to have this one
+ 
+
+335
+00:06:05,919 --> 00:06:08,390
+example you you want to have this one
+and it will give you this karaoke preset
+
+336
+00:06:08,390 --> 00:06:08,400
+and it will give you this karaoke preset
+ 
+
+337
+00:06:08,400 --> 00:06:10,909
+and it will give you this karaoke preset
+that Ops clip has already built for you
+
+338
+00:06:10,909 --> 00:06:10,919
+that Ops clip has already built for you
+ 
+
+339
+00:06:10,919 --> 00:06:12,390
+that Ops clip has already built for you
+then you can change if you want to have
+
+340
+00:06:12,390 --> 00:06:12,400
+then you can change if you want to have
+ 
+
+341
+00:06:12,400 --> 00:06:14,670
+then you can change if you want to have
+three lines of captions or one line of
+
+342
+00:06:14,670 --> 00:06:14,680
+three lines of captions or one line of
+ 
+
+343
+00:06:14,680 --> 00:06:16,629
+three lines of captions or one line of
+captions so whatever you prefer I
+
+344
+00:06:16,629 --> 00:06:16,639
+captions so whatever you prefer I
+ 
+
+345
+00:06:16,639 --> 00:06:18,950
+captions so whatever you prefer I
+usually prefer having one line then you
+
+346
+00:06:18,950 --> 00:06:18,960
+usually prefer having one line then you
+ 
+
+347
+00:06:18,960 --> 00:06:20,909
+usually prefer having one line then you
+can change the position uh you can keep
+
+348
+00:06:20,909 --> 00:06:20,919
+can change the position uh you can keep
+ 
+
+349
+00:06:20,919 --> 00:06:23,150
+can change the position uh you can keep
+it on auto or you can adjust it like I
+
+350
+00:06:23,150 --> 00:06:23,160
+it on auto or you can adjust it like I
+ 
+
+351
+00:06:23,160 --> 00:06:26,550
+it on auto or you can adjust it like I
+just said then the animation for example
+
+352
+00:06:26,550 --> 00:06:26,560
+just said then the animation for example
+ 
+
+353
+00:06:26,560 --> 00:06:28,670
+just said then the animation for example
+this is a bounce animation let me just
+
+354
+00:06:28,670 --> 00:06:28,680
+this is a bounce animation let me just
+ 
+
+355
+00:06:28,680 --> 00:06:31,189
+this is a bounce animation let me just
+show you we can see we have all of these
+
+356
+00:06:31,189 --> 00:06:31,199
+show you we can see we have all of these
+ 
+
+357
+00:06:31,199 --> 00:06:33,189
+show you we can see we have all of these
+key metrics we have you can do an
+
+358
+00:06:33,189 --> 00:06:33,199
+key metrics we have you can do an
+ 
+
+359
+00:06:33,199 --> 00:06:35,469
+key metrics we have you can do an
+underline let's do this soft Co for
+
+360
+00:06:35,469 --> 00:06:35,479
+underline let's do this soft Co for
+ 
+
+361
+00:06:35,479 --> 00:06:38,749
+underline let's do this soft Co for
+example and now you can do the books we
+
+362
+00:06:38,749 --> 00:06:38,759
+example and now you can do the books we
+ 
+
+363
+00:06:38,759 --> 00:06:41,189
+example and now you can do the books we
+click on generate and you can also slide
+
+364
+00:06:41,189 --> 00:06:41,199
+click on generate and you can also slide
+ 
+
+365
+00:06:41,199 --> 00:06:44,710
+click on generate and you can also slide
+it left all of the images or slide it up
+
+366
+00:06:44,710 --> 00:06:44,720
+it left all of the images or slide it up
+ 
+
+367
+00:06:44,720 --> 00:06:46,749
+it left all of the images or slide it up
+are generated with AI there's a lot of
+
+368
+00:06:46,749 --> 00:06:46,759
+are generated with AI there's a lot of
+ 
+
+369
+00:06:46,759 --> 00:06:48,990
+are generated with AI there's a lot of
+customization to be done right there
+
+370
+00:06:48,990 --> 00:06:49,000
+customization to be done right there
+ 
+
+371
+00:06:49,000 --> 00:06:50,870
+customization to be done right there
+besides that you can also change the
+
+372
+00:06:50,870 --> 00:06:50,880
+besides that you can also change the
+ 
+
+373
+00:06:50,880 --> 00:06:52,870
+besides that you can also change the
+font so if you have a font that you'd
+
+374
+00:06:52,870 --> 00:06:52,880
+font so if you have a font that you'd
+ 
+
+375
+00:06:52,880 --> 00:06:55,510
+font so if you have a font that you'd
+like or a brand font that you use then
+
+376
+00:06:55,510 --> 00:06:55,520
+like or a brand font that you use then
+ 
+
+377
+00:06:55,520 --> 00:06:58,869
+like or a brand font that you use then
+you can either choose anyone from here
+
+378
+00:06:58,869 --> 00:06:58,879
+you can either choose anyone from here
+ 
+
+379
+00:06:58,879 --> 00:07:01,230
+you can either choose anyone from here
+or you can upload your own custom font
+
+380
+00:07:01,230 --> 00:07:01,240
+or you can upload your own custom font
+ 
+
+381
+00:07:01,240 --> 00:07:03,189
+or you can upload your own custom font
+if I click on this window and it will
+
+382
+00:07:03,189 --> 00:07:03,199
+if I click on this window and it will
+ 
+
+383
+00:07:03,199 --> 00:07:05,629
+if I click on this window and it will
+open up a new tab and here I can upload
+
+384
+00:07:05,629 --> 00:07:05,639
+open up a new tab and here I can upload
+ 
+
+385
+00:07:05,639 --> 00:07:07,790
+open up a new tab and here I can upload
+a new font in there so if you have your
+
+386
+00:07:07,790 --> 00:07:07,800
+a new font in there so if you have your
+ 
+
+387
+00:07:07,800 --> 00:07:09,430
+a new font in there so if you have your
+own phone like I've done right here you
+
+388
+00:07:09,430 --> 00:07:09,440
+own phone like I've done right here you
+ 
+
+389
+00:07:09,440 --> 00:07:11,309
+own phone like I've done right here you
+can just upload it in there and then op
+
+390
+00:07:11,309 --> 00:07:11,319
+can just upload it in there and then op
+ 
+
+391
+00:07:11,319 --> 00:07:13,110
+can just upload it in there and then op
+clip can use it so for example if I just
+
+392
+00:07:13,110 --> 00:07:13,120
+clip can use it so for example if I just
+ 
+
+393
+00:07:13,120 --> 00:07:15,390
+clip can use it so for example if I just
+click on this then I have this Nexa
+
+394
+00:07:15,390 --> 00:07:15,400
+click on this then I have this Nexa
+ 
+
+395
+00:07:15,400 --> 00:07:17,309
+click on this then I have this Nexa
+heavy font next up you can change the
+
+396
+00:07:17,309 --> 00:07:17,319
+heavy font next up you can change the
+ 
+
+397
+00:07:17,319 --> 00:07:19,189
+heavy font next up you can change the
+color of your font you can change the
+
+398
+00:07:19,189 --> 00:07:19,199
+color of your font you can change the
+ 
+
+399
+00:07:19,199 --> 00:07:21,150
+color of your font you can change the
+size you can change if you want to have
+
+400
+00:07:21,150 --> 00:07:21,160
+size you can change if you want to have
+ 
+
+401
+00:07:21,160 --> 00:07:23,350
+size you can change if you want to have
+it uppercase or as typed and you can
+
+402
+00:07:23,350 --> 00:07:23,360
+it uppercase or as typed and you can
+ 
+
+403
+00:07:23,360 --> 00:07:25,749
+it uppercase or as typed and you can
+also add in a stroke or a shadow so
+
+404
+00:07:25,749 --> 00:07:25,759
+also add in a stroke or a shadow so
+ 
+
+405
+00:07:25,759 --> 00:07:27,629
+also add in a stroke or a shadow so
+these are pretty much the basics when it
+
+406
+00:07:27,629 --> 00:07:27,639
+these are pretty much the basics when it
+ 
+
+407
+00:07:27,639 --> 00:07:29,749
+these are pretty much the basics when it
+comes to editing your videos now let me
+
+408
+00:07:29,749 --> 00:07:29,759
+comes to editing your videos now let me
+ 
+
+409
+00:07:29,759 --> 00:07:31,350
+comes to editing your videos now let me
+choose a different video where I show
+
+410
+00:07:31,350 --> 00:07:31,360
+choose a different video where I show
+ 
+
+411
+00:07:31,360 --> 00:07:33,710
+choose a different video where I show
+some more advanced features so first of
+
+412
+00:07:33,710 --> 00:07:33,720
+some more advanced features so first of
+ 
+
+413
+00:07:33,720 --> 00:07:37,029
+some more advanced features so first of
+all we can change the layout of our clip
+
+414
+00:07:37,029 --> 00:07:37,039
+all we can change the layout of our clip
+ 
+
+415
+00:07:37,039 --> 00:07:38,670
+all we can change the layout of our clip
+so for example right here we have a
+
+416
+00:07:38,670 --> 00:07:38,680
+so for example right here we have a
+ 
+
+417
+00:07:38,680 --> 00:07:40,990
+so for example right here we have a
+screen share going on the way this works
+
+418
+00:07:40,990 --> 00:07:41,000
+screen share going on the way this works
+ 
+
+419
+00:07:41,000 --> 00:07:43,350
+screen share going on the way this works
+is we have a few different options first
+
+420
+00:07:43,350 --> 00:07:43,360
+is we have a few different options first
+ 
+
+421
+00:07:43,360 --> 00:07:45,550
+is we have a few different options first
+of all you can choose fill this will let
+
+422
+00:07:45,550 --> 00:07:45,560
+of all you can choose fill this will let
+ 
+
+423
+00:07:45,560 --> 00:07:48,149
+of all you can choose fill this will let
+you fill in one person on the screen
+
+424
+00:07:48,149 --> 00:07:48,159
+you fill in one person on the screen
+ 
+
+425
+00:07:48,159 --> 00:07:50,350
+you fill in one person on the screen
+entirely so this will make sure the
+
+426
+00:07:50,350 --> 00:07:50,360
+entirely so this will make sure the
+ 
+
+427
+00:07:50,360 --> 00:07:52,990
+entirely so this will make sure the
+entire frame is covered by that clip
+
+428
+00:07:52,990 --> 00:07:53,000
+entire frame is covered by that clip
+ 
+
+429
+00:07:53,000 --> 00:07:55,710
+entire frame is covered by that clip
+then you can choose fit so for example
+
+430
+00:07:55,710 --> 00:07:55,720
+then you can choose fit so for example
+ 
+
+431
+00:07:55,720 --> 00:07:58,909
+then you can choose fit so for example
+this video is 16 by9 so it will try to
+
+432
+00:07:58,909 --> 00:07:58,919
+this video is 16 by9 so it will try to
+ 
+
+433
+00:07:58,919 --> 00:08:01,149
+this video is 16 by9 so it will try to
+incorporate everyone on the screen right
+
+434
+00:08:01,149 --> 00:08:01,159
+incorporate everyone on the screen right
+ 
+
+435
+00:08:01,159 --> 00:08:03,670
+incorporate everyone on the screen right
+here then you can choose split this will
+
+436
+00:08:03,670 --> 00:08:03,680
+here then you can choose split this will
+ 
+
+437
+00:08:03,680 --> 00:08:05,710
+here then you can choose split this will
+keep both speakers on the screen as you
+
+438
+00:08:05,710 --> 00:08:05,720
+keep both speakers on the screen as you
+ 
+
+439
+00:08:05,720 --> 00:08:07,589
+keep both speakers on the screen as you
+can see right there which is a very
+
+440
+00:08:07,589 --> 00:08:07,599
+can see right there which is a very
+ 
+
+441
+00:08:07,599 --> 00:08:09,589
+can see right there which is a very
+popular choice for people that have a
+
+442
+00:08:09,589 --> 00:08:09,599
+popular choice for people that have a
+ 
+
+443
+00:08:09,599 --> 00:08:11,749
+popular choice for people that have a
+Talking Hat podcast with multiple
+
+444
+00:08:11,749 --> 00:08:11,759
+Talking Hat podcast with multiple
+ 
+
+445
+00:08:11,759 --> 00:08:14,430
+Talking Hat podcast with multiple
+speakers on them then you can go three
+
+446
+00:08:14,430 --> 00:08:14,440
+speakers on them then you can go three
+ 
+
+447
+00:08:14,440 --> 00:08:15,790
+speakers on them then you can go three
+if you have three different things on
+
+448
+00:08:15,790 --> 00:08:15,800
+if you have three different things on
+ 
+
+449
+00:08:15,800 --> 00:08:17,749
+if you have three different things on
+there as you can see we don't have one
+
+450
+00:08:17,749 --> 00:08:17,759
+there as you can see we don't have one
+ 
+
+451
+00:08:17,759 --> 00:08:19,510
+there as you can see we don't have one
+so this doesn't make any sense next up
+
+452
+00:08:19,510 --> 00:08:19,520
+so this doesn't make any sense next up
+ 
+
+453
+00:08:19,520 --> 00:08:21,510
+so this doesn't make any sense next up
+you have screen share and gameplay and
+
+454
+00:08:21,510 --> 00:08:21,520
+you have screen share and gameplay and
+ 
+
+455
+00:08:21,520 --> 00:08:23,189
+you have screen share and gameplay and
+those are specific for people that are
+
+456
+00:08:23,189 --> 00:08:23,199
+those are specific for people that are
+ 
+
+457
+00:08:23,199 --> 00:08:25,749
+those are specific for people that are
+sharing their screen or their gameplay
+
+458
+00:08:25,749 --> 00:08:25,759
+sharing their screen or their gameplay
+ 
+
+459
+00:08:25,759 --> 00:08:27,990
+sharing their screen or their gameplay
+now I'm going to go with Phil then if I
+
+460
+00:08:27,990 --> 00:08:28,000
+now I'm going to go with Phil then if I
+ 
+
+461
+00:08:28,000 --> 00:08:30,149
+now I'm going to go with Phil then if I
+double click on this I can CR it even
+
+462
+00:08:30,149 --> 00:08:30,159
+double click on this I can CR it even
+ 
+
+463
+00:08:30,159 --> 00:08:32,110
+double click on this I can CR it even
+further so let's say I want to crop it
+
+464
+00:08:32,110 --> 00:08:32,120
+further so let's say I want to crop it
+ 
+
+465
+00:08:32,120 --> 00:08:35,190
+further so let's say I want to crop it
+down onto his face a bit more then I can
+
+466
+00:08:35,190 --> 00:08:35,200
+down onto his face a bit more then I can
+ 
+
+467
+00:08:35,200 --> 00:08:37,269
+down onto his face a bit more then I can
+apply this and now it's zoomed in a
+
+468
+00:08:37,269 --> 00:08:37,279
+apply this and now it's zoomed in a
+ 
+
+469
+00:08:37,279 --> 00:08:39,790
+apply this and now it's zoomed in a
+little bit further so we you have the
+
+470
+00:08:39,790 --> 00:08:39,800
+little bit further so we you have the
+ 
+
+471
+00:08:39,800 --> 00:08:41,990
+little bit further so we you have the
+complete freedom to choose whatever you
+
+472
+00:08:41,990 --> 00:08:42,000
+complete freedom to choose whatever you
+ 
+
+473
+00:08:42,000 --> 00:08:44,070
+complete freedom to choose whatever you
+like right here so you can do it 60 by9
+
+474
+00:08:44,070 --> 00:08:44,080
+like right here so you can do it 60 by9
+ 
+
+475
+00:08:44,080 --> 00:08:47,230
+like right here so you can do it 60 by9
+one by one and then you can hit apply so
+
+476
+00:08:47,230 --> 00:08:47,240
+one by one and then you can hit apply so
+ 
+
+477
+00:08:47,240 --> 00:08:49,190
+one by one and then you can hit apply so
+try to play around with this until you
+
+478
+00:08:49,190 --> 00:08:49,200
+try to play around with this until you
+ 
+
+479
+00:08:49,200 --> 00:08:52,230
+try to play around with this until you
+find the perfect fit for your video then
+
+480
+00:08:52,230 --> 00:08:52,240
+find the perfect fit for your video then
+ 
+
+481
+00:08:52,240 --> 00:08:54,110
+find the perfect fit for your video then
+next up over here on the left hand side
+
+482
+00:08:54,110 --> 00:08:54,120
+next up over here on the left hand side
+ 
+
+483
+00:08:54,120 --> 00:08:55,829
+next up over here on the left hand side
+we have a few different options to
+
+484
+00:08:55,829 --> 00:08:55,839
+we have a few different options to
+ 
+
+485
+00:08:55,839 --> 00:08:58,190
+we have a few different options to
+choose from first of all we have a text
+
+486
+00:08:58,190 --> 00:08:58,200
+choose from first of all we have a text
+ 
+
+487
+00:08:58,200 --> 00:09:00,069
+choose from first of all we have a text
+overlay where we can add add in a
+
+488
+00:09:00,069 --> 00:09:00,079
+overlay where we can add add in a
+ 
+
+489
+00:09:00,079 --> 00:09:01,790
+overlay where we can add add in a
+heading right here here you can
+
+490
+00:09:01,790 --> 00:09:01,800
+heading right here here you can
+ 
+
+491
+00:09:01,800 --> 00:09:04,069
+heading right here here you can
+basically add in a title if you want it
+
+492
+00:09:04,069 --> 00:09:04,079
+basically add in a title if you want it
+ 
+
+493
+00:09:04,079 --> 00:09:06,150
+basically add in a title if you want it
+to be included in the first few seconds
+
+494
+00:09:06,150 --> 00:09:06,160
+to be included in the first few seconds
+ 
+
+495
+00:09:06,160 --> 00:09:08,230
+to be included in the first few seconds
+in your video so for example you can say
+
+496
+00:09:08,230 --> 00:09:08,240
+in your video so for example you can say
+ 
+
+497
+00:09:08,240 --> 00:09:10,710
+in your video so for example you can say
+something like speed went crazy and this
+
+498
+00:09:10,710 --> 00:09:10,720
+something like speed went crazy and this
+ 
+
+499
+00:09:10,720 --> 00:09:13,030
+something like speed went crazy and this
+can be like your title for the video
+
+500
+00:09:13,030 --> 00:09:13,040
+can be like your title for the video
+ 
+
+501
+00:09:13,040 --> 00:09:14,870
+can be like your title for the video
+which you can move further to the
+
+502
+00:09:14,870 --> 00:09:14,880
+which you can move further to the
+ 
+
+503
+00:09:14,880 --> 00:09:16,990
+which you can move further to the
+beginning of your video so you see that
+
+504
+00:09:16,990 --> 00:09:17,000
+beginning of your video so you see that
+ 
+
+505
+00:09:17,000 --> 00:09:19,310
+beginning of your video so you see that
+in the first few seconds then next up
+
+506
+00:09:19,310 --> 00:09:19,320
+in the first few seconds then next up
+ 
+
+507
+00:09:19,320 --> 00:09:22,389
+in the first few seconds then next up
+you have transitions so here they speak
+
+508
+00:09:22,389 --> 00:09:22,399
+you have transitions so here they speak
+ 
+
+509
+00:09:22,399 --> 00:09:24,430
+you have transitions so here they speak
+for themselves you can transition
+
+510
+00:09:24,430 --> 00:09:24,440
+for themselves you can transition
+ 
+
+511
+00:09:24,440 --> 00:09:27,069
+for themselves you can transition
+between multiple scenes next up you have
+
+512
+00:09:27,069 --> 00:09:27,079
+between multiple scenes next up you have
+ 
+
+513
+00:09:27,079 --> 00:09:29,790
+between multiple scenes next up you have
+ai voiceover so if you don't have a
+
+514
+00:09:29,790 --> 00:09:29,800
+ai voiceover so if you don't have a
+ 
+
+515
+00:09:29,800 --> 00:09:31,630
+ai voiceover so if you don't have a
+dialogue or if you want to add in an
+
+516
+00:09:31,630 --> 00:09:31,640
+dialogue or if you want to add in an
+ 
+
+517
+00:09:31,640 --> 00:09:34,310
+dialogue or if you want to add in an
+intro or you just want to add in a voice
+
+518
+00:09:34,310 --> 00:09:34,320
+intro or you just want to add in a voice
+ 
+
+519
+00:09:34,320 --> 00:09:36,710
+intro or you just want to add in a voice
+over overall then you can do so right
+
+520
+00:09:36,710 --> 00:09:36,720
+over overall then you can do so right
+ 
+
+521
+00:09:36,720 --> 00:09:38,829
+over overall then you can do so right
+here so you can type your voiceover
+
+522
+00:09:38,829 --> 00:09:38,839
+here so you can type your voiceover
+ 
+
+523
+00:09:38,839 --> 00:09:40,910
+here so you can type your voiceover
+script right here so let me do that same
+
+524
+00:09:40,910 --> 00:09:40,920
+script right here so let me do that same
+ 
+
+525
+00:09:40,920 --> 00:09:45,630
+script right here so let me do that same
+example again here speed goes
+
+526
+00:09:45,630 --> 00:09:45,640
+example again here speed goes
+ 
+
+527
+00:09:45,640 --> 00:09:47,870
+example again here speed goes
+crazy in
+
+528
+00:09:47,870 --> 00:09:47,880
+crazy in
+ 
+
+529
+00:09:47,880 --> 00:09:50,750
+crazy in
+Indonesia so now we can select our
+
+530
+00:09:50,750 --> 00:09:50,760
+Indonesia so now we can select our
+ 
+
+531
+00:09:50,760 --> 00:09:52,910
+Indonesia so now we can select our
+speaker we have a bunch of different
+
+532
+00:09:52,910 --> 00:09:52,920
+speaker we have a bunch of different
+ 
+
+533
+00:09:52,920 --> 00:09:54,990
+speaker we have a bunch of different
+options let's do Paul if you do what
+
+534
+00:09:54,990 --> 00:09:55,000
+options let's do Paul if you do what
+ 
+
+535
+00:09:55,000 --> 00:09:56,389
+options let's do Paul if you do what
+you've always done so now we're going to
+
+536
+00:09:56,389 --> 00:09:56,399
+you've always done so now we're going to
+ 
+
+537
+00:09:56,399 --> 00:09:58,150
+you've always done so now we're going to
+select Paul then you can play around
+
+538
+00:09:58,150 --> 00:09:58,160
+select Paul then you can play around
+ 
+
+539
+00:09:58,160 --> 00:10:00,550
+select Paul then you can play around
+with the stability and the original
+
+540
+00:10:00,550 --> 00:10:00,560
+with the stability and the original
+ 
+
+541
+00:10:00,560 --> 00:10:01,949
+with the stability and the original
+audio I'm just going to keep it like
+
+542
+00:10:01,949 --> 00:10:01,959
+audio I'm just going to keep it like
+ 
+
+543
+00:10:01,959 --> 00:10:04,230
+audio I'm just going to keep it like
+this and now this usually takes like 20
+
+544
+00:10:04,230 --> 00:10:04,240
+this and now this usually takes like 20
+ 
+
+545
+00:10:04,240 --> 00:10:06,750
+this and now this usually takes like 20
+seconds and then you have your own voice
+
+546
+00:10:06,750 --> 00:10:06,760
+seconds and then you have your own voice
+ 
+
+547
+00:10:06,760 --> 00:10:08,590
+seconds and then you have your own voice
+over so now I directed it to the
+
+548
+00:10:08,590 --> 00:10:08,600
+over so now I directed it to the
+ 
+
+549
+00:10:08,600 --> 00:10:10,670
+over so now I directed it to the
+beginning of our video and it muted this
+
+550
+00:10:10,670 --> 00:10:10,680
+beginning of our video and it muted this
+ 
+
+551
+00:10:10,680 --> 00:10:13,790
+beginning of our video and it muted this
+other soundtrack so it sounds like this
+
+552
+00:10:13,790 --> 00:10:13,800
+other soundtrack so it sounds like this
+ 
+
+553
+00:10:13,800 --> 00:10:16,430
+other soundtrack so it sounds like this
+speed goes crazy in Indonesia Indonesia
+
+554
+00:10:16,430 --> 00:10:16,440
+speed goes crazy in Indonesia Indonesia
+ 
+
+555
+00:10:16,440 --> 00:10:18,470
+speed goes crazy in Indonesia Indonesia
+because that's the one that so yeah
+
+556
+00:10:18,470 --> 00:10:18,480
+because that's the one that so yeah
+ 
+
+557
+00:10:18,480 --> 00:10:20,790
+because that's the one that so yeah
+that's a great way to add in some voice
+
+558
+00:10:20,790 --> 00:10:20,800
+that's a great way to add in some voice
+ 
+
+559
+00:10:20,800 --> 00:10:22,590
+that's a great way to add in some voice
+over to your video so it is an
+
+560
+00:10:22,590 --> 00:10:22,600
+over to your video so it is an
+ 
+
+561
+00:10:22,600 --> 00:10:24,750
+over to your video so it is an
+all-in-one video editor that can even
+
+562
+00:10:24,750 --> 00:10:24,760
+all-in-one video editor that can even
+ 
+
+563
+00:10:24,760 --> 00:10:27,670
+all-in-one video editor that can even
+add in a voice over to your videos now
+
+564
+00:10:27,670 --> 00:10:27,680
+add in a voice over to your videos now
+ 
+
+565
+00:10:27,680 --> 00:10:30,030
+add in a voice over to your videos now
+next up we have Boll now now one thing
+
+566
+00:10:30,030 --> 00:10:30,040
+next up we have Boll now now one thing
+ 
+
+567
+00:10:30,040 --> 00:10:31,910
+next up we have Boll now now one thing
+that I want to change in this video is
+
+568
+00:10:31,910 --> 00:10:31,920
+that I want to change in this video is
+ 
+
+569
+00:10:31,920 --> 00:10:33,710
+that I want to change in this video is
+this part where he shows The Boll so let
+
+570
+00:10:33,710 --> 00:10:33,720
+this part where he shows The Boll so let
+ 
+
+571
+00:10:33,720 --> 00:10:35,710
+this part where he shows The Boll so let
+me just show the clip again CU that's
+
+572
+00:10:35,710 --> 00:10:35,720
+me just show the clip again CU that's
+ 
+
+573
+00:10:35,720 --> 00:10:37,910
+me just show the clip again CU that's
+the one that broke records millions of
+
+574
+00:10:37,910 --> 00:10:37,920
+the one that broke records millions of
+ 
+
+575
+00:10:37,920 --> 00:10:39,829
+the one that broke records millions of
+people to so as they are talking about
+
+576
+00:10:39,829 --> 00:10:39,839
+people to so as they are talking about
+ 
+
+577
+00:10:39,839 --> 00:10:42,829
+people to so as they are talking about
+this segment John is showing Boll of
+
+578
+00:10:42,829 --> 00:10:42,839
+this segment John is showing Boll of
+ 
+
+579
+00:10:42,839 --> 00:10:44,750
+this segment John is showing Boll of
+speed being in Indonesia they actually
+
+580
+00:10:44,750 --> 00:10:44,760
+speed being in Indonesia they actually
+ 
+
+581
+00:10:44,760 --> 00:10:46,670
+speed being in Indonesia they actually
+used this video which is a three-hour
+
+582
+00:10:46,670 --> 00:10:46,680
+used this video which is a three-hour
+ 
+
+583
+00:10:46,680 --> 00:10:48,470
+used this video which is a three-hour
+long stream that speed was doing in
+
+584
+00:10:48,470 --> 00:10:48,480
+long stream that speed was doing in
+ 
+
+585
+00:10:48,480 --> 00:10:51,750
+long stream that speed was doing in
+Indonesia and then he shown this in this
+
+586
+00:10:51,750 --> 00:10:51,760
+Indonesia and then he shown this in this
+ 
+
+587
+00:10:51,760 --> 00:10:54,150
+Indonesia and then he shown this in this
+segment right here to fix this as they
+
+588
+00:10:54,150 --> 00:10:54,160
+segment right here to fix this as they
+ 
+
+589
+00:10:54,160 --> 00:10:56,190
+segment right here to fix this as they
+have not zoomed it in correctly as it is
+
+590
+00:10:56,190 --> 00:10:56,200
+have not zoomed it in correctly as it is
+ 
+
+591
+00:10:56,200 --> 00:10:58,230
+have not zoomed it in correctly as it is
+shown like the YouTube video you can
+
+592
+00:10:58,230 --> 00:10:58,240
+shown like the YouTube video you can
+ 
+
+593
+00:10:58,240 --> 00:11:00,710
+shown like the YouTube video you can
+either zoom in to make it like this and
+
+594
+00:11:00,710 --> 00:11:00,720
+either zoom in to make it like this and
+ 
+
+595
+00:11:00,720 --> 00:11:01,550
+either zoom in to make it like this and
+then you
+
+596
+00:11:01,550 --> 00:11:01,560
+then you
+ 
+
+597
+00:11:01,560 --> 00:11:04,269
+then you
+can then you can show it like that or
+
+598
+00:11:04,269 --> 00:11:04,279
+can then you can show it like that or
+ 
+
+599
+00:11:04,279 --> 00:11:06,829
+can then you can show it like that or
+what you can also do is what I did is I
+
+600
+00:11:06,829 --> 00:11:06,839
+what you can also do is what I did is I
+ 
+
+601
+00:11:06,839 --> 00:11:09,110
+what you can also do is what I did is I
+copied this link right here then I went
+
+602
+00:11:09,110 --> 00:11:09,120
+copied this link right here then I went
+ 
+
+603
+00:11:09,120 --> 00:11:11,470
+copied this link right here then I went
+back to Opus clip and then I clipped the
+
+604
+00:11:11,470 --> 00:11:11,480
+back to Opus clip and then I clipped the
+ 
+
+605
+00:11:11,480 --> 00:11:13,750
+back to Opus clip and then I clipped the
+entire thing so this is a almost 4-Hour
+
+606
+00:11:13,750 --> 00:11:13,760
+entire thing so this is a almost 4-Hour
+ 
+
+607
+00:11:13,760 --> 00:11:16,829
+entire thing so this is a almost 4-Hour
+long stream I clipped it and now I can
+
+608
+00:11:16,829 --> 00:11:16,839
+long stream I clipped it and now I can
+ 
+
+609
+00:11:16,839 --> 00:11:19,150
+long stream I clipped it and now I can
+use this as Boll so for this I used a
+
+610
+00:11:19,150 --> 00:11:19,160
+use this as Boll so for this I used a
+ 
+
+611
+00:11:19,160 --> 00:11:20,829
+use this as Boll so for this I used a
+template that kept it in the original
+
+612
+00:11:20,829 --> 00:11:20,839
+template that kept it in the original
+ 
+
+613
+00:11:20,839 --> 00:11:23,870
+template that kept it in the original
+16x9 state and now I can take any of
+
+614
+00:11:23,870 --> 00:11:23,880
+16x9 state and now I can take any of
+ 
+
+615
+00:11:23,880 --> 00:11:24,390
+16x9 state and now I can take any of
+these
+
+616
+00:11:24,390 --> 00:11:24,400
+these
+ 
+
+617
+00:11:24,400 --> 00:11:27,750
+these
+[Music]
+
+618
+00:11:27,750 --> 00:11:27,760
+
+ 
+
+619
+00:11:27,760 --> 00:11:31,870
+
+moments and down them and use them as
+
+620
+00:11:31,870 --> 00:11:31,880
+moments and down them and use them as
+ 
+
+621
+00:11:31,880 --> 00:11:35,110
+moments and down them and use them as
+Boll so the way it works is I go back to
+
+622
+00:11:35,110 --> 00:11:35,120
+Boll so the way it works is I go back to
+ 
+
+623
+00:11:35,120 --> 00:11:38,430
+Boll so the way it works is I go back to
+op clip then I go to upload and now once
+
+624
+00:11:38,430 --> 00:11:38,440
+op clip then I go to upload and now once
+ 
+
+625
+00:11:38,440 --> 00:11:40,750
+op clip then I go to upload and now once
+this is downloaded I can upload this
+
+626
+00:11:40,750 --> 00:11:40,760
+this is downloaded I can upload this
+ 
+
+627
+00:11:40,760 --> 00:11:42,829
+this is downloaded I can upload this
+into Ops clip so you drag it in there
+
+628
+00:11:42,829 --> 00:11:42,839
+into Ops clip so you drag it in there
+ 
+
+629
+00:11:42,839 --> 00:11:45,110
+into Ops clip so you drag it in there
+and now this takes like 10 seconds and
+
+630
+00:11:45,110 --> 00:11:45,120
+and now this takes like 10 seconds and
+ 
+
+631
+00:11:45,120 --> 00:11:46,990
+and now this takes like 10 seconds and
+then you drag it onto the timeline now
+
+632
+00:11:46,990 --> 00:11:47,000
+then you drag it onto the timeline now
+ 
+
+633
+00:11:47,000 --> 00:11:48,750
+then you drag it onto the timeline now
+you resize it and then you select the
+
+634
+00:11:48,750 --> 00:11:48,760
+you resize it and then you select the
+ 
+
+635
+00:11:48,760 --> 00:11:50,389
+you resize it and then you select the
+moment that you want to show there we
+
+636
+00:11:50,389 --> 00:11:50,399
+moment that you want to show there we
+ 
+
+637
+00:11:50,399 --> 00:11:52,550
+moment that you want to show there we
+crop it a little bit or we adjust the
+
+638
+00:11:52,550 --> 00:11:52,560
+crop it a little bit or we adjust the
+ 
+
+639
+00:11:52,560 --> 00:11:54,910
+crop it a little bit or we adjust the
+sizing and now we have our own custom
+
+640
+00:11:54,910 --> 00:11:54,920
+sizing and now we have our own custom
+ 
+
+641
+00:11:54,920 --> 00:11:57,590
+sizing and now we have our own custom
+Boll millions of people tuned in live
+
+642
+00:11:57,590 --> 00:11:57,600
+Boll millions of people tuned in live
+ 
+
+643
+00:11:57,600 --> 00:12:00,389
+Boll millions of people tuned in live
+like so this works pretty great with any
+
+644
+00:12:00,389 --> 00:12:00,399
+like so this works pretty great with any
+ 
+
+645
+00:12:00,399 --> 00:12:02,150
+like so this works pretty great with any
+type of Boll that you have so you can
+
+646
+00:12:02,150 --> 00:12:02,160
+type of Boll that you have so you can
+ 
+
+647
+00:12:02,160 --> 00:12:04,389
+type of Boll that you have so you can
+upload images you can upload videos you
+
+648
+00:12:04,389 --> 00:12:04,399
+upload images you can upload videos you
+ 
+
+649
+00:12:04,399 --> 00:12:06,870
+upload images you can upload videos you
+can even upload audio and you can place
+
+650
+00:12:06,870 --> 00:12:06,880
+can even upload audio and you can place
+ 
+
+651
+00:12:06,880 --> 00:12:08,910
+can even upload audio and you can place
+this in this timeline editor if you
+
+652
+00:12:08,910 --> 00:12:08,920
+this in this timeline editor if you
+ 
+
+653
+00:12:08,920 --> 00:12:10,550
+this in this timeline editor if you
+don't have any Boll yourself then you
+
+654
+00:12:10,550 --> 00:12:10,560
+don't have any Boll yourself then you
+ 
+
+655
+00:12:10,560 --> 00:12:12,710
+don't have any Boll yourself then you
+can go over to the b-roll section you
+
+656
+00:12:12,710 --> 00:12:12,720
+can go over to the b-roll section you
+ 
+
+657
+00:12:12,720 --> 00:12:15,590
+can go over to the b-roll section you
+can use the autogenerate AI b-roll or
+
+658
+00:12:15,590 --> 00:12:15,600
+can use the autogenerate AI b-roll or
+ 
+
+659
+00:12:15,600 --> 00:12:18,069
+can use the autogenerate AI b-roll or
+you can use the stock Boll feature so if
+
+660
+00:12:18,069 --> 00:12:18,079
+you can use the stock Boll feature so if
+ 
+
+661
+00:12:18,079 --> 00:12:20,230
+you can use the stock Boll feature so if
+you click on autogenerate AI Boll it
+
+662
+00:12:20,230 --> 00:12:20,240
+you click on autogenerate AI Boll it
+ 
+
+663
+00:12:20,240 --> 00:12:22,990
+you click on autogenerate AI Boll it
+will generate some AI images for you
+
+664
+00:12:22,990 --> 00:12:23,000
+will generate some AI images for you
+ 
+
+665
+00:12:23,000 --> 00:12:25,430
+will generate some AI images for you
+which will have a transition on there
+
+666
+00:12:25,430 --> 00:12:25,440
+which will have a transition on there
+ 
+
+667
+00:12:25,440 --> 00:12:27,069
+which will have a transition on there
+and depending on the type of content
+
+668
+00:12:27,069 --> 00:12:27,079
+and depending on the type of content
+ 
+
+669
+00:12:27,079 --> 00:12:28,790
+and depending on the type of content
+you're talking about this can be a
+
+670
+00:12:28,790 --> 00:12:28,800
+you're talking about this can be a
+ 
+
+671
+00:12:28,800 --> 00:12:30,990
+you're talking about this can be a
+pretty good substitutes for having
+
+672
+00:12:30,990 --> 00:12:31,000
+pretty good substitutes for having
+ 
+
+673
+00:12:31,000 --> 00:12:33,230
+pretty good substitutes for having
+actual Boll so if we just take a look at
+
+674
+00:12:33,230 --> 00:12:33,240
+actual Boll so if we just take a look at
+ 
+
+675
+00:12:33,240 --> 00:12:34,470
+actual Boll so if we just take a look at
+this one for
+
+676
+00:12:34,470 --> 00:12:34,480
+this one for
+ 
+
+677
+00:12:34,480 --> 00:12:36,509
+this one for
+example they're talking about live
+
+678
+00:12:36,509 --> 00:12:36,519
+example they're talking about live
+ 
+
+679
+00:12:36,519 --> 00:12:39,389
+example they're talking about live
+stream and now we have some buau of a
+
+680
+00:12:39,389 --> 00:12:39,399
+stream and now we have some buau of a
+ 
+
+681
+00:12:39,399 --> 00:12:41,790
+stream and now we have some buau of a
+live stream going on right there so that
+
+682
+00:12:41,790 --> 00:12:41,800
+live stream going on right there so that
+ 
+
+683
+00:12:41,800 --> 00:12:43,990
+live stream going on right there so that
+is just one other way to spice up your
+
+684
+00:12:43,990 --> 00:12:44,000
+is just one other way to spice up your
+ 
+
+685
+00:12:44,000 --> 00:12:46,470
+is just one other way to spice up your
+videos to make it more custom and also
+
+686
+00:12:46,470 --> 00:12:46,480
+videos to make it more custom and also
+ 
+
+687
+00:12:46,480 --> 00:12:49,069
+videos to make it more custom and also
+to make it more unique because at the
+
+688
+00:12:49,069 --> 00:12:49,079
+to make it more unique because at the
+ 
+
+689
+00:12:49,079 --> 00:12:51,550
+to make it more unique because at the
+end you can clip any type of content but
+
+690
+00:12:51,550 --> 00:12:51,560
+end you can clip any type of content but
+ 
+
+691
+00:12:51,560 --> 00:12:53,870
+end you can clip any type of content but
+if you have your own unique style to it
+
+692
+00:12:53,870 --> 00:12:53,880
+if you have your own unique style to it
+ 
+
+693
+00:12:53,880 --> 00:12:55,990
+if you have your own unique style to it
+then that makes it yours a recent new
+
+694
+00:12:55,990 --> 00:12:56,000
+then that makes it yours a recent new
+ 
+
+695
+00:12:56,000 --> 00:12:57,829
+then that makes it yours a recent new
+update that Ops clip has launched is
+
+696
+00:12:57,829 --> 00:12:57,839
+update that Ops clip has launched is
+ 
+
+697
+00:12:57,839 --> 00:13:00,110
+update that Ops clip has launched is
+adding in music to your video so you can
+
+698
+00:13:00,110 --> 00:13:00,120
+adding in music to your video so you can
+ 
+
+699
+00:13:00,120 --> 00:13:01,990
+adding in music to your video so you can
+either do that by uploading your own
+
+700
+00:13:01,990 --> 00:13:02,000
+either do that by uploading your own
+ 
+
+701
+00:13:02,000 --> 00:13:04,389
+either do that by uploading your own
+audio or you can choose any of the
+
+702
+00:13:04,389 --> 00:13:04,399
+audio or you can choose any of the
+ 
+
+703
+00:13:04,399 --> 00:13:06,189
+audio or you can choose any of the
+copyright free music that has been
+
+704
+00:13:06,189 --> 00:13:06,199
+copyright free music that has been
+ 
+
+705
+00:13:06,199 --> 00:13:08,910
+copyright free music that has been
+provided by no copyright songs and you
+
+706
+00:13:08,910 --> 00:13:08,920
+provided by no copyright songs and you
+ 
+
+707
+00:13:08,920 --> 00:13:11,590
+provided by no copyright songs and you
+can just choose one you can play it to
+
+708
+00:13:11,590 --> 00:13:11,600
+can just choose one you can play it to
+ 
+
+709
+00:13:11,600 --> 00:13:14,470
+can just choose one you can play it to
+listen to it once you like it you click
+
+710
+00:13:14,470 --> 00:13:14,480
+listen to it once you like it you click
+ 
+
+711
+00:13:14,480 --> 00:13:16,430
+listen to it once you like it you click
+on ADD and now it is added to your
+
+712
+00:13:16,430 --> 00:13:16,440
+on ADD and now it is added to your
+ 
+
+713
+00:13:16,440 --> 00:13:18,990
+on ADD and now it is added to your
+timeline so now we can change the volume
+
+714
+00:13:18,990 --> 00:13:19,000
+timeline so now we can change the volume
+ 
+
+715
+00:13:19,000 --> 00:13:21,069
+timeline so now we can change the volume
+so you can keep it like this or you can
+
+716
+00:13:21,069 --> 00:13:21,079
+so you can keep it like this or you can
+ 
+
+717
+00:13:21,079 --> 00:13:23,430
+so you can keep it like this or you can
+increase it or decrease it however you
+
+718
+00:13:23,430 --> 00:13:23,440
+increase it or decrease it however you
+ 
+
+719
+00:13:23,440 --> 00:13:25,230
+increase it or decrease it however you
+like another cool feature that I want to
+
+720
+00:13:25,230 --> 00:13:25,240
+like another cool feature that I want to
+ 
+
+721
+00:13:25,240 --> 00:13:26,910
+like another cool feature that I want to
+share with you for those of you that
+
+722
+00:13:26,910 --> 00:13:26,920
+share with you for those of you that
+ 
+
+723
+00:13:26,920 --> 00:13:29,590
+share with you for those of you that
+don't have a fancy mic like this or
+
+724
+00:13:29,590 --> 00:13:29,600
+don't have a fancy mic like this or
+ 
+
+725
+00:13:29,600 --> 00:13:31,670
+don't have a fancy mic like this or
+maybe you're outside and you have like
+
+726
+00:13:31,670 --> 00:13:31,680
+maybe you're outside and you have like
+ 
+
+727
+00:13:31,680 --> 00:13:33,990
+maybe you're outside and you have like
+an iPhone mic that doesn't sound too
+
+728
+00:13:33,990 --> 00:13:34,000
+an iPhone mic that doesn't sound too
+ 
+
+729
+00:13:34,000 --> 00:13:35,910
+an iPhone mic that doesn't sound too
+great like speed for example is having
+
+730
+00:13:35,910 --> 00:13:35,920
+great like speed for example is having
+ 
+
+731
+00:13:35,920 --> 00:13:38,990
+great like speed for example is having
+right here let me just listen to
+
+732
+00:13:38,990 --> 00:13:39,000
+right here let me just listen to
+ 
+
+733
+00:13:39,000 --> 00:13:41,550
+right here let me just listen to
+it hold it all right bet so look what we
+
+734
+00:13:41,550 --> 00:13:41,560
+it hold it all right bet so look what we
+ 
+
+735
+00:13:41,560 --> 00:13:42,990
+it hold it all right bet so look what we
+doing so there's a lot of background
+
+736
+00:13:42,990 --> 00:13:43,000
+doing so there's a lot of background
+ 
+
+737
+00:13:43,000 --> 00:13:44,990
+doing so there's a lot of background
+noise going on what you can do here is
+
+738
+00:13:44,990 --> 00:13:45,000
+noise going on what you can do here is
+ 
+
+739
+00:13:45,000 --> 00:13:47,629
+noise going on what you can do here is
+you can click on AI enhance then you can
+
+740
+00:13:47,629 --> 00:13:47,639
+you can click on AI enhance then you can
+ 
+
+741
+00:13:47,639 --> 00:13:49,829
+you can click on AI enhance then you can
+do speech enhancement you can remove
+
+742
+00:13:49,829 --> 00:13:49,839
+do speech enhancement you can remove
+ 
+
+743
+00:13:49,839 --> 00:13:52,230
+do speech enhancement you can remove
+filler words you can remove pauses and
+
+744
+00:13:52,230 --> 00:13:52,240
+filler words you can remove pauses and
+ 
+
+745
+00:13:52,240 --> 00:13:54,990
+filler words you can remove pauses and
+you can even sensor cursing words now
+
+746
+00:13:54,990 --> 00:13:55,000
+you can even sensor cursing words now
+ 
+
+747
+00:13:55,000 --> 00:13:56,910
+you can even sensor cursing words now
+this is great for those of you that want
+
+748
+00:13:56,910 --> 00:13:56,920
+this is great for those of you that want
+ 
+
+749
+00:13:56,920 --> 00:13:59,189
+this is great for those of you that want
+to speed up their editing process by
+
+750
+00:13:59,189 --> 00:13:59,199
+to speed up their editing process by
+ 
+
+751
+00:13:59,199 --> 00:14:02,030
+to speed up their editing process by
+removing the words by just removing all
+
+752
+00:14:02,030 --> 00:14:02,040
+removing the words by just removing all
+ 
+
+753
+00:14:02,040 --> 00:14:03,949
+removing the words by just removing all
+the mistakes of cursing that they've
+
+754
+00:14:03,949 --> 00:14:03,959
+the mistakes of cursing that they've
+ 
+
+755
+00:14:03,959 --> 00:14:06,590
+the mistakes of cursing that they've
+made and for those that have a bad
+
+756
+00:14:06,590 --> 00:14:06,600
+made and for those that have a bad
+ 
+
+757
+00:14:06,600 --> 00:14:09,069
+made and for those that have a bad
+quality mic so if we just to is on then
+
+758
+00:14:09,069 --> 00:14:09,079
+quality mic so if we just to is on then
+ 
+
+759
+00:14:09,079 --> 00:14:11,790
+quality mic so if we just to is on then
+we click on confirm and now it will take
+
+760
+00:14:11,790 --> 00:14:11,800
+we click on confirm and now it will take
+ 
+
+761
+00:14:11,800 --> 00:14:13,710
+we click on confirm and now it will take
+like less than 10 seconds literally as
+
+762
+00:14:13,710 --> 00:14:13,720
+like less than 10 seconds literally as
+ 
+
+763
+00:14:13,720 --> 00:14:15,550
+like less than 10 seconds literally as
+I'm speaking about this right now it's
+
+764
+00:14:15,550 --> 00:14:15,560
+I'm speaking about this right now it's
+ 
+
+765
+00:14:15,560 --> 00:14:17,710
+I'm speaking about this right now it's
+already almost done then if we listen to
+
+766
+00:14:17,710 --> 00:14:17,720
+already almost done then if we listen to
+ 
+
+767
+00:14:17,720 --> 00:14:19,829
+already almost done then if we listen to
+it right now after it has just finished
+
+768
+00:14:19,829 --> 00:14:19,839
+it right now after it has just finished
+ 
+
+769
+00:14:19,839 --> 00:14:22,430
+it right now after it has just finished
+then it would sound like
+
+770
+00:14:22,430 --> 00:14:22,440
+then it would sound like
+ 
+
+771
+00:14:22,440 --> 00:14:24,910
+then it would sound like
+this yes hold it all right bet so look
+
+772
+00:14:24,910 --> 00:14:24,920
+this yes hold it all right bet so look
+ 
+
+773
+00:14:24,920 --> 00:14:27,430
+this yes hold it all right bet so look
+what we doing what we doing so you can
+
+774
+00:14:27,430 --> 00:14:27,440
+what we doing what we doing so you can
+ 
+
+775
+00:14:27,440 --> 00:14:30,230
+what we doing what we doing so you can
+hear those screaming people
+
+776
+00:14:30,230 --> 00:14:30,240
+hear those screaming people
+ 
+
+777
+00:14:30,240 --> 00:14:31,749
+hear those screaming people
+in the beginning they have just been
+
+778
+00:14:31,749 --> 00:14:31,759
+in the beginning they have just been
+ 
+
+779
+00:14:31,759 --> 00:14:33,910
+in the beginning they have just been
+removed from that audio which is pretty
+
+780
+00:14:33,910 --> 00:14:33,920
+removed from that audio which is pretty
+ 
+
+781
+00:14:33,920 --> 00:14:36,350
+removed from that audio which is pretty
+insane if you think of it now that is
+
+782
+00:14:36,350 --> 00:14:36,360
+insane if you think of it now that is
+ 
+
+783
+00:14:36,360 --> 00:14:38,710
+insane if you think of it now that is
+essentially how you edit your entire
+
+784
+00:14:38,710 --> 00:14:38,720
+essentially how you edit your entire
+ 
+
+785
+00:14:38,720 --> 00:14:41,269
+essentially how you edit your entire
+Clips with the help of AI so let me go
+
+786
+00:14:41,269 --> 00:14:41,279
+Clips with the help of AI so let me go
+ 
+
+787
+00:14:41,279 --> 00:14:42,710
+Clips with the help of AI so let me go
+back to that clip that we were just
+
+788
+00:14:42,710 --> 00:14:42,720
+back to that clip that we were just
+ 
+
+789
+00:14:42,720 --> 00:14:44,949
+back to that clip that we were just
+editing if you like what you have made
+
+790
+00:14:44,949 --> 00:14:44,959
+editing if you like what you have made
+ 
+
+791
+00:14:44,959 --> 00:14:47,310
+editing if you like what you have made
+then you can click on Save changes and
+
+792
+00:14:47,310 --> 00:14:47,320
+then you can click on Save changes and
+ 
+
+793
+00:14:47,320 --> 00:14:49,870
+then you can click on Save changes and
+now you can head over to export once you
+
+794
+00:14:49,870 --> 00:14:49,880
+now you can head over to export once you
+ 
+
+795
+00:14:49,880 --> 00:14:51,670
+now you can head over to export once you
+have saved the changes on your clip it
+
+796
+00:14:51,670 --> 00:14:51,680
+have saved the changes on your clip it
+ 
+
+797
+00:14:51,680 --> 00:14:54,910
+have saved the changes on your clip it
+will take a few seconds to rerender and
+
+798
+00:14:54,910 --> 00:14:54,920
+will take a few seconds to rerender and
+ 
+
+799
+00:14:54,920 --> 00:14:57,030
+will take a few seconds to rerender and
+then what you can do is you can publish
+
+800
+00:14:57,030 --> 00:14:57,040
+then what you can do is you can publish
+ 
+
+801
+00:14:57,040 --> 00:15:00,030
+then what you can do is you can publish
+it directly on your socials or you can
+
+802
+00:15:00,030 --> 00:15:00,040
+it directly on your socials or you can
+ 
+
+803
+00:15:00,040 --> 00:15:02,710
+it directly on your socials or you can
+export it to an XML file which you can
+
+804
+00:15:02,710 --> 00:15:02,720
+export it to an XML file which you can
+ 
+
+805
+00:15:02,720 --> 00:15:05,430
+export it to an XML file which you can
+then further edit in Adobe Premiere or
+
+806
+00:15:05,430 --> 00:15:05,440
+then further edit in Adobe Premiere or
+ 
+
+807
+00:15:05,440 --> 00:15:07,870
+then further edit in Adobe Premiere or
+the finci resolve or you can also
+
+808
+00:15:07,870 --> 00:15:07,880
+the finci resolve or you can also
+ 
+
+809
+00:15:07,880 --> 00:15:09,949
+the finci resolve or you can also
+download the clip now if you want to
+
+810
+00:15:09,949 --> 00:15:09,959
+download the clip now if you want to
+ 
+
+811
+00:15:09,959 --> 00:15:11,470
+download the clip now if you want to
+publish it on your socials then you
+
+812
+00:15:11,470 --> 00:15:11,480
+publish it on your socials then you
+ 
+
+813
+00:15:11,480 --> 00:15:13,790
+publish it on your socials then you
+click on it then you select the platform
+
+814
+00:15:13,790 --> 00:15:13,800
+click on it then you select the platform
+ 
+
+815
+00:15:13,800 --> 00:15:16,069
+click on it then you select the platform
+that you have here you can link any of
+
+816
+00:15:16,069 --> 00:15:16,079
+that you have here you can link any of
+ 
+
+817
+00:15:16,079 --> 00:15:17,629
+that you have here you can link any of
+the social media platforms that you're
+
+818
+00:15:17,629 --> 00:15:17,639
+the social media platforms that you're
+ 
+
+819
+00:15:17,639 --> 00:15:19,990
+the social media platforms that you're
+using then you can change the title you
+
+820
+00:15:19,990 --> 00:15:20,000
+using then you can change the title you
+ 
+
+821
+00:15:20,000 --> 00:15:22,749
+using then you can change the title you
+can also change the description and then
+
+822
+00:15:22,749 --> 00:15:22,759
+can also change the description and then
+ 
+
+823
+00:15:22,759 --> 00:15:24,550
+can also change the description and then
+you select the time that you want to
+
+824
+00:15:24,550 --> 00:15:24,560
+you select the time that you want to
+ 
+
+825
+00:15:24,560 --> 00:15:26,470
+you select the time that you want to
+publish this so let's say for example I
+
+826
+00:15:26,470 --> 00:15:26,480
+publish this so let's say for example I
+ 
+
+827
+00:15:26,480 --> 00:15:28,670
+publish this so let's say for example I
+want to publish this the 16th I select
+
+828
+00:15:28,670 --> 00:15:28,680
+want to publish this the 16th I select
+ 
+
+829
+00:15:28,680 --> 00:15:30,949
+want to publish this the 16th I select
+the time on which I want to publish it
+
+830
+00:15:30,949 --> 00:15:30,959
+the time on which I want to publish it
+ 
+
+831
+00:15:30,959 --> 00:15:33,030
+the time on which I want to publish it
+and then I can hit schedule but I'm
+
+832
+00:15:33,030 --> 00:15:33,040
+and then I can hit schedule but I'm
+ 
+
+833
+00:15:33,040 --> 00:15:35,350
+and then I can hit schedule but I'm
+going to just put it on private and now
+
+834
+00:15:35,350 --> 00:15:35,360
+going to just put it on private and now
+ 
+
+835
+00:15:35,360 --> 00:15:36,749
+going to just put it on private and now
+I'm going to hit schedule now if you
+
+836
+00:15:36,749 --> 00:15:36,759
+I'm going to hit schedule now if you
+ 
+
+837
+00:15:36,759 --> 00:15:38,590
+I'm going to hit schedule now if you
+want to see all of the posts that you've
+
+838
+00:15:38,590 --> 00:15:38,600
+want to see all of the posts that you've
+ 
+
+839
+00:15:38,600 --> 00:15:40,509
+want to see all of the posts that you've
+scheduled then you go over to the
+
+840
+00:15:40,509 --> 00:15:40,519
+scheduled then you go over to the
+ 
+
+841
+00:15:40,519 --> 00:15:43,189
+scheduled then you go over to the
+calendar and here you can find where
+
+842
+00:15:43,189 --> 00:15:43,199
+calendar and here you can find where
+ 
+
+843
+00:15:43,199 --> 00:15:45,629
+calendar and here you can find where
+your videos have been scheduled if you
+
+844
+00:15:45,629 --> 00:15:45,639
+your videos have been scheduled if you
+ 
+
+845
+00:15:45,639 --> 00:15:47,230
+your videos have been scheduled if you
+go to the analytics then you can find
+
+846
+00:15:47,230 --> 00:15:47,240
+go to the analytics then you can find
+ 
+
+847
+00:15:47,240 --> 00:15:49,590
+go to the analytics then you can find
+your current views and your analytics of
+
+848
+00:15:49,590 --> 00:15:49,600
+your current views and your analytics of
+ 
+
+849
+00:15:49,600 --> 00:15:52,110
+your current views and your analytics of
+your social media Pages I'm not posting
+
+850
+00:15:52,110 --> 00:15:52,120
+your social media Pages I'm not posting
+ 
+
+851
+00:15:52,120 --> 00:15:54,350
+your social media Pages I'm not posting
+this one currently so these stats yeah
+
+852
+00:15:54,350 --> 00:15:54,360
+this one currently so these stats yeah
+ 
+
+853
+00:15:54,360 --> 00:15:56,189
+this one currently so these stats yeah
+aren't that great another feature that I
+
+854
+00:15:56,189 --> 00:15:56,199
+aren't that great another feature that I
+ 
+
+855
+00:15:56,199 --> 00:15:57,829
+aren't that great another feature that I
+want to share with you which is very
+
+856
+00:15:57,829 --> 00:15:57,839
+want to share with you which is very
+ 
+
+857
+00:15:57,839 --> 00:15:59,870
+want to share with you which is very
+useful if you're using Ops clip is
+
+858
+00:15:59,870 --> 00:15:59,880
+useful if you're using Ops clip is
+ 
+
+859
+00:15:59,880 --> 00:16:02,189
+useful if you're using Ops clip is
+creating your own brand template now if
+
+860
+00:16:02,189 --> 00:16:02,199
+creating your own brand template now if
+ 
+
+861
+00:16:02,199 --> 00:16:04,030
+creating your own brand template now if
+you click on brand template settings
+
+862
+00:16:04,030 --> 00:16:04,040
+you click on brand template settings
+ 
+
+863
+00:16:04,040 --> 00:16:05,790
+you click on brand template settings
+then here you can make any type of
+
+864
+00:16:05,790 --> 00:16:05,800
+then here you can make any type of
+ 
+
+865
+00:16:05,800 --> 00:16:07,550
+then here you can make any type of
+template that you want once you like it
+
+866
+00:16:07,550 --> 00:16:07,560
+template that you want once you like it
+ 
+
+867
+00:16:07,560 --> 00:16:09,829
+template that you want once you like it
+you can save it as a new template and
+
+868
+00:16:09,829 --> 00:16:09,839
+you can save it as a new template and
+ 
+
+869
+00:16:09,839 --> 00:16:11,910
+you can save it as a new template and
+then you give it a name so let's do new
+
+870
+00:16:11,910 --> 00:16:11,920
+then you give it a name so let's do new
+ 
+
+871
+00:16:11,920 --> 00:16:13,910
+then you give it a name so let's do new
+template and now you have that template
+
+872
+00:16:13,910 --> 00:16:13,920
+template and now you have that template
+ 
+
+873
+00:16:13,920 --> 00:16:16,550
+template and now you have that template
+saved in op clip so this is great for if
+
+874
+00:16:16,550 --> 00:16:16,560
+saved in op clip so this is great for if
+ 
+
+875
+00:16:16,560 --> 00:16:18,389
+saved in op clip so this is great for if
+you have a custom brand style and you
+
+876
+00:16:18,389 --> 00:16:18,399
+you have a custom brand style and you
+ 
+
+877
+00:16:18,399 --> 00:16:20,509
+you have a custom brand style and you
+don't want to manually change the style
+
+878
+00:16:20,509 --> 00:16:20,519
+don't want to manually change the style
+ 
+
+879
+00:16:20,519 --> 00:16:22,629
+don't want to manually change the style
+on every clip with Opus clip there are
+
+880
+00:16:22,629 --> 00:16:22,639
+on every clip with Opus clip there are
+ 
+
+881
+00:16:22,639 --> 00:16:24,829
+on every clip with Opus clip there are
+four different pricing plans available
+
+882
+00:16:24,829 --> 00:16:24,839
+four different pricing plans available
+ 
+
+883
+00:16:24,839 --> 00:16:26,790
+four different pricing plans available
+first of all you have the free plan
+
+884
+00:16:26,790 --> 00:16:26,800
+first of all you have the free plan
+ 
+
+885
+00:16:26,800 --> 00:16:28,910
+first of all you have the free plan
+which gives you 60 credits to use per
+
+886
+00:16:28,910 --> 00:16:28,920
+which gives you 60 credits to use per
+ 
+
+887
+00:16:28,920 --> 00:16:32,550
+which gives you 60 credits to use per
+per month it has a watermark and also it
+
+888
+00:16:32,550 --> 00:16:32,560
+per month it has a watermark and also it
+ 
+
+889
+00:16:32,560 --> 00:16:36,269
+per month it has a watermark and also it
+will expire after 3 days now with this
+
+890
+00:16:36,269 --> 00:16:36,279
+will expire after 3 days now with this
+ 
+
+891
+00:16:36,279 --> 00:16:37,710
+will expire after 3 days now with this
+you don't have access to all the
+
+892
+00:16:37,710 --> 00:16:37,720
+you don't have access to all the
+ 
+
+893
+00:16:37,720 --> 00:16:39,990
+you don't have access to all the
+features I just showed you for that I
+
+894
+00:16:39,990 --> 00:16:40,000
+features I just showed you for that I
+ 
+
+895
+00:16:40,000 --> 00:16:42,269
+features I just showed you for that I
+would recommend using the Pro Plan if
+
+896
+00:16:42,269 --> 00:16:42,279
+would recommend using the Pro Plan if
+ 
+
+897
+00:16:42,279 --> 00:16:44,470
+would recommend using the Pro Plan if
+you go with the yearly option then you
+
+898
+00:16:44,470 --> 00:16:44,480
+you go with the yearly option then you
+ 
+
+899
+00:16:44,480 --> 00:16:47,030
+you go with the yearly option then you
+actually get a nice discount with it so
+
+900
+00:16:47,030 --> 00:16:47,040
+actually get a nice discount with it so
+ 
+
+901
+00:16:47,040 --> 00:16:49,110
+actually get a nice discount with it so
+with both the starter and the Pro Plan
+
+902
+00:16:49,110 --> 00:16:49,120
+with both the starter and the Pro Plan
+ 
+
+903
+00:16:49,120 --> 00:16:51,550
+with both the starter and the Pro Plan
+you can edit your video further but with
+
+904
+00:16:51,550 --> 00:16:51,560
+you can edit your video further but with
+ 
+
+905
+00:16:51,560 --> 00:16:53,710
+you can edit your video further but with
+the Pro Plan you get access to the aib
+
+906
+00:16:53,710 --> 00:16:53,720
+the Pro Plan you get access to the aib
+ 
+
+907
+00:16:53,720 --> 00:16:56,389
+the Pro Plan you get access to the aib
+roll you can add more input sources and
+
+908
+00:16:56,389 --> 00:16:56,399
+roll you can add more input sources and
+ 
+
+909
+00:16:56,399 --> 00:16:58,350
+roll you can add more input sources and
+you basically have everything you need
+
+910
+00:16:58,350 --> 00:16:58,360
+you basically have everything you need
+ 
+
+911
+00:16:58,360 --> 00:17:00,749
+you basically have everything you need
+to make the best Clips possible now if
+
+912
+00:17:00,749 --> 00:17:00,759
+to make the best Clips possible now if
+ 
+
+913
+00:17:00,759 --> 00:17:02,309
+to make the best Clips possible now if
+you want to try this out yourself then
+
+914
+00:17:02,309 --> 00:17:02,319
+you want to try this out yourself then
+ 
+
+915
+00:17:02,319 --> 00:17:03,670
+you want to try this out yourself then
+click the link in the description where
+
+916
+00:17:03,670 --> 00:17:03,680
+click the link in the description where
+ 
+
+917
+00:17:03,680 --> 00:17:05,789
+click the link in the description where
+you can try out Ops clip for free with a
+
+918
+00:17:05,789 --> 00:17:05,799
+you can try out Ops clip for free with a
+ 
+
+919
+00:17:05,799 --> 00:17:07,990
+you can try out Ops clip for free with a
+free trial and then once you like it you
+
+920
+00:17:07,990 --> 00:17:08,000
+free trial and then once you like it you
+ 
+
+921
+00:17:08,000 --> 00:17:10,429
+free trial and then once you like it you
+can upgrade to a paid plan if you have
+
+922
+00:17:10,429 --> 00:17:10,439
+can upgrade to a paid plan if you have
+ 
+
+923
+00:17:10,439 --> 00:17:12,230
+can upgrade to a paid plan if you have
+any questions about op slip then leave
+
+924
+00:17:12,230 --> 00:17:12,240
+any questions about op slip then leave
+ 
+
+925
+00:17:12,240 --> 00:17:13,750
+any questions about op slip then leave
+them in the comments down below and if
+
+926
+00:17:13,750 --> 00:17:13,760
+them in the comments down below and if
+ 
+
+927
+00:17:13,760 --> 00:17:15,270
+them in the comments down below and if
+you've likeed this video then make sure
+
+928
+00:17:15,270 --> 00:17:15,280
+you've likeed this video then make sure
+ 
+
+929
+00:17:15,280 --> 00:17:17,350
+you've likeed this video then make sure
+to subscribe and leave a like my name is
+
+930
+00:17:17,350 --> 00:17:17,360
+to subscribe and leave a like my name is
+ 
+
+931
+00:17:17,360 --> 00:17:21,480
+to subscribe and leave a like my name is
+Dan and I will see you in the next video
+

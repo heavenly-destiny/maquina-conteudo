@@ -1,0 +1,820 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"sC\"> is a timeline element that contains nested <div id=\"sC-in\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#sC",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-criativos/c6/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"sC\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"fx\"> is a timeline element that contains nested <div id=\"flash\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#fx",
+        "dataAttributes": {},
+        "sourceFile": "/Users/tanpz/Documents/PROJETOS TANPZ /tanpz/tanpz_machine/videos/sl-criativos/c6/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"fx\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 9,
+    "infoCount": 8,
+    "findings": [
+      {
+        "selector": "div.back",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 39.94,
+          "y": 127.81,
+          "width": 17.8,
+          "height": 80.01
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 39.94,
+          "top": 127.81,
+          "right": 57.74,
+          "bottom": 207.82,
+          "width": 17.8,
+          "height": 80.01
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "‹",
+        "message": "<div> \"‹\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "div.hdr > div:nth-of-type(3) > b:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 215.77,
+          "y": 107.81,
+          "width": 152.82,
+          "height": 58.02
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 215.77,
+          "top": 107.81,
+          "right": 368.59,
+          "bottom": 165.83,
+          "width": 152.82,
+          "height": 58.02
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Mari 💗",
+        "message": "<b> \"Mari 💗\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "#st1",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 215.77,
+          "y": 173.83,
+          "width": 92.85,
+          "height": 40.01
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 215.77,
+          "top": 173.83,
+          "right": 308.62,
+          "bottom": 213.84,
+          "width": 92.85,
+          "height": 40.01
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "online",
+        "message": "<small> \"online\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "div.inbar > i:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 79.86,
+          "y": 1777.64,
+          "width": 190.5,
+          "height": 45.02
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 79.86,
+          "top": 1777.64,
+          "right": 270.36,
+          "bottom": 1822.66,
+          "width": 190.5,
+          "height": 45.02
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Mensagem",
+        "message": "<i> \"Mensagem\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "div.inbar > b:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 967.04,
+          "y": 1769.18,
+          "width": 46.01,
+          "height": 58.02
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 967.04,
+          "top": 1769.18,
+          "right": 1013.05,
+          "bottom": 1827.2,
+          "width": 46.01,
+          "height": 58.02
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "🎤",
+        "message": "<b> \"🎤\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "#tag",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 171.98,
+          "y": 2269,
+          "width": 736.02,
+          "height": 115.5
+        },
+        "time": 1.994,
+        "rect": {
+          "left": 171.98,
+          "top": 2269,
+          "right": 908,
+          "bottom": 2384.5,
+          "width": 736.02,
+          "height": 115.5
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "o app que tá fazendo crescer no Instagram todo m",
+        "message": "<div> \"o app que tá fazendo crescer no Instagram todo m\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.994,
+        "lastSeen": 33.896,
+        "occurrences": 9,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "selector": "#st2",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 214.98,
+          "y": 169.35,
+          "width": 262.77,
+          "height": 40.54
+        },
+        "time": 9.969,
+        "rect": {
+          "left": 214.98,
+          "top": 169.35,
+          "right": 477.75,
+          "bottom": 209.89,
+          "width": 262.77,
+          "height": 40.54
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "gravando áudio…",
+        "message": "<small> \"gravando áudio…\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 9.969,
+        "lastSeen": 9.969,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.969
+        ]
+      },
+      {
+        "selector": "#cta",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 391.6,
+          "y": 1374.91,
+          "width": 296.78,
+          "height": 66.17
+        },
+        "time": 33.896,
+        "rect": {
+          "left": 391.6,
+          "top": 1374.91,
+          "right": 688.38,
+          "bottom": 1441.08,
+          "width": 296.78,
+          "height": 66.17
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Toca aqui 👇",
+        "message": "<div> \"Toca aqui 👇\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      },
+      {
+        "selector": "#url",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 383.14,
+          "y": 1530,
+          "width": 313.72,
+          "height": 56
+        },
+        "time": 33.896,
+        "rect": {
+          "left": 383.14,
+          "top": 1530,
+          "right": 696.86,
+          "bottom": 1586,
+          "width": 313.72,
+          "height": 56
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "storieslab.app",
+        "message": "<div> \"storieslab.app\" is outside the safe area: TikTok (bottom edge), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.994,
+        "selector": "#tag",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 171.98,
+          "top": 2269,
+          "right": 770.16,
+          "bottom": 2384.5,
+          "width": 598.18,
+          "height": 115.5
+        },
+        "containerSelector": "#root",
+        "text": "o app que tá fazendo crescer no Instagram",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "bottom": 464.5
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 171.98,
+          "y": 2269,
+          "width": 598.18,
+          "height": 115.5
+        },
+        "firstSeen": 1.994,
+        "lastSeen": 29.908,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 1.994,
+        "selector": "#tag > em:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 636.92,
+          "top": 2269,
+          "right": 908,
+          "bottom": 2327,
+          "width": 271.08,
+          "height": 58
+        },
+        "containerSelector": "#root",
+        "text": "todo mundo",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "bottom": 407
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 636.92,
+          "y": 2269,
+          "width": 271.08,
+          "height": 58
+        },
+        "firstSeen": 1.994,
+        "lastSeen": 29.908,
+        "occurrences": 8,
+        "heldMs": 0,
+        "times": [
+          1.994,
+          5.982,
+          9.969,
+          13.957,
+          17.945,
+          21.933,
+          25.921,
+          29.908
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 29.908,
+        "selector": "div.hdr",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -10.36,
+          "top": -30.47,
+          "right": 1101.53,
+          "bottom": 233.75,
+          "width": 1111.89,
+          "height": 264.22
+        },
+        "containerSelector": "#root",
+        "text": "‹ Mari 💗 online",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "top": 30.47
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -10.36,
+          "y": -30.47,
+          "width": 1111.89,
+          "height": 264.22
+        },
+        "firstSeen": 29.908,
+        "lastSeen": 33.896,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 29.908,
+        "selector": "div.inbar",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -21.53,
+          "top": 1737.65,
+          "right": 1090.02,
+          "bottom": 1950.47,
+          "width": 1111.56,
+          "height": 212.83
+        },
+        "containerSelector": "#root",
+        "text": "Mensagem 🎤",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "bottom": 30.47
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": -21.53,
+          "y": 1737.65,
+          "width": 1111.56,
+          "height": 212.83
+        },
+        "firstSeen": 29.908,
+        "lastSeen": 33.896,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          29.908,
+          33.896
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 33.896,
+        "selector": "div.inbar > i:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 60.15,
+          "top": 1798.56,
+          "right": 256.6,
+          "bottom": 1846.26,
+          "width": 196.44,
+          "height": 47.7
+        },
+        "containerSelector": "#sheetC",
+        "text": "Mensagem",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 35.89
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 60.15,
+          "y": 1798.56,
+          "width": 196.44,
+          "height": 47.7
+        },
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 33.896,
+        "selector": "div.inbar > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 973.53,
+          "top": 1796.13,
+          "right": 1021.31,
+          "bottom": 1856.19,
+          "width": 47.78,
+          "height": 60.06
+        },
+        "containerSelector": "#sheetC",
+        "text": "🎤",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 35.89
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 973.53,
+          "y": 1796.13,
+          "width": 47.78,
+          "height": 60.06
+        },
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 33.896,
+        "selector": "#ctaG",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1191.35,
+          "top": 1297.7,
+          "right": 1430,
+          "bottom": 1522.3,
+          "width": 238.64,
+          "height": 224.6
+        },
+        "containerSelector": "div.gloss",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 189.06,
+          "top": 1339.81,
+          "right": 890.94,
+          "bottom": 1480.19,
+          "width": 701.89,
+          "height": 140.38
+        },
+        "overflow": {
+          "right": 539.06,
+          "top": 42.11,
+          "bottom": 42.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1191.35,
+          "y": 1297.7,
+          "width": 238.64,
+          "height": 224.6
+        },
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 33.896,
+        "selector": "#ctaG",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 1191.35,
+          "top": 1297.7,
+          "right": 1430,
+          "bottom": 1522.3,
+          "width": 238.64,
+          "height": 224.6
+        },
+        "containerSelector": "div.gloss",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 189.06,
+          "top": 1339.81,
+          "right": 890.94,
+          "bottom": 1480.19,
+          "width": 701.89,
+          "height": 140.38
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1191.35,
+          "y": 1297.7,
+          "width": 238.64,
+          "height": 224.6
+        },
+        "firstSeen": 33.896,
+        "lastSeen": 33.896,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.896
+        ]
+      }
+    ],
+    "duration": 35.89,
+    "samples": [
+      1.994,
+      5.982,
+      9.969,
+      13.957,
+      17.945,
+      21.933,
+      25.921,
+      29.908,
+      33.896
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 17,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.994,
+      9.969,
+      17.945,
+      25.921,
+      33.896
+    ],
+    "checked": 29,
+    "passed": 29
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 288
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

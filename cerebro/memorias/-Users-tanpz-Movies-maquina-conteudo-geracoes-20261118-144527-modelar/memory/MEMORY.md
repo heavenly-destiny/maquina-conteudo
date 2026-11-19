@@ -1,0 +1,2 @@
+- [Voz Antônio e recorte local](maquina-voz-e-recorte.md) — voice_id da Antônio, remove-background do HyperFrames, SFX da biblioteca que precisam de corte
+- [Lições da revisão do modelar](revisao-modelar-licoes.md) — reprovações v2 e v3 (CTA parado/vazio, card pequeno, foto repetida, rosto, capa, celular congelado, tela borrada, palavra cortada entre cards) e como corrigir

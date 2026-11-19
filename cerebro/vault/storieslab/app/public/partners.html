@@ -1,0 +1,16 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Parcerias · Stories Lab</title><link rel="stylesheet" href="partners.css?v=1"></head>
+<body class="partners-page"><header><h1>Stories Lab <span style="font-weight:400">/ Parcerias</span></h1><a href="/admin">Painel geral ↗</a></header>
+<section class="partner-gate" id="partnerGate"><h2>Seu painel de parcerias</h2><form id="partnerLogin"><label>Senha do admin<input id="partnerPassword" type="password" autocomplete="current-password" required></label><button class="pb-primary" type="submit">Entrar</button><p id="partnerError" role="status"></p></form></section>
+<main id="partnerMain" hidden><div class="partner-filters"><label>De<input type="date" id="partnerFrom"></label><label>Até<input type="date" id="partnerTo"></label><label>Plataforma<select id="partnerPlatform"><option value="">Todas</option><option value="pp">PerfectPay</option><option value="hubla">Hubla</option></select></label><button class="pb-primary" type="button" id="partnerReload">Atualizar</button><button class="pb-copy" type="button" id="partnerExit">Sair</button></div><section id="creatorAdmin"></section></main>
+<script>
+let K=localStorage.getItem('sl_admin')||'',D=null;
+const S={from:'',to:'',plat:''};
+async function api(path,body){const r=await fetch('/api/admin'+path,{method:body?'POST':'GET',headers:{'content-type':'application/json','x-k':K},...(body?{body:JSON.stringify(body)}:{})});if(r.status===401){document.getElementById('partnerGate').hidden=false;document.getElementById('partnerMain').hidden=true;throw Error('Confira a senha do admin.');}return r.json();}
+</script><script src="partners-board.js?v=1"></script><script>
+const byId=id=>document.getElementById(id);
+async function loadPartners(){byId('partnerError').textContent='';try{const check=await api('/creators');if(!check.ok)throw Error('Não foi possível carregar.');byId('partnerGate').hidden=true;byId('partnerMain').hidden=false;localStorage.setItem('sl_admin',K);S.from=byId('partnerFrom').value;S.to=byId('partnerTo').value;S.plat=byId('partnerPlatform').value;await window.renderCreators();}catch(e){byId('partnerError').textContent=e.message;}}
+byId('partnerLogin').onsubmit=e=>{e.preventDefault();K=byId('partnerPassword').value.trim();loadPartners();};
+byId('partnerReload').onclick=loadPartners;for(const id of ['partnerFrom','partnerTo','partnerPlatform'])byId(id).onchange=loadPartners;
+byId('partnerExit').onclick=()=>{localStorage.removeItem('sl_admin');K='';location.reload();};
+if(K)loadPartners();
+</script></body></html>

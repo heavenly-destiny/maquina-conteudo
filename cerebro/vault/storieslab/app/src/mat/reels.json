@@ -1,0 +1,1842 @@
+{
+  "intro": "Escolha um roteiro, filme as cenas com o celular do jeito que estão descritas, cole os textos na tela e poste. Não precisa mostrar o rosto nem ter equipamento. Um Reels por dia já muda o jogo.",
+  "rules": [
+    "O gancho vem primeiro: texto forte nos 2 primeiros segundos.",
+    "Um Reels, um recado. Se tem dois, vire dois vídeos.",
+    "Mostre mãos, objetos e processo, não precisa de rosto.",
+    "Escreva tudo na tela: quem assiste sem som também entende.",
+    "Termine pedindo para comentar ou salvar."
+  ],
+  "chapters": [
+    {
+      "id": "ganchos",
+      "title": "Ganchos que param o dedo",
+      "from": 1,
+      "to": 10
+    },
+    {
+      "id": "bastidores",
+      "title": "Bastidores e processo",
+      "from": 11,
+      "to": 20
+    },
+    {
+      "id": "antes-depois",
+      "title": "Antes e depois",
+      "from": 21,
+      "to": 30
+    },
+    {
+      "id": "listas",
+      "title": "Lista e dicas rápidas",
+      "from": 31,
+      "to": 40
+    },
+    {
+      "id": "vida-real",
+      "title": "Vida real e identificação",
+      "from": 41,
+      "to": 50
+    },
+    {
+      "id": "vender",
+      "title": "Vender sem parecer venda",
+      "from": 51,
+      "to": 60
+    }
+  ],
+  "items": [
+    {
+      "n": 1,
+      "chapter": "ganchos",
+      "title": "O erro que todo mundo comete",
+      "niche": "Qualquer perfil",
+      "hook": "Você posta Reels assim? Para agora",
+      "duration": "7 a 10 segundos",
+      "scenes": [
+        {
+          "show": "Celular filmando a tela do Instagram com um Reels aberto, sem mostrar o rosto",
+          "text": "Você posta assim?"
+        },
+        {
+          "show": "Mão tampando a câmera e depois liberando, mostrando a mesa de trabalho",
+          "text": "O erro não é a ideia"
+        },
+        {
+          "show": "Close do caderno com a frase escrita à mão: gancho nos 2 primeiros segundos",
+          "text": "É o começo do vídeo"
+        }
+      ],
+      "caption": "O começo decide se a pessoa fica ou desliza. Você pensa no gancho antes de gravar?",
+      "hashtags": "#reelsdicas #instagramdicas #conteudo #redessociais #empreendedora",
+      "audio": "Batida leve e rápida, tom de dica",
+      "tip": "Escreva o gancho primeiro e só depois grave o resto."
+    },
+    {
+      "n": 2,
+      "chapter": "ganchos",
+      "title": "Ninguém te conta isso",
+      "niche": "Qualquer perfil",
+      "hook": "Ninguém te conta isso sobre Reels",
+      "duration": "8 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Mão virando o celular de cabeça para baixo na mesa",
+          "text": "Ninguém te conta isso"
+        },
+        {
+          "show": "Close da tela de insights do Instagram com o dedo apontando o tempo assistido",
+          "text": "Quem assiste até o fim aparece mais"
+        },
+        {
+          "show": "Mão escrevendo 'vídeo curto' num post-it e colando na tela",
+          "text": "Vídeo curto vira vídeo completo"
+        },
+        {
+          "show": "Mão tirando o post-it e mostrando um 7s escrito atrás",
+          "text": "Faça seus Reels com 7 a 10 segundos"
+        }
+      ],
+      "caption": "Reels curto é mais fácil de ser visto até o fim. Teste e me conta o que mudou.",
+      "hashtags": "#dicasdeinstagram #reels #alcance #criadoradeconteudo #marketingdigital",
+      "audio": "Som suave de suspense leve",
+      "tip": "Corte qualquer segundo parado, mesmo que pareça pouco."
+    },
+    {
+      "n": 3,
+      "chapter": "ganchos",
+      "title": "Pare de esperar a hora certa",
+      "niche": "Mãe empreendedora",
+      "hook": "Você não precisa de estúdio pra isso",
+      "duration": "7 a 9 segundos",
+      "scenes": [
+        {
+          "show": "Mesa da cozinha com notebook, caderno e xícara, luz da janela",
+          "text": "Meu estúdio:"
+        },
+        {
+          "show": "Close da tampa do fogão servindo de apoio pro celular",
+          "text": "Meu tripé:"
+        },
+        {
+          "show": "Mão apertando o botão de gravar",
+          "text": "Bora gravar"
+        }
+      ],
+      "caption": "Ninguém liga pro cenário, liga pra utilidade. O que você vai gravar hoje?",
+      "hashtags": "#maeempreendedora #reelssimples #conteudocaseiro #empreendedorismofeminino #instagram",
+      "audio": "Beat leve animado",
+      "tip": "Limpe a lente com a camisa antes. Melhora mais que qualquer filtro."
+    },
+    {
+      "n": 4,
+      "chapter": "ganchos",
+      "title": "3 segundos que mudam tudo",
+      "niche": "Qualquer perfil",
+      "hook": "Seu Reels vive nos primeiros 3 segundos",
+      "duration": "8 a 10 segundos",
+      "scenes": [
+        {
+          "show": "Relógio ou cronômetro do celular começando a contar",
+          "text": "1, 2, 3"
+        },
+        {
+          "show": "Mão rolando o feed rápido, dedo passando vários vídeos",
+          "text": "Eles passam rápido"
+        },
+        {
+          "show": "Dedo parando num vídeo e a tela travando em um texto grande",
+          "text": "Só para quem prende"
+        },
+        {
+          "show": "Mão digitando um texto de gancho no bloco de notas",
+          "text": "Escreva o gancho primeiro"
+        }
+      ],
+      "caption": "Quanto mais direto o começo, mais gente fica. Qual gancho você vai testar?",
+      "hashtags": "#ganchosreels #reelsparainiciantes #instagramdicas #conteudo #crescernoinstagram",
+      "audio": "Som de relógio e batida suave",
+      "tip": "Coloque o texto na tela no frame zero, não depois de 1 segundo."
+    },
+    {
+      "n": 5,
+      "chapter": "ganchos",
+      "title": "Eu errava aqui",
+      "niche": "Qualquer perfil",
+      "hook": "Eu errei nisso por 6 meses",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Mão passando o dedo em uma grade de posts antigos no perfil",
+          "text": "Meus posts antigos"
+        },
+        {
+          "show": "Close em um vídeo sem texto, com fundo bagunçado, em câmera lenta",
+          "text": "Sem texto, sem rumo"
+        },
+        {
+          "show": "Mão trocando para um vídeo novo, bem enquadrado, com texto",
+          "text": "Agora: texto, foco e um recado"
+        },
+        {
+          "show": "Mão apontando para os números de visualização de cada um",
+          "text": "Veja a diferença"
+        }
+      ],
+      "caption": "Ninguém começa sabendo. Compartilha o seu maior erro nos comentários.",
+      "hashtags": "#aprendizadoreels #antesedepois #dicasinstagram #crescimentoorganico #reels",
+      "audio": "Áudio com tom de confissão leve",
+      "tip": "Mostre números reais, mesmo que pequenos. Passa confiança."
+    },
+    {
+      "n": 6,
+      "chapter": "ganchos",
+      "title": "O que eu faria se recomeçasse",
+      "niche": "Qualquer perfil",
+      "hook": "Se eu recomeçasse hoje faria só isso",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Mão abrindo uma agenda em branco",
+          "text": "Se eu recomeçasse hoje"
+        },
+        {
+          "show": "Mão escrevendo '1' e riscando 'perfeição'",
+          "text": "1. Parava de esperar ficar perfeito"
+        },
+        {
+          "show": "Mão escrevendo '2' e desenhando um celular",
+          "text": "2. Gravava todo dia 1 vídeo simples"
+        },
+        {
+          "show": "Mão escrevendo '3' e uma lupa",
+          "text": "3. Olhava o que funcionou"
+        }
+      ],
+      "caption": "Simples assim. Qual desses você precisa começar hoje?",
+      "hashtags": "#recomecar #dicasparainstagram #reelsdicas #constancia #marketingdigital",
+      "audio": "Música calma de reflexão",
+      "tip": "Termine com a primeira ação concreta, não com frase motivacional."
+    },
+    {
+      "n": 7,
+      "chapter": "ganchos",
+      "title": "Isso é pra quem tem medo",
+      "niche": "Qualquer perfil",
+      "hook": "Tem vergonha de aparecer? Faça assim",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão cobrindo o rosto no espelho, só o celular aparece",
+          "text": "Vergonha de aparecer?"
+        },
+        {
+          "show": "Corte para o celular filmando a bancada, sem rosto",
+          "text": "Aparece sem aparecer"
+        },
+        {
+          "show": "Mãos mexendo em objetos do dia a dia",
+          "text": "Suas mãos já contam a história"
+        },
+        {
+          "show": "Close da tela final com a frase",
+          "text": "Nem todo Reels precisa de rosto"
+        }
+      ],
+      "caption": "Eu também tive vergonha. Se for o seu caso, salva este Reels.",
+      "hashtags": "#semmostrarorosto #reelsfaceless #vergonha #conteudosimples #instagram",
+      "audio": "Batida suave motivacional",
+      "tip": "Narre com texto na tela. A pessoa lê e entende sem som."
+    },
+    {
+      "n": 8,
+      "chapter": "ganchos",
+      "title": "Você posta e ninguém vê",
+      "niche": "Qualquer perfil",
+      "hook": "Postou e ninguém viu? Faz esse teste",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Tela do celular mostrando um Reels com poucas visualizações",
+          "text": "Poucas visualizações"
+        },
+        {
+          "show": "Mão apontando o texto do primeiro segundo",
+          "text": "Teste 1: o gancho prende?"
+        },
+        {
+          "show": "Mão apontando o áudio",
+          "text": "Teste 2: o áudio combina?"
+        },
+        {
+          "show": "Mão mostrando o botão de postar",
+          "text": "Teste 3: tem um recado só?"
+        }
+      ],
+      "caption": "Faz esse teste antes do próximo e me conta o que descobriu.",
+      "hashtags": "#instagramalcance #reelsdicas #semvisualizacao #conteudo #crescerorganicamente",
+      "audio": "Som tenso curto e depois leve",
+      "tip": "Um Reels, um recado. Se tem dois, vire dois vídeos."
+    },
+    {
+      "n": 9,
+      "chapter": "ganchos",
+      "title": "Isso eu não posto mais",
+      "niche": "Qualquer perfil",
+      "hook": "Parei de postar isso e funcionou",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão arrastando um post cheio de texto para a lixeira do celular",
+          "text": "Parei de fazer post cheio"
+        },
+        {
+          "show": "Mão apagando um áudio no editor",
+          "text": "Parei de usar áudio aleatório"
+        },
+        {
+          "show": "Mão marcando um X em 'sem ideia pronta'",
+          "text": "Parei de gravar sem roteiro"
+        },
+        {
+          "show": "Mão fechando o caderno de ideias",
+          "text": "Agora é tudo planejado"
+        }
+      ],
+      "caption": "O que você parou de fazer e melhorou o seu perfil?",
+      "hashtags": "#paradeerrar #reelsdicas #instagramparainiciantes #conteudoinstagram #planejamento",
+      "audio": "Batida seca de lista",
+      "tip": "Fale do que você parou, não do que fez. Dá mais curiosidade."
+    },
+    {
+      "n": 10,
+      "chapter": "ganchos",
+      "title": "Teste de 7 dias",
+      "niche": "Qualquer perfil",
+      "hook": "Postei 7 dias seguidos. Olha o que rolou",
+      "duration": "11 a 15 segundos",
+      "scenes": [
+        {
+          "show": "Calendário de papel com sete dias marcados",
+          "text": "7 dias, 7 Reels"
+        },
+        {
+          "show": "Mão virando páginas de caderno com um rabisco por dia",
+          "text": "Todos simples, todos sem rosto"
+        },
+        {
+          "show": "Tela dos insights com o dedo apontando o melhor vídeo",
+          "text": "Esse foi o melhor"
+        },
+        {
+          "show": "Close da mão escrevendo o motivo no caderno",
+          "text": "Sabe por quê?"
+        }
+      ],
+      "caption": "Descobri um padrão que eu não imaginava. Quer que eu mostre? Comenta EU QUERO.",
+      "hashtags": "#desafio7dias #reelsdesafio #constancia #instagramdicas #criadoradeconteudo",
+      "audio": "Música de progresso, crescendo",
+      "tip": "Guarde o motivo para a legenda, o vídeo só deixa a curiosidade."
+    },
+    {
+      "n": 11,
+      "chapter": "bastidores",
+      "title": "Bolo caseiro do começo ao fim",
+      "niche": "Confeitaria",
+      "hook": "Olha o que sai desse pote de farinha",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Mãos peneirando farinha numa tigela, de cima",
+          "text": "Começou assim"
+        },
+        {
+          "show": "Mão quebrando ovos e misturando com a batedeira",
+          "text": "Mistura, mistura, mistura"
+        },
+        {
+          "show": "Massa sendo despejada na forma, câmera de cima",
+          "text": "Forma pronta"
+        },
+        {
+          "show": "Bolo pronto sendo cortado, mostrando o miolo",
+          "text": "Resultado: macio por dentro"
+        }
+      ],
+      "caption": "Receita de família que virou encomenda. Quer o passo a passo? Comenta BOLO.",
+      "hashtags": "#bolocaseiro #confeitaria #receitacaseira #bolodepote #encomendas",
+      "audio": "Música aconchegante tipo cozinha",
+      "tip": "Filme sempre de cima, é o ângulo que mais aparece o alimento."
+    },
+    {
+      "n": 12,
+      "chapter": "bastidores",
+      "title": "Unha do zero ao brilho",
+      "niche": "Manicure",
+      "hook": "Essa unha parecia impossível",
+      "duration": "10 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Mão da cliente sem esmalte sobre uma toalha",
+          "text": "Antes de começar"
+        },
+        {
+          "show": "Pincel passando base, só mão e pincel",
+          "text": "Base, cor, cor, cor"
+        },
+        {
+          "show": "Close da cutícula finalizada com o óleo",
+          "text": "Acabamento é tudo"
+        },
+        {
+          "show": "Mão da cliente girando sob a luz",
+          "text": "Brilho de espelho"
+        }
+      ],
+      "caption": "Gosta mais com ou sem francesinha? Comenta aqui.",
+      "hashtags": "#nailart #unhasdecoradas #manicure #unhasperfeitas #unhasdodia",
+      "audio": "Beat leve de beleza, ritmo médio",
+      "tip": "Peça autorização da cliente e mostre só as mãos, sem rosto."
+    },
+    {
+      "n": 13,
+      "chapter": "bastidores",
+      "title": "Embalando pedidos com carinho",
+      "niche": "Loja online",
+      "hook": "Seu pedido saindo daqui agora",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Mãos dobrando uma peça de roupa sobre a mesa",
+          "text": "Separando seu pedido"
+        },
+        {
+          "show": "Mão colocando papel de seda e um cartão escrito à mão",
+          "text": "Com carinho"
+        },
+        {
+          "show": "Mão fechando a caixa com fita",
+          "text": "Fechou"
+        },
+        {
+          "show": "Etiqueta com nome de cliente borrado e o selo da loja",
+          "text": "Já está a caminho"
+        }
+      ],
+      "caption": "Cada pedido leva um detalhe. Qual é o seu? Conta aqui.",
+      "hashtags": "#embalagem #lojavirtual #pequenonegocio #pedidosdodia #compreselocal",
+      "audio": "Música otimista curta",
+      "tip": "Borre nome e endereço antes de postar."
+    },
+    {
+      "n": 14,
+      "chapter": "bastidores",
+      "title": "O café da manhã que organiza o dia",
+      "niche": "Rotina",
+      "hook": "Meu segredo pra começar o dia bem",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão ligando a cafeteira, luz da manhã na bancada",
+          "text": "6h da manhã"
+        },
+        {
+          "show": "Mão abrindo uma agenda com três itens",
+          "text": "Só 3 coisas importantes"
+        },
+        {
+          "show": "Mão virando a xícara e bebendo, só a mão aparece",
+          "text": "Primeiro eu respiro"
+        }
+      ],
+      "caption": "A sua manhã começa assim ou no caos? Conta aqui.",
+      "hashtags": "#rotinadamanha #vidareal #organizacao #mulherquefaz #cafedamanha",
+      "audio": "Lo-fi calmo",
+      "tip": "Mostre horário na tela, passa sensação de rotina real."
+    },
+    {
+      "n": 15,
+      "chapter": "bastidores",
+      "title": "Cliente saiu feliz",
+      "niche": "Salão de beleza",
+      "hook": "Esse corte mudou o humor dela",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Tesoura cortando mechas, só mãos e cabelo, sem rosto",
+          "text": "Antes: cabelo cansado"
+        },
+        {
+          "show": "Pente e escova alisando uma mecha",
+          "text": "Hora do ajuste"
+        },
+        {
+          "show": "Close nas pontas finalizadas contra a luz",
+          "text": "Ponta cuidada"
+        },
+        {
+          "show": "Cliente de costas olhando para o espelho",
+          "text": "Valeu cada minuto"
+        }
+      ],
+      "caption": "Cabelo novo muda o jeito de andar. Que corte você quer? Comenta.",
+      "hashtags": "#cabelo #salaodebeleza #cortedecabelo #antesedepois #hairstylist",
+      "audio": "Batida com tom animado",
+      "tip": "Peça autorização e filme a cliente sempre de costas ou só cabelo."
+    },
+    {
+      "n": 16,
+      "chapter": "bastidores",
+      "title": "Meu treino em 10 segundos",
+      "niche": "Personal e academia",
+      "hook": "Treino de 10 minutos que muda o corpo",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Tênis amarrando no chão da sala",
+          "text": "Sem desculpa"
+        },
+        {
+          "show": "Halteres e elástico sobre um tapete",
+          "text": "3 itens"
+        },
+        {
+          "show": "Pernas fazendo agachamento, enquadrado dos joelhos pra baixo",
+          "text": "Agacha 20x"
+        },
+        {
+          "show": "Mão marcando um X numa lista no caderno",
+          "text": "Feito"
+        }
+      ],
+      "caption": "Quem treina sem academia? Comenta SIM que mando a série completa.",
+      "hashtags": "#treinoemcasa #personal #semacademia #treino10min #vidasaudavel",
+      "audio": "Beat de treino médio",
+      "tip": "Mostre a repetição contada na tela, ajuda quem assiste a seguir junto."
+    },
+    {
+      "n": 17,
+      "chapter": "bastidores",
+      "title": "Preparo da massa de pão",
+      "niche": "Padaria caseira",
+      "hook": "Esse pão nasce em 3 gestos",
+      "duration": "10 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Mãos amassando a massa sobre a bancada enfarinhada",
+          "text": "Amassa"
+        },
+        {
+          "show": "Massa crescendo em um pote de vidro, time lapse",
+          "text": "Descansa"
+        },
+        {
+          "show": "Corte na massa com a faca antes de assar",
+          "text": "Corta"
+        },
+        {
+          "show": "Pão dourado saindo do forno",
+          "text": "Pronto"
+        }
+      ],
+      "caption": "Pão caseiro cheira a casa. Quer a receita? Comenta PÃO.",
+      "hashtags": "#paocaseiro #padaria #receita #fermentacaonatural #cozinha",
+      "audio": "Música aconchegante",
+      "tip": "Time lapse de massa crescendo prende o olho do começo ao fim."
+    },
+    {
+      "n": 18,
+      "chapter": "bastidores",
+      "title": "Peça sendo costurada",
+      "niche": "Artesanato e costura",
+      "hook": "Dá pra fazer isso em 20 minutos",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Tecido sendo cortado com tesoura grande sobre a mesa",
+          "text": "Corta o tecido"
+        },
+        {
+          "show": "Agulha e linha costurando em close",
+          "text": "Costura"
+        },
+        {
+          "show": "Peça sendo passada a ferro",
+          "text": "Passa"
+        },
+        {
+          "show": "Peça finalizada pendurada num cabide",
+          "text": "Pronta"
+        }
+      ],
+      "caption": "Feito à mão tem valor. Qual peça você quer ver? Comenta.",
+      "hashtags": "#artesanato #costura #feitoamao #handmade #modafeita",
+      "audio": "Música instrumental leve",
+      "tip": "Mostre a peça final por último, não no começo, para segurar o vídeo."
+    },
+    {
+      "n": 19,
+      "chapter": "bastidores",
+      "title": "Maquiagem do pincel ao final",
+      "niche": "Maquiagem",
+      "hook": "Só o pincel faz essa mágica",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Mão com um pincel de base sobre a palma",
+          "text": "A base"
+        },
+        {
+          "show": "Pincel de blush circulando em close, sem mostrar o rosto",
+          "text": "Blush no lugar certo"
+        },
+        {
+          "show": "Mão passando o batom na própria mão",
+          "text": "Cor do batom"
+        },
+        {
+          "show": "Todos os produtos alinhados na mesa",
+          "text": "Produtos usados"
+        }
+      ],
+      "caption": "Qual produto você não vive sem? Comenta aqui.",
+      "hashtags": "#maquiagem #makeup #beleza #tutorialmaquiagem #makedodia",
+      "audio": "Beat leve de beleza",
+      "tip": "Mostre a lista dos produtos na tela final, aumenta salvamento."
+    },
+    {
+      "n": 20,
+      "chapter": "bastidores",
+      "title": "Pet tomando banho",
+      "niche": "Pet shop",
+      "hook": "O cachorro que tinha medo de banho",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Pata dentro da banheira cheia de espuma",
+          "text": "Entrou com medo"
+        },
+        {
+          "show": "Mão passando shampoo no pelo, sem mostrar o rosto do tutor",
+          "text": "Cheirinho bom"
+        },
+        {
+          "show": "Toalha enrolada no cachorro",
+          "text": "Secando"
+        },
+        {
+          "show": "Pet balançando o corpo todo, de longe",
+          "text": "Ficou lindo"
+        }
+      ],
+      "caption": "O seu também treme no banho? Conta aqui.",
+      "hashtags": "#petshop #cachorro #banhoetosa #pet #cachorrinhosdoinstagram",
+      "audio": "Música alegre e curta",
+      "tip": "Filme na altura do pet, parece que você está dentro da cena."
+    },
+    {
+      "n": 21,
+      "chapter": "antes-depois",
+      "title": "Cozinha reorganizada em 1 minuto",
+      "niche": "Organização",
+      "hook": "Esse armário estava assim ontem",
+      "duration": "8 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Armário de cozinha bagunçado, filmado de frente",
+          "text": "Antes"
+        },
+        {
+          "show": "Mãos tirando potes e empilhando em cima da bancada",
+          "text": "Tirei tudo"
+        },
+        {
+          "show": "Mão colocando potes com etiquetas",
+          "text": "Etiquetei"
+        },
+        {
+          "show": "Armário organizado, filmado do mesmo ângulo",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Nada de comprar organizador caro. Quer a lista? Comenta ORGANIZA.",
+      "hashtags": "#organizacao #casaorganizada #antesedepois #cozinha #dicasdecasa",
+      "audio": "Música de transformação",
+      "tip": "Use o mesmo ângulo no antes e no depois. A diferença aparece mais."
+    },
+    {
+      "n": 22,
+      "chapter": "antes-depois",
+      "title": "Sobrancelha transformada",
+      "niche": "Estética",
+      "hook": "A sobrancelha que ela não gostava",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Close da região da sobrancelha antes, sem mostrar olhos",
+          "text": "Antes"
+        },
+        {
+          "show": "Pinça e linha em ação",
+          "text": "Design"
+        },
+        {
+          "show": "Pincel passando a henna",
+          "text": "Henna"
+        },
+        {
+          "show": "Depois, mesmo ângulo e luz",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Quem ama sobrancelha feita? Comenta CORAÇÃO.",
+      "hashtags": "#sobrancelha #designdesobrancelhas #estetica #antesedepois #beleza",
+      "audio": "Beat suave de transformação",
+      "tip": "Use a mesma luz natural nas duas partes."
+    },
+    {
+      "n": 23,
+      "chapter": "antes-depois",
+      "title": "Parede velha, parede nova",
+      "niche": "Decoração",
+      "hook": "Essa parede estava assim",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Parede manchada filmada de perto",
+          "text": "Antes"
+        },
+        {
+          "show": "Rolo passando tinta, câmera fixa",
+          "text": "Primeira demão"
+        },
+        {
+          "show": "Rolo de novo, parede mais lisa",
+          "text": "Segunda demão"
+        },
+        {
+          "show": "Parede pronta com um quadro",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Tinta nova muda tudo. Que cor você escolheria? Comenta.",
+      "hashtags": "#decoracao #antesedepois #pinturaparede #casa #reforma",
+      "audio": "Música aconchegante e firme",
+      "tip": "Mostre só o material, não a pessoa. Prende sem cara."
+    },
+    {
+      "n": 24,
+      "chapter": "antes-depois",
+      "title": "Cabelo antes e depois",
+      "niche": "Salão de beleza",
+      "hook": "Esse cabelo estava assim ontem",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Cabelo sem brilho, mecha na mão",
+          "text": "Antes"
+        },
+        {
+          "show": "Tigela e pincel na tintura, só mãos",
+          "text": "Passou o tratamento"
+        },
+        {
+          "show": "Mão enrolando uma mecha com óleo",
+          "text": "Finalizou"
+        },
+        {
+          "show": "Cabelo balançando, sem rosto",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Que tratamento você quer ver aqui? Comenta.",
+      "hashtags": "#cabelo #tratamentocapilar #hairstylist #antesedepois #salaodebeleza",
+      "audio": "Beat de beleza com subida",
+      "tip": "Use a mesma luz nos dois momentos."
+    },
+    {
+      "n": 25,
+      "chapter": "antes-depois",
+      "title": "Bolo decorado em 30 segundos",
+      "niche": "Confeitaria",
+      "hook": "Esse bolo simples virou isso",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Bolo liso numa tábua, de cima",
+          "text": "Antes"
+        },
+        {
+          "show": "Espátula passando chantilly",
+          "text": "Cobertura"
+        },
+        {
+          "show": "Mão decorando com flores e confeito",
+          "text": "Decorei"
+        },
+        {
+          "show": "Bolo pronto girando em prato giratório",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Qual decoração você escolheria? Comenta 1, 2 ou 3.",
+      "hashtags": "#bolodecorado #confeitaria #bolo #antesedepois #confeiteira",
+      "audio": "Música alegre de festa",
+      "tip": "Gire o prato giratório devagar na última cena."
+    },
+    {
+      "n": 26,
+      "chapter": "antes-depois",
+      "title": "Closet organizado",
+      "niche": "Moda e roupas",
+      "hook": "Eu odiava abrir esse closet",
+      "duration": "8 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Closet cheio de roupa amontoada",
+          "text": "Antes"
+        },
+        {
+          "show": "Mãos separando roupas em 3 pilhas",
+          "text": "Separei"
+        },
+        {
+          "show": "Cabides combinando e dobras em gavetas",
+          "text": "Dobrei"
+        },
+        {
+          "show": "Closet pronto filmado de frente",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Closet arrumado muda a manhã. Quer o passo a passo? Comenta CLOSET.",
+      "hashtags": "#closet #organizacao #moda #antesedepois #dicasdemoda",
+      "audio": "Música de transformação",
+      "tip": "Filme sempre na mesma altura do celular para comparar."
+    },
+    {
+      "n": 27,
+      "chapter": "antes-depois",
+      "title": "Pet antes e depois da tosa",
+      "niche": "Pet shop",
+      "hook": "Esse cachorro ninguém reconhecia",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Pet com pelo grande e embaraçado",
+          "text": "Antes"
+        },
+        {
+          "show": "Tesoura e máquina em ação, só mãos",
+          "text": "Tosa"
+        },
+        {
+          "show": "Pet cheiroso com laço",
+          "text": "Laço final"
+        },
+        {
+          "show": "Pet de longe, balançando",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Seu pet pede tosa? Comenta aqui.",
+      "hashtags": "#pet #tosa #banhoetosa #cachorro #antesedepois",
+      "audio": "Música animada",
+      "tip": "Mostre o laço no final, as pessoas amam."
+    },
+    {
+      "n": 28,
+      "chapter": "antes-depois",
+      "title": "Skincare em 4 passos",
+      "niche": "Estética",
+      "hook": "Pele diferente em 4 passos",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Mão segurando um limpador facial, sem rosto",
+          "text": "1 Limpa"
+        },
+        {
+          "show": "Mão aplicando sérum nas costas da mão",
+          "text": "2 Sérum"
+        },
+        {
+          "show": "Mão com hidratante",
+          "text": "3 Hidrata"
+        },
+        {
+          "show": "Protetor solar sendo apertado no dedo",
+          "text": "4 Protege"
+        }
+      ],
+      "caption": "Qual passo você mais esquece? Conta aqui.",
+      "hashtags": "#skincare #cuidadocomapele #estetica #pele #beleza",
+      "audio": "Música calma de spa",
+      "tip": "Mostre a ordem na tela, a pessoa salva para repetir."
+    },
+    {
+      "n": 29,
+      "chapter": "antes-depois",
+      "title": "Feed organizado em 1 tarde",
+      "niche": "Qualquer perfil",
+      "hook": "Meu feed estava uma bagunça",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Tela do perfil com posts misturados, rolando",
+          "text": "Antes"
+        },
+        {
+          "show": "Mão arrastando cores e fotos num app de edição",
+          "text": "Escolhi 3 cores"
+        },
+        {
+          "show": "Mão colando uma figurinha do Stories Lab num story",
+          "text": "Detalhes iguais"
+        },
+        {
+          "show": "Tela do perfil com grade mais limpa",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Feed organizado passa confiança. Quer ajuda para montar o seu? Comenta FEED.",
+      "hashtags": "#feedinstagram #identidadevisual #instagramdicas #organizacao #marca",
+      "audio": "Música moderna e leve",
+      "tip": "Escolha 3 cores e use sempre, o resto é detalhe."
+    },
+    {
+      "n": 30,
+      "chapter": "antes-depois",
+      "title": "Arrumar a mesa de trabalho",
+      "niche": "Rotina",
+      "hook": "Minha mesa estava assim no domingo",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mesa bagunçada filmada de cima",
+          "text": "Antes"
+        },
+        {
+          "show": "Mãos limpando e organizando canetas e papéis",
+          "text": "Organizando"
+        },
+        {
+          "show": "Mão colocando planta e caderno no lugar",
+          "text": "Um detalhe só"
+        },
+        {
+          "show": "Mesa limpa à luz da janela",
+          "text": "Depois"
+        }
+      ],
+      "caption": "Mesa limpa, cabeça leve. A sua está assim? Conta aqui.",
+      "hashtags": "#mesadetrabalho #homeoffice #organizacao #produtividade #rotina",
+      "audio": "Lo-fi relaxante",
+      "tip": "Troque um objeto por uma planta, a foto fica mais viva."
+    },
+    {
+      "n": 31,
+      "chapter": "listas",
+      "title": "3 cores que combinam com tudo",
+      "niche": "Moda e roupas",
+      "hook": "3 cores que salvam qualquer look",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão puxando uma blusa branca do cabide",
+          "text": "1 Branco"
+        },
+        {
+          "show": "Mão segurando uma calça jeans",
+          "text": "2 Jeans"
+        },
+        {
+          "show": "Mão pegando um blazer bege",
+          "text": "3 Bege"
+        },
+        {
+          "show": "Peças juntas sobre a cama",
+          "text": "Pronto"
+        }
+      ],
+      "caption": "Quais dessas você já tem? Conta aqui.",
+      "hashtags": "#looks #moda #modafeminina #dicasdemoda #lookdodia",
+      "audio": "Beat de moda",
+      "tip": "Dobre as peças antes, o vídeo fica limpo."
+    },
+    {
+      "n": 32,
+      "chapter": "listas",
+      "title": "5 itens para salão iniciante",
+      "niche": "Salão de beleza",
+      "hook": "5 itens que todo salão precisa",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Escova de cabelo sobre a bancada",
+          "text": "1 Escova boa"
+        },
+        {
+          "show": "Tesoura profissional",
+          "text": "2 Tesoura"
+        },
+        {
+          "show": "Capa de corte",
+          "text": "3 Capa"
+        },
+        {
+          "show": "Secador na mão",
+          "text": "4 Secador"
+        },
+        {
+          "show": "Mesa com tudo",
+          "text": "5 Espelho limpo"
+        }
+      ],
+      "caption": "Faltou algum? Comenta o que você acrescentaria.",
+      "hashtags": "#salao #cabeleireira #empreendedora #dicassalao #beleza",
+      "audio": "Música animada e curta",
+      "tip": "Faça listas de 3 a 5 itens, o vídeo termina antes de cansar."
+    },
+    {
+      "n": 33,
+      "chapter": "listas",
+      "title": "3 doces fáceis para vender",
+      "niche": "Confeitaria",
+      "hook": "Doce fácil que vende todo dia",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Brigadeiro enrolado em bandeja",
+          "text": "1 Brigadeiro"
+        },
+        {
+          "show": "Beijinho com coco",
+          "text": "2 Beijinho"
+        },
+        {
+          "show": "Copo da felicidade",
+          "text": "3 Copo da felicidade"
+        }
+      ],
+      "caption": "Qual você mais vende? Comenta aqui.",
+      "hashtags": "#doces #confeitaria #docesparavender #empreendedora #receitas",
+      "audio": "Música alegre curta",
+      "tip": "Mostre o preço médio na tela final, aumenta salvamentos."
+    },
+    {
+      "n": 34,
+      "chapter": "listas",
+      "title": "Erros no cabelo ao lavar",
+      "niche": "Beleza",
+      "hook": "3 erros que acabam seu cabelo",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Água fumegante no chuveiro, só mão",
+          "text": "1 Água quente"
+        },
+        {
+          "show": "Mão esfregando a cabeça com força",
+          "text": "2 Esfregar forte"
+        },
+        {
+          "show": "Toalha enrolada torcendo mechas",
+          "text": "3 Torcer com toalha"
+        }
+      ],
+      "caption": "Faz algum desses? Comenta.",
+      "hashtags": "#cabelo #cuidadoscomocabelo #dicasdebeleza #cabelosaudavel #beleza",
+      "audio": "Som de dica rápida",
+      "tip": "Mostre o erro e depois a forma certa em segundos."
+    },
+    {
+      "n": 35,
+      "chapter": "listas",
+      "title": "Itens essenciais no meu carro",
+      "niche": "Rotina",
+      "hook": "O que eu levo na bolsa do carro",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão abrindo o porta-luvas",
+          "text": "Abri"
+        },
+        {
+          "show": "Mão pegando um kit de emergência",
+          "text": "Kit"
+        },
+        {
+          "show": "Mão pegando bolsa de maquiagem",
+          "text": "Beleza"
+        },
+        {
+          "show": "Mão pegando água",
+          "text": "Água"
+        }
+      ],
+      "caption": "O que não pode faltar na sua? Conta aqui.",
+      "hashtags": "#rotina #organizacao #mulheres #dicasdodia #vidareal",
+      "audio": "Música leve",
+      "tip": "Itens do dia a dia prendem porque ela se vê ali."
+    },
+    {
+      "n": 36,
+      "chapter": "listas",
+      "title": "Ideias de legenda para hoje",
+      "niche": "Qualquer perfil",
+      "hook": "3 legendas que ninguém usa",
+      "duration": "8 a 11 segundos",
+      "scenes": [
+        {
+          "show": "Mão abrindo bloco de notas com a primeira frase",
+          "text": "1. 'Isso mudou meu dia'"
+        },
+        {
+          "show": "Mão digitando a segunda",
+          "text": "2. 'Quase desisti disso'"
+        },
+        {
+          "show": "Mão digitando a terceira",
+          "text": "3. 'Faço assim há anos'"
+        }
+      ],
+      "caption": "Salva e usa no próximo post. Quer mais ideias? Comenta LEGENDA.",
+      "hashtags": "#legendas #instagramdicas #conteudo #copywriting #redessociais",
+      "audio": "Beat leve de dica",
+      "tip": "Legenda curta no começo, link no final."
+    },
+    {
+      "n": 37,
+      "chapter": "listas",
+      "title": "Presentes de até 50 reais",
+      "niche": "Loja de presentes",
+      "hook": "Presente bonito por até 50 reais",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Mão mostrando caneca",
+          "text": "1 Caneca"
+        },
+        {
+          "show": "Mão com vela perfumada",
+          "text": "2 Vela"
+        },
+        {
+          "show": "Mão com kit de chá",
+          "text": "3 Chá"
+        },
+        {
+          "show": "Todos com laço",
+          "text": "Pronto"
+        }
+      ],
+      "caption": "Qual você daria? Comenta.",
+      "hashtags": "#presentes #lojaonline #ideiasdepresente #pequenonegocio #lembrancinhas",
+      "audio": "Música alegre curta",
+      "tip": "Mostre o preço escrito na tela, quem busca preço clica."
+    },
+    {
+      "n": 38,
+      "chapter": "listas",
+      "title": "Passo a passo de contrato",
+      "niche": "Advocacia",
+      "hook": "3 sinais de contrato com problema",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Mão passando caneta sobre um contrato, rosto fora",
+          "text": "1 Letra miúda"
+        },
+        {
+          "show": "Mão apontando prazo",
+          "text": "2 Prazo sem data"
+        },
+        {
+          "show": "Mão apontando multa",
+          "text": "3 Multa abusiva"
+        }
+      ],
+      "caption": "Já assinou algo sem ler? Conta aqui. Não é consultoria jurídica.",
+      "hashtags": "#direito #advogada #contrato #dicasjuridicas #leis",
+      "audio": "Som neutro e sério",
+      "tip": "Use texto simples, sem juridiquês."
+    },
+    {
+      "n": 39,
+      "chapter": "listas",
+      "title": "Treino de glúteo em casa",
+      "niche": "Personal e academia",
+      "hook": "4 exercícios que dispensam academia",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Pernas fazendo agachamento sobre o tapete",
+          "text": "1 Agachamento"
+        },
+        {
+          "show": "Quadris subindo no chão, só do tronco pra baixo",
+          "text": "2 Elevação"
+        },
+        {
+          "show": "Perna chutando para trás",
+          "text": "3 Chute"
+        },
+        {
+          "show": "Pernas em passada",
+          "text": "4 Afundo"
+        }
+      ],
+      "caption": "Qual você mais sente? Comenta.",
+      "hashtags": "#treinoemcasa #gluteo #fitness #personal #exercicio",
+      "audio": "Beat forte",
+      "tip": "Conte as repetições na tela."
+    },
+    {
+      "n": 40,
+      "chapter": "listas",
+      "title": "Materiais para artesanato",
+      "niche": "Artesanato",
+      "hook": "5 itens de artesanato baratos",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Mão mostrando cola quente",
+          "text": "1 Cola quente"
+        },
+        {
+          "show": "Mão com tesoura",
+          "text": "2 Tesoura"
+        },
+        {
+          "show": "Mão com fita",
+          "text": "3 Fita"
+        },
+        {
+          "show": "Mão com botões",
+          "text": "4 Botões"
+        },
+        {
+          "show": "Mesa com tudo",
+          "text": "Pronto"
+        }
+      ],
+      "caption": "O que você faria com isso? Conta aqui.",
+      "hashtags": "#artesanato #handmade #diy #feitoamao #criatividade",
+      "audio": "Música leve",
+      "tip": "Mostre os itens enfileirados antes de cada um."
+    },
+    {
+      "n": 41,
+      "chapter": "vida-real",
+      "title": "Marmita de domingo para a semana",
+      "niche": "Rotina",
+      "hook": "Domingo de 1 hora e 5 dias resolvidos",
+      "duration": "11 a 15 segundos",
+      "scenes": [
+        {
+          "show": "Panelas fumegando no fogão, filmadas de cima, com arroz e feijão prontos",
+          "text": "Domingo, 16h"
+        },
+        {
+          "show": "Mãos enchendo potes de vidro enfileirados na bancada, um por um",
+          "text": "5 potes, 5 dias"
+        },
+        {
+          "show": "Mão colando uma fita de papel com o dia da semana em cada pote",
+          "text": "Segunda a sexta etiquetado"
+        },
+        {
+          "show": "Geladeira aberta com os potes empilhados e a luz acesa",
+          "text": "Semana resolvida"
+        }
+      ],
+      "caption": "Uma hora no domingo e a semana inteira sem pensar no almoço.\nVocê já faz marmita ou ainda decide na hora? Conta aqui nos comentários.",
+      "hashtags": "#marmita #mealprep #rotina #organizacao #vidareal",
+      "audio": "Lo-fi calmo, ritmo médio, passando sensação de domingo tranquilo",
+      "tip": "Corte as partes de espera e deixe só os gestos, o vídeo precisa ficar abaixo de 15 segundos para ser visto até o fim."
+    },
+    {
+      "n": 42,
+      "chapter": "vida-real",
+      "title": "Dia de produção com a casa viva",
+      "niche": "Mãe empreendedora",
+      "hook": "Produzindo pedidos com a casa funcionando",
+      "duration": "12 a 16 segundos",
+      "scenes": [
+        {
+          "show": "Celular apoiado na bancada mostrando a lista de pedidos do dia",
+          "text": "6 pedidos hoje"
+        },
+        {
+          "show": "Mãos separando ingredientes em potinhos, com brinquedos desfocados ao fundo",
+          "text": "Separando tudo"
+        },
+        {
+          "show": "Close da mão mexendo uma panela, uma criança passando desfocada atrás",
+          "text": "E a vida acontecendo junto"
+        },
+        {
+          "show": "Caixas fechadas empilhadas na mesa da sala, com fita e etiqueta",
+          "text": "Pedidos prontos"
+        },
+        {
+          "show": "Mão marcando o último item da lista com caneta",
+          "text": "Feito antes das 18h"
+        }
+      ],
+      "caption": "Produzir em casa tem dessas: tudo acontece ao mesmo tempo e ainda sai a entrega.\nQuem também trabalha com a casa em volta? Marca aquela amiga que se identifica.",
+      "hashtags": "#maeempreendedora #produtoscaseiros #vidareal #empreendedorismofeminino #rotinademae",
+      "audio": "Música leve e quente, ritmo médio, tom de rotina corrida mas feliz",
+      "tip": "Mostre a criança só desfocada ao fundo ou de costas, passa vida real sem expor o rosto de ninguém."
+    },
+    {
+      "n": 43,
+      "chapter": "vida-real",
+      "title": "O jeito que termino meu dia",
+      "niche": "Rotina",
+      "hook": "Meu ritual de 3 minutos antes de dormir",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Tênis jogados no chão da entrada e bolsa pendurada no gancho",
+          "text": "Cheguei"
+        },
+        {
+          "show": "Mão ligando o abajur de luz quente no quarto",
+          "text": "Luz baixa"
+        },
+        {
+          "show": "Xícara de chá fumegando ao lado de um caderno aberto",
+          "text": "Chá e caderno"
+        },
+        {
+          "show": "Mão escrevendo 3 coisas boas do dia numa folha",
+          "text": "3 coisas boas de hoje"
+        },
+        {
+          "show": "Mão apagando a luz do abajur",
+          "text": "Fim"
+        }
+      ],
+      "caption": "Três minutos que fecham o dia sem peso na cabeça.\nQual é o seu ritual para desligar? Me conta aqui, quero copiar.",
+      "hashtags": "#rotinanoturna #autocuidado #vidareal #mulher #bemestar",
+      "audio": "Lo-fi lento e suave, passando calma e silêncio",
+      "tip": "Grave com a luz do abajur e uma única lâmpada, a luz quente deixa o vídeo aconchegante sem filtro."
+    },
+    {
+      "n": 44,
+      "chapter": "vida-real",
+      "title": "Um dia na vida de manicure",
+      "niche": "Manicure",
+      "hook": "8h às 18h, esse é meu dia de manicure",
+      "duration": "12 a 16 segundos",
+      "scenes": [
+        {
+          "show": "Mão organizando esmaltes por cor numa bancada, luz do começo do dia",
+          "text": "8h abrindo o estúdio"
+        },
+        {
+          "show": "Mão da cliente chegando e pousando na almofada, sem mostrar o rosto",
+          "text": "Primeira cliente"
+        },
+        {
+          "show": "Close do pincel pintando a unha com a luminária acesa",
+          "text": "Meio do dia"
+        },
+        {
+          "show": "Mão limpando a bancada com álcool e pano ao fim do atendimento",
+          "text": "Limpeza entre clientes"
+        },
+        {
+          "show": "Bancada vazia com o celular mostrando 18h na tela",
+          "text": "Fim do dia"
+        }
+      ],
+      "caption": "Muito café, muita unha e aquela dor nas costas que só quem é manicure sabe.\nQuem aqui também vive disso? Marca outra manicure.",
+      "hashtags": "#manicure #diaadia #nailtech #unhasdodia #profissionaldabeleza",
+      "audio": "Música animada, ritmo médio, tom de rotina corrida",
+      "tip": "Coloque o horário real na tela em cada cena, o vídeo vira um diário e prende pela curiosidade do que vem depois."
+    },
+    {
+      "n": 45,
+      "chapter": "vida-real",
+      "title": "O que ninguém conta de empreender",
+      "niche": "Mãe empreendedora",
+      "hook": "O lado de empreender que ninguém mostra",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Caderno de contas aberto com uma calculadora em cima, mãos passando o dedo nos números",
+          "text": "As contas do mês"
+        },
+        {
+          "show": "Xícara de café frio ao lado do notebook, vapor nenhum",
+          "text": "O café esfria sempre"
+        },
+        {
+          "show": "Mão olhando o celular parado na mesa com a tela de pedidos vazia",
+          "text": "Dia sem pedido"
+        },
+        {
+          "show": "Notificação de venda chegando na tela e o dedo tocando",
+          "text": "Mas aí entra uma venda"
+        }
+      ],
+      "caption": "Empreender também é dia ruim, conta apertada e café frio. E mesmo assim a gente continua.\nSe você está passando por isso, comenta ESTOU AQUI e a gente se fortalece.",
+      "hashtags": "#empreendedorismo #maeempreendedora #vidareal #mulheresquefazem #desabafo",
+      "audio": "Música emotiva e leve, ritmo lento, crescendo suave no fim",
+      "tip": "Termine o vídeo com a notícia boa, a venda entrando, assim a identificação vira esperança e não só desabafo."
+    },
+    {
+      "n": 46,
+      "chapter": "vida-real",
+      "title": "Almoço de 15 minutos no trabalho",
+      "niche": "Rotina",
+      "hook": "Meu almoço de 15 minutos no trabalho",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Marmita sendo aberta sobre a mesa do trabalho, ao lado do teclado",
+          "text": "Almoço"
+        },
+        {
+          "show": "Garfo pegando um pedaço, câmera na altura dos olhos como POV",
+          "text": "15 minutos"
+        },
+        {
+          "show": "Notebook ao fundo com um alerta de e-mail piscando",
+          "text": "O trabalho chama"
+        },
+        {
+          "show": "Marmita vazia com o garfo dentro da tampa",
+          "text": "Acabou rápido"
+        }
+      ],
+      "caption": "Quase ninguém tem uma hora de almoço de verdade, né?\nQuanto tempo você tem? Conta nos comentários.",
+      "hashtags": "#almoco #rotinadetrabalho #vidareal #marmita #trabalho",
+      "audio": "Lo-fi leve, ritmo médio, com leve tom de ironia",
+      "tip": "Filme na altura do olhar para parecer POV, o espectador se vê sentado ali."
+    },
+    {
+      "n": 47,
+      "chapter": "vida-real",
+      "title": "Fui à feira e olha o que levei",
+      "niche": "Rotina",
+      "hook": "Tudo isso por menos de 60 reais na feira",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Sacola de pano sobre a bancada da feira, frutas coloridas ao redor",
+          "text": "Sábado de feira"
+        },
+        {
+          "show": "Mão escolhendo tomates e colocando na sacola, sem mostrar o rosto",
+          "text": "Escolhendo com calma"
+        },
+        {
+          "show": "Mão entregando a nota ao feirante, só o braço aparece",
+          "text": "Paguei 58 reais"
+        },
+        {
+          "show": "Mesa da cozinha em casa com tudo espalhado e organizado por tipo",
+          "text": "O que levei: 8 itens"
+        }
+      ],
+      "caption": "Feira rende mais que mercado e a comida dura a semana toda.\nVocê compra na feira ou no mercado? Comenta aqui e salva a ideia.",
+      "hashtags": "#feira #compras #vidasaudavel #economia #rotina",
+      "audio": "Música leve de manhã, ritmo médio, com violão suave",
+      "tip": "Escreva o valor total na tela na primeira cena, o número é o gancho que segura quem assiste."
+    },
+    {
+      "n": 48,
+      "chapter": "vida-real",
+      "title": "Mãe, trabalho e café frio",
+      "niche": "Mãe empreendedora",
+      "hook": "Uma mão no bebê, outra no trabalho",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Mão apoiada no colo segurando uma mamadeira, a outra no mouse do notebook",
+          "text": "Uma mão aqui"
+        },
+        {
+          "show": "Mão digitando uma resposta para cliente no celular com o polegar",
+          "text": "Outra mão ali"
+        },
+        {
+          "show": "Xícara de café esquecida, já frio, ao lado do notebook",
+          "text": "O café esfria"
+        },
+        {
+          "show": "Mão sorrindo com o polegar para cima, mostrando o cliente respondendo",
+          "text": "Mas deu certo"
+        }
+      ],
+      "caption": "Quem mais faz três coisas ao mesmo tempo e ainda chama de rotina normal?\nConta aqui qual é o seu malabarismo do dia.",
+      "hashtags": "#maetrabalhadora #maeempreendedora #vidareal #rotina #mulheres",
+      "audio": "Música leve com tom de humor, ritmo médio",
+      "tip": "Humor leve sobre a própria rotina gera mais compartilhamento do que dica pronta."
+    },
+    {
+      "n": 49,
+      "chapter": "vida-real",
+      "title": "Sábado de faxina com música",
+      "niche": "Rotina",
+      "hook": "Faxina de sábado do jeito que eu gosto",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Balde com espuma e pano no chão da sala, enquadrado do alto",
+          "text": "Sábado"
+        },
+        {
+          "show": "Mão torcendo o pano e passando no chão em movimentos amplos",
+          "text": "Esfrega"
+        },
+        {
+          "show": "Janelas abertas e cortina balançando com sol entrando",
+          "text": "Ventilando a casa"
+        },
+        {
+          "show": "Chão brilhando com reflexo da janela",
+          "text": "Ficou limpinho"
+        }
+      ],
+      "caption": "Música alta, janela aberta e a casa respirando. É o meu momento favorito da semana.\nVocê faz faxina cantando também? Conta aqui.",
+      "hashtags": "#faxina #casalimpa #vidareal #rotina #organizacao",
+      "audio": "Pop animado e rápido, ritmo alto, tom de energia",
+      "tip": "Termine com o reflexo da luz no chão, é a imagem mais satisfatória e prende até o fim."
+    },
+    {
+      "n": 50,
+      "chapter": "vida-real",
+      "title": "Minha primeira venda do mês",
+      "niche": "Loja online",
+      "hook": "A primeira venda do mês chegou assim",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Tela do celular recebendo notificação de pedido novo, mão tocando nela",
+          "text": "Entrou pedido"
+        },
+        {
+          "show": "Mão pegando o produto da prateleira e conferindo",
+          "text": "Separando"
+        },
+        {
+          "show": "Mão colocando o produto na caixa com papel de seda",
+          "text": "Embalando com carinho"
+        },
+        {
+          "show": "Caixa fechada com um laço e o nome da loja",
+          "text": "A caminho"
+        }
+      ],
+      "caption": "A primeira venda do mês tem um gostinho especial e dá aquele ânimo.\nQual foi a sua primeira venda? Conta aqui.",
+      "hashtags": "#vendas #lojaonline #empreendedora #pequenonegocio #primeiravenda",
+      "audio": "Música animada e curta, ritmo rápido, tom de vitória leve",
+      "tip": "Borre o nome do cliente e o endereço na tela antes de postar."
+    },
+    {
+      "n": 51,
+      "chapter": "vender",
+      "title": "A pergunta que mais me fazem",
+      "niche": "Qualquer perfil",
+      "hook": "A pergunta que mais me fazem no direct",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Tela de direct com a pergunta de uma cliente, nome borrado",
+          "text": "Uma cliente perguntou"
+        },
+        {
+          "show": "Mão apontando a pergunta com o dedo, câmera parada",
+          "text": "A mesma de todo dia"
+        },
+        {
+          "show": "Mão digitando a resposta no bloco de notas, letra por letra",
+          "text": "Minha resposta"
+        },
+        {
+          "show": "Mão mostrando o produto em foco, à luz da janela",
+          "text": "É por isso que dá certo"
+        }
+      ],
+      "caption": "Respondi a mesma pergunta pela décima vez e resolvi transformar em vídeo.\nQuer a resposta completa? Comenta EU QUERO que eu te mando.",
+      "hashtags": "#duvidas #atendimento #clientes #pequenonegocio #vendas",
+      "audio": "Som de mensagem seguido de batida leve, ritmo médio",
+      "tip": "Use a pergunta real que mais aparece no seu direct, ela vira o melhor gancho que você tem."
+    },
+    {
+      "n": 52,
+      "chapter": "vender",
+      "title": "Por que meu bolo custa isso",
+      "niche": "Confeitaria",
+      "hook": "Por que meu bolo não custa 30 reais",
+      "duration": "11 a 15 segundos",
+      "scenes": [
+        {
+          "show": "Mãos pesando ingredientes numa balança digital, com marcas de qualidade à mostra",
+          "text": "Ingredientes de verdade"
+        },
+        {
+          "show": "Mão batendo massa com a batedeira, tempo marcado na tela",
+          "text": "1h20 de preparo"
+        },
+        {
+          "show": "Mão com a calculadora somando gás, embalagem e entrega",
+          "text": "Custos que ninguém vê"
+        },
+        {
+          "show": "Bolo pronto sobre a tábua, mão ajeitando o topo",
+          "text": "Isso é o valor"
+        }
+      ],
+      "caption": "Preço não é só ingrediente, é tempo, cuidado e conhecimento.\nQuer a conta completa de como eu preciso? Comenta PREÇO e eu mostro.",
+      "hashtags": "#preco #confeitaria #empreendedora #bolo #valorizesuamarca",
+      "audio": "Música firme e tranquila, ritmo médio, tom de segurança",
+      "tip": "Explique o preço sem pedir desculpa na legenda, quem entende o valor compra sem barganha."
+    },
+    {
+      "n": 53,
+      "chapter": "vender",
+      "title": "Só 3 horários essa semana",
+      "niche": "Estética",
+      "hook": "Só 3 horários esta semana, corre",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Agenda de papel aberta com 3 campos vazios circulados em vermelho",
+          "text": "3 horários livres"
+        },
+        {
+          "show": "Mão escrevendo o nome do serviço num post-it",
+          "text": "Sobrancelha e henna"
+        },
+        {
+          "show": "Mão colando o post-it ao lado do celular com o link na tela",
+          "text": "Reserve pelo direct"
+        },
+        {
+          "show": "Mão fechando a agenda com a caneta",
+          "text": "Sem fila de espera depois"
+        }
+      ],
+      "caption": "Os horários desta semana estão acabando e eu prefiro avisar antes do aperto.\nQuer um deles? Comenta EU que eu te chamo no direct.",
+      "hashtags": "#agendamento #estetica #horariosdisponiveis #beleza #sobrancelha",
+      "audio": "Música animada e curta, ritmo rápido, tom de urgência leve",
+      "tip": "Só use escassez quando for verdade, senão sua cliente percebe e perde a confiança."
+    },
+    {
+      "n": 54,
+      "chapter": "vender",
+      "title": "Peça nova que acabou de chegar",
+      "niche": "Loja de roupas",
+      "hook": "Chegou hoje e eu já me apaixonei",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Caixa de papelão sendo aberta com estilete, mãos apenas",
+          "text": "Chegou"
+        },
+        {
+          "show": "Mão tirando uma blusa da caixa e esticando no ar",
+          "text": "Olha essa peça"
+        },
+        {
+          "show": "Mão passando a ferro a peça sobre a tábua, vapor subindo",
+          "text": "Preparada para você"
+        },
+        {
+          "show": "Peça pendurada num cabide na parede lisa, mão apontando o tecido",
+          "text": "Disponível em P, M e G"
+        }
+      ],
+      "caption": "Peça nova chegou e eu já imagino ela em dez looks diferentes.\nGostou? Comenta QUERO que eu mando as medidas e o valor.",
+      "hashtags": "#modafeminina #novidade #lojadeblusa #lookdodia #roupas",
+      "audio": "Beat animado e moderno, ritmo médio, tom de lançamento",
+      "tip": "Mostre o tecido de perto, o toque visual vende mais que descrição."
+    },
+    {
+      "n": 55,
+      "chapter": "vender",
+      "title": "Seu cachorro faz isso também",
+      "niche": "Pet shop",
+      "hook": "Seu cachorro também faz isso toda vez?",
+      "duration": "8 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Pata do cachorro pousada em cima do pé do tutor, câmera de cima",
+          "text": "Ele sempre faz isso"
+        },
+        {
+          "show": "Mão balançando o pacote de petisco, cachorro de longe animado",
+          "text": "Petisco no ar"
+        },
+        {
+          "show": "Cachorro correndo em direção ao pote, câmera na altura do chão",
+          "text": "Corre"
+        },
+        {
+          "show": "Pote vazio e cachorro olhando pra câmera de lado",
+          "text": "Cadê o resto?"
+        }
+      ],
+      "caption": "Todo tutor sabe que é impossível resistir a esse olhar.\nSeu pet faz isso também? Conta nos comentários e marca o tutor que se identifica.",
+      "hashtags": "#pet #cachorro #petshop #tutor #cachorrosdoinstagram",
+      "audio": "Música divertida e saltitante, ritmo rápido, tom de humor",
+      "tip": "Filme na altura do pet, o olhar dele vira a cena principal e rende compartilhamento."
+    },
+    {
+      "n": 56,
+      "chapter": "vender",
+      "title": "Antes de contratar um advogado",
+      "niche": "Advocacia",
+      "hook": "3 perguntas antes de contratar um advogado",
+      "duration": "11 a 15 segundos",
+      "scenes": [
+        {
+          "show": "Mão passando uma caneta sobre um contrato aberto, rosto fora do quadro",
+          "text": "Pergunta 1: como funciona o valor?"
+        },
+        {
+          "show": "Mão apontando um parágrafo no contrato com o dedo",
+          "text": "Pergunta 2: quais são os prazos?"
+        },
+        {
+          "show": "Mão escrevendo num caderno 'o que está incluso'",
+          "text": "Pergunta 3: o que está incluso?"
+        },
+        {
+          "show": "Mão fechando o caderno e guardando a caneta",
+          "text": "Pergunte sempre antes de assinar"
+        }
+      ],
+      "caption": "Essas três perguntas evitam surpresa e deixam a relação mais clara.\nSalva para quando precisar. Conteúdo informativo, não substitui consulta jurídica.",
+      "hashtags": "#advocacia #direito #advogada #dicasjuridicas #contratos",
+      "audio": "Som neutro e sério, ritmo lento, sem batida marcante",
+      "tip": "Use frases do dia a dia, sem juridiquês, e nunca prometa resultado no vídeo."
+    },
+    {
+      "n": 57,
+      "chapter": "vender",
+      "title": "Como comprar comigo em 3 passos",
+      "niche": "Loja online",
+      "hook": "Comprar comigo é fácil, olha os 3 passos",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Tela do celular mostrando o catálogo da loja, dedo rolando",
+          "text": "1. Escolha a peça"
+        },
+        {
+          "show": "Mão digitando uma mensagem no direct com o nome do item",
+          "text": "2. Me chame no direct"
+        },
+        {
+          "show": "Mão mostrando o Pix aprovado na tela, valor borrado",
+          "text": "3. Pague com Pix"
+        },
+        {
+          "show": "Caixa saindo pela porta com a etiqueta de envio",
+          "text": "4. Receba em casa"
+        }
+      ],
+      "caption": "Quem tem medo de comprar pela internet vai ver que é bem mais simples do que parece.\nFicou alguma dúvida? Comenta aqui que eu respondo.",
+      "hashtags": "#comprarcomigo #lojaonline #passoapasso #pequenonegocio #vendas",
+      "audio": "Música animada e clara, ritmo médio, tom de explicação",
+      "tip": "Mostre o seu processo real passo a passo, a transparência gera mais confiança do que qualquer promessa."
+    },
+    {
+      "n": 58,
+      "chapter": "vender",
+      "title": "Olha o que ela me mandou",
+      "niche": "Qualquer perfil",
+      "hook": "Olha a mensagem que chegou hoje de manhã",
+      "duration": "9 a 13 segundos",
+      "scenes": [
+        {
+          "show": "Tela do celular com a mensagem de uma cliente, nome e foto borrados",
+          "text": "Mensagem de hoje"
+        },
+        {
+          "show": "Dedo deslizando no texto com destaque nas palavras de elogio",
+          "text": "O que ela escreveu"
+        },
+        {
+          "show": "Mão segurando o produto que ela comprou, em foco à luz da janela",
+          "text": "O produto dela"
+        },
+        {
+          "show": "Mão fazendo um coração com os dedos perto da câmera",
+          "text": "Obrigada por confiar"
+        }
+      ],
+      "caption": "Mensagem assim faz o dia valer a pena e lembra por que a gente continua.\nQuer ser a próxima cliente feliz? Chama no direct.",
+      "hashtags": "#depoimento #clientes #feedback #pequenonegocio #gratidao",
+      "audio": "Música emotiva e leve, ritmo lento, tom de gratidão",
+      "tip": "Peça autorização à cliente e borre nome, foto e número antes de postar."
+    },
+    {
+      "n": 59,
+      "chapter": "vender",
+      "title": "Story com cara de marca",
+      "niche": "Qualquer perfil",
+      "hook": "Esse story simples ficou com cara de marca",
+      "duration": "10 a 14 segundos",
+      "scenes": [
+        {
+          "show": "Tela do Instagram com um story feito só de foto e texto, sem graça",
+          "text": "Story comum"
+        },
+        {
+          "show": "Dedo abrindo o app Stories Lab e escolhendo uma figurinha de moldura",
+          "text": "Escolhi uma figurinha"
+        },
+        {
+          "show": "Dedo colando a figurinha sobre o story e ajustando o tamanho",
+          "text": "Posicionei"
+        },
+        {
+          "show": "Story final pronto, com a figurinha elegante, mão girando o celular",
+          "text": "Story com identidade"
+        }
+      ],
+      "caption": "Um detalhe pequeno e o story passa a parecer de marca de verdade.\nQuer deixar os seus assim? Comenta STORY que eu te mostro como.",
+      "hashtags": "#stories #storieslab #figurinhas #instagramdicas #identidadevisual",
+      "audio": "Beat moderno e limpo, ritmo médio, tom de transformação",
+      "tip": "Grave a tela do celular na horizontal para o antes e depois ficar lado a lado no corte final."
+    },
+    {
+      "n": 60,
+      "chapter": "vender",
+      "title": "Convite para salvar e testar",
+      "niche": "Qualquer perfil",
+      "hook": "Salva esse vídeo e grava o seu hoje",
+      "duration": "9 a 12 segundos",
+      "scenes": [
+        {
+          "show": "Mão tocando no ícone de salvar do Instagram, dedo apertando",
+          "text": "Salva este Reels"
+        },
+        {
+          "show": "Mão abrindo o bloco de notas e digitando uma ideia",
+          "text": "Escolhe uma ideia"
+        },
+        {
+          "show": "Mão apoiando o celular numa pilha de livros para gravar",
+          "text": "Apoia o celular"
+        },
+        {
+          "show": "Mão apertando o botão de gravar",
+          "text": "Grava hoje"
+        }
+      ],
+      "caption": "A melhor hora de gravar é agora, mesmo sem estar perfeita.\nSalva este vídeo e me conta qual roteiro você vai testar primeiro.",
+      "hashtags": "#reels #conteudo #instagram #criadoradeconteudo #comecaragora",
+      "audio": "Música leve e motivacional, ritmo médio, subida suave no final",
+      "tip": "Poste no mesmo dia em que gravar, esperar o momento perfeito é o que trava a maioria."
+    }
+  ]
+}

@@ -1,0 +1,848 @@
+[
+ {
+  "slug": "emollick-8661a8",
+  "titulo_pt": "Recursão em vários gêneros",
+  "o_que_faz": "Explica recursão trocando de estilo visual a cada frase (terminal, cartoon, noir, documentário), em cortes rápidos e autorreferentes.",
+  "tecnica": "troca radical de linguagem visual a cada ideia, mesmo conteúdo em 'skins' diferentes",
+  "melhor_para": [
+   "explicacao",
+   "organico"
+  ],
+  "encaixe": "painel de baixo quando ele explica um conceito de IA em etapas: cada etapa ganha um estilo visual diferente",
+  "retencao": "a mudança de estilo a cada 2 s quebra o padrão e reseta a atenção",
+  "relevancia": 3,
+  "esforco": "alto"
+ },
+ {
+  "slug": "en-ra-81c6dd",
+  "titulo_pt": "Promo de analisador de sites",
+  "o_que_faz": "Promo de 15 s de uma ferramenta de IA que analisa sites: UI do produto entra em camadas, scanners e cards de resultado animam rápido.",
+  "tecnica": "UI do produto quebrada em componentes que entram em sequência com scan e highlights",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima quando ele fala de auditar landing page: tela do site sendo escaneada com cards de problema aparecendo",
+  "retencao": "sensação de máquina trabalhando ao vivo gera curiosidade pelo resultado",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ercankeskinx-ec2568",
+  "titulo_pt": "Cinco seções com scroll",
+  "o_que_faz": "Cinco layouts web distintos que se revelam por rolagem, com fotos e blocos de texto entrando por parallax.",
+  "tecnica": "parallax e reveal por scroll convertido em timeline",
+  "melhor_para": [
+   "transicao",
+   "produto-app"
+  ],
+  "encaixe": "B-roll quando ele mostra uma página de vendas: rolagem cinematográfica da página com parallax",
+  "retencao": "movimento contínuo de rolagem dá sensação de descoberta",
+  "relevancia": 2,
+  "esforco": "medio"
+ },
+ {
+  "slug": "eyishazyer-af035b",
+  "titulo_pt": "Showreel de motion designer",
+  "o_que_faz": "Reel de 15 s com gráficos, tipografia cinética e formas geométricas trocando no ritmo da música.",
+  "tecnica": "cortes e entradas sincronizados ao beat misturando gráfico, tipo e shape",
+  "melhor_para": [
+   "hook",
+   "branding"
+  ],
+  "encaixe": "abertura de corte: 1,5 s de tipo cinético no beat com a palavra-chave do vídeo",
+  "retencao": "densidade alta de mudança visual no ritmo segura o olho",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ezshine-c90d73",
+  "titulo_pt": "Promo AI Arena",
+  "o_que_faz": "Vídeo de apresentação de produto 16:9 que mostra cada feature com UI e trechos de código animados, estilo filme de lançamento.",
+  "tecnica": "sequência feature por feature com card de UI + legenda curta",
+  "melhor_para": [
+   "produto-app",
+   "explicacao"
+  ],
+  "encaixe": "painel de cima quando ele lista recursos de uma ferramenta de IA: um card de feature por frase",
+  "retencao": "estrutura previsível de 'próxima feature' cria ritmo de lista",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "faroukzy-9ff23e",
+  "titulo_pt": "Curta animado A Última Luz",
+  "o_que_faz": "Curta narrativo de 4 minutos com personagens animados e cenas encadeadas.",
+  "tecnica": "narrativa longa com personagens em cenas SVG",
+  "melhor_para": [
+   "motivacional"
+  ],
+  "encaixe": "pouco encaixe direto; no máximo uma cena curta de personagem como metáfora em vídeo motivacional",
+  "retencao": "história com personagem gera empatia",
+  "relevancia": 1,
+  "esforco": "alto"
+ },
+ {
+  "slug": "fionntobin-97b7af",
+  "titulo_pt": "Showreel editorial azul",
+  "o_que_faz": "Reel editorial monocromático azul: tipografia grande e formas sólidas que entram e saem no beat.",
+  "tecnica": "paleta de uma cor só + tipo gigante editorial, contraste por escala",
+  "melhor_para": [
+   "branding",
+   "hook",
+   "organico"
+  ],
+  "encaixe": "painel de baixo com a frase-chave em tipo gigante numa cor da marca, entrando no beat",
+  "retencao": "composição limpa e escala exagerada leem instantâneo no celular",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "fractadev-149adc",
+  "titulo_pt": "Lançamento de SaaS de agente de voz",
+  "o_que_faz": "Lançamento de SaaS usando componentes reais do produto: dashboards, gráficos e ondas de voz animados como filme de launch.",
+  "tecnica": "usar os componentes reais do produto como peças animadas em vez de print",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads",
+   "dados"
+  ],
+  "encaixe": "painel de cima quando ele mostra um painel de anúncios: métricas do gerenciador recriadas e animando",
+  "retencao": "UI real gera credibilidade e o movimento dá sensação premium",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "francoxavier33-d2dfd2",
+  "titulo_pt": "Hype de app de maternidade",
+  "o_que_faz": "Vídeo vertical de hype para app: celular com telas do app e tipografia cinética grande em cortes rápidos.",
+  "tecnica": "mockup de celular + palavras de impacto alternando em cortes rápidos",
+  "melhor_para": [
+   "criativo-ads",
+   "produto-app",
+   "hook"
+  ],
+  "encaixe": "criativo de anúncio: celular com o app/funil dele e palavras de benefício pulando entre as telas",
+  "retencao": "ritmo de hype e formato vertical nativo do feed",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "gabrielbuzziv-4ff0c6",
+  "titulo_pt": "Promo do app Enxovaly",
+  "o_que_faz": "Promo de 15 s de app de enxoval: telas do celular deslizam e montam a interface com microinterações.",
+  "tecnica": "telas do app em mockup de celular com transições de cartão e microinterações",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima quando ele mostra uma ferramenta no celular: mockup com telas trocando",
+  "retencao": "microinterações mostram uso real sem precisar narrar",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "gautam-mer1-2ae354",
+  "titulo_pt": "App de legendas estilo Apple",
+  "o_que_faz": "Vídeo de 30 s estilo Apple para app de legendas: celular girando suave, fotos e frases curtas centradas.",
+  "tecnica": "estética Apple: fundo limpo, celular em 3D suave, uma frase por vez",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads",
+   "branding"
+  ],
+  "encaixe": "criativo vertical de produto: celular com o resultado e uma frase de benefício por vez",
+  "retencao": "calma e clareza premium contrastam com o feed barulhento",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "gdgtify-287ddf",
+  "titulo_pt": "Discurso construído como arquitetura",
+  "o_que_faz": "Discurso tipográfico de 20 s onde palavras viram estruturas: WAIT é viga, VOICE é coluna, FLOOR é plataforma, e a frase final assenta sobre o que foi construído.",
+  "tecnica": "palavras com papel físico (peso, suporte, abertura) + timeline determinística seek(t) com loop perfeito",
+  "melhor_para": [
+   "motivacional",
+   "organico",
+   "hook"
+  ],
+  "encaixe": "painel de baixo em vídeo motivacional: frase dele vira estrutura, a palavra-chave literalmente sustenta a frase final",
+  "retencao": "a tipografia conta a história física da frase, o espectador espera o 'encaixe'",
+  "relevancia": 5,
+  "esforco": "alto"
+ },
+ {
+  "slug": "ghinaiya-nirmal-5d8fec",
+  "titulo_pt": "Reel do Claude",
+  "o_que_faz": "Reel de 15 s com tipografia cinética, formas e música, explorando a identidade do Claude.",
+  "tecnica": "tipo cinético + shapes sincronizados à música",
+  "melhor_para": [
+   "hook",
+   "branding"
+  ],
+  "encaixe": "abertura de corte sobre Claude: wordmark e palavras-chave entrando no beat",
+  "retencao": "energia visual alta nos primeiros segundos",
+  "relevancia": 3,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "gigabit-million-16b3a0",
+  "titulo_pt": "Recap de lançamentos Steam",
+  "o_que_faz": "Notícia de ~60 s em formato jornal: cada jogo ganha card com dados, tags e pontos fortes, um após o outro.",
+  "tecnica": "template de card de notícia repetível com dados e destaques",
+  "melhor_para": [
+   "dados",
+   "explicacao",
+   "organico"
+  ],
+  "encaixe": "painel de cima em vídeo de 'ferramentas de IA da semana': um card por ferramenta com 3 pontos",
+  "retencao": "formato de ranking/lista dá motivo para ficar até o fim",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "gizakdag-cf4ae6",
+  "titulo_pt": "Estudo sobre overthinking",
+  "o_que_faz": "Vertical 9:16 de tipo cinético sobre 'overthinking': palavras se multiplicam, empilham e se embaralham como pensamentos.",
+  "tecnica": "tipografia que se multiplica e embaralha para representar estado mental",
+  "melhor_para": [
+   "motivacional",
+   "hook",
+   "organico"
+  ],
+  "encaixe": "painel de baixo quando ele fala de travar por medo: palavras 'e se...' se multiplicando até ele cortar com a solução",
+  "retencao": "visualiza um sentimento que o público reconhece",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "gonzalomacagno-2de1a9",
+  "titulo_pt": "Reel de lineup de festival",
+  "o_que_faz": "Reel publicitário de 10 s com lineup: nomes entram em tipografia grande, rápida, em blocos.",
+  "tecnica": "lista em tipo gigante com cortes secos, info densa em pouco tempo",
+  "melhor_para": [
+   "criativo-ads",
+   "cta"
+  ],
+  "encaixe": "fim do criativo: oferta, bônus e data entrando em blocos de tipo grande antes do CTA",
+  "retencao": "velocidade e escala transmitem urgência",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "gorden-sun-041f56",
+  "titulo_pt": "Bola 3D quicando no beat",
+  "o_que_faz": "Bola 3D em three.js cai e quica em objetos do cenário, acendendo cada um no ritmo da música, com cenas trocando por faixa.",
+  "tecnica": "impacto físico sincronizado ao beat: cada batida acende um objeto",
+  "melhor_para": [
+   "transicao",
+   "organico"
+  ],
+  "encaixe": "transição entre blocos do corte: bola caindo e acendendo os tópicos no beat",
+  "retencao": "satisfação de causa e efeito sincronizado ao som",
+  "relevancia": 2,
+  "esforco": "alto"
+ },
+ {
+  "slug": "grace-sunnyy-29bc61",
+  "titulo_pt": "Reel com keyframes e partículas",
+  "o_que_faz": "Reel de 15 s com tipo cinético, partículas e composição ousada, cada segundo com uma ideia.",
+  "tecnica": "partículas que formam e desfazem tipografia",
+  "melhor_para": [
+   "hook",
+   "branding"
+  ],
+  "encaixe": "abertura: partículas convergindo na palavra do hook",
+  "retencao": "formação de forma a partir do caos prende até 'fechar'",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "hanifproduktif-54bdee",
+  "titulo_pt": "Showreel de candidatura",
+  "o_que_faz": "Showreel de 15 s com tipo cinético e partículas para provar habilidades de motion.",
+  "tecnica": "sequência de técnicas curtas em sucessão rápida",
+  "melhor_para": [
+   "hook",
+   "branding"
+  ],
+  "encaixe": "vinheta de abertura do perfil com nome e nicho",
+  "retencao": "variedade rápida evita tédio",
+  "relevancia": 2,
+  "esforco": "medio"
+ },
+ {
+  "slug": "hbcoop-de365c",
+  "titulo_pt": "Sequência Full Stop",
+  "o_que_faz": "Formas e partículas se organizam em figuras e terminam num ponto final, demonstração abstrata de capacidade.",
+  "tecnica": "partículas se reorganizando entre figuras até um ponto final",
+  "melhor_para": [
+   "transicao",
+   "branding"
+  ],
+  "encaixe": "transição entre ideias: partículas colapsando num ponto antes do próximo bloco",
+  "retencao": "fechamento visual satisfatório",
+  "relevancia": 2,
+  "esforco": "medio"
+ },
+ {
+  "slug": "henkpoley-3d3407",
+  "titulo_pt": "Showreel propositalmente ruim",
+  "o_que_faz": "Paródia de 1 minuto com motion intencionalmente feio e mínimo.",
+  "tecnica": "anti-design como humor",
+  "melhor_para": [
+   "organico"
+  ],
+  "encaixe": "meme em vídeo orgânico sobre 'criativo feio que converte': comparar com o feito certo",
+  "retencao": "humor e quebra de expectativa",
+  "relevancia": 2,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "henkvaness-0e06af",
+  "titulo_pt": "Tutorial de erros de prompt",
+  "o_que_faz": "Vídeo educativo de artigo: diagramas e tópicos sobre erros comuns de prompt aparecem em sequência.",
+  "tecnica": "artigo convertido em diagramas e bullets animados por seção",
+  "melhor_para": [
+   "explicacao",
+   "organico"
+  ],
+  "encaixe": "painel de cima quando ele ensina prompts: erro x acerto em cards lado a lado",
+  "retencao": "estrutura de 'erro número X' segura até o próximo",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "heyiammallik-e72d17",
+  "titulo_pt": "Reel de portfólio",
+  "o_que_faz": "Reel de 30 s montado a partir de um portfólio: UI, tipo cinético e partículas com sound design caprichado.",
+  "tecnica": "peças reais do portfólio recortadas e animadas com som em cada hit",
+  "melhor_para": [
+   "prova",
+   "branding"
+  ],
+  "encaixe": "painel de cima ao mostrar resultados de clientes: prints de campanhas recortados e animados",
+  "retencao": "prova visual real com ritmo profissional",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "himanshutwtxs-5f4b43",
+  "titulo_pt": "Showreel com diagramas",
+  "o_que_faz": "Reel de 15 s com diagramas, tipo cinético e partículas conectando ideias.",
+  "tecnica": "diagramas que se desenham e conectam nós",
+  "melhor_para": [
+   "explicacao",
+   "hook"
+  ],
+  "encaixe": "painel de cima ao explicar estrutura de funil: nós se conectando etapa por etapa",
+  "retencao": "ver as linhas se desenhando cria antecipação",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ho-ba-f3f0e9",
+  "titulo_pt": "Intro do produto mdfor.dev",
+  "o_que_faz": "Vídeo de 30 s do produto com screenshots quebrados em ícones e componentes, tudo animado no ritmo da música.",
+  "tecnica": "desmontar o screenshot em componentes e animar cada um, sem print cru",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima ao mostrar uma ferramenta: interface desmontada em peças que se montam enquanto ele fala",
+  "retencao": "movimento 'suculento' em cada peça dá sensação de produto premium",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "hoyoyoda-3a5c08",
+  "titulo_pt": "Noite de Chuseok em pixel",
+  "o_que_faz": "Cena noturna em pixel art com elementos culturais coreanos animados.",
+  "tecnica": "pixel art animada em loop",
+  "melhor_para": [
+   "organico"
+  ],
+  "encaixe": "pouco uso; B-roll nostálgico em vídeo pessoal",
+  "retencao": "estética retrô chama atenção",
+  "relevancia": 1,
+  "esforco": "alto"
+ },
+ {
+  "slug": "hqmank-7c61f1",
+  "titulo_pt": "Lançamento de skill de automação de navegador",
+  "o_que_faz": "Vídeo de 20 s: digita um site e um objetivo, e um cursor clica sozinho pela página até concluir.",
+  "tecnica": "cursor automatizado executando tarefa numa UI simulada",
+  "melhor_para": [
+   "produto-app",
+   "explicacao",
+   "prova"
+  ],
+  "encaixe": "painel de cima quando ele fala de agentes de IA: prompt digitado e cursor fazendo a tarefa sozinho",
+  "retencao": "ver a máquina agir sozinha é hipnótico e prova o ponto",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "iammxfschr-d68f90",
+  "titulo_pt": "Launch de cliente de banco de dados",
+  "o_que_faz": "Launch estilo Anthropic: fundo limpo, tipo punchy e UI de banco de dados com queries animadas.",
+  "tecnica": "estética Anthropic: creme, serif, cortes secos e UI minimalista",
+  "melhor_para": [
+   "produto-app",
+   "branding"
+  ],
+  "encaixe": "painel de cima em conteúdo sobre Claude: estética Anthropic com o print do que ele construiu",
+  "retencao": "visual limpo e reconhecível do universo Claude",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ibrahimwasim240-809370",
+  "titulo_pt": "Showreel de habilidades pessoais",
+  "o_que_faz": "Reel de 25 s com UI, partículas e personagens apresentando habilidades de uma pessoa.",
+  "tecnica": "cards de habilidade entrando em sequência",
+  "melhor_para": [
+   "branding"
+  ],
+  "encaixe": "vinheta de 'quem sou eu' no começo de vídeos de autoridade",
+  "retencao": "resumo visual rápido de credenciais",
+  "relevancia": 2,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ik-builds-b8bdcf",
+  "titulo_pt": "Filme de produto estilo papel",
+  "o_que_faz": "Filme de 15 s em canvas papel: notas de marcador se desenham, tipo gigante, física real, viradas claro/escuro e som em cada hit, uma ideia a cada 1,5 a 2 s.",
+  "tecnica": "prompt-template com variáveis + caneta via stroke-dashoffset + uma ideia nova a cada 1,5 s + SFX em cada hit",
+  "melhor_para": [
+   "explicacao",
+   "criativo-ads",
+   "produto-app"
+  ],
+  "encaixe": "painel de baixo ao explicar a oferta: anotações de marcador desenhando sobre palavras-chave com som de caneta",
+  "retencao": "novidade a cada 1,5 s e som em cada impacto não deixam o olho descansar",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "imthatcarlos-e04bfe",
+  "titulo_pt": "Explicação de hedge fund agêntico",
+  "o_que_faz": "Explicação punchy de um protocolo: componentes da landing, tipo cinético e fotos explicando o conceito de forma simples.",
+  "tecnica": "explicar conceito complexo com componentes da marca + frases curtas",
+  "melhor_para": [
+   "explicacao",
+   "produto-app"
+  ],
+  "encaixe": "painel de cima ao explicar 'agentes de IA que rodam campanha': fluxo simples em 3 blocos",
+  "retencao": "simplificação visual de algo complexo dá sensação de entender",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "influencer-seo-ce8c33",
+  "titulo_pt": "Showreel da fal",
+  "o_que_faz": "Reel de 15 s com tipo cinético e imagens geradas por IA trocando rápido.",
+  "tecnica": "grade/sequência de imagens geradas por IA trocando no beat",
+  "melhor_para": [
+   "hook",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima ao falar de criativos com IA: várias variações de criativo trocando rápido",
+  "retencao": "variedade de imagens dá sensação de abundância",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "ismailfahmi-557268",
+  "titulo_pt": "Showreel Drone Emprit",
+  "o_que_faz": "Reel de inteligência de mídia: gráficos, mapas e partículas de dados fluindo como painel de monitoramento.",
+  "tecnica": "dashboard vivo com gráficos e partículas de dados",
+  "melhor_para": [
+   "dados",
+   "prova"
+  ],
+  "encaixe": "painel de cima ao mostrar resultado de campanha: dashboard com números subindo e partículas",
+  "retencao": "dados em movimento passam autoridade",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "itisrazak-3ad902",
+  "titulo_pt": "Showreel Distilbook",
+  "o_que_faz": "Reel de 40 s do produto com UI, tipo cinético, partículas e música.",
+  "tecnica": "pesquisa do produto convertida em cenas de feature com tipo cinético",
+  "melhor_para": [
+   "produto-app"
+  ],
+  "encaixe": "modelo para vídeo de produto/mentoria: features em sequência",
+  "retencao": "ritmo musical segura a sequência longa",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "itsolelehmann-e47532",
+  "titulo_pt": "Quatro estações pela janela do trem",
+  "o_que_faz": "Vagão aconchegante estilo Grand Budapest com xícara de café enquanto as quatro estações passam pela janela.",
+  "tecnica": "cena fixa com fundo em parallax que muda de estado (passagem do tempo)",
+  "melhor_para": [
+   "motivacional",
+   "organico"
+  ],
+  "encaixe": "painel de baixo em vídeo motivacional sobre consistência: estações passando enquanto ele fala de tempo",
+  "retencao": "passagem do tempo visual é poética e calma",
+  "relevancia": 3,
+  "esforco": "alto"
+ },
+ {
+  "slug": "itsuki-dev-10942d",
+  "titulo_pt": "Showreel de tipo cinético",
+  "o_que_faz": "Reel de 15 s focado em tipografia cinética e formas sincronizadas à música.",
+  "tecnica": "tipo cinético sincronizado ao beat com shapes de apoio",
+  "melhor_para": [
+   "hook",
+   "organico"
+  ],
+  "encaixe": "painel de baixo: frase de efeito do corte em tipo cinético no beat",
+  "retencao": "palavras batendo no ritmo dão energia",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "jacksonfall-54b2ac",
+  "titulo_pt": "Showreel de agência de branding",
+  "o_que_faz": "Reel de 30 s de agência fictícia para founders: tipo editorial, fotos e grids de marca.",
+  "tecnica": "sistema de marca (grid, tipo, cor) aplicado a cada cena",
+  "melhor_para": [
+   "branding"
+  ],
+  "encaixe": "padrão visual para os vídeos dele: grid e tipo fixos em todos os cortes",
+  "retencao": "consistência visual cria reconhecimento",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "jake11moran-a269c4",
+  "titulo_pt": "História de sessão de agente",
+  "o_que_faz": "Animação contando uma sessão de agente de IA com personagens, feita a partir de skill de repositório.",
+  "tecnica": "skill que transforma log de sessão em história animada",
+  "melhor_para": [
+   "explicacao",
+   "organico"
+  ],
+  "encaixe": "painel de cima ao contar 'pedi X pro Claude e ele fez': sessão contada como história",
+  "retencao": "narrativa de personagem humaniza a IA",
+  "relevancia": 3,
+  "esforco": "alto"
+ },
+ {
+  "slug": "jake11moran-f60e35",
+  "titulo_pt": "Teaser do NotchBrowser",
+  "o_que_faz": "Teaser de 27 s numa câmera contínua sobre um Mac: frase com wipe colorido, lista girando de problemas, janelas empilhando e o notch virando navegador.",
+  "tecnica": "uma câmera contínua sem cortes, pushes de 1,5 a 3 s com ease suave, lista giratória rápida que trava na resposta",
+  "melhor_para": [
+   "hook",
+   "produto-app",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima: lista giratória de 'dores do gestor de tráfego' que trava na dor do vídeo + '?'",
+  "retencao": "a lista girando cria expectativa de onde vai parar",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "jasonzhou1993-8595e0",
+  "titulo_pt": "Reel do Claude com gráficos",
+  "o_que_faz": "Reel de 15 s com gráficos, tipo cinético e partículas.",
+  "tecnica": "gráficos que crescem junto com tipo cinético",
+  "melhor_para": [
+   "dados",
+   "hook"
+  ],
+  "encaixe": "painel de cima ao citar resultado: gráfico crescendo com o número em destaque",
+  "retencao": "número + gráfico subindo é prova rápida",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "jayscambler-3f8889",
+  "titulo_pt": "Visão geral da FundMyCompute",
+  "o_que_faz": "Visão geral de plataforma em 20 s com UI e diagramas de fluxo.",
+  "tecnica": "diagrama de fluxo da plataforma + UI",
+  "melhor_para": [
+   "explicacao",
+   "produto-app"
+  ],
+  "encaixe": "painel de cima ao explicar o funil dele: diagrama de etapas com UI de cada etapa",
+  "retencao": "fluxo claro mostra o 'como funciona'",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "jazzen-chen-4542ae",
+  "titulo_pt": "Vídeo do AgentHud",
+  "o_que_faz": "Vídeo do projeto com UI de HUD de agentes e código animado.",
+  "tecnica": "HUD de status de agentes atualizando ao vivo",
+  "melhor_para": [
+   "produto-app",
+   "explicacao"
+  ],
+  "encaixe": "painel de cima ao falar de vários agentes rodando: HUD com status mudando",
+  "retencao": "status mudando ao vivo cria sensação de sistema trabalhando",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "jesscaroline7-1ff7cb",
+  "titulo_pt": "Reel do app Ondefica",
+  "o_que_faz": "Reel vertical 9:16 com telas de app no celular, gráficos e tipo cinético.",
+  "tecnica": "mockup vertical + gráfico + tipo cinético no mesmo quadro",
+  "melhor_para": [
+   "criativo-ads",
+   "produto-app"
+  ],
+  "encaixe": "criativo vertical: celular com o resultado e número em tipo cinético",
+  "retencao": "formato nativo vertical denso de informação",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "jhylee95-e1152f",
+  "titulo_pt": "Launch da Supademo",
+  "o_que_faz": "Launch com hook no primeiro segundo, beats de prova de produto e IA, UI fiel à marca e música sincronizada em cada corte.",
+  "tecnica": "estrutura hook no 1 s > prova > IA, com cada corte retimado no beat",
+  "melhor_para": [
+   "criativo-ads",
+   "produto-app",
+   "hook"
+  ],
+  "encaixe": "estrutura do criativo: hook visual em 1 s, depois prova (prints) e CTA, tudo cortado no beat",
+  "retencao": "hook imediato e cortes no beat seguram em ritmo de social",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "johnsavage-ai-b091c0",
+  "titulo_pt": "Reel feito só com código",
+  "o_que_faz": "Reel de 15 s apenas com código: tipo cinético e formas geométricas geradas.",
+  "tecnica": "formas e tipo 100% procedurais, sem asset",
+  "melhor_para": [
+   "hook",
+   "transicao"
+  ],
+  "encaixe": "vinheta rápida entre blocos do corte",
+  "retencao": "geometria limpa e rápida",
+  "relevancia": 3,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "justincooperman-e7bbc4",
+  "titulo_pt": "Geração de imagem Tented",
+  "o_que_faz": "Usuário pede imagem com a marca e ela aparece aplicada em posts e conteúdos.",
+  "tecnica": "pedido em chat > resultado aplicado em mockups reais",
+  "melhor_para": [
+   "produto-app",
+   "explicacao",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima ao falar de criativos com IA: prompt digitado e criativo pronto aparecendo no feed",
+  "retencao": "antes/depois instantâneo prova a ferramenta",
+  "relevancia": 5,
+  "esforco": "medio"
+ },
+ {
+  "slug": "kamstudiolabs-0b0824",
+  "titulo_pt": "Curta silencioso do faroleiro",
+  "o_que_faz": "Curta de 45 s sem diálogo sobre um faroleiro onde o som conta metade da história.",
+  "tecnica": "som contando a história (sound design narrativo)",
+  "melhor_para": [
+   "motivacional"
+  ],
+  "encaixe": "pouco encaixe; referência de sound design para vídeo motivacional",
+  "retencao": "clima e mistério",
+  "relevancia": 1,
+  "esforco": "alto"
+ },
+ {
+  "slug": "kamstudiolabs-447565",
+  "titulo_pt": "Máquina musical de colisões",
+  "o_que_faz": "Máquina de 45 s onde cada nota da música vem de uma colisão visível de bolas e peças.",
+  "tecnica": "cada som nasce de um evento visual (colisão = nota)",
+  "melhor_para": [
+   "organico",
+   "transicao"
+  ],
+  "encaixe": "loop satisfatório de fundo em vídeo orgânico de IA",
+  "retencao": "satisfação de sincronia perfeita som/imagem",
+  "relevancia": 2,
+  "esforco": "alto"
+ },
+ {
+  "slug": "kamstudiolabs-c9bb28",
+  "titulo_pt": "Curta sobre um bug",
+  "o_que_faz": "Curta de 90 s com personagem bug que não quer ser corrigido.",
+  "tecnica": "personagem animado com narrativa cômica",
+  "melhor_para": [
+   "organico"
+  ],
+  "encaixe": "pouco uso; meme em vídeo sobre código com IA",
+  "retencao": "humor e personagem",
+  "relevancia": 1,
+  "esforco": "alto"
+ },
+ {
+  "slug": "kangaroohere-b10f8d",
+  "titulo_pt": "Reel para newsletter",
+  "o_que_faz": "Reel de 20 s com celular, UI, gráficos e tipo cinético promovendo uma newsletter.",
+  "tecnica": "mockup + gráfico de crescimento + tipo",
+  "melhor_para": [
+   "cta",
+   "produto-app"
+  ],
+  "encaixe": "CTA final: celular com a captura/mentoria e número de inscritos subindo",
+  "retencao": "prova social em número no final empurra a ação",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "kantamk-61f410",
+  "titulo_pt": "Bola fugindo de doze anéis",
+  "o_que_faz": "Vertical: bola quica dentro de 12 anéis giratórios, quebrando um por um com som a cada batida.",
+  "tecnica": "simulação física simples com contador e som em cada colisão",
+  "melhor_para": [
+   "organico",
+   "hook"
+  ],
+  "encaixe": "painel de baixo em corte orgânico como 'tela de satisfação' enquanto ele fala",
+  "retencao": "formato viral de satisfação, o espectador quer ver o último anel",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "kikelopezdesign-7cc9e8",
+  "titulo_pt": "Reel de portfólio de design",
+  "o_que_faz": "Vídeo de 20 s usando só os recursos do portfólio: telas e celulares animados.",
+  "tecnica": "reaproveitar só assets próprios em cenas animadas",
+  "melhor_para": [
+   "prova",
+   "branding"
+  ],
+  "encaixe": "painel de cima mostrando cases dele com prints próprios",
+  "retencao": "prova real do trabalho",
+  "relevancia": 3,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "kloss-xyz-15182a",
+  "titulo_pt": "POV caótico do Claude",
+  "o_que_faz": "Vertical 9:16 brain rot do ponto de vista do Claude: tipo cinético caótico, código e sound design pesado, renderizado em Python/ffmpeg.",
+  "tecnica": "caos controlado: cortes muito rápidos, tipo enorme, POV em primeira pessoa",
+  "melhor_para": [
+   "hook",
+   "organico"
+  ],
+  "encaixe": "hook de vídeo orgânico sobre Claude: 2 s de caos POV 'eu sou o Claude' antes dele falar",
+  "retencao": "estímulo extremo prende a geração brain rot",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "kloss-xyz-fe0c31",
+  "titulo_pt": "Linha do tempo da IA",
+  "o_que_faz": "Timeline com marcos da história da IA: anos, diagramas e partículas avançando.",
+  "tecnica": "linha do tempo com câmera andando de marco em marco",
+  "melhor_para": [
+   "explicacao",
+   "dados"
+  ],
+  "encaixe": "painel de cima ao contar evolução (ex: anúncios antes e depois da IA): timeline avançando",
+  "retencao": "progressão cronológica cria expectativa do próximo marco",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "kmasiff-cc72cb",
+  "titulo_pt": "Promo de verificador de email",
+  "o_que_faz": "Promo SaaS de 20 s estilo YC/Claude: emails sendo validados, casos de uso em cards e checks.",
+  "tecnica": "estética SaaS YC: cards de caso de uso com checks e status",
+  "melhor_para": [
+   "produto-app",
+   "criativo-ads"
+  ],
+  "encaixe": "painel de cima ao listar casos de uso: cards com check verde aparecendo",
+  "retencao": "checks sequenciais dão sensação de resolução",
+  "relevancia": 4,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "kyonax-on-tech-aabc1d",
+  "titulo_pt": "Showreel do org2html",
+  "o_que_faz": "Showreel de ferramenta de linha de comando: logo ASCII, fluxo de uso e transformação de arquivo em página.",
+  "tecnica": "mostrar fluxo de entrada > processo > saída com logo ASCII",
+  "melhor_para": [
+   "produto-app",
+   "explicacao"
+  ],
+  "encaixe": "painel de cima ao explicar automação: input virando output em 3 passos",
+  "retencao": "ver a transformação acontecer explica sem palavras",
+  "relevancia": 3,
+  "esforco": "medio"
+ },
+ {
+  "slug": "l3d1c-0e35a3",
+  "titulo_pt": "Anúncio do app PicTwin",
+  "o_que_faz": "Anúncio vertical 9:16 de app de IA de fotos: antes/depois de rostos, UI e CTA.",
+  "tecnica": "antes/depois com wipe e UI do app em anúncio vertical",
+  "melhor_para": [
+   "criativo-ads",
+   "produto-app",
+   "cta"
+  ],
+  "encaixe": "criativo direct response: antes/depois do resultado do cliente com wipe e CTA",
+  "retencao": "antes/depois é o gatilho de prova mais forte em ads",
+  "relevancia": 5,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "leadnotifi-e83f94",
+  "titulo_pt": "Anúncio do Lead Notifi",
+  "o_que_faz": "Anúncio de 15 s com diagramas, tipo cinético e formas mostrando notificações de leads chegando.",
+  "tecnica": "notificações de lead chegando em pilha + diagrama de fluxo",
+  "melhor_para": [
+   "criativo-ads",
+   "prova",
+   "produto-app"
+  ],
+  "encaixe": "painel de cima ao falar de geração de leads: notificações 'novo lead' empilhando",
+  "retencao": "notificações acumulando simulam resultado e dopamina",
+  "relevancia": 5,
+  "esforco": "baixo"
+ },
+ {
+  "slug": "lemomo-ai-0d9cff",
+  "titulo_pt": "Tutorial em quadro branco",
+  "o_que_faz": "Tutorial estilo whiteboard explicando como criar vídeo com uma skill: desenhos e diagramas sendo feitos à mão.",
+  "tecnica": "whiteboard explainer: traço se desenhando + diagramas simples",
+  "melhor_para": [
+   "explicacao",
+   "organico"
+  ],
+  "encaixe": "painel de baixo ao ensinar passo a passo: diagrama sendo desenhado à mão",
+  "retencao": "o traço se desenhando faz querer ver o desenho completo",
+  "relevancia": 4,
+  "esforco": "medio"
+ },
+ {
+  "slug": "leonkohli-6dc01b",
+  "titulo_pt": "Showreel geométrico",
+  "o_que_faz": "Reel de 15 s com formas geométricas e tipo cinético entrando e se transformando.",
+  "tecnica": "formas geométricas que morfam entre estados",
+  "melhor_para": [
+   "transicao",
+   "hook"
+  ],
+  "encaixe": "transição entre tópicos do corte: shape morfando no novo título",
+  "retencao": "morph contínuo segura o olho sem corte",
+  "relevancia": 3,
+  "esforco": "baixo"
+ }
+]

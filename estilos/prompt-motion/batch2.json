@@ -1,0 +1,779 @@
+[
+ {
+  "slug": "lester-tyy-f897f7",
+  "title": "CloudJoi search showcase",
+  "tags": [
+   "product-ui",
+   "photos"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Study how this https://t.co/SR0AyULLNp works and use Remotion to make a product showcase video."
+ },
+ {
+  "slug": "levabashidze-2d713a",
+  "title": "Swiss-style motion showreel",
+  "tags": [
+   "kinetic-type",
+   "shapes"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out. dont ask just make"
+ },
+ {
+  "slug": "lexnlin-038035",
+  "title": "Engraving-style Claude ad",
+  "tags": [
+   "kinetic-type",
+   "photos"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1920,
+  "prompt": "using any reference with a fast edit (5s video is enough)\nMake a fast-paced ad for Claude, about 10–15 s (closer to 15). Reference video attached.\n1. research:\n- Study Claude's earlier brand designs first.\n- Find every photo and asset that fits: artistic, editorial, whatever the idea needs.\n2. design/direction\n- An art reimagine: bold, light mode.\n- Clean and perfect: no beige \"artsy\" look, no eyebrow labels.\n- Paint elements on top of the images.\n- Above all: fast-paced and very creative.\n3. rules\n- No slop. Study the reference closely: smoothness, timing, shot durations, fonts, elements.\n- Take some inspiration and borrow techniques, but change the design overall, it should look like something you did completely on yourself with your own taste\n- Every morph has to be perfect.\nideas: (since everything moves fast)\n- Clean, varied Claude SVG animations\n- Images small, bigger, several at once\n- Morphing text\n- Clean 3D animation\n- Zooms\nextra notes:\n- Feel free to work 10+ hours\n- Give me the final video, ending on the Claude logo.\nShow all"
+ },
+ {
+  "slug": "lexnlin-6161a6",
+  "title": "Cinetic skill launch film",
+  "tags": [
+   "product-ui",
+   "code"
+  ],
+  "kind": "skill",
+  "repo": "https://github.com/Leonxlnx/cinetic",
+  "w": 1920,
+  "h": 1080,
+  "prompt": "View repo\n(opens in a new tab)"
+ },
+ {
+  "slug": "lexnlin-f9b3bd8",
+  "title": "TasteSkill dashboard showcase",
+  "tags": [
+   "product-ui",
+   "charts"
+  ],
+  "kind": "skill",
+  "repo": "https://github.com/Leonxlnx/taste-skill",
+  "w": 1920,
+  "h": 1080,
+  "prompt": "View repo\n(opens in a new tab)"
+ },
+ {
+  "slug": "linearuncle-5d2bae",
+  "title": "Derivative concept explainer",
+  "tags": [
+   "charts",
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "请用Manim给我制作一个导数概念学习的视频，要求通俗易懂，并且有例子，引人思考。配音使用edge-tts"
+ },
+ {
+  "slug": "listudio-820c7b",
+  "title": "GenVizu product launch",
+  "tags": [
+   "product-ui",
+   "photos"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Investigate my project GenVizu: https://t.co/5RaGMqn7rF Create a video for product release. Used for Hero and GTM materials on websites."
+ },
+ {
+  "slug": "loicrambo-ad6830",
+  "title": "Cycle of life animation",
+  "tags": [
+   "characters"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 20-second motion graphics and animation video that shows what an incredible motion designer and animator you are, like it's your showreel for a résumé. make it about the cycle of life showing the same individual going from childhood to adolescence to the 9-5 cycle, to family life to elder life and death, then cutting ready to loop to the beginning.  go all out , use whatever you need.\nShow all"
+ },
+ {
+  "slug": "lukasersil-0ed38e",
+  "title": "Motion techniques showreel",
+  "tags": [
+   "kinetic-type",
+   "shapes",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Create a bold, dynamic 15-second motion graphics showreel that feels like the ultimate portfolio piece of an exceptionally talented motion designer. Showcase a wide range of advanced techniques: kinetic typography, smooth transitions, 2D and 3D animation, abstract geometry, fluid simulations, particles, distortion, creative masking, compositing, lighting, depth, and seamless camera movement. Keep the pacing fast, confident, and visually surprising, with every shot transitioning naturally into the next. Make it feel meticulously art-directed rather than like a random collection of effects. Push the creativity, polish, timing, and visual impact as far as possible. This should feel like the opening reel that gets a motion designer hired.\nShow all"
+ },
+ {
+  "slug": "m1n9-k7-ff9ab9",
+  "title": "Kinetic type and particle showreel",
+  "tags": [
+   "kinetic-type",
+   "particles",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out"
+ },
+ {
+  "slug": "macrohou-33959d",
+  "title": "Ren app launch video",
+  "tags": [
+   "product-ui",
+   "phone",
+   "charts"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "[gave access to Ren repo] Make a dynamic 30-second motion graphics video for Ren that shows off your motion and sound design. Go crazy."
+ },
+ {
+  "slug": "madebyjmayala-b9204d",
+  "title": "Gene Spectra promo",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video promo about gene spectra, use assets from the current live site where relevant. go all out."
+ },
+ {
+  "slug": "madhav-xo-f97f20",
+  "title": "Personal research intro reel",
+  "tags": [
+   "kinetic-type",
+   "particles",
+   "code"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "make a 10 sec video on whatever you know about me"
+ },
+ {
+  "slug": "majin-appsheet-2d3c1a",
+  "title": "Shin Majin-shiki promo",
+  "tags": [
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "シンまじん式のPV作って"
+ },
+ {
+  "slug": "majorbaguette-fb11d7",
+  "title": "Brieform product presentation",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a presentation video for Brieform, 30 seconds long"
+ },
+ {
+  "slug": "mandelduck-95fd08",
+  "title": "Starry Night cat-spotting game",
+  "tags": [
+   "characters"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 708,
+  "prompt": "can you make a 3d game where you walk around and spot cats inside of a van gogh painting? we can start with stary night and its town"
+ },
+ {
+  "slug": "manuelogomigo-f33ca9",
+  "title": "Flowdrive motion showreel",
+  "tags": [
+   "shapes",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a flowdrive. go all out."
+ },
+ {
+  "slug": "marklaunches-3b9492",
+  "title": "Step race app promo",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1350,
+  "prompt": "build me an incredible video for my app. make it emotional."
+ },
+ {
+  "slug": "marouanegazouzi-6071d5",
+  "title": "Crux motion design showreel",
+  "tags": [
+   "product-ui",
+   "charts",
+   "kinetic-type",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out."
+ },
+ {
+  "slug": "math-files-39c9d0",
+  "title": "Mathematics motion showreel",
+  "tags": [
+   "charts",
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 20-second motion graphics video related to mathematics that shows what an incredible motion designer with mathematics skills you are, like it's your showreel for a résumé. go all out"
+ },
+ {
+  "slug": "maxalexweber-67688b",
+  "title": "ODATANO Cardano hype edit",
+  "tags": [
+   "kinetic-type",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Make a ODATANO edit that goes hard"
+ },
+ {
+  "slug": "mdaman010-e7226a",
+  "title": "AI data centre 3D film",
+  "tags": [
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 982,
+  "prompt": "Show me what goes on inside an AI data centre."
+ },
+ {
+  "slug": "mehul4795-4a7007",
+  "title": "ocrX app launch video",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1920,
+  "prompt": "Create a product launch video for ocrX Android app."
+ },
+ {
+  "slug": "melvynx-6cde6c",
+  "title": "Email tool promo reel",
+  "tags": [
+   "product-ui",
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are for <website url>"
+ },
+ {
+  "slug": "mengto-a7f4679",
+  "title": "HTML app demo skill",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "skill",
+  "repo": "https://github.com/MengTo/Skills/tree/main/agent-skills/web-design/html-demo",
+  "w": 1280,
+  "h": 720,
+  "prompt": "View repo\n(opens in a new tab)"
+ },
+ {
+  "slug": "micheleharmonic-77628e",
+  "title": "GravityDEX anime hype edit",
+  "tags": [
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1920,
+  "prompt": "Make a GravityDEX x Gojo Satoru edit that goes hard"
+ },
+ {
+  "slug": "misbahsy-80eaec",
+  "title": "LiteLLM promo reel",
+  "tags": [
+   "diagrams",
+   "music",
+   "code"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out."
+ },
+ {
+  "slug": "miskinho-443898",
+  "title": "Quetzal social app reel",
+  "tags": [
+   "product-ui",
+   "photos"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make  1 dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for Quetzal. go all out."
+ },
+ {
+  "slug": "monokern-ade5b6",
+  "title": "Psychedelic hypnotic eye showreel",
+  "tags": [
+   "shapes"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 20-second motion graphics video that shows what an incredible motion designer you are, psychedelic and hypnotic. make it feel like a showreel piece. go all out."
+ },
+ {
+  "slug": "motiondsgnr-9dcfa6",
+  "title": "Bold typographic motion showreel",
+  "tags": [
+   "charts",
+   "kinetic-type",
+   "shapes"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a resume. Go all out."
+ },
+ {
+  "slug": "ndhabarde11-f155b4",
+  "title": "Motion designer portrait showreel",
+  "tags": [
+   "kinetic-type",
+   "shapes",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1920,
+  "prompt": "make a dynamic 15-second motion graphics video in portrait mode that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out."
+ },
+ {
+  "slug": "nft-chen-5f8bb0",
+  "title": "Porco Rosso sunset dogfight",
+  "tags": [],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "用 web3D 复刻宫崎骏《红猪》日落海面上的经典空战：白绿红涂装战斗机、紫色积云、海面反光、吉卜力运镜，画面写 just breathe."
+ },
+ {
+  "slug": "nikolajankovic-ce4ff4",
+  "title": "DeFi Saver stop-motion explainer",
+  "tags": [
+   "charts",
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 848,
+  "prompt": "make a hand-drawn stop-motion animation;\nstory: you're defi saver and explaining yourself in 1st person"
+ },
+ {
+  "slug": "nolkeeg-bf062e",
+  "title": "What happens in one second",
+  "tags": [
+   "kinetic-type",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Please do not reference any previous memories or skills. I've been seeing all of these motion graphics examples on X of people making cool videos with opus 5.5. So - I want you to just show off for me. You pick the design style, the look, subject etc. I just want to be extremely impressed by the motion graphic video that you create. I want you to destroy GPT 6 when it comes to motion graphics video - because astra just wants to give me a stupid glorified powerpoint presentation.\nShow all"
+ },
+ {
+  "slug": "notdwd-7de38a",
+  "title": "Frame by Frame launch video",
+  "tags": [
+   "product-ui",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1080,
+  "prompt": "<inputs>\nAsk me for: my product name, a logo (or let you draw a simple mark), the one-line thing a user types into the prompt box, the page that answers it (title + 2–3 sentences with one key phrase), two feature names for the stacked cards, and a music track. If I skip any, use the defaults: product \"Frame by Frame\" living inside its Whop hub, a viewfinder mark (four corner brackets around a bold \"FF\"), prompt \"Make a launch video for my app\", a lesson page titled \"2.1 Choose a reference\", cards \"Launch\" and \"Sound\", and Mixkit's free house track \"Rising Forest\" slowed to 124 BPM.\n</inputs>\n<direction>\nA 12 second square product sting, 1080x1080, frame numbers at 29.97 fps (f0–f359), master rendered at 59.94 fps. Apple-keynote feel: soft, white, bright blue, glassy. The camera never cuts on a still frame: every shot enters already moving (exponential ease-out, 12–19% of the remaining distance per frame) and leaves on an accelerating move or a blur ramp. Blur follows speed and direction on every move.\nPalette: page #FDFDFB, haze #B7CFEB, ice #E6F0FA, deep blue #294376 → #769CC2 sky gradient, navy #1E2F52, accent blues #2F6BFF / #3CC8F0 / mint #4ED6A0, white. Type: Inter (400/500/600/700). No purple, violet, magenta or orange anywhere.\nStory: the product header rises out of a blue haze inside a light app window → a cursor glides in, turns to face where it's going, grows on hover and clicks the logo → hard cut on the music drop to the app icon with four squares orbiting into a cross → the icon collapses into a Mac menu bar → the cursor clicks the menu-bar icon, a frosted glass prompt box springs out and the prompt types → whip-tilt up through a light-blue flash into the answer page scrolling into place → a card rises over it → blur-dissolve to two stacked cards with giant frosted-glass titles → blur-dissolve to the lone logo disc → hard cut to a black end card with a glowing wordmark.\nBanned: crossfades, frozen frames (except one hold in S7), stock UI kits, glows on UI text, Math.random, anything that looks like a template.\n</direction>\n<structure>\nCoordinates are px on the 1080 stage. Music beat k = 0.048 + 0.4838·k s (124 BPM, one beat = 14.5 frames). The three hard cuts f72, f101, f159 land 2 frames before a beat: keep these exact frames.\nS1 f0–71, header + window + click: haze #B7CFEB fading to #FDFDFB by f28, keep a blue floor glow #DBEEFD at the bottom. Header on one line: logo disc ⌀132 (#FBFCFE, 1px rim #E8E8EA, dark mark), the product name (Inter 500), a dark capsule pill \"on Whop\" (#2F2E2F, white text); the whole lockup spans x474–1063, centre line rises y932 (f0) → 776 (f2) → 683 (f5) → 608 (f10) → 546 (f24) → 536 (f37), drifting 1 px/frame after. Name appears f2 blurred, pill f4–5 heavily blurred and sliding 15 px left as it sharpens. A light hub window (radius 93, fill #FCFDFF, top band #F1F6FF, blue inner floor glow) fades in around it: opacity 0 to f14, 0.53 f15, 0.7 f19, 1.0 f24; top-left corner (408,405), runs off the right and bottom. Inside: a search pill in the top band, a left icon column (Courses icon at (537,739), faded Chat icon at (537,900)), and a course card from (764,700) off-frame with its cover image, title and \"Course · 8 lessons\". Cursor (black macOS arrow, white outline, 32x39) appears f27 at (891,393), glides left decelerating to (770,383) f44, rotates to point down-left f47–51 as it dives, lands on the disc's lower right (629,564) f56 → (587,546) f59 → (555,531) f71; grows ×1.55 on hover from f56; a soft ice ring (#D5F3FF → #F7FEFF, outer ⌀174) lights around the disc from f53. Camera zooms about (540,540): 1.0 f46 → 1.2 f60 ease-in-out, holds f61, then eases out accelerating to 1.04 at f71 while the cursor presses (shrinks 15% f69–71).\nS2 f72–100, icon + orbit: navy squircle app icon (#294376 → #1E2F52, white mark), 276 px at f72 shrinking ease-out to 178 px by f86, radius 28% of width, on a grey halo disc #E9E9E7 growing ⌀240 (f75) → 326 (f86). Four 92 px squares (radius 26) spin in counter-clockwise, decelerating, and lock into a cross at orbit radius ≈216 by f86: white (1px #E3E8EF edge + faint shadow) left, #2F6BFF top, #3CC8F0 right, #4ED6A0 bottom. f88–100: the icon shrinks accelerating to ≈40 px, the squares slide into a row on its right (white slips behind the icon), blur ramps 0.3 → 6 px.\nS3 f101–158, menu bar + prompt: white page above a black laptop bezel band (y425–475, top highlight #686866), a dark navy menu bar (y477–538), wallpaper below = the blue sky gradient with thin white line art (one big circle, two horizontal lines, one vertical, a four-point sparkle at a crossing, soft teal glow top-right). Menu bar right cluster in white: Wi-Fi, battery, toggles, the product mark at x531–584, three ⌀36 dots #2F6BFF / #3CC8F0 / #4ED6A0 at x612, 661, 709, \"Mon Jun 22  9:41 AM\" 34 px. Enters blurred 3 px and settling by f110. Cursor rises from below (f102), sits on the mark, presses f113–117. Camera pans content right +125 px f115–130 (fastest f118–120). A frosted glass box (white-blue glass over the sky, bright top rim, radius 60) springs out from under the mark f116: width peaks 744 at f126 and settles 726x228 by f138 around x196–922, y568–797. The prompt types from f121 (first legible \"Make \") to f150 (complete) at about 1 char/frame with a 1-frame hold every 2–3 chars; caret always on; three white outline icons along the bottom; send button #2F6BFF ⌀51 with a white up arrow. From f136 the whole scene drifts up, accelerating into a whip-tilt (f158 moving ≈25 px/frame, vertical blur ≈6–8 px) while the page tints #E6F4FE over f154–158.\nS4 f159–186, answer page: a light course lesson page (breadcrumb, title, body): text column x120, body 47 px Inter 400 grey #BCBCBA, line pitch 58, one key phrase (\"frame for frame\") in black 600. It arrives smeared and 420 px low, scrolls up with offsets 420, 315, 210, 170, 140, 116, 96, 81 (f166) … 14 (f175) … 0 (f180), then creeps −6 px by f186. Blur 24 px (f159) → 1.5 (f165) → 0. Flash #E2F4FE fading to #FDFDFB by f165. A cursor pointing straight up rides the scroll and stops under the key phrase (≈(450,591) f180), then drifts right.\nS5 f187–214, card: a white card (x203–878, runs off the bottom) rises over the page: cover image 627x536 inset 24 px, radius 64, a light grabber bar at its top centre, caption semibold 38 px black, sub-caption grey 23 px. Cover top y642 (f187) → 456 (f191) → 395 (f196) → 369 (f200) → 348 (f205), then keeps drifting up ~4 px/frame. Card blur peaks 3.8 px at f189, sharp by f201; the page behind blurs to ≈2.5 px. Exit f207–214: card shrinks ~5% and rises while the whole frame blurs 1 → 7 px; cut at the blur peak.\nS6 f215–244, two cards: white page, two stacked cards 538x348 (radius 57, gap 36) centred on x540, top card settling at y168 by f230, bottom at y552. Each: cover art (no text baked into it), a frosted pill top-left (\"Module 3\" / \"Module 5\"), a frosted round \"•••\" top-right, and a huge bold title along the bottom edge made of frosted glass (a blurred, lightened copy of the image clipped to the letters, cut off by the card's bottom edge): \"Launch\" and \"Sound\". Both enter blurred 12 px and sharp by f224; the top card enters 8% large and rises from y264; the bottom card rises from y927, staggered behind it. They drift up 3 px/frame f230–238, then accelerate up and blur out into the cut.\nS7 f245–300, logo disc: page #FDFDFB, disc ⌀168 #F6F6F6 with the dark mark, rises into the centre (top y569 f245 → 491 f250 → 468 f255 → 456 f269) with a vertical smear on the cut frame, holds still f269–287 (the only frozen stretch), then shrinks accelerating to ⌀123 at f300.\nS8 f301–359, end card: black radial background (#020204 corners, ≈#272729 around the word), the wordmark in Inter 600, white #F3F3F5 with a tight glow plus a wide soft halo, centred (540,540). Word width: ≈1650 px f301 (horizontally smeared, zoom streaks) → 1350 f302 → 1110 f303 → 1049 f304 → 734 f309 → 678 f311 → 563 f320 → 516 f342 (≈1 px/frame shrink) → 492 f350, then collapses ease-in: 450 f355 → 267 f359 with blur rising to 3.5 px. The film ends mid-collapse.\n</structure>\n<build>\n1. One HTML page, 1080x1080, drawn by seek(t) as a pure function of the frame number. No CSS transitions, no timers, no Math.random (seeded hashes only). Shots register as {f0, f1, render(localFrame)}.\n2. Every value is continuous in the frame number (the 59.94 master renders half frames): animate with keyframe tables kf(frame, [[f, value], ...], ease) and per-frame lookup tables with linear interpolation. No Math.floor on motion.\n3. Blur: CSS filter blur for round blur, SVG feGaussianBlur with separate x/y stdDeviation for directional smears. Zoom smear on the end card = 20–30 scaled, faded copies of the word. Frosted glass = a blurred, lightened copy of what's behind, clipped to the shape.\n4. Cursor: one SVG macOS arrow (black fill, white outline, soft shadow) with rotation and scale, reused in S1, S3, S4.\n5. Sound (no voice), exactly 12.075 s: music at 124 BPM, soft intro, the drop at 2.47 s (beat 5, the f72 cut leads it by 2 frames). Synthesized SFX: soft impact 0.10 s; whooshes peaking at the cuts 2.402, 3.370, 5.305, 10.043 s; transition hits exactly on 6.240 s and 8.175 s; clicks at 2.33 and 3.83 s; very quiet key ticks every ~32 ms over 4.04–5.00 s; a soft shimmer at 10.05 s. Master to −14 LUFS, true peak −1 dBTP, no fade except the last 60 ms.\n6. Render with Playwright (one screenshot per frame, fonts loaded first), encode H.264 yuv420p at 60000/1001, mux the audio.\n</build>\n<gotchas>\nMeasure text only after the fonts load. A long product name won't fit where a 5-letter name did: scale the whole lockup (disc gap, name, pill) to fit the span x474–1063, don't let the pill fall off-frame. A white orbit square vanishes on the white page without a 1px edge and a faint shadow. Don't put images with their own text inside the S6 cards, or the glass title doubles up. Keep the cut frames exact even where they don't sit on a beat. Nothing freezes except S7 f269–287. Heavy blur tables can wipe a shape out completely: if a frame looks empty, lower the blur until the shape still reads.\n</gotchas>\n<start>\nAsk me for the inputs. Then show me 4 stills (f40 header in the window, f86 icon cross, f150 finished prompt, f230 the two cards) before you render the full film.\n</start>\nShow all"
+ },
+ {
+  "slug": "notdwd-c2037d",
+  "title": "Launch video remake comparison",
+  "tags": [
+   "product-ui",
+   "photos",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "<inputs>\nAsk me for: my product name, a logo (or let you draw a simple mark), my brand colours (or pull them from my logo), the one-line thing a user types into the prompt box, the page that answers it (title + 2–3 sentences with one key phrase), two feature names for the stacked cards, and a music track. If I skip any, use the defaults: product \"Frame by Frame\" living inside its Whop hub, a viewfinder mark (four corner brackets around a bold \"FF\"), prompt \"Make a launch video for my app\", a lesson page titled \"2.1 Choose a reference\", cards \"Launch\" and \"Sound\", and Mixkit's free house track \"Rising Forest\" slowed to 124 BPM.\n</inputs>\n<direction>\nA 12 second square product sting, 1080x1080, frame numbers at 29.97 fps (f0–f359), master rendered at 59.94 fps. Apple-keynote feel: soft, white, bright blue, glassy. The camera never cuts on a still frame: every shot enters already moving (exponential ease-out, 12–19% of the remaining distance per frame) and leaves on an accelerating move or a blur ramp. Blur follows speed and direction on every move.\nPalette: my brand colours mapped onto these roles; if I give none, use page #FDFDFB, haze #B7CFEB, ice #E6F0FA, deep blue #294376 → #769CC2 sky gradient, navy #1E2F52, accent blues #2F6BFF / #3CC8F0 / mint #4ED6A0, white. Type: Inter (400/500/600/700). No purple, violet, magenta or orange anywhere.\nStory: the product header rises out of a blue haze inside a light app window → a cursor glides in, turns to face where it's going, grows on hover and clicks the logo → hard cut on the music drop to the app icon with four squares orbiting into a cross → the icon collapses into a Mac menu bar → the cursor clicks the menu-bar icon, a frosted glass prompt box springs out and the prompt types → whip-tilt up through a light-blue flash into the answer page scrolling into place → a card rises over it → blur-dissolve to two stacked cards with giant frosted-glass titles → blur-dissolve to the lone logo disc → hard cut to a black end card with a glowing wordmark.\nBanned: crossfades, frozen frames (except one hold in S7), stock UI kits, glows on UI text, Math.random, anything that looks like a template.\n</direction>\n<structure>\nCoordinates are px on the 1080 stage. Music beat k = 0.048 + 0.4838·k s (124 BPM, one beat = 14.5 frames). The three hard cuts f72, f101, f159 land 2 frames before a beat: keep these exact frames.\nS1 f0–71, header + window + click: haze #B7CFEB fading to #FDFDFB by f28, keep a blue floor glow #DBEEFD at the bottom. Header on one line: logo disc ⌀132 (#FBFCFE, 1px rim #E8E8EA, dark mark), the product name (Inter 500), a dark capsule pill \"on Whop\" (#2F2E2F, white text); the whole lockup spans x474–1063, centre line rises y932 (f0) → 776 (f2) → 683 (f5) → 608 (f10) → 546 (f24) → 536 (f37), drifting 1 px/frame after. Name appears f2 blurred, pill f4–5 heavily blurred and sliding 15 px left as it sharpens. A light hub window (radius 93, fill #FCFDFF, top band #F1F6FF, blue inner floor glow) fades in around it: opacity 0 to f14, 0.53 f15, 0.7 f19, 1.0 f24; top-left corner (408,405), runs off the right and bottom. Inside: a search pill in the top band, a left icon column (Courses icon at (537,739), faded Chat icon at (537,900)), and a course card from (764,700) off-frame with its cover image, title and \"Course · 8 lessons\". Cursor (black macOS arrow, white outline, 32x39) appears f27 at (891,393), glides left decelerating to (770,383) f44, rotates to point down-left f47–51 as it dives, lands on the disc's lower right (629,564) f56 → (587,546) f59 → (555,531) f71; grows ×1.55 on hover from f56; a soft ice ring (#D5F3FF → #F7FEFF, outer ⌀174) lights around the disc from f53. Camera zooms about (540,540): 1.0 f46 → 1.2 f60 ease-in-out, holds f61, then eases out accelerating to 1.04 at f71 while the cursor presses (shrinks 15% f69–71).\nS2 f72–100, icon + orbit: navy squircle app icon (#294376 → #1E2F52, white mark), 276 px at f72 shrinking ease-out to 178 px by f86, radius 28% of width, on a grey halo disc #E9E9E7 growing ⌀240 (f75) → 326 (f86). Four 92 px squares (radius 26) spin in counter-clockwise, decelerating, and lock into a cross at orbit radius ≈216 by f86: white (1px #E3E8EF edge + faint shadow) left, #2F6BFF top, #3CC8F0 right, #4ED6A0 bottom. f88–100: the icon shrinks accelerating to ≈40 px, the squares slide into a row on its right (white slips behind the icon), blur ramps 0.3 → 6 px.\nS3 f101–158, menu bar + prompt: white page above a black laptop bezel band (y425–475, top highlight #686866), a dark navy menu bar (y477–538), wallpaper below = the blue sky gradient with thin white line art (one big circle, two horizontal lines, one vertical, a four-point sparkle at a crossing, soft teal glow top-right). Menu bar right cluster in white: Wi-Fi, battery, toggles, the product mark at x531–584, three ⌀36 dots #2F6BFF / #3CC8F0 / #4ED6A0 at x612, 661, 709, \"Mon Jun 22  9:41 AM\" 34 px. Enters blurred 3 px and settling by f110. Cursor rises from below (f102), sits on the mark, presses f113–117. Camera pans content right +125 px f115–130 (fastest f118–120). A frosted glass box (white-blue glass over the sky, bright top rim, radius 60) springs out from under the mark f116: width peaks 744 at f126 and settles 726x228 by f138 around x196–922, y568–797. The prompt types from f121 (first legible \"Make \") to f150 (complete) at about 1 char/frame with a 1-frame hold every 2–3 chars; caret always on; three white outline icons along the bottom; send button #2F6BFF ⌀51 with a white up arrow. From f136 the whole scene drifts up, accelerating into a whip-tilt (f158 moving ≈25 px/frame, vertical blur ≈6–8 px) while the page tints #E6F4FE over f154–158.\nS4 f159–186, answer page: a light course lesson page (breadcrumb, title, body): text column x120, body 47 px Inter 400 grey #BCBCBA, line pitch 58, one key phrase (\"frame for frame\") in black 600. It arrives smeared and 420 px low, scrolls up with offsets 420, 315, 210, 170, 140, 116, 96, 81 (f166) … 14 (f175) … 0 (f180), then creeps −6 px by f186. Blur 24 px (f159) → 1.5 (f165) → 0. Flash #E2F4FE fading to #FDFDFB by f165. A cursor pointing straight up rides the scroll and stops under the key phrase (≈(450,591) f180), then drifts right.\nS5 f187–214, card: a white card (x203–878, runs off the bottom) rises over the page: cover image 627x536 inset 24 px, radius 64, a light grabber bar at its top centre, caption semibold 38 px black, sub-caption grey 23 px. Cover top y642 (f187) → 456 (f191) → 395 (f196) → 369 (f200) → 348 (f205), then keeps drifting up ~4 px/frame. Card blur peaks 3.8 px at f189, sharp by f201; the page behind blurs to ≈2.5 px. Exit f207–214: card shrinks ~5% and rises while the whole frame blurs 1 → 7 px; cut at the blur peak.\nS6 f215–244, two cards: white page, two stacked cards 538x348 (radius 57, gap 36) centred on x540, top card settling at y168 by f230, bottom at y552. Each: cover art (no text baked into it), a frosted pill top-left (\"Module 3\" / \"Module 5\"), a frosted round \"•••\" top-right, and a huge bold title along the bottom edge made of frosted glass (a blurred, lightened copy of the image clipped to the letters, cut off by the card's bottom edge): \"Launch\" and \"Sound\". Both enter blurred 12 px and sharp by f224; the top card enters 8% large and rises from y264; the bottom card rises from y927, staggered behind it. They drift up 3 px/frame f230–238, then accelerate up and blur out into the cut.\nS7 f245–300, logo disc: page #FDFDFB, disc ⌀168 #F6F6F6 with the dark mark, rises into the centre (top y569 f245 → 491 f250 → 468 f255 → 456 f269) with a vertical smear on the cut frame, holds still f269–287 (the only frozen stretch), then shrinks accelerating to ⌀123 at f300.\nS8 f301–359, end card: black radial background (#020204 corners, ≈#272729 around the word), the wordmark in Inter 600, white #F3F3F5 with a tight glow plus a wide soft halo, centred (540,540). Word width: ≈1650 px f301 (horizontally smeared, zoom streaks) → 1350 f302 → 1110 f303 → 1049 f304 → 734 f309 → 678 f311 → 563 f320 → 516 f342 (≈1 px/frame shrink) → 492 f350, then collapses ease-in: 450 f355 → 267 f359 with blur rising to 3.5 px. The film ends mid-collapse.\n</structure>\n<build>\n1. One HTML page, 1080x1080, drawn by seek(t) as a pure function of the frame number. No CSS transitions, no timers, no Math.random (seeded hashes only). Shots register as {f0, f1, render(localFrame)}.\n2. Every value is continuous in the frame number (the 59.94 master renders half frames): animate with keyframe tables kf(frame, [[f, value], ...], ease) and per-frame lookup tables with linear interpolation. No Math.floor on motion.\n3. Blur: CSS filter blur for round blur, SVG feGaussianBlur with separate x/y stdDeviation for directional smears. Zoom smear on the end card = 20–30 scaled, faded copies of the word. Frosted glass = a blurred, lightened copy of what's behind, clipped to the shape.\n4. Cursor: one SVG macOS arrow (black fill, white outline, soft shadow) with rotation and scale, reused in S1, S3, S4.\n5. Sound (no voice), exactly 12.075 s: music at 124 BPM, soft intro, the drop at 2.47 s (beat 5, the f72 cut leads it by 2 frames). Synthesized SFX: soft impact 0.10 s; whooshes peaking at the cuts 2.402, 3.370, 5.305, 10.043 s; transition hits exactly on 6.240 s and 8.175 s; clicks at 2.33 and 3.83 s; very quiet key ticks every ~32 ms over 4.04–5.00 s; a soft shimmer at 10.05 s. Master to −14 LUFS, true peak −1 dBTP, no fade except the last 60 ms.\n6. Render with Playwright (one screenshot per frame, fonts loaded first), encode H.264 yuv420p at 60000/1001, mux the audio.\n</build>\n<gotchas>\nMeasure text only after the fonts load. A long product name won't fit where a 5-letter name did: scale the whole lockup (disc gap, name, pill) to fit the span x474–1063, don't let the pill fall off-frame. A white orbit square vanishes on the white page without a 1px edge and a faint shadow. Don't put images with their own text inside the S6 cards, or the glass title doubles up. Keep the cut frames exact even where they don't sit on a beat. Nothing freezes except S7 f269–287. Heavy blur tables can wipe a shape out completely: if a frame looks empty, lower the blur until the shape still reads.\n</gotchas>\n<start>\nAsk me for the inputs. Then show me 4 stills (f40 header in the window, f86 icon cross, f150 finished prompt, f230 the two cards) before you render the full film.\n</start>\nShow all"
+ },
+ {
+  "slug": "oliahmed205-3e31c4",
+  "title": "Photo retouch app promo",
+  "tags": [
+   "product-ui",
+   "photos"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "Make me a 15 sec promtional video for my product using product screenshots and assests, Be a Highly preofessional Video Editor."
+ },
+ {
+  "slug": "palashbagchi11-0a4b6b",
+  "title": "Backlink audit data promo",
+  "tags": [
+   "charts",
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Add a good fast royalty free music to this video, and make 2 versions - 1 landscape, and another portrait"
+ },
+ {
+  "slug": "pankajkumar-dev-0bee87",
+  "title": "Poster breaking its frame",
+  "tags": [
+   "kinetic-type",
+   "shapes",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "create a motion design video of a poster breaking out of its own frame."
+ },
+ {
+  "slug": "pankajstwt-49978ed",
+  "title": "Voice agent landing page",
+  "tags": [
+   "product-ui",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1440,
+  "h": 1152,
+  "prompt": "Create a 14.5-second, cinematic 3D fly-through of my landing page at 1440×1152, 60fps.\nInputs: Landing page URL, brand name, logo mark, closing headline (a statement followed by a short italic tail), and optional 15-second music track.\nVisual direction: Place the webpage flat on a clean studio floor (#f9fbfb center, #f2f3f6 corners), with 24px rounded corners and soft shadows. Use one continuous camera movement: glide smoothly from the hero down the entire page, with floating cards, product mockups, photos, chips, and testimonials lifting slightly toward the camera as it passes. Maintain cinematic depth of field, realistic shadows, and subtle 3D depth. Rise overhead to reveal the entire page as one strip, then dive back into the hero, transforming it into a floating card for the final title reveal.\nTimeline: 0–8.2s: continuous fly-through. 7.75–9.25s: rise to overhead. 9.25–9.47s: hold the full-page view. 9.47–9.97s: dive into the hero. 9.97–14.5s: final title card with brand badge, headline, and italic tail. Use Geist Medium for the headline and Instrument Serif for the italic text. Keep four floating logo tiles around the hero throughout the transition.\nMotion rules: Constant forward movement with smooth acceleration and deceleration only at the beginning and end. No cuts, crossfades, sudden speed changes, sideways camera rotations, zoom reversals, glow effects, or text overlays before the final title card. Keep most floating elements 20–40px above the page.\nBuild: Use Playwright and Chromium to capture the webpage at 1440px wide, extract individual floating elements with transparent backgrounds, and save their positions to JSON. Build a single WebGL2 scene with a time-seekable animation, realistic depth of field, mipmapped textures, soft shadows, and 16-subframe motion blur. Render the final video as H.264 MP4 at 60fps using GPU acceleration. Sync the music hit to 9.97s and add subtle whooshes at 8.66s and 9.80s.\nImportant: If you cannot execute code on my computer, be upfront that you can only provide a live preview here and that final MP4 rendering requires Claude Code. Lock the page layout before animation to prevent section-height changes from shifting the sequence. Test a 30fps preview with optical flow to ensure smooth forward motion and consistent zoom.\nWorkflow: First ask me for the required inputs. Capture the page and show me still previews at 0, 1.6, 2.5, 5, 6.5, 9.3, and 11 seconds. Get approval before rendering the final video.\nShow all"
+ },
+ {
+  "slug": "parkerrex-1a54fe",
+  "title": "Token bucket rate limiter",
+  "tags": [
+   "charts",
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1080,
+  "prompt": "explain a token bucket rate limiter, canvas only, no libraries, every frame a pure function of time so my renderer can screenshot it."
+ },
+ {
+  "slug": "paulo-kombucha-96431c",
+  "title": "Mascot referral program promo",
+  "tags": [
+   "product-ui",
+   "characters"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video to talk about our referral program"
+ },
+ {
+  "slug": "pluginplay-3d4006",
+  "title": "Pixel art LLM history",
+  "tags": [
+   "diagrams",
+   "characters"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "pixel art boomerang render of the history of LLMs. then RSI. then it goes fucking crazy. 15 seconds max. self contained .html"
+ },
+ {
+  "slug": "polydao-7a572b",
+  "title": "Jev engineering showreel",
+  "tags": [
+   "product-ui",
+   "kinetic-type",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Make a dynamic [24]-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a resume. Go all out.\nOnly about [TOPIC]. Style: [BRAND COLORS], sound synced to the cuts."
+ },
+ {
+  "slug": "prasad-pilla-2c0cba",
+  "title": "Alan agent platform promo",
+  "tags": [
+   "product-ui",
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15 second motion graphics video that shows what an incredible motion designer you are, for @tryAlanAI. go all out."
+ },
+ {
+  "slug": "quickdesignio-dd93d0",
+  "title": "QuickDesign brand promo",
+  "tags": [
+   "product-ui",
+   "kinetic-type",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible quickdesign is! and also  shows what an incredible motion designer you are!"
+ },
+ {
+  "slug": "rames-jusso-589f80",
+  "title": "UK dubstep track with ASCII visuals",
+  "tags": [
+   "music",
+   "code"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1080,
+  "prompt": "140 BPM rusko/skream style UK dubstep"
+ },
+ {
+  "slug": "rammanq-f5a90f",
+  "title": "AllInvestView product promo",
+  "tags": [
+   "product-ui",
+   "phone",
+   "charts"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 720,
+  "h": 720,
+  "prompt": "Make a dynamic motion graphics video that shows what an incredible platform AllInvestView is. Go all out."
+ },
+ {
+  "slug": "raphaelaubryy-4b137e",
+  "title": "Motion designer résumé reel",
+  "tags": [
+   "shapes",
+   "particles"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. go all out."
+ },
+ {
+  "slug": "ratheejaisal-1f4538",
+  "title": "founder.page launch video",
+  "tags": [
+   "product-ui",
+   "charts"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "build me a beautiful launch video 20 seconds or under that shows all our key features, make it fast paced and fit our brand"
+ },
+ {
+  "slug": "rebutonepress-810f78",
+  "title": "Black hole time story",
+  "tags": [],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "听说 opus 5.5 做视频很强，请让我见识下。结合本机环境风格，做一个关于时间的故事，5分钟。要完整的视频，音频和字幕。需要什么工具自己在devshell配置，渲染完成后只留视频成品文件，其他全部清理干净。"
+ },
+ {
+  "slug": "reflex-cloud-72ffe5",
+  "title": "Reflex brand motion reel",
+  "tags": [
+   "kinetic-type",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "You're a world-class motion designer, and this is your 15-second résumé reel. Make it dynamic and confident: open with a striking hook in the first second, build through a sequence of distinct techniques (typography, shape play, camera moves, colour shifts), and land on a clean, memorable final frame. Pacing should feel like it's cut to music. Go crazy.\nMake it promote our brand, reflex. inc. Proceed as if you were starting with zero of my tools. Do not assume that the tools we already have are the best to use, as they might be outdated.\nShow all"
+ },
+ {
+  "slug": "rendesr-86be44",
+  "title": "Claude motion design showreel",
+  "tags": [
+   "kinetic-type",
+   "shapes"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Make a dynamic 15 second motion graphics video that shows off what an incredible motion designer you are. Imagine it's your showreel for a resume!"
+ },
+ {
+  "slug": "reyzostyle-b55864",
+  "title": "Chunku product promo",
+  "tags": [
+   "product-ui",
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "make a dynamic 10 second motion graphics video about https://t.co/Zi6zrTvzqI that shows what an incredible motion designer you are, like its your showreel for a resume. go all out"
+ },
+ {
+  "slug": "rneayan-474bcf",
+  "title": "Risograph studio intro",
+  "tags": [
+   "diagrams",
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "make about my studio with Risograph style"
+ },
+ {
+  "slug": "rneayan-ea6129",
+  "title": "Oscilloscope-style studio motion graphic",
+  "tags": [
+   "charts",
+   "kinetic-type"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1280,
+  "h": 720,
+  "prompt": "Make Motiongraphic about my studio with Oscilloscope style"
+ },
+ {
+  "slug": "robj3d3-b18fad",
+  "title": "SuperX feature release teaser",
+  "tags": [
+   "product-ui"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "look at my product roadmap and make a dynamic 15-second motion graphics video that teases the next feature release. go all out and hold nothing back"
+ },
+ {
+  "slug": "robvjourney-ce3e1a",
+  "title": "Nohandslabs brand promo",
+  "tags": [
+   "kinetic-type",
+   "particles",
+   "code"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1920,
+  "h": 1080,
+  "prompt": "Can you make a 15-second motion graphic video of https://t.co/4AZZ7AlJvi? Go ALL OUT and make the most badass video you possibly can use everything you've got."
+ },
+ {
+  "slug": "ror-fly-9950f1",
+  "title": "Negroni recipe animation",
+  "tags": [
+   "diagrams"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1080,
+  "prompt": "We're going to try a little test. Do you think you could render a recipe motion graphic animation using javascript or html (w/e you think will produce the best) to show the full recipe from start to finish (empty glass to completed cocktail) - Explainer video style - Showing the recipe ingreidents + measurements as they're going into the cup. Should be a 30s video."
+ },
+ {
+  "slug": "rossaxbt-3085b7",
+  "title": "Ora 2 image model launch film",
+  "tags": [
+   "product-ui",
+   "photos",
+   "music"
+  ],
+  "kind": "prompt",
+  "repo": null,
+  "w": 1080,
+  "h": 1080,
+  "prompt": "<inputs>\nAsk me for: my product name, a one-line pitch, my logo, 3 to 6 screenshots of the product, 40+ images of what it creates (or photos of it), my brand colors and font, an ElevenLabs API key and voice ID, plus a royalty-free track with a clear drop (the audio file and the drop timestamp). If I skip anything, use these defaults: \"Ora 2\", \"an image model made for taste\", free images from Unsplash and Pixabay, Geist, ink #111214, the voice Samara X (19STyYD15bswVz51nqLf) on eleven_v4, and Pixabay \"Cascade Breathe\" (129.83 BPM, drop at 75.39s).\n</inputs>\n<script>\nWrite a 9-line voiceover in this format and adapt every line to my product:\n\"This is [name]. A [category]... built for [value]. [Verb] in ANY style. Give it a [input] - and it just... understands. The more you use it, the BETTER it gets. Adjust its [setting]. Its [setting]. Its [setting]. Every [output] - exactly as you pictured it. [Name]. Out now.\"\nUse emotion tags sparingly: [softly] on the quiet lines and [excited] on the [Verb] line. Don't tag the opener, and end it with a plain full stop.\n</script>\n<voice>\nCall the ElevenLabs API directly using my key, without an MCP. Generate 4 full-script takes in one pass and let me choose. If a line doesn't sound right, regenerate just that line 4 times and splice the best version into my take.\nShorten pauses longer than 0.28s to 0.2s, then bring each phrase 85% of the way toward the median level, adjusting gain only during pauses.\nFor word timings, split the read at pauses of 100ms or longer, transcribe each segment separately with Whisper, and align its first word to the measured onset. A single Whisper pass can place words up to half a second late.\n</voice>\n<direction>\nA 22-second square launch film, 1440x1440 at 60fps, in the style of an AI lab launch: white canvas, one typeface, black ink, real images, and captions typed word by word at the exact time they're spoken.\nEvery control (prompt bar, settings panel, caption pill) uses liquid glass: frost the scene behind it, bend that scene along the edge like thick glass, then add a top sheen, bright rim and soft lift shadow. Glass disappears on plain white, so add a slow pastel aura in my brand colors or a blurred wash of the photo behind it.\nThe one emphasized word types in a gradient of my brand colors, with a faint glow behind it.\nMotion rules: keep the camera drifting (push from 1.0 to 1.04 per scene; when content moves to the next scene, start at the zoom where the previous scene ended). Nothing appears instantly: use eased fades of at least 0.3s. Change images on 16th notes, with a click for each. Land scene changes on phrase starts, and align the music drop with the [Verb] line. Don't show full stops on screen.\nBanned: selection-box highlights, beat-snapped slams, white flashes, 3D, templates.\n</direction>\n<structure>\nSeven scenes, timed to the voice:\n1. \"This is [name]\": a collage of my images drifts out as the name types in large, then gives way to the category line.\n2. \"made for [value]\": full-screen flashes of my best images switch on 16th notes into the drop, with the line typed in white over them.\n3. The drop: a glass prompt bar types a short prompt. The result card changes style every 16th note, while a black style chip rolls to each new name above a thumbnail strip.\n4. \"Show it a moodboard\": 9 images fly into a 3x3 grid, then circle the result as \"It gets you\" types on screen.\n5. \"The more you use it, the better it gets\": type two lines, with the emphasized word in the gradient.\n6. The settings: show a glass panel with 3 sliders, each moving as she names it. Shift the image's hue, roll new seeds on 16ths, then turn it into a poster. Shift a blurred wash of its colors behind the glass in sync.\n7. \"Every [output], exactly how you see it\": burst 120 of my images outward from the center behind a glass caption pill, then bring them together into my logo as the name types on. Put \"Out now\" underneath and hold for 2s.\nReplace the prompt bar, results and sliders with my product's real input, outputs and settings.\n</structure>\n<sound>\nSet the song so the drop lands on the [Verb] line, and anchor the beat grid there.\nDuck the music under the voice with a 3-band sidechain (lows 30%, mids 85%, air 55%; 0.3s hold, 50ms look-ahead, 0.5s release). Then adjust the mids of each phrase until the voice sits about 9 dB above the music between 300 Hz and 4 kHz.\nUse one downloaded Mixkit SFX per event, positioned by its measured peak: a click for each image change, a key sound for every typed letter, a soft landing on the emphasized word, whooshes, and impacts on the drop and logo. Trim each around its peak (many risers are 4 seconds). Fade the music along a dB curve under the end card. Loudnorm to -14 LUFS.\n</sound>\n<build>\n1. One HTML canvas. Every frame is a pure function of time inside seek(t), and every caption and cut follows the word table.\n2. Glass: capture the canvas behind the shape, blur it about 14px for the body, draw a lightly blurred copy magnified about 1.06x in a 12px band along the edge, then add the milk, sheen, rim and shadow.\n3. Render with Playwright at 60fps using 8 motion-blur subframes, then encode with ffmpeg.\n4. Before showing me anything, make a contact sheet of stills, scan frame differences for single-frame pops (only the 16th-note runs may jump), and check the voice-to-music ratio for every phrase.\n</build>\n<gotchas>\nA [warmly] opener can sound whispered, while [excited] can feel fake. A highlight box behind a word looks like a Windows text selection. If the camera resets to 1.0 during a handoff, the zoom snaps. A 0.05s fade looks like an instant pop-in.\n</gotchas>\n<start>\nAsk me for the inputs, write the script, send me 4 voice takes to choose from, then show me 8 stills before the full render.\n</start>\nShow all"
+ }
+]

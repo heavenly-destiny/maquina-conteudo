@@ -1,0 +1,19 @@
+- [Storieslab hosting migration](storieslab-hosting-migration.md) — Vercel to Cloudflare Pages; don't cancel Vercel before verified
+- [Stories Lab offer](storieslab-offer.md) — product, plans, prices, durations, honesty limits, checkout ids
+- [Sales page brief](storieslab-sales-page-brief.md) — 16/11 rewrite: stronger promise, NLP CTAs, then speed + tracking
+- [Sales arguments](storieslab-sales-arguments.md) — desire/pain/left-behind/objection angles; no guaranteed numeric results
+- [Emotional direction](voice-emotion-arc.md) — per-beat mood map (suspense, melancholy, hope, triumph...) drives voice, music, SFX and motion together
+- [Motion reel premium style](motion-reel-premium-style.md) — agency-grade motion reels via motion-reel-premium skill + Hyperframes + ElevenLabs
+- [Sound design sync](sound-design-sync.md) — music follows story arc, SFX frame-synced to motion events via shared timeline constants
+- [Skill evolution loop](skill-evolution-loop.md) — every lesson goes into motion-reel-premium, then re-upload to claude.ai (id skill_017HLzzy3Bb16xY1BHzrhzoJ)
+- [Promise first](marketing-promise-first.md) — all copy leads with a strong explicit promise; strong but deliverable, no fake numeric guarantees
+- [Human voice](copy-human-voice.md) — all copy sounds like a real BR woman talking to a friend; colloquial, personal, no AI/ad patterns
+- [Connect rate first](storieslab-connect-rate.md) — Meta PageView must fire before other loads; slAfterPixel gate
+- [Photo style](photo-style-aspirational.md) — organic iPhone/POV photos from Pinterest (user-approved), never AI or polished stock
+- [Show every line](show-every-line-literally.md) — each VO line needs its literal real scene on screen; never placeholder squares
+- [New format each creative](creative-format-innovation.md) — never repeat the template; pick an unused native format (chat, lock screen, split race…)
+- [Retention every second](creative-retention-every-second.md) — curiosity loops + re-hooks every 3-5s across whole creative, not just hook
+- [UGC = intercut motion](ugc-edit-intercut-motion.md) — never cover her face/phone; cut to full-screen app motion scenes; pilot first
+- [Audience-matched photos](creative-audience-match-photos.md) — female creative: never male hands/cars; eyeball every photo, latte.jpg banned
+- [Generation cost efficiency](generation-cost-efficiency.md) — ElevenLabs pre-approved for all generation; cheapest model that holds quality, estimate + pilot first
+- [Projetos antigos: não perguntar](projetos-antigos-nao-perguntar.md) — só perguntar sobre os ativos (Stories Lab, Soul Spa, Bolão, curso/mentoria)

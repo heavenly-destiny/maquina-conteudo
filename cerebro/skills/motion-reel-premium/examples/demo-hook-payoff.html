@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Outfit";
+        src: url("assets/fonts/Outfit.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+      :root {
+        --brand: #ff6a00;
+        --brand-2: #ff9a1f;
+        --cream: #f7efe2;
+        --ink: #1e1e1e;
+        --ok: #22c55e;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--cream); }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Outfit", sans-serif; overflow: hidden; }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .inner { position: absolute; inset: 0; }
+
+      #s1 .inner { background: radial-gradient(120% 90% at 50% 50%, #ea5a00 0%, #d44600 55%, #b33200 100%); }
+      #s1-glow { position: absolute; width: 1300px; height: 1300px; left: 120px; top: -260px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 170, 90, 0.32), rgba(255, 170, 90, 0) 65%); }
+      #s1-line { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; gap: 34px;
+        white-space: nowrap; font-size: 210px; font-weight: 700; letter-spacing: -0.02em; color: #ffffff; }
+      #s1-line span { display: block; }
+      #s1-credit { position: absolute; bottom: 120px; left: 0; width: 100%; text-align: center; font-size: 20px; letter-spacing: 0.18em;
+        color: #ffffff; font-weight: 600; }
+
+      #s2 .inner { background: var(--cream); }
+      #s2-glow { position: absolute; width: 1500px; height: 1500px; left: 210px; top: -380px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 150, 40, 0.42), rgba(255, 150, 40, 0) 62%); }
+      #s2-head { position: absolute; top: 120px; left: 0; width: 100%; display: flex; justify-content: center; gap: 22px;
+        font-size: 92px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+      #s2-head span { display: block; }
+      #s2-head .key { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .orb { position: absolute; border-radius: 28px; background: linear-gradient(145deg, #ffb35c, var(--brand));
+        box-shadow: 0 30px 60px rgba(214, 63, 0, 0.25); }
+      #orb-far { width: 120px; height: 120px; left: 260px; top: 640px; }
+      #orb-near { width: 260px; height: 260px; left: 1560px; top: 700px; border-radius: 60px; }
+      #card { position: absolute; left: 610px; top: 330px; width: 700px; height: 470px; border-radius: 40px; background: #fffdf9;
+        box-shadow: 0 50px 120px rgba(120, 70, 20, 0.18), 0 8px 24px rgba(120, 70, 20, 0.08); padding: 52px 60px; }
+      #card-top { display: flex; justify-content: space-between; align-items: center; font-size: 28px; color: #6b655c; font-weight: 500; }
+      #card-top .arrow { color: #c94300; font-size: 34px; }
+      #amount { margin-top: 34px; text-align: center; font-size: 96px; font-weight: 700; letter-spacing: -0.02em; color: #d94a00; }
+      #track { position: relative; margin-top: 44px; height: 18px; border-radius: 9px; background: #efe7da; }
+      #fill { position: absolute; left: 0; top: 0; height: 100%; width: 100%; transform-origin: 0 50%; border-radius: 9px; background: linear-gradient(90deg, #e3260f, var(--brand), var(--brand-2)); }
+      #knob { position: absolute; top: -13px; left: 0; width: 44px; height: 44px; margin-left: -22px; border-radius: 50%; background: #fff;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); }
+      #legend { margin-top: 30px; display: flex; justify-content: space-between; font-size: 28px; color: #6b645a; font-weight: 500; }
+      #legend b { display: block; color: var(--ink); font-size: 28px; }
+      #check { position: absolute; left: 1238px; top: 728px; width: 104px; height: 104px; border-radius: 50%; background: var(--ok);
+        box-shadow: 0 16px 40px rgba(34, 197, 94, 0.45); display: flex; align-items: center; justify-content: center; }
+      #pill { position: absolute; left: 0; top: 860px; width: 100%; display: flex; justify-content: center; }
+      #pill div { padding: 16px 30px; border-radius: 999px; background: #fffdf9; font-size: 28px; font-weight: 600; color: var(--ink);
+        box-shadow: 0 12px 30px rgba(120, 70, 20, 0.12); display: flex; align-items: center; gap: 14px; }
+      #pill i { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); display: block; }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="hb1" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb1g" stdDeviation="0 0" /></filter>
+      <filter id="hb2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur id="hb2g" stdDeviation="0 0" /></filter>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+      <div id="s1" class="scene clip" data-start="0" data-duration="3.05" data-track-index="0">
+        <div class="inner" id="s1-in" style="filter: url(#hb1)">
+          <div id="s1-glow"></div>
+          <div id="s1-line"><span id="w1">Sexta</span><span id="w2">à</span><span id="w3">noite</span></div>
+          <div id="s1-credit" data-layout-ignore>COMERCIAL NÃO OFICIAL</div>
+        </div>
+      </div>
+
+      <div id="s2" class="scene clip" data-start="2.75" data-duration="5.25" data-track-index="1">
+        <div class="inner" id="s2-in" style="filter: url(#hb2)">
+          <div id="s2-glow"></div>
+          <div id="orb-far" class="orb"></div>
+          <div id="s2-head"><span id="h1" class="key">Zero</span><span id="h2">ressaca</span><span id="h3">financeira.</span></div>
+          <div id="card">
+            <div id="card-top"><span class="arrow">←</span><span>Limite</span><span style="width: 34px"></span></div>
+            <div id="amount">R$ 2.750,00</div>
+            <div id="track"><div id="fill"></div><div id="knob"></div></div>
+            <div id="legend"><span><b>R$ 534,74</b>Utilizado</span><span style="text-align: right"><b>R$ 4.000,00</b>Máximo</span></div>
+          </div>
+          <div id="check">
+            <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+          </div>
+          <div id="pill"><div><i></i>Fatura sob controle</div></div>
+          <div id="orb-near" class="orb"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1: brand-field hook, camera-follow typing
+      const line = document.getElementById("s1-line");
+      tl.fromTo("#s1-glow", { x: 0, y: 0 }, { x: 140, y: 60, duration: 3, ease: "sine.inOut" }, 0);
+      tl.fromTo(line, { x: 780 }, { x: 380, duration: 0.55, ease: "power3.inOut" }, 0.9);
+      tl.to(line, { x: 150, duration: 0.6, ease: "power3.inOut" }, 1.45);
+      tl.fromTo("#w1", { opacity: 0.75, filter: "blur(10px)", scale: 1.05 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#w2", { opacity: 0, x: 80, filter: "blur(18px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0.98);
+      tl.fromTo("#w3", { opacity: 0, x: 120, filter: "blur(20px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.36, ease: "power3.out" }, 1.52);
+      tl.fromTo("#s1-credit", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.3);
+
+      // Whip transition 2.75 -> 3.05: directional blur smear coupled to the move
+      const b1 = { v: 0 }, b2 = { v: 44 };
+      const g1 = document.getElementById("hb1g"), g2 = document.getElementById("hb2g");
+      const setB1 = () => g1.setAttribute("stdDeviation", b1.v + " 0");
+      const setB2 = () => g2.setAttribute("stdDeviation", b2.v + " 0");
+      setB1(); setB2();
+      tl.fromTo(b1, { v: 0 }, { v: 60, duration: 0.3, ease: "power3.inOut", onUpdate: setB1 }, 2.75);
+      tl.fromTo("#s1-in", { x: 0 }, { x: -1920, duration: 0.3, ease: "power3.inOut" }, 2.75);
+      tl.fromTo("#s2-in", { x: 1920 }, { x: 0, duration: 0.3, ease: "power3.inOut" }, 2.75);
+      tl.to("#s2-in", { x: 0, duration: 0.01 }, 3.06);
+      tl.fromTo(b2, { v: 60 }, { v: 0, duration: 0.42, ease: "power3.out", onUpdate: setB2 }, 2.75);
+
+      // Scene 2: payoff UI
+      tl.fromTo("#s2-glow", { x: 0, y: 0 }, { x: -120, y: 70, duration: 5.2, ease: "sine.inOut" }, 2.75);
+      tl.fromTo("#orb-far", { y: 0, rotation: -8, filter: "blur(9px)", opacity: 0.85 }, { y: -26, rotation: 6, filter: "blur(9px)", opacity: 0.85, duration: 5.2, ease: "sine.inOut" }, 2.75);
+      tl.fromTo("#orb-near", { y: 40, x: 60, rotation: 10, filter: "blur(14px)" }, { y: -30, x: 0, rotation: -4, filter: "blur(14px)", duration: 5.2, ease: "sine.inOut" }, 2.75);
+
+      const wordT = [3.05, 3.32, 3.6]; // VO word timestamps minus 60ms (placeholders until VO exists)
+      ["#h1", "#h2", "#h3"].forEach((w, i) =>
+        tl.fromTo(w, { opacity: 0, y: 24, filter: "blur(16px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, wordT[i])
+      );
+
+      tl.fromTo("#card", { opacity: 0, scale: 0.92, y: 40, filter: "blur(12px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "expo.out" }, 3.2);
+      tl.to("#card", { y: -10, duration: 4.0, ease: "sine.inOut" }, 3.85);
+
+      const amt = document.getElementById("amount");
+      const money = { v: 2750 };
+      const fmt = () => (amt.textContent = "R$ " + money.v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+      fmt();
+      tl.fromTo(money, { v: 2750 }, { v: 1200, duration: 1.5, ease: "power2.inOut", onUpdate: fmt }, 4.0);
+      tl.fromTo("#fill", { scaleX: 0.69 }, { scaleX: 0.3, duration: 1.5, ease: "power2.inOut" }, 4.0);
+      tl.fromTo("#knob", { x: 400 }, { x: 174, duration: 1.5, ease: "power2.inOut" }, 4.0);
+
+      tl.fromTo("#check", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 5.5);
+      tl.fromTo("#pill div", { opacity: 0, y: 20, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 5.75);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

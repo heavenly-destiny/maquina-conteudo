@@ -1,0 +1,618 @@
+{
+ "u": "u2",
+ "total": 22.23,
+ "talk_end": 19.83,
+ "cta_at": null,
+ "words": [
+  [
+   "Espera,",
+   0.04,
+   0.34,
+   0,
+   "ela"
+  ],
+  [
+   "mas",
+   0.44,
+   0.54,
+   0,
+   "ela"
+  ],
+  [
+   "onde",
+   0.54,
+   0.64,
+   0,
+   "ela"
+  ],
+  [
+   "você",
+   0.64,
+   0.94,
+   0,
+   "ela"
+  ],
+  [
+   "encontra",
+   0.94,
+   1.2,
+   0,
+   "ela"
+  ],
+  [
+   "essas",
+   1.2,
+   1.48,
+   0,
+   "ela"
+  ],
+  [
+   "figurinhas?",
+   1.48,
+   1.72,
+   0,
+   "ela"
+  ],
+  [
+   "antes",
+   1.84,
+   1.94,
+   1,
+   "ela"
+  ],
+  [
+   "eu",
+   1.94,
+   2.06,
+   1,
+   "ela"
+  ],
+  [
+   "baixava",
+   2.06,
+   2.44,
+   1,
+   "ela"
+  ],
+  [
+   "no",
+   2.44,
+   2.6,
+   1,
+   "ela"
+  ],
+  [
+   "drive,",
+   2.6,
+   2.92,
+   1,
+   "ela"
+  ],
+  [
+   "né,",
+   3.1,
+   3.24,
+   1,
+   "ela"
+  ],
+  [
+   "packs",
+   3.24,
+   3.38,
+   1,
+   "ela"
+  ],
+  [
+   "de",
+   3.38,
+   3.64,
+   1,
+   "ela"
+  ],
+  [
+   "figurinhas,",
+   3.64,
+   4.04,
+   1,
+   "ela"
+  ],
+  [
+   "e",
+   4.38,
+   4.5,
+   1,
+   "ela"
+  ],
+  [
+   "acabava",
+   4.5,
+   4.78,
+   1,
+   "ela"
+  ],
+  [
+   "ocupando",
+   4.78,
+   5.08,
+   1,
+   "ela"
+  ],
+  [
+   "toda",
+   5.08,
+   5.22,
+   1,
+   "ela"
+  ],
+  [
+   "a",
+   5.22,
+   5.34,
+   1,
+   "ela"
+  ],
+  [
+   "memória",
+   5.34,
+   5.54,
+   1,
+   "ela"
+  ],
+  [
+   "do",
+   5.54,
+   5.7,
+   1,
+   "ela"
+  ],
+  [
+   "meu",
+   5.7,
+   5.86,
+   1,
+   "ela"
+  ],
+  [
+   "celular.",
+   5.86,
+   6.16,
+   1,
+   "ela"
+  ],
+  [
+   "Agora",
+   6.28,
+   6.44,
+   2,
+   "ela"
+  ],
+  [
+   "eu",
+   6.44,
+   6.6,
+   2,
+   "ela"
+  ],
+  [
+   "achei",
+   6.6,
+   6.74,
+   2,
+   "ela"
+  ],
+  [
+   "um",
+   6.74,
+   6.94,
+   2,
+   "ela"
+  ],
+  [
+   "aplicativo",
+   6.94,
+   7.82,
+   2,
+   "ela"
+  ],
+  [
+   "chamado",
+   7.82,
+   8.32,
+   2,
+   "ela"
+  ],
+  [
+   "Stories",
+   8.32,
+   8.94,
+   2,
+   "ela"
+  ],
+  [
+   "Lab,",
+   8.94,
+   9.18,
+   2,
+   "ela"
+  ],
+  [
+   "e",
+   9.22,
+   9.3,
+   3,
+   "ela"
+  ],
+  [
+   "tem",
+   9.3,
+   9.48,
+   3,
+   "ela"
+  ],
+  [
+   "várias",
+   9.48,
+   9.8,
+   3,
+   "ela"
+  ],
+  [
+   "figurinhas",
+   9.8,
+   10.26,
+   3,
+   "ela"
+  ],
+  [
+   "de",
+   10.26,
+   10.54,
+   3,
+   "ela"
+  ],
+  [
+   "Natal,",
+   10.54,
+   11.06,
+   3,
+   "ela"
+  ],
+  [
+   "de",
+   11.18,
+   11.2,
+   3,
+   "ela"
+  ],
+  [
+   "Ano",
+   11.2,
+   11.48,
+   3,
+   "ela"
+  ],
+  [
+   "Novo,",
+   11.48,
+   11.68,
+   3,
+   "ela"
+  ],
+  [
+   "de",
+   11.84,
+   11.96,
+   3,
+   "ela"
+  ],
+  [
+   "Bom",
+   11.96,
+   12.2,
+   3,
+   "ela"
+  ],
+  [
+   "Dia,",
+   12.2,
+   12.44,
+   3,
+   "ela"
+  ],
+  [
+   "de",
+   12.82,
+   13.08,
+   3,
+   "ela"
+  ],
+  [
+   "Treino,",
+   13.08,
+   13.44,
+   3,
+   "ela"
+  ],
+  [
+   "É",
+   13.55,
+   14.07,
+   4,
+   "ela"
+  ],
+  [
+   "só",
+   14.07,
+   14.27,
+   4,
+   "ela"
+  ],
+  [
+   "clicar,",
+   14.27,
+   14.85,
+   4,
+   "ela"
+  ],
+  [
+   "copiar",
+   15.11,
+   15.59,
+   4,
+   "ela"
+  ],
+  [
+   "e",
+   15.59,
+   15.81,
+   4,
+   "ela"
+  ],
+  [
+   "colar",
+   15.81,
+   16.13,
+   4,
+   "ela"
+  ],
+  [
+   "no",
+   16.13,
+   16.27,
+   4,
+   "ela"
+  ],
+  [
+   "seu",
+   16.27,
+   16.41,
+   4,
+   "ela"
+  ],
+  [
+   "story.",
+   16.41,
+   16.61,
+   4,
+   "ela"
+  ],
+  [
+   "Eu",
+   16.75,
+   17.35,
+   5,
+   "ela"
+  ],
+  [
+   "não",
+   17.35,
+   17.95,
+   5,
+   "ela"
+  ],
+  [
+   "perco",
+   17.95,
+   18.29,
+   5,
+   "ela"
+  ],
+  [
+   "mais",
+   18.29,
+   18.61,
+   5,
+   "ela"
+  ],
+  [
+   "tempo",
+   18.61,
+   18.85,
+   5,
+   "ela"
+  ],
+  [
+   "para",
+   18.85,
+   19.07,
+   5,
+   "ela"
+  ],
+  [
+   "criar",
+   19.07,
+   19.17,
+   5,
+   "ela"
+  ],
+  [
+   "os",
+   19.17,
+   19.31,
+   5,
+   "ela"
+  ],
+  [
+   "meus",
+   19.31,
+   19.47,
+   5,
+   "ela"
+  ],
+  [
+   "stories.",
+   19.47,
+   19.77,
+   5,
+   "ela"
+  ]
+ ],
+ "cuts": [
+  {
+   "t": 0.0,
+   "seg": 0,
+   "new_seg": true,
+   "new_clip": false,
+   "spk": "ela"
+  },
+  {
+   "t": 1.78,
+   "seg": 1,
+   "new_seg": true,
+   "new_clip": false,
+   "spk": "ela"
+  },
+  {
+   "t": 6.23,
+   "seg": 2,
+   "new_seg": true,
+   "new_clip": false,
+   "spk": "ela"
+  },
+  {
+   "t": 9.2,
+   "seg": 3,
+   "new_seg": true,
+   "new_clip": false,
+   "spk": "ela"
+  },
+  {
+   "t": 13.5,
+   "seg": 4,
+   "new_seg": true,
+   "new_clip": true,
+   "spk": "ela"
+  },
+  {
+   "t": 16.67,
+   "seg": 5,
+   "new_seg": true,
+   "new_clip": true,
+   "spk": "ela"
+  }
+ ],
+ "events": [
+  {
+   "type": "dms",
+   "t": 1.48,
+   "dur": 1.25,
+   "msgs": [
+    "onde vc acha essas figurinhas?",
+    "me passa o pack 🙏",
+    "que figurinha linda!! 😍"
+   ]
+  },
+  {
+   "type": "notif",
+   "t": 2.6,
+   "dur": 2.4,
+   "app": "Google Drive",
+   "title": "pack-figurinhas-2024.zip",
+   "body": "Download concluído · 1,2 GB",
+   "icon": "drive"
+  },
+  {
+   "type": "notif",
+   "t": 5.34,
+   "dur": 2.2,
+   "app": "Ajustes",
+   "title": "Armazenamento quase cheio",
+   "body": "Seu iPhone não tem espaço suficiente.",
+   "icon": "gear",
+   "y2": 1
+  },
+  {
+   "type": "logo",
+   "t": 8.32,
+   "dur": 1.3
+  },
+  {
+   "type": "chip",
+   "t": 10.54,
+   "dur": 1.2,
+   "text": "Natal 🎄",
+   "x": 90,
+   "y": 520,
+   "rot": -5
+  },
+  {
+   "type": "chip",
+   "t": 11.2,
+   "dur": 1.2,
+   "text": "Ano Novo 🥂",
+   "x": 560,
+   "y": 640,
+   "rot": 4
+  },
+  {
+   "type": "chip",
+   "t": 11.96,
+   "dur": 1.2,
+   "text": "Bom dia ☀️",
+   "x": 120,
+   "y": 780,
+   "rot": -3
+  },
+  {
+   "type": "chip",
+   "t": 13.08,
+   "dur": 1.0,
+   "text": "Treino 💪",
+   "x": 600,
+   "y": 900,
+   "rot": 6
+  },
+  {
+   "type": "broll",
+   "t": 14.27,
+   "dur": 1.0,
+   "src": "IMG_4143",
+   "ss": 2.2
+  },
+  {
+   "type": "toast",
+   "t": 15.11,
+   "dur": 0.9,
+   "text": "Figurinha copiada!"
+  },
+  {
+   "type": "broll",
+   "t": 15.81,
+   "dur": 1.4,
+   "src": "IMG_4143",
+   "ss": 9.5
+  },
+  {
+   "type": "clock",
+   "t": 17.95,
+   "dur": 1.9
+  }
+ ],
+ "hook": [
+  "onde ela acha",
+  "*essas figurinhas?* 🤔"
+ ],
+ "cta": "Toca em Saiba mais 👇",
+ "music": "m4",
+ "title": "ONDE-ACHA-FIGURINHAS"
+}

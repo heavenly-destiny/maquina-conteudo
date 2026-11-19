@@ -1,0 +1,1 @@
+- [Instrução explícita não se reinterpreta](instrucao-explicita-nao-se-reinterpreta.md) — lista que ele manda é literal e completa; divergência se aponta depois, não se resolve sozinho
