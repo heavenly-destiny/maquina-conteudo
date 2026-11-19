@@ -24,6 +24,40 @@ CAR = AQUI.parent / "carrosseis"
 OCR_MAC = AQUI / "bin/ocr-mac"  # Vision da Apple: lê português com acento; no Windows fica o RapidOCR
 
 
+LAMA = Path(__file__).resolve().parent.parent / "tools/modelos/lama_fp32.onnx"
+LAMA_URL = "https://huggingface.co/Carve/LaMa-ONNX/resolve/main/lama_fp32.onnx"  # Apache-2.0, ~200 MB, baixa uma vez
+_lama = {}
+
+
+def preencher(img, mascara, raio=7):
+    """apaga a área da máscara e inventa o que estaria atrás. LaMa (IA local, grátis) e, se não der, o inpaint do OpenCV."""
+    if not mascara.any():
+        return img
+    try:
+        import onnxruntime as ort
+        if "s" not in _lama:
+            if not LAMA.exists():
+                import urllib.request
+                LAMA.parent.mkdir(parents=True, exist_ok=True)
+                urllib.request.urlretrieve(LAMA_URL, LAMA.with_suffix(".tmp"))
+                LAMA.with_suffix(".tmp").replace(LAMA)
+            _lama["s"] = ort.InferenceSession(str(LAMA), providers=["CPUExecutionProvider"])
+        h, w = img.shape[:2]
+        m = cv2.dilate((mascara > 0).astype(np.uint8), np.ones((5, 5), np.uint8))
+        x = cv2.resize(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), (512, 512), interpolation=cv2.INTER_AREA).astype(np.float32) / 255
+        mm = (cv2.resize(m, (512, 512), interpolation=cv2.INTER_NEAREST) > 0).astype(np.float32)
+        out = _lama["s"].run(None, {"image": x.transpose(2, 0, 1)[None], "mask": mm[None, None]})[0][0].transpose(1, 2, 0)
+        if out.max() <= 1.5:
+            out = out * 255
+        out = cv2.cvtColor(cv2.resize(np.clip(out, 0, 255).astype(np.uint8), (w, h), interpolation=cv2.INTER_CUBIC), cv2.COLOR_RGB2BGR)
+        res = img.copy()
+        res[m > 0] = out[m > 0]  # fora da máscara a foto continua idêntica
+        return res
+    except Exception as e:
+        print("lama falhou, uso o inpaint do OpenCV:", e, flush=True)
+        return cv2.inpaint(img, mascara, raio, cv2.INPAINT_TELEA)
+
+
 def ler_textos(ocr, arq, img):
     """linhas de texto com caixa em pixels da imagem já redimensionada"""
     h, w = img.shape[:2]
@@ -204,8 +238,8 @@ def separar_elementos(fundo, alfa_f, d, nn, w, h):
         limpo = fundo.copy()
         if lisa:
             limpo[tudo > 0] = cor.astype(np.uint8)
-        else:  # ponytail: inpaint borra área grande (foto); preenchimento por IA (lama) se incomodar
-            limpo = cv2.inpaint(limpo, tudo, 9, cv2.INPAINT_TELEA)
+        else:  # foto: LaMa preenche o buraco (inpaint do OpenCV borrava área grande)
+            limpo = preencher(limpo, tudo, 9)
         if alfa_f is not None:
             limpo = np.dstack([limpo, alfa_f])
     cv2.imwrite(str(d / "fundos" / f"{nn}-limpo.png"), limpo)
@@ -262,7 +296,7 @@ def slide(ocr, arq, saida_fundo, W):
             resto[max(l["y0"] - 2, 0):l["y1"] + 2, max(l["x0"] - 2, 0):l["x1"] + 2] = 255  # degradê/foto: o Otsu erra a letra, apaga a caixa inteira
     if resto.any():
         r2 = cv2.dilate(resto, np.ones((3, 3), np.uint8))
-        fundo = cv2.inpaint(fundo, r2, 7, cv2.INPAINT_TELEA)
+        fundo = preencher(fundo, r2, 7)
         if alfa_f is not None:
             alfa_f = cv2.inpaint(alfa_f, r2, 7, cv2.INPAINT_TELEA)
     cv2.imwrite(str(saida_fundo), np.dstack([fundo, alfa_f]) if alfa is not None else fundo)

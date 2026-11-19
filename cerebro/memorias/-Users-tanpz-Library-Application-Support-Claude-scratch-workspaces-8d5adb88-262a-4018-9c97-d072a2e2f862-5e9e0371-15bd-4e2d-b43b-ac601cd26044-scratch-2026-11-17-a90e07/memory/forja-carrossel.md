@@ -23,3 +23,5 @@ On 19/11/2026 tanpz opened a carousel reference in Inspirar. He saw the video de
 - Text over photos (stories inside the slide) stays baked in the background: filter = mean |Laplacian| of the text-free ring < 5.5 (design ≈ 0–5, photo > 6). Pure std failed (gradients + neighbor lines).
 - OCR layers are `fixo` (keep original line breaks, `white-space: pre`); first render shrinks to the measured box once and saves `ajustado`, so edited text keeps its size.
 - Properties panel must never move the slide (fixed column on desktop, overlay drawer on mobile) or the double-click misses.
+
+Slides de referência do Instagram (19/11/2026): `yt-dlp -J --ignore-no-formats-error` lê todos os slides de um carrossel público sem login (o `thumbnail` de cada entrada, 720 px). painel.py `ig_slides(url)` guarda em estilos/instagram-refs/slides/<shortcode>/ (fora do git). Inspirar mostra todos e "Clonar carrossel" manda a url pro /api/carrossel/novo, que importa os slides direto. Puxar pela API interna do Instagram no Chrome é bloqueado pelo classificador; não insistir.

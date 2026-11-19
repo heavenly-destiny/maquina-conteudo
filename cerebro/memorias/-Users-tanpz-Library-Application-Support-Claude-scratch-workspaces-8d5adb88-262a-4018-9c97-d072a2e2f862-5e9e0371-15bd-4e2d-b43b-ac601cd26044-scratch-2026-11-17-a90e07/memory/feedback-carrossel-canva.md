@@ -30,3 +30,17 @@ Extra requests (19/11/2026):
 - "Essa aba de carrosséis também modela carrosséis por nicho da pessoa seguindo tudo": from a reference carousel, generate a version adapted to the user's niche. Keep the structure, design, text rhythm and length per slide; rewrite the copy for the niche and swap images when needed.
 - "A foto que enviar tem que ficar exatamente igual, você tá colocando um fundo diferente" (19/11/2026): the uploaded photo stays identical, transparency preserved, no invented background. Stage shows a transparency checkerboard behind the slide (outside the exported node); patches are drawn in a canvas with clearRect + cleaned background (alpha kept, no #1a0a0d); PNG export is at the original pixel size with alpha. Check: export pixels in unedited areas must equal origem exactly (alpha=0 included).
 - Elements built 19/11: carrossel.py cuts elements/NN-eK.png (alpha islands on transparent PNG, border-color diff on flat bg, rembg on photos; stacked flat bars split one per bar) + fundos/NN-limpo.png; dragging an element carries the texts whose center sits on it.
+
+Bug relatado em 19/11/2026 ("bugando", com um print de um slide de foto em que o personagem foi movido). Havia texto duplicado e borrão grande. Causas:
+- o elemento mexido tapava a caixa inteira dele;
+- textos dentro dessa caixa eram redesenhados por cima do original, que não tinha sido tapado;
+- o texto ia junto com o elemento quando o centro dele caía em qualquer ponto da caixa;
+- o inpaint do OpenCV borrava buracos grandes.
+
+Correção:
+- o remendo agora segue o formato do recorte (alfa engordado), e não a caixa;
+- texto parado só é redesenhado se estiver em cima do formato do elemento, e nesse caso a caixa original dele é tapada antes;
+- só vai junto o texto que está inteiro dentro da caixa e em cima de pixel opaco do elemento;
+- o fundo é preenchido pelo LaMa ONNX (tools/modelos, fora do git), com o OpenCV como reserva.
+
+Como conferir: mover o personagem principal de um slide de foto não pode duplicar nenhum texto, e o buraco tem de sair sem borrão.
