@@ -13,7 +13,9 @@ rm -f edit/public/video.mp4
 "$PY" build.py
 cp "$T/assets/fonts/InstrumentSerif-Italic.ttf" edit/public/assets/fonts/
 cd edit && "$PY" "$T/mix.py" . "$T/assets/music/bed-tech-01.mp3" 0 -120 | tail -1
-PRODUCER_BROWSER_GPU_MODE=hardware npx hyperframes render public -o output.mp4 2>&1 | tail -1
+# nivel Simples (maquina grava nivel.txt): painel parado + legenda, sai em segundos sem HyperFrames; se falhar, cai no render normal
+if [ "$(cat ../nivel.txt 2>/dev/null)" = simples ] && "$PY" "$T/organico/simples.py" . output.mp4; then :
+else PRODUCER_BROWSER_GPU_MODE=hardware npx hyperframes render public -o output.mp4 2>&1 | tail -1; fi
 ffmpeg -y -v error -i output.mp4 -i public/mix.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest final.mp4
 D2=$(ffprobe -v error -show_entries format=duration -of csv=p=0 final.mp4)
 ffmpeg -y -v error -i final.mp4 -vf "fps=24/$D2,scale=240:-2,tile=12x2" -frames:v 1 ../sheet.jpg

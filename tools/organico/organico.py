@@ -322,6 +322,12 @@ def build(emph=(), fix=None, music="bed-tech-01.mp3"):
                 T(f"tl.set('#cap{k}',{{autoAlpha:0}},{max(cs, a - 0.02):.3f});")
                 if ce > a + d:
                     T(f"tl.set('#cap{k}',{{autoAlpha:1}},{q(a + d)});")
+    # pro render rapido do nivel Simples (simples.py): legendas com tempo por palavra + trechos onde a legenda some
+    json.dump({"dur": DUR, "chunks": [{"s": s, "e": e, "w": [{"t": q(max(s, w["start"] - 0.04)), "text": w["text"].strip(".,?!"),
+               "kw": norm(w["text"]) in EMPH} for w in chunks[k]]} for k, s, e in capt],
+               "zooms": [{"t": q(c["t"]), "z": z[k % 2]} for k, c in enumerate([c for c in cuts if c["new_seg"]])],
+               "esconde": [[a, a + d] for _, a, d, _ in TK] + [[a, a + d] for a, d in MOSTRA]},
+              open(f"{OUT}/caps.json", "w"))
     css = open(os.path.join(HERE, "style.css")).read() + """
 .mostra{position:absolute;inset:0;z-index:60;background:#0b0204;overflow:hidden}
 .mostra .ms-bg{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(40px) brightness(.45) saturate(1.2)}

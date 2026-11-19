@@ -347,6 +347,7 @@ def cortar_um(j, c, nota=None):
     c["desde"] = time.time()
     fase(j, c, "preparando")
     d = prep(j, c)
+    (d / "nivel.txt").write_text(nivel(j))  # render.sh usa o render rápido (simples.py) no nível Simples
     nome = slug(c)
     out = j.p / "prontos"
     vars_ = dict(pasta=d, nome=nome, bruto=j.e["bruto"], offset=(d / "offset.txt").read_text(),

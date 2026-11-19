@@ -26,6 +26,14 @@ Related: [[board-antes-de-criar]] (settings board before any generation), [[maqu
   - Simples = one scene with the headline only, no cards, takeovers or zoom, light checks.
   - Médio = 3 to 5 headline-only scenes with transitions, 1 or 2 takeovers, a few zooms.
   - Completo = the full brief.
-- Timing: each cut saves `nivel` and `levou` (seconds). /api/tempos averages the last 20 per level; defaults are simples 4, medio 7, completo 14 min (completo measured on IMG_9270).
+- Timing: each cut saves `nivel` and `levou` (seconds). /api/tempos averages the last 20 per level; defaults are simples 8, medio 11, completo 15 min. A real Simples test on 19/11 (cut 02, jobs/teste-simples) took 8 min: about 2 min for the EDL, 2 min for build and 3.5 min for the HyperFrames render. The render is the bottleneck; a faster Simples would need a caption render done only with ffmpeg.
 - Old jobs without a nivel are treated as completo.
 - Still pending: the integrated HyperFrames-like editor.
+
+**Fast Simples render (19/11, approved with "Sim, acelera"):** Simples no longer renders in HyperFrames.
+- maquina writes `nivel.txt` into the cut folder.
+- render.sh sees `simples` and runs `tools/organico/simples.py`. It makes one Chrome headless screenshot of the panel (title), draws the captions in PIL from `edit/caps.json` (organico.build writes that file), and has ffmpeg composite everything.
+- The render step dropped from about 4 min to 51 s, and it looks the same frame by frame.
+- If it fails, it falls back to HyperFrames.
+- Default estimate for Simples is now 5 min.
+- Local ffmpeg has no libass or drawtext, which is why the captions are drawn in Python.

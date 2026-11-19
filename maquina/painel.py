@@ -284,7 +284,7 @@ def url_arq(f):
     return f"/arquivo?p={f}&v={int(f.stat().st_mtime)}" if f.exists() else None
 
 
-TEMPO_PADRAO = {"simples": 8, "medio": 11, "completo": 15}  # min por corte medidos 19/11 (simples 8 sozinho, completo ~14 com 2 juntos)
+TEMPO_PADRAO = {"simples": 5, "medio": 11, "completo": 15}  # min por corte medidos 19/11 (simples 5 com render rápido sem HyperFrames, completo ~14 com 2 juntos)
 
 
 def tempos():

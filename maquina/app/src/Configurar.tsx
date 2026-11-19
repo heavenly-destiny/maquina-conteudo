@@ -21,7 +21,7 @@ const lerSalvo = (): ConfigCorte => { try { return { ...CONFIG_PADRAO, ...JSON.p
 
 /* nível de edição (tanpz 19/11): a maioria dos cortes é simples; quanto mais motion, mais demora */
 const NIVEIS = [["simples", "Simples", "legenda e tira respiros e pausas"], ["medio", "Médio", "+ títulos com transições e efeitos"], ["completo", "Completo", "+ cenas animadas, telas cheias e b-roll"]];
-const PADRAO_MIN: Record<string, number> = { simples: 8, medio: 11, completo: 15 };
+const PADRAO_MIN: Record<string, number> = { simples: 5, medio: 11, completo: 15 };
 const fmtMin = (m: number) => (m < 60 ? `${Math.max(1, Math.round(m))} min` : `${Math.floor(m / 60)}h${String(Math.round(m % 60)).padStart(2, "0")}`);
 
 const DURACOES = [["auto", "Auto"], ["<30", "Até 30s"], ["30-59", "30 a 59s"], ["60-89", "60 a 89s"], ["90-180", "90s a 3min"], ["180-600", "3 a 10min"]];
