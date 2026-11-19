@@ -436,6 +436,31 @@ def refazer(j, n, nota):
     status(j)
 
 
+def ajustar(j, n):
+    """editor da Forja: refaz o corte com o ajustes.json (palavras apagadas, legenda, destaque, titulo) sem passar pelo Claude."""
+    c = next(c for c in j.e["cortes"] if int(c["n"]) == int(n))
+    d = j.p / "cortes" / slug(c)
+    antes = c["status"]
+    c["status"], c["fase"], c["desde"] = "cortando", "aplicando ajustes", time.time()
+    c.pop("erro_ajuste", None)
+    j.salvar(c["n"])
+    j.log(f"ajustando {slug(c)} no editor")
+    env = {**os.environ, "PATH": plataforma.junta_path(AQUI / "bin"), "FORJA_PY": sys.executable,
+           "FORJA_VOZ_PY": str(plataforma.venv_python(RAIZ / "tools/.venv-voz"))}
+    r = subprocess.run([str(AQUI / "bin/render-corte"), str(d), slug(c), str(j.p / "prontos")], capture_output=True, text=True, env=env, timeout=40 * 60)
+    (d / f"log_ajustar_{int(time.time())}.txt").write_text(r.stdout + "\n--- stderr ---\n" + r.stderr)
+    c.pop("fase", None)
+    if r.returncode:  # o vídeo anterior continua em prontos: só avisa
+        c["status"], c["erro_ajuste"] = antes, (r.stderr or r.stdout)[-300:]
+        j.log(f"ajuste {slug(c)}: ERRO")
+    else:
+        v = verificar(d / "edit/final.mp4", d / "edit/voice.wav")
+        c["status"], c["verificacao"] = ("pronto" if v["ok"] else "revisar"), v
+        j.log(f"ajuste {slug(c)}: {c['status']} em {round(time.time() - c['desde'])}s")
+    j.salvar(c["n"])
+    avisar(f"Corte {slug(c)} {'ajustado' if not r.returncode else 'não deu pra ajustar'}")
+
+
 def status(j=None):
     for p in ([j.p] if j else sorted(JOBS.glob("*"))):
         e = Job(p).e
@@ -470,6 +495,8 @@ if __name__ == "__main__":
         status(j)
     elif a[0] == "refazer":
         refazer(achar_job(a[1]), a[2], a[3])
+    elif a[0] == "ajustar":
+        ajustar(achar_job(a[1]), a[2])
     elif a[0] == "legendas":
         legendas(achar_job(a[1]))
     elif a[0] == "status":

@@ -31,9 +31,14 @@ MOSTRA = []
 esc = _html.escape
 
 
+AJ = {}  # ajustes do editor da Forja (pasta do corte/ajustes.json): texto, destaque e titulo
+
+
 def init(out):
     global OUT, DUR
     OUT = os.path.abspath(out)
+    f = os.path.join(os.path.dirname(OUT), "ajustes.json")
+    AJ.clear(); AJ.update(json.load(open(f)) if os.path.exists(f) else {})
     words[:] = json.load(open(f"{OUT}/words.json"))
     cuts[:] = json.load(open(f"{OUT}/cuts.json"))
     DUR = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"{OUT}/voice.wav"]))
@@ -50,6 +55,8 @@ def W(txt, after=0.0):
     for w in words:
         if w["start"] >= after - 0.01 and norm(w["text"]) == norm(txt):
             return w["start"]
+    if AJ.get("remover"):  # a pessoa apagou essa palavra no editor: a animacao cai na palavra seguinte
+        return next((w["start"] for w in words if w["start"] >= after - 0.01), max(0.0, DUR - 0.5))
     raise KeyError(f"{txt} depois de {after}")
 
 
@@ -274,7 +281,12 @@ def build(emph=(), fix=None, music="bed-tech-01.mp3"):
         S("swish", at - 0.1, 14.0)
     # legenda na divisao, palavra-chave serifada + clique
     EMPH = {norm(x) for x in emph}
-    cw = [dict(w, text=fix.get(w["text"], w["text"])) for w in words if fix.get(w["text"], w["text"]) is not None]
+    tx, kwa = AJ.get("texto") or {}, AJ.get("kw") or {}
+    cw = [dict(w, text=tx.get(w.get("key"), fix.get(w["text"], w["text"]))) for w in words
+          if tx.get(w.get("key"), fix.get(w["text"], w["text"]))]
+
+    def ehkw(w):
+        return kwa[w["key"]] if w.get("key") in kwa else norm(w["text"]) in EMPH
     chunks, cur = [], []
     for i, w in enumerate(cw):
         cur.append(w)
@@ -288,12 +300,12 @@ def build(emph=(), fix=None, music="bed-tech-01.mp3"):
         e = min(nxt, q(ch[-1]["start"] + 1.2))
         if e - s < 0.2:
             e = nxt
-        sp = " ".join(f'<span id="w{k}_{j}" class="{"kw" if norm(w["text"]) in EMPH else ""}">{esc(w["text"].strip(".,?!"))}</span>' for j, w in enumerate(ch))
+        sp = " ".join(f'<span id="w{k}_{j}" class="{"kw" if ehkw(w) else ""}">{esc(w["text"].strip(".,?!"))}</span>' for j, w in enumerate(ch))
         caps.append(f'<div class="cap clip" id="cap{k}" data-start="{s:.4f}" data-duration="{e - s:.4f}" data-track-index="5">{sp}</div>')
         capt.append((k, s, e))
         for j, w in enumerate(ch):
             T(f"tl.fromTo('#w{k}_{j}',{{opacity:0,y:22,scale:0.9,filter:'blur(12px)'}},{{opacity:1,y:0,scale:1,filter:'blur(0px)',duration:0.24,ease:'back.out(1.6)'}},{q(max(s, w['start'] - 0.04))});")
-            if norm(w["text"]) in EMPH:
+            if ehkw(w):
                 S("click", max(s, w["start"] - 0.02), -12.0)
     # vídeo que ele dá play no monitor: a imagem fica a gravação dele, SÓ o áudio vira o do arquivo original (mix.py).
     # Regra 18/11: nunca colocar o vídeo em tela cheia por cima. Aqui só tira SFX e legenda do trecho.
@@ -324,10 +336,13 @@ def build(emph=(), fix=None, music="bed-tech-01.mp3"):
                     T(f"tl.set('#cap{k}',{{autoAlpha:1}},{q(a + d)});")
     # pro render rapido do nivel Simples (simples.py): legendas com tempo por palavra + trechos onde a legenda some
     json.dump({"dur": DUR, "chunks": [{"s": s, "e": e, "w": [{"t": q(max(s, w["start"] - 0.04)), "text": w["text"].strip(".,?!"),
-               "kw": norm(w["text"]) in EMPH} for w in chunks[k]]} for k, s, e in capt],
+               "kw": ehkw(w), "k": w.get("key")} for w in chunks[k]]} for k, s, e in capt],
                "zooms": [{"t": q(c["t"]), "z": z[k % 2]} for k, c in enumerate([c for c in cuts if c["new_seg"]])],
                "esconde": [[a, a + d] for _, a, d, _ in TK] + [[a, a + d] for a, d in MOSTRA]},
               open(f"{OUT}/caps.json", "w"))
+    for velho, novo in (AJ.get("painel") or {}).items():  # titulo trocado no editor
+        for sid in H:
+            H[sid] = H[sid].replace(f">{esc(velho)}<", f">{esc(novo)}<")
     css = open(os.path.join(HERE, "style.css")).read() + """
 .mostra{position:absolute;inset:0;z-index:60;background:#0b0204;overflow:hidden}
 .mostra .ms-bg{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(40px) brightness(.45) saturate(1.2)}

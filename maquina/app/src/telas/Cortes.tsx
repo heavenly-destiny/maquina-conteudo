@@ -7,6 +7,8 @@ import { som } from "../sons";
 import { CardVitrine, Fileira, Secao } from "../Vitrine";
 import { Configurar, type ConfigCorte } from "../Configurar";
 import { LEGENDAS } from "../legendas";
+import { Editor } from "./Editor";
+import { Scissors } from "lucide-react";
 import { Link2, ArrowUp } from "lucide-react";
 
 type Filtro = "escolher" | "editando" | "prontos" | "todos";
@@ -109,6 +111,7 @@ function Detalhe({ job, lista, idx, setIdx }: { job: Job; lista: Corte[]; idx: n
   const c = lista[idx];
   const [nota, setNota] = useState("");
   const [cru, setCru] = useState(false);
+  const [editor, setEditor] = useState(false);
   const avisar = useAviso();
   if (!c) return null;
   const mudar = (d: number) => { som.aba(); setCru(false); setNota(""); setIdx((idx + d + lista.length) % lista.length); };
@@ -144,6 +147,10 @@ function Detalhe({ job, lista, idx, setIdx }: { job: Job; lista: Corte[]; idx: n
               <Wand2 className="size-4" /> Editar
             </Botao>
           )}
+          {c.video && (c.status === "pronto" || c.status === "revisar" || c.status === "enviado") && (
+            <Botao tipo="principal" onClick={() => { som.abrir(); setEditor(true); }}><Scissors className="size-4" /> Editar vídeo</Botao>
+          )}
+          {editor && <Editor job={job.id} n={c.n} onFechar={() => setEditor(false)} />}
           {c.video && <a href={`${c.video}&baixar=1`} onClick={() => som.ok()} className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10"><Download className="size-4" /> Baixar</a>}
           {c.video && <Botao onClick={() => setCru(!cru)}><Film className="size-4" />{cru ? "Ver editado" : "Ver cru"}</Botao>}
           {c.status !== "descartado" && c.status !== "editando" && (

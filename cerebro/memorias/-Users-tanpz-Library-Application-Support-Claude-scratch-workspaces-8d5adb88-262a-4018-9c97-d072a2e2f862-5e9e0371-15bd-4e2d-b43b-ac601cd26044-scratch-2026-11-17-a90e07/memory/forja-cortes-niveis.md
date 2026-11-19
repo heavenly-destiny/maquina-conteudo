@@ -28,7 +28,7 @@ Related: [[board-antes-de-criar]] (settings board before any generation), [[maqu
   - Completo = the full brief.
 - Timing: each cut saves `nivel` and `levou` (seconds). /api/tempos averages the last 20 per level; defaults are simples 8, medio 11, completo 15 min. A real Simples test on 19/11 (cut 02, jobs/teste-simples) took 8 min: about 2 min for the EDL, 2 min for build and 3.5 min for the HyperFrames render. The render is the bottleneck; a faster Simples would need a caption render done only with ffmpeg.
 - Old jobs without a nivel are treated as completo.
-- Still pending: the integrated HyperFrames-like editor.
+- Integrated editor: built 19/11 (see below).
 
 **Fast Simples render (19/11, approved with "Sim, acelera"):** Simples no longer renders in HyperFrames.
 - maquina writes `nivel.txt` into the cut folder.
@@ -37,3 +37,14 @@ Related: [[board-antes-de-criar]] (settings board before any generation), [[maqu
 - If it fails, it falls back to HyperFrames.
 - Default estimate for Simples is now 5 min.
 - Local ffmpeg has no libass or drawtext, which is why the captions are drawn in Python.
+
+**Cut editor (19/11, "Editor de vídeo"):** HyperFrames Studio was tested and rejected. Captions come from a script, so they are not editable. The UI is English and HeyGen-branded. Its edits skip the fast Simples render.
+- Our own text-based editor (Descript/OpusClip style): app/src/telas/Editor.tsx. It opens from the "Editar vídeo" button on a cut's detail.
+- What it can do:
+  - Edit the title panel lines.
+  - Click a word to seek to it. Shift-click, or the "Trecho" button on mobile, selects a range.
+  - Cortar removes the selected words from the video. Destaque toggles the red serif keyword. Corrigir changes the caption text. Desfazer undoes (also ⌘Z).
+- Data: <cut>/ajustes.json {remover:[keys], texto:{key:txt}, kw:{key:bool}, painel:{orig:novo}}. A word key is "source:start_in_raw".
+  - cut.py: words get `key`; removed words become holes (prev end to next start, ±0.06).
+  - organico.build: applies texto, kw and painel. W() falls back to the next word if an animation word was removed. caps.json words carry `k`.
+- API: GET /api/corte-edicao?job&n, POST /api/corte-ajustar. The POST runs `maquina.py ajustar`, which calls render-corte with no Claude. About 2 min on Simples. If it fails, the previous video stays and the cut gets `erro_ajuste`.

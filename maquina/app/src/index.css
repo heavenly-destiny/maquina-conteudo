@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fontes/InstrumentSerif-Italic.ttf") format("truetype"); }
 
 @theme {
   --color-bg: #0b0204;
@@ -14,6 +15,7 @@
   --color-ok: #34d399;
   --color-foreground: #f6f0f0;
   --font-sans: Inter, -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
   --font-mono: "SF Mono", ui-monospace, Menlo, monospace;
   --ease-spring: cubic-bezier(0.22, 1.2, 0.36, 1);
 }

@@ -21,5 +21,5 @@
 - [Referências marketplaces UI](referencias-marketplaces-ui.md) — 21st + Skiper/Aceternity/Kokonut/Cult: how to present motion galleries in Forja
 - [Forja calendário + mascote](forja-mascote-calendario.md) — calendar built (no real network posting yet); mascot creator with reaction sheet pending
 - [Forja carrossel](forja-carrossel.md) — carousel refs get own creator (clone+edit slides), never video decupagem modes
-- [Forja níveis de corte](forja-cortes-niveis.md) — built: Simples/Médio/Completo picker + learned time estimate (/api/tempos); editor still pending
+- [Forja níveis de corte](forja-cortes-niveis.md) — built: Simples/Médio/Completo picker + learned time estimate (/api/tempos); text-based cut editor (Editor.tsx, ajustes.json, ~2 min re-render)
 - [Sempre português](feedback-sempre-portugues.md) — every user-visible text in pt-BR, especially right after compaction

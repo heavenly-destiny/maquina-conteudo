@@ -37,6 +37,32 @@ def ranges(a, b, sil):
     return [r for r in rs if r[1] - r[0] > 0.08]
 
 
+def buracos(src, chaves):
+    """trechos do bruto a tirar, um por palavra apagada no editor: do fim da anterior ao inicio da seguinte (com folga)."""
+    out = {}
+    for sk, S in src.items():
+        ws = sorted(S["words"], key=lambda w: w["start"])
+        for i, w in enumerate(ws):
+            if f"{sk}:{w['start']:.2f}" in chaves:
+                a = max(ws[i - 1]["end"] if i else w["start"] - 0.3, w["start"] - 0.06)
+                b = min(ws[i + 1]["start"] if i + 1 < len(ws) else w["end"] + 0.3, w["end"] + 0.06)
+                out.setdefault(sk, []).append([a, b])
+    return out
+
+
+def menos(rs, tira):
+    """intervalos rs sem os buracos; pedaco menor que 0.08s some."""
+    for a, b in tira:
+        novo = []
+        for s, e in rs:
+            if b <= s or a >= e:
+                novo.append([s, e]); continue
+            if a > s: novo.append([s, a])
+            if b < e: novo.append([b, e])
+        rs = novo
+    return [r for r in rs if r[1] - r[0] > 0.08]
+
+
 def main(edl_path, out):
     base = os.path.dirname(os.path.abspath(edl_path))
     edl = json.load(open(edl_path))
@@ -45,13 +71,17 @@ def main(edl_path, out):
     for k, v in edl["sources"].items():
         src[k] = dict(v, sil=silences(os.path.join(base, v.get("silwav", v["wav"])), v["offset"]),
                       words=json.load(open(os.path.join(base, v["words"]))))
+    # editor da Forja: palavras que a pessoa apagou viram buracos nos trechos (chave = fonte:inicio no bruto)
+    aj = json.load(open(os.path.join(base, "ajustes.json"))) if os.path.exists(os.path.join(base, "ajustes.json")) else {}
+    fora = set(aj.get("remover") or [])
+    tira = buracos(src, fora)
     pieces, words, cuts, t = [], [], [], 0.0
     mapa = []  # (fonte, s, e, t) de cada pedaço, pra achar onde cai o vídeo mostrado
     for i, (sk, a, b, zoom, *opt) in enumerate(edl["segments"]):
         S = src[sk]
         x, y, w, h = edl["zooms"][zoom]
         # "inteiro": trecho em que um vídeo toca no monitor, sem cortar pausa (regra 18/11)
-        for j, (s, e) in enumerate([[a, b]] if "inteiro" in opt else ranges(a, b, S["sil"])):
+        for j, (s, e) in enumerate(menos([[a, b]] if "inteiro" in opt else ranges(a, b, S["sil"]), tira.get(sk, []))):
             # alinha no grid de frames (30fps): audio e video com a mesma duracao exata, sem deriva acumulada
             s = S["offset"] + round((s - S["offset"]) * 30) / 30
             e = s + max(3, round((e - s) * 30)) / 30
@@ -64,8 +94,8 @@ def main(edl_path, out):
                             "-frames:v", str(round((e - s) * 30)), "-c:a", "pcm_s16le", "-ar", "48000", "-ac", "2", p], check=True)
             pieces.append(p)
             for wd in S["words"]:
-                if s - 0.02 <= wd["start"] < e:
-                    words.append({"text": wd["text"], "start": round(t + max(0, wd["start"] - s), 3),
+                if s - 0.02 <= wd["start"] < e and f"{sk}:{wd['start']:.2f}" not in fora:
+                    words.append({"text": wd["text"], "key": f"{sk}:{wd['start']:.2f}", "start": round(t + max(0, wd["start"] - s), 3),
                                   "end": round(t + min(wd["end"], e) - s, 3), "seg": i})
             cuts.append({"t": round(t, 3), "seg": i, "new_seg": j == 0})
             mapa.append((sk, s, e, t))

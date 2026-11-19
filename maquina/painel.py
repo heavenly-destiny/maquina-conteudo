@@ -138,6 +138,53 @@ def jobs():
     return out
 
 
+def pasta_corte(job, n):
+    """pasta do corte n do job (sem sair de jobs/)."""
+    j = (JOBS / str(job)).resolve()
+    if j.parent != JOBS.resolve() or not (j / "estado.json").exists():
+        return None, None
+    c = next((c for c in json.loads((j / "estado.json").read_text()).get("cortes", []) if int(c["n"]) == int(n)), None)
+    return (j / "cortes" / f"{int(c['n']):02d}-{c['slug']}", c) if c else (None, None)
+
+
+def edicao(job, n):
+    """dados do editor: toda fala dos trechos do corte (inclusive o que a pessoa apagou), legenda atual e titulo."""
+    import html as _h
+    d, c = pasta_corte(job, n)
+    if not d or not (d / "edl.json").exists() or not (d / "edit/words.json").exists():
+        return None
+    edl, aj = json.loads((d / "edl.json").read_text()), lerj(d / "ajustes.json", {})
+    fora, tx, kwa = set(aj.get("remover") or []), aj.get("texto") or {}, aj.get("kw") or {}
+    saida = {w.get("key"): w["start"] for w in json.loads((d / "edit/words.json").read_text())}
+    cap = {w.get("k"): w for ch in lerj(d / "edit/caps.json", {}).get("chunks", []) for w in ch["w"]}
+    fontes = {k: json.loads((d / v["words"]).read_text()) for k, v in edl["sources"].items()}
+    pal, vistos = [], set()
+    for sk, a, b, *_ in edl["segments"]:
+        for w in fontes[sk]:
+            k = f"{sk}:{w['start']:.2f}"
+            if a - 0.02 <= w["start"] < b and k not in vistos:
+                vistos.add(k)
+                cw = cap.get(k) or {}
+                pal.append({"k": k, "orig": w["text"].strip(), "text": tx.get(k, cw.get("text", w["text"].strip(".,?!").strip())),
+                            "kw": kwa.get(k, bool(cw.get("kw"))), "fora": k in fora, "t": saida.get(k)})
+        pal.append(None)  # quebra de trecho
+    while pal and pal[-1] is None:
+        pal.pop()
+    html = (d / "edit/public/index.html").read_text() if (d / "edit/public/index.html").exists() else ""
+    volta = {v: k for k, v in (aj.get("painel") or {}).items()}
+    tit = []
+    for bloco in re.findall(r'<div class="head"[^>]*>(.*?)</div>', html):
+        for t in re.findall(r"<span[^>]*>(.*?)</span>", bloco):
+            t = _h.unescape(t)
+            if t.strip() and t not in [x["atual"] for x in tit]:
+                tit.append({"orig": volta.get(t, t), "atual": t})
+    v = d.parent.parent / "prontos" / f"{d.name}.mp4"
+    return {"nome": d.name, "titulo": c.get("titulo"), "status": c.get("status"), "fase": c.get("fase"), "erro": c.get("erro_ajuste"),
+            "nivel": (d / "nivel.txt").read_text().strip() if (d / "nivel.txt").exists() else "completo",
+            "video": f"/arquivo?p={v}&v={int(v.stat().st_mtime)}" if v.exists() else None,
+            "palavras": pal, "painel": tit, "aj": aj}
+
+
 TRAVA = threading.Lock()
 
 
@@ -786,6 +833,14 @@ class H(BaseHTTPRequestHandler):
             self._json(config_estado())
         elif u.path == "/api/estado":
             self._json(estado_cache())
+        elif u.path == "/api/corte-edicao":  # editor do corte
+            q = parse_qs(u.query)
+            try:
+                e = edicao(q.get("job", [""])[0], int(q.get("n", ["0"])[0]))
+            except (ValueError, KeyError, OSError) as ex:
+                e = None
+                print("edicao:", ex, flush=True)
+            self._json(e or {"erro": "esse corte não tem edição pra abrir"}, 200 if e else 404)
         elif u.path == "/api/carrossel":
             c = carrossel(parse_qs(u.query).get("id", [""])[0])
             self._json(c if c else {"erro": "carrossel não existe"}, 200 if c else 404)
@@ -953,6 +1008,17 @@ class H(BaseHTTPRequestHandler):
             disparar(["editar", d["job"], *fmt, *[str(int(x)) for x in d["ns"]]])
         elif u == "/api/rodar":
             disparar(["rodar", d["job"]])
+        elif u == "/api/corte-ajustar":  # salva o que a pessoa mexeu no editor e refaz o corte
+            pc, c = pasta_corte(d.get("job"), int(d.get("n", 0)))
+            a = d.get("ajustes") or {}
+            if not pc or not isinstance(a, dict):
+                return self._json({"erro": "corte inválido"}, 400)
+            limpo = {"remover": [str(x) for x in a.get("remover") or []][:5000],
+                     "texto": {str(k): str(v)[:80] for k, v in (a.get("texto") or {}).items()},
+                     "kw": {str(k): bool(v) for k, v in (a.get("kw") or {}).items()},
+                     "painel": {str(k): str(v)[:120] for k, v in (a.get("painel") or {}).items() if str(v).strip()}}
+            escrever(pc / "ajustes.json", limpo)
+            disparar(["ajustar", d["job"], str(int(d["n"]))])
         elif u == "/api/refazer":
             disparar(["refazer", d["job"], str(int(d["n"])), d["nota"][:2000]])
         elif u == "/api/gerar":
