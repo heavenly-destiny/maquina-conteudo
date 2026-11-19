@@ -94,7 +94,7 @@ def gemini(p, fonte):
         return
     try:
         r = subprocess.run([sys.executable, str(w[-1]), fonte, "--engine", "gemini", "--question", PERGUNTA_GEMINI],
-                           capture_output=True, text=True, timeout=900, env={**m.os.environ, "GEMINI_API_KEY": key})
+                           capture_output=True, text=True, timeout=300, env={**m.os.environ, "GEMINI_API_KEY": key, "WATCH_GEMINI_TIMEOUT": "240", "WATCH_GEMINI_MODEL": m.os.environ.get("FORJA_GEMINI_MODEL", "gemini-3.5-flash-lite")})
         if r.returncode == 0 and r.stdout.strip():
             (p / "gemini.txt").write_text(r.stdout)
         else:

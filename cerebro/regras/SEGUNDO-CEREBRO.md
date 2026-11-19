@@ -154,3 +154,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Forja, deploy (19/11): site hospedado + agente que cada pessoa instala uma vez no próprio computador (roda o Claude e as ferramentas dela, se atualiza sozinho). Tem que funcionar no Windows e no Mac. Ele não quer ficar instalando nem atualizando nada.
 
 - Instagram do Stories Lab (19/11): feed é capa de revista; carrossel é panorama contínuo (emendas ligadas, parece uma foto só), mínimo 5 slides. Primeiro feito em HTML com fotos do acervo e figurinhas reais, custo zero.
+- Peça visual do Stories Lab com Estúdio de Fotos (19/11): "foto antiga que você usou, se atualiza". Usar só as fotos ref-* e os looks atuais do preset-gallery.json (+100 looks), nunca as 12 fotos base antigas (treino da academia etc.).
