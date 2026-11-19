@@ -376,9 +376,9 @@ function Ocupado({ fundo, texto, status, fase, desde }: { fundo?: string | null;
 }
 
 /* ---------- card de vídeo 9:16 (padrão hover-to-preview do skiper/21st): capa, toca no hover, título por cima ---------- */
-export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onClick, canto, rodape, sel, desde, fundo }: {
+export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onClick, canto, rodape, sel, desde, fundo, id }: {
   capa?: string | null; video?: string | null; titulo?: string; texto?: string; status?: string; fase?: string; dur?: string;
-  i?: number; onClick: () => void; canto?: ReactNode; rodape?: ReactNode; sel?: boolean; desde?: number; fundo?: string | null;
+  i?: number; onClick: () => void; canto?: ReactNode; rodape?: ReactNode; sel?: boolean; desde?: number; fundo?: string | null; id?: string;
 }) {
   const vid = useRef<HTMLVideoElement>(null);
   const caixa = useRef<HTMLDivElement>(null);
@@ -405,7 +405,7 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
     <motion.div layout
       initial={{ opacity: 0, y: 16, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ ...molaSuave, delay: Math.min(i, 14) * 0.035 }}
-      whileTap={{ scale: 0.97 }} className="[perspective:900px]">
+      whileTap={{ scale: 0.97 }} data-tile={id} className="[perspective:900px] scroll-mt-24">
     <div ref={caixa} data-tilt onMouseMove={(ev) => inclinar(ev.clientX, ev.clientY)} onMouseLeave={soltar}
       className={cx("group relative aspect-[9/16] overflow-hidden rounded-[22px] bg-white/[0.04] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.06),0_24px_50px_-28px_rgb(0_0_0/0.9)]", sel && "ring-2 ring-red")}>
       <button onClick={() => { som.abrir(); onClick(); }} aria-label={titulo} className="absolute inset-0 cursor-pointer"

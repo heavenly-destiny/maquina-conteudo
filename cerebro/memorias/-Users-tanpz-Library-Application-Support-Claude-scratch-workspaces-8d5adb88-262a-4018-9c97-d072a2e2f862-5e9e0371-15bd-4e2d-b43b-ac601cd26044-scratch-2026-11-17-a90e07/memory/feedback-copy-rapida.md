@@ -9,3 +9,5 @@ Copy tem que sair rápido: "não existe criar copy em 20 minutos" (tanpz, 19/11/
 **Why:** the copy stage took ~14 min because of two review rounds plus an opus redo. He approves the copy himself in the panel, so the review there was redundant.
 
 **How to apply:** gerar.py skips the review loop when so_copy(ped). PARA_NA_COPY tells the agent to be fast and check its own copy. Review stays only on the final video. After the change, Clonar copy took 1m45s. Clonar also has "Fala original | Em português" (pedido.json idioma), and the choice is the user's per video. See [[maquina-v2-produto]].
+
+He also wants to edit the copy by hand before approving (19/11): "Editar copy" in Criar opens one field per spoken line plus the post caption. /api/editar-copy rewrites roteiro.json and roteiro.md and sets copy_editada, so the video stage aligns the on-screen text to his edits.

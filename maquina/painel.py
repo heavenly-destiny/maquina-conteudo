@@ -830,6 +830,7 @@ class H(BaseHTTPRequestHandler):
             ped = lerj(f, {})
             ped["copy_aprovada"] = True
             escrever(f, ped)
+            escrever(f.parent / "estado.json", {**lerj(f.parent / "estado.json", {}), "status": "na-fila", "fase": "", "desde": time.time()})  # o card já aparece gerando
             disparar_script("gerar.py", f.parent.name)
         elif u == "/api/postado":
             if d.get("rede") not in REDES or not d.get("ref"):

@@ -146,7 +146,7 @@ function EditorCopy({ g, fechar }: { g: Geracao; fechar: () => void }) {
   );
 }
 
-function Abrir({ g }: { g: Geracao }) {
+function Abrir({ g, aoAprovar }: { g: Geracao; aoAprovar: () => void }) {
   const [editando, setEditando] = useState(false);
   const [nota, setNota] = useState("");
   const avisar = useAviso();
@@ -171,7 +171,7 @@ function Abrir({ g }: { g: Geracao }) {
         <div className="vidro flex flex-col gap-3 rounded-[18px] p-4">
           <p className="text-[14px] text-mute">Leia a copy e mude o que quiser. Aprovando, a Forja gera voz, música e vídeo sem mudar nenhuma palavra.</p>
           {!editando && <div className="flex flex-wrap gap-2">
-            <Botao tipo="principal" onClick={async () => { await post("/api/aprovar-copy", { id: g.id }); som.enviar(); avisar("Copy aprovada. Gerando o vídeo."); atualizar(); }}>
+            <Botao tipo="principal" onClick={async () => { try { await post("/api/aprovar-copy", { id: g.id }); som.enviar(); avisar("Copy aprovada. Gerando o vídeo."); aoAprovar(); atualizar(); } catch (er) { avisar((er as Error).message, true); } }}>
               <Check className="size-4" /> Aprovar copy
             </Botao>
             {!!g.roteiro_json?.falas?.length && <Botao onClick={() => { som.toque(); setEditando(true); }}><Pencil className="size-4" /> Editar copy</Botao>}
@@ -232,6 +232,7 @@ function TentarDeNovo({ id, grande }: { id: string; grande?: boolean }) {
 export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
   const [filtro, setFiltro] = useState<"tudo" | Tipo>("tudo");
   const [aberta, setAberta] = useState<string | null>(null);
+  const [foco, setFoco] = useState<string | null>(null);
   const [nicho, setNicho] = useState("");
   const [val, setVal] = useState<"" | "teste" | "validado">("");
   const todos = e?.geracoes ?? [];
@@ -241,6 +242,12 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
     && (!nichoAt || g.nicho === nichoAt) && (!val || (g.validacao ?? "teste") === val)), [todos, filtro, nichoAt, val]);
   const roteiros = useMemo(() => todos.filter((g) => g.tipo === "roteiro" && (filtro === "tudo" || filtro === "roteiro")), [todos, filtro]);
   const aberto = todos.find((g) => g.id === aberta);
+  // aprovou a copy: fecha a folha, limpa os filtros e leva até o card que está gerando
+  const irPraGeracao = (id: string) => {
+    setAberta(null); setFiltro("tudo"); setNicho(""); setVal(""); setFoco(id);
+    setTimeout(() => document.querySelector(`[data-tile="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 350);
+    setTimeout(() => setFoco((f) => (f === id ? null : f)), 4000);
+  };
   const conta = (t: Tipo) => todos.filter((g) => g.tipo === t).length;
 
   return (
@@ -269,7 +276,7 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
             <Tile key={g.id} i={i} capa={g.capa} video={g.video} titulo={g.titulo || g.briefing}
               texto={(g.titulo || g.roteiro_txt?.split("\n").find((l) => l.trim().length > 12) || g.briefing).replace(/^[#*\s]+/, "")}
               status={g.status} fase={g.fase} desde={g.desde} fundo={g.inspiracao ? e?.inspiracoes.find((x) => x.id === g.inspiracao)?.capa : null}
-              onClick={() => setAberta(g.id)}
+              onClick={() => setAberta(g.id)} id={g.id} sel={foco === g.id}
               canto={g.status === "erro" && <TentarDeNovo id={g.id} />} />
           ))}
         </div>
@@ -281,7 +288,7 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
         </section>
       )}
       {!lista.length && !roteiros.length && <Vazio icone={<Sparkles className="size-6" />} titulo="Nada criado ainda"><Botao tipo="principal" onClick={() => ir("inicio")}>Criar o primeiro</Botao></Vazio>}
-      <Folha aberta={!!aberto} onFechar={() => setAberta(null)}>{aberto && <Abrir g={aberto} />}</Folha>
+      <Folha aberta={!!aberto} onFechar={() => setAberta(null)}>{aberto && <Abrir g={aberto} aoAprovar={() => irPraGeracao(aberto.id)} />}</Folha>
     </div>
   );
 }
