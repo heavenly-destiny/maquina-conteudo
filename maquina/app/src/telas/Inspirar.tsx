@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp, ArrowUpRight, Copy, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
-import { atualizar, biblioteca, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
+import { atualizar, biblioteca, limparBiblioteca, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
-import { Botao, Cabecalho, Copiar, Folha, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
+import { Botao, Cabecalho, Copiar, Excluir, Folha, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
 import { Musicas } from "./Musicas";
 
@@ -14,7 +14,7 @@ const FONTES = [
 // Motion, HyperFrames, prompts e formatos ficam dentro de Estilos (menos escolha de uma vez na tela)
 const ESTILOS = [{ v: "motion", nome: "Motion" }, { v: "hf", nome: "HyperFrames" }, { v: "acervo", nome: "Prompts" }, { v: "formatos", nome: "Formatos" }];
 
-function Decupagem({ i, criarCom }: { i: Inspiracao; criarCom: (r: Rascunho) => void }) {
+function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rascunho) => void; excluir: () => void }) {
   const d = i.decupagem;
   return (
     <div className="flex flex-col gap-5 sm:flex-row">
@@ -53,16 +53,17 @@ function Decupagem({ i, criarCom }: { i: Inspiracao; criarCom: (r: Rascunho) => 
               <Botao onClick={() => criarCom({ tipo: "clonar", inspiracao: i.id, briefing: "Clonar 100% igual" })}>
                 <Copy className="size-4" /> Clonar 100%
               </Botao>
-              <a href={i.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>
+              {i.url && <a href={i.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>}
+              <Excluir onConfirmar={excluir} />
             </div>
           </>
-        ) : <Status status={i.status} fase={i.fase} />}
+        ) : <div className="flex flex-col items-start gap-3"><Status status={i.status} fase={i.fase} />{i.status === "erro" && <Excluir onConfirmar={excluir} />}</div>}
       </div>
     </div>
   );
 }
 
-function ItemDetalhe({ x, decupar, criarCom }: { x: ItemBib; decupar: (u: string) => void; criarCom: (r: Rascunho) => void }) {
+function ItemDetalhe({ x, decupar, criarCom, excluir }: { x: ItemBib; decupar: (u: string) => void; criarCom: (r: Rascunho) => void; excluir: () => void }) {
   return (
     <div className="flex flex-col gap-5 sm:flex-row">
       {x.video ? <video src={x.video} poster={x.img} controls autoPlay muted loop playsInline className="mx-auto max-h-[52dvh] w-full max-w-[300px] shrink-0 rounded-[20px] object-contain bg-black/30" />
@@ -85,6 +86,7 @@ function ItemDetalhe({ x, decupar, criarCom }: { x: ItemBib; decupar: (u: string
           {x.prompt && <Botao tipo="principal" onClick={() => criarCom({ tipo: "animado", briefing: `Usar o motion "${x.titulo}" como referência (técnica: ${x.tecnica ?? "-"}). Prompt de origem: ${x.prompt}\n\nAssunto do meu vídeo: ` })}><Sparkles className="size-4" /> Usar no meu vídeo</Botao>}
           {x.url && <Botao tipo={x.prompt ? "fantasma" : "principal"} onClick={() => decupar(x.url!)}><Telescope className="size-4" /> Decupar</Botao>}
           {x.url && <a href={x.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>}
+          <Excluir onConfirmar={excluir} />
         </div>
       </div>
     </div>
@@ -134,6 +136,14 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
 
   const decupar = async (u: string) => {
     try { await post("/api/inspirar", { url: u.trim() }); som.enviar(); avisar("Decupando. Leva uns minutos."); setUrl(""); setItem(null); setFonte("decupados"); atualizar(); }
+    catch (er) { avisar((er as Error).message, true); }
+  };
+  const excluirInsp = async (id: string) => {
+    try { await post("/api/excluir-acervo", { insp: id }); avisar("Vídeo excluído do acervo."); setAberta(null); atualizar(); }
+    catch (er) { avisar((er as Error).message, true); }
+  };
+  const excluirItem = async (x: ItemBib) => {
+    try { await post("/api/excluir-acervo", { id: x.id }); avisar("Vídeo excluído do acervo."); setItem(null); setBib((b) => b.filter((y) => y.id !== x.id)); limparBiblioteca(); }
     catch (er) { avisar((er as Error).message, true); }
   };
   const q = busca.toLowerCase();
@@ -200,8 +210,8 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
       ) : <Vazio icone={<Search className="size-6" />} titulo={fonte === "decupados" ? "Cole um link acima pra decupar" : bib.length ? "Nada com esse nome" : "Carregando a biblioteca"} />}
       {fonte !== "decupados" && !emMusicas && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
 
-      <Folha aberta={!!aberto} onFechar={() => setAberta(null)} larga>{aberto && <Decupagem i={aberto} criarCom={criarCom} />}</Folha>
-      <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} />}</Folha>
+      <Folha aberta={!!aberto} onFechar={() => setAberta(null)} larga>{aberto && <Decupagem i={aberto} criarCom={criarCom} excluir={() => excluirInsp(aberto.id)} />}</Folha>
+      <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} excluir={() => excluirItem(item)} />}</Folha>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring, useAnimationControls } from "motion/react";
-import { ArrowUp, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
+import { ArrowUp, Captions, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
 import { atualizar, enviarInspiracao, enviarVideo, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
 import { Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
@@ -9,13 +9,14 @@ import { Aurora } from "../aurora";
 
 // Referência: "AI Prompt Input Box" (kedhareswer, 21st.dev, nov/2026): composer de vidro, frase de exemplo
 // se digitando sozinha, chips de modo, menu de ajuste, anexo e botão que respira. Adaptado ao vinho da Máquina.
-type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar" | "clonar";
+type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar" | "clonar" | "transcrever";
 const MODOS: { v: Modo; nome: string; Icone: typeof FileText }[] = [
   { v: "corte", nome: "Cortar", Icone: Scissors },
   { v: "animado", nome: "Animado", Icone: Smile },
   { v: "criativo", nome: "Criativo", Icone: Megaphone },
   { v: "modelar", nome: "Modelar", Icone: Telescope },
   { v: "clonar", nome: "Clonar", Icone: Copy },
+  { v: "transcrever", nome: "Transcrever", Icone: Captions },
   { v: "roteiro", nome: "Roteiro", Icone: FileText },
 ];
 const EXEMPLOS: Record<Modo, string[]> = {
@@ -24,6 +25,7 @@ const EXEMPLOS: Record<Modo, string[]> = {
   animado: ["O que é uma skill do Claude, passo a passo", "Por que seu story não tem resposta, explicado pelo mascote"],
   criativo: ["Stories Lab: stories prontos em 60 segundos, pra quem vende no Instagram", "Anúncio de 30s pra quem perde tempo no Canva"],
   modelar: ["Modelar esse viral pro meu nicho de IA", "Mesma estrutura, assunto: criar conteúdo com o Claude"],
+  transcrever: ["Cole o link do vídeo ou solte o arquivo", "Tiro o texto inteiro, com legenda .srt pronta"],
   clonar: ["Clonar 100% igual: mesmas cenas, texto, tempo e som", "Clonar igual e traduzir a fala pro português"],
 };
 const ESTILOS = [{ v: "conteudo-organico", rotulo: "Orgânico" }, { v: "criativo-direct-response", rotulo: "Anúncio" }, { v: "motivacional", rotulo: "Motivacional" }];
@@ -106,18 +108,22 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
     setProg(null);
   };
   const link = ehLink(texto);
-  const pode = prog === null && (modo === "corte" ? !!arquivo : link || (texto.trim().length > 3 && ((modo !== "modelar" && modo !== "clonar") || !!insp)));
+  const pode = prog === null && (modo === "corte" ? !!arquivo : modo === "transcrever" ? !!arquivo || link : link || (texto.trim().length > 3 && ((modo !== "modelar" && modo !== "clonar") || !!insp)));
   const anexar = (f?: File | null) => {
     if (!f) return;
     if (!/\.(mov|mp4|m4v)$/i.test(f.name)) return avisar("Só vídeo .mov ou .mp4", true);
     if (modo === "modelar" || modo === "clonar") return void subirInsp(f);
-    som.toque(); setArquivo(f); setModo("corte");
+    som.toque(); setArquivo(f); if (modo !== "transcrever") setModo("corte");
   };
 
   const enviar = async () => {
     if (!pode) return;
     try {
-      if (modo === "corte" && arquivo) {
+      if (modo === "transcrever") {
+        if (arquivo) { setProg(0); som.enviar(); await enviarInspiracao(arquivo, setProg, "transcrever"); setArquivo(null); }
+        else { await post("/api/transcrever", { url: texto.trim() }); som.enviar(); }
+        setRecibo({ msg: "Transcrevendo. O texto aparece em Criar.", aba: "criar" });
+      } else if (modo === "corte" && arquivo) {
         setProg(0); som.enviar();
         await enviarVideo(arquivo, setProg);
         setArquivo(null); setRecibo({ msg: "Vídeo recebido. Já estou cortando.", aba: "cortes" });
@@ -171,7 +177,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                   </span>
                   <span className="min-w-0">
                     <span className="block truncate text-[13.5px] font-medium">{arquivo.name}</span>
-                    <span className="block text-[12px] text-faint tnum">{prog !== null ? `Enviando ${Math.round(prog * 100)}%` : `${(arquivo.size / 1e9).toFixed(1)} GB`}</span>
+                    <span className="block text-[12px] text-faint tnum">{prog !== null ? `Enviando ${Math.round(prog * 100)}%` : arquivo.size >= 1e9 ? `${(arquivo.size / 1e9).toFixed(1)} GB` : `${Math.max(1, Math.round(arquivo.size / 1e6))} MB`}</span>
                   </span>
                   {prog === null && <button aria-label="Tirar vídeo" onClick={() => setArquivo(null)} className="grid size-7 cursor-pointer place-items-center rounded-full text-mute hover:bg-white/10 hover:text-ink"><X className="size-3.5" /></button>}
                 </div>

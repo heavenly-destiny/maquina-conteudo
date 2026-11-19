@@ -21,8 +21,12 @@ export type Inspiracao = {
   id: string; url: string; status: string; fase?: string; erro?: string; criado: number; decupagem?: Decupagem | null;
   video?: string | null; capa?: string | null; info?: { titulo?: string; autor?: string; views?: number; duracao?: number };
 };
+export type Transcricao = {
+  id: string; url?: string; arquivo?: string; status: string; fase?: string; erro?: string; criado: number; desde?: number; titulo?: string;
+  duracao?: number; previa?: string; texto?: string | null; srt?: string | null; tempo?: string | null;
+};
 export type Estado = {
-  brutos: Bruto[]; jobs: Job[]; geracoes: Geracao[]; inspiracoes: Inspiracao[];
+  brutos: Bruto[]; jobs: Job[]; geracoes: Geracao[]; inspiracoes: Inspiracao[]; transcricoes?: Transcricao[];
   hoje: { feitos: number; meta: number; postados: number }; envio: { rodando: boolean; msg: string }; agora: number;
 };
 export type ItemBib = {
@@ -72,6 +76,7 @@ export const musicas = (): Promise<Musicas> => fetch("/api/musicas").then((r) =>
 
 let bib: Promise<ItemBib[]> | null = null;
 export const biblioteca = () => (bib ??= fetch("/api/biblioteca").then((r) => r.json()));
+export const limparBiblioteca = () => { bib = null; };
 
 export const fmtTempo = (s?: number | null) => {
   if (!s && s !== 0) return "";
@@ -85,10 +90,10 @@ export const fmtViews = (v?: number | string) => {
 };
 
 /* sobe o vídeo cru; o servidor já começa a cortar quando termina */
-export function enviarInspiracao(f: File, prog: (p: number) => void) {
+export function enviarInspiracao(f: File, prog: (p: number) => void, destino = "inspirar") {
   return new Promise<string>((ok, erro) => {
     const x = new XMLHttpRequest();
-    x.open("POST", `/api/upload?destino=inspirar&nome=${encodeURIComponent(f.name)}`);
+    x.open("POST", `/api/upload?destino=${destino}&nome=${encodeURIComponent(f.name)}`);
     x.upload.onprogress = (ev) => prog(ev.loaded / ev.total);
     x.onload = () => { try { x.status < 300 ? ok(JSON.parse(x.responseText).id) : erro(new Error("O envio falhou")); } catch { erro(new Error("O envio falhou")); } };
     x.onerror = () => erro(new Error("O envio falhou"));

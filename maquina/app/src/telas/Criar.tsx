@@ -6,6 +6,7 @@ import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import type { Aba } from "../Dock";
 import { som } from "../sons";
+import { AbrirTranscricao, LinhaTranscricao } from "./Transcricoes";
 
 type Tipo = Geracao["tipo"];
 export type { Rascunho } from "../api";
@@ -230,7 +231,8 @@ function TentarDeNovo({ id, grande }: { id: string; grande?: boolean }) {
 }
 
 export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
-  const [filtro, setFiltro] = useState<"tudo" | Tipo>("tudo");
+  const [filtro, setFiltro] = useState<"tudo" | Tipo | "transcricao">("tudo");
+  const [abertaT, setAbertaT] = useState<string | null>(null);
   const [aberta, setAberta] = useState<string | null>(null);
   const [foco, setFoco] = useState<string | null>(null);
   const [nicho, setNicho] = useState("");
@@ -242,6 +244,8 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
     && (!nichoAt || g.nicho === nichoAt) && (!val || (g.validacao ?? "teste") === val)), [todos, filtro, nichoAt, val]);
   const roteiros = useMemo(() => todos.filter((g) => g.tipo === "roteiro" && (filtro === "tudo" || filtro === "roteiro")), [todos, filtro]);
   const aberto = todos.find((g) => g.id === aberta);
+  const transc = e?.transcricoes ?? [];
+  const abertoT = transc.find((t) => t.id === abertaT);
   // aprovou a copy: fecha a folha, limpa os filtros e leva até o card que está gerando
   const irPraGeracao = (id: string) => {
     setAberta(null); setFiltro("tudo"); setNicho(""); setVal(""); setFoco(id);
@@ -259,8 +263,8 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
         </motion.button>
       </Cabecalho>
       <Segmentos id="criados" valor={filtro} onChange={setFiltro} className="self-start max-w-full"
-        opcoes={[{ v: "tudo" as const, rotulo: "Tudo" }, ...TIPOS.filter((t) => conta(t.v)).map((t) => ({ v: t.v, rotulo: t.nome }))]} />
-      {todos.some((g) => g.tipo !== "roteiro") && (
+        opcoes={[{ v: "tudo" as const, rotulo: "Tudo" }, ...TIPOS.filter((t) => conta(t.v)).map((t) => ({ v: t.v, rotulo: t.nome })), ...(transc.length ? [{ v: "transcricao" as const, rotulo: "Transcrições" }] : [])]} />
+      {todos.some((g) => g.tipo !== "roteiro") && filtro !== "transcricao" && filtro !== "roteiro" && (
         <div className="flex flex-wrap items-center gap-2">
           <Segmentos id="val" valor={val} onChange={setVal} className="max-w-full"
             opcoes={[{ v: "" as const, rotulo: "Todos" }, { v: "teste" as const, rotulo: "Em teste" }, { v: "validado" as const, rotulo: "Validados" }]} />
@@ -287,7 +291,14 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
           <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5 lg:grid-cols-2">{roteiros.map((g, i) => <LinhaRoteiro key={g.id} g={g} i={i} onClick={() => setAberta(g.id)} />)}</div>
         </section>
       )}
-      {!lista.length && !roteiros.length && <Vazio icone={<Sparkles className="size-6" />} titulo="Nada criado ainda"><Botao tipo="principal" onClick={() => ir("inicio")}>Criar o primeiro</Botao></Vazio>}
+      {transc.length > 0 && (filtro === "tudo" || filtro === "transcricao") && (
+        <section className="flex flex-col gap-2.5">
+          {filtro === "tudo" && <h2 className="mt-4 text-[17px] font-semibold tracking-tight">Transcrições <span className="text-[14px] font-normal text-faint tnum">{transc.length}</span></h2>}
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5 lg:grid-cols-2">{transc.map((t, i) => <LinhaTranscricao key={t.id} t={t} i={i} onClick={() => setAbertaT(t.id)} />)}</div>
+        </section>
+      )}
+      <Folha aberta={!!abertoT} onFechar={() => setAbertaT(null)}>{abertoT && <AbrirTranscricao t={abertoT} fechar={() => setAbertaT(null)} />}</Folha>
+      {!lista.length && !roteiros.length && !transc.length && <Vazio icone={<Sparkles className="size-6" />} titulo="Nada criado ainda"><Botao tipo="principal" onClick={() => ir("inicio")}>Criar o primeiro</Botao></Vazio>}
       <Folha aberta={!!aberto} onFechar={() => setAberta(null)}>{aberto && <Abrir g={aberto} aoAprovar={() => irPraGeracao(aberto.id)} />}</Folha>
     </div>
   );

@@ -258,11 +258,15 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
     <motion.section {...cascata(i + 1)} className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
-          <h3 className="truncate text-[17px] font-semibold tracking-tight">{job.bruto || job.id}</h3>
+          <h3 className="truncate text-[17px] font-semibold tracking-tight">{(job.bruto || job.id).replace(/\.(mov|mp4|m4v)$/i, "")}</h3>
+          {et >= 3 ? (
+            <p className="mt-1 text-[13px] text-mute tnum">{job.cortes.filter((c) => c.status === "pronto").length} cortes prontos</p>
+          ) : (
           <div className="mt-1.5 flex items-center gap-2" aria-label={`Etapa: ${ETAPAS[et]}`}>
             <span className="flex gap-1">{ETAPAS.map((n, k) => <motion.span key={n} layout className={cx("h-1 rounded-full", k <= et ? "w-5 bg-red" : "w-2 bg-white/15")} transition={mola} />)}</span>
             <span className={cx("text-[12px] font-medium", et < 3 ? "brilha-texto" : "text-mute")}>{ETAPAS[et]}</span>
           </div>
+          )}
         </div>
         <div className="flex flex-wrap items-center gap-2">
         <Segmentos id={`f-${job.id}`} valor={filtro} onChange={(f) => { setFiltro(f); setSel(new Set()); }}

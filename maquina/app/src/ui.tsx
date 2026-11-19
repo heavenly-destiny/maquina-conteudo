@@ -1,7 +1,7 @@
 import { useId, useRef, createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Copy, X } from "lucide-react";
+import { Check, Copy, Trash2, X } from "lucide-react";
 import { som } from "./sons";
 
 export const mola = { type: "spring", stiffness: 380, damping: 30 } as const;
@@ -443,3 +443,14 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
 
 /* grade padrão dos cards */
 export const GRADE = "grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5";
+
+/* excluir com confirmação no próprio botão: 1º toque arma, 2º exclui (3 s pra desistir) */
+export function Excluir({ onConfirmar, rotulo = "Excluir" }: { onConfirmar: () => Promise<void> | void; rotulo?: string }) {
+  const [certeza, setCerteza] = useState(false);
+  useEffect(() => { if (!certeza) return; const k = setTimeout(() => setCerteza(false), 3000); return () => clearTimeout(k); }, [certeza]);
+  return (
+    <Botao onClick={() => { if (!certeza) { som.toque(); setCerteza(true); } else onConfirmar(); }} className={certeza ? "bg-red text-white" : "text-mute"}>
+      <Trash2 className="size-4" /> {certeza ? "Toque de novo pra excluir" : rotulo}
+    </Botao>
+  );
+}

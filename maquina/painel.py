@@ -15,6 +15,7 @@ CACHE = AQUI / ".duracoes.json"
 PORTA = int(os.environ.get("PORTA", 4747))
 GER = RAIZ / "geracoes"
 INS = RAIZ / "inspiracoes"
+TRA = RAIZ / "transcricoes"
 POSTADOS = RAIZ / "postados.json"
 HUB = RAIZ / "estilos/hub.json"
 TIPOS = ("roteiro", "animado", "criativo", "modelar", "clonar")
@@ -23,7 +24,8 @@ DIST = AQUI / "app/dist"  # app novo (React); o painel antigo fica em /v2
 SOM = AQUI / "som/intro"
 TIPO_ARQ = {".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml",
             ".woff2": "font/woff2", ".jpg": "image/jpeg", ".png": "image/png", ".mp3": "audio/mpeg", ".json": "application/json; charset=utf-8",
-            ".md": "text/markdown; charset=utf-8", ".mp4": "video/mp4"}
+            ".md": "text/markdown; charset=utf-8", ".mp4": "video/mp4",
+            ".txt": "text/plain; charset=utf-8", ".srt": "text/plain; charset=utf-8"}
 
 
 def duracao(p):
@@ -277,6 +279,16 @@ def geracoes():
         g["video"], g["capa"] = url_arq(d / "final.mp4"), url_arq(d / "capa.jpg")
         g["roteiro_txt"] = (d / "roteiro.md").read_text()[:20000] if (d / "roteiro.md").exists() else None
         g["roteiro_json"] = lerj(d / "roteiro.json", None)
+        out.append(g)
+    return out
+
+
+def transcricoes():
+    out = []
+    for d, g in pastas(TRA):
+        t = d / "texto.txt"
+        g["previa"] = t.read_text()[:240] if t.exists() else ""
+        g["texto"], g["srt"], g["tempo"] = url_arq(t), url_arq(d / "legenda.srt"), url_arq(d / "tempo.txt")
         out.append(g)
     return out
 
@@ -631,9 +643,10 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/config":
             self._json(config_estado())
         elif u.path == "/api/estado":
-            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "envio": ENVIO, "agora": time.time()})
+            self._json({"brutos": brutos(), "jobs": jobs(), "geracoes": geracoes(), "inspiracoes": inspiracoes(), "transcricoes": transcricoes(), "hoje": hoje(), "postados": lerj(POSTADOS, []), "envio": ENVIO, "agora": time.time()})
         elif u.path == "/api/biblioteca":  # sem a imagem base64: ela vem sob demanda em /api/bib-img
-            self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca())])
+            fora = set(lerj(HUB.parent / "ocultos.json", []))  # excluídos pelo painel (o hub.json é a base e não é apagado)
+            self._json([{**{k: v for k, v in x.items() if k != "arq"}, "img": f"/api/bib-img?i={i}" if x.get("img") else None} for i, x in enumerate(biblioteca()) if x["id"] not in fora])
         elif u.path == "/api/musicas":
             self._json(musicas())
         elif u.path == "/api/musicas/busca":
@@ -680,7 +693,7 @@ class H(BaseHTTPRequestHandler):
         else:
             self.send_response(200)
         self.send_header("Content-Type", TIPO_ARQ.get(p.suffix.lower(), "application/octet-stream"))
-        if p.suffix == ".mp4" and "baixar" in self.path:
+        if p.suffix in (".mp4", ".txt", ".srt") and "baixar" in self.path:
             self.send_header("Content-Disposition", f'attachment; filename="{p.name}"')
         if p.name == "index.html" or p.suffix.lower() in (".jpg", ".png"):  # sem cache: build novo e capa re-renderizada aparecem na hora
             self.send_header("Cache-Control", "no-cache")
@@ -717,6 +730,13 @@ class H(BaseHTTPRequestHandler):
         if falta:
             tmp.unlink(missing_ok=True)
             return self._json({"erro": "upload cortado"}, 400)
+        if destino == "transcrever":  # só quer o texto do vídeo
+            id_, p = novo_id(TRA, "tra")
+            tmp.replace(p / f"video{Path(nome).suffix.lower()}")
+            escrever(p / "pedido.json", {"arquivo": nome, "criado": time.time()})
+            escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": "", "titulo": nome})
+            disparar_script("transcrever.py", id_)
+            return self._json({"ok": True, "id": id_})
         if destino == "inspirar":  # modelar: o vídeo que a pessoa subiu vira a inspiração (não vai pra corte)
             id_, p = novo_id(INS, "insp")
             tmp.replace(p / f"video{Path(nome).suffix.lower()}")
@@ -770,6 +790,14 @@ class H(BaseHTTPRequestHandler):
                                          "inspiracao": d.get("inspiracao"), "duracao": d.get("duracao"), "idioma": d.get("idioma") or "original", "criado": time.time()})
             escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": "", "titulo": "", "saidas": {}})
             disparar_script("gerar.py", id_)
+            return self._json({"ok": True, "id": id_})
+        elif u == "/api/transcrever":
+            if not re.match(r"https?://\S+$", str(d.get("url", ""))):
+                return self._json({"erro": "link inválido"}, 400)
+            id_, p = novo_id(TRA, "tra")
+            escrever(p / "pedido.json", {"url": d["url"], "criado": time.time()})
+            escrever(p / "estado.json", {"status": "na-fila", "fase": "", "desde": time.time(), "erro": "", "titulo": d["url"]})
+            disparar_script("transcrever.py", id_)
             return self._json({"ok": True, "id": id_})
         elif u == "/api/inspirar":
             if not re.match(r"https?://\S+$", str(d.get("url", ""))):
@@ -847,6 +875,25 @@ class H(BaseHTTPRequestHandler):
             er, cod = marcar_job(d.get("job"), d.get("categoria")) if u.endswith("job") else marcar_geracao(d.get("id"), d.get("nicho"), d.get("validacao"))
             if er:
                 return self._json({"erro": er}, cod)
+        elif u == "/api/excluir-acervo":  # inspiração decupada: vai pra Lixeira; item da base: some do painel
+            if d.get("insp"):
+                t = INS / Path(str(d["insp"])).name
+                if not (t / "pedido.json").exists():
+                    return self._json({"erro": "vídeo não existe"}, 404)
+                if lerj(t / "estado.json", {}).get("status") in ("na-fila", "gerando"):
+                    return self._json({"erro": "esse vídeo ainda está sendo analisado"}, 409)
+                lixeira(t)
+            elif d.get("id"):
+                f = HUB.parent / "ocultos.json"
+                with TRAVA:
+                    escrever(f, sorted({*lerj(f, []), str(d["id"])}))
+            else:
+                return self._json({"erro": "nada pra excluir"}, 400)
+        elif u == "/api/excluir-transcricao":
+            t = TRA / Path(str(d.get("id", ""))).name
+            if not (t / "pedido.json").exists():
+                return self._json({"erro": "transcrição não existe"}, 404)
+            lixeira(t)
         elif u in ("/api/excluir-corte", "/api/excluir-job"):
             er, cod = excluir_corte(d.get("job"), d.get("n")) if u.endswith("corte") else excluir_job(d.get("job"))
             if er:
