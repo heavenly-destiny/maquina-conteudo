@@ -5,6 +5,7 @@ import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type 
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
+import { CardVitrine, Fileira, Secao } from "../Vitrine";
 
 // organizado pelo tipo de vídeo que a pessoa quer fazer; dentro de cada um, os mais vistos primeiro
 const FONTES = [
@@ -168,6 +169,13 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   const lista = useMemo(() => bib.filter((x) => x.fonte !== "musicas" && (fonte === "todas" || x.tipo === fonte) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q)))
     .sort((a, b) => vistas(b.views) - vistas(a.views) || (b.relevancia ?? 0) - (a.relevancia ?? 0)), [bib, fonte, q]);
   const verMinhas = true;
+  // vitrine (padrão 21st/Skiper): em alta numerado, seus analisados e uma fileira por tipo de vídeo
+  const vitrine = fonte === "todas" && !q;
+  const daBib = useMemo(() => bib.filter((x) => x.fonte !== "musicas").sort((a, b) => vistas(b.views) - vistas(a.views) || (b.relevancia ?? 0) - (a.relevancia ?? 0)), [bib]);
+  const contagem = useMemo(() => { const c: Record<string, number> = {}; daBib.forEach((x) => { if (x.tipo) c[x.tipo] = (c[x.tipo] ?? 0) + 1; }); return c; }, [daBib]);
+  const analisados = useMemo(() => { const vistos = new Set<string>(); return (e?.inspiracoes ?? []).filter((x) => { const k = x.url || x.info?.titulo || x.id; if (vistos.has(k)) return false; vistos.add(k); return true; }); }, [e?.inspiracoes]);
+  const topIds = useMemo(() => new Set(daBib.slice(0, 10).map((x) => x.id)), [daBib]); // nada repete entre fileiras
+  const metaBib = (x: ItemBib) => [x.autor, fmtViews(x.views) && `${fmtViews(x.views)} views`].filter(Boolean).join(" · ");
   const aberto = (e?.inspiracoes ?? []).find((i) => i.id === aberta);
   const valido = /^https?:\/\//.test(url.trim());
 
@@ -213,9 +221,42 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
       </AnimatePresence>
 
       <Segmentos id="fonte" valor={fonte} onChange={(f) => { setFonte(f); setLimite(40); }} className="self-start max-w-full"
-        opcoes={FONTES.map((f) => ({ v: f.v, rotulo: f.nome }))} />
+        opcoes={FONTES.map((f) => {
+          const n = f.v === "todas" ? daBib.length + (e?.inspiracoes.length ?? 0) : f.v === "decupados" ? (e?.inspiracoes.length ?? 0) : contagem[f.v] ?? 0;
+          return { v: f.v, rotulo: <span className="flex items-center gap-1.5">{f.nome}{n > 0 && <span className="text-[11.5px] opacity-55 tnum">{n}</span>}</span> };
+        })} />
 
-      {(verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
+      {vitrine && daBib.length > 0 ? (
+        <div className="flex flex-col gap-10">
+          <Secao titulo="Em alta" sub="Os mais vistos do acervo agora" i={0}>
+            <Fileira>
+              {daBib.slice(0, 10).map((x, k) => (
+                <CardVitrine key={x.id} i={k} rank={k + 1} img={x.img} video={x.video} titulo={x.titulo} meta={metaBib(x)} onClick={() => setItem(x)} largura="w-[34vw] max-w-[150px] sm:w-[150px]" />
+              ))}
+            </Fileira>
+          </Secao>
+          {analisados.length > 0 && (
+            <Secao titulo="Seus analisados" total={analisados.length} verTudo={() => setFonte("decupados")} i={1}>
+              <Fileira>
+                {analisados.slice(0, 16).map((x, k) => (
+                  <CardVitrine key={x.id} i={k} img={x.capa} video={x.video} titulo={x.decupagem?.titulo || x.info?.titulo}
+                    meta={x.status === "pronto" ? [x.info?.autor, fmtViews(x.info?.views) && `${fmtViews(x.info?.views)} views`].filter(Boolean).join(" · ") : <Status status={x.status} fase={x.fase} />}
+                    onClick={() => setAberta(x.id)} />
+                ))}
+              </Fileira>
+            </Secao>
+          )}
+          {FONTES.filter((f) => !["todas", "decupados"].includes(f.v) && contagem[f.v]).map((f, k) => (
+            <Secao key={f.v} titulo={f.nome} total={contagem[f.v]} verTudo={() => { setFonte(f.v); scrollTo({ top: 0, behavior: "smooth" }); }} i={k + 2}>
+              <Fileira>
+                {daBib.filter((x) => x.tipo === f.v && !topIds.has(x.id)).slice(0, 14).map((x, j) => (
+                  <CardVitrine key={x.id} i={j} img={x.img} video={x.video} titulo={x.titulo} meta={metaBib(x)} onClick={() => setItem(x)} />
+                ))}
+              </Fileira>
+            </Secao>
+          ))}
+        </div>
+      ) : (verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
         <div className="columns-2 gap-2.5 sm:columns-3 sm:gap-3 lg:columns-5">
           {verMinhas && minhas.map((i, k) => (
             <Card key={i.id} i={k} alto img={i.capa} video={i.video} titulo={i.decupagem?.titulo || i.info?.titulo} status={i.status} fase={i.fase}
@@ -227,7 +268,7 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
           ))}
         </div>
       ) : <Vazio icone={<Search className="size-6" />} titulo={fonte === "decupados" ? "Cole um link acima pra decupar" : bib.length ? "Nada com esse nome" : "Carregando a biblioteca"} />}
-      {fonte !== "decupados" && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
+      {!vitrine && fonte !== "decupados" && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
 
       <Folha aberta={!!aberto} onFechar={() => setAberta(null)} larga>{aberto && <Decupagem i={aberto} criarCom={criarCom} excluir={() => excluirInsp(aberto.id)} />}</Folha>
       <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} excluir={() => excluirItem(item)} modo={modo} setModo={setModo} />}</Folha>
