@@ -71,3 +71,5 @@ Formato:
 - Teste no ar desde 18/11, nas ofertas R$27 e R$19,90: Vitalício 14,90, FontLab 29,90, Seguidores 24,90, Reels 24,90, Presets 14,90. Medir a taxa de cada bump.
 
 - 2026-11-19 | Stories Lab | depoimento novo (comentário da kcya.martyns: "É maravilhoso!!! Não vivo mais sem ele") na prova social | publicado no início da faixa (print-5.webp) | sem número ainda | prova social nova | medir cliques nos planos ÷ alcance dos planos
+- Carrossel antes e depois (19/11): o par (mesma foto sem e com figurinha) fica inteiro dentro de UM slide. Partido na emenda, o slide mostrava o depois de uma foto ao lado do antes de outra e ele não entendeu ("usando foto diferente, oxi").
+- Instagram Stories Lab (19/11): post mais compartilhado (10x) = "Sua foto. Vários moods." (mesma foto em 3 looks do Estúdio). Correções dele: quebrar o padrão entre posts (cada um com formato diferente, mockups); figurinha tem que combinar com a foto ("bora almoçar" em pizza não faz sentido); antes e depois com a mesma foto, mantendo a ligação entre slides.

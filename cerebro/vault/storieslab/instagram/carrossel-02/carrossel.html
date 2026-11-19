@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Bricolage';src:url(src/bricolage-grotesque-v2.woff2) format('woff2');font-weight:200 800}
+@font-face{font-family:'Instrument Sans';src:url(src/instrument-sans.woff2) format('woff2');font-weight:400 700}
+@font-face{font-family:'Instrument Serif';src:url(src/instrument-serif-italic.woff2) format('woff2');font-style:italic}
+:root{--bg:#FFF7F5;--pink:#FF2E74;--pink-d:#E0266A;--soft:#FFE1EA;--ink:#2A1630;--muted:#7d6878}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:5400px;height:1350px;overflow:hidden;background:var(--bg)}
+.c{position:relative;width:5400px;height:1350px;font-family:'Instrument Sans',sans-serif;color:var(--ink);
+  background:linear-gradient(180deg,#FFF9F7 0%,#FFEFF3 100%)}
+.glow{position:absolute;border-radius:50%;filter:blur(130px);background:#FFC2D6;opacity:.6}
+.h{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.92}
+.i{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pink-d);letter-spacing:-.02em}
+.sub{position:absolute;font-size:34px;color:var(--muted);line-height:1.35}
+.cnt{position:absolute;top:84px;font:600 30px 'Instrument Sans';color:#b9a8b2;letter-spacing:.04em}
+.foot{position:absolute;bottom:64px;font:500 26px 'Instrument Sans';color:#a3909b}
+.logo{position:absolute;bottom:56px;font:700 34px 'Bricolage';letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
+.logo b{width:22px;height:30px;border-radius:6px 6px 6px 2px;background:linear-gradient(160deg,#FF2E74 60%,#FFC93C 60%)}
+.logo em{font-family:'Instrument Serif';font-style:italic;font-weight:400;color:var(--pink-d)}
+svg.thread{position:absolute;inset:0}
+.phone{position:absolute;width:480px;height:1030px;border-radius:78px;background:#141017;padding:15px;transform:rotate(var(--r));
+  box-shadow:0 0 0 2px #3a3340 inset,0 16px 34px rgba(42,22,48,.22),0 70px 130px rgba(42,22,48,.28),0 40px 120px rgba(255,46,116,.16)}
+.scr{position:relative;width:100%;height:100%;border-radius:64px;overflow:hidden;background:#000}
+.scr .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scr:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4) 0,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,rgba(0,0,0,.4) 100%)}
+.isl{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:130px;height:38px;border-radius:20px;background:#000;z-index:4}
+.bars{position:absolute;top:76px;left:20px;right:20px;display:flex;gap:6px;z-index:3}
+.bars i{flex:1;height:4px;border-radius:3px;background:rgba(255,255,255,.45)}.bars i.on{background:#fff}
+.who{position:absolute;top:94px;left:22px;display:flex;align-items:center;gap:12px;z-index:3;color:#fff;font:600 24px 'Instrument Sans'}
+.who img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid #fff}.who span{font-weight:400;opacity:.8}
+.reply{position:absolute;left:22px;right:96px;bottom:34px;height:62px;border:2px solid rgba(255,255,255,.75);border-radius:32px;z-index:3;color:#fff;font-size:22px;display:flex;align-items:center;padding-left:24px}
+.heart{position:absolute;right:28px;bottom:42px;z-index:3;width:46px}
+.stk{position:absolute;z-index:2;filter:drop-shadow(0 6px 14px rgba(0,0,0,.2))}
+.tray{position:absolute;width:820px;border-radius:48px;background:#fff;padding:40px;transform:rotate(var(--r));
+  box-shadow:0 12px 28px rgba(42,22,48,.10),0 60px 120px rgba(42,22,48,.16)}
+.tray .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.tray .t{font:800 46px 'Bricolage';letter-spacing:-.03em}.tray .n{font:500 26px 'Instrument Sans';color:var(--muted)}
+.search{height:70px;border-radius:36px;background:#F7F1F0;display:flex;align-items:center;gap:14px;padding:0 26px;font-size:26px;color:#a3909b;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{height:220px;border-radius:30px;background:linear-gradient(160deg,#F6EFEC,#EDE3E1);display:flex;align-items:center;justify-content:center;position:relative}
+.tile img{max-width:82%;max-height:70%}
+.tile.sel{background:#FFE8EF;box-shadow:0 0 0 5px var(--pink) inset}
+.tile.sel:after{content:"✓";position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:var(--pink);color:#fff;font:700 24px sans-serif;display:flex;align-items:center;justify-content:center}
+.toast{position:absolute;display:flex;align-items:center;gap:14px;background:#2A1630;color:#fff;border-radius:40px;padding:18px 34px;font:600 30px 'Instrument Sans';box-shadow:0 20px 50px rgba(42,22,48,.3)}
+.bub{position:absolute;display:flex;align-items:center;gap:14px;background:#fff;border-radius:44px;padding:14px 32px 14px 14px;white-space:nowrap;font:600 31px 'Instrument Sans';z-index:6;
+  box-shadow:0 10px 24px rgba(42,22,48,.12),0 34px 70px rgba(42,22,48,.14);transform:rotate(var(--r))}
+.bub img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.btn{position:absolute;height:100px;border-radius:50px;background:var(--pink);color:#fff;font:700 36px 'Instrument Sans';display:flex;align-items:center;justify-content:center;gap:16px;box-shadow:0 16px 36px rgba(255,46,116,.38)}
+</style></head><body><div class="c">
+<div class="glow" style="width:1000px;height:800px;left:600px;top:500px"></div>
+<div class="glow" style="width:1100px;height:800px;left:2500px;top:200px"></div>
+<div class="glow" style="width:1000px;height:800px;left:3900px;top:600px"></div>
+
+<svg class="thread" width="5400" height="1350" viewBox="0 0 5400 1350"><path d="M 2020 600 C 2200 430, 2380 400, 2560 480 M 3060 820 C 3240 900, 3420 860, 3560 760" fill="none" stroke="#FF2E74" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 18" opacity=".6"/></svg>
+
+<!-- SLIDE 1 -->
+<div class="h" style="left:80px;top:160px;font-size:150px">Mesma<br>foto.</div>
+<div class="h i" style="left:80px;top:440px;font-size:150px;line-height:.86">Outro<br>story.</div>
+<div class="sub" style="left:86px;top:770px;width:520px">Arrasta e vê o que<br>uma figurinha faz.</div>
+<div class="cnt" style="left:930px">01 / 05</div>
+<div class="logo" style="left:80px"><b></b>stories<em>lab</em></div>
+<div class="phone" style="left:740px;top:560px;--r:-8deg"><div class="scr"><div class="isl"></div>
+  <img class="ph" src="src/mae-filho-05.jpg">
+  <div class="bars"><i class="on"></i><i></i><i></i></div><div class="who"><img src="src/av-2.webp">você <span>agora</span></div>
+  <div class="reply">Enviar mensagem</div>
+  <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+</div></div>
+<div class="bub" style="left:880px;top:410px;--r:4deg;color:#a3909b;font-weight:500"><img src="src/av-3.webp">visualizou e não respondeu</div>
+
+<!-- SLIDE 2 -->
+<div class="h" style="left:1390px;top:150px;font-size:96px">Escolhe a</div>
+<div class="h i" style="left:1390px;top:240px;font-size:120px">figurinha.</div>
+<div class="cnt" style="left:2010px">02 / 05</div>
+<div class="tray" style="left:1330px;top:450px;--r:3deg">
+  <div class="top"><span class="t">Amor</span><span class="n">+24 mil no app</span></div>
+  <div class="search">⌕ &nbsp;Buscar figurinha</div>
+  <div class="grid">
+    <div class="tile" style="background:linear-gradient(160deg,#3a2a35,#2A1630)"><img src="src/date-1.webp"></div>
+    <div class="tile sel"><img src="src/date-5.webp"></div>
+    <div class="tile"><img src="src/date-2.webp"></div>
+    <div class="tile"><img src="src/date-4.webp"></div>
+    <div class="tile"><img src="src/niver-5.webp"></div>
+    <div class="tile"><img src="src/pet-2.webp"></div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="h" style="left:2350px;top:150px;font-size:96px;text-align:center;width:700px">Copia e</div>
+<div class="h i" style="left:2350px;top:240px;font-size:130px;text-align:center;width:700px">cola.</div>
+<div class="cnt" style="left:3090px">03 / 05</div>
+<img class="stk" src="src/date-5.webp" style="left:2400px;top:500px;width:600px;transform:rotate(-7deg);filter:drop-shadow(0 30px 40px rgba(42,22,48,.25))">
+<div class="toast" style="left:2490px;top:920px">✓ &nbsp;Figurinha copiada</div>
+<div class="sub" style="left:2380px;top:1070px;width:640px;text-align:center">Sem baixar nada. Sem Canva.<br>Direto no seu story.</div>
+
+<!-- SLIDE 4 -->
+<div class="cnt" style="left:4170px">04 / 05</div>
+<div class="phone" style="left:3520px;top:180px;--r:6deg"><div class="scr"><div class="isl"></div>
+  <img class="ph" src="src/mae-filho-05.jpg">
+  <img class="stk" src="src/date-5.webp" style="width:300px;left:80px;top:610px;transform:rotate(-6deg)">
+  <div class="bars"><i class="on"></i><i></i><i></i></div><div class="who"><img src="src/av-2.webp">você <span>agora</span></div>
+  <div class="reply">Enviar mensagem</div>
+  <svg class="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.2 4.6 2.8C12 6.2 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+</div></div>
+<div class="bub" style="left:3300px;top:360px;--r:-4deg"><img src="src/av-1.webp">que coisa mais linda 😍</div>
+<div class="bub" style="left:3900px;top:760px;--r:3deg"><img src="src/av-3.webp">onde você fez esse story?</div>
+<div class="bub" style="left:3330px;top:1130px;--r:-2deg"><img src="src/av-2.webp">me passa o app!! 💗</div>
+
+<!-- SLIDE 5 -->
+<div class="cnt" style="left:5250px">05 / 05</div>
+<div class="h" style="left:4320px;width:1080px;text-align:center;top:230px;font-size:200px;color:var(--pink)">+24.000</div>
+<div class="h" style="left:4320px;width:1080px;text-align:center;top:430px;font-size:72px">figurinhas pra</div>
+<div class="h i" style="left:4320px;width:1080px;text-align:center;top:500px;font-size:100px">qualquer foto sua.</div>
+<div class="sub" style="left:4320px;width:1080px;text-align:center;top:680px">iPhone e Android. Copia e cola.</div>
+<div class="btn" style="left:4560px;width:600px;top:830px">Link na bio <svg width="44" height="20" viewBox="0 0 54 20"><path d="M2 10h46M40 3l8 7-8 7" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<img class="stk" src="src/cafe-2.webp" style="left:4400px;top:990px;width:190px;transform:rotate(-10deg)">
+<img class="stk" src="src/bomdia-2.webp" style="left:4610px;top:1010px;width:190px;transform:rotate(6deg)">
+<img class="stk" src="src/treino-1.webp" style="left:4820px;top:975px;width:170px;transform:rotate(-5deg)">
+<img class="stk" src="src/praia-2.webp" style="left:5020px;top:1000px;width:200px;transform:rotate(8deg)">
+<div class="logo" style="left:4400px"><b></b>stories<em>lab</em></div>
+<div class="foot" style="left:5040px">@storieslab.app</div>
+</div></body></html>
