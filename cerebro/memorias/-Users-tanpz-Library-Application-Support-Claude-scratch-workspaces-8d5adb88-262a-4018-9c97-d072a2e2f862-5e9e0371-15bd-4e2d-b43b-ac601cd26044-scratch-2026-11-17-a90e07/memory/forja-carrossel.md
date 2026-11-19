@@ -32,3 +32,9 @@ Modelar pro nicho (built 19/11/2026):
 - The result goes into edicao.json with `mexido` set. pedido.json gets an `imagens` list of which photos to swap, shown as a bar in the editor.
 - Tested with "confeitaria caseira": about 2 min.
 - Pending: swapping the photos automatically. Planned route is the forja-imagem Worker (FLUX, free), with organic iPhone-style photos.
+- Photo swap automated (19/11/2026):
+  - During modeling, Claude opens each picture layer and lists `trocas` (slide, id, English prompt) following the organic and no-repeat rules.
+  - carrossel_fotos.py (tools venv) generates each photo on the forja-imagem Worker at the layer's aspect ratio. A rectangle keeps its cover-crop; a cut-out subject goes through rembg.
+  - It sets `src` to the new photo, keeps the original as `mascara` (so the editor patches the old spot) and hides the unchanged interface texts that sat inside the swapped picture.
+  - Test run: 12 of 12 photos in about 3 min.
+  - Saved edits store image paths as /arquivo URLs; modelar_carrossel normalises them back to elementos/.

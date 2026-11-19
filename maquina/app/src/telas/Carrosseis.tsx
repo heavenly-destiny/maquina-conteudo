@@ -321,12 +321,12 @@ function Painel({ c, mudar, excluir, ordem }: { c: Camada; mudar: (p: Partial<Ca
         </>
       )}
       {c.tipo === "imagem" && (
-        <div className="flex flex-col gap-2">
-          <Botao onClick={() => ordem(true)} className="text-mute"><BringToFront className="size-4" /> Trazer pra frente</Botao>
-          <Botao onClick={() => ordem(false)} className="text-mute"><SendToBack className="size-4" /> Mandar pra trás</Botao>
+        <div className="grid grid-cols-2 gap-1 rounded-[14px] bg-[#231215] p-1">
+          <button onClick={() => { som.toque(); ordem(true); }} className="flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[10px] text-[14px] font-medium text-ink/90 hover:bg-[#2f171b]"><BringToFront className="size-4" /> Pra frente</button>
+          <button onClick={() => { som.toque(); ordem(false); }} className="flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[10px] text-[14px] font-medium text-ink/90 hover:bg-[#2f171b]"><SendToBack className="size-4" /> Pra trás</button>
         </div>
       )}
-      <Botao onClick={excluir} className="text-mute"><Trash2 className="size-4" /> Tirar camada</Botao>
+      <button onClick={() => { som.toque(); excluir(); }} className="flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[12px] text-[14px] font-medium text-[#ff6b75] hover:bg-red/10"><Trash2 className="size-4" /> Tirar camada</button>
     </div>
   );
 }

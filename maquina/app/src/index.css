@@ -189,3 +189,11 @@ textarea::placeholder, input::placeholder { color: var(--color-faint); }
   animation: brilho-texto var(--brilho-dur, 1.8s) linear infinite;
 }
 @media (prefers-reduced-motion: reduce) { .texto-brilho { animation: none; color: rgb(246 240 240 / 0.8); background: none; } }
+
+/* botão secundário sólido (tanpz 19/11: vidro transparente em botão fica feio). Vidro só em painel e card. */
+button.vidro, a.vidro, [role="button"].vidro {
+  background: #231215;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+@media (hover: hover) { button.vidro:not(:disabled):hover, a.vidro:hover { background: #2f171b; } }

@@ -24,7 +24,7 @@ export function Botao({ tipo = "vidro", carregando, className, children, onClick
       className={cx(
         "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40",
         tipo === "principal" && "brilho bg-red text-white shadow-[0_10px_30px_-8px_rgb(225_29_42/0.7),inset_0_1px_0_rgb(255_255_255/0.25)] hover:bg-[#ef2633]",
-        tipo === "vidro" && "vidro hover:bg-white/10",
+        tipo === "vidro" && "vidro",
         tipo === "fantasma" && "text-mute hover:bg-white/5 hover:text-ink",
         className,
       )}
