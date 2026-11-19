@@ -225,34 +225,78 @@ export function Titulo({ children, acao }: { children: ReactNode; acao?: ReactNo
 
 /* ---------- marca: M de fita dobrada (hastes na luz, dobras na sombra). Arte em public/marca ---------- */
 // montar=true: a fita se monta (hastes sobem, dobras caem, luz passa). Usada na abertura, casada com o som em 1.4 s.
-export function Marca({ tam = 32, montar = false, atraso = 0 }: { tam?: number; montar?: boolean; atraso?: number }) {
+/* marca FORJA: três gotas de metal em brasa voam, se fundem (filtro gooey, ref. Metaball Morph / Gooey Blobs, 21st.dev)
+   e escorrem formando um F inclinado; uma gota se solta da barra do meio e cai (a assinatura). Vidro vinho por trás,
+   que se espalha como gota (ref. Liquid Glass Logo Reveal). montar = anima; vivo = a brasa respira. */
+export function Marca({ tam = 32, montar = false, atraso = 0, vivo = false }: { tam?: number; montar?: boolean; atraso?: number; vivo?: boolean }) {
   const id = useId().replace(/:/g, "");
-  const m = (d: number, extra: object = {}) => (montar ? { ...extra, transition: { type: "spring" as const, stiffness: 170, damping: 19, delay: atraso + d } } : {});
+  const a = atraso;
+  const mola = (d: number, s = 170, dmp = 18) => ({ type: "spring" as const, stiffness: s, damping: dmp, delay: a + d });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ini = (o: any): { initial: any } => (montar ? { initial: o } : { initial: false });
+  // pontos do F (inclinado pra frente)
+  const P = { topo: { x: 46, y: 31 }, meio: { x: 42.5, y: 59 }, pe: { x: 39, y: 88 } };
+  const DE = [{ x: 8, y: 14 }, { x: 4, y: 70 }, { x: 30, y: 116 }];
+  const ALVO = [P.topo, P.meio, P.pe];
+  const tr = (d: number, dur = 0.55) => ({ delay: a + d, duration: dur, ease: [0.65, 0, 0.35, 1] as const });
   return (
     <svg width={tam} height={tam} viewBox="0 0 120 120" aria-hidden className="shrink-0 overflow-visible">
       <defs>
-        <linearGradient id={`f${id}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2a0710" /><stop offset="1" stopColor="#0c0204" /></linearGradient>
-        <radialGradient id={`l${id}`} cx="0.5" cy="0.05" r="0.75"><stop offset="0" stopColor="#e11d2a" stopOpacity=".45" /><stop offset="1" stopColor="#e11d2a" stopOpacity="0" /></radialGradient>
-        <linearGradient id={`h${id}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff4a52" /><stop offset="1" stopColor="#c8101d" /></linearGradient>
-        <linearGradient id={`d${id}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#5a0610" /><stop offset=".35" stopColor="#a50f1d" /><stop offset="1" stopColor="#e11d2a" /></linearGradient>
-        <linearGradient id={`e${id}`} x1="1" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#3a040a" /><stop offset=".4" stopColor="#7a0a15" /><stop offset="1" stopColor="#b3121f" /></linearGradient>
-        <linearGradient id={`b${id}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff" stopOpacity=".22" /><stop offset=".5" stopColor="#fff" stopOpacity=".04" /><stop offset="1" stopColor="#fff" stopOpacity=".1" /></linearGradient>
-        <linearGradient id={`s${id}`} x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#fff" stopOpacity="0" /><stop offset=".5" stopColor="#fff" stopOpacity=".35" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></linearGradient>
-        <clipPath id={`c${id}`}><rect x="2" y="2" width="116" height="116" rx="30" /></clipPath>
+        <linearGradient id={`f${id}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2a0710" /><stop offset="1" stopColor="#0a0204" /></linearGradient>
+        <radialGradient id={`l${id}`} cx="0.3" cy="0.05" r="0.9"><stop offset="0" stopColor="#ff3341" stopOpacity=".35" /><stop offset="1" stopColor="#e11d2a" stopOpacity="0" /></radialGradient>
+        {/* metal em brasa: branco quente no alto, vermelho, vinho embaixo */}
+        <linearGradient id={`g${id}`} x1="0.2" y1="0" x2="0.6" y2="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(120)">
+          <stop offset="0" stopColor="#ffd9cc" /><stop offset=".22" stopColor="#ff5a5f" /><stop offset=".55" stopColor="#e11d2a" /><stop offset="1" stopColor="#7a0a17" />
+        </linearGradient>
+        <linearGradient id={`b${id}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff" stopOpacity=".24" /><stop offset=".5" stopColor="#fff" stopOpacity=".03" /><stop offset="1" stopColor="#fff" stopOpacity=".1" /></linearGradient>
+        <linearGradient id={`s${id}`} x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#fff" stopOpacity="0" /><stop offset=".5" stopColor="#fff" stopOpacity=".3" /><stop offset="1" stopColor="#fff" stopOpacity="0" /></linearGradient>
+        <filter id={`goo${id}`} x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3.6" result="b" />
+          <feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="g" />
+          <feComposite in="SourceGraphic" in2="g" operator="atop" />
+        </filter>
+        <filter id={`gl${id}`} x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" /></filter>
+        <clipPath id={`c${id}`}><rect x="2" y="2" width="116" height="116" rx="31" /></clipPath>
       </defs>
-      <motion.g {...m(0, { initial: { scale: 0.6, opacity: 0 }, animate: { scale: 1, opacity: 1 } })} style={{ transformOrigin: "60px 60px" }}>
-        <rect x="2" y="2" width="116" height="116" rx="30" fill={`url(#f${id})`} />
-        <rect x="2" y="2" width="116" height="116" rx="30" fill={`url(#l${id})`} />
-        <rect x="2.5" y="2.5" width="115" height="115" rx="29.5" fill="none" stroke={`url(#b${id})`} />
-      </motion.g>
-      <motion.polygon points="32,36 45,36 45,84 32,84" fill={`url(#h${id})`} {...m(0.25, { initial: { scaleY: 0 }, animate: { scaleY: 1 } })} style={{ transformOrigin: "38px 84px" }} />
-      <motion.polygon points="75,36 88,36 88,84 75,84" fill={`url(#h${id})`} {...m(0.35, { initial: { scaleY: 0 }, animate: { scaleY: 1 } })} style={{ transformOrigin: "81px 84px" }} />
-      <motion.polygon points="88,36 75,36 53.5,72 66.5,72" fill={`url(#e${id})`} {...m(0.7, { initial: { opacity: 0, y: -10 }, animate: { opacity: 1, y: 0 } })} />
-      <motion.polygon points="32,36 45,36 66.5,72 53.5,72" fill={`url(#d${id})`} {...m(0.8, { initial: { opacity: 0, y: -10 }, animate: { opacity: 1, y: 0 } })} />
+
+      {/* vidro: cai como gota e se espalha no ícone */}
+      <motion.rect fill={`url(#f${id})`} {...ini({ x: 46, y: 46, width: 28, height: 28, rx: 14 })}
+        animate={{ x: 2, y: 2, width: 116, height: 116, rx: 31 }} transition={mola(0, 120, 15)} />
+      <motion.rect x="2" y="2" width="116" height="116" rx="31" fill={`url(#l${id})`} {...ini({ opacity: 0 })} animate={{ opacity: 1 }} transition={{ delay: a + 0.3, duration: 0.6 }} />
+      <motion.rect x="2.5" y="2.5" width="115" height="115" rx="30.5" fill="none" stroke={`url(#b${id})`} {...ini({ opacity: 0 })} animate={{ opacity: 1 }} transition={{ delay: a + 0.25, duration: 0.5 }} />
+
+      {/* calor por trás do F */}
+      <motion.ellipse cx="58" cy="60" rx="26" ry="30" fill="#e11d2a" filter={`url(#gl${id})`} {...ini({ opacity: 0 })}
+        animate={vivo ? { opacity: [0.28, 0.5, 0.28] } : { opacity: 0.34 }}
+        transition={vivo ? { duration: 3.4, repeat: Infinity, ease: "easeInOut" } : { delay: a + 1.2, duration: 0.7 }} />
+
+      {/* o metal líquido */}
+      <g filter={`url(#goo${id})`} clipPath={`url(#c${id})`} fill={`url(#g${id})`} stroke={`url(#g${id})`}>
+        {/* três gotas voam até os nós do F */}
+        {ALVO.map((v, i) => (
+          <motion.circle key={i} stroke="none" {...ini({ cx: DE[i].x, cy: DE[i].y, r: 4 })}
+            animate={{ cx: v.x, cy: v.y, r: 8.6 }} transition={mola(0.3 + i * 0.1, 120, 14)} />
+        ))}
+        {/* e escorrem virando as hastes */}
+        <motion.path d={`M${P.topo.x} ${P.topo.y} L${P.pe.x} ${P.pe.y}`} fill="none" strokeWidth="17" strokeLinecap="round"
+          {...ini({ pathLength: 0 })} animate={{ pathLength: 1 }} transition={tr(0.75)} />
+        <motion.path d={`M${P.topo.x} ${P.topo.y} L87 ${P.topo.y}`} fill="none" strokeWidth="17" strokeLinecap="round"
+          {...ini({ pathLength: 0 })} animate={{ pathLength: 1 }} transition={tr(0.9)} />
+        <motion.path d={`M${P.meio.x} ${P.meio.y} L73 ${P.meio.y}`} fill="none" strokeWidth="16" strokeLinecap="round"
+          {...ini({ pathLength: 0 })} animate={{ pathLength: 1 }} transition={tr(1.0)} />
+        {/* a gota que se solta da barra do meio e cai */}
+        <motion.circle stroke="none" {...ini({ cx: 72, cy: 59, r: 6 })}
+          animate={vivo ? { cx: 80, cy: [87, 88.5, 87], r: 7.4 } : { cx: 80, cy: 87, r: 7.4 }}
+          transition={vivo ? { cy: { duration: 3.4, repeat: Infinity, ease: "easeInOut" } } : { delay: a + 1.45, type: "spring", stiffness: 90, damping: 9 }} />
+      </g>
+      {/* fio de luz no alto do metal */}
+      <motion.path d="M47 26.5 L82 26.5" stroke="#fff" strokeOpacity=".5" strokeWidth="2" strokeLinecap="round" fill="none"
+        {...ini({ pathLength: 0, opacity: 0 })} animate={{ pathLength: 1, opacity: 1 }} transition={{ delay: a + 1.55, duration: 0.45 }} />
+
       {montar && (
         <g clipPath={`url(#c${id})`}>
-          <motion.rect y="0" width="60" height="120" fill={`url(#s${id})`} transform="skewX(-18)"
-            initial={{ x: -90 }} animate={{ x: 190 }} transition={{ delay: atraso + 1.25, duration: 0.9, ease: [0.4, 0, 0.2, 1] }} />
+          <motion.rect y="0" width="56" height="120" fill={`url(#s${id})`} transform="skewX(-18)"
+            initial={{ x: -90 }} animate={{ x: 190 }} transition={{ delay: a + 1.75, duration: 0.9, ease: [0.4, 0, 0.2, 1] }} />
         </g>
       )}
     </svg>
@@ -373,7 +417,7 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
         )}
         {video && <video ref={vid} src={video} muted playsInline loop preload="none" className="absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}
         {!ocupado && capa && titulo && (
-          <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 pt-12 text-left">
+          <span className={cx("absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 pt-12 text-left", !!canto && "pr-12")}>
             <span className="line-clamp-2 text-[13px] font-semibold leading-snug tracking-tight">{titulo}</span>
           </span>
         )}

@@ -214,7 +214,7 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
       {roteiros.length > 0 && (
         <section className="flex flex-col gap-2.5">
           {filtro === "tudo" && lista.length > 0 && <h2 className="mt-4 text-[17px] font-semibold tracking-tight">Roteiros <span className="text-[14px] font-normal text-faint tnum">{roteiros.length}</span></h2>}
-          <div className="grid gap-2.5 lg:grid-cols-2">{roteiros.map((g, i) => <LinhaRoteiro key={g.id} g={g} i={i} onClick={() => setAberta(g.id)} />)}</div>
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-2.5 lg:grid-cols-2">{roteiros.map((g, i) => <LinhaRoteiro key={g.id} g={g} i={i} onClick={() => setAberta(g.id)} />)}</div>
         </section>
       )}
       {!lista.length && !roteiros.length && <Vazio icone={<Sparkles className="size-6" />} titulo="Nada criado ainda"><Botao tipo="principal" onClick={() => ir("inicio")}>Criar o primeiro</Botao></Vazio>}

@@ -23,7 +23,7 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
       <div className={cx("mb-6 flex h-11 items-center", aberta ? "justify-between pl-1.5" : "justify-center")}>
         <button onClick={() => onAba("inicio")} className="flex cursor-pointer items-center gap-2.5" aria-label="Início">
           <Marca tam={30} />
-          {aberta && <span className="text-[15px] font-semibold tracking-tight">Máquina</span>}
+          {aberta && <span className="text-[15px] font-semibold tracking-tight">Forja</span>}
         </button>
         {aberta && (
           <button aria-label="Recolher barra" onClick={() => { som.toque(); setAberta(false); }} className="grid size-9 cursor-pointer place-items-center rounded-full text-faint hover:bg-white/[0.06] hover:text-ink">

@@ -231,7 +231,7 @@ function Categoria({ job, todas }: { job: Job; todas: string[] }) {
       <datalist id={`cat-${job.id}`}>{todas.map((c) => <option key={c} value={c} />)}</datalist>
     </>
   ) : (
-    <Botao tipo="fantasma" aria-label="Mudar categoria" className="px-4 text-[13.5px]" onClick={() => { setV(job.categoria && job.categoria !== "Sem categoria" ? job.categoria : ""); setEdit(true); }}>{nome}</Botao>
+    <Botao tipo="vidro" aria-label="Mudar categoria" className="px-4 text-[13.5px]" onClick={() => { setV(job.categoria && job.categoria !== "Sem categoria" ? job.categoria : ""); setEdit(true); }}>{nome}</Botao>
   );
 }
 

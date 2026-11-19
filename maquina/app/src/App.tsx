@@ -101,7 +101,7 @@ export default function App() {
                 onClick={() => ir("inicio")} className="flex cursor-pointer items-center gap-2.5" aria-label="Início"
               >
                 {aba !== "inicio" && <motion.span layoutId="marca" transition={molaSuave}><Marca tam={30} /></motion.span>}
-                {aba !== "inicio" && <span className="text-[15px] font-semibold tracking-tight">Máquina</span>}
+                {aba !== "inicio" && <span className="text-[15px] font-semibold tracking-tight">Forja</span>}
               </motion.button>
               <div className="flex items-center gap-2">
               <button aria-label="Conexões" onClick={abrirConfig}

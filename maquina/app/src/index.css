@@ -44,12 +44,12 @@ button { font: inherit; color: inherit; }
 }
 .fundo::before {
   width: 70vmax; height: 70vmax; left: -20vmax; top: -38vmax;
-  background: radial-gradient(circle, rgb(150 18 38 / 0.55), transparent 65%);
+  background: radial-gradient(circle, rgb(150 18 38 / 0.38), transparent 65%);
   animation: deriva1 26s ease-in-out infinite alternate;
 }
 .fundo::after {
   width: 55vmax; height: 55vmax; right: -22vmax; bottom: -30vmax;
-  background: radial-gradient(circle, rgb(115 12 30 / 0.45), transparent 65%);
+  background: radial-gradient(circle, rgb(115 12 30 / 0.32), transparent 65%);
   animation: deriva2 32s ease-in-out infinite alternate;
 }
 @keyframes deriva1 { to { transform: translate(14vmax, 8vmax) scale(1.12); } }

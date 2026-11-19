@@ -296,7 +296,7 @@ export function Onboarding({ inicial, onFim }: { inicial: Config; onFim: () => v
                   <motion.span initial={{ scale: 0, rotate: -120 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 260, damping: 16 }}
                     className="respira grid size-16 place-items-center rounded-full bg-red text-white"><Check className="size-8" strokeWidth={2.6} /></motion.span>
                   <div>
-                    <h2 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Máquina ligada</h2>
+                    <h2 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Forja ligada</h2>
                     <p className="mt-3 text-[16px] text-mute">{cfg.claude.ok ? "Solte um vídeo cru ou diga o que criar." : "Falta conectar o Claude pra máquina trabalhar."}</p>
                   </div>
                   {cfg.claude.ok
