@@ -45,7 +45,7 @@ function Upload() {
   // referência: Halo Dropzone (cult-ui, 21st.dev): rastro de luz correndo na borda quando o vídeo chega perto
   return (
     <div className="flex flex-col gap-2.5">
-    <motion.button {...cascata(0)} data-halo={sobre || prog !== null ? "on" : "off"}
+    <motion.button data-luz {...cascata(0)} data-halo={sobre || prog !== null ? "on" : "off"}
       onClick={() => prog === null && inp.current?.click()}
       onDragOver={(ev) => { ev.preventDefault(); setSobre(true); }} onDragLeave={() => setSobre(false)}
       onDrop={(ev) => { ev.preventDefault(); setSobre(false); enviar(ev.dataTransfer.files[0]); }}

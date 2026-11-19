@@ -8,7 +8,7 @@ export type Corte = {
 export type Job = { id: string; categoria?: string; etapa?: string; duracao?: number; cortes: Corte[]; ultimo: string; bruto: string };
 export type Bruto = { path: string; nome: string; min: number; feito: boolean; data: number };
 export type Geracao = {
-  id: string; tipo: "roteiro" | "animado" | "criativo" | "modelar"; briefing: string; estilo?: string | null;
+  id: string; tipo: "roteiro" | "animado" | "criativo" | "modelar" | "clonar"; briefing: string; estilo?: string | null;
   status: string; fase?: string; desde?: number; erro?: string; titulo?: string; legenda?: string; hashtags?: string; revisao?: { aprovado?: boolean; nota?: number; problemas?: string[] };
   inspiracao?: string; nicho?: string; validacao?: "teste" | "validado"; video?: string | null; capa?: string | null; roteiro_txt?: string | null; roteiro_json?: { titulo?: string; gancho?: string; falas?: { texto: string; cena?: string }[] } | null; criado: number; notas?: string[];
 };

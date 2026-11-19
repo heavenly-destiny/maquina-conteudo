@@ -18,6 +18,8 @@ Vision dictated by tanpz on 18/11/2026 for the Máquina de Conteúdo (to sell/ha
 **Why:** he wants a product-grade tool other people use, not a personal script.
 **How to apply:** design from real Higgsfield/OpusClip references first; keep wine/red identity and approved screens (generation, animation, SFX approved 18/11). Related: [[maquina-de-conteudo]], [[feedback-painel-minimalista]].
 
+Clonar mode (19/11): tipo "clonar" rebuilds a reference 100% (prompts/gerar_clonar.md, clone_espec.md), copy gate kept, copy stage on sonnet. Render stage of every voiced type gets the 5 best-matching ready motion prompts (gerar.motions_prontos). Tiles tilt 3D with red light; cursor light; logo follows mouse.
+
 Formats (18/11): the machine must know many video formats and adapt any of them to any niche: question box (caixinha de pergunta, mostly native Instagram), many split-screen variants, "historinha" story videos with little characters (pixel art, 2D, 3D, very hyped now), plus the aslaniedits families. Acervo collects examples of each format; the AI picks/adapts per user niche.
 
 OpusClip reverse engineering (18/11): bring all OpusClip settings into the machine (caption templates, edit formats/layouts, reframe, etc.). Spec being built at ~/Movies/maquina-conteudo/estilos/opusclip-re/ESPEC.md.

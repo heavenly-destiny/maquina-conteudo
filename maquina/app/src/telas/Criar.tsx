@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { Check, ChevronRight, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
+import { Check, ChevronRight, Copy, Download, FileText, Megaphone, Plus, RotateCcw, Smile, Sparkles, Telescope } from "lucide-react";
 import { lerRoteiro } from "../roteiro";
 import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
@@ -14,6 +14,7 @@ const TIPOS: { v: Tipo; nome: string; Icone: typeof FileText }[] = [
   { v: "animado", nome: "Animados", Icone: Smile },
   { v: "criativo", nome: "Criativos", Icone: Megaphone },
   { v: "modelar", nome: "Modelados", Icone: Telescope },
+  { v: "clonar", nome: "Clonados", Icone: Copy },
   { v: "roteiro", nome: "Roteiros", Icone: FileText },
 ];
 
@@ -79,7 +80,7 @@ function LinhaRoteiro({ g, i, onClick }: { g: Geracao; i: number; onClick: () =>
   const gancho = r?.ganchos.find((x) => x.escolhido)?.texto ?? r?.falas[0]?.fala;
   const ocupado = ["na-fila", "rodando", "gerando"].includes(g.status);
   return (
-    <motion.button {...cascata(i)} whileTap={{ scale: 0.98 }} onClick={() => { som.abrir(); onClick(); }}
+    <motion.button data-luz {...cascata(i)} whileTap={{ scale: 0.98 }} onClick={() => { som.abrir(); onClick(); }}
       className="vidro group flex w-full cursor-pointer items-center gap-3.5 rounded-[18px] p-3.5 text-left transition-colors hover:bg-white/[0.07]">
       <span className="grid size-11 shrink-0 place-items-center rounded-[13px] bg-white/[0.06] text-mute"><FileText className="size-[18px]" /></span>
       <span className="min-w-0 flex-1">

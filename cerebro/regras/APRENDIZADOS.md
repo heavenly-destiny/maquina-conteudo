@@ -69,3 +69,5 @@ Formato:
 - Nome do bump = nome exato que a Camys usa no checkout. É nome estratégico, em tom de amiga pra amiga ("Aumente o número de seguidores do seu perfil [Método prático]"). Não inventar marca.
 - A imagem do bump tem que ser uma miniatura quadrada própria de bump, não um banner.
 - Teste no ar desde 18/11, nas ofertas R$27 e R$19,90: Vitalício 14,90, FontLab 29,90, Seguidores 24,90, Reels 24,90, Presets 14,90. Medir a taxa de cada bump.
+
+- 2026-11-19 | Stories Lab | depoimento novo (comentário da kcya.martyns: "É maravilhoso!!! Não vivo mais sem ele") na prova social | publicado no início da faixa (print-5.webp) | sem número ainda | prova social nova | medir cliques nos planos ÷ alcance dos planos

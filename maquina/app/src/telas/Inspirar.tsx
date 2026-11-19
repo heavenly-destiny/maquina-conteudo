@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Copy, Link2, Search, Sparkles, Telescope, Wand2, X } from "lucide-react";
 import { atualizar, biblioteca, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Folha, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
@@ -47,6 +47,9 @@ function Decupagem({ i, criarCom }: { i: Inspiracao; criarCom: (r: Rascunho) => 
             <div className="flex flex-wrap gap-2 pt-1">
               <Botao tipo="principal" onClick={() => criarCom({ tipo: "modelar", inspiracao: i.id, briefing: "Modelar pro meu nicho" })}>
                 <Wand2 className="size-4" /> Modelar
+              </Botao>
+              <Botao onClick={() => criarCom({ tipo: "clonar", inspiracao: i.id, briefing: "Clonar 100% igual" })}>
+                <Copy className="size-4" /> Clonar 100%
               </Botao>
               <a href={i.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>
             </div>

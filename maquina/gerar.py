@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""gerar.py <id>: roda uma geração (roteiro | animado | criativo | modelar) em RAIZ/geracoes/<id>/.
+"""gerar.py <id>: roda uma geração (roteiro | animado | criativo | modelar | clonar) em RAIZ/geracoes/<id>/.
 O painel cria pedido.json + estado.json e dispara este script."""
 import json, subprocess, sys, threading, time
 from pathlib import Path
@@ -7,13 +7,13 @@ import maquina as m
 
 GER = m.RAIZ / "geracoes"
 SPEC = {"conteudo-organico": "conteudo-organico", "criativo-direct-response": "criativo-direct-response", "motivacional": "motivacional"}
-MODELO = {"roteiro": m.MODELO_CORTE, "modelar": m.MODELO_PLANO, "animado": m.MODELO_PLANO, "criativo": m.MODELO_PLANO}  # criação = opus
+MODELO = {"roteiro": m.MODELO_CORTE, "modelar": m.MODELO_PLANO, "clonar": m.MODELO_PLANO, "animado": m.MODELO_PLANO, "criativo": m.MODELO_PLANO}  # criação = opus
 TIPOS = tuple(MODELO)
-COM_VOZ = ("animado", "criativo", "modelar")  # regra do tanpz: copy completa aprovada por ele antes de gerar voz
+COM_VOZ = ("animado", "criativo", "modelar", "clonar")  # regra do tanpz: copy completa aprovada por ele antes de gerar voz
 PARA_NA_COPY = """
 
 ## Copy approval gate (his rule: he approves the full copy before any voice, music or asset is generated)
-Do step zero and write ONLY: conhecimento-usado.md, roteiro.md, roteiro.json, emotion-map.json (and decupagem_aplicada.md when modeling).
+Do step zero and write ONLY: conhecimento-usado.md, roteiro.md, roteiro.json, emotion-map.json (and decupagem_aplicada.md when modeling, clone_espec.md when cloning).
 Then STOP. Do not call voz or som, do not generate images, do not build or render anything. tanpz reads the copy in the panel and approves it."""
 COPY_APROVADA = """
 
@@ -23,6 +23,25 @@ roteiro.json and roteiro.md in this folder were approved word by word. Do not ch
 
 def so_copy(ped):
     return ped["tipo"] in COM_VOZ and not ped.get("copy_aprovada")
+
+
+def motions_prontos(briefing, n=5):
+    """os prompts de motion prontos (estilos/prompt-motion) que mais casam com o briefing: o agente parte deles em vez de inventar (mais rápido)"""
+    d = m.RAIZ / "estilos" / "prompt-motion"
+    try:
+        dados = {x["slug"]: x for x in json.loads((d / "data.json").read_text())}
+        for f in sorted(d.glob("analise*.json")):
+            for a in json.loads(f.read_text()):
+                if a.get("slug") in dados: dados[a["slug"]].update(a)
+    except Exception:
+        return ""
+    pal = {w for w in briefing.lower().replace(",", " ").split() if len(w) > 3}
+    def nota(x):
+        txt = " ".join(str(x.get(k, "")) for k in ("titulo_pt", "o_que_faz", "encaixe", "tecnica", "title", "tags")).lower()
+        return sum(w in txt for w in pal) * 2 + int(x.get("relevancia") or 0) - (1 if x.get("esforco") == "alto" else 0)
+    top = sorted((x for x in dados.values() if x.get("prompt")), key=nota, reverse=True)[:n]
+    linhas = [f"- {x.get('titulo_pt') or x.get('title')} ({x['slug']}): {x.get('encaixe', '')}\n  Prompt pronto: {str(x['prompt'])[:900]}" for x in top]
+    return "\n\n## Ready motion prompts (pick from these first, adapt colors and copy; only invent if none fits)\n" + "\n".join(linhas)
 
 
 def salvar(p, e):
@@ -39,6 +58,8 @@ def montar_prompt(p, ped):
              duracao=ped.get("duracao") or 30, inspiracao=ped.get("inspiracao") or "nenhuma", notas=notas, ref=ref,
              apoio=m.APOIO, raiz=m.RAIZ, mascote=m.TOOLS / "assets/mascote", musicas=m.TOOLS / "assets/music", sfx=m.TOOLS / "assets/sfx")
     extra = PARA_NA_COPY if so_copy(ped) else COPY_APROVADA if ped["tipo"] in COM_VOZ else ""
+    if ped["tipo"] in COM_VOZ and not so_copy(ped):
+        extra += motions_prontos(ped["briefing"])
     return m.prompt(f"gerar_{ped['tipo']}", base=m.prompt("_gerar_base", **v), **v) + extra
 
 
@@ -64,7 +85,7 @@ def rodar(id_):
         for f in ("final.mp4", "capa.jpg"):  # refazer: não deixa o antigo passar por novo
             (p / f).unlink(missing_ok=True)
         threading.Thread(target=vigiar, args=(p, e, parar), daemon=True).start()
-        m.claude(montar_prompt(p, ped), p, MODELO[ped["tipo"]], "log.txt")
+        m.claude(montar_prompt(p, ped), p, m.MODELO_CORTE if ped["tipo"] == "clonar" and so_copy(ped) else MODELO[ped["tipo"]], "log.txt")  # clonar: a copy é a transcrição, sonnet basta
         # revisão obrigatória contra regras, memórias e vereditos antigos; reprovou = refaz uma vez com as correções
         for volta in (1, 2):
             e["fase"] = "revisando"

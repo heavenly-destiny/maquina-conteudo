@@ -140,3 +140,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Máquina (18/11): quer acervo das músicas mais virais de reels do Instagram dentro da máquina (referência de mood/drop; no post usa o áudio em alta nativo do Instagram).
 - Máquina (18/11): trilhas organizadas por estilo de vídeo (uma pra cada coisa), as que ele e a galera usam; escolher a trilha dentro do app na hora de gerar.
 - Regra (18/11): vídeo sem trilha sonora e efeitos "fica muito ruim, não conecta". Todo vídeo da máquina sai com trilha e efeitos. Só os do Instagram dele (ele mesmo posta) podem ter o áudio em alta colocado no próprio Instagram.
+- Geração em lote de criativos de imagem (19/11): ele prefere mandar o prompt pro Codex, que "já faz tudo sozinho". Prompt tem que funcionar sem ele intervir: baixar referências, gerar, salvar com nome, conferir.

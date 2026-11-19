@@ -333,13 +333,32 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
   i?: number; onClick: () => void; canto?: ReactNode; rodape?: ReactNode; sel?: boolean; desde?: number; fundo?: string | null;
 }) {
   const vid = useRef<HTMLVideoElement>(null);
+  const caixa = useRef<HTMLDivElement>(null);
+  const raf = useRef(0);
   const ocupado = !!status && OCUPADOS.includes(status);
+  const inclinar = (x: number, y: number) => {
+    const el = caixa.current; if (!el) return;
+    const r = el.getBoundingClientRect(); const px = (x - r.left) / r.width, py = (y - r.top) / r.height;
+    cancelAnimationFrame(raf.current);
+    raf.current = requestAnimationFrame(() => {
+      el.style.setProperty("--px", `${px * 100}%`); el.style.setProperty("--py", `${py * 100}%`);
+      el.style.setProperty("--rx", `${(0.5 - py) * 14}deg`); el.style.setProperty("--ry", `${(px - 0.5) * 14}deg`); el.style.setProperty("--s", "1.03");
+    });
+  };
+  const soltar = () => { cancelAnimationFrame(raf.current); const el = caixa.current; if (el) { el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg"); el.style.setProperty("--s", "1"); } };
+  useEffect(() => { // celular não tem hover: o vídeo toca sozinho quando o card está no meio da tela
+    const el = caixa.current, v = vid.current;
+    if (!el || !v || !matchMedia("(hover: none)").matches) return;
+    const io = new IntersectionObserver(([en]) => { if (en.isIntersecting) { v.preload = "auto"; v.play().catch(() => {}); v.style.opacity = "1"; } else { v.pause(); v.style.opacity = ""; } }, { rootMargin: "-35% 0px -35% 0px" });
+    io.observe(el); return () => io.disconnect();
+  }, [video]);
   const mostrarStatus = status && status !== "pronto" && status !== "enviado" && !ocupado;
   return (
     <motion.div layout
       initial={{ opacity: 0, y: 16, scale: 0.96, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       transition={{ ...molaSuave, delay: Math.min(i, 14) * 0.035 }}
-      whileHover={{ y: -4 }} whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.97 }} className="[perspective:900px]">
+    <div ref={caixa} data-tilt onMouseMove={(ev) => inclinar(ev.clientX, ev.clientY)} onMouseLeave={soltar}
       className={cx("group relative aspect-[9/16] overflow-hidden rounded-[22px] bg-white/[0.04] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.06),0_24px_50px_-28px_rgb(0_0_0/0.9)]", sel && "ring-2 ring-red")}>
       <button onClick={() => { som.abrir(); onClick(); }} aria-label={titulo} className="absolute inset-0 cursor-pointer"
         onMouseEnter={() => vid.current?.play().catch(() => {})} onMouseLeave={() => { if (vid.current) { vid.current.pause(); vid.current.currentTime = 0; } }}>
@@ -362,8 +381,10 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
       {ocupado && <span className="pointer-events-none absolute left-2.5 top-2.5 rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={undefined} /></span>}
       {mostrarStatus && <span className="pointer-events-none absolute left-2.5 top-2.5 rounded-full bg-black/55 px-2 py-1 backdrop-blur"><Status status={status} fase={fase} /></span>}
       {dur && <span className="pointer-events-none absolute right-2.5 top-2.5 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{dur}</span>}
+      <span aria-hidden className="tilt-luz" />
       {canto}
       {rodape}
+    </div>
     </motion.div>
   );
 }

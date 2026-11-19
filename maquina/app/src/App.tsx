@@ -43,6 +43,23 @@ export default function App() {
   }, []);
   const abrirConfig = useCallback(async () => { som.abrir(); setCfg(await lerConfig()); setOnboard(true); }, []);
 
+  useEffect(() => { // luz que segue o mouse + data-luz acendendo no ponto exato
+    let r = 0;
+    const mover = (ev: PointerEvent) => {
+      if (ev.pointerType !== "mouse") return;
+      cancelAnimationFrame(r);
+      r = requestAnimationFrame(() => {
+        const l = document.querySelector<HTMLElement>(".luz-cursor");
+        if (l) { l.style.setProperty("--cx", `${ev.clientX}px`); l.style.setProperty("--cy", `${ev.clientY}px`); l.dataset.on = "1"; }
+        const alvo = (ev.target as HTMLElement)?.closest?.<HTMLElement>("[data-luz]");
+        if (alvo) { const b = alvo.getBoundingClientRect(); alvo.style.setProperty("--lx", `${ev.clientX - b.left}px`); alvo.style.setProperty("--ly", `${ev.clientY - b.top}px`); }
+      });
+    };
+    const sair = () => { const l = document.querySelector<HTMLElement>(".luz-cursor"); if (l) l.dataset.on = "0"; };
+    addEventListener("pointermove", mover, { passive: true }); document.addEventListener("mouseleave", sair);
+    return () => { removeEventListener("pointermove", mover); document.removeEventListener("mouseleave", sair); };
+  }, []);
+
   useEffect(() => {
     const f = () => setAba(lerAba());
     addEventListener("hashchange", f);
@@ -71,7 +88,7 @@ export default function App() {
 
   return (
     <Avisos>
-      <div className="fundo" /><div className="grao" />
+      <div className="fundo" /><div className="luz-cursor" /><div className="grao" />
       <LayoutGroup>
         <AnimatePresence>{intro && <Intro key="intro" onFim={fimIntro} />}</AnimatePresence>
         {!intro && (

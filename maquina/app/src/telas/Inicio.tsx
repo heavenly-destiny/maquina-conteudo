@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, Check, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
+import { AnimatePresence, motion, useMotionValue, useSpring, useAnimationControls } from "motion/react";
+import { ArrowUp, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
 import { atualizar, enviarInspiracao, enviarVideo, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
 import { Marca, Segmentos, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
@@ -8,12 +8,13 @@ import { som } from "../sons";
 
 // Referência: "AI Prompt Input Box" (kedhareswer, 21st.dev, nov/2026): composer de vidro, frase de exemplo
 // se digitando sozinha, chips de modo, menu de ajuste, anexo e botão que respira. Adaptado ao vinho da Máquina.
-type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar";
+type Modo = "corte" | "roteiro" | "animado" | "criativo" | "modelar" | "clonar";
 const MODOS: { v: Modo; nome: string; Icone: typeof FileText }[] = [
   { v: "corte", nome: "Cortar", Icone: Scissors },
   { v: "animado", nome: "Animado", Icone: Smile },
   { v: "criativo", nome: "Criativo", Icone: Megaphone },
   { v: "modelar", nome: "Modelar", Icone: Telescope },
+  { v: "clonar", nome: "Clonar", Icone: Copy },
   { v: "roteiro", nome: "Roteiro", Icone: FileText },
 ];
 const EXEMPLOS: Record<Modo, string[]> = {
@@ -22,6 +23,7 @@ const EXEMPLOS: Record<Modo, string[]> = {
   animado: ["O que é uma skill do Claude, passo a passo", "Por que seu story não tem resposta, explicado pelo mascote"],
   criativo: ["Stories Lab: stories prontos em 60 segundos, pra quem vende no Instagram", "Anúncio de 30s pra quem perde tempo no Canva"],
   modelar: ["Modelar esse viral pro meu nicho de IA", "Mesma estrutura, assunto: criar conteúdo com o Claude"],
+  clonar: ["Clonar 100% igual: mesmas cenas, texto, tempo e som", "Clonar igual e traduzir a fala pro português"],
 };
 const ESTILOS = [{ v: "conteudo-organico", rotulo: "Orgânico" }, { v: "criativo-direct-response", rotulo: "Anúncio" }, { v: "motivacional", rotulo: "Motivacional" }];
 const DURACOES = ["15", "30", "45", "60"];
@@ -62,6 +64,21 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const modosRef = useTransborda<HTMLDivElement>();
   const avisar = useAviso();
   const exemplo = useDigitando(EXEMPLOS[modo], !!texto || !!arquivo);
+  // a logo olha pro mouse (inclina em 3D) e pulsa a cada letra digitada
+  const logo = useRef<HTMLDivElement>(null);
+  const rx = useSpring(useMotionValue(0), { stiffness: 120, damping: 14 });
+  const ry = useSpring(useMotionValue(0), { stiffness: 120, damping: 14 });
+  const pulso = useAnimationControls();
+  useEffect(() => {
+    const f = (ev: PointerEvent) => {
+      const b = logo.current?.getBoundingClientRect(); if (!b || ev.pointerType !== "mouse") return;
+      const dx = (ev.clientX - (b.left + b.width / 2)) / innerWidth, dy = (ev.clientY - (b.top + b.height / 2)) / innerHeight;
+      ry.set(Math.max(-1, Math.min(1, dx * 2)) * 22); rx.set(Math.max(-1, Math.min(1, dy * 2)) * -22);
+    };
+    addEventListener("pointermove", f, { passive: true }); return () => removeEventListener("pointermove", f);
+  }, [rx, ry]);
+  useEffect(() => { if (texto) pulso.start({ scale: [1, 1.06, 1], transition: { duration: 0.28 } }); }, [texto, pulso]);
+  useEffect(() => { pulso.start({ rotateZ: [0, -8, 6, 0], scale: [1, 1.08, 1], transition: { duration: 0.5 } }); }, [modo, pulso]);
 
   useEffect(() => {
     if (!rascunho) return;
@@ -86,11 +103,11 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
     setProg(null);
   };
   const link = ehLink(texto);
-  const pode = prog === null && (modo === "corte" ? !!arquivo : link || (texto.trim().length > 3 && (modo !== "modelar" || !!insp)));
+  const pode = prog === null && (modo === "corte" ? !!arquivo : link || (texto.trim().length > 3 && ((modo !== "modelar" && modo !== "clonar") || !!insp)));
   const anexar = (f?: File | null) => {
     if (!f) return;
     if (!/\.(mov|mp4|m4v)$/i.test(f.name)) return avisar("Só vídeo .mov ou .mp4", true);
-    if (modo === "modelar") return void subirInsp(f);
+    if (modo === "modelar" || modo === "clonar") return void subirInsp(f);
     som.toque(); setArquivo(f); setModo("corte");
   };
 
@@ -121,7 +138,10 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
       <motion.div layoutId="marca" className="relative" transition={molaSuave}>
         <motion.span aria-hidden className="absolute inset-[-40%] rounded-full bg-red/40 blur-3xl"
           animate={{ opacity: [0.35, 0.7, 0.35], scale: [0.9, 1.05, 0.9] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
-        <span className="relative block"><Marca tam={84} /></span>
+        <motion.span ref={logo} animate={pulso} style={{ rotateX: rx, rotateY: ry, transformPerspective: 600 }} className="relative block cursor-grab active:cursor-grabbing"
+          drag dragSnapToOrigin dragElastic={0.35} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} onTap={() => som.toque()}>
+          <Marca tam={84} />
+        </motion.span>
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 24, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ ...molaSuave, delay: 0.12 }}
@@ -153,7 +173,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
           {/* modelar: escolher a inspiração */}
           <AnimatePresence initial={false}>
-            {modo === "modelar" && !link && (
+            {(modo === "modelar" || modo === "clonar") && !link && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={mola} className="overflow-hidden">
                 <input ref={inpInsp} type="file" accept="video/mp4,video/quicktime,.mov,.mp4,.m4v" hidden onChange={(ev) => { subirInsp(ev.target.files?.[0]); ev.target.value = ""; }} />
                 {insp ? (
@@ -163,7 +183,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-[14px] font-medium">{escolhida?.decupagem?.titulo || escolhida?.info?.titulo || "Vídeo de referência"}</p>
-                      <p className="text-[12.5px] text-faint">{escolhida?.status === "pronto" ? "Pronto pra modelar" : "Analisando o vídeo…"}</p>
+                      <p className="text-[12.5px] text-faint">{escolhida?.status === "pronto" ? (modo === "clonar" ? "Pronto pra clonar" : "Pronto pra modelar") : "Analisando o vídeo…"}</p>
                     </div>
                     <button onClick={() => { som.toque(); setInsp(undefined); }} aria-label="Tirar referência" className="grid size-10 cursor-pointer place-items-center rounded-full text-faint hover:text-ink"><X className="size-4" /></button>
                   </div>

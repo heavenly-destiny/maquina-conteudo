@@ -125,3 +125,34 @@ textarea::placeholder, input::placeholder { color: var(--color-faint); }
 .busy-shimmer { animation: busy-sweep 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 .busy-bar { animation: busy-slide 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 @media (prefers-reduced-motion: reduce) { .busy-push, .busy-blob, .busy-shimmer, .busy-bar { animation: none !important; } .busy-bar { left: 0; width: 50%; } }
+
+/* card que inclina pro lado do mouse com luz vermelha passando (Optimized Tilt Card, sh20raj/21st.dev, adaptado ao vinho) */
+[data-tilt] {
+  --px: 50%; --py: 50%; --rx: 0deg; --ry: 0deg; --s: 1;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s));
+  transition: transform .45s cubic-bezier(.23,1,.32,1), box-shadow .45s;
+  will-change: transform;
+}
+[data-tilt]:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1), 0 34px 70px -30px rgb(225 29 42 / .45); }
+.tilt-luz {
+  position: absolute; inset: 0; pointer-events: none; z-index: 5; opacity: 0; transition: opacity .3s; mix-blend-mode: soft-light;
+  background: radial-gradient(circle at var(--px) var(--py), rgb(255 90 100 / .55), transparent 62%);
+}
+[data-tilt]:hover .tilt-luz { opacity: 1; }
+
+/* luz vinho que segue o mouse pela tela toda */
+.luz-cursor {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .6s;
+  background: radial-gradient(520px circle at var(--cx, 50%) var(--cy, 40%), rgb(225 29 42 / .13), transparent 70%);
+}
+.luz-cursor[data-on="1"] { opacity: 1; }
+
+/* qualquer bloco com data-luz acende onde o mouse está (linhas, cards de roteiro, botões grandes) */
+[data-luz] { position: relative; isolation: isolate; }
+[data-luz]::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .25s;
+  background: radial-gradient(260px circle at var(--lx, 50%) var(--ly, 50%), rgb(225 29 42 / .16), transparent 70%);
+}
+[data-luz]:hover::after { opacity: 1; }
+@media (hover: none) { .luz-cursor, .tilt-luz { display: none; } [data-tilt] { transform: none; } }
+@media (prefers-reduced-motion: reduce) { [data-tilt] { transform: none !important; } }
