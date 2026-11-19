@@ -5,9 +5,9 @@ import { atualizar, enviarInspiracao, enviarVideo, modoDec, post, type Estado, t
 import type { Aba } from "../Dock";
 import { Folha, Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
 import { Luz } from "../fx";
+import { Vidro } from "../Vidro";
 import { Configurar, ConfigurarVideo, type ConfigCorte } from "../Configurar";
 import { som } from "../sons";
-import { Aurora } from "../aurora";
 
 // Referência: "AI Prompt Input Box" (kedhareswer, 21st.dev, nov/2026): composer de vidro, frase de exemplo
 // se digitando sozinha, chips de modo, menu de ajuste, anexo e botão que respira. Adaptado ao vinho da Máquina.
@@ -138,11 +138,6 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
   return (
     <div className="flex min-h-[calc(100dvh-210px)] flex-col items-center justify-center gap-9 pb-10">
-      {/* cortinas de luz vinho atrás de tudo que se inclinam pro mouse; clique solta um anel */}
-      <Topo><div aria-hidden className="pointer-events-none fixed inset-0 opacity-75" style={{ zIndex: -1 }}>
-        <Aurora colors={["#e11d2a", "#9b1027", "#ff3b4a", "#5a0618"]} background="#0b0204" backgroundDark="#0b0204" intensity={0.28} height={0.06} spread={0.16} layers={3} waviness={1.1} lean={1.4} speed={0.6} grain={0.03} maxFps={45}
-          style={{ position: "absolute", inset: 0 }} />
-      </div></Topo>
       {/* a logo no meio, com uma luz que respira atrás */}
       <motion.div layoutId="marca" className="relative" transition={molaSuave}>
         <motion.span aria-hidden className="absolute inset-[-40%] rounded-full bg-red/40 blur-3xl"
@@ -153,7 +148,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         </motion.span>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 24, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ ...molaSuave, delay: 0.12 }}
+      <motion.div initial={{ opacity: 0, y: 24, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }} transition={{ ...molaSuave, delay: 0.12 }}
         className="w-full max-w-[720px]">
         <Luz className="rounded-[26px]" tam={420}>
         <motion.div
@@ -161,8 +156,9 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
           animate={{ scale: sobre ? 1.015 : 1 }} transition={mola}
           onDragOver={(ev) => { ev.preventDefault(); setSobre(true); }} onDragLeave={() => setSobre(false)}
           onDrop={(ev) => { ev.preventDefault(); setSobre(false); anexar(ev.dataTransfer.files[0]); }}
-          className="halo relative rounded-[26px] bg-[linear-gradient(180deg,rgb(255_255_255/0.08),rgb(255_255_255/0.03))] p-2.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.14),inset_0_0_0_1px_rgb(255_255_255/0.07),0_40px_90px_-30px_rgb(0_0_0/0.95)] backdrop-blur-2xl"
+          className="halo relative rounded-[26px] p-2.5 shadow-[0_40px_90px_-30px_rgb(0_0_0/0.95)]"
         >
+          <Vidro aria-hidden radius={26} scale={40} bevelDepth={18} className="pointer-events-none absolute inset-0 -z-10" />
           {/* anexo */}
           <AnimatePresence initial={false}>
             {arquivo && (

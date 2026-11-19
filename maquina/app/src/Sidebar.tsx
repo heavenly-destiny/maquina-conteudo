@@ -20,7 +20,7 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
   return (
     <motion.aside
       initial={false} animate={{ width: aberta ? 248 : 76 }} transition={mola}
-      className="fixed inset-y-0 left-0 z-40 hidden flex-col border-r border-white/[0.06] bg-[#0d0305]/80 px-3 pb-4 pt-[max(16px,env(safe-area-inset-top))] backdrop-blur-xl lg:flex"
+      className="fixed inset-y-0 left-0 z-40 hidden flex-col bg-[#0d0305]/35 px-3 pb-4 pt-[max(16px,env(safe-area-inset-top))] shadow-[inset_-1px_0_0_rgb(255_255_255/0.08),inset_-14px_0_30px_-24px_rgb(255_120_130/0.25)] backdrop-blur-2xl backdrop-saturate-[1.8] lg:flex"
     >
       <div className={cx("mb-6 flex h-11 items-center", aberta ? "justify-between pl-1.5" : "justify-center")}>
         <button onClick={() => onAba("inicio")} className="flex cursor-pointer items-center gap-2.5" aria-label="Início">

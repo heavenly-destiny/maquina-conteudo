@@ -145,10 +145,10 @@ export function Folha({ aberta, onFechar, children, larga }: { aberta: boolean; 
     <AnimatePresence>
       {aberta && (
         <motion.div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={() => { som.fechar(); onFechar(); }} />
+          <div className="absolute inset-0 bg-black/45 backdrop-blur-[6px]" onClick={() => { som.fechar(); onFechar(); }} />
           <motion.div
             role="dialog"
-            className={cx("relative max-h-[92dvh] w-full overflow-y-auto rounded-t-[28px] bg-[#130709]/95 p-5 shadow-[inset_0_1px_0_rgb(255_255_255/0.1),inset_0_0_0_1px_rgb(255_255_255/0.07),0_40px_120px_-20px_rgb(0_0_0/0.9)] backdrop-blur-2xl pb-[max(20px,env(safe-area-inset-bottom))] sm:rounded-[28px] sm:p-7", larga ? "sm:max-w-4xl" : "sm:max-w-xl")}
+            className={cx("relative max-h-[92dvh] w-full overflow-y-auto vidro-liquido rounded-t-[28px] bg-[#130709]/75 p-5 backdrop-blur-[40px] backdrop-saturate-[1.8] pb-[max(20px,env(safe-area-inset-bottom))] sm:rounded-[28px] sm:p-7", larga ? "sm:max-w-4xl" : "sm:max-w-xl")}
             initial={{ y: 60, opacity: 0, scale: 0.97 }} animate={{ y: 0, opacity: 1, scale: 1 }} exit={{ y: 40, opacity: 0, scale: 0.98 }}
             transition={mola}
           >

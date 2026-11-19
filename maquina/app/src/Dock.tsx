@@ -1,6 +1,6 @@
 import { motion, useMotionValue, type MotionValue } from "motion/react";
 import { Home, Scissors, Sparkles, Telescope, Send } from "lucide-react";
-import { LiquidGlass } from "./glass";
+import { Vidro } from "./Vidro";
 import { som } from "./sons";
 import { cx, mola } from "./ui";
 
@@ -45,13 +45,13 @@ export function Dock({ aba, onAba, badges }: { aba: Aba; onAba: (a: Aba) => void
       initial={{ y: 90, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ ...mola, delay: 0.25 }}
       className="fixed inset-x-0 bottom-[max(14px,env(safe-area-inset-bottom))] z-40 flex justify-center px-3"
     >
-      <LiquidGlass appearance="dark" refraction={14} interactive={false} className="rounded-[30px]" style={{ boxShadow: "0 18px 50px -12px rgb(0 0 0 / 0.75), inset 0 0 0 1px rgb(255 255 255 / 0.08)" }}>
-        <div className="flex items-center gap-0.5 rounded-[30px] bg-[#120306]/75 p-1.5 backdrop-blur-xl" onMouseMove={(e) => mx.set(e.clientX)} onMouseLeave={() => mx.set(Infinity)}>
+      <Vidro radius={30} scale={42} aberration={5} className="relative shadow-[0_18px_50px_-12px_rgb(0_0_0/0.75)]">
+        <div className="flex items-center gap-0.5 p-1.5" onMouseMove={(e) => mx.set(e.clientX)} onMouseLeave={() => mx.set(Infinity)}>
           {ABAS.map((a) => (
             <Item key={a.id} aba={a} ativa={a.id === aba} mx={mx} badge={badges[a.id]} onClick={() => { if (a.id !== aba) { som.aba(); onAba(a.id); } }} />
           ))}
         </div>
-      </LiquidGlass>
+      </Vidro>
     </motion.nav>
   );
 }

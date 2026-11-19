@@ -114,12 +114,12 @@ export function Paleta({ e, ir, criarCom, abrirConfig, alternarSom }: {
     <AnimatePresence>
       {aberta && (
         <motion.div className="fixed inset-0 z-[70] grid place-items-start justify-items-center px-4 pt-[10vh]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-          <div aria-hidden onClick={fechar} className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+          <div aria-hidden onClick={fechar} className="absolute inset-0 bg-black/40 backdrop-blur-[6px]" />
           <motion.div role="dialog" aria-modal="true" aria-label="Buscar e criar" onKeyDown={teclas}
             onPointerMove={(ev) => { const b = ev.currentTarget.getBoundingClientRect(); px.set(ev.clientX - b.left); py.set(ev.clientY - b.top); }}
             initial={{ opacity: 0, scale: reduz ? 1 : 0.92, y: reduz ? 0 : -24, rotateX: reduz ? 0 : 12 }} animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }} exit={{ opacity: 0, scale: reduz ? 1 : 0.96, y: reduz ? 0 : -10 }}
             transition={reduz ? { duration: 0.1 } : { type: "spring", stiffness: 380, damping: 26 }} style={{ transformPerspective: 1000 }}
-            className="relative w-full max-w-2xl overflow-hidden rounded-[22px] border border-white/10 bg-[#140407]/95 shadow-[0_50px_100px_-30px_rgb(0_0_0/0.8),0_0_0_1px_rgb(225_29_42/0.12)]">
+            className="relative w-full max-w-2xl overflow-hidden vidro-liquido rounded-[22px] bg-[#140407]/72 backdrop-blur-[40px] backdrop-saturate-[1.8]">
             {!reduz && <motion.div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: brilho }} />}
             <div className="relative flex items-center gap-3 border-b border-white/[0.07] px-4">
               <Search className="size-5 text-red" aria-hidden />

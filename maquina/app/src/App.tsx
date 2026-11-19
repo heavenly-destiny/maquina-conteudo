@@ -4,6 +4,7 @@ import { Search, Settings2, Volume2, VolumeX } from "lucide-react";
 import { Onboarding, lerConfig, type Config } from "./Onboarding";
 import { Intro } from "./Intro";
 import { Dock, ABAS, type Aba } from "./Dock";
+import { Fundo } from "./Fundo";
 import { Sidebar } from "./Sidebar";
 import { useEstado } from "./api";
 import { som } from "./sons";
@@ -104,7 +105,7 @@ export default function App() {
 
   return (
     <Avisos>
-      <div className="fundo" /><div className="luz-cursor" /><div className="grao" />
+      <div className="fundo"><Fundo className="absolute inset-0 size-full" /></div><div className="luz-cursor" /><div className="grao" />
       <LayoutGroup>
         <AnimatePresence>{intro && <Intro key="intro" onFim={fimIntro} />}</AnimatePresence>
         {!intro && (
@@ -142,7 +143,7 @@ export default function App() {
                 <motion.div
                   key={aba}
                   initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }} /* filter que fica no pai corta o backdrop: o vidro não vê o fundo */
                   exit={{ opacity: 0, y: -8, filter: "blur(6px)", transition: { duration: 0.15 } }}
                   transition={molaSuave}
                 >
