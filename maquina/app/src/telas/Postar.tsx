@@ -4,6 +4,7 @@ import { Check, Download, Send } from "lucide-react";
 import { atualizar, post, type Estado } from "../api";
 import { Cabecalho, Copiar, Folha, GRADE, Segmentos, Tile, Vazio, cx, mola, useAviso } from "../ui";
 import { som } from "../sons";
+import { CardVitrine, Fileira, Secao } from "../Vitrine";
 
 const REDES = [
   { v: "instagram", nome: "Instagram", sigla: "IG" },
@@ -11,7 +12,7 @@ const REDES = [
   { v: "youtube", nome: "YouTube", sigla: "YT" },
 ] as const;
 
-type Item = { ref: string; titulo: string; capa?: string | null; video: string; legenda?: string; hashtags?: string; redes: Set<string> };
+type Item = { ref: string; titulo: string; capa?: string | null; video: string; legenda?: string; hashtags?: string; redes: Set<string>; origem: string };
 
 function itens(e: Estado): Item[] {
   const feitos = new Map<string, Set<string>>();
@@ -20,10 +21,10 @@ function itens(e: Estado): Item[] {
     feitos.get(p.ref)!.add(p.rede);
   }
   const out: Item[] = [];
-  for (const g of e.geracoes) if (g.video) out.push({ ref: g.id, titulo: g.titulo || g.briefing, capa: g.capa, video: g.video, legenda: g.legenda, hashtags: g.hashtags, redes: feitos.get(g.id) ?? new Set() });
+  for (const g of e.geracoes) if (g.video) out.push({ ref: g.id, titulo: g.titulo || g.briefing, capa: g.capa, video: g.video, legenda: g.legenda, hashtags: g.hashtags, redes: feitos.get(g.id) ?? new Set(), origem: "Criados" });
   for (const j of e.jobs) for (const c of j.cortes) if (c.video && c.status !== "descartado") {
     const ref = `${j.id}:${c.n}`;
-    out.push({ ref, titulo: c.titulo, capa: c.capa, video: c.video, legenda: c.legenda, hashtags: c.hashtags, redes: feitos.get(ref) ?? new Set() });
+    out.push({ ref, titulo: c.titulo, capa: c.capa, video: c.video, legenda: c.legenda, hashtags: c.hashtags, redes: feitos.get(ref) ?? new Set(), origem: `Cortes de ${(j.bruto || j.id).replace(/\.(mov|mp4|m4v)$/i, "")}` });
   }
   return out;
 }
@@ -66,11 +67,13 @@ function Detalhe({ x, marcar }: { x: Item; marcar: (ref: string, rede: string) =
 }
 
 export function Postar({ e }: { e: Estado | null }) {
-  const [ver, setVer] = useState<"fila" | "postados">("fila");
+  const [ver, setVer] = useState<"geral" | "fila" | "postados">("geral");
   const [aberto, setAberto] = useState<string | null>(null);
   const avisar = useAviso();
   const todos = e ? itens(e) : [];
-  const lista = todos.filter((x) => (ver === "fila" ? x.redes.size === 0 : x.redes.size > 0));
+  const fila = todos.filter((x) => x.redes.size === 0), feitos = todos.filter((x) => x.redes.size > 0);
+  const lista = ver === "fila" ? fila : ver === "postados" ? feitos : todos;
+  const siglas = (x: Item) => REDES.filter((r) => x.redes.has(r.v)).map((r) => r.sigla).join(" · ");
   const atual = todos.find((x) => x.ref === aberto);
   const marcar = async (ref: string, rede: string) => {
     try { await post("/api/postado", { ref, rede }); som.ok(); atualizar(); }
@@ -78,10 +81,23 @@ export function Postar({ e }: { e: Estado | null }) {
   };
   return (
     <div className="flex flex-col gap-6">
-      <Cabecalho titulo="Postar" n={lista.length}>
-        <Segmentos id="postar" valor={ver} onChange={setVer} opcoes={[{ v: "fila", rotulo: "Na fila" }, { v: "postados", rotulo: "Postados" }]} />
+      <Cabecalho titulo="Postar" n={fila.length}>
+        <Segmentos id="postar" valor={ver} onChange={setVer} opcoes={[{ v: "geral", rotulo: "Visão geral" }, { v: "fila", rotulo: <>Na fila <span className="text-faint tnum">{fila.length}</span></> }, { v: "postados", rotulo: <>Postados <span className="text-faint tnum">{feitos.length}</span></> }]} />
       </Cabecalho>
-      {lista.length ? (
+      {ver === "geral" && todos.length ? (
+        <div className="flex flex-col gap-10">
+          {fila.length > 0 && (
+            <Secao titulo="Na fila" sub="Esperando post" total={fila.length} verTudo={() => setVer("fila")}>
+              <Fileira>{fila.map((x, n) => <CardVitrine key={x.ref} i={n} img={x.capa} video={x.video} titulo={x.titulo} meta={x.origem} onClick={() => setAberto(x.ref)} />)}</Fileira>
+            </Secao>
+          )}
+          {feitos.length > 0 && (
+            <Secao titulo="Postados" total={feitos.length} verTudo={() => setVer("postados")} i={1}>
+              <Fileira>{feitos.map((x, n) => <CardVitrine key={x.ref} i={n} img={x.capa} video={x.video} titulo={x.titulo} selo={siglas(x)} meta={x.origem} onClick={() => setAberto(x.ref)} />)}</Fileira>
+            </Secao>
+          )}
+        </div>
+      ) : lista.length ? (
         <div className={GRADE}>
           {lista.map((x, i) => (
             <Tile key={x.ref} i={i} capa={x.capa} video={x.video} titulo={x.titulo} onClick={() => setAberto(x.ref)}
@@ -95,7 +111,7 @@ export function Postar({ e }: { e: Estado | null }) {
           ))}
         </div>
       ) : (
-        <Vazio icone={<Send className="size-6" />} titulo={ver === "fila" ? "Nada esperando post" : "Nada postado ainda"} />
+        <Vazio icone={<Send className="size-6" />} titulo={ver === "postados" ? "Nada postado ainda" : "Nada esperando post"} />
       )}
       <Folha aberta={!!atual} onFechar={() => setAberto(null)} larga>{atual && <Detalhe x={atual} marcar={marcar} />}</Folha>
     </div>

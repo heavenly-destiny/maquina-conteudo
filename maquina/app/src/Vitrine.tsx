@@ -61,6 +61,13 @@ export function CardVitrine({ img, video, titulo, meta, selo, rank, i, onClick, 
   const [tocando, setTocando] = useState(false);
   const entrar = () => { const v = vid.current; if (v) { v.play().then(() => setTocando(true)).catch(() => {}); } };
   const sair = () => { const v = vid.current; if (v) { v.pause(); v.currentTime = 0; } setTocando(false); };
+  const caixa = useRef<HTMLDivElement>(null);
+  useEffect(() => { // celular não tem hover: toca o card que está no meio da tela
+    const el = caixa.current;
+    if (!el || !video || !matchMedia("(hover: none)").matches) return;
+    const io = new IntersectionObserver(([en]) => (en.isIntersecting ? entrar() : sair()), { rootMargin: "-30% -30% -30% -30%" });
+    io.observe(el); return () => io.disconnect();
+  }, [video]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <motion.div initial={{ opacity: 0, y: 14, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
       transition={{ ...molaSuave, delay: Math.min(i, 10) * 0.035 }}
@@ -70,9 +77,10 @@ export function CardVitrine({ img, video, titulo, meta, selo, rank, i, onClick, 
           {rank}
         </span>
       )}
-      <div className={cx("relative z-10", rank != null && largura)}>
+      <div ref={caixa} className={cx("relative z-10", rank != null && largura)}>
+        <div className="relative transition-transform duration-300 ease-out group-hover:-translate-y-1">
         <button onClick={() => { som.abrir(); onClick(); }} onMouseEnter={entrar} onMouseLeave={sair} onFocus={entrar} onBlur={sair} aria-label={titulo || "Abrir"}
-          className="relative block aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-[18px] bg-white/[0.04] text-left shadow-[inset_0_0_0_1px_rgb(255_255_255/0.07),0_24px_50px_-30px_rgb(0_0_0/0.9)] transition-transform duration-300 ease-out group-hover:-translate-y-1">
+          className="relative block aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-[18px] bg-white/[0.04] text-left shadow-[inset_0_0_0_1px_rgb(255_255_255/0.07),0_24px_50px_-30px_rgb(0_0_0/0.9)]">
           {img ? <img src={img} alt="" loading="lazy" className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
             : <span className="flex size-full items-end p-3 text-[13px] font-semibold leading-snug" style={{ background: "linear-gradient(160deg,#3a0711,#0b0204)" }}>{titulo}</span>}
           {video && <video ref={vid} src={video} muted playsInline loop preload="none" className={cx("pointer-events-none absolute inset-0 size-full object-cover transition-opacity duration-300", tocando ? "opacity-100" : "opacity-0")} />}
@@ -84,6 +92,7 @@ export function CardVitrine({ img, video, titulo, meta, selo, rank, i, onClick, 
           {selo && <span className="absolute left-2 top-2 rounded-full bg-black/55 px-2 py-0.5 text-[11px] font-medium backdrop-blur tnum">{selo}</span>}
         </button>
         {canto}
+        </div>
         <div className="mt-2 px-0.5">
           <p className="line-clamp-1 text-[13.5px] font-medium leading-snug">{titulo}</p>
           {meta && <p className="mt-0.5 line-clamp-1 text-[12px] text-faint">{meta}</p>}

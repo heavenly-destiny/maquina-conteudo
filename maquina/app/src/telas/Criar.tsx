@@ -6,6 +6,7 @@ import { atualizar, post, type Estado, type Geracao } from "../api";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, GRADE, LixeiraCanto, Segmentos, Status, Tile, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import type { Aba } from "../Dock";
 import { som } from "../sons";
+import { CardVitrine, Fileira, Secao } from "../Vitrine";
 import { AbrirTranscricao, LinhaTranscricao } from "./Transcricoes";
 
 type Tipo = Geracao["tipo"];
@@ -306,7 +307,22 @@ export function Criar({ e, ir }: { e: Estado | null; ir: (a: Aba) => void }) {
           )}
         </div>
       )}
-      {videos.length > 0 && (
+      {videos.length >= 4 && filtro === "tudo" && !nichoAt && !val ? (
+        <div className="flex flex-col gap-10">
+          {[{ v: "validado", nome: "Validados", its: videos.filter((g) => g.validacao === "validado") }, ...TIPOS.map((t) => ({ v: t.v, nome: t.nome, its: videos.filter((g) => g.tipo === t.v && g.validacao !== "validado") }))]
+            .filter((b) => b.its.length).map((b, k) => (
+            <Secao key={b.v} i={k} titulo={b.nome} total={b.its.length} verTudo={b.v === "validado" ? () => setVal("validado") : () => setFiltro(b.v as Tipo)}>
+              <Fileira>
+                {b.its.map((g, n) => (
+                  <CardVitrine key={g.id} i={n} img={g.capa} video={g.video} titulo={(g.titulo || g.briefing).replace(/^[#*\s]+/, "")} meta={[g.nicho, g.validacao === "validado" ? "Validado" : "Em teste"].filter(Boolean).join(" · ")}
+                    selo={g.status !== "pronto" ? <Status status={g.status} fase={g.fase} /> : undefined} onClick={() => setAberta(g.id)}
+                    canto={!["na-fila", "rodando", "gerando"].includes(g.status) && <LixeiraCanto onConfirmar={() => excluirGeracao(g.id)} className="bottom-2 right-2" />} />
+                ))}
+              </Fileira>
+            </Secao>
+          ))}
+        </div>
+      ) : videos.length > 0 && (
         <div className={GRADE}>
           {videos.map((g, i) => (
             <Tile key={g.id} i={i} capa={g.capa} video={g.video} titulo={g.titulo || g.briefing}

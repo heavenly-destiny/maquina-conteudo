@@ -4,6 +4,7 @@ import { Check, ChevronLeft, ChevronRight, Download, Film, Trash2, Undo2, Upload
 import { atualizar, enviarVideo, fmtTempo, post, type Corte, type Estado, type Job } from "../api";
 import { Botao, Cabecalho, Copiar, Folha, GRADE, Segmentos, Status, Tile, Topo, Vazio, cascata, cx, mola, useAviso } from "../ui";
 import { som } from "../sons";
+import { CardVitrine, Fileira, Secao } from "../Vitrine";
 import { Configurar, type ConfigCorte } from "../Configurar";
 import { LEGENDAS } from "../legendas";
 import { Link2, ArrowUp } from "lucide-react";
@@ -255,7 +256,7 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
   const selProntos = [...sel].filter((n) => job.cortes.find((c) => c.n === n && c.status === "pronto"));
 
   return (
-    <motion.section {...cascata(i + 1)} className="flex flex-col gap-4">
+    <motion.section {...cascata(i + 1)} id={`job-${job.id}`} className="flex scroll-mt-24 flex-col gap-4">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <h3 className="truncate text-[17px] font-semibold tracking-tight">{(job.bruto || job.id).replace(/\.(mov|mp4|m4v)$/i, "")}</h3>
@@ -333,11 +334,19 @@ export function Cortes({ e }: { e: Estado | null }) {
   const ativa = cats.includes(cat) ? cat : "";
   const jobs = (e?.jobs ?? []).filter((j) => !ativa || (j.categoria || "Sem categoria") === ativa);
   // ver os cortes de todos os vídeos juntos (prontos ou editando) sem abrir vídeo por vídeo
-  const [vista, setVista] = useState<"video" | "prontos" | "editando">("video");
+  const [vista, setVista] = useState<"geral" | "video" | "prontos" | "editando">("geral");
+  const [abertoV, setAbertoV] = useState<{ job: Job; lista: Corte[]; idx: number } | null>(null);
+  const nomeJob = (j: Job) => (j.bruto || j.id).replace(/\.(mov|mp4|m4v)$/i, "");
+  const porForca = (a: Corte, b: Corte) => (b.forca ?? 0) - (a.forca ?? 0) || a.n - b.n;
+  const prontosG = jobs.flatMap((j) => j.cortes.filter((c) => filtrar(c, "prontos")).map((c) => ({ j, c }))).sort((a, b) => porForca(a.c, b.c));
+  const editandoG = jobs.flatMap((j) => j.cortes.filter((c) => c.status === "editando").map((c) => ({ j, c })));
+  const abrirV = (j: Job, lista: Corte[], c: Corte) => { som.abrir(); setAbertoV({ job: j, lista, idx: lista.indexOf(c) }); };
+  const verJob = (id: string) => { setVista("video"); setTimeout(() => document.getElementById(`job-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }), 250); };
+  const metaCorte = (j: Job, c: Corte) => [nomeJob(j), fmtTempo(c.dur ?? c.fim - c.inicio)].filter(Boolean).join(" · ");
   const [abertoG, setAbertoG] = useState<{ job: string; idx: number } | null>(null);
-  const juntos = vista === "video" ? [] : jobs.flatMap((j) => j.cortes.filter((c) => filtrar(c, vista)).map((c) => ({ j, c })));
+  const juntos = vista !== "prontos" && vista !== "editando" ? [] : jobs.flatMap((j) => j.cortes.filter((c) => filtrar(c, vista)).map((c) => ({ j, c })));
   const jobAberto = abertoG && jobs.find((j) => j.id === abertoG.job);
-  const listaAberta = jobAberto && vista !== "video" ? jobAberto.cortes.filter((c) => filtrar(c, vista)) : [];
+  const listaAberta = jobAberto && (vista === "prontos" || vista === "editando") ? jobAberto.cortes.filter((c) => filtrar(c, vista)) : [];
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -356,7 +365,7 @@ export function Cortes({ e }: { e: Estado | null }) {
       {!!e?.jobs.length && (
         <div className="-mb-4 flex flex-wrap items-center gap-2">
           <Segmentos id="vista" valor={vista} onChange={(v) => { setVista(v); setAbertoG(null); }} className="max-w-full"
-            opcoes={[{ v: "video", rotulo: "Por vídeo" }, { v: "prontos", rotulo: "Todos prontos" }, { v: "editando", rotulo: "Editando" }]} />
+            opcoes={[{ v: "geral", rotulo: "Visão geral" }, { v: "video", rotulo: "Por vídeo" }, { v: "prontos", rotulo: <>Prontos <span className="text-faint tnum">{prontosG.length}</span></> }, { v: "editando", rotulo: <>Editando <span className="text-faint tnum">{editandoG.length}</span></> }]} />
           {cats.length > 1 && (
             <Segmentos id="cat" valor={ativa} onChange={setCat} className="max-w-full"
               opcoes={[{ v: "", rotulo: "Tudo" }, ...cats.map((c) => ({ v: c, rotulo: c }))]} />
@@ -365,6 +374,45 @@ export function Cortes({ e }: { e: Estado | null }) {
       )}
       {!e?.jobs.length ? (
         <Vazio icone={<Film className="size-6" />} titulo="Nenhum vídeo cortado ainda" />
+      ) : vista === "geral" ? (
+        <div className="flex flex-col gap-10">
+          {prontosG.length > 0 && (
+            <Secao titulo="Prontos pra postar" sub="Os mais fortes primeiro" total={prontosG.length} verTudo={() => setVista("prontos")}>
+              <Fileira>
+                {prontosG.slice(0, 16).map(({ j, c }, k) => (
+                  <CardVitrine key={`${j.id}:${c.n}`} i={k} img={c.capa} video={c.video} titulo={c.titulo} meta={metaCorte(j, c)}
+                    selo={c.status === "enviado" ? "Enviado" : undefined} onClick={() => abrirV(j, prontosG.map((x) => x.c).filter((x) => j.cortes.includes(x)), c)} />
+                ))}
+              </Fileira>
+            </Secao>
+          )}
+          {editandoG.length > 0 && (
+            <Secao titulo="Editando agora" total={editandoG.length} verTudo={() => setVista("editando")}>
+              <Fileira>
+                {editandoG.map(({ j, c }, k) => (
+                  <CardVitrine key={`${j.id}:${c.n}`} i={k} img={c.capa} video={c.video} titulo={c.titulo} meta={<Status status={c.status} fase={c.fase} />}
+                    onClick={() => abrirV(j, j.cortes.filter((x) => x.status === "editando"), c)} />
+                ))}
+              </Fileira>
+            </Secao>
+          )}
+          {jobs.filter((j) => j.cortes.length).map((j, k) => {
+            const lista = [...j.cortes.filter((c) => c.status !== "descartado")].sort(porForca);
+            const pr = j.cortes.filter((c) => filtrar(c, "prontos")).length, esc = j.cortes.filter((c) => filtrar(c, "escolher")).length;
+            return (
+              <Secao key={j.id} i={k + 2} titulo={nomeJob(j)} total={lista.length} verTudo={() => verJob(j.id)}
+                sub={[pr && `${pr} ${pr > 1 ? "prontos" : "pronto"}`, esc && `${esc} pra escolher`, j.categoria !== "Sem categoria" && j.categoria].filter(Boolean).join(" · ") || undefined}>
+                <Fileira>
+                  {lista.slice(0, 16).map((c, n) => (
+                    <CardVitrine key={c.n} i={n} img={c.capa} video={c.video} titulo={c.titulo} meta={c.gancho || fmtTempo(c.dur ?? c.fim - c.inicio)}
+                      selo={c.status === "pronto" ? "Pronto" : c.status === "editando" ? "Editando" : c.forca ? `Força ${c.forca}` : undefined}
+                      onClick={() => abrirV(j, lista, c)} />
+                  ))}
+                </Fileira>
+              </Secao>
+            );
+          })}
+        </div>
       ) : vista === "video" ? jobs.map((j, i) => <BlocoJob key={j.id} job={j} i={i} cats={cats} />) : juntos.length ? (
         <div className={GRADE}>
           {juntos.map(({ j, c }, k) => (
@@ -375,6 +423,9 @@ export function Cortes({ e }: { e: Estado | null }) {
       ) : (
         <Vazio icone={<Film className="size-6" />} titulo={vista === "prontos" ? "Nenhum corte pronto ainda" : "Nada editando agora"} />
       )}
+      <Folha aberta={!!abertoV} onFechar={() => setAbertoV(null)} larga>
+        {abertoV && <Detalhe job={abertoV.job} lista={abertoV.lista} idx={Math.max(0, Math.min(abertoV.idx, abertoV.lista.length - 1))} setIdx={(i) => setAbertoV(i === null ? null : { ...abertoV, idx: i })} />}
+      </Folha>
       <Folha aberta={!!jobAberto && listaAberta.length > 0} onFechar={() => setAbertoG(null)} larga>
         {jobAberto && abertoG && listaAberta.length > 0 && (
           <Detalhe job={jobAberto} lista={listaAberta} idx={Math.min(abertoG.idx, listaAberta.length - 1)} setIdx={(i) => setAbertoG(i === null ? null : { job: jobAberto.id, idx: i })} />
