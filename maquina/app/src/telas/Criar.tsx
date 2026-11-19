@@ -66,7 +66,7 @@ function Teleprompter({ txt, json }: { txt: string; json?: Geracao["roteiro_json
       {r.notas.length > 0 && (
         <div className="flex flex-col gap-2">
           <button onClick={() => { som.toque(); setVerNotas((v) => !v); }} aria-expanded={verNotas}
-            className="min-h-9 cursor-pointer self-start rounded-full px-3 text-[13px] font-medium text-faint transition-colors hover:text-ink">{verNotas ? "Esconder notas" : "Notas da máquina"}</button>
+            className="min-h-9 cursor-pointer self-start rounded-full px-3 text-[13px] font-medium text-faint transition-colors hover:text-ink">{verNotas ? "Esconder notas" : "Notas da Forja"}</button>
           {verNotas && <ul className="vidro flex flex-col gap-1.5 rounded-[16px] p-4 text-[13px] leading-relaxed text-mute">{r.notas.map((n, i) => <li key={i}>{n}</li>)}</ul>}
         </div>
       )}
@@ -134,7 +134,7 @@ function Abrir({ g }: { g: Geracao }) {
       )}
       {g.status === "aprovar-copy" && (
         <div className="vidro flex flex-col gap-3 rounded-[18px] p-4">
-          <p className="text-[14px] text-mute">Leia a copy. Aprovando, a máquina gera voz, música e vídeo sem mudar nenhuma palavra.</p>
+          <p className="text-[14px] text-mute">Leia a copy. Aprovando, a Forja gera voz, música e vídeo sem mudar nenhuma palavra.</p>
           <Botao tipo="principal" className="self-start" onClick={async () => { await post("/api/aprovar-copy", { id: g.id }); som.enviar(); avisar("Copy aprovada. Gerando o vídeo."); atualizar(); }}>
             <Check className="size-4" /> Aprovar copy
           </Botao>

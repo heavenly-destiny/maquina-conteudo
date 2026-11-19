@@ -8,7 +8,7 @@
 - [Mostrar vídeo original](feedback-mostrar-video-original.md) — video playing on his monitor = keep his recording, swap ONLY the audio for the original file; spoken orders in raw are orders
 - [Não esquecer](feedback-nao-esquecer.md) — every correction goes into memory AND the brief/prompt the job reads AND a check
 - [Formato em pé](feedback-formato-em-pe.md) — vertical raw = full-screen talking head, DLw_JtTzhz0 caption style; horizontal stays split
-- [Máquina v2 produto](maquina-v2-produto.md) — Higgsfield/OpusClip-style: sidebar Criativos/Conteúdo(+longo)/Carrossel, link or file, profile, model picker
+- [Máquina v2 produto](maquina-v2-produto.md) — product name is Forja (approved 19/11); Higgsfield/OpusClip-style: sidebar Criativos/Conteúdo(+longo)/Carrossel, link or file, profile, model picker
 - [Trilha obrigatória](feedback-trilha-obrigatoria.md) — every machine video has music + SFX baked in; only his own IG posts may also get a no-music version
 - [Máquina repositório](maquina-repositorio.md) — private repo friends install; cerebro/ base never erased, perfil/ per-user layer; publicar.sh to update
 - [21st sempre](feedback-21st-sempre.md) — paid component libraries are mandatory; check 21st tier first (OAuth account was free on 19/11)

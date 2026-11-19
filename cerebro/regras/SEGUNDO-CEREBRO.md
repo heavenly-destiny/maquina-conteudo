@@ -141,3 +141,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Máquina (18/11): trilhas organizadas por estilo de vídeo (uma pra cada coisa), as que ele e a galera usam; escolher a trilha dentro do app na hora de gerar.
 - Regra (18/11): vídeo sem trilha sonora e efeitos "fica muito ruim, não conecta". Todo vídeo da máquina sai com trilha e efeitos. Só os do Instagram dele (ele mesmo posta) podem ter o áudio em alta colocado no próprio Instagram.
 - Geração em lote de criativos de imagem (19/11): ele prefere mandar o prompt pro Codex, que "já faz tudo sozinho". Prompt tem que funcionar sem ele intervir: baixar referências, gerar, salvar com nome, conferir.
+- Máquina de Conteúdo (19/11): nome oficial agora é **Forja**. Aprovou a marca nova: F de metal líquido que se forma pela fusão de três gotas, com uma gota caindo da barra do meio ("F."), sobre vidro vinho. A logo antiga do M de fita foi recusada por ser "muito básica".

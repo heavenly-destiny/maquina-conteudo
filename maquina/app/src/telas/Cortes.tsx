@@ -249,7 +249,7 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
 
   return (
     <motion.section {...cascata(i + 1)} className="flex flex-col gap-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <h3 className="truncate text-[17px] font-semibold tracking-tight">{job.bruto || job.id}</h3>
           <div className="mt-1.5 flex items-center gap-2" aria-label={`Etapa: ${ETAPAS[et]}`}>

@@ -188,7 +188,7 @@ function PassoPerfil({ cfg, pronto }: { cfg: Config; pronto: () => void }) {
     <div className="flex flex-col gap-4">
       <div>
         <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.02em]">Quem é você</h2>
-        <p className="mt-1.5 text-[15px] text-mute">A máquina já vem com tudo que sabe. Isso aqui ensina o seu jeito, e ela aprende mais a cada correção sua.</p>
+        <p className="mt-1.5 text-[15px] text-mute">A Forja já vem com tudo que sabe. Isso aqui ensina o seu jeito, e ela aprende mais a cada correção sua.</p>
       </div>
       <Texto v={nome} set={setNome} ph="Seu nome" />
       <Texto v={nicho} set={setNicho} ph="Seu nicho (ex.: tráfego pago, estética, fitness)" />
@@ -216,7 +216,7 @@ function PassoFerramentas({ cfg, recarregar, pronto }: { cfg: Config; recarregar
     <div className="flex flex-col gap-5">
       <div>
         <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.02em]">{falta.length ? "Faltam algumas peças" : "Tudo instalado"}</h2>
-        <p className="mt-1.5 text-[15px] text-mute">{falta.length ? "Rode cada comando no Terminal e verifique de novo." : "A máquina tem tudo que precisa pra rodar."}</p>
+        <p className="mt-1.5 text-[15px] text-mute">{falta.length ? "Rode cada comando no Terminal e verifique de novo." : "A Forja tem tudo que precisa pra rodar."}</p>
       </div>
       <ul className="flex flex-col gap-2">
         {cfg.ferramentas.map((f, i) => (
@@ -281,7 +281,7 @@ export function Onboarding({ inicial, onFim }: { inicial: Config; onFim: () => v
                     <Marca tam={72} />
                   </motion.div>
                   <div>
-                    <h1 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Vamos ligar<br />sua máquina</h1>
+                    <h1 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Vamos acender<br />sua Forja</h1>
                     <p className="mt-3 text-[16px] text-mute">Conecte seu Claude, sua voz e conte quem você é. Leva dois minutos e tudo fica só neste Mac.</p>
                   </div>
                   <Botao tipo="principal" className="min-h-12 px-6" onClick={proximo}>Começar <ArrowRight className="size-4" /></Botao>
@@ -296,8 +296,8 @@ export function Onboarding({ inicial, onFim }: { inicial: Config; onFim: () => v
                   <motion.span initial={{ scale: 0, rotate: -120 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 260, damping: 16 }}
                     className="respira grid size-16 place-items-center rounded-full bg-red text-white"><Check className="size-8" strokeWidth={2.6} /></motion.span>
                   <div>
-                    <h2 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Forja ligada</h2>
-                    <p className="mt-3 text-[16px] text-mute">{cfg.claude.ok ? "Solte um vídeo cru ou diga o que criar." : "Falta conectar o Claude pra máquina trabalhar."}</p>
+                    <h2 className="text-[clamp(32px,8vw,40px)] font-semibold leading-[1.05] tracking-[-0.03em]">Forja acesa</h2>
+                    <p className="mt-3 text-[16px] text-mute">{cfg.claude.ok ? "Solte um vídeo cru ou diga o que criar." : "Falta conectar o Claude pra Forja trabalhar."}</p>
                   </div>
                   {cfg.claude.ok
                     ? <Botao tipo="principal" className="min-h-12 px-6" onClick={concluir}>Entrar <ArrowRight className="size-4" /></Botao>

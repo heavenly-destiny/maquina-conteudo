@@ -35,3 +35,5 @@ Integrated editor: user can edit a specific part of their video inside the app (
 Music is grouped by video style (one track type per style); the user picks the track in the app (Configurar) when generating.
 
 - 18/11/2026: Músicas DONE (estilos/musicas: 85 faixas, 13 estilos, Em alta auto 24h, busca Deezer/iTunes). Configurar tem seção Trilha (A IA escolhe / estilo / faixa com prévia / Sem trilha) que vai pro prompt via maquina.trilha_txt(). WhatsApp send needs Chrome 'Permitir JavaScript dos Eventos da Apple' (he must turn on).
+
+Identity (19/11/2026): the user rejected the ribbon "M" logo as too basic and asked for a fusion animation plus a new name. Name "Forja" approved by the user on 19/11/2026. Mark = slanted liquid-metal F built from three drops that fuse (SVG gooey filter), with one drop falling from the middle bar as the signature, on a wine glass squircle. Component Marca in app/src/ui.tsx; preview at http://localhost:4747/?marca. Backup of the old logo in ui_bak15.tsx.

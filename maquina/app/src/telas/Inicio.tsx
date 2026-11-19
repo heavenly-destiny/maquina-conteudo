@@ -124,7 +124,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         setRecibo({ msg: "Decupando o vídeo. Leva uns minutos.", aba: "inspirar" });
       } else {
         await post("/api/gerar", { tipo: modo, briefing: texto, estilo, duracao: Number(duracao), inspiracao: insp }); som.enviar();
-        setRecibo({ msg: `${MODOS.find((m) => m.v === modo)!.nome} na fila. A máquina já começou.`, aba: "criar" });
+        setRecibo({ msg: `${MODOS.find((m) => m.v === modo)!.nome} na fila. A Forja já começou.`, aba: "criar" });
       }
       setTexto(""); setInsp(undefined); atualizar();
     } catch (er) { avisar((er as Error).message, true); }
@@ -157,7 +157,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
           animate={{ scale: sobre ? 1.015 : 1 }} transition={mola}
           onDragOver={(ev) => { ev.preventDefault(); setSobre(true); }} onDragLeave={() => setSobre(false)}
           onDrop={(ev) => { ev.preventDefault(); setSobre(false); anexar(ev.dataTransfer.files[0]); }}
-          className="halo rounded-[26px] bg-[linear-gradient(180deg,rgb(255_255_255/0.08),rgb(255_255_255/0.03))] p-2.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.14),inset_0_0_0_1px_rgb(255_255_255/0.07),0_40px_90px_-30px_rgb(0_0_0/0.95)] backdrop-blur-2xl"
+          className="halo relative rounded-[26px] bg-[linear-gradient(180deg,rgb(255_255_255/0.08),rgb(255_255_255/0.03))] p-2.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.14),inset_0_0_0_1px_rgb(255_255_255/0.07),0_40px_90px_-30px_rgb(0_0_0/0.95)] backdrop-blur-2xl"
         >
           {/* anexo */}
           <AnimatePresence initial={false}>
@@ -253,14 +253,14 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
             </div>
 
             {modo !== "corte" && !link && (
-              <div className="relative shrink-0">
+              <div className="shrink-0 sm:relative">
                 <button onClick={() => { som.toque(); setMenu(!menu); }} aria-label={`Ajustes: ${ajuste}`} title={ajuste} className="grid size-9 cursor-pointer place-items-center rounded-full text-[12.5px] font-medium text-mute hover:bg-white/[0.06] hover:text-ink">
                   <SlidersHorizontal className="size-[16px]" />
                 </button>
                 <AnimatePresence>
                   {menu && (
                     <motion.div initial={{ opacity: 0, y: 6, scale: 0.96, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: 4, scale: 0.97 }} transition={mola}
-                      className="absolute bottom-full right-0 z-20 mb-2 flex flex-col gap-2 rounded-[20px] bg-[#1a080c]/95 p-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_30px_60px_-20px_rgb(0_0_0/0.9)] backdrop-blur-xl">
+                      className="absolute bottom-full right-0 z-20 mb-2 flex max-w-full flex-col gap-2 rounded-[20px] bg-[#1a080c]/95 p-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_30px_60px_-20px_rgb(0_0_0/0.9)] backdrop-blur-xl">
                       <Segmentos id="m-estilo" valor={estilo} onChange={setEstilo} opcoes={ESTILOS} />
                       <Segmentos id="m-dur" valor={duracao} onChange={setDuracao} opcoes={DURACOES.map((d) => ({ v: d, rotulo: `${d}s` }))} />
                     </motion.div>
