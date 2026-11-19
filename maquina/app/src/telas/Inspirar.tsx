@@ -5,11 +5,10 @@ import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type 
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
 import { som } from "../sons";
-import { Musicas } from "./Musicas";
 
 const FONTES = [
   { v: "todas", nome: "Tudo" }, { v: "decupados", nome: "Analisados" }, { v: "meus", nome: "Meus" }, { v: "virais", nome: "Virais" }, { v: "ads", nome: "Anúncios" },
-  { v: "estilos", nome: "Estilos" }, { v: "musicas", nome: "Músicas" },
+  { v: "estilos", nome: "Estilos" },
 ];
 // Motion, HyperFrames, prompts e formatos ficam dentro de Estilos (menos escolha de uma vez na tela)
 const ESTILOS = [{ v: "motion", nome: "Motion" }, { v: "hf", nome: "HyperFrames" }, { v: "acervo", nome: "Prompts" }, { v: "formatos", nome: "Formatos" }];
@@ -172,7 +171,6 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   const minhas = (e?.inspiracoes ?? []).filter((i) => !q || `${i.decupagem?.titulo} ${i.info?.titulo} ${i.info?.autor}`.toLowerCase().includes(q));
   const lista = useMemo(() => bib.filter((x) => (fonteReal === "todas" ? x.fonte !== "musicas" : x.fonte === fonteReal) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q))).sort((a, b) => fonteReal === "acervo" ? (b.relevancia ?? 0) - (a.relevancia ?? 0) : 0), [bib, fonteReal, q]);
   const verMinhas = fonte === "todas" || fonte === "decupados";
-  const emMusicas = fonte === "musicas";
   const aberto = (e?.inspiracoes ?? []).find((i) => i.id === aberta);
   const valido = /^https?:\/\//.test(url.trim());
 
@@ -227,7 +225,7 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
         )}
       </AnimatePresence>
 
-      {emMusicas ? <Musicas busca={busca} /> : (verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
+      {(verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
         <div className="columns-2 gap-2.5 sm:columns-3 sm:gap-3 lg:columns-5">
           {verMinhas && minhas.map((i, k) => (
             <Card key={i.id} i={k} alto img={i.capa} video={i.video} titulo={i.decupagem?.titulo || i.info?.titulo} status={i.status} fase={i.fase}
@@ -239,7 +237,7 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
           ))}
         </div>
       ) : <Vazio icone={<Search className="size-6" />} titulo={fonte === "decupados" ? "Cole um link acima pra decupar" : bib.length ? "Nada com esse nome" : "Carregando a biblioteca"} />}
-      {fonte !== "decupados" && !emMusicas && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
+      {fonte !== "decupados" && limite < lista.length && <Botao className="self-center" onClick={() => setLimite((l) => l + 40)}>Ver mais</Botao>}
 
       <Folha aberta={!!aberto} onFechar={() => setAberta(null)} larga>{aberto && <Decupagem i={aberto} criarCom={criarCom} excluir={() => excluirInsp(aberto.id)} />}</Folha>
       <Folha aberta={!!item} onFechar={() => setItem(null)} larga>{item && <ItemDetalhe x={item} decupar={decupar} criarCom={criarCom} excluir={() => excluirItem(item)} modo={modo} setModo={setModo} />}</Folha>

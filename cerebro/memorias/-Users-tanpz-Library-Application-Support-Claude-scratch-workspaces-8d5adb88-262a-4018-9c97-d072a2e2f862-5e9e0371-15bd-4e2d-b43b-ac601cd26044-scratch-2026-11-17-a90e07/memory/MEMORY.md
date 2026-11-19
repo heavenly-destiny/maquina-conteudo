@@ -15,3 +15,4 @@
 - [Copy rápida](feedback-copy-rapida.md) — copy stage ~2 min, no review loop there; Clonar language toggle
 - [Oferta privada](feedback-oferta-privada.md) — never show his offers in Forja UI, artifact or shared repo; artifact URL + how it's built
 - [Decupagem completa](feedback-decupagem-completa.md) — every cut + whole-video frame sheets, one beat per shot, nothing skipped
+- [Criados só vídeo](feedback-criados-so-video.md) — Criados grid only finished videos; copy/erro/gerando as rows; trash visible on cards

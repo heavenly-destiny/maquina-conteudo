@@ -59,6 +59,17 @@ IDIOMA_PT = ("\n\nSPOKEN LANGUAGE (chosen by tanpz): PORTUGUESE. Translate the s
              "This overrides the 'word for word' rule for speech only; everything else stays a 1:1 clone.\n")
 
 
+def escolhas_video(ped):
+    t = ped.get("trilha")
+    linhas = ["\n\nCHOICES HE MADE ON THE VIDEO BOARD (follow exactly, they override the style defaults):"]
+    if ped.get("legenda"):
+        linhas.append("- On-screen caption template: " + json.dumps(ped["legenda"], ensure_ascii=False)
+                      + " (font, weight, case, size in px on 1080x1920, colors, outline, shadow, animation, words per screen, vertical position %).")
+    if t:
+        linhas.append("- Soundtrack: " + m.trilha_txt({"trilhaEstilo": "nenhuma"} if t == "nenhuma" else {"trilha": t}))
+    return "\n".join(linhas) + "\n"
+
+
 def montar_prompt(p, ped):
     estilo = ped.get("estilo") or ("criativo-direct-response" if ped["tipo"] == "criativo" else "conteudo-organico")
     ref = m.RAIZ / "inspiracoes" / str(ped.get("inspiracao") or "x")
@@ -71,6 +82,8 @@ def montar_prompt(p, ped):
         extra += motions_prontos(ped["briefing"])
     if ped.get("copy_editada") and not so_copy(ped):
         extra += "\ntanpz edited some spoken lines by hand in the panel: roteiro.json is the truth. Make on-screen text, captions and scene timing match the edited lines.\n"
+    if ped.get("legenda") or ped.get("trilha"):  # escolhas do board "Como vai ser o vídeo"
+        extra += escolhas_video(ped)
     if ped["tipo"] == "clonar":
         extra += IDIOMA_PT if ped.get("idioma") == "pt" else IDIOMA_ORIGINAL
     return m.prompt(f"gerar_{ped['tipo']}", base=m.prompt("_gerar_base", **v), **v) + extra

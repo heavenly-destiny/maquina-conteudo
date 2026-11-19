@@ -3,7 +3,8 @@ import { AnimatePresence, motion, useMotionValue, useSpring, useAnimationControl
 import { ArrowUp, Captions, Check, Copy, SlidersHorizontal, FileText, Film, LayoutGrid, Link2, Megaphone, Paperclip, Scissors, Smile, Telescope, Upload, X } from "lucide-react";
 import { atualizar, enviarInspiracao, enviarVideo, modoDec, post, type Estado, type Rascunho } from "../api";
 import type { Aba } from "../Dock";
-import { Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
+import { Folha, Marca, Segmentos, Topo, cx, mola, molaSuave, useAviso, useTransborda } from "../ui";
+import { Configurar, ConfigurarVideo, type ConfigCorte } from "../Configurar";
 import { som } from "../sons";
 import { Aurora } from "../aurora";
 
@@ -28,8 +29,7 @@ const EXEMPLOS: Record<Modo, string[]> = {
   transcrever: ["Cole o link do vídeo ou solte o arquivo", "Tiro o texto inteiro, com legenda .srt pronta"],
   clonar: ["Clonar 100% igual: mesmas cenas, texto, tempo e som", "Clonar igual e traduzir a fala pro português"],
 };
-const ESTILOS = [{ v: "conteudo-organico", rotulo: "Orgânico" }, { v: "criativo-direct-response", rotulo: "Anúncio" }, { v: "motivacional", rotulo: "Motivacional" }];
-const DURACOES = ["15", "30", "45", "60"];
+const COM_BOARD: Modo[] = ["animado", "criativo", "modelar"]; // vídeo gerado: legenda, trilha, duração antes de criar
 const IDIOMAS = [{ v: "original", rotulo: "Fala original" }, { v: "pt", rotulo: "Em português" }] as const;
 const ehLink = (s: string) => /^https?:\/\/\S+$/.test(s.trim());
 
@@ -53,8 +53,7 @@ function useDigitando(frases: string[], pausado: boolean) {
 export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: Aba) => void; rascunho: Rascunho | null; limpar: () => void }) {
   const [modo, setModo] = useState<Modo>("animado");
   const [texto, setTexto] = useState("");
-  const [estilo, setEstilo] = useState("conteudo-organico");
-  const [duracao, setDuracao] = useState("30");
+  const [board, setBoard] = useState<null | "corte" | "video">(null);
   const [insp, setInsp] = useState<string | undefined>();
   const [idioma, setIdioma] = useState<"original" | "pt">("original");
   const inpInsp = useRef<HTMLInputElement>(null);
@@ -62,7 +61,6 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   const [prog, setProg] = useState<number | null>(null);
   const [foco, setFoco] = useState(false);
   const [sobre, setSobre] = useState(false);
-  const [menu, setMenu] = useState(false);
   const [recibo, setRecibo] = useState<{ msg: string; aba: Aba } | null>(null);
   const ta = useRef<HTMLTextAreaElement>(null);
   const inp = useRef<HTMLInputElement>(null);
@@ -88,10 +86,8 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
   useEffect(() => {
     if (!rascunho) return;
     setModo(rascunho.tipo); setTexto(rascunho.briefing ?? ""); setInsp(rascunho.inspiracao);
-    if (rascunho.estilo) setEstilo(rascunho.estilo);
     limpar(); ta.current?.focus();
   }, [rascunho, limpar]);
-  useEffect(() => { if (modo === "criativo") setEstilo("criativo-direct-response"); }, [modo]);
   useEffect(() => { // altura acompanha o texto
     const el = ta.current; if (!el) return;
     el.style.height = "0px"; el.style.height = `${Math.min(el.scrollHeight, 220)}px`;
@@ -116,8 +112,11 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
     som.toque(); setArquivo(f); if (modo !== "transcrever") setModo("corte");
   };
 
-  const enviar = async () => {
+  const enviar = async (extra?: Record<string, unknown>) => {
     if (!pode) return;
+    if (!extra && modo === "corte" && arquivo) return void (som.abrir(), setBoard("corte"));
+    if (!extra && COM_BOARD.includes(modo) && !link) return void (som.abrir(), setBoard("video"));
+    setBoard(null);
     try {
       if (modo === "transcrever") {
         if (arquivo) { setProg(0); som.enviar(); await enviarInspiracao(arquivo, setProg, "transcrever"); setArquivo(null); }
@@ -125,13 +124,13 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
         setRecibo({ msg: "Transcrevendo. O texto aparece em Criar.", aba: "criar" });
       } else if (modo === "corte" && arquivo) {
         setProg(0); som.enviar();
-        await enviarVideo(arquivo, setProg);
+        await enviarVideo(arquivo, setProg, extra);
         setArquivo(null); setRecibo({ msg: "Vídeo recebido. Já estou cortando.", aba: "cortes" });
       } else if (link) {
         await post("/api/inspirar", { url: texto.trim(), modo: modoDec() }); som.enviar();
         setRecibo({ msg: "Decupando o vídeo. Leva uns minutos.", aba: "inspirar" });
       } else {
-        await post("/api/gerar", { tipo: modo, briefing: texto, estilo, duracao: Number(duracao), inspiracao: insp, ...(modo === "clonar" ? { idioma } : {}) }); som.enviar();
+        await post("/api/gerar", { tipo: modo, briefing: texto, inspiracao: insp, estilo: "conteudo-organico", duracao: 30, ...extra, ...(modo === "clonar" ? { idioma } : {}) }); som.enviar();
         setRecibo({ msg: `${MODOS.find((m) => m.v === modo)!.nome} na fila. A Forja já começou.`, aba: "criar" });
       }
       setTexto(""); setInsp(undefined); atualizar();
@@ -139,7 +138,6 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
     setProg(null);
   };
 
-  const ajuste = `${ESTILOS.find((s) => s.v === estilo)!.rotulo} · ${duracao}s`;
 
   return (
     <div className="flex min-h-[calc(100dvh-210px)] flex-col items-center justify-center gap-9 pb-10">
@@ -266,33 +264,18 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
               </AnimatePresence>
             </div>
 
-            {modo !== "corte" && !link && (
-              <div className="shrink-0 sm:relative">
-                <button onClick={() => { som.toque(); setMenu(!menu); }} aria-label={`Ajustes: ${ajuste}`} title={ajuste} className="grid size-9 cursor-pointer place-items-center rounded-full text-[12.5px] font-medium text-mute hover:bg-white/[0.06] hover:text-ink">
-                  <SlidersHorizontal className="size-[16px]" />
-                </button>
-                <AnimatePresence>
-                  {menu && (
-                    <motion.div initial={{ opacity: 0, y: 6, scale: 0.96, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: 4, scale: 0.97 }} transition={mola}
-                      className="absolute bottom-full right-0 z-20 mb-2 flex flex-col gap-2 rounded-[20px] max-sm:max-w-full bg-[#1a080c]/95 p-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_30px_60px_-20px_rgb(0_0_0/0.9)] backdrop-blur-xl">
-                      <Segmentos id="m-estilo" valor={estilo} onChange={setEstilo} opcoes={ESTILOS} />
-                      <Segmentos id="m-dur" valor={duracao} onChange={setDuracao} opcoes={DURACOES.map((d) => ({ v: d, rotulo: `${d}s` }))} />
-                      {/* roteiro é a última opção (regra do tanpz): fica aqui dentro, não na fileira de modos */}
-                      <button onClick={() => { som.aba(); setModo(modo === "roteiro" ? "animado" : "roteiro"); setMenu(false); }}
-                        className={cx("flex min-h-10 cursor-pointer items-center gap-2 whitespace-nowrap rounded-full px-3.5 text-[13.5px] font-medium transition-colors", modo === "roteiro" ? "bg-white/[0.11] text-ink" : "text-mute hover:text-ink")}>
-                        <FileText className={cx("size-[15px]", modo === "roteiro" && "text-red")} /> {modo === "roteiro" ? "Voltar pro vídeo" : "Só o roteiro, sem vídeo"}
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+            {(COM_BOARD.includes(modo) || (modo === "corte" && arquivo)) && !link && (
+              <button onClick={() => { som.abrir(); setBoard(modo === "corte" ? "corte" : "video"); }} aria-label="Configurações do vídeo" title="Legenda, trilha, duração"
+                className="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full text-mute hover:bg-white/[0.06] hover:text-ink">
+                <SlidersHorizontal className="size-[16px]" />
+              </button>
             )}
 
             <input ref={inp} type="file" accept="video/*,.mov" hidden onChange={(ev) => anexar(ev.target.files?.[0])} />
             <button aria-label="Anexar vídeo cru" onClick={() => inp.current?.click()} className="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full text-mute hover:bg-white/[0.07] hover:text-ink">
               <Paperclip className="size-[17px]" />
             </button>
-            <motion.button aria-label="Enviar" onClick={enviar} disabled={!pode} whileTap={{ scale: 0.88 }} transition={mola}
+            <motion.button aria-label="Enviar" onClick={() => enviar()} disabled={!pode} whileTap={{ scale: 0.88 }} transition={mola}
               className={cx("grid size-10 shrink-0 cursor-pointer place-items-center rounded-full transition-colors duration-300 disabled:cursor-default",
                 pode ? "respira bg-red text-white" : "bg-white/[0.08] text-faint")}>
               {prog !== null ? <span className="size-4 animate-spin rounded-full border-2 border-white border-t-transparent" /> : <ArrowUp className="size-[18px]" strokeWidth={2.4} />}
@@ -313,6 +296,17 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
           </AnimatePresence>
         </div>
       </motion.div>
+      <Folha aberta={board === "corte" && !!arquivo} onFechar={() => setBoard(null)} larga>
+        {board === "corte" && arquivo && <Configurar origem={{ tipo: "arquivo", nome: arquivo.name }} onGerar={(c: ConfigCorte) => enviar({ ...c })} />}
+      </Folha>
+      <Folha aberta={board === "video"} onFechar={() => setBoard(null)} larga>
+        {board === "video" && <ConfigurarVideo titulo={texto.trim() || MODOS.find((m) => m.v === modo)!.nome} tipo={modo} onGerar={(p) => enviar(p)}
+          onRoteiro={modo === "modelar" ? undefined : async () => {
+            setBoard(null);
+            try { await post("/api/gerar", { tipo: "roteiro", briefing: texto, estilo: "conteudo-organico", duracao: 30 }); som.enviar(); setTexto(""); setRecibo({ msg: "Roteiro na fila.", aba: "criar" }); atualizar(); }
+            catch (er) { avisar((er as Error).message, true); }
+          }} />}
+      </Folha>
     </div>
   );
 }

@@ -10,7 +10,7 @@ import { som } from "./sons";
 export type ConfigCorte = {
   duracao: string; destaque: string; genero: string; layouts: string[]; legenda: string;
   gancho: string; limpar: boolean; palavraChave: boolean; emojis: boolean; zoom: boolean; musica: boolean; modelo: string;
-  trilhaEstilo: string; trilhaFaixa: string | null; trilha?: unknown;
+  trilhaEstilo: string; trilhaFaixa: string | null; trilha?: unknown; legendaEstilo?: unknown;
 };
 export const CONFIG_PADRAO: ConfigCorte = {
   duracao: "auto", destaque: "", genero: "auto", layouts: ["dividida"], legenda: "maquina",
@@ -135,6 +135,65 @@ function Trilha({ d, c, up }: { d: Musicas | null; c: ConfigCorte; up: (p: Parti
   );
 }
 
+function GradeLegendas({ v, set }: { v: string; set: (id: string) => void }) {
+  return (
+    <div className="scroll-x -mx-1 flex gap-2.5 overflow-x-auto px-1 pb-1">
+      {LEGENDAS.map((l) => {
+        const on = v === l.id;
+        return (
+          <button key={l.id} onClick={() => { som.toque(); set(l.id); }} aria-pressed={on} title={l.nota}
+            className={cx("flex shrink-0 cursor-pointer flex-col items-center gap-1.5 rounded-[17px] p-1.5 transition-colors", on ? "bg-red/[0.14] shadow-[inset_0_0_0_1.5px_rgb(225_29_42/0.75)]" : "hover:bg-white/[0.05]")}>
+            <PreviaLegenda l={l} larg={96} viva={on} />
+            <span className={cx("text-[12.5px] font-medium", on ? "text-ink" : "text-mute")}>{l.nome}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/* trilha escolhida vira o objeto que o job lê (estilo, prompt, BPM, drop e faixa de referência) */
+function pacoteTrilha(d: Musicas | null, estilo: string, faixa: string | null) {
+  const e = d?.estilos.find((x) => x.id === estilo), f = d?.musicas.find((m) => m.id === faixa);
+  return e ? { estilo: e.nome, prompt_trilha: e.prompt_trilha, bpm: e.bpm, drop_s: e.drop_s, faixa: f ? { titulo: f.titulo, artista: f.artista, bpm: f.bpm, drop_s: f.momento_do_drop_s } : null } : null;
+}
+
+/* Board de vídeo gerado (Animado, Criativo, Modelar): o que muda o resultado, escolhido antes de criar. */
+export type ConfigVideo = { estilo: string; duracao: string; legenda: string; trilhaEstilo: string; trilhaFaixa: string | null };
+const VIDEO_PADRAO: ConfigVideo = { estilo: "conteudo-organico", duracao: "30", legenda: "maquina", trilhaEstilo: "auto", trilhaFaixa: null };
+const ESTILOS_V = [["conteudo-organico", "Orgânico"], ["criativo-direct-response", "Anúncio"], ["motivacional", "Motivacional"]];
+const DURS_V = [["15", "15s"], ["30", "30s"], ["45", "45s"], ["60", "60s"]];
+export function ConfigurarVideo({ titulo, tipo, onGerar, onRoteiro }: { titulo: string; tipo: string; onGerar: (pacote: Record<string, unknown>) => void; onRoteiro?: () => void }) {
+  const [c, setC] = useState<ConfigVideo>(() => { try { return { ...VIDEO_PADRAO, ...JSON.parse(localStorage.getItem("config-video") || "{}") }; } catch { return VIDEO_PADRAO; } });
+  const up = (p: Partial<ConfigVideo>) => setC((x) => ({ ...x, ...p }));
+  const [d, setD] = useState<Musicas | null>(null);
+  useEffect(() => { musicas().then(setD).catch(() => {}); }, []);
+  const estilo = tipo === "criativo" ? "criativo-direct-response" : c.estilo;
+  const leg = LEGENDAS.find((l) => l.id === c.legenda) ?? LEGENDAS[0];
+  const t = { trilhaEstilo: c.trilhaEstilo, trilhaFaixa: c.trilhaFaixa } as ConfigCorte;
+  const gerar = () => {
+    try { localStorage.setItem("config-video", JSON.stringify(c)); } catch {}
+    som.enviar();
+    onGerar({ estilo, duracao: Number(c.duracao), legenda: leg, trilha: c.trilhaEstilo === "nenhuma" ? "nenhuma" : pacoteTrilha(d, c.trilhaEstilo, c.trilhaFaixa) });
+  };
+  return (
+    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+      <div className="flex min-w-0 flex-1 flex-col gap-6">
+        <div className="pr-12"><h3 className="text-[20px] font-semibold tracking-[-0.02em]">Como vai ser o vídeo</h3><p className="truncate text-[13px] text-faint">{titulo}</p></div>
+        {tipo !== "criativo" && <Linha t="Estilo"><Chips op={ESTILOS_V} v={c.estilo} set={(x) => up({ estilo: x })} /></Linha>}
+        <Linha t="Duração"><Chips op={DURS_V} v={c.duracao} set={(x) => up({ duracao: x })} /></Linha>
+        <Linha t="Legenda"><GradeLegendas v={c.legenda} set={(x) => up({ legenda: x })} /></Linha>
+        <Linha t="Trilha"><Trilha d={d} c={t} up={(p) => up(p as Partial<ConfigVideo>)} /></Linha>
+      </div>
+      <aside className="flex flex-col gap-3 lg:sticky lg:top-0 lg:w-[260px] max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:-mb-2 max-lg:bg-gradient-to-t max-lg:from-[#130709] max-lg:from-70% max-lg:to-transparent max-lg:pt-6">
+        <div className="vidro flex flex-col items-center gap-3 rounded-[22px] p-4 max-lg:hidden"><PreviaLegenda l={leg} larg={150} /></div>
+        <Botao tipo="principal" className="w-full justify-center" onClick={gerar}><Sparkles className="size-4" /> Criar vídeo</Botao>
+        {onRoteiro && <button onClick={onRoteiro} className="min-h-10 cursor-pointer text-[13.5px] font-medium text-mute hover:text-ink">Só o roteiro, sem vídeo</button>}
+      </aside>
+    </div>
+  );
+}
+
 export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "link"; nome: string }; onGerar: (c: ConfigCorte) => void }) {
   const [c, setC] = useState<ConfigCorte>(lerSalvo);
   const up = (p: Partial<ConfigCorte>) => setC((x) => ({ ...x, ...p }));
@@ -147,8 +206,7 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
   const gerar = () => {
     try { localStorage.setItem("config-corte", JSON.stringify(c)); } catch {}
     som.enviar();
-    onGerar({ ...c, musica: c.trilhaEstilo !== "nenhuma", trilha: estT ? { estilo: estT.nome, prompt_trilha: estT.prompt_trilha, bpm: estT.bpm, drop_s: estT.drop_s,
-      faixa: faixaT ? { titulo: faixaT.titulo, artista: faixaT.artista, bpm: faixaT.bpm, drop_s: faixaT.momento_do_drop_s } : null } : null });
+    onGerar({ ...c, musica: c.trilhaEstilo !== "nenhuma", trilha: pacoteTrilha(d, c.trilhaEstilo, c.trilhaFaixa), legendaEstilo: leg });
   };
   const resumo = [
     DURACOES.find((d) => d[0] === c.duracao)?.[1] === "Auto" ? "Duração automática" : `Cortes de ${DURACOES.find((d) => d[0] === c.duracao)?.[1]}`,
@@ -192,20 +250,7 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
             })}
           </div>
         </Linha>
-        <Linha t="Legenda">
-          <div className="scroll-x -mx-1 flex gap-2.5 overflow-x-auto px-1 pb-1">
-            {LEGENDAS.map((l) => {
-              const on = c.legenda === l.id;
-              return (
-                <button key={l.id} onClick={() => { som.toque(); up({ legenda: l.id }); }} aria-pressed={on} title={l.nota}
-                  className={cx("flex shrink-0 cursor-pointer flex-col items-center gap-1.5 rounded-[17px] p-1.5 transition-colors", on ? "bg-red/[0.14] shadow-[inset_0_0_0_1.5px_rgb(225_29_42/0.75)]" : "hover:bg-white/[0.05]")}>
-                  <PreviaLegenda l={l} larg={96} viva={on} />
-                  <span className={cx("text-[12.5px] font-medium", on ? "text-ink" : "text-mute")}>{l.nome}</span>
-                </button>
-              );
-            })}
-          </div>
-        </Linha>
+        <Linha t="Legenda"><GradeLegendas v={c.legenda} set={(x) => up({ legenda: x })} /></Linha>
         <Linha t="Começo do vídeo"><Chips op={GANCHOS} v={c.gancho} set={(x) => up({ gancho: x })} /></Linha>
         <Linha t="Edição">
           <div className="grid gap-2 sm:grid-cols-2">
@@ -227,8 +272,8 @@ export function Configurar({ origem, onGerar }: { origem: { tipo: "arquivo" | "l
           </div>
         </Linha>
       </div>
-      <aside className="flex flex-col gap-4 lg:sticky lg:top-0 lg:w-[260px]">
-        <div className="vidro flex flex-col items-center gap-4 rounded-[22px] p-4">
+      <aside className="flex flex-col gap-4 lg:sticky lg:top-0 lg:w-[260px] max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:-mb-2 max-lg:bg-gradient-to-t max-lg:from-[#130709] max-lg:from-70% max-lg:to-transparent max-lg:pt-6">
+        <div className="vidro flex flex-col items-center gap-4 rounded-[22px] p-4 max-lg:hidden">
           <PreviaLegenda l={leg} larg={150} />
           <ul className="w-full space-y-1.5 text-[13.5px] text-mute">
             {resumo.map((r) => <li key={r} className="flex gap-2"><Check className="mt-0.5 size-3.5 shrink-0 text-red" strokeWidth={3} />{r}</li>)}
