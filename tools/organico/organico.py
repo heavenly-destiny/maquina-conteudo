@@ -45,6 +45,27 @@ def init(out):
     js.clear(); sfx.clear(); SC.clear(); H.clear(); TK.clear()
 
 
+LEGENDAS = {  # estilo de legenda escolhido no editor (o padrão é o do style.css)
+    "amarelo": ".cap .kw{font-family:inherit;font-style:normal;font-weight:800;font-size:1.12em;line-height:1.1;color:#ffd60a;text-shadow:0 2px 0 rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.6)}",
+    "branco": ".cap .kw{font-family:inherit;font-style:normal;font-weight:800;font-size:1em;line-height:1.1;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.4),0 8px 30px rgba(0,0,0,.6)}",
+    "caixa": ".cap span{background:#0b0204;padding:2px 14px;border-radius:10px;text-shadow:none}.cap .kw{font-family:inherit;font-style:normal;font-weight:800;font-size:1em;line-height:1.1;color:#0b0204;background:#ffd60a;text-shadow:none}",
+}
+
+
+def broll_tempos():
+    """b-roll do ajustes.json em segundos do corte: da primeira palavra 'de' até o fim da palavra 'ate'"""
+    ini = {w.get("key"): w for w in words if w.get("key")}
+    out = []
+    for b in AJ.get("broll") or []:
+        a, z = ini.get(b.get("de")), ini.get(b.get("ate"))
+        if not a or not z:
+            continue
+        s0, s1 = q(max(0.0, a["start"] - 0.05)), q(min(DUR, z.get("end", z["start"] + 0.4) + 0.1))
+        if s1 - s0 >= 0.4:
+            out.append({"a": s0, "b": s1, "arq": b["arq"]})
+    return out
+
+
 def norm(s):
     s = unicodedata.normalize("NFD", s.lower())
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in s if unicodedata.category(c) != "Mn"))
@@ -338,22 +359,36 @@ def build(emph=(), fix=None, music="bed-tech-01.mp3"):
     json.dump({"dur": DUR, "chunks": [{"s": s, "e": e, "w": [{"t": q(max(s, w["start"] - 0.04)), "text": w["text"].strip(".,?!"),
                "kw": ehkw(w), "k": w.get("key")} for w in chunks[k]]} for k, s, e in capt],
                "zooms": [{"t": q(c["t"]), "z": z[k % 2]} for k, c in enumerate([c for c in cuts if c["new_seg"]])],
-               "esconde": [[a, a + d] for _, a, d, _ in TK] + [[a, a + d] for a, d in MOSTRA]},
+               "esconde": [[a, a + d] for _, a, d, _ in TK] + [[a, a + d] for a, d in MOSTRA],
+               "legenda": AJ.get("legenda") or "padrao", "broll": broll_tempos()},
               open(f"{OUT}/caps.json", "w"))
     for velho, novo in (AJ.get("painel") or {}).items():  # titulo trocado no editor
         for sid in H:
             H[sid] = H[sid].replace(f">{esc(velho)}<", f">{esc(novo)}<")
-    css = open(os.path.join(HERE, "style.css")).read() + """
+    css = open(os.path.join(HERE, "style.css")).read() + LEGENDAS.get(AJ.get("legenda") or "padrao", "") + """
+.broll{position:absolute;inset:0;z-index:3;opacity:0;overflow:hidden;background:#000}
+.broll img,.broll video{width:100%;height:100%;object-fit:cover}
 .mostra{position:absolute;inset:0;z-index:60;background:#0b0204;overflow:hidden}
 .mostra .ms-bg{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(40px) brightness(.45) saturate(1.2)}
 .mostra .ms-v{position:absolute;left:0;top:50%;width:1080px;transform-origin:center;translate:0 -50%;border-radius:0;box-shadow:0 40px 120px rgba(0,0,0,.6)}
 """
+    brh = ""  # b-roll do editor: cobre o vídeo de baixo no trecho escolhido (a fala continua)
+    for i, b in enumerate(broll_tempos()):
+        a, z = b["a"], b["b"]
+        if b["arq"].lower().endswith((".mp4", ".mov")):
+            el = f'<video src="{b["arq"]}" muted playsinline data-start="{a:.4f}" data-duration="{z - a:.4f}" data-track-index="{20 + i}"></video>'
+        else:
+            el = f'<img id="bri{i}" src="{b["arq"]}" alt="">'
+            T(f"tl.fromTo('#bri{i}',{{scale:1}},{{scale:1.08,duration:{z - a:.3f},ease:'none'}},{q(a)});")
+        brh += f'<div class="broll" id="br{i}">{el}</div>'
+        T(f"tl.fromTo('#br{i}',{{opacity:0}},{{opacity:1,duration:0.18}},{q(a)});")
+        T(f"tl.to('#br{i}',{{opacity:0,duration:0.18}},{q(z - 0.18)});")
     page = f"""<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{css}</style></head><body>
 <div id="stage" data-composition-id="corte" data-start="0" data-duration="{DUR:.4f}" data-fps="{FPS}" data-width="1080" data-height="1920">
 <audio id="mix" src="mix.wav" data-start="0" data-duration="{DUR:.4f}" data-track-index="10" data-volume="1"></audio>
 <div class="bg"><div class="glow" id="glow"></div></div>
 <div id="panel"><div class="parts">{part}</div>{chr(10).join(H[i] for i in sids)}<div id="streak"></div><div id="flash"></div></div>
-<div id="vframe"><div id="vwrap"><div id="vzoom"><video id="vid" src="video.mp4" muted playsinline data-start="0" data-duration="{DUR:.4f}" data-track-index="1"></video></div></div><div id="vflash"></div></div>
+<div id="vframe"><div id="vwrap"><div id="vzoom"><video id="vid" src="video.mp4" muted playsinline data-start="0" data-duration="{DUR:.4f}" data-track-index="1"></video></div></div>{brh}<div id="vflash"></div></div>
 {chr(10).join(caps)}
 {chr(10).join(tkh)}
 {chr(10).join(msh)}
@@ -368,6 +403,8 @@ window.__timelines=window.__timelines||{{}};window.__timelines["corte"]=tl;}})()
     for d in ("fonts", "3d"):
         shutil.copytree(f"{TOOLS}/assets/{d}", f"{pub}/assets/{d}", dirs_exist_ok=True)
     shutil.copy(GSAP, pub + "/vendor/")
+    if os.path.isdir(os.path.join(os.path.dirname(OUT), "broll")):
+        shutil.copytree(os.path.join(os.path.dirname(OUT), "broll"), pub + "/broll", dirs_exist_ok=True)
     if not os.path.exists(pub + "/video.mp4"):
         os.link(f"{OUT}/video.mp4", pub + "/video.mp4")
     open(pub + "/index.html", "w").write(page)

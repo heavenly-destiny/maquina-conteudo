@@ -5,7 +5,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { AnimatePresence, motion } from "motion/react";
 import { toPng } from "html-to-image";
 import {
-  AlignCenter, AlignLeft, AlignRight, ArrowLeft, Bold, ChevronLeft, ChevronRight, Download, Eye, GalleryHorizontal,
+  AlignCenter, AlignLeft, AlignRight, ArrowLeft, Bold, BringToFront, SendToBack, ChevronLeft, ChevronRight, Download, Eye, GalleryHorizontal,
   ImagePlus, Italic, Layers, Plus, RotateCcw, Trash2, Type, Undo2, Upload, X,
 } from "lucide-react";
 import { atualizar, post, subirImagem, type Camada, type Carrossel, type Estado } from "../api";
@@ -118,6 +118,39 @@ function TextoCamada({ c, largura, edit, salvar, ajustar }: { c: Camada; largura
   );
 }
 
+/* base do slide num canvas: foto original com as caixas mexidas trocadas pelo fundo limpo. Canvas (e não div por cima)
+   porque assim o que era transparente continua transparente, sem cor inventada atrás, e o PNG baixado sai igual à foto */
+type Caixa = NonNullable<Camada["orig"]>;
+const cacheImg = new Map<string, Promise<HTMLImageElement>>();
+const carregarImg = (src: string) => {
+  if (!cacheImg.has(src)) cacheImg.set(src, new Promise((ok, erro) => { const i = new Image(); i.crossOrigin = "anonymous"; i.onload = () => ok(i); i.onerror = erro; i.src = src; }));
+  return cacheImg.get(src)!;
+};
+function Base({ src, remendos }: { src: string; remendos: { o: Caixa; src: string }[] }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const chave = JSON.stringify(remendos);
+  useEffect(() => {
+    let vivo = true;
+    Promise.all([carregarImg(src), ...remendos.map((r) => carregarImg(r.src))]).then(([base, ...outras]) => {
+      const cv = ref.current; if (!cv || !vivo) return;
+      const W = (cv.width = base.naturalWidth), H = (cv.height = base.naturalHeight), p = Math.ceil(W / 500);
+      const g = cv.getContext("2d")!;
+      g.clearRect(0, 0, W, H); g.drawImage(base, 0, 0);
+      remendos.forEach((r, i) => {
+        const im = outras[i], kx = im.naturalWidth / W, ky = im.naturalHeight / H;
+        const x = Math.max(0, Math.floor(r.o.x * W) - p), y = Math.max(0, Math.floor(r.o.y * H) - p);
+        const w = Math.min(W - x, Math.ceil(r.o.w * W) + 2 * p), h = Math.min(H - y, Math.ceil(r.o.h * H) + 2 * p);
+        g.clearRect(x, y, w, h); // apaga de verdade (alfa 0) e põe o fundo limpo com a transparência dele
+        g.drawImage(im, x * kx, y * ky, w * kx, h * ky, x, y, w, h);
+      });
+    }).catch(() => {});
+    return () => { vivo = false; };
+  }, [src, chave]); // eslint-disable-line react-hooks/exhaustive-deps
+  return <canvas ref={ref} className="absolute inset-0 size-full" />;
+}
+/* xadrez de transparência (padrão Canva/Photoshop) atrás do slide, fora do nó exportado */
+const XADREZ = { background: "repeating-conic-gradient(#d4d4d4 0% 25%, #ececec 0% 50%) 0 0 / 16px 16px" };
+
 function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOriginal, refNo, ajustar }: {
   s: Carrossel["slides"][number]; largura: number; sel?: string | null; setSel?: (id: string | null) => void;
   mudar?: (id: string, c: Partial<Camada>) => void; editando?: string | null; setEditando?: (id: string | null) => void;
@@ -127,29 +160,43 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
   // foto original de base (nada borra); só tapa com o fundo limpo a caixa do texto que a pessoa mexeu
   const sobreOriginal = s.camadas.some((c) => c.orig) && !s.fundo.includes("/trocas/");
   const mexeu = (c: Camada) => !!(c.mexido || c.oculto || editando === c.id);
-  const arrasto = useRef<{ id: string; x: number; y: number; cx: number; cy: number; modo: "mover" | "largura"; w: number } | null>(null);
-  const baixo = (ev: PE, c: Camada, modo: "mover" | "largura") => {
+  // elemento mexido tapa a caixa dele com o fundo sem elementos: quem não foi mexido e cruza essa caixa
+  // passa a ser desenhado (senão sumiria junto). Texto em cima de elemento que apareceu também aparece (o recorte não tem texto)
+  const cruza = (a: NonNullable<Camada["orig"]>, b: NonNullable<Camada["orig"]>) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+  const tapados = s.camadas.filter((c) => c.tipo === "imagem" && c.orig && mexeu(c));
+  const elemVisivel = s.camadas.filter((c) => c.tipo === "imagem" && c.orig && !mexeu(c) && tapados.some((t) => cruza(t.orig!, c.orig!)));
+  const visivel = (c: Camada) => !c.orig || mexeu(c) || [...tapados, ...(c.tipo === "texto" ? elemVisivel : [])].some((t) => t.id !== c.id && cruza(t.orig!, c.orig!));
+  const arrasto = useRef<{ id: string; x: number; y: number; cx: number; cy: number; modo: "mover" | "largura" | "canto"; w: number; h: number; grupo: { id: string; x: number; y: number }[] } | null>(null);
+  const baixo = (ev: PE, c: Camada, modo: "mover" | "largura" | "canto") => {
     if (!mudar || editando === c.id) return;
     ev.stopPropagation(); setSel?.(c.id);
     (ev.target as HTMLElement).setPointerCapture(ev.pointerId);
-    arrasto.current = { id: c.id, x: ev.clientX, y: ev.clientY, cx: c.x, cy: c.y, modo, w: c.w };
+    // arrastar um elemento leva junto o texto que está em cima dele (rótulo da barra, nome no rótulo da garrafa)
+    const grupo = c.tipo === "imagem" && c.orig && modo === "mover"
+      ? s.camadas.filter((t) => t.tipo === "texto" && !t.oculto && t.x + t.w / 2 > c.x && t.x + t.w / 2 < c.x + c.w && t.y + t.h / 2 > c.y && t.y + t.h / 2 < c.y + c.h).map((t) => ({ id: t.id, x: t.x, y: t.y }))
+      : [];
+    arrasto.current = { id: c.id, x: ev.clientX, y: ev.clientY, cx: c.x, cy: c.y, modo, w: c.w, h: c.h, grupo };
   };
   const mexe = (ev: PE) => {
     const a = arrasto.current; if (!a || !mudar) return;
     const dx = (ev.clientX - a.x) / largura, dy = (ev.clientY - a.y) / altura;
-    if (a.modo === "mover") mudar(a.id, { x: +(a.cx + dx).toFixed(4), y: +(a.cy + dy).toFixed(4) });
-    else mudar(a.id, { w: Math.max(0.05, +(a.w + dx).toFixed(4)), fixo: false });
+    if (a.modo === "mover") { // nunca some inteira do slide: sempre sobra uma beirada pra pegar de volta
+      const lim = (v: number, tam: number) => Math.min(0.97, Math.max(0.03 - tam, v));
+      const ex = lim(a.cx + dx, a.w) - a.cx, ey = lim(a.cy + dy, a.h) - a.cy;
+      mudar(a.id, { x: +(a.cx + ex).toFixed(4), y: +(a.cy + ey).toFixed(4) });
+      a.grupo.forEach((t) => mudar(t.id, { x: +(t.x + ex).toFixed(4), y: +(t.y + ey).toFixed(4) }));
+    } else if (a.modo === "canto") { // canto: muda o tamanho sem deformar
+      const w = Math.max(0.03, a.w + dx);
+      mudar(a.id, { w: +w.toFixed(4), h: +(a.h * (w / a.w)).toFixed(4) });
+    } else mudar(a.id, { w: Math.max(0.05, +(a.w + dx).toFixed(4)), fixo: false });
   };
   return (
     <div ref={refNo} onPointerDown={() => { setSel?.(null); setEditando?.(null); }} onPointerMove={mexe} onPointerUp={() => (arrasto.current = null)}
-      className="relative select-none overflow-hidden bg-[#1a0a0d]" style={{ width: largura, height: altura }}>
-      <img src={verOriginal || sobreOriginal ? s.origem : s.fundo} alt="" draggable={false} className="absolute inset-0 size-full object-cover" crossOrigin="anonymous" />
-      {!verOriginal && sobreOriginal && s.camadas.filter((c) => c.orig && mexeu(c)).map((c) => {
-        const o = c.orig!, p = 2, x = o.x * largura - p, y = o.y * altura - p;
-        return <div key={`r${c.id}`} className="pointer-events-none absolute" style={{ left: x, top: y, width: o.w * largura + 2 * p, height: o.h * altura + 2 * p,
-          backgroundColor: "#1a0a0d", /* mesma cor do palco: em PNG transparente o texto original não vaza pelo remendo */
-          backgroundImage: `url("${s.fundo}")`, backgroundSize: `${largura}px ${altura}px`, backgroundPosition: `${-x}px ${-y}px` }} />;
-      })}
+      className="relative select-none overflow-hidden" style={{ width: largura, height: altura }}>
+      {/* remendos: texto usa o fundo sem texto; elemento usa o fundo sem elementos e vem depois (tapa o próprio buraco inteiro) */}
+      <Base src={verOriginal || sobreOriginal ? s.origem : s.fundo}
+        remendos={verOriginal || !sobreOriginal ? [] : [...s.camadas.filter((c) => c.orig && c.tipo === "texto" && mexeu(c)), ...tapados]
+          .map((c) => ({ o: c.orig!, src: c.tipo === "imagem" ? s.limpo || s.fundo : s.fundo }))} />
       {!verOriginal && s.camadas.filter((c) => !c.oculto).map((c) => {
         const ativo = sel === c.id, edit = editando === c.id;
         const estilo = {
@@ -159,18 +206,24 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
         return (
           <div key={c.id} style={estilo} onPointerDown={(ev) => baixo(ev, c, "mover")}
             onDoubleClick={() => { if (c.tipo === "texto" && setEditando) { setEditando(c.id); setSel?.(c.id); } }}
-            className={cx("absolute", mudar && !edit && "cursor-move", mudar && (ativo ? "outline outline-2 outline-red" : "hover:outline hover:outline-1 hover:outline-white/40"))}>
-            {c.tipo === "imagem" ? <img src={c.src} alt="" draggable={false} className="size-full object-contain" />
+            className={cx("absolute", mudar && !edit && "cursor-move touch-none", mudar && (ativo ? "outline outline-2 outline-red" : "hover:outline hover:outline-1 hover:outline-white/40"))}>
+            {c.tipo === "imagem" ? <img src={c.src} alt="" draggable={false} crossOrigin="anonymous" className="size-full object-contain" style={sobreOriginal && !visivel(c) ? { opacity: 0 } : undefined} />
               : (
-                <div style={sobreOriginal && c.orig && !mexeu(c) ? { opacity: 0 } : undefined}>
+                <div style={sobreOriginal && !visivel(c) ? { opacity: 0 } : undefined}>
                 <TextoCamada c={c} largura={largura} edit={edit} ajustar={ajustar && ((tam) => ajustar(c.id, tam))}
                   salvar={(texto) => { if (texto !== c.texto) mudar?.(c.id, { texto }); setEditando?.(null); }} />
                 </div>
               )}
-            {ativo && mudar && !edit && (
+            {ativo && mudar && !edit && (c.tipo === "imagem" ? (
+              /* canto com área de toque de 40px e bolinha visível no meio */
+              <span onPointerDown={(ev) => baixo(ev, c, "canto")} aria-label="Tamanho"
+                className="absolute -bottom-5 -right-5 grid size-10 cursor-nwse-resize touch-none place-items-center">
+                <span className="pointer-events-none size-3.5 rounded-full bg-white shadow ring-2 ring-red" />
+              </span>
+            ) : (
               <span onPointerDown={(ev) => baixo(ev, c, "largura")} aria-label="Largura"
                 className="absolute -right-2 top-1/2 h-6 w-3 -translate-y-1/2 cursor-ew-resize rounded-full bg-white shadow ring-2 ring-red" />
-            )}
+            ))}
           </div>
         );
       })}
@@ -179,7 +232,7 @@ function Slide({ s, largura, sel, setSel, mudar, editando, setEditando, verOrigi
 }
 
 /* ---------------- painel da camada selecionada ---------------- */
-function Painel({ c, mudar, excluir }: { c: Camada; mudar: (p: Partial<Camada>) => void; excluir: () => void }) {
+function Painel({ c, mudar, excluir, ordem }: { c: Camada; mudar: (p: Partial<Camada>) => void; excluir: () => void; ordem: (frente: boolean) => void }) {
   const lbl = "text-[12.5px] font-medium text-faint";
   const pilula = (on: boolean) => cx("grid size-10 cursor-pointer place-items-center rounded-[12px] transition-colors", on ? "bg-white/[0.14] text-ink" : "bg-white/[0.04] text-mute hover:text-ink");
   return (
@@ -228,6 +281,12 @@ function Painel({ c, mudar, excluir }: { c: Camada; mudar: (p: Partial<Camada>) 
             </div>
           </div>
         </>
+      )}
+      {c.tipo === "imagem" && (
+        <div className="flex flex-col gap-2">
+          <Botao onClick={() => ordem(true)} className="text-mute"><BringToFront className="size-4" /> Trazer pra frente</Botao>
+          <Botao onClick={() => ordem(false)} className="text-mute"><SendToBack className="size-4" /> Mandar pra trás</Botao>
+        </div>
       )}
       <Botao onClick={excluir} className="text-mute"><Trash2 className="size-4" /> Tirar camada</Botao>
     </div>
@@ -285,6 +344,10 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
   });
   const mudar = (cid: string, p: Partial<Camada>) => mudarCamadas((cs) => cs.map((x) => (x.id === cid ? { ...x, ...p, mexido: true } : x)));
   const tirar = (cid: string) => mudarCamadas((cs) => cs.flatMap((x) => (x.id !== cid ? [x] : x.orig ? [{ ...x, oculto: true, mexido: true }] : [])));
+  const ordem = (cid: string, frente: boolean) => mudarCamadas((cs) => { // frente = desenha por último
+    const x = cs.find((y) => y.id === cid), resto = cs.filter((y) => y.id !== cid);
+    return !x ? cs : frente ? [...resto, x] : [x, ...resto];
+  });
   const ajustar = (cid: string, tam: number) => setC((v) => { // correção automática de tamanho: não entra no desfazer
     if (!v) return v;
     const n = { ...v, slides: v.slides.map((s, i) => (i === k ? { ...s, camadas: s.camadas.map((x) => (x.id === cid ? { ...x, tam, ajustado: true } : x)) } : s)) };
@@ -331,7 +394,9 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
         setK(i);
         await new Promise((r) => setTimeout(r, 450)); // espera o slide e as fontes desenharem
         if (!noSlide.current) continue;
-        const url = await toPng(noSlide.current, { pixelRatio: c.slides[i].w / noSlide.current.clientWidth, cacheBust: true });
+        // no tamanho real da foto enviada (a base é desenhada nele), sem cor de fundo: transparente continua transparente
+        const base = noSlide.current.querySelector("canvas"), W = base?.width || c.slides[i].w, H = base?.height || c.slides[i].h;
+        const url = await toPng(noSlide.current, { canvasWidth: W, canvasHeight: H, pixelRatio: 1, cacheBust: true });
         const a = document.createElement("a"); a.href = url; a.download = `${(c.nome || "carrossel").replace(/[^\w-]+/g, "-")}-${String(i + 1).padStart(2, "0")}.png`; a.click();
       }
       som.ok(); avisar(`${c.slides.length} slides baixados`);
@@ -396,7 +461,7 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
           <div className="flex min-h-0 min-w-0 flex-1 flex-col">
             <div ref={palco} className="relative flex min-h-[300px] flex-1 items-center justify-center p-3 sm:p-6">
               {s && (
-                <motion.div key={k} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={molaSuave}
+                <motion.div key={k} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={molaSuave} style={XADREZ}
                   className="overflow-hidden rounded-[6px] shadow-[0_30px_80px_-30px_rgb(0_0_0/0.9)] ring-1 ring-white/10">
                   <Slide s={s} largura={larg} sel={sel} setSel={setSel} mudar={mudar} ajustar={ajustar} editando={editando} setEditando={setEditando} verOriginal={original} refNo={(el) => (noSlide.current = el)} />
                 </motion.div>
@@ -413,7 +478,7 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
               {c.slides.map((x, i) => (
                 <button key={i} onClick={() => { som.toque(); setK(i); setSel(null); }} aria-label={`Slide ${i + 1}`}
                   className={cx("relative shrink-0 cursor-pointer overflow-hidden rounded-[8px] ring-2 transition-shadow", i === k ? "ring-red" : "ring-transparent opacity-60 hover:opacity-100")}>
-                  <div className="pointer-events-none"><Slide s={x} largura={52} /></div>
+                  <div className="pointer-events-none" style={XADREZ}><Slide s={x} largura={52} /></div>
                   <span className="absolute bottom-0.5 left-1 text-[10px] font-semibold tnum drop-shadow">{i + 1}</span>
                 </button>
               ))}
@@ -425,19 +490,19 @@ function Editor({ id, fechar }: { id: string; fechar: () => void }) {
           {!camada && (
             <aside className="hidden shrink-0 border-l border-white/[0.06] p-5 lg:block lg:w-[300px]">
               <span className="text-[15px] font-semibold">Editar</span>
-              <p className="mt-2 text-[13.5px] leading-relaxed text-mute">Passe o mouse pra ver cada texto do slide. Clique pra mudar fonte, cor e tamanho, duplo clique troca o texto, arraste pra mover. A foto só muda onde você mexer.</p>
+              <p className="mt-2 text-[13.5px] leading-relaxed text-mute">Passe o mouse pra ver cada texto e cada elemento do slide (produto, barra, logo). Clique pra selecionar, arraste pra mover, puxe o canto pra mudar o tamanho, duplo clique troca o texto. A foto só muda onde você mexer.</p>
               <p className="mt-3 text-[12.5px] text-faint">⌘Z desfaz · Delete tira a camada · setas trocam o slide</p>
             </aside>
           )}
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">{/* painel saindo não ocupa espaço: o slide não pula de lugar */}
             {camada && (
               <motion.aside initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 40, opacity: 0 }} transition={mola}
                 className="absolute inset-x-0 bottom-0 z-10 max-h-[46dvh] overflow-y-auto rounded-t-[22px] border-t border-white/[0.08] bg-[#140507]/95 p-4 pb-[max(16px,env(safe-area-inset-bottom))] backdrop-blur-xl lg:static lg:max-h-none lg:w-[300px] lg:shrink-0 lg:rounded-none lg:border-l lg:border-t-0 lg:bg-transparent lg:backdrop-blur-none">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-[15px] font-semibold">{camada.tipo === "texto" ? "Texto" : "Imagem"}</span>
+                  <span className="text-[15px] font-semibold">{camada.tipo === "texto" ? "Texto" : camada.orig ? "Elemento" : "Imagem"}</span>
                   <button aria-label="Fechar painel" onClick={() => setSel(null)} className="grid size-9 cursor-pointer place-items-center rounded-full text-faint hover:bg-white/[0.06] hover:text-ink"><X className="size-4" /></button>
                 </div>
-                <Painel c={camada} mudar={(p) => mudar(camada.id, p)} excluir={() => { tirar(camada.id); setSel(null); }} />
+                <Painel c={camada} mudar={(p) => mudar(camada.id, p)} excluir={() => { tirar(camada.id); setSel(null); }} ordem={(f) => ordem(camada.id, f)} />
               </motion.aside>
             )}
           </AnimatePresence>

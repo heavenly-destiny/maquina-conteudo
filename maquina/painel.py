@@ -159,6 +159,14 @@ def pasta_corte(job, n):
     return (j / "cortes" / f"{int(c['n']):02d}-{c['slug']}", c) if c else (None, None)
 
 
+def TRILHAS_EDITOR():
+    """estilos de trilha que o editor oferece (acervo de músicas) + 'nenhuma'"""
+    try:
+        return {"nenhuma": "Sem trilha", **{e["id"]: e["nome"] for e in json.loads((RAIZ / "estilos/musicas/musicas.json").read_text())["estilos"]}}
+    except (OSError, ValueError, KeyError):
+        return {"nenhuma": "Sem trilha"}
+
+
 def edicao(job, n):
     """dados do editor: toda fala dos trechos do corte (inclusive o que a pessoa apagou), legenda atual e titulo."""
     import html as _h
@@ -194,7 +202,9 @@ def edicao(job, n):
     return {"nome": d.name, "titulo": c.get("titulo"), "status": c.get("status"), "fase": c.get("fase"), "erro": c.get("erro_ajuste"),
             "nivel": (d / "nivel.txt").read_text().strip() if (d / "nivel.txt").exists() else "completo",
             "video": f"/arquivo?p={v}&v={int(v.stat().st_mtime)}" if v.exists() else None,
-            "palavras": pal, "painel": tit, "aj": aj}
+            "palavras": pal, "painel": tit, "aj": aj,
+            "trilhas": [{"id": k, "nome": v} for k, v in TRILHAS_EDITOR().items()],
+            "brollUrl": {b["arq"]: url_arq(d / b["arq"]) for b in aj.get("broll") or []}}
 
 
 TRAVA = threading.Lock()
@@ -426,7 +436,10 @@ def carrossel(id_):
         cam = edit[k]["camadas"] if edit and k < len(edit) else s.get("camadas", [])
         fundo = d / s["fundo"] if s.get("fundo") else None
         troca = d / "trocas" / f"{k + 1:02d}.png"  # fundo que a pessoa trocou no editor
+        # elemento recortado (elementos/NN-eK.png) vem como caminho da pasta: vira URL; data: e URL já prontas passam direto
+        cam = [{**c, "src": url_arq(d / c["src"]) or c["src"]} if c.get("src") and not c["src"].startswith(("/", "data:", "http")) else c for c in cam]
         slides.append({"origem": url_arq(o), "fundo": url_arq(troca) or (url_arq(fundo) if fundo else None) or url_arq(o),
+                       "limpo": url_arq(d / s["limpo"]) if s.get("limpo") else None,
                        "w": s.get("w", 1080), "h": s.get("h", 1350), "camadas": cam})
     return {**lerj(d / "pedido.json", {}), **lerj(d / "estado.json", {}), "id": d.name, "slides": slides, "editado": bool(edit)}
 
@@ -524,6 +537,35 @@ def biblioteca():
             it["tipo"] = tipos.get(it["id"]) or tipo_video(it["fonte"], x)
         BIB.update(mtime=mt, lista=lista)
     return BIB["lista"]
+
+
+IG_SLIDES = HUB.parent / "instagram-refs" / "slides"
+
+
+def ig_slides(url):
+    """slides de um carrossel do Instagram (público), baixados uma vez e guardados por shortcode"""
+    m = re.search(r"instagram\.com/(?:[\w.]+/)?(?:p|reel)/([\w-]+)", str(url or ""))
+    if not m:
+        return []
+    d = IG_SLIDES / m[1]
+    fs = sorted(d.glob("*.jpg"))
+    if not fs:
+        r = subprocess.run(["yt-dlp", "-J", "--ignore-errors", "--ignore-no-formats-error", f"https://www.instagram.com/p/{m[1]}/"],
+                           capture_output=True, text=True, timeout=120)
+        try:
+            j = json.loads(r.stdout)
+        except Exception:
+            return []
+        d.mkdir(parents=True, exist_ok=True)
+        for k, e in enumerate(j.get("entries") or [j], 1):
+            u = e.get("thumbnail") or (e.get("thumbnails") or [{}])[-1].get("url")
+            if u:
+                try:
+                    (d / f"{k:02d}.jpg").write_bytes(_http(u, 30))
+                except Exception:
+                    pass
+        fs = sorted(d.glob("*.jpg"))
+    return fs
 
 
 # ---- músicas: acervo (estilos/musicas/musicas.json), busca Deezer/iTunes, atualização diária em segundo plano ----
@@ -874,6 +916,8 @@ class H(BaseHTTPRequestHandler):
         elif u.path == "/api/musica-prev":
             f = MUS / "previews" / (re.sub(r"[^\w]", "", parse_qs(u.query).get("id", [""])[0]) + ".mp3")
             self._arquivo(f) if f.is_file() else self._json({"erro": "404"}, 404)
+        elif u.path == "/api/ig-slides":
+            self._json({"slides": [url_arq(f) for f in ig_slides(parse_qs(u.query).get("url", [""])[0])]})
         elif u.path == "/api/bib-vid":
             x = biblioteca()[int(parse_qs(u.query)["i"][0])]
             if not x.get("arq"):
@@ -973,11 +1017,12 @@ class H(BaseHTTPRequestHandler):
     def _upload_img(self, q):
         """foto do mascote ou slide do carrossel: vai pra entrada-img e devolve o nome pro pedido usar"""
         ext = Path(q.get("nome", ["x.jpg"])[0]).suffix.lower()
-        if ext not in (".jpg", ".jpeg", ".png", ".webp", ".heic"):
-            return self._json({"erro": "só imagem .jpg, .png ou .webp"}, 400)
+        if ext not in (".jpg", ".jpeg", ".png", ".webp", ".heic", ".mp4", ".mov"):  # vídeo: b-roll do editor de corte
+            return self._json({"erro": "só imagem .jpg, .png, .webp ou vídeo .mp4/.mov"}, 400)
         falta = int(self.headers.get("Content-Length") or 0)
-        if not 0 < falta < 40 << 20:
-            return self._json({"erro": "imagem vazia ou maior que 40 MB"}, 400)
+        teto = 300 << 20 if ext in (".mp4", ".mov") else 40 << 20
+        if not 0 < falta < teto:
+            return self._json({"erro": f"arquivo vazio ou maior que {teto >> 20} MB"}, 400)
         IMG_IN.mkdir(exist_ok=True)
         nome = f"{time.strftime('%Y%m%d-%H%M%S')}-{os.urandom(3).hex()}{ext}"
         dados = self.rfile.read(falta)
@@ -1035,6 +1080,24 @@ class H(BaseHTTPRequestHandler):
                      "texto": {str(k): str(v)[:80] for k, v in (a.get("texto") or {}).items()},
                      "kw": {str(k): bool(v) for k, v in (a.get("kw") or {}).items()},
                      "painel": {str(k): str(v)[:120] for k, v in (a.get("painel") or {}).items() if str(v).strip()}}
+            if str(a.get("trilha") or "") in TRILHAS_EDITOR():
+                limpo["trilha"] = str(a["trilha"])
+            if a.get("legenda") in ("padrao", "amarelo", "branco", "caixa"):
+                limpo["legenda"] = a["legenda"]
+            br = []
+            for b in (a.get("broll") or [])[:12]:  # b-roll: arquivo novo vem de entrada-img e passa pra pasta do corte
+                arq = str(b.get("arq") or "")
+                if arq.startswith("broll/") and (pc / arq).is_file():
+                    pass
+                elif (IMG_IN / Path(arq).name).is_file():
+                    (pc / "broll").mkdir(exist_ok=True)
+                    (IMG_IN / Path(arq).name).replace(pc / "broll" / Path(arq).name)
+                    arq = f"broll/{Path(arq).name}"
+                else:
+                    continue
+                br.append({"de": str(b.get("de")), "ate": str(b.get("ate")), "arq": arq})
+            if br:
+                limpo["broll"] = br
             escrever(pc / "ajustes.json", limpo)
             disparar(["ajustar", d["job"], str(int(d["n"]))])
         elif u == "/api/refazer":
@@ -1156,6 +1219,11 @@ class H(BaseHTTPRequestHandler):
             disparar_script("mascote.py", m.name)
         elif u == "/api/carrossel/novo":  # slides já subidos em entrada-img, na ordem
             imgs = [IMG_IN / Path(str(x)).name for x in d.get("imgs") or []]
+            if not imgs and d.get("url"):  # clonar direto da referência do Inspirar
+                IMG_IN.mkdir(exist_ok=True)
+                for f in ig_slides(d["url"]):
+                    imgs.append(IMG_IN / f"{time.strftime('%Y%m%d-%H%M%S')}-{os.urandom(3).hex()}.jpg")
+                    shutil.copy(f, imgs[-1])
             imgs = [x for x in imgs if x.is_file()][:20]
             if not imgs:
                 return self._json({"erro": "Mande as imagens dos slides"}, 400)

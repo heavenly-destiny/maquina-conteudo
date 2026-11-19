@@ -12,7 +12,9 @@ a=$(ffprobe -v error -show_entries format=duration -of csv=p=0 edit/video.mp4); 
 rm -f edit/public/video.mp4
 "$PY" build.py
 cp "$T/assets/fonts/InstrumentSerif-Italic.ttf" edit/public/assets/fonts/
-cd edit && "$PY" "$T/mix.py" . "$T/assets/music/bed-tech-01.mp3" 0 -120 | tail -1
+# trilha: o editor da Forja pode escolher um estilo (ajustes.json "trilha"); sem escolha sai sem trilha (ele põe o áudio no Instagram)
+TRILHA=$("$PY3" -c "import json,os;a=json.load(open('ajustes.json')) if os.path.exists('ajustes.json') else {};t=a.get('trilha') or '';f='$T/assets/music/estilo-'+t+'.mp3';print(f+' -16' if t and t!='nenhuma' and os.path.exists(f) else '$T/assets/music/bed-tech-01.mp3 -120')")
+cd edit && "$PY" "$T/mix.py" . ${TRILHA% *} 0 ${TRILHA##* } | tail -1
 # nivel Simples (maquina grava nivel.txt): painel parado + legenda, sai em segundos sem HyperFrames; se falhar, cai no render normal
 if [ "$(cat ../nivel.txt 2>/dev/null)" = simples ] && "$PY" "$T/organico/simples.py" . output.mp4; then :
 else PRODUCER_BROWSER_GPU_MODE=hardware npx hyperframes render public -o output.mp4 2>&1 | tail -1; fi

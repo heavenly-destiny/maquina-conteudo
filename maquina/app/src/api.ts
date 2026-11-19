@@ -41,7 +41,7 @@ export type Camada = {
 };
 export type Carrossel = {
   id: string; nome: string; status: string; fase?: string; erro?: string; editado: boolean; url?: string;
-  slides: { origem: string; fundo: string; w: number; h: number; camadas: Camada[] }[];
+  slides: { origem: string; fundo: string; limpo?: string | null; w: number; h: number; camadas: Camada[] }[]; /* limpo: fundo sem texto e sem elementos */
 };
 /* manda uma imagem pro servidor e devolve o nome que o pedido usa */
 export async function subirImagem(arq: File) {

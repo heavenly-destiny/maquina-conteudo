@@ -6,6 +6,8 @@ Por slide:
 1. OCR local grátis (RapidOCR, roda no Mac e no Windows) acha cada linha de texto com a caixa exata
 2. linhas próximas e do mesmo tamanho viram um bloco (título, subtítulo, rodapé)
 3. o texto sai da imagem (inpainting do OpenCV) e sobra o fundo limpo: fundos/NN.png
+3b. cada elemento visual (produto, barra, logo, pessoa) vira PNG transparente em elementos/NN-eK.png
+    e sai um segundo fundo sem elementos nem texto: fundos/NN-limpo.png
 4. camadas.json guarda os blocos em coordenadas relativas (0..1) com tamanho, cor e peso estimados
 
 O editor da Forja monta o slide com o fundo + as camadas, e a pessoa move, troca o texto e exporta.
@@ -85,6 +87,132 @@ def blocos(linhas):
     return out
 
 
+def recorte_rembg(img):
+    """foto sem fundo liso: o rembg acha o assunto principal (pessoa, produto). None se não estiver instalado"""
+    try:
+        from rembg import new_session, remove
+    except ImportError:
+        return None
+    m = remove(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), session=new_session("isnet-general-use"), only_mask=True)
+    return ((np.asarray(m) > 127) * 255).astype(np.uint8)
+
+
+def dividir_pilha(img, alfa, m, vertical=False):
+    """pilha de barras coladas (gráfico, lista colorida) vira uma camada por faixa de cor lisa"""
+    ys, xs = np.nonzero(m)
+    y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+    if min(y1 - y0, x1 - x0) < 0.08 * min(m.shape):  # peça pequena (logo, ícone): não é pilha, senão racha letra por letra
+        return [m]
+    sub = m[y0:y1, x0:x1] > 0
+    op = sub & (alfa[y0:y1, x0:x1] > 200) if alfa is not None else sub
+    cor = img[y0:y1, x0:x1].astype(int)
+    if vertical:
+        sub, op, cor = sub.T, op.T, cor.transpose(1, 0, 2)
+    med, dev = [], []
+    for r in range(len(op)):
+        px = cor[r][op[r]]
+        med.append(np.median(px, axis=0) if len(px) >= 5 else None)
+        dev.append(float(px.std(axis=0).max()) if len(px) >= 5 else None)
+    runs = []  # trechos de linhas seguidas com a mesma cor
+    for r, c in enumerate(med):
+        if c is None:
+            continue
+        if runs and r - runs[-1][-1] <= 2 and np.abs(c - med[runs[-1][-1]]).sum() < 25:
+            runs[-1].append(r)
+        else:
+            runs.append([r])
+    for i in range(len(runs) - 1, -1, -1):  # trecho curto (linha de transição, borda) cola no vizinho
+        if len(runs) > 1 and len(runs[i]) < 10:
+            alvo = i - 1 if i > 0 else i + 1
+            runs[alvo] = sorted(runs[alvo] + runs[i])
+            del runs[i]
+    lisas = [r for r in runs if np.median([dev[k] for k in r]) < 10]
+    if len(runs) < 2 or sum(map(len, lisas)) < 0.7 * sum(map(len, runs)):
+        return dividir_pilha(img, alfa, m, True) if not vertical else [m]
+    centros = np.array([np.mean(r) for r in runs])
+    dono = np.abs(np.arange(len(sub))[:, None] - centros[None]).argmin(axis=1)  # linha só de brilho vai pro trecho mais perto
+    out = []
+    for i in range(len(runs)):
+        p = sub & (dono == i)[:, None]
+        n = np.zeros_like(m)
+        n[y0:y1, x0:x1][p.T if vertical else p] = 255
+        out.append(n)
+    return out
+
+
+def borda_lisa(img):
+    """cor da borda do slide e se ela é lisa (fundo chapado)"""
+    borda = np.concatenate([img[:4].reshape(-1, 3), img[-4:].reshape(-1, 3), img[:, :4].reshape(-1, 3), img[:, -4:].reshape(-1, 3)]).astype(int)
+    cor = np.median(borda, axis=0)
+    desvio = np.abs(borda - cor).sum(axis=1)
+    return cor, np.percentile(desvio, 80) < 40, np.percentile(desvio, 95)
+
+
+def mascaras_elementos(fundo, alfa, w, h):
+    """elementos visuais do slide já sem texto (garrafa, barra, logo, pessoa): (máscaras, como achou)"""
+    if alfa is not None and (alfa < 20).mean() > 0.05:  # PNG transparente: cada ilha de opacidade é um elemento
+        base, modo = ((alfa > 40) * 255).astype(np.uint8), "transparência"
+    else:
+        cor, lisa, d95 = borda_lisa(fundo)
+        base, modo = None, "cor do fundo"
+        if lisa:  # fundo chapado: o que destoa da cor da borda é elemento
+            dif = np.abs(fundo.astype(int) - cor).sum(axis=2)
+            base = cv2.morphologyEx(((dif > max(45, d95 * 1.5)) * 255).astype(np.uint8), cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+            if base.mean() / 255 > 0.7:
+                base = None
+        if base is None:  # foto: um assunto principal pelo rembg
+            base, modo = recorte_rembg(fundo), "rembg"
+            if base is None:
+                return [], "fundo não é liso e o rembg não está instalado"
+    k = max(3, round(w * 0.012)) | 1  # junta peças vizinhas (garrafa + brilho, ícone + nome do logo)
+    n, lab, st, _ = cv2.connectedComponentsWithStats(cv2.dilate(base, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k))))
+    dentro = (alfa > 0) if modo == "transparência" else (cv2.dilate(base, np.ones((3, 3), np.uint8)) > 0)  # pega a borda suave
+    out = []
+    for i in range(1, n):
+        if st[i, 4] < w * h * 0.0015 or st[i, 2] * st[i, 3] > 0.95 * w * h:  # cisco, ou o próprio fundo
+            continue
+        out += dividir_pilha(fundo, alfa, ((lab == i) & dentro).astype(np.uint8) * 255)
+    out.sort(key=lambda m: -int((m > 0).sum()))  # maior embaixo
+    return out, modo
+
+
+def separar_elementos(fundo, alfa_f, d, nn, w, h):
+    """cada elemento vira PNG transparente (elementos/NN-eK.png) + fundo sem elementos e sem texto (fundos/NN-limpo.png)"""
+    mascaras, modo = mascaras_elementos(fundo, alfa_f, w, h)
+    if not mascaras:
+        print(f"[carrossel] slide {nn}: nenhum elemento ({modo or 'nada destoa do fundo'})", file=sys.stderr)
+        return [], None
+    (d / "elementos").mkdir(exist_ok=True)
+    opaco = np.full((h, w), 255, np.uint8)
+    tudo = np.zeros((h, w), np.uint8)
+    camadas = []
+    for i, m in enumerate(mascaras, 1):
+        ys, xs = np.nonzero(m)
+        y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+        a = (alfa_f if alfa_f is not None else opaco)[y0:y1, x0:x1].astype(np.float32) * (m[y0:y1, x0:x1] / 255.0)
+        cv2.imwrite(str(d / "elementos" / f"{nn}-e{i}.png"), np.dstack([fundo[y0:y1, x0:x1], a.astype(np.uint8)]))
+        tudo |= m
+        caixa = {"x": x0 / w, "y": y0 / h, "w": (x1 - x0) / w, "h": (y1 - y0) / h}
+        camadas.append({"id": f"e{i}", "tipo": "imagem", "src": f"elementos/{nn}-e{i}.png", **caixa, "orig": dict(caixa)})
+    if modo == "transparência":
+        alfa_l = alfa_f.copy()
+        alfa_l[tudo > 0] = 0
+        limpo = np.dstack([fundo, alfa_l])
+    else:
+        tudo = cv2.dilate(tudo, np.ones((5, 5), np.uint8))
+        cor, lisa, _ = borda_lisa(fundo)
+        limpo = fundo.copy()
+        if lisa:
+            limpo[tudo > 0] = cor.astype(np.uint8)
+        else:  # ponytail: inpaint borra área grande (foto); preenchimento por IA (lama) se incomodar
+            limpo = cv2.inpaint(limpo, tudo, 9, cv2.INPAINT_TELEA)
+        if alfa_f is not None:
+            limpo = np.dstack([limpo, alfa_f])
+    cv2.imwrite(str(d / "fundos" / f"{nn}-limpo.png"), limpo)
+    print(f"[carrossel] slide {nn}: {len(camadas)} elementos ({modo})", file=sys.stderr)
+    return camadas, f"fundos/{nn}-limpo.png"
+
+
 def slide(ocr, arq, saida_fundo, W):
     bruta = cv2.imread(str(arq), cv2.IMREAD_UNCHANGED)
     if bruta.ndim == 2:
@@ -138,6 +266,7 @@ def slide(ocr, arq, saida_fundo, W):
         if alfa_f is not None:
             alfa_f = cv2.inpaint(alfa_f, r2, 7, cv2.INPAINT_TELEA)
     cv2.imwrite(str(saida_fundo), np.dstack([fundo, alfa_f]) if alfa is not None else fundo)
+    elementos, limpo = separar_elementos(fundo, alfa_f, saida_fundo.parent.parent, saida_fundo.stem, w, h)
 
     camadas = []
     for i, b in enumerate(blocos(linhas)):
@@ -159,7 +288,7 @@ def slide(ocr, arq, saida_fundo, W):
             "fonte": "Inter", "fixo": True,
             "orig": {"x": x0 / w, "y": y0 / h, "w": (x1 - x0) / w, "h": (y1 - y0) / h},  # mantém as quebras do original (o editor encolhe se a fonte sair larga)
         })
-    return {"w": w, "h": h, "camadas": camadas}
+    return {"w": w, "h": h, "camadas": elementos + camadas, **({"limpo": limpo} if limpo else {})}  # texto desenha por cima dos elementos
 
 
 def rodar(id_):

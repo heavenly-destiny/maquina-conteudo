@@ -60,9 +60,21 @@ PAD = 110
 SOMBRAS = [(1, 2, .5), (12, 0, .85), (30, 0, .7), (55, 0, .5)]  # (sigma, dy, alpha) ~ text-shadow do style.css
 
 
+SANS_FORTE = ImageFont.truetype(f"{FONTS}/Outfit-Variable.ttf", 64)
+try:
+    SANS_FORTE.set_variation_by_axes([800])
+except Exception:
+    pass
+ESTILO = "padrao"  # estilo de legenda do editor: padrao (serifa vermelha), amarelo, branco, caixa
+
+
 def sprite(txt, kw):
-    f = SERIF if kw else SANS
-    cor = (255, 59, 71) if kw else (255, 255, 255)
+    if ESTILO == "padrao" or not kw:
+        f = SERIF if kw else SANS
+        cor = (255, 59, 71) if kw else (255, 255, 255)
+    else:
+        f, cor = SANS_FORTE, {"amarelo": (255, 214, 10), "branco": (255, 255, 255), "caixa": (11, 2, 4)}[ESTILO]
+        kw = False  # sem o brilho vermelho da serifa
     x0, y0, x1, y1 = f.getbbox(txt)
     w, h = x1 - x0, y1 - y0
     m = Image.new("L", (w + 2 * PAD, h + 2 * PAD), 0)
@@ -83,6 +95,12 @@ def sprite(txt, kw):
     out_a = t + a * (1 - t)
     rgb = (np.array(cor, np.float32) * t[..., None] + rgb * (a * (1 - t))[..., None]) / np.maximum(out_a, 1e-6)[..., None]
     img = np.dstack([rgb, out_a * 255]).clip(0, 255).astype(np.uint8)
+    if ESTILO == "caixa":  # palavra numa caixinha: preta, ou amarela na palavra-chave
+        im = Image.fromarray(img, "RGBA")
+        cx = Image.new("RGBA", im.size, (0, 0, 0, 0))
+        ImageDraw.Draw(cx).rounded_rectangle((PAD - 14, PAD - 10, PAD + w + 14, PAD + h + 14), 10, fill=(255, 214, 10, 255) if cor == (11, 2, 4) else (11, 2, 4, 255))
+        cx.alpha_composite(Image.fromarray(np.dstack([np.asarray(im)[..., :3], (t * 255).astype(np.uint8)]), "RGBA"))
+        img = np.asarray(cx)
     # "base" = linha de base dentro do sprite (o texto foi desenhado com o topo da ascendente em PAD - y0)
     return {"img": Image.fromarray(img, "RGBA"), "w": w, "base": PAD - y0 + f.getmetrics()[0]}
 
@@ -171,7 +189,9 @@ def _cola(tela, im, x, y):
 
 def main(ed, saida):
     ed = os.path.abspath(ed)
+    global ESTILO
     caps = json.load(open(f"{ed}/caps.json"))
+    ESTILO = caps.get("legenda") or "padrao"
     dur = caps["dur"]
     n = round(dur * FPS)
     pub = f"{ed}/public"
@@ -191,10 +211,22 @@ def main(ed, saida):
         fc += f"[z]scale={zw}:{zh},crop={W}:{VH}:{round(.42 * W * .12)}:{round(.38 * VH * .12)}[zz];[a][zz]overlay=enable='{en}'[v];"
     else:
         fc += "[z]nullsink;[a]null[v];"
-    fc += (f"[v][2:v]overlay[v2];[1:v][v2]overlay=0:{VH}:shortest=1[f];"
+    br = caps.get("broll") or []
+    extra, cur = [], "v"
+    for i, b in enumerate(br):
+        k = 4 + i
+        arq = os.path.join(ed, "public", b["arq"])
+        if b["arq"].lower().endswith((".mp4", ".mov")):
+            extra += ["-i", arq]
+        else:
+            extra += ["-loop", "1", "-framerate", str(FPS), "-i", arq]
+        fc += (f"[{k}:v]fps={FPS},scale={W}:{VH}:force_original_aspect_ratio=increase,crop={W}:{VH},setsar=1,"
+               f"setpts=PTS-STARTPTS+{b['a']:.3f}/TB[b{i}];[{cur}][b{i}]overlay=0:0:eof_action=pass:enable='between(t,{b['a']:.3f},{b['b']:.3f})'[vb{i}];")
+        cur = f"vb{i}"
+    fc += (f"[{cur}][2:v]overlay[v2];[1:v][v2]overlay=0:{VH}:shortest=1[f];"
            f"[f][3:v]overlay=0:{TOP}:eof_action=pass,format=yuv420p[out]")
     cmd = ["ffmpeg", "-y", "-v", "error", "-i", f"{ed}/video.mp4", "-loop", "1", "-framerate", str(FPS), "-i", pn, "-i", gr,
-           "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{SH}", "-r", str(FPS), "-i", "-",
+           "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{SH}", "-r", str(FPS), "-i", "-", *extra,
            "-filter_complex", fc, "-map", "[out]", "-frames:v", str(n), "-r", str(FPS),
            "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", "-movflags", "+faststart", saida]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X, GalleryHorizontal } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Link2, Search, Sparkles, Telescope, Wand2, X, GalleryHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
 import { atualizar, biblioteca, guardarModoDec, limparBiblioteca, modoDec, type ModoDec, fmtTempo, fmtViews, post, type Estado, type Inspiracao, type ItemBib } from "../api";
 import type { Rascunho } from "./Criar";
 import { Botao, Cabecalho, Copiar, Excluir, Folha, LixeiraCanto, Segmentos, Status, Vazio, cascata, cx, mola, molaSuave, useAviso } from "../ui";
@@ -78,10 +78,51 @@ function SeletorDecupagem({ modo, setModo }: { modo: ModoDec; setModo: (m: ModoD
   );
 }
 
+function BotaoClonar({ x }: { x: ItemBib }) {
+  const avisar = useAviso();
+  const [indo, setIndo] = useState(false);
+  const clonar = async () => {
+    if (!x.url) { location.hash = "carrosseis?novo=1"; return; }
+    setIndo(true);
+    try { const r = await post("/api/carrossel/novo", { url: x.url, nome: x.titulo ? `Clone: ${x.titulo}`.slice(0, 80) : "" }); som.enviar(); avisar("Separando os slides. Leva uns minutos."); location.hash = `carrosseis?abrir=${r.id}`; }
+    catch (er) { avisar((er as Error).message, true); setIndo(false); }
+  };
+  return <Botao tipo="principal" onClick={clonar} disabled={indo}><GalleryHorizontal className="size-4" /> {indo ? "Puxando os slides…" : "Clonar carrossel"}</Botao>;
+}
+
+/* carrossel de referência: todos os slides, arrastando pro lado (baixados uma vez pelo servidor) */
+function SlidesRef({ x }: { x: ItemBib }) {
+  const [slides, setSlides] = useState<string[] | null>(null);
+  const [atual, setAtual] = useState(0);
+  const trilho = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let vivo = true;
+    fetch(`/api/ig-slides?url=${encodeURIComponent(x.url || "")}`).then((r) => r.json()).then((j) => vivo && setSlides(j.slides?.length ? j.slides : [])).catch(() => vivo && setSlides([]));
+    return () => { vivo = false; };
+  }, [x.url]);
+  const lista = slides?.length ? slides : x.img ? [x.img] : [];
+  const ir = (k: number) => { const t = trilho.current; if (t) t.scrollTo({ left: k * t.clientWidth, behavior: "smooth" }); };
+  return (
+    <div className="mx-auto w-full max-w-[340px] shrink-0">
+      <div className="relative">
+        <div ref={trilho} onScroll={(e) => setAtual(Math.round(e.currentTarget.scrollLeft / e.currentTarget.clientWidth))}
+          className="flex snap-x snap-mandatory overflow-x-auto rounded-[20px] bg-black/30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {lista.map((s, k) => <img key={s} src={s} alt={`Slide ${k + 1}`} loading={k < 2 ? "eager" : "lazy"} className="max-h-[58dvh] w-full shrink-0 snap-center object-contain" />)}
+        </div>
+        {lista.length > 1 && <>
+          <button aria-label="Slide anterior" disabled={atual === 0} onClick={() => ir(atual - 1)} className="vidro absolute left-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full disabled:opacity-0 transition-opacity"><ChevronLeft className="size-5" /></button>
+          <button aria-label="Próximo slide" disabled={atual >= lista.length - 1} onClick={() => ir(atual + 1)} className="vidro absolute right-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full disabled:opacity-0 transition-opacity"><ChevronRight className="size-5" /></button>
+        </>}
+      </div>
+      <p className="mt-2 text-center text-[12.5px] text-faint">{slides === null ? "Buscando os slides…" : slides.length ? `${atual + 1} de ${slides.length}` : "Não deu pra puxar os slides. Abra o original."}</p>
+    </div>
+  );
+}
+
 function ItemDetalhe({ x, decupar, criarCom, excluir, modo, setModo }: { x: ItemBib; decupar: (u: string) => void; criarCom: (r: Rascunho) => void; excluir: () => void; modo: ModoDec; setModo: (m: ModoDec) => void }) {
   return (
     <div className="flex flex-col gap-5 sm:flex-row">
-      {x.video ? <video src={x.video} poster={x.img} controls autoPlay muted loop playsInline className="mx-auto max-h-[52dvh] w-full max-w-[300px] shrink-0 rounded-[20px] object-contain bg-black/30" />
+      {x.tipo === "carrossel" && x.url ? <SlidesRef x={x} /> : x.video ? <video src={x.video} poster={x.img} controls autoPlay muted loop playsInline className="mx-auto max-h-[52dvh] w-full max-w-[300px] shrink-0 rounded-[20px] object-contain bg-black/30" />
         : x.img && <img src={x.img} alt="" className="mx-auto max-h-[52dvh] w-full max-w-[300px] shrink-0 rounded-[20px] object-contain bg-black/30" />}
       <div className="flex min-w-0 flex-1 flex-col gap-4 sm:pt-8">
         <div className="pr-12">
@@ -98,11 +139,11 @@ function ItemDetalhe({ x, decupar, criarCom, excluir, modo, setModo }: { x: Item
           </div>
         )}
         {x.url && x.tipo !== "carrossel" && <SeletorDecupagem modo={modo} setModo={setModo} />}
-        {x.tipo === "carrossel" && <p className="text-[13.5px] leading-relaxed text-mute">Salve os slides (print ou imagem) e mande no criador. A Forja separa cada texto do fundo pra você trocar, mover e baixar.</p>}
+        {x.tipo === "carrossel" && <p className="text-[13.5px] leading-relaxed text-mute">Clonar puxa todos os slides pro criador. A Forja separa cada texto do fundo pra você trocar, mover e baixar.</p>}
         <div className="flex flex-wrap gap-2">
           {x.prompt && <Botao tipo="principal" onClick={() => criarCom({ tipo: "animado", briefing: `Usar o motion "${x.titulo}" como referência (técnica: ${x.tecnica ?? "-"}). Prompt de origem: ${x.prompt}\n\nAssunto do meu vídeo: ` })}><Sparkles className="size-4" /> Usar no meu vídeo</Botao>}
           {x.tipo === "carrossel"
-            ? <Botao tipo="principal" onClick={() => { location.hash = "carrosseis?novo=1"; }}><GalleryHorizontal className="size-4" /> Clonar carrossel</Botao>
+            ? <BotaoClonar x={x} />
             : x.url && <Botao tipo={x.prompt ? "fantasma" : "principal"} onClick={() => decupar(x.url!)}><Telescope className="size-4" /> Decupar</Botao>}
           {x.url && <a href={x.url} target="_blank" rel="noreferrer" className="vidro inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[15px] font-medium hover:bg-white/10">Original <ArrowUpRight className="size-4" /></a>}
           <Excluir onConfirmar={excluir} />

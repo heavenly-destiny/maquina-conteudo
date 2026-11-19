@@ -24,3 +24,9 @@ The fix works like Canva's "edit text":
 **Why:** he needs to edit any text without the rest of the picture changing.
 
 **How to apply:** never re-render the whole slide from a cleaned background. Check by editing two texts and deleting one, then comparing with the original at 390 and 1440 px.
+
+Extra requests (19/11/2026):
+- "Não é só texto, tem que dar pra mexer nos elementos na foto inteira": every visual element (product, bars, logo) must be a draggable and resizable layer, like Canva Magic Grab.
+- "Essa aba de carrosséis também modela carrosséis por nicho da pessoa seguindo tudo": from a reference carousel, generate a version adapted to the user's niche. Keep the structure, design, text rhythm and length per slide; rewrite the copy for the niche and swap images when needed.
+- "A foto que enviar tem que ficar exatamente igual, você tá colocando um fundo diferente" (19/11/2026): the uploaded photo stays identical, transparency preserved, no invented background. Stage shows a transparency checkerboard behind the slide (outside the exported node); patches are drawn in a canvas with clearRect + cleaned background (alpha kept, no #1a0a0d); PNG export is at the original pixel size with alpha. Check: export pixels in unedited areas must equal origem exactly (alpha=0 included).
+- Elements built 19/11: carrossel.py cuts elements/NN-eK.png (alpha islands on transparent PNG, border-color diff on flat bg, rembg on photos; stacked flat bars split one per bar) + fundos/NN-limpo.png; dragging an element carries the texts whose center sits on it.

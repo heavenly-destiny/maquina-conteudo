@@ -456,6 +456,24 @@ def refazer(j, n, nota):
     status(j)
 
 
+def trilha_do_editor(d, j, c, env):
+    """trilha escolhida no editor: gera uma vez por estilo (ElevenLabs Music, 2 min) e reaproveita em todo corte."""
+    aj = json.loads((d / "ajustes.json").read_text()) if (d / "ajustes.json").exists() else {}
+    t = aj.get("trilha")
+    if not t or t == "nenhuma":
+        return
+    bed = RAIZ / "tools/assets/music" / f"estilo-{t}.mp3"
+    if bed.exists():
+        return
+    est = next((e for e in json.loads((RAIZ / "estilos/musicas/musicas.json").read_text())["estilos"] if e["id"] == t), None)
+    if not est:
+        return
+    c["fase"] = "compondo a trilha"; j.salvar(c["n"])
+    subprocess.run([str(AQUI / "bin/som"), "musica", est["prompt_trilha"] + ". Instrumental, no vocals, steady energy, loopable.", str(bed), "120"],
+                   capture_output=True, text=True, env=env, timeout=10 * 60)
+    c["fase"] = "aplicando ajustes"; j.salvar(c["n"])
+
+
 def ajustar(j, n):
     """editor da Forja: refaz o corte com o ajustes.json (palavras apagadas, legenda, destaque, titulo) sem passar pelo Claude."""
     c = next(c for c in j.e["cortes"] if int(c["n"]) == int(n))
@@ -467,6 +485,7 @@ def ajustar(j, n):
     j.log(f"ajustando {slug(c)} no editor")
     env = {**os.environ, "PATH": plataforma.junta_path(AQUI / "bin"), "FORJA_PY": sys.executable,
            "FORJA_VOZ_PY": str(plataforma.venv_python(RAIZ / "tools/.venv-voz"))}
+    trilha_do_editor(d, j, c, env)
     r = subprocess.run([str(AQUI / "bin/render-corte"), str(d), slug(c), str(j.p / "prontos")], capture_output=True, text=True, env=env, timeout=40 * 60)
     (d / f"log_ajustar_{int(time.time())}.txt").write_text(r.stdout + "\n--- stderr ---\n" + r.stderr)
     c.pop("fase", None)
