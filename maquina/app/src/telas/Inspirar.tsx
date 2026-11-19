@@ -36,6 +36,8 @@ function Decupagem({ i, criarCom, excluir }: { i: Inspiracao; criarCom: (r: Rasc
                     <p className="text-[14.5px] leading-snug">{b.o_que_acontece}</p>
                     {b.fala && <p className="mt-0.5 text-[13.5px] italic text-mute">“{b.fala}”</p>}
                     {b.tecnica_visual && <p className="mt-0.5 text-[12.5px] text-faint">{b.tecnica_visual}</p>}
+                    {b.texto_tela && <p className="mt-0.5 text-[12.5px] text-faint"><span className="text-mute">Tela: </span>{b.texto_tela}</p>}
+                    {b.som && <p className="mt-0.5 text-[12.5px] text-faint"><span className="text-mute">Som: </span>{b.som}</p>}
                   </motion.li>
                 ))}
               </ol>

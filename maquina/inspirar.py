@@ -18,6 +18,44 @@ def fase(p, e, f):
     salvar(p, e)
 
 
+def analisar_inteiro(p, v):
+    """o vídeo inteiro, sem pular nada (tanpz 19/11): todo corte com o tempo exato, quadros a cada 0,25-1 s em folhas
+    numeradas, um quadro logo depois de cada corte e a curva de volume a cada 0,5 s (pra achar drop, hit e silêncio)."""
+    import shutil
+    d = m.dur(v)
+    for x in ("frames", "folhas", "cortes"):
+        shutil.rmtree(p / x, ignore_errors=True)
+        (p / x).mkdir()
+    # 1. cortes exatos
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", str(v), "-vf", "scdet=threshold=8,metadata=print:file=-", "-an", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    cortes = [round(float(x), 2) for x in re.findall(r"lavfi\.scd\.time=([\d.]+)", r.stdout)]
+    (p / "cortes.txt").write_text(f"duracao {d:.2f}s, {len(cortes)} cortes\n" + "\n".join(f"{t:.2f}s" for t in cortes) + "\n")
+    for k, t in enumerate(cortes[:80], 1):  # o primeiro quadro de cada plano novo
+        m.sh(["ffmpeg", "-y", "-v", "error", "-ss", f"{min(t + 0.06, d - 0.05):.2f}", "-i", str(v), "-frames:v", "1", "-vf", "scale=480:-2",
+              "-q:v", "4", str(p / "cortes" / f"c{k:02d}_{t:06.2f}s.jpg")])
+    # 2. quadros do vídeo inteiro: 4 por segundo em vídeo curto, até ~300 quadros no total
+    fps = max(0.5, min(4.0, 300 / max(d, 1)))
+    m.sh(["ffmpeg", "-y", "-v", "error", "-i", str(v), "-vf", f"fps={fps:.3f},scale=320:-2", "-q:v", "5", str(p / "frames/f%04d.jpg")])
+    fr = sorted((p / "frames").glob("f*.jpg"))
+    por = 12  # 4x3 por folha
+    linhas = [f"{fps:.2f} quadros por segundo; cada folha tem {por} quadros (4 colunas x 3 linhas), lidos da esquerda pra direita, de cima pra baixo"]
+    for k in range(0, len(fr), por):
+        n = k // por + 1
+        m.sh(["ffmpeg", "-y", "-v", "error", "-start_number", str(k + 1), "-i", str(p / "frames/f%04d.jpg"), "-frames:v", "1",
+              "-vf", f"tile=4x3:padding=6:color=white", "-q:v", "4", str(p / "folhas" / f"folha{n:02d}.jpg")])
+        linhas.append(f"folha{n:02d}.jpg: {k / fps:.2f}s a {min(len(fr), k + por) / fps:.2f}s")
+    (p / "folhas" / "indice.txt").write_text("\n".join(linhas) + "\n")
+    shutil.copy(p / "folhas" / "folha01.jpg", p / "sheet.jpg") if (p / "folhas" / "folha01.jpg").exists() else None
+    # 3. volume a cada 0,5 s
+    r = subprocess.run(["ffmpeg", "-v", "info", "-i", str(v), "-vn", "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True)
+    vol, ult = [], -1.0
+    for t, mm in re.findall(r"t:\s*([\d.]+).*?M:\s*(-?[\d.]+|-inf)", r.stderr):
+        if float(t) - ult >= 0.5:
+            vol.append(f"{float(t):6.1f}s {mm} LUFS"); ult = float(t)
+    (p / "volume.txt").write_text("\n".join(vol) + "\n")
+
+
 def rodar(id_):
     p = INS / id_
     ped = json.loads((p / "pedido.json").read_text())
@@ -48,22 +86,12 @@ def rodar(id_):
 
         fase(p, e, "transcrevendo")
         m.sh(["ffmpeg", "-y", "-v", "error", "-i", str(v), "-vn", "-ac", "1", "-ar", "16000", str(p / "audio.wav")])
-        m.sh(["whisper-cli", "-m", str(m.WHISPER), "-l", "auto", "-t", "8", "-oj", "-f", str(p / "audio.wav"), "-of", str(p / "wh")])
+        m.sh(["whisper-cli", "-m", str(m.WHISPER), "-l", "auto", "-t", "8", "-ml", "42", "-sow", "-oj", "-f", str(p / "audio.wav"), "-of", str(p / "wh")])
         segs = json.loads((p / "wh.json").read_text())["transcription"]
         (p / "transcricao.txt").write_text("\n".join(
             f"[{s['offsets']['from'] / 1000:7.2f}-{s['offsets']['to'] / 1000:7.2f}] {s['text'].strip()}" for s in segs))
 
-        (p / "frames").mkdir(exist_ok=True)
-        r = subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(v), "-vf", "select='gt(scene,0.3)',scale=360:-2",
-                            "-vsync", "vfr", "-frames:v", "12", "-q:v", "4", str(p / "frames/f%02d.jpg")], capture_output=True)
-        if len(list((p / "frames").glob("*.jpg"))) < 4:  # pouco corte: amostra uniforme
-            for f in (p / "frames").glob("*.jpg"):
-                f.unlink()
-            d = m.dur(v)
-            m.sh(["ffmpeg", "-y", "-v", "error", "-i", str(v), "-vf", f"fps=10/{d:.2f},scale=360:-2", "-frames:v", "10",
-                  "-q:v", "4", str(p / "frames/f%02d.jpg")])
-        m.sh(["ffmpeg", "-y", "-v", "error", "-pattern_type", "glob", "-i", str(p / "frames/f*.jpg"),
-              "-vf", "tile=6x2:padding=4", "-frames:v", "1", "-q:v", "4", str(p / "sheet.jpg")])
+        analisar_inteiro(p, v)
 
         fase(p, e, "analisando")
         m.claude(m.prompt("decupar", pasta=p), p, m.MODELO_CORTE, "log.txt")

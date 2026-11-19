@@ -12,7 +12,7 @@ export type Geracao = {
   status: string; fase?: string; desde?: number; erro?: string; titulo?: string; legenda?: string; hashtags?: string; revisao?: { aprovado?: boolean; nota?: number; problemas?: string[] };
   inspiracao?: string; nicho?: string; validacao?: "teste" | "validado"; video?: string | null; capa?: string | null; roteiro_txt?: string | null; roteiro_json?: { titulo?: string; gancho?: string; falas?: { texto: string; cena?: string }[] } | null; criado: number; notas?: string[];
 };
-export type Beat = { t: string; o_que_acontece: string; fala?: string; tecnica_visual?: string };
+export type Beat = { t: string; o_que_acontece: string; fala?: string; tecnica_visual?: string; texto_tela?: string; som?: string };
 export type Decupagem = {
   titulo?: string; gancho?: string; formato?: string; duracao?: number; estrutura?: Beat[]; estilo_edicao?: string;
   legenda_e_texto?: string; audio?: string; por_que_funciona?: string; como_modelar?: string; nicho?: string; traducao?: string;
