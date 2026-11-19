@@ -6,9 +6,9 @@ import { Cabecalho, Copiar, Folha, GRADE, Segmentos, Tile, Vazio, cx, mola, useA
 import { som } from "../sons";
 
 const REDES = [
-  { v: "instagram", nome: "Instagram" },
-  { v: "tiktok", nome: "TikTok" },
-  { v: "youtube", nome: "YouTube" },
+  { v: "instagram", nome: "Instagram", sigla: "IG" },
+  { v: "tiktok", nome: "TikTok", sigla: "TT" },
+  { v: "youtube", nome: "YouTube", sigla: "YT" },
 ] as const;
 
 type Item = { ref: string; titulo: string; capa?: string | null; video: string; legenda?: string; hashtags?: string; redes: Set<string> };
@@ -27,7 +27,7 @@ function itens(e: Estado): Item[] {
   }
   return out;
 }
-export const pendentes = (e: Estado) => itens(e).filter((x) => x.redes.size < REDES.length);
+export const pendentes = (e: Estado) => itens(e).filter((x) => x.redes.size === 0);
 
 function Detalhe({ x, marcar }: { x: Item; marcar: (ref: string, rede: string) => void }) {
   return (
@@ -70,7 +70,7 @@ export function Postar({ e }: { e: Estado | null }) {
   const [aberto, setAberto] = useState<string | null>(null);
   const avisar = useAviso();
   const todos = e ? itens(e) : [];
-  const lista = todos.filter((x) => (ver === "fila" ? x.redes.size < REDES.length : x.redes.size > 0));
+  const lista = todos.filter((x) => (ver === "fila" ? x.redes.size === 0 : x.redes.size > 0));
   const atual = todos.find((x) => x.ref === aberto);
   const marcar = async (ref: string, rede: string) => {
     try { await post("/api/postado", { ref, rede }); som.ok(); atualizar(); }
@@ -85,11 +85,13 @@ export function Postar({ e }: { e: Estado | null }) {
         <div className={GRADE}>
           {lista.map((x, i) => (
             <Tile key={x.ref} i={i} capa={x.capa} video={x.video} titulo={x.titulo} onClick={() => setAberto(x.ref)}
-              rodape={
-                <span className="pointer-events-none absolute right-2.5 top-2.5 flex gap-1 rounded-full bg-black/55 px-2 py-1.5 backdrop-blur" aria-label={`Postado em ${x.redes.size} de 3`}>
-                  {REDES.map((r) => <span key={r.v} className={cx("size-1.5 rounded-full", x.redes.has(r.v) ? "bg-ok" : "bg-white/25")} />)}
+              rodape={x.redes.size > 0 && (
+                <span className="pointer-events-none absolute left-2.5 top-2.5 flex gap-1" aria-label={`Postado em ${REDES.filter((r) => x.redes.has(r.v)).map((r) => r.nome).join(", ")}`}>
+                  {REDES.filter((r) => x.redes.has(r.v)).map((r) => (
+                    <span key={r.v} className="rounded-full bg-black/60 px-1.5 py-0.5 text-[10.5px] font-semibold tracking-wide text-ok backdrop-blur">{r.sigla}</span>
+                  ))}
                 </span>
-              } />
+              )} />
           ))}
         </div>
       ) : (

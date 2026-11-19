@@ -8,9 +8,11 @@ import { som } from "../sons";
 import { Musicas } from "./Musicas";
 
 const FONTES = [
-  { v: "todas", nome: "Tudo" }, { v: "decupados", nome: "Decupados" }, { v: "meus", nome: "Meus" }, { v: "virais", nome: "Virais" }, { v: "ads", nome: "Anúncios" },
-  { v: "motion", nome: "Motion" }, { v: "hf", nome: "HyperFrames" }, { v: "acervo", nome: "Prompt Motion" }, { v: "formatos", nome: "Formatos" }, { v: "musicas", nome: "Músicas" },
+  { v: "todas", nome: "Tudo" }, { v: "decupados", nome: "Analisados" }, { v: "meus", nome: "Meus" }, { v: "virais", nome: "Virais" }, { v: "ads", nome: "Anúncios" },
+  { v: "estilos", nome: "Estilos" }, { v: "musicas", nome: "Músicas" },
 ];
+// Motion, HyperFrames, prompts e formatos ficam dentro de Estilos (menos escolha de uma vez na tela)
+const ESTILOS = [{ v: "motion", nome: "Motion" }, { v: "hf", nome: "HyperFrames" }, { v: "acervo", nome: "Prompts" }, { v: "formatos", nome: "Formatos" }];
 
 function Decupagem({ i, criarCom }: { i: Inspiracao; criarCom: (r: Rascunho) => void }) {
   const d = i.decupagem;
@@ -117,6 +119,8 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   const [url, setUrl] = useState("");
   const [bib, setBib] = useState<ItemBib[]>([]);
   const [fonte, setFonte] = useState("todas");
+  const [sub, setSub] = useState("motion");
+  const fonteReal = fonte === "estilos" ? sub : fonte;
   const [busca, setBusca] = useState("");
   const [buscando, setBuscando] = useState(false);
   const [foco, setFoco] = useState(false);
@@ -134,7 +138,7 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
   };
   const q = busca.toLowerCase();
   const minhas = (e?.inspiracoes ?? []).filter((i) => !q || `${i.decupagem?.titulo} ${i.info?.titulo} ${i.info?.autor}`.toLowerCase().includes(q));
-  const lista = useMemo(() => bib.filter((x) => (fonte === "todas" ? x.fonte !== "musicas" : x.fonte === fonte) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q))).sort((a, b) => fonte === "acervo" ? (b.relevancia ?? 0) - (a.relevancia ?? 0) : 0), [bib, fonte, q]);
+  const lista = useMemo(() => bib.filter((x) => (fonteReal === "todas" ? x.fonte !== "musicas" : x.fonte === fonteReal) && (!q || `${x.titulo} ${x.autor} ${x.resumo} ${x.tecnica}`.toLowerCase().includes(q))).sort((a, b) => fonteReal === "acervo" ? (b.relevancia ?? 0) - (a.relevancia ?? 0) : 0), [bib, fonteReal, q]);
   const verMinhas = fonte === "todas" || fonte === "decupados";
   const emMusicas = fonte === "musicas";
   const aberto = (e?.inspiracoes ?? []).find((i) => i.id === aberta);
@@ -175,6 +179,13 @@ export function Inspirar({ e, criarCom }: { e: Estado | null; criarCom: (r: Rasc
 
       <Segmentos id="fonte" valor={fonte} onChange={(f) => { setFonte(f); setLimite(40); }} className="self-start max-w-full"
         opcoes={FONTES.map((f) => ({ v: f.v, rotulo: f.nome }))} />
+      <AnimatePresence initial={false}>
+        {fonte === "estilos" && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={mola} className="-mt-2 overflow-hidden">
+            <Segmentos id="sub-estilo" valor={sub} onChange={(s) => { setSub(s); setLimite(40); }} className="max-w-full" opcoes={ESTILOS.map((f) => ({ v: f.v, rotulo: f.nome }))} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {emMusicas ? <Musicas busca={busca} /> : (verMinhas && minhas.length) || (fonte !== "decupados" && lista.length) ? (
         <div className="columns-2 gap-2.5 sm:columns-3 sm:gap-3 lg:columns-5">

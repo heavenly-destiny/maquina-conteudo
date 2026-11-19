@@ -230,7 +230,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
 
           <div className="mt-1 flex items-center gap-2">
             <div ref={modosRef} className="scroll-x flex min-w-0 flex-1 gap-1">
-              {MODOS.map((m) => {
+              {MODOS.filter((m) => m.v !== "roteiro" || modo === "roteiro").map((m) => {
                 const on = m.v === modo && !link;
                 return (
                   <motion.button key={m.v} whileTap={{ scale: 0.92 }} transition={mola} aria-label={m.nome}
@@ -238,7 +238,7 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                     className={cx("relative flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-2.5 sm:px-3 text-[13px] font-medium transition-colors", on ? "text-ink" : "text-mute hover:text-ink")}>
                     {on && <motion.span layoutId="modo" transition={mola} className="absolute inset-0 rounded-full bg-white/[0.11] shadow-[inset_0_1px_0_rgb(255_255_255/0.16)]" />}
                     <m.Icone className={cx("relative size-[15px]", on && "text-red")} strokeWidth={2} />
-                    <span className={cx("relative", !on && "hidden sm:inline")}>{m.nome}</span>
+                    <span className="relative">{m.nome}</span>
                   </motion.button>
                 );
               })}
@@ -260,9 +260,14 @@ export function Inicio({ e, ir, rascunho, limpar }: { e: Estado | null; ir: (a: 
                 <AnimatePresence>
                   {menu && (
                     <motion.div initial={{ opacity: 0, y: 6, scale: 0.96, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: 4, scale: 0.97 }} transition={mola}
-                      className="absolute bottom-full right-0 z-20 mb-2 flex max-w-full flex-col gap-2 rounded-[20px] bg-[#1a080c]/95 p-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_30px_60px_-20px_rgb(0_0_0/0.9)] backdrop-blur-xl">
+                      className="absolute bottom-full right-0 z-20 mb-2 flex flex-col gap-2 rounded-[20px] max-sm:max-w-full bg-[#1a080c]/95 p-2 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08),0_30px_60px_-20px_rgb(0_0_0/0.9)] backdrop-blur-xl">
                       <Segmentos id="m-estilo" valor={estilo} onChange={setEstilo} opcoes={ESTILOS} />
                       <Segmentos id="m-dur" valor={duracao} onChange={setDuracao} opcoes={DURACOES.map((d) => ({ v: d, rotulo: `${d}s` }))} />
+                      {/* roteiro é a última opção (regra do tanpz): fica aqui dentro, não na fileira de modos */}
+                      <button onClick={() => { som.aba(); setModo(modo === "roteiro" ? "animado" : "roteiro"); setMenu(false); }}
+                        className={cx("flex min-h-10 cursor-pointer items-center gap-2 whitespace-nowrap rounded-full px-3.5 text-[13.5px] font-medium transition-colors", modo === "roteiro" ? "bg-white/[0.11] text-ink" : "text-mute hover:text-ink")}>
+                        <FileText className={cx("size-[15px]", modo === "roteiro" && "text-red")} /> {modo === "roteiro" ? "Voltar pro vídeo" : "Só o roteiro, sem vídeo"}
+                      </button>
                     </motion.div>
                   )}
                 </AnimatePresence>

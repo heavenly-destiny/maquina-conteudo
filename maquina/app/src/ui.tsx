@@ -175,7 +175,7 @@ export function Avisos({ children }: { children: ReactNode }) {
     const id = Date.now() + Math.random();
     erro ? som.erro() : som.ok();
     setLista((l) => [...l, { id, m, erro }]);
-    setTimeout(() => setLista((l) => l.filter((x) => x.id !== id)), 3200);
+    setTimeout(() => setLista((l) => l.filter((x) => x.id !== id)), erro ? 8000 : 3200);
   }, []);
   return (
     <Ctx.Provider value={avisar}>
@@ -185,7 +185,8 @@ export function Avisos({ children }: { children: ReactNode }) {
           {lista.map((t) => (
             <motion.div key={t.id} layout initial={{ y: -20, opacity: 0, scale: 0.9, filter: "blur(8px)" }} animate={{ y: 0, opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ y: -12, opacity: 0, scale: 0.95 }} transition={mola}
-              className="vidro flex items-center gap-2 rounded-full bg-[#1a0d10]/80 px-4 py-2.5 text-sm font-medium">
+              onClick={() => setLista((l) => l.filter((x) => x.id !== t.id))}
+              className="vidro pointer-events-auto flex max-w-full cursor-pointer items-center gap-2 rounded-full bg-[#1a0d10]/80 px-4 py-2.5 text-sm font-medium">
               <span className={cx("size-1.5 rounded-full", t.erro ? "bg-red" : "bg-ok")} />
               {t.m}
             </motion.div>
@@ -209,8 +210,8 @@ export function Vazio({ icone, titulo, children }: { icone: ReactNode; titulo: s
 
 /* ---------- entrada em cascata ---------- */
 export const cascata = (i: number) => ({
-  initial: { opacity: 0, y: 18, filter: "blur(8px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
   transition: { ...molaSuave, delay: Math.min(i, 12) * 0.04 },
 });
 
@@ -328,6 +329,9 @@ function useRelogio(ativo: boolean) {
   return t;
 }
 
+/* tira do texto do card o que é instrução interna do roteiro: [ESCOLHIDO ...], numeração e aspas */
+export const limpo = (s?: string) => (s || "").replace(/\[[^\]]*\]/g, "").replace(/^\s*\d+[.)]\s*/, "").replace(/["“”]/g, "").replace(/\s+/g, " ").trim();
+
 function Ocupado({ fundo, texto, status, fase, desde }: { fundo?: string | null; texto?: string; status?: string; fase?: string; desde?: number }) {
   const t = useRelogio(true);
   const et = fase ? ETAPA_DE[fase] : undefined;
@@ -399,7 +403,7 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
   const mostrarStatus = status && status !== "pronto" && status !== "enviado" && !ocupado;
   return (
     <motion.div layout
-      initial={{ opacity: 0, y: 16, scale: 0.96, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 16, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ ...molaSuave, delay: Math.min(i, 14) * 0.035 }}
       whileTap={{ scale: 0.97 }} className="[perspective:900px]">
     <div ref={caixa} data-tilt onMouseMove={(ev) => inclinar(ev.clientX, ev.clientY)} onMouseLeave={soltar}
@@ -407,12 +411,16 @@ export function Tile({ capa, video, titulo, texto, status, fase, dur, i = 0, onC
       <button onClick={() => { som.abrir(); onClick(); }} aria-label={titulo} className="absolute inset-0 cursor-pointer"
         onMouseEnter={() => vid.current?.play().catch(() => {})} onMouseLeave={() => { if (vid.current) { vid.current.pause(); vid.current.currentTime = 0; } }}>
         {ocupado ? (
-          <Ocupado fundo={capa || fundo} texto={texto || titulo} status={status} fase={fase} desde={desde} />
+          <Ocupado fundo={capa || fundo} texto={limpo(titulo) || limpo(texto)} status={status} fase={fase} desde={desde} />
         ) : capa ? (
-          <img src={capa} alt="" loading="lazy" className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+          <>
+            <span className="busy-shimmer pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
+            <img src={capa} alt="" loading="lazy" ref={(el) => { if (el?.complete && el.naturalWidth) el.style.opacity = "1"; }} onLoad={(ev) => { ev.currentTarget.style.opacity = "1"; }}
+              className="absolute inset-0 size-full object-cover opacity-0 transition-[opacity,transform] duration-500 ease-out group-hover:scale-[1.04]" />
+          </>
         ) : (
           <span className="absolute inset-0 flex items-center p-4 text-left" style={{ background: "linear-gradient(160deg,#3a0711,#160307 60%,#0b0204)" }}>
-            <span className="line-clamp-6 text-[15px] font-semibold leading-snug tracking-tight text-ink/90">{texto || titulo}</span>
+            <span className="line-clamp-6 text-[15px] font-semibold leading-snug tracking-tight text-ink/90">{limpo(texto) || limpo(titulo)}</span>
           </span>
         )}
         {video && <video ref={vid} src={video} muted playsInline loop preload="none" className="absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />}

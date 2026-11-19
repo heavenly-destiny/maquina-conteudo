@@ -10,9 +10,10 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
   aba: Aba; onAba: (a: Aba) => void; badges: Partial<Record<Aba, number>>;
   aberta: boolean; setAberta: (v: boolean) => void; ligado: boolean; alternarSom: () => void; abrirConfig: () => void;
 }) {
+  // cinco itens não precisam de grupo com título (o grupo "Criar" tinha um item "Criar" dentro): um separador fino basta
   const grupos: { nome: string; ids: Aba[] }[] = [
-    { nome: "Criar", ids: ["inicio", "cortes", "criar"] },
-    { nome: "Biblioteca", ids: ["inspirar", "postar"] },
+    { nome: "fazer", ids: ["inicio", "cortes", "criar"] },
+    { nome: "usar", ids: ["inspirar", "postar"] },
   ];
   const item = (id: Aba) => ABAS.find((a) => a.id === id)!;
   return (
@@ -36,10 +37,10 @@ export function Sidebar({ aba, onAba, badges, aberta, setAberta, ligado, alterna
           <PanelLeft className="size-[18px] rotate-180" />
         </button>
       )}
-      <nav className="flex flex-1 flex-col gap-6">
+      <nav className="flex flex-1 flex-col gap-2">
         {grupos.map((g) => (
           <div key={g.nome} className="flex flex-col gap-1">
-            {aberta && <span className="px-3 pb-1 text-[12px] font-medium text-faint">{g.nome}</span>}
+            {g.nome === "usar" && <span aria-hidden className="mx-3 mb-2 h-px bg-white/[0.06]" />}
             {g.ids.map((id) => {
               const a = item(id), ativa = aba === id, b = badges[id];
               return (

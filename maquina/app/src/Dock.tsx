@@ -26,7 +26,7 @@ function Item({ aba, ativa, mx, onClick, badge }: { aba: (typeof ABAS)[number]; 
       {ativa && <motion.span layoutId="dock-ativa" transition={mola} className="absolute inset-0 rounded-[22px] bg-white/[0.1] shadow-[inset_0_1px_0_rgb(255_255_255/0.14)]" />}
       <motion.span whileTap={{ scale: 0.86 }} transition={mola} className="relative flex flex-col items-center gap-1">
         <aba.Icone className={cx("size-[21px] transition-colors", ativa && "text-red")} strokeWidth={ativa ? 2.2 : 1.8} />
-        <span className="text-[10.5px] font-medium tracking-tight">{aba.nome}</span>
+        <span className="text-[11px] font-medium tracking-tight">{aba.nome}</span>
       </motion.span>
       {!!badge && (
         <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} transition={mola}

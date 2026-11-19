@@ -65,7 +65,7 @@ function Upload() {
     <form onSubmit={(ev) => { ev.preventDefault(); if (/^https?:\/\//.test(link.trim())) { som.abrir(); setPend({ url: link.trim() }); } else avisar("Cole um link de vídeo", true); }}
       className="vidro flex min-h-12 items-center gap-2 rounded-[18px] pl-4 pr-1.5">
       <Link2 className="size-4 shrink-0 text-faint" />
-      <input value={link} onChange={(e) => setLink(e.target.value)} placeholder="ou cole o link do YouTube, Instagram, TikTok" className="min-w-0 flex-1 bg-transparent text-[14.5px] outline-none placeholder:text-faint" />
+      <input value={link} onChange={(e) => setLink(e.target.value)} placeholder="ou cole o link do vídeo" className="min-w-0 flex-1 bg-transparent text-[14.5px] outline-none placeholder:text-faint" />
       <button type="submit" aria-label="Usar link" disabled={!link.trim()} className="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full bg-red text-white disabled:cursor-default disabled:bg-white/10 disabled:text-faint"><ArrowUp className="size-4" /></button>
     </form>
     <Folha aberta={!!pend} onFechar={() => setPend(null)} larga>
@@ -75,18 +75,18 @@ function Upload() {
   );
 }
 /* confirmação na própria página (window.confirm é bloqueado): 1º toque arma, 2º exclui */
-function Excluir({ rotulo, onConfirmar, className }: { rotulo: string; onConfirmar: () => Promise<void>; className?: string }) {
+function Excluir({ rotulo, onConfirmar, className, icone }: { rotulo: string; onConfirmar: () => Promise<void>; className?: string; icone?: boolean }) {
   const [armado, setArmado] = useState(false);
   const t = useRef<number>(undefined);
   useEffect(() => () => window.clearTimeout(t.current), []);
   return (
     <Botao tipo="fantasma" aria-label={rotulo}
-      className={cx("min-h-11 text-red hover:bg-red/10 hover:text-red", armado && "bg-red/15 font-semibold", className)}
+      className={cx("min-h-11 hover:bg-red/10 hover:text-red", icone && !armado ? "w-11 px-0 text-mute" : "text-red", armado && "bg-red/15 font-semibold text-red", className)}
       onClick={() => {
         if (!armado) { setArmado(true); t.current = window.setTimeout(() => setArmado(false), 3000); return; }
         window.clearTimeout(t.current); setArmado(false); onConfirmar();
       }}>
-      <Trash2 className="size-4" /> {armado ? "Toca de novo pra excluir" : rotulo}
+      <Trash2 className="size-4" /> {armado ? "Toca de novo pra excluir" : !icone && rotulo}
     </Botao>
   );
 }
@@ -97,7 +97,7 @@ function CardCorte({ c, sel, onSel, onAbrir, i }: { c: Corte; sel: boolean; onSe
       status={c.status || "planejado"} fase={c.status === "editando" ? c.fase : undefined} dur={c.dur ? fmtTempo(c.dur) : undefined} onClick={onAbrir}
       canto={onSel && (
         <button aria-label="Selecionar" onClick={() => { som.toque(); onSel(); }}
-          className={cx("absolute bottom-2.5 right-2.5 z-10 grid size-8 cursor-pointer place-items-center rounded-full border transition-all", sel ? "border-red bg-red text-white" : "border-white/40 bg-black/40 text-transparent backdrop-blur hover:text-white/70")}>
+          className={cx("absolute bottom-2.5 right-2.5 z-10 grid size-10 cursor-pointer place-items-center rounded-full border transition-all", sel ? "border-red bg-red text-white" : "border-white/40 bg-black/40 text-transparent backdrop-blur hover:text-white/70")}>
           <Check className="size-4" strokeWidth={3} />
         </button>
       )} />
@@ -258,13 +258,13 @@ function BlocoJob({ job, i, cats }: { job: Job; i: number; cats: string[] }) {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+        <Segmentos id={`f-${job.id}`} valor={filtro} onChange={(f) => { setFiltro(f); setSel(new Set()); }}
+          opcoes={(["escolher", "editando", "prontos", "todos"] as Filtro[]).map((f) => ({ v: f, rotulo: <>{({ escolher: "Escolher", editando: "Editando", prontos: "Prontos", todos: "Todos" })[f]} <span className="text-faint tnum">{conta(f)}</span></> }))} />
         <Categoria job={job} todas={cats} />
-        <Excluir rotulo="Excluir vídeo" className="px-4 text-[13.5px]" onConfirmar={async () => {
+        <Excluir icone rotulo="Excluir vídeo" className="text-[13.5px]" onConfirmar={async () => {
           try { await post("/api/excluir-job", { job: job.id }); avisar("Vídeo excluído. Está na Lixeira."); atualizar(); }
           catch (er) { avisar((er as Error).message, true); }
         }} />
-        <Segmentos id={`f-${job.id}`} valor={filtro} onChange={(f) => { setFiltro(f); setSel(new Set()); }}
-          opcoes={(["escolher", "editando", "prontos", "todos"] as Filtro[]).map((f) => ({ v: f, rotulo: <>{({ escolher: "Escolher", editando: "Editando", prontos: "Prontos", todos: "Todos" })[f]} <span className="text-faint tnum">{conta(f)}</span></> }))} />
         </div>
       </div>
       {filtro === "escolher" && <Quantos job={job} sel={sel} setSel={setSel} />}
