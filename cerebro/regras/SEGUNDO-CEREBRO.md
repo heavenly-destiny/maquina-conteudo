@@ -144,3 +144,4 @@ Ainda abertas (o tanpz pediu em 17/11 para NÃO perguntar sobre projetos antigos
 - Máquina de Conteúdo (19/11): nome oficial agora é **Forja**. Aprovou a marca nova: F de metal líquido que se forma pela fusão de três gotas, com uma gota caindo da barra do meio ("F."), sobre vidro vinho. A logo antiga do M de fita foi recusada por ser "muito básica".
 - Forja (19/11): copy tem que sair rápido ("não existe criar copy em 20 minutos"). Etapa de copy sem rodada de revisão, ele aprova; revisão só no vídeo final. No Clonar ele quer escolher a fala: original ou traduzida pro português.
 - Forja (19/11): quer poder editar a copy na mão antes de aprovar (falas e legenda), além de pedir mudança pra IA.
+- Forja (19/11): pediu a Forja como artifact do claude.ai. Oferta dele (Stories Lab) não pode aparecer pra ninguém: exemplos genéricos na tela e artifact sem os dados dele.

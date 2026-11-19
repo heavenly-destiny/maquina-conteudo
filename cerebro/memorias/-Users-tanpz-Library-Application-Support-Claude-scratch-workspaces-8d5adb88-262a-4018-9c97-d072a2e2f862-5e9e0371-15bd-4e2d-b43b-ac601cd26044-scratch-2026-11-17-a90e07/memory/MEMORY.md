@@ -13,3 +13,4 @@
 - [Máquina repositório](maquina-repositorio.md) — private repo friends install; cerebro/ base never erased, perfil/ per-user layer; publicar.sh to update
 - [21st sempre](feedback-21st-sempre.md) — paid component libraries are mandatory; check 21st tier first (OAuth account was free on 19/11)
 - [Copy rápida](feedback-copy-rapida.md) — copy stage ~2 min, no review loop there; Clonar language toggle
+- [Oferta privada](feedback-oferta-privada.md) — never show his offers in Forja UI, artifact or shared repo; artifact URL + how it's built
